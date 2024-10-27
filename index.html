@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">  -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-32x32.png">
-    <title>Portfolio</title>
+    <title>QuBiTAi</title>
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
+
 <body>
-
-
     <!-- scroll to top section  -->
-   <div class="scrollToTop-btn flex-center">
-       <i class="fas fa-arrow-up"></i>
-   </div>
-
-
-    <!-- light/dark theme -->
-    <div class="theme-btn flex-center">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
+    <div class="scrollToTop-btn flex-center">
+        <i class="fas fa-arrow-up"></i>
     </div>
-
 
     <!-- header -->
     <header>
         <div class="nav-bar">
-            <a href="#" class="logo">Rakesh</a>
+            <a href="#" class="logo">QuBiTAi</a>
             <div class="navigation">
                 <div class="nav-items">
                     <div class="nav-close-btn"></div>
-                    <a class="active" href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#blogs">Blogs</a>
-                  <!--  <a href="#connect">Connect</a> -->
+                    <!-- <a class="active" href="#home">Research</a> -->
+                    <a href="./">Home</a>
+                    <a href="./research.html">Research</a>
+                    <a href="./projects.html">Projects</a>
+                    <a href="./blogs.html">Blogs</a>
+                    <a href="./notes.html">Notes</a>
+                    <a href="#footer">Connect</a>
                 </div>
             </div>
             <div class="nav-menu-btn"></div>
@@ -50,523 +43,420 @@
     <!-- Home Section -->
     <section class="home flex-center" id="home">
         <div class="home-container">
-            <div class="media-icons">
-                <a href="https://github.com/rvbug" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/rvbugged" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://rvbug.hashnode.dev/" target="_blank"><i class="fab fa-medium"></i></a>
-                <a href="https://linkedin.com/in/idinc" target="_blank"><i class="fab fa-linkedin"></i></a>
-                
-            </div>
             <div class="info">
-                <h2>Hi there!</h2>
-                <!-- <h3>Technical Project Manager (Day), Developer(Night) </h3> -->
-                <h3>I am an Engineer who builds things... </h3>
-                <!-- <p>I am an Enginner who likes to build things</p> -->
-                <!-- removing connect button
-                <a href="#connect" class="btn">Connect <i class="fas fa-arrow-circle-right"></i></a>
-                -->
-                
+                <h2>Quantum Gravity</h2>
+                <!-- <h3>Beauty of unknown... </h3> -->
+                <button class="btn">Coming Soon</button>
             </div>
             <div class="home-img">
-                <!-- no logo on the home page yet-->
                 <img src="assets/" alt="">
             </div>
-        </div> 
-            <a href="#about" class="scroll-down"><i class="fas fa-arrow-down"></i></a>
+        </div>
     </section>
 
-    <!-- About section -->
-    <section class="about section" id="about">
+    <section class="services section" id="techstack">
         <div class="container flex-center">
-            <h1 class="section-title-01">About Me</h1>
-            <h2 class="section-title-02">About Me</h2>
-            <div class="content flex-center">
-                <div class="about-img">
-                    <!--https://imgsv.imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg-->
-                    <img src="" alt="">
+            <h1 class="section-title-01">Tech Stack</h1>
+            <h2 class="section-title-02">Tech Stack</h2>
+            <div class="logos">
+                <div class="logos-slider">
+                    <img alt=" ">
+                    <img alt=" ">
+                    <img id="C" src="./assets/C.png" alt="C">
+                    <img id="rust" src="./assets/rust.png" alt="Rust">
+                    <img id="python" src="./assets/python.png" alt="Python">
+                    <img id="swift" src="./assets/Swift.png" alt="Swift">
+                    <img id="shell" src="./assets/Shell Scripting.png" alt="Shell">
+                    <img id="lua" src="./assets/lua.png" alt="Lua">
+                    <img id="arch" src="./assets/Arch.png" alt="Arch">
+                    <img id="emacs" src="./assets/emacs.png" alt="Emacs">
+                    <img id="docker" src="./assets/Docker.png" alt="Docker">
+                    <img id="nix" src="./assets/Nix.png" alt="Nix">
+                    <img id="notion" src="./assets/Notion.png" alt="Notion">
+                    <img id="C" src="./assets/C.png" alt="C">
+                    <img id="hyprland" src="./assets/hyprland.png" alt="Hyprland">
                 </div>
-                <div class="about-info">
-                    <div class="description">
-                        <h3>Rakesh V</h3> 
-                        <h4><span>Engineering Manager</span> based in <span>India</span> </h4>
-                        <p>Passionate about System Programming, Application Development, ML and Quantum ML</p>
-                    </div>
-                    <ul class="professional-list">
-                        <li class="list-item">
-                            <h3>19+</h3>
-                            <span>Years of<br>experience</span>
-                        </li>
-                        <li class="list-item">
-                            <h3>14+</h3>
-                            <span>in <br>App Development</span>
-                        </li>
-                        <li class="list-item">
-                            <h3>3+</h3>
-                            <span>in<br>ML<br>MLOps</span>
-                        </li>
-                    </ul>
-                    
-                   <!-- <a href="/assets/profile.pdf" target="_blank" class="btn">Download CV <i class="fas fa-download"></i> </a> -->
-                    
-                </div>
+                <!-- <div class="logos-slider">
+                    <img id="C" src="./assets/C.png" alt="C">
+                    <img id="rust" src="./assets/rust.png" alt="Rust">
+                    <img id="lua" src="./assets/lua.png" alt="Lua">
+                    <img id="python" src="./assets/python.png" alt="Python">
+                    <img id="swift" src="./assets/Swift.png" alt="Swift">
+                </div> -->
             </div>
         </div>
     </section>
 
-    <!-- skills section -->
-    <section class="skills section", id="skills">
+    <!-- ============ Project section ========= -->
+    <section class="services section" id="projects">
         <div class="container flex-center">
-            <h1 class="section-title-01">Skills</h1>
-            <h2 class="section-title-02">Skills</h2>
+            <h1 class="section-title-01">Projects</h1>
+            <h2 class="section-title-02">Projects</h2>
             <div class="content">
-                <div class="skills-description">
-                    <h3>Education & Skills</h3>
-                   <!-- <p>More than 19 years working on various domains, technology and programming language</p> -->
+                <div class="services-description">
                 </div>
-                <div class="skills-info education-all">
-                    <div class="education">
-                        <h4><label>Education</label></h4>
-                        <ul class="edu-list">
-                            <li class="item">
-                                <span class="year">2009-2011</span>
-                                <p><span>MBA </span> Operations </p>
-                            </li>
-                            <li class="item">
-                                <span class="year">1996-2001</span>
-                                <p><span>B.E </span> Computer Science</p>
-                            </li>
-                            <!-- <li class="item">
-                                <span class="year">2002-2015</span>
-                                <p><span>Application Development</span> </p>
-                            </li> -->
-                        </ul>
-                    </div>
-                    
-                    <div class="education">
-                        <h4><label>Skills</label></h4>
-                        <ul class="bars">
-                            <li class="bar">
-                                <div class="info">
-                                    <span>C /NCurses</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="line html"></div>
-                            </li>
-                            <li class="bar">
-                                <div class="info">
-                                    <span>Shell Scripting</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="line css"></div>
-                            </li>
-                            <li class="bar">
-                                <div class="info">
-                                    <span>HTML/CSS/Java Script</span>
-                                    <span>80%</span>
-                                </div>
-                                <div class="line javascript"></div>
-                            </li>
-                            <li class="bar">
-                                <div class="info">
-                                    <span>Python/TF/Scikit-learn</span>
-                                    <span>75%</span>
-                                </div>
-                                <div class="line jquery"></div>
-                            </li>
-                            <li class="bar">
-                                <div class="info">
-                                    <span>Docker/K8/DVC/CML/ML Flow</span>
-                                    <span>65%</span>
-                                </div>
-                                <div class="line php"></div>
-                        </ul>
-                    </div>
-                         
-                    <!--
-                    <div class="education">
-                        <h4><label> Awards</label></h4>
-                        <ul class="edu-list">
-                            <li class="item">
-                                <span class="year">2021</span>
-                                <p><span>Best Employeer</span>- At Apple </p>
-                            </li>
-                            <li class="item">
-                                <span class="year">2020</span>
-                                <p><span>Best Award</p><span>- At Apple</p>
-                            </li>
-
-                            <li class="item">
-                                <span class="year">2019</span>
-                                <p><span>Innovator</p><span>- At Google</p>
-                            </li>
-                        </ul>
-                    </div>
-                    -->
-                </div>
-
-                <div class="skills-description">
-                    <h3> Experience</h3>
-                    <p></p>
-                </div>
-                <div class="skills-info">
-
-                    <div class="experience-card">
-                        <div class="upper">
-                            <h4>Technical Project Manager</h4>
-                            <h5>Full Time</h5>
-                            <span>2015 - Present</span>
+                <ul class="service-list">
+                    <li class="services-container">
+                        <div class="service-card">
+                            <a href="https://github.com/rvbug/neovim" target="_blank">
+                                <img src="./assets/Neovim.png" alt="">
+                            </a>
+                            <h3>Neovim IDE</h3>
+                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
+                            <a href="https://github.com/rvbug/neovim" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
                         </div>
-                        <div class="hr"></div>
-                        <h4><label>LRN India Pvt. Ltd.</label></h4>
-                        <p><h5><> Project & Program Mgmt<p></h5>
-                        <p><h5><> Datascience & Story telling</p></h5>
-                        <p><h5><> Building ML models</p></h5>
-                        <p><h5><> Standardized Technology Platform</p></h5> 
-                        <p><h5><> Introduced hybrid cloud solutions</p></h5>
-                        <p><h5><> Set up Containerization - Docker</h5></p>
-                        <p><h5><> Led Enterprise Architecture & DevOps practice</p></h5>
-                        
-                    </div> 
-
-                    <div class="experience-card">
-                        <div class="upper">
-                            <h4>Sr. Consulant</h4>
-                            <h5>Full Time</h5>
-                            <span>2007-2015</span>
-                        </div>
-                        <div class="hr"></div>
-                        <h4><label>Capgemini India Pvt. Ltd.</label></h4>
-                        <p><h5><> Built EDI monitoring system</p></h5>
-                        <p><h5><> Automated production deloyment</p></h5>
-                        <p><h5><> Six-Sigma process improvements</p></h5>
-                    </div>
-
-                    <div class="experience-card">
-                        <div class="upper">
-                            <h4>Sr. Developer</h4>
-                            <h5>Full Time</h5>
-                            <span>2005-2007</span>
-                        </div>
-                        <div class="hr"></div>
-                        <h4><label>SRG Inc.</label></h4>
-                        <p><h5><>  Developed software for hand-held systems</p></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-                    <!-- ============ service section ========= -->
-                    <section class="services section" id="projects">
-                        <div class="container flex-center">
-                            <h1 class="section-title-01">Projects</h1>
-                            <h2 class="section-title-02">Projects</h2>
-                            <div class="content">
-                                <div class="services-description">
-                                    <!-- <h3>I work on</h3> -->
-                                </div>
-                                <ul class="service-list">
-                                    <li class="services-container">
-                                        <div class="service-card">
-                                            <i class="fas fa-pencil-ruler"></i>
-                                            <h3>Cookie-ML</h3>
-                                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
-                                        </div>
-                                        <div class="service-modal flex-center">
-                                            <div class="service-modal-body">
-                                                <i class="fas fa-times modal-close-btn"></i>
-                                                <h3>Cookie-ML</h3>
-                                                <h4>Auto creation of ML & MLOps Structure</h4>
-                                                <p>Uses : Python, Makefile</p>
-                                                <h4>Benefits</h4>
-                                                <ul>
-                                                    <li><i class="fas fa-check-circle"></i> Highly customizable structure</li>
-                                                    <li><i class="fas fa-check-circle"></i> Uses Python for simplicity</li>
-                                                    <li><i class="fas fa-check-circle"></i> Future Support - Virtualenv, MLOps</li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                        <div class="service-modal flex-center">
+                            <div class="service-modal-body">
+                                <i class="fas fa-times modal-close-btn"></i>
+                                <h3>IDE</h3>
+                                <h4>Setup Neovim as your IDE</h4>
+                                <p>Uses: Neovim, Lua</p>
+                                <h4>Benefits</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Blazingly fast IDE</li>
+                                    <li><i class="fas fa-check-circle"></i> Mouseless development environment</li>
+                                    <li><i class="fas fa-check-circle"></i> Future support - DAP for Rust
                                     </li>
-
-                                    <li class="services-container">
-                                        <div class="service-card">
-                                            <i class="fas fa-photo-video"></i>
-                                            <h3>.dotfiles</h3>
-                                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
-                                        </div>
-                                        <div class="service-modal flex-center">
-                                            <div class="service-modal-body">
-                                                <i class="fas fa-times modal-close-btn"></i>
-                                                <h3>.dotfiles</h3>
-                                                <h4>setup and manage .dotfiles</h4>
-                                                <p>Uses : .bashrc, .zshrc</p>
-                                                <h4>Benefits</h4>
-                                                <ul>
-                                                    <li><i class="fas fa-check-circle"></i> Easy setup</li>
-                                                    <li><i class="fas fa-check-circle"></i> Customize your workflow</li>
-                                                    <li><i class="fas fa-check-circle"></i> Support for C, ML & Web Development </li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="services-container">
-                                        <div class="service-card">
-                                            <i class="fas fa-pencil-ruler"></i>
-                                            <h3>Theta Θ</h3>
-                                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
-                                        </div>
-                                        <div class="service-modal flex-center">
-                                            <div class="service-modal-body">
-                                                <i class="fas fa-times modal-close-btn"></i>
-                                                <h3>Theta Θ</h3>
-                                                <h4>Redefining sound</h4>
-                                                <p>Uses: Rust, Swift and Xcode...</p>
-                                                <h4>Benefits</h4>
-                                                <ul>
-                                                    <li><i class="fas fa-check-circle"></i> To be Open sourced soon</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-         
-                                    <li class="services-container">
-                                        <div class="service-card">
-                                            <i class="fas fa-pencil-ruler"></i>
-                                            <h3>IDE</h3>
-                                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
-                                        </div>
-                                        <div class="service-modal flex-center">
-                                            <div class="service-modal-body">
-                                                <i class="fas fa-times modal-close-btn"></i>
-                                                <h3>IDE Setup</h3>
-                                                <h4>Setup development environment</h4>
-                                                <p>Uses: emacs & elisp</p>
-                                                <h4>Benefits</h4>
-                                                <ul>
-                                                    <li><i class="fas fa-check-circle"></i> To be Open sourced soon</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    
-                                    
-
                                 </ul>
                             </div>
                         </div>
-                    </section>
+                    </li>
 
-    <!-- portfolio section img 680x476 https://mcdn.wallpapersafari.com/medium/38/18/nG8wUI.jpg-->
+                    <li class="services-container">
+                        <div class="service-card">
+                            <a href="https://github.com/rvbug/.dotfiles" target="_blank">
+                                <img src="./assets/Shell Scripting.png" alt="">
+                            </a>
+                            <h3>.dotfiles</h3>
+                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
+                            <a href="https://github.com/rvbug/.dotfiles" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <div class="service-modal flex-center">
+                            <div class="service-modal-body">
+                                <i class="fas fa-times modal-close-btn"></i>
+                                <h3>.dotfiles</h3>
+                                <h4>Set up and manage .dotfiles</h4>
+                                <p>Uses: Shell Script, GNU Stow, .zshrc</p>
+                                <h4>Benefits</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Highly configurable</li>
+                                    <li><i class="fas fa-check-circle"></i> Single script</li>
+                                    <li><i class="fas fa-check-circle"></i> Supports Mac, Arch, Fedora & Ubuntu</li>
+                                    <li><i class="fas fa-check-circle"></i> Data Science and ML </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="services-container">
+                        <div class="service-card">
+                            <a href="https://github.com/rvbug/cookie-ml" target="_blank">
+                                <img src="./assets/python.png" alt="">
+                            </a>
+                            <h3>Cookie-ML</h3>
+                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
+                            <a href="https://github.com/rvbug/cookie-ml" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <div class="service-modal flex-center">
+                            <div class="service-modal-body">
+                                <i class="fas fa-times modal-close-btn"></i>
+                                <h3>Cookie-ML</h3>
+                                <h4>Auto creation of ML Structure</h4>
+                                <p>Uses: Python</p>
+                                <h4>Benefits</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Highly customizable structure</li>
+                                    <li><i class="fas fa-check-circle"></i> Uses Python for simplicity</li>
+                                    <li><i class="fas fa-check-circle"></i> Future Support - Rust</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="services-container">
+                        <div class="service-card">
+                            <a href="https://github.com/rvbug/linux" target="_blank">
+                                <img src="./assets/rust.png" alt="">
+                            </a>
+                            <h3>Linux & Rust </h3>
+                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
+                            <a href="https://github.com/rvbug/linux" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <div class="service-modal flex-center">
+                            <div class="service-modal-body">
+                                <i class="fas fa-times modal-close-btn"></i>
+                                <h3>Rust & Linux Kernel</h3>
+                                <h4>Rust for linux kernel</h4>
+                                <p>Uses: C, Rust, Linux Kernel</p>
+                                <h4>Benefits</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Adding Rust as an alternate to C</li>
+                                    <li><i class="fas fa-check-circle"></i> Contribution to open source</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="services-container">
+                        <div class="service-card">
+                            <a href="#projects">
+                                <img src="./assets/Notion.png" alt="">
+                            </a>
+                            <h3>Life OS </h3>
+                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
+                            <a href="#projects">
+                                <i class="fa-solid fa-circle-half-stroke"></i>
+                            </a>
+                        </div>
+                        <div class="service-modal flex-center">
+                            <div class="service-modal-body">
+                                <i class="fas fa-times modal-close-btn"></i>
+                                <h3>Productivity System</h3>
+                                <h4>Notion setup</h4>
+                                <p>Uses: Notion</p>
+                                <h4>Benefits</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Improve work-life balance </li>
+                                    <li><i class="fas fa-check-circle"></i> Planning, Notes, Time management </li>
+                                    <li><i class="fas fa-check-circle"></i> Two Free Notion Templates</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="services-container">
+                        <div class="service-card">
+                            <a href="https://github.com/rvbug/NLP" target="_blank">
+                                <img src="./assets/python.png" alt="">
+                            </a>
+                            <h3>Transformers</h3>
+                            <div class="learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i></div>
+                            <a href="https://github.com/rvbug/NLP" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <div class="service-modal flex-center">
+                            <div class="service-modal-body">
+                                <i class="fas fa-times modal-close-btn"></i>
+                                <h3>ML - NLP</h3>
+                                <h4>Natural Language Processing</h4>
+                                <p>Uses: Python</p>
+                                <h4>Benefits</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Roadmap to learn Transformers </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="services-container">
+                        <div class="service-card">
+                            <a href="#projects">
+                                <img src="./assets/Nix.png" alt="">
+                            </a>
+                            <h3>Auto Conf</h3>
+                            <div class=" learn-more-btn">Learn More <i class="fas fa-long-arrow-alt-right"></i>
+                            </div>
+                            <a href="#projects">
+                                <i class="fa-solid fa-circle-half-stroke"></i>
+                            </a>
+                        </div>
+                        <div class="service-modal flex-center">
+                            <div class="service-modal-body">
+                                <i class="fas fa-times modal-close-btn"></i>
+                                <h3>Nix Package Mgr</h3>
+                                <h4>Dotfiles Part II</h4>
+                                <p>Uses: Nix Package Manager</p>
+                                <h4>Benefits</h4>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Standard system configuration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- <li class="services-container">
+                        <div class="service-card">
+                            <a href="#projects">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </a>
+                            <h3>Other Projects</h3>
+                            <div class="learn-more-btn">Coming soon
+                                <a href="./projects.html">
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li> -->
+
+                    <li class="services-container">
+                        <div class="service-card">
+                            <a href="./projects.html">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </a>
+                            <h3>Projects</h3>
+                            <div>Coming Soon
+                            </div>
+                            <a href="./projects.html">
+                                <i class="fa-solid fa-circle-half-stroke"></i>
+                            </a>
+                        </div>
+                        <div class="service-modal flex-center">
+                        </div>
+                    </li>
+
+                </ul> <!--end of project list-->
+
+
+
+            </div>
+        </div>
+    </section>
+
     <section class="portfolio section" id="blogs">
         <div class="container flex-center">
             <h1 class="section-title-01">Blogs</h1>
             <h1 class="section-title-02">Blogs</h1>
+
             <div class="content">
                 <div class="portfolio-list">
-                   <a href="https://rvbug.hashnode.dev/ml-cookie-cutter" target="_blank"> 
-                    <div class="img-card-container">
-                        <div class="img-card">
-                            <div class="overlay">  
-                            </div>
-                            <div class="info">
-                                <h3>ML - Cookie Cutter</h3>
-                                <span>Machine Learning</span>
-                            </div>
-                            <img src="assets/cookie-cutter.jpg" alt="">
-                        </div>
-                        
-                        <!-- 
-                        <div class="portfolio-model flex-center">
-                            <div class="portfolio-model-body">
-                                <i class="fas fa-times portfolio-close-btn"></i>
-                                <h3>Web Design</h3>
-                                <img src="assets/" alt="">
-                                <p> To open a new window and link to the blog</p>
-                            </div>
-                        </div>
-                        -->
-                        
-                    </div>
-                    </a>
 
-                    
                     <div class="img-card-container">
-                       <a href="https://rvbug.hashnode.dev/structuring-data-science-and-ml-projects" target="_blank">
+                        <a href="https://rvbug.hashnode.dev/introduction-to-qml" target="_blank">
+                            <div class="img-card">
+                                <div class="overlay">
+                                </div>
+                                <div class="info">
+                                    <h3>Quantum ML </h3>
+                                    <span>Click to read</span>
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                                <img src="assets/QuantumML.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="img-card-container">
+                        <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" target="_blank"></a>
                         <div class="img-card">
                             <div class="overlay">
                             </div>
                             <div class="info">
-                                <h3>Structure</h3>
-                                <span>Your Datascience & ML Experiements</span>
+                                <h3>ML Cookie Cutter 2.0 </h3>
+                                <span>Click to read</span>
+                                <i class="fas fa-long-arrow-alt-right"></i>
                             </div>
-                            <img src="assets/structure-DSML.jpg" alt="">
+                            <img src="assets/CookieML.png" alt="">
                         </div>
                         </a>
-                    <!--
-                        <div class="portfolio-model flex-center">
-                            <div class="portfolio-model-body">
-                                <i class="fas fa-times portfolio-close-btn"></i>
-                                <h3>UI/UX Design</h3>
-                                <img src="" alt="">
-                                <p> Lorem ipsum and this is where I will add something related to Web 3.0</p>
-                            </div>
-                        </div> 
-                    -->
                     </div>
-                
-                    
-                    <div class="portfolio-list">
-                   <!-- <a href="https://rvbug.hashnode.dev/ml-cookie-cutter" target="_blank"> -->
-                    <div class="img-card-container">
-                         <a href="https://rvbug.hashnode.dev/https://rvbug.hashnode.dev/recommendation-systems-part-i" target="_blank">
-                        <div class="img-card">
-                            <div class="overlay">  
-                            </div>
-                            <div class="info">
-                                <h3>Recommendation Systems</h3>
-                                <span>Recommendation systems - I</span>
-                            </div>
-                            <img src="assets/dev_workflow.jfif" alt="">
-                        </div>
-                        
-                    </div>
-                    
-                    </div>
-                    
-                    <div class="portfolio-list">
-                    <div class="img-card-container">
-                         <a href="https://rvbug.hashnode.dev/ml-research-emotional-cause-pair-extraction-ecpe" target="_blank">
-                        <div class="img-card">
-                            <div class="overlay">  
-                            </div>
-                            <div class="info">
-                                <h3>Recommendation Systems</h3>
-                                <span>Research - ECPE </span>
-                            </div>
-                            <img src="assets/ecpe.jpg" alt="">
-                        </div>
-                        
-                    </div>
-                    
-                    </div>                 
-                        
-                        
 
+
+                    <div class="img-card-container">
+                        <a href="https://rvbug.hashnode.dev/configuring-neovim" target="_blank">
+                            <div class="img-card">
+                                <div class="overlay">
+                                </div>
+                                <div class="info">
+                                    <h3>Configure your IDE</h3>
+                                    <span>Click to read</span>
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                                <img src="assets/NeovimBlog.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="img-card-container">
+                        <a href="https://rvbug.hashnode.dev/structuring-data-science-and-ml-projects" target="_blank">
+                            <div class="img-card">
+                                <div class="overlay">
+                                </div>
+                                <div class="info">
+                                    <h3>Structuring ML Projects </h3>
+                                    <span>Click to read</span>
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                                <img src="assets/structure-DSML.jpg" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="img-card-container">
+                        <a href="https://rvbug.hashnode.dev/ml-research-emotional-cause-pair-extraction-ecpe"
+                            target="_blank">
+                            <div class="img-card">
+                                <div class="overlay">
+                                </div>
+                                <div class="info">
+                                    <h3>ML Research - ECPE </h3>
+                                    <span>Click to read</span>
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                                <img src="assets/ecpe.jpg" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="img-card-container">
+                        <a href="https://rvbug.hashnode.dev/recommendation-systems-part-i" target="_blank">
+                            <div class="img-card">
+                                <div class="overlay">
+                                </div>
+                                <div class="info">
+                                    <h3>Recommendation Systems </h3>
+                                    <span>Click to read</span>
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                                <img src="assets/rs.png" alt="">
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        
-        <!--get in touch one-->
-        <!--
-        <div class="get-in-touch sub-section" id="connect">
-            <div class="container">
-                <div class="content flex-center">
-                    <div class="contact-card flex-center">
-                        <div class="title">
-                            <h4>Let's connect</h4>
-                            <h3>About Your</h3>
-                            <h2>Next Project</h2>
-                        </div>
-                        <div class="contact-btn">
-                            <a href="" class="btn">Get In Touch <i class="fas fa-paper-plane"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!---- 
-            our client section goes here
-        -->
     </section>
 
 
-        <!-- Contact Section-->
-      <!-- 
-    <section class="contact section" id="contact">
-        <div class="container flex-center">
-            <h1 class="section-title-01">Contact Me</h1>
-            <h1 class="section-title-02">Contact Me</h1>
-            <div class="content">
-                <div class="contact-left">
-                    <h2 class="flex-center">You can connect with me </h2>
-                    <ul class="contact-list">
-                        <li>
-                            <h3 class="item-title"><i class="fas fa-phone"></i> Phone</h3>
-                            <span>+91 9819339682</span>
+    <div class="container flex-center">
+        <h1 class="section-title-01">Blogs Page </h1>
+        <h1 class="section-title-02">Coming soon...</h1>
+    </div>
+
+    <section id="footer">
+        <footer>
+            <div class="footer-container">
+                <div class="follow group">
+                    <h3>Follow</h3>
+                    <ul>
+                        <li><a href="https://linkedin.com/in/idinc" target="_blank"><i class="fab fa-linkedin"></i></a>
                         </li>
-                        <li>
-                            <h3 class="item-title"><i class="fas fa-envelope"></i> email</h3>
-                            <span><a href="mailto:rakesh@email.com"></a>rakesh.venkat@rakesh.com</span>
+                        <li><a href="https://rvbug.hashnode.dev/" target="_blank"><i class="fab fa-medium"></i></a>
                         </li>
-                        <li>
-                            <h3 class="item-title"><i class="fas fa-map-marker-alt"></i> Officical Address</h3>
-                            <span>Bombay, India</span>
+                        <li><a href="https://github.com/rvbug" target="_blank"><i class="fab fa-github"></i></a>
+                        </li>
+                        <li><a href="https://twitter.com/rvbugged" target="_blank"><i class="fab fa-twitter"></i></a>
                         </li>
                     </ul>
                 </div>
-                
-                <div class="contact-right">
-                    <p>Open for a discussion<br><span> coffee & meetup</span></p>
-                    <form action="" class="contact-form">
-                        <div class="first-row">
-                            <input type="text" placeholder="Name">
-                        </div>
-
-                        <div class="second-row">
-                            <input type="email" placeholder="email">
-                            <input type="text" placeholder="Subject">
-                        </div>
-                         
-                        <div class="third-row">
-                            <textarea name="message" id="" rows="7" placeholder="Message"></textarea>
-                        </div>
-                        <button class="btn" type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-                
-            
+                <!-- this is to make the above href to center-->
+                <p></p>
+                <!-- <p> © 2022 Qubitai.</p> -->
             </div>
-        </div>
+        </footer>
     </section>
-    -->
-
-  <footer>
-      <div class="footer-container">
-          <div class="about group">
-              <h2>Rakesh V</h2>
-              <!-- <p>Software Engineer</p> -->
-              <a href="#about">About Me</a>
-          </div>
-          <div class="hr"></div>
-          <div class="info group">
-              <h3>More</h3>
-              <ul>
-                  <li><a href="#skills">Skills</a></li>
-                  <li><a href="#projects">Projects</a></li>
-                  <li><a href="#blogs">Blogs</a></li>
-                  <!--<li><a href="#contact">Contact</a></li> -->
-              </ul>
-          </div>
-          <div class="hr"></div>
-          <div class="follow group">
-            <h3>Follow</h3>
-            <ul>
-                <li><a href="https://linkedin.com/in/idinc" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                <li><a href="https://rvbug.hashnode.dev/" target="_blank"><i class="fab fa-medium"></i></a></li>
-                <li><a href="https://github.com/rvbug" target="_blank"><i class="fab fa-github"></i></a></li>
-                <li><a href="https://twitter.com/rvbugged" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            </ul>
-          </div>
-      </div>
-      <div class="footer-copyright group">
-          <p> © 2022 by Rakesh.</p>
-      </div>
-  </footer>
     <!-- js code -->
     <script src="js/swiper-bundle.min.js"></script>
     <script src=js/main.js></script>
 
 </body>
-</html> 
+
+</html>
