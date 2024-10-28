@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* main div is here*/
+#main {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*page header*/
+#pageheader {
+    height: 30%;
+    width: 100%;
+    background-color: red;
+}
+
+/*Text inside page header*/
+/* #pageheader>h1 {
+    text-align: center;
+    color: #fff;
+} */
+
+#desc_img {
+    display: flex;
+    height: 40%;
+    width: 100%;
+    background-color: blue;
+}
+
+#desc_img>#desc {
+    height: 100%;
+    width: 50%;
+    background-color: aqua;
+}
+
+#desc_img>#image {
+    height: 100%;
+    width: 50%;
+    background-color: blueviolet;
+}
+
+#footing {
+    height: 100%;
+    width: 100%;
+    background-color: orange;
+}

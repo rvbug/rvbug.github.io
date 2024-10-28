@@ -61,7 +61,7 @@ li {
 
 
 /* == light & dark theme */
-/* .theme-btn {
+.theme-btn {
     z-index: 999999;
     position: fixed;
     right: 0;
@@ -84,7 +84,7 @@ li {
 
 .theme-btn.sun .fa-sun {
     display: block;
-} */
+}
 
 /* ======== scroll bar  =========== */
 
@@ -189,7 +189,7 @@ header.sticky .nav-bar {
 }
 
 .home-container .info h2 {
-    font-size: 10vh;
+    font-size: 4em;
     font-weight: 600;
     line-height: 70px;
 }
@@ -1113,8 +1113,7 @@ footer a {
         display: flex;
         justify-content: center;
         align-items: center;
-        /* background: var(--transparent-color-01); */
-        /* background-color: red; */
+        background: var(--transparent-color-01);
         visibility: hidden;
         opacity: 0;
         transition: .3s ease;
@@ -1153,7 +1152,7 @@ footer a {
 
     .nav-close-btn {
         position: absolute;
-        background: url("../assets/cancel.png")no-repeat;
+        background: url(/assets/cancel.png)no-repeat;
         filter: var(--color-filter);
         background-size: 12px;
         background-position: center;
@@ -1168,8 +1167,8 @@ footer a {
 
     /* making it reactive */
     .nav-menu-btn {
-        /* background: url(/assets/menu.png)no-repeat; */
-        background: url("../assets/menu.png")no-repeat;
+        background: url(/assets/menu.png)no-repeat;
+        filter: var(--color-filter);
         background-size: 30px;
         background-position: center;
         width: 40px;
@@ -1291,7 +1290,6 @@ footer a {
         margin: 5rem 0 0 0;
     }
 
-
     .section-title-01 {
         font-size: 3em;
     }
@@ -1303,21 +1301,17 @@ footer a {
 
     /* home section */
     .home .home-container {
-        display: flex;
+        display: grid;
     }
 
-    .home .home-container h2 {
-        font-size: 10vh;
-    }
-
-    /* .home-container .home-img {
+    .home-container .home-img {
         position: absolute;
     }
 
     .home-container .home-img img {
         width: 65%;
         transform: translate(80px, -180px);
-    } */
+    }
 
     .home .home-container .info {
         font-size: 0.8rem;
