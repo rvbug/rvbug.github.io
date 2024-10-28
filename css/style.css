@@ -189,7 +189,7 @@ header.sticky .nav-bar {
 }
 
 .home-container .info h2 {
-    font-size: 4em;
+    font-size: 10vh;
     font-weight: 600;
     line-height: 70px;
 }
@@ -1305,14 +1305,18 @@ footer a {
         display: grid;
     }
 
-    .home-container .home-img {
+    .home .home-container h2 {
+        font-size: 6vh;
+    }
+
+    /* .home-container .home-img {
         position: absolute;
     }
 
     .home-container .home-img img {
         width: 65%;
         transform: translate(80px, -180px);
-    }
+    } */
 
     .home .home-container .info {
         font-size: 0.8rem;
