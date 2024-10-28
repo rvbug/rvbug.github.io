@@ -9,27 +9,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-32x32.png">
     <title>Blogs</title>
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/blogs.css">
+    <link rel="stylesheet" href="./css/projects.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
-
 <body>
-    <!-- scroll to top section  -->
-    <div class="scrollToTop-btn flex-center">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- header start -->
-
-    <header>
+    <!-- <header>
         <div class="nav-bar">
             <a href="./" class="logo">QuBiTAi</a>
             <div class="navigation">
                 <div class="nav-items">
                     <div class="nav-close-btn"></div>
-                    <!-- <a class="active" href="#home">Research</a> -->
                     <a href="./">Home</a>
                     <a href="./research.html">Research</a>
                     <a href="./projects.html">Projects</a>
@@ -40,61 +31,59 @@
             </div>
             <div class="nav-menu-btn"></div>
         </div>
-    </header>
+    </header> -->
 
-    <!-- header end  -->
-    <!-- Home Section -->
-    <section class="home flex-center" id="home">
-        <div class="home-container">
+    <!--
+    Main Div contains 
+    1. Div - pageheader where text "Project" will show at the center
+    2. Div - desc_img which contains 2 sub divs
+        2.1 Div - desc left side which will contain text and has 2 more divs under that
+            2.1.1 - Div - git for showing github logo
+            2.1.2 - Div - knowmore for opening up a entire page to show the video of the features
+        2.2 Div - image - To show the image with tooltip
+    3. Div - foot - To show footer section 
+    -->
+    <div id="main">
+        <!-- nav bar start -->
+        <!-- nav bar end -->
 
-            <div class="info">
-                <h2>Coming Soon</h2>
-                <!-- <h3>Think Different!</h3> -->
+        <!-- pageheader starts -->
+        <div id="pageheader">
+            <!-- This is where the text "Projects" will go, maybe we will have video later not sure yet-->
+        </div>
+        <!-- pageheader ends -->
 
-                <!-- <video class="project-video"
-                    src="https://github.com/rvbug/neovim/assets/10928536/dd640ac9-a4f4-4c9c-a50a-7c9489747cc9" loop
-                    autoplay muted></video> -->
+        <!-- desc & image starts -->
+        <div id="desc_img">
+            <div id="desc">
 
-                <!-- <button class="btn">Coming Soon</button> -->
+                <div id="git">
+                    <!-- showing github image and link to the repo -->
+
+                </div>
+
+                <div id="knowmore">
+                    <!-- Will be a button when clicked will open entire section having video -->
+                </div>
             </div>
-            <div class="home-img">
-                <img src="assets/" alt="">
+
+            <!-- image section with tool tip and possibiy multiple images -->
+            <div id="image">
+
             </div>
 
         </div>
-    </section>
+        <!-- desc & image ends -->
 
 
 
-
-    <!-- 
-    <section id="footer">
-        <footer>
-            <div class="footer-container">
-                <div class="follow group">
-                    <h3>Follow</h3>
-                    <ul>
-                        <li><a href="https://linkedin.com/in/idinc" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        </li>
-                        <li><a href="https://rvbug.hashnode.dev/" target="_blank"><i class="fab fa-medium"></i></a>
-                        </li>
-                        <li><a href="https://github.com/rvbug" target="_blank"><i class="fab fa-github"></i></a>
-                        </li>
-                        <li><a href="https://twitter.com/rvbugged" target="_blank"><i class="fab fa-twitter"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                this is to make the above href to center-->
-    <p></p>
-    <!-- <p> © 2022 Qubitai.</p> -->
     </div>
-    </footer>
-    </section>
+    <!--end of main -->
 
-
-
-
-
+    <!-- footer starts -->
+    <div id="#footing">
+    </div>
+    <!-- footer ends -->
     <!-- js code -->
     <script src="js/swiper-bundle.min.js"></script>
     <script src=js/main.js></script>
