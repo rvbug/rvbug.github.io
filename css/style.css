@@ -61,7 +61,7 @@ li {
 
 
 /* == light & dark theme */
-.theme-btn {
+/* .theme-btn {
     z-index: 999999;
     position: fixed;
     right: 0;
@@ -84,7 +84,7 @@ li {
 
 .theme-btn.sun .fa-sun {
     display: block;
-}
+} */
 
 /* ======== scroll bar  =========== */
 
@@ -1113,7 +1113,8 @@ footer a {
         display: flex;
         justify-content: center;
         align-items: center;
-        background: var(--transparent-color-01);
+        /* background: var(--transparent-color-01); */
+        /* background-color: red; */
         visibility: hidden;
         opacity: 0;
         transition: .3s ease;
@@ -1152,7 +1153,7 @@ footer a {
 
     .nav-close-btn {
         position: absolute;
-        background: url(/assets/cancel.png)no-repeat;
+        background: url("../assets/cancel.png")no-repeat;
         filter: var(--color-filter);
         background-size: 12px;
         background-position: center;
@@ -1167,8 +1168,8 @@ footer a {
 
     /* making it reactive */
     .nav-menu-btn {
-        background: url(/assets/menu.png)no-repeat;
-        filter: var(--color-filter);
+        /* background: url(/assets/menu.png)no-repeat; */
+        background: url("../assets/menu.png")no-repeat;
         background-size: 30px;
         background-position: center;
         width: 40px;

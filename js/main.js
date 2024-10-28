@@ -70,25 +70,25 @@ var swiper = new Swiper(".mySwiper", {
 
 /* theme switching*/
 const themeBtn = document.querySelector(".theme-btn");
-themeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-theme");
-  themeBtn.classList.toggle("sun");
+// themeBtn.addEventListener("click", () => {
+//   document.body.classList.toggle("dark-theme");
+//   themeBtn.classList.toggle("sun");
 
-  localStorage.setItem("saved-theme", getCurrentTheme());
-  localStorage.setItem("saved-icon", getCurrentIcon());
+//   localStorage.setItem("saved-theme", getCurrentTheme());
+//   localStorage.setItem("saved-icon", getCurrentIcon());
 
-});
+// });
 
 const getCurrentTheme = () => document.body.classList.contains("dark-theme") ? "dark" : "light";
 const getCurrentIcon = () => themeBtn.classList.contains("sun") ? "sun" : "moon";
 
-const savedTheme = localStorage.getItem("saved-theme");
-const savedIcon = localStorage.getItem("saved-icon");
+// const savedTheme = localStorage.getItem("saved-theme");
+// const savedIcon = localStorage.getItem("saved-icon");
 
-if (savedTheme) {
-  document.body.classList[savedTheme === "dark" ? "add" : "remove"]("dark-theme");
-  themeBtn.classList[savedIcon === "sun" ? "add" : "removed"]("sun");
-}
+// if (savedTheme) {
+//   document.body.classList[savedTheme === "dark" ? "add" : "remove"]("dark-theme");
+//   themeBtn.classList[savedIcon === "sun" ? "add" : "removed"]("sun");
+// }
 
 /* scroll to top logic */
 
@@ -113,12 +113,12 @@ window.addEventListener("scroll", () => {
     let sectionTop = current.offsetTop - 50;
     let id = current.getAttribute("id");
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document.querySelector(".nav-items a[href*=" + id + "]").classList.add("active");
-    }
-    else {
-      document.querySelector(".nav-items a[href*=" + id + "]").classList.remove("active");
-    }
+    // if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+    //   document.querySelector(".nav-items a[href*=" + id + "]").classList.add("active");
+    // }
+    // else {
+    //   document.querySelector(".nav-items a[href*=" + id + "]").classList.remove("active");
+    // }
   });
 });
 
