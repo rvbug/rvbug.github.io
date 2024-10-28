@@ -1291,6 +1291,7 @@ footer a {
         margin: 5rem 0 0 0;
     }
 
+
     .section-title-01 {
         font-size: 3em;
     }
@@ -1302,11 +1303,11 @@ footer a {
 
     /* home section */
     .home .home-container {
-        display: grid;
+        display: flex;
     }
 
     .home .home-container h2 {
-        font-size: 6vh;
+        font-size: 10vh;
     }
 
     /* .home-container .home-img {
