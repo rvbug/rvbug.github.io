@@ -704,10 +704,9 @@ header.sticky .nav-bar {
 }
 
 .logos {
-    overflow: hidden;
+    overflow-x: hidden;
     padding: 20px 0;
     white-space: nowrap;
-
     position: relative;
     /* background: green; */
 }
