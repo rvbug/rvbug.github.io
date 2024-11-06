@@ -31,8 +31,6 @@
     --scroll-thumb-hover-color: #454f6b;
 }
 
-
-
 * {
     margin: 0;
     padding: 0;
@@ -178,7 +176,7 @@ header.sticky .nav-bar {
     display: flex;
     min-height: 55vh;
     width: 100%;
-    background-color: #fff;
+    background-color: #000;
     justify-content: center;
     align-items: center;
 }
@@ -192,6 +190,7 @@ header.sticky .nav-bar {
     font-size: 5em;
     font-weight: 600;
     line-height: 70px;
+    color: #fff;
 }
 
 /* Beauty of uknown text*/
@@ -210,9 +209,9 @@ header.sticky .nav-bar {
     border-radius: 70px;
     font-size: var(--normal-font-size);
     font-weight: 500;
-    color: #fff;
+    color: #000;
     border: none;
-    background-color: #000;
+    background-color: #fff;
     margin-top: 50050%px;
     display: inline-block;
     margin-top: 55px;
