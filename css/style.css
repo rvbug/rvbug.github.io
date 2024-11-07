@@ -708,6 +708,7 @@ header.sticky .nav-bar {
     padding: 20px 0;
     white-space: nowrap;
     position: relative;
+    max-width: 55vh;
     /* background: green; */
 }
 
