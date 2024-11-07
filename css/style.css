@@ -232,6 +232,7 @@ header.sticky .nav-bar {
     margin-top: 5vh;
     margin-left: 23vw;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 
 
@@ -1129,7 +1130,6 @@ footer a {
 @media screen and (max-width: 1070px) {
 
     /*  header navigation   */
-
     .navigation {
         position: fixed;
         width: 100%;
