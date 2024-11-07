@@ -216,6 +216,7 @@ header.sticky .nav-bar {
     display: inline-block;
     margin-top: 55px;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 
 /* Project Button*/
@@ -237,9 +238,9 @@ header.sticky .nav-bar {
 
 
 
-.btn:hover {
+/* .btn:hover {
     background: var(--hover-color);
-}
+} */
 
 .home-container .home-img {
     position: relative;
