@@ -195,10 +195,10 @@ header.sticky .nav-bar {
 
 /* Beauty of uknown text*/
 .home-container .info h3 {
-    color: rgb(134, 98, 98);
+    color: #fff;
     font-feature-settings: 1.3em;
     font-size: 2vw;
-    font-weight: 600;
+    font-weight: 00;
     line-height: 50px;
     text-align: center;
 }
@@ -1038,7 +1038,7 @@ footer a {
     margin-bottom: 30px;
 }
 
-.footer-container .info,
+.footer-container,
 .footer-container .follow {
     display: flex;
     align-items: center;
@@ -1184,6 +1184,11 @@ footer a {
         font-size: 0.85rem;
     }
 
+    .home .home-container .info h3 {
+        text-align: center;
+        justify-content: center;
+        font-size: 3vh;
+    }
 
 
     /* About section */
