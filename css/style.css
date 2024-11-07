@@ -218,6 +218,24 @@ header.sticky .nav-bar {
     letter-spacing: 1px;
 }
 
+/* Project Button*/
+.content .btn {
+    padding: 7px 20px;
+    border-radius: 70px;
+    font-size: var(--normal-font-size);
+    font-weight: 500;
+    color: #fff;
+    border: none;
+    background-color: #000;
+    margin-top: 50vh;
+    display: inline-block;
+    margin-top: 5vh;
+    margin-left: 23vw;
+    letter-spacing: 1px;
+}
+
+
+
 .btn:hover {
     background: var(--hover-color);
 }
@@ -630,6 +648,9 @@ header.sticky .nav-bar {
     transform: translateX(10px);
 }
 
+
+
+
 .service-modal {
     z-index: 999999;
     position: fixed;
@@ -708,7 +729,7 @@ header.sticky .nav-bar {
     padding: 20px 0;
     white-space: nowrap;
     position: relative;
-    max-width: 55vh;
+    max-width: 45vh;
     /* background: green; */
 }
 
