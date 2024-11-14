@@ -46,7 +46,7 @@ body {
     color: var(--first-color);
     background: var(--body-bg-color);
     margin: 2rem 0 0 0;
-    transition: .5s ease;
+    transition: .002s ease;
 }
 
 a {

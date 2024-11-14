@@ -1,6 +1,3 @@
-
-
-// Project section tabs
 const sections = document.querySelectorAll('.row');
 
 sections.forEach(section => {
