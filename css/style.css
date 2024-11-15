@@ -86,9 +86,13 @@ li {
 
 /* ======== scroll bar  =========== */
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 10px;
     background: var(--scroll-bar-color);
+} */
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -715,6 +719,7 @@ header.sticky .nav-bar {
 }
 
 /* start slider section */
+
 
 @keyframes slide {
     from {
