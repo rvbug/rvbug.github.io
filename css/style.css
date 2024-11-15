@@ -1155,13 +1155,14 @@ footer a {
     .nav-items {
         position: relative;
         background-size: var(--modal-bg-color);
-        width: 600px;
+        background-color: #fff;
+        width: 300px;
         max-width: 600px;
         display: flex;
         align-items: center;
         flex-direction: column;
-        margin: 20px;
-        padding: 40px;
+        margin: 10px;
+        padding: 10px;
         border-radius: 10px;
         box-shadow: var(--box-shadow);
         transform: translateY(-50px);
@@ -1180,8 +1181,8 @@ footer a {
     .nav-close-btn {
         position: absolute;
         background: url(/assets/cancel.png)no-repeat;
-        filter: var(--color-filter);
-        background-size: 12px;
+        /* filter: var(--color-filter); */
+        background-size: 22px;
         background-position: center;
         width: 40px;
         height: 40px;
@@ -1195,7 +1196,7 @@ footer a {
     /* making it reactive */
     .nav-menu-btn {
         background: url(/assets/menu.png)no-repeat;
-        filter: var(--color-filter);
+        /* filter: var(--color-filter); */
         background-size: 30px;
         background-position: center;
         width: 40px;

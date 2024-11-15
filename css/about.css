@@ -47,6 +47,21 @@ li {
     overflow-x: hidden;
 }
 
+/* .personal {
+    text-align: center;
+    font-size: 1.55rem;
+    font-weight: 400;
+    margin-bottom: 1.55em;
+} */
+
+
+.professional {
+    text-align: center;
+    font-size: 1.55rem;
+    font-weight: 400;
+    margin-bottom: 1.55em;
+}
+
 .timeline_container {
     margin: 2rem 0;
     position: relative;
@@ -82,7 +97,7 @@ li {
 .timeline_container .timeline_box .timeline_card {
     width: calc(50% - 40px);
     height: auto;
-    background-color: #2a2525;
+    background-color: #000000da;
     border-radius: 0.625rem;
     padding: 0.938rem 1.25rem;
     position: relative;
@@ -171,14 +186,14 @@ li {
 
 .timeline_content .company_box .role {
     color: #fff;
-    font-size: 1.375rem;
+    font-size: 1.7rem;
     font-weight: bold;
 }
 
 .timeline_content .company_box .company_name {
     color: #fff;
-    font-size: 0.8rem;
-    font-weight: 400;
+    font-size: 1.7rem;
+    font-weight: 300;
     padding: 0.125rem 0.875rem;
     border-radius: 0.938rem;
     background: rgba(186, 193, 224, 0.46);
@@ -197,8 +212,8 @@ li {
 }
 
 .timeline_box .timeline_content .working_detail .type {
-    color: #202020;
-    font-size: 0.9rem;
+    color: #fff;
+    font-size: 1.2rem;
     font-weight: 400;
     font-style: italic;
 }
@@ -211,8 +226,8 @@ li {
 }
 
 .timeline_box .timeline_content .working_detail .duration_time {
-    color: #202020;
-    font-size: 0.9rem;
+    color: #fff;
+    font-size: 1.5rem;
     font-weight: 200;
     font-style: normal;
 }
@@ -250,7 +265,7 @@ li {
 
 .timeline_box .timeline_content .desc {
     color: #fff;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 0.975rem;
 }
 
