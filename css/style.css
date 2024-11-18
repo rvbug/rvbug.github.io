@@ -1318,7 +1318,7 @@ footer a {
 
     .footer-container {
         width: 50%;
-        flex-direction: row;
+        flex-direction: column;
     }
 
 
