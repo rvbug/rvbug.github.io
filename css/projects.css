@@ -10,11 +10,13 @@
     scroll-behavior: smooth;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
-/* ::-webkit-scrollbar {
+/* 
+::-webkit-scrollbar {
     display: none;
 } */
 
@@ -32,6 +34,7 @@ body {
     background: #fff;
     /* margin: 10vh; */
     /* transition: .2s ease; */
+    overflow-x: hidden;
 }
 
 a {
@@ -69,7 +72,7 @@ header.sticky {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 20px;
+    padding: 0 1rem;
     transition: .6s ease;
     color: black;
 }
@@ -201,7 +204,7 @@ header.sticky .nav-bar {
 
 .container {
     max-width: 1200px;
-    width: 100%;
+    width: 90%;
     padding: 10px;
 }
 
