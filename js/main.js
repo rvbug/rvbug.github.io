@@ -172,6 +172,24 @@ scrollTopBtn.addEventListener("click", () => {
 });
 
 //navigation meu items active page scroll
+// window.addEventListener("scroll", () => {
+//   const sections = document.querySelectorAll("section");
+//   const scrollY = window.pageYOffset;
+
+//   sections.forEach(current => {
+//     let sectionHeight = current.offsetHeight;
+//     let sectionTop = current.offsetTop - 50;
+//     let id = current.getAttribute("id");
+
+//     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+//       document.querySelector(".nav-items a[href*=" + id + "]").classList.add("active");
+//     }
+//     else {
+//       document.querySelector(".nav-items a[href*=" + id + "]").classList.remove("active");
+//     }
+//   });
+// });
+
 window.addEventListener("scroll", () => {
   const sections = document.querySelectorAll("section");
   const scrollY = window.pageYOffset;
@@ -181,14 +199,22 @@ window.addEventListener("scroll", () => {
     let sectionTop = current.offsetTop - 50;
     let id = current.getAttribute("id");
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document.querySelector(".nav-items a[href*=" + id + "]").classList.add("active");
-    }
-    else {
-      document.querySelector(".nav-items a[href*=" + id + "]").classList.remove("active");
+    // Only proceed if we have an id
+    if (id) {
+      // Safely query the navigation item
+      const navItem = document.querySelector(`.nav-items a[href*="${id}"]`);
+
+      if (navItem) {
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navItem.classList.add("active");
+        } else {
+          navItem.classList.remove("active");
+        }
+      }
     }
   });
 });
+
 
 
 //responsive navigation menu toggle
