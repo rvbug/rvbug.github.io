@@ -1,4 +1,3 @@
-
 // NOTION PAGE Intersection Observer for feature sections
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -14,6 +13,44 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.feature-container').forEach(container => {
   observer.observe(container);
 });
+
+// ScrollReveal Configuration
+const scrollReveal = ScrollReveal({
+  distance: '40px', // Slightly reduced distance
+  duration: 800, // Slightly shorter duration
+  delay: 150, // Reduced delay
+  reset: true
+});
+
+// Animate Hero Section
+scrollReveal.reveal('.hero-content', {
+  origin: 'top',
+  delay: 300 // Reduced delay
+});
+
+// Animate Feature Sections
+scrollReveal.reveal('.feature-container', {
+  origin: 'bottom',
+  interval: 250, // Slightly reduced interval
+  beforeReveal: (el) => {
+    el.classList.add('visible');
+  }
+});
+
+// Animate Images with different effects
+scrollReveal.reveal('.feature-image img', {
+  origin: 'right',
+  scale: 0.9 // Slight adjustment to scale
+});
+
+// Animate Text Content
+scrollReveal.reveal('.feature-text h2, .feature-text p', {
+  origin: 'left',
+  interval: 150 // Reduced interval
+});
+
+
+
 
 
 

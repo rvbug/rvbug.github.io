@@ -1,67 +1,102 @@
-const sections = document.querySelectorAll('.row');
+document.addEventListener('DOMContentLoaded', () => {
+  // Intersection Observer for Scroll Animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
 
-sections.forEach(section => {
-  const tabs = section.querySelectorAll('.tabs li');
-  const tabContent = section.querySelectorAll('.tab-content');
+  // Observe templates section
+  const templatesSection = document.querySelector('.templates-section');
+  observer.observe(templatesSection);
 
-  //   // Initially, hide all tab content except the visible one in each section
-  tabContent.forEach(content => {
-    if (!content.classList.contains('content-visible')) {
-      content.style.display = 'none';
+  // Template Cards Modal Functionality
+  const templateCards = document.querySelectorAll('.template-add');
+  const modal = document.getElementById('templateModal');
+  const closeModal = document.querySelector('.close-modal');
+
+  // Open modal when "+" icon is clicked
+  templateCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      const templateCard = e.currentTarget.closest('.template-card');
+      const templateTitle = templateCard.querySelector('h3').textContent;
+      const templateImage = templateCard.querySelector('img').src;
+
+      // Populate modal content
+      modal.querySelector('.modal-content').innerHTML = `
+              <span class="close-modal">&times;</span>
+              <div class="modal-header">
+                  <h2>${templateTitle} Template</h2>
+              </div>
+              <div class="modal-body">
+                  <div class="modal-section preview">
+                      <h3>Preview</h3>
+                      <img src="${templateImage}" alt="${templateTitle} Template">
+                  </div>
+                  <div class="modal-section details">
+                      <h3>Details</h3>
+                      <p>Comprehensive details about the ${templateTitle} template, including its key features and use cases.</p>
+                  </div>
+                  <div class="modal-section customize">
+                      <h3>Customize</h3>
+                      <button class="customize-btn">Start Customizing</button>
+                  </div>
+              </div>
+          `;
+
+      // Re-attach close modal event listener
+      modal.querySelector('.close-modal').addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      modal.style.display = 'block';
+    });
+  });
+
+  // Close modal when pressing Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
+      modal.style.display = 'none';
     }
   });
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', (event) => {
-      event.preventDefault(); // Prevent default anchor link behavior
+  // Carousel Swipe Functionality
+  const carousel = document.querySelector('.templates-carousel');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-      const targetId = tab.firstElementChild.getAttribute('href').substring(1); // Remove the '#'
+  carousel.addEventListener('mousedown', (e) => {
+    isDown = true;
+    carousel.classList.add('active');
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
 
-      tabContent.forEach(content => {
-        content.style.display = 'none';
-      });
+  carousel.addEventListener('mouseleave', () => {
+    isDown = false;
+    carousel.classList.remove('active');
+  });
 
-      const targetContent = section.querySelector(`#${targetId}`);
-      if (targetContent) {
-        targetContent.style.display = 'block';
-      } else {
-        console.error(`Tab content with ID "${targetId}" not found in section.`);
-      }
-    });
+  carousel.addEventListener('mouseup', () => {
+    isDown = false;
+    carousel.classList.remove('active');
+  });
+
+  carousel.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2;
+    carousel.scrollLeft = scrollLeft - walk;
   });
 });
 
 
-// Working if there are 3 tabs
-// const sections = document.querySelectorAll('.row');
-// sections.forEach(section => {
-//   const tabs = section.querySelectorAll('.tabs li');
-//   const tabContent = section.querySelectorAll('.tab-content');
-
-//   // Initially, hide all tab content except the visible one in each section
-//   tabContent.forEach(content => {
-//     if (!content.classList.contains('content-visible')) {
-//       content.style.display = 'none';
-//     }
-//   });
-
-//   tabs.forEach(tab => {
-//     tab.addEventListener('click', () => {
-//       const targetId = tab.firstElementChild.getAttribute('href');
-
-//       tabContent.forEach(content => {
-//         content.style.display = 'none';
-//       });
-
-//       const targetContent = section.querySelector(targetId);
-//       if (targetContent) {
-//         targetContent.style.display = 'block';
-//       } else {
-//         console.error(`Tab content with ID "${targetId}" not found in section.`);
-//       }
-//     });
-//   });
-// });
 
 
 //navigation effect of on scroll
