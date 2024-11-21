@@ -125,7 +125,7 @@ li {
     -webkit-text-fill-color: transparent;
     font-size: 7rem;
     font-weight: 600;
-    line-height: 70px;
+    /* line-height: 70px; */
     margin-bottom: 10px;
 }
 
