@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0a;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+/* header - entire nav bar */
+header {
+    z-index: 99999;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(30px);
+    transition: .6s ease;
+}
+
+
+.scrollToTop-btn {
+    z-index: 99999;
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
+    background: black;
+    color: #fff;
+    font-size: 0.9em;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.scrollToTop-btn.active {
+    right: 20px;
+    pointer-events: all;
+    opacity: 1;
+}
+
+
+/* from js file - toggle sticky for headers */
+header.sticky {
+    background: rgba(8, 7, 7, 0.1);
+    /* background: #fff; */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar {
+    position: relative;
+    height: calc(4rem + 1rem);
+    max-width: 1250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    transition: .6s ease;
+}
+
+header.sticky .nav-bar {
+    height: calc(2.5rem + 1rem);
+}
+
+.nav-bar .logo {
+    /* color: #0e2431; */
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+
+.nav-items a {
+    /* color: #0e2431; */
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.nav-items a.active {
+    color: #e6e5ef;
+}
+
+.nav-items a:not(:last-child) {
+    margin-right: 50px;
+}
+
+.nav-items a:hover {
+    color: #e6e5ef;
+}
+
+.nav-menu-btn {
+    display: none;
+}
+
+
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+}
+
+.hero-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    color: #888;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: #111;
+}
+
+.stat-box {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #3498db;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: #111;
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: #888;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.feature-list li::before {
+    content: "•";
+    color: #3498db;
+    position: absolute;
+    left: 0;
+}
+
+
+
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-box {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+/* Add styles for the plus button */
+.plus-button {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+    background: #3498db;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.plus-button:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #1a1a1a;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-button:hover {
+    color: #fff;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    background: #111;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+}
+
+.modal-details {
+    color: #888;
+}
+
+.modal-details h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.modal-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-details li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.modal-details li::before {
+    content: "•";
+    color: #3498db;
+    position: absolute;
+    left: 0;
+}
+
+@media (max-width: 768px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+}

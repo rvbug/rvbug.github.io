@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="css/keyboard.css">
+</head>
+
+<body>
+
+    <!-- scroll to top section  -->
+    <div class="scrollToTop-btn flex-center">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- header -->
+    <header>
+        <div class="nav-bar">
+            <a href="/" class="logo">QuBiTAi</a>
+            <div class="navigation">
+                <div class="nav-items">
+                    <div class="nav-close-btn"></div>
+                    <!-- <a class="active" href="#home">Research</a> -->
+                    <a href="./">Home</a>
+                    <a href="./quantum.html">Research</a>
+                    <a href="./projects.html">Projects</a>
+                    <a href="./about.html">About</a>
+                    <a href="https://qubitai.in/notes/blog/" target="_blank">Blogs</a>
+                    <a href="./robotics.html">Robotics</a>
+                    <a href="#">Notion</a>
+                    <a href="https://qubitai.in/notes" target="_blank">Notes</a>
+                    <a href="./keyboard.html" target="_blank">Keyboards</a>
+                    <a href="./#footer">Connect</a>
+                </div>
+            </div>
+            <div class="nav-menu-btn"></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Custom Keyboard</h1>
+            <p>Ergonomic. Customizable </p>
+        </div>
+    </section>
+
+    <div class="stats-container">
+        <div class="stat-box">
+            <div class="stat-number" id="keyCount">0</div>
+            <div class="stat-label">Keys per Half</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" id="layerCount">0</div>
+            <div class="stat-label">Programmable Layers</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" id="customPercent">0</div>
+            <div class="stat-label">Customization</div>
+        </div>
+    </div>
+
+    <!-- <section>
+        <h2 class="section-title">Features</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">⌨️</div>
+                <h3>Split Design</h3>
+                <p>Optimized positioning for reduced shoulder strain</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Custom Firmware</h3>
+                <p>Fully programmable with QMK/ZMK support</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Wireless</h3>
+                <p>Low latency Bluetooth connection</p>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="section" id="microcontrollers">
+        <h2 class="section-title">Microcontroller Options</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Pro Micro</h3>
+                <ul class="feature-list">
+                    <li>ATmega32U4 processor</li>
+                    <li>USB-C connectivity</li>
+                    <li>QMK/ZMK compatible</li>
+                    <li>Low power consumption</li>
+                </ul>
+                <button class="plus-button" data-modal="proMicro">+</button>
+            </div>
+            <div class="card">
+                <h3>Nice!Nano</h3>
+                <ul class="feature-list">
+                    <li>nRF52840 processor</li>
+                    <li>Bluetooth support</li>
+                    <li>Battery management</li>
+                    <li>Wireless capabilities</li>
+                </ul>
+                <button class="plus-button" data-modal="niceNano">+</button>
+            </div>
+            <div class="card">
+                <h3>Elite-C</h3>
+                <ul class="feature-list">
+                    <li>Enhanced durability</li>
+                    <li>More pinouts</li>
+                    <li>USB Type-C</li>
+                    <li>Better ESD protection</li>
+                </ul>
+                <button class="plus-button" data-modal="elite">+</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals for Pro Micro Controller -->
+    <div class="modal" id="proMicroModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Pro Micro Details</h2>
+            <div class="modal-grid">
+                <div class="modal-image">
+                    [Pro Micro Schematic Image]
+                </div>
+                <div class="modal-details">
+                    <h3>Pin Configuration</h3>
+                    <ul>
+                        <li>RAW: Unregulated power input</li>
+                        <li>VCC: Regulated 5V output</li>
+                        <li>GND: Ground pins</li>
+                        <li>2-9: Digital I/O pins</li>
+                        <li>A0-A3: Analog input pins</li>
+                    </ul>
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li>ATmega32U4 Processor</li>
+                        <li>16MHz Clock Speed</li>
+                        <li>32KB Flash Memory</li>
+                        <li>USB Type-C Connection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for Pro Micro Controller -->
+    <div class="modal" id="niceNanoModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Nice Nano</h2>
+            <div class="modal-grid">
+                <div class="modal-image">
+                    [Pro Micro Schematic Image]
+                </div>
+                <div class="modal-details">
+                    <h3>Pin Configuration</h3>
+                    <ul>
+                        <li>RAW: Unregulated power input</li>
+                        <li>VCC: Regulated 5V output</li>
+                        <li>GND: Ground pins</li>
+                        <li>2-9: Digital I/O pins</li>
+                        <li>A0-A3: Analog input pins</li>
+                    </ul>
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li>ATmega32U4 Processor</li>
+                        <li>16MHz Clock Speed</li>
+                        <li>32KB Flash Memory</li>
+                        <li>USB Type-C Connection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modals for Elite-C Controller -->
+
+    <div class="modal" id="eliteModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Nice Nano</h2>
+            <div class="modal-grid">
+                <div class="modal-image">
+                    [Pro Micro Schematic Image]
+                </div>
+                <div class="modal-details">
+                    <h3>Pin Configuration</h3>
+                    <ul>
+                        <li>RAW: Unregulated power input</li>
+                        <li>VCC: Regulated 5V output</li>
+                        <li>GND: Ground pins</li>
+                        <li>2-9: Digital I/O pins</li>
+                        <li>A0-A3: Analog input pins</li>
+                    </ul>
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li>ATmega32U4 Processor</li>
+                        <li>16MHz Clock Speed</li>
+                        <li>32KB Flash Memory</li>
+                        <li>USB Type-C Connection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Updated Keyboard Components Cards -->
+    <section class="section" id="keyboard-parts">
+        <h2 class="section-title">Keyboard Components</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Switches</h3>
+                <p>Choose from a variety of premium mechanical switches:</p>
+                <ul class="feature-list">
+                    <li>Gateron Ink Blacks</li>
+                    <li>Holy Pandas</li>
+                    <li>Zealios V2</li>
+                    <li>Boba U4T</li>
+                </ul>
+                <button class="plus-button" data-modal="switches">+</button>
+            </div>
+            <!-- Other cards remain the same, add plus-button to each -->
+
+            <div class="card">
+                <h3>Keycaps</h3>
+                <p>High-quality PBT keycaps with:</p>
+                <ul class="feature-list">
+                    <li>Cherry Profile</li>
+                    <li>Dye-sublimated legends</li>
+                    <li>Ergonomic sculpting</li>
+                    <li>Custom colorways</li>
+                </ul>
+                <button class="plus-button" data-modal="switches">+</button>
+            </div>
+            <div class="card">
+                <h3>Cases</h3>
+                <p>Premium case options including:</p>
+                <ul class="feature-list">
+                    <li>CNC Aluminum</li>
+                    <li>3D Printed</li>
+                    <li>Acrylic stack</li>
+                    <li>Wood options</li>
+                </ul>
+                <button class="plus-button" data-modal="switches">+</button>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script src="./js/keyboard.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!-- <section class="section" id="microcontrollers">
+        <h2 class="section-title">Microcontroller Options</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Pro Micro</h3>
+                <ul class="feature-list">
+                    <li>ATmega32U4 processor</li>
+                    <li>USB-C connectivity</li>
+                    <li>QMK/ZMK compatible</li>
+                    <li>Low power consumption</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Nice!Nano</h3>
+                <ul class="feature-list">
+                    <li>nRF52840 processor</li>
+                    <li>Bluetooth support</li>
+                    <li>Battery management</li>
+                    <li>Wireless capabilities</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Elite-C</h3>
+                <ul class="feature-list">
+                    <li>Enhanced durability</li>
+                    <li>More pinouts</li>
+                    <li>USB Type-C</li>
+                    <li>Better ESD protection</li>
+                </ul>
+            </div>
+        </div>
+    </section> -->
+
+<!-- <section class="section" id="keyboard-parts">
+        <h2 class="section-title">Keyboard Components</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Switches</h3>
+                <p>Choose from a variety of premium mechanical switches:</p>
+                <ul class="feature-list">
+                    <li>Gateron Ink Blacks</li>
+                    <li>Holy Pandas</li>
+                    <li>Zealios V2</li>
+                    <li>Boba U4T</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Keycaps</h3>
+                <p>High-quality PBT keycaps with:</p>
+                <ul class="feature-list">
+                    <li>Cherry Profile</li>
+                    <li>Dye-sublimated legends</li>
+                    <li>Ergonomic sculpting</li>
+                    <li>Custom colorways</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Cases</h3>
+                <p>Premium case options including:</p>
+                <ul class="feature-list">
+                    <li>CNC Aluminum</li>
+                    <li>3D Printed</li>
+                    <li>Acrylic stack</li>
+                    <li>Wood options</li>
+                </ul>
+            </div>
+        </div>
+    </section> -->
