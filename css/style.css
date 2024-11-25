@@ -115,6 +115,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+    background-color: #000;
     backdrop-filter: blur(30px);
     transition: .6s ease;
 }
@@ -147,7 +148,8 @@ header {
 
 /* from js file - toggle sticky for headers */
 header.sticky {
-    background: rgba(255, 255, 255, 0.1);
+    /* background: rgba(255, 255, 255, 0.1); */
+    background: #000;
     /* background: #fff; */
     box-shadow: var(--box-shadow);
 }
@@ -171,7 +173,8 @@ header.sticky .nav-bar {
 
 .nav-bar .logo {
     /* color: #0e2431; */
-    color: #000;
+    /* color: #000; */
+    color: #fff;
     font-size: 1.3em;
     font-weight: 600;
 }
@@ -179,7 +182,8 @@ header.sticky .nav-bar {
 
 .nav-items a {
     /* color: #0e2431; */
-    color: #000;
+    /* color: #000; */
+    color: #fff;
     font-size: var(--normal-font-size);
     font-weight: 500;
 }
