@@ -1,35 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">  -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-32x32.png">
-    <title>Projects</title>
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/projects.css">
+    <title>Projects | QuBiTAi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="./css/projects.css">
 </head>
 
-
 <body>
-    <!-- scroll to top section  -->
-    <div class="scrollToTop-btn flex-center">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- header start -->
-
     <header>
         <div class="nav-bar">
             <a href="/" class="logo">QuBiTAi</a>
             <div class="navigation">
                 <div class="nav-items">
-                    <div class="nav-close-btn"></div>
-                    <!-- <a class="active" href="#home">Research</a> -->
+                    <div class="nav-close-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
                     <a href="./">Home</a>
                     <a href="./research.html">Research</a>
                     <a href="./projects.html">Projects</a>
@@ -41,507 +29,263 @@
                     <a href="./#footer">Connect</a>
                 </div>
             </div>
-            <div class="nav-menu-btn"></div>
+            <div class="nav-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
-    <!-- header end  -->
 
-    <!-- Home Section -->
-    <section class="home flex-center" id="home">
-        <div class="home-container">
-            <div class="info">
-                <h2>Projects</h2>
-                <h3>Bold. Creative</h3>
-            </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Projects</h1>
+            <p>Bold. Creative</p>
         </div>
     </section>
 
-
-    <div class="about"> <!-- main is used -->
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="./assets/image_2.png" alt="">
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-image">
+                <img src="./assets/Neovim.png" alt="Neovim IDE">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Neovim IDE</h3>
+                <p class="project-description">A blazingly fast IDE setup with custom developer workflow.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Lua</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">OCaml</span>
                 </div>
-                <div class="about-col-2">
-                    <h1>Neovim IDE</h1>
-                    <ul class="tabs">
-                        <li class="tab-item"><a href="#item1" class="active">About</a></li>
-                        <li class="tab-item"><a href="#item2">Tech Stack</a></li>
-                    </ul>
-
-                    <div class="wrapper_tab-content">  
-                        <article id="item1" class="tab-content content-visible">
-                            <!-- <h1>C++</h1> -->
-                            <p>
-                                Do you need to set a blazingly fast IDE and have your own developer workflow?
-                                <br> <br>
-                                Checkout the documentation & Blog.
-                            </p>
-
-                            <a href="https://github.com/rvbug/neovim" target="_blank">
-                                <button class="btn">Code</button>
-                            </a>
-
-                            <a href="https://rvbug.hashnode.dev/configuring-neovim" target="_blank">
-                                <button class="btn">Blog</button>
-                            </a>
-
-                        </article>
-
-                        <article id="item2" class="tab-content">
-                            <!-- <h1>CSS</h1> -->
-                            <img height="25" src="https://img.shields.io/badge/License-GPLv3-blue.svg">
-                            <img height="25"
-                                src="https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white">
-
-                            <img height="25"
-                                src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/OCaml-%23E98407.svg?style=for-the-badge&logo=ocaml&logoColor=white>
-
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/OCaml-%23E98407.svg?style=for-the-badge&logo=ocaml&logoColor=white>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0>
-                            <img height="25"
-                                src=https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white>
-
-                            <img height="25"
-                                src=https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white>
-
-
-                            <!-- <p>Uses Lua</p> -->
-                        </article>
-
-                    </div>
-
+                <div class="project-links">
+                    <a href="https://github.com/rvbug/neovim" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                    <a href="https://rvbug.hashnode.dev/configuring-neovim" class="project-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Blog</span>
+                    </a>
+                    <span class="learn-more-btn" onclick="openModal('neovim')">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Learn More</span>
+                    </span>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="about"> <!-- main is used -->
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="./assets/dotfiles.png" alt="">
+
+        <div class="modal-overlay" id="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-title">Project Title</h2>
                 </div>
-                <div class="about-col-2">
-                    <h1>.dotfiles</h1>
-                    <ul class="tabs">
-                        <li class="tab-item"><a href="#item3" class="active">About</a></li>
-                        <li class="tab-item"><a href="#item4">Tech Stack</a></li>
-                    </ul>
-
-                    <div class="wrapper_tab-content">  
-                        <article id="item3" class="tab-content content-visible">
-                            <!-- <h1>JS</h1> -->
-                            <p>
-                                Helps you personalized the development experience across all your machines?
-                                <br> <br>
-                                Checkout the documentation & Blog.
-                            </p>
-
-                            <a href="https://github.com/rvbug/.dotfiles" target="_blank">
-                                <button class="btn">Code</button>
-                            </a>
-
-                            <a href="https://rvbug.hashnode.dev/productivity-series-ii-dotfiles" target="_blank">
-                                <button class="btn">Blog</button>
-                            </a>
-                        </article>
-
-                        <article id="item4" class="tab-content">
-                            <!-- <h1>Node</h1> -->
-                            <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, hic! Lorem ipsum dolor
-                                sit amet consectetur, adipisicing elit. Quidem, hic!</p> -->
-                            <img
-                                src="https://img.shields.io/badge/mac%20os-000000?style=for-plastic&logo=macos&logoColor=F0F0F0">
-                            <img height=20
-                                src="https://img.shields.io/badge/Arch%20Linux-1793D1?logo=arch-linux&logoColor=fff&style=for-the-badge">
-                            <img
-                                src="https://img.shields.io/badge/Fedora-294172?style=for-plastic&logo=fedora&logoColor=white">
-                            <img height=20
-                                src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-plastic&logo=docker&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-plastic&logo=numpy&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-plastic&logo=pandas&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-plastic&logo=scikit-learn&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-plastic&logo=Matplotlib&logoColor=black">
-                            <img
-                                src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-plastic&logo=TensorFlow&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-plastic&logo=jupyter&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-plastic&logo=neovim&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/python-3670A0?style=for-plastic&logo=python&logoColor=ffdd54">
-                            <img
-                                src="https://img.shields.io/badge/lua-%232C2D72.svg?style=for-plastic&logo=lua&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/rust-%23000000.svg?style=for-plastic&logo=rust&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/OCaml-%23E98407.svg?style=for-plastic&logo=ocaml&logoColor=white">
-
-                            <img height="20"
-                                src="https://img.shields.io/badge/Arch%20Linux-1793D1?logo=arch-linux&logoColor=fff&style=for-the-badge"
-                                alt="">
-                        </article>
-                    </div>
-
+                <div class="modal-body" id="modal-body">
+                    <!-- Modal sections will be dynamically inserted here -->
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="about"> <!-- main is used -->
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="./assets/cookie-ml.png" alt="">
+
+
+        <div class="project-card">
+            <div class="project-image">
+                <img src="./assets/Shell Scripting.png" alt="dotfiles">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">.dotfiles</h3>
+                <p class="project-description">A sophisticated dotfiles framework for seamless machine setup and
+                    consistent developer environments</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Shell</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Docker</span>
                 </div>
-                <div class="about-col-2">
-                    <h1>Cookie ML - Python </h1>
-
-                    <ul class="tabs">
-                        <li class="tab-item"><a href="#item5" class="active">About</a></li>
-                        <li class="tab-item"><a href="#item6">Tech Stack</a></li>
-                    </ul>
-
-                    <div class="wrapper_tab-content">  
-                        <article id="item5" class="tab-content content-visible">
-                            <!-- <h1>JS</h1> -->
-                            <p>
-                                A simple yet powerful machine learning project structure
-                                <br> <br>
-                                Checkout the documentation & Blog.
-                            </p>
-
-                            <a href="https://github.com/rvbug/cookie-ml" target="_blank">
-                                <button class="btn">Code</button>
-                            </a>
-
-                            <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" target="_blank">
-                                <button class="btn">Blog</button>
-                            </a>
-                        </article>
-
-                        <article id="item6" class="tab-content">
-                            <!-- <h1>Node</h1> -->
-                            <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, hic! Lorem ipsum dolor
-                                sit amet consectetur, adipisicing elit. Quidem, hic!</p> -->
-                            <img
-                                src="https://img.shields.io/badge/Python-3.9-3776AB.svg?style=flat&logo=python&logoColor=white">
-                            <img src="https://img.shields.io/badge/linting-pylint-yellowgreen">
-                            <img
-                                src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-plastic&logo=docker&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-plastic&logo=numpy&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-plastic&logo=pandas&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-plastic&logo=scikit-learn&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-plastic&logo=Matplotlib&logoColor=black">
-                            <img
-                                src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-plastic&logo=TensorFlow&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-plastic&logo=jupyter&logoColor=white">
-
-                            <img height="20"
-                                src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"
-                                alt="">
-                            <img src="https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515"
-                                alt="">
-
-                        </article>
-
-                    </div>
-
+                <div class="project-links">
+                    <a href="https://github.com/rvbug/.dotfiles" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                    <a href="https://rvbug.hashnode.dev/productivity-series-ii-dotfiles" class="project-link"
+                        target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Blog</span>
+                    </a>
+                    <span class="learn-more-btn" onclick="openModal('dotfiles')">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Learn More</span>
+                    </span>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="about"> <!-- main is used -->
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="./assets/rust-linux.png" alt="">
+        <div class="project-card">
+            <div class="project-image">
+                <img src="./assets/python.png" alt=" Cookie ML">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Cookie ML - Python</h3>
+                <p class="project-description">A simple yet powerful machine learning project structure.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">scikit-learn</span>
                 </div>
-                <div class="about-col-2">
-                    <h1>Rust For Linux</h1>
-
-                    <ul class="tabs">
-                        <li class="tab-item"><a href="#item7" class="active">About</a></li>
-                        <li class="tab-item"><a href="#item8">Tech Stack</a></li>
-                    </ul>
-
-                    <div class="wrapper_tab-content">  
-                        <article id="item7" class="tab-content content-visible">
-                            <!-- <h1>JS</h1> -->
-                            <p>
-                                Rust support for Linux Kernel. My contribution to the open source community.
-                                <br> <br>
-                                <!-- Checkout the documentation & Blog. -->
-                            </p>
-
-                            <!-- <a href="https://github.com/rvbug/neovim" target="_blank">
-                                <button class="btn">Code</button>
-                            </a> -->
-
-                            <!-- <a href="#" target="_blank"> -->
-                            <button class="btn">Coming Soon</button>
-                            <!-- </a> -->
-                        </article>
-
-                        <article id="item8" class="tab-content">
-                            <!-- <h1>Node</h1> -->
-                            <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, hic! Lorem ipsum dolor
-                                sit amet consectetur, adipisicing elit. Quidem, hic!</p> -->
-                            <img height="20"
-                                src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"
-                                alt="">
-                            <img height="20"
-                                src="https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white"
-                                alt="">
-                            <img height="20"
-                                src="https://img.shields.io/badge/Arch%20Linux-1793D1?logo=arch-linux&logoColor=fff&style=for-the-badge"
-                                alt="">
-
-                        </article>
-                    </div>
-
+                <div class="project-links">
+                    <a href="https://github.com/rvbug/cookie-ml" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                    <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Blog</span>
+                    </a>
+                    <span class="learn-more-btn" onclick="openModal('CookieML')">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Learn More</span>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="about"> <!-- main is used -->
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="./assets/transformers.png" alt="">
+        <div class="project-card">
+            <div class="project-image">
+                <img src="./assets/rust.png" alt="Rust for Linux">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Rust For Linux</h3>
+                <p class="project-description">Contributing Rust support for the Linux Kernel.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">Systems</span>
                 </div>
-                <div class="about-col-2">
-                    <h1>Transformers</h1>
-
-                    <ul class="tabs">
-                        <li class="tab-item"><a href="#item7" class="active">About</a></li>
-                        <li class="tab-item"><a href="#item8">Tech Stack</a></li>
-                    </ul>
-
-                    <div class="wrapper_tab-content">  
-                        <article id="item7" class="tab-content content-visible">
-                            <!-- <h1>JS</h1> -->
-                            <p>
-                                A roadmap to learn transformers quickly.
-                                <br> <br>
-                                Checkout the documentation.
-                            </p>
-
-                            <a href="https://github.com/rvbug/NLP" target="_blank">
-                                <button class="btn">Code</button>
-                            </a>
-
-                            <!-- <a href="#" target="_blank">
-                                <button class="btn">Blog</button>
-                            </a> -->
-                        </article>
-
-                        <article id="item8" class="tab-content">
-                            <!-- <h1>Node</h1> -->
-                            <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, hic! Lorem ipsum dolor
-                                sit amet consectetur, adipisicing elit. Quidem, hic!</p> -->
-                            <img src="https://img.shields.io/badge/-Python-000?&logo=Python">
-                            <img
-                                src="https://img.shields.io/badge/Keras-%23D00000.svg?style=for-plastic&logo=Keras&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-plastic&logo=TensorFlow&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/Kaggle-035a7d?style=for-plastic&logo=kaggle&logoColor=white">
-
-
-
-                        </article>
-                    </div>
-
+                <div class="project-links">
+                    <span class="project-link">
+                        <i class="fas fa-clock"></i>
+                        <span>Coming Soon</span>
+                    </span>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="about"> <!-- main is used -->
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="./assets/nixos.png" alt="">
+
+        <div class="project-card">
+            <div class="project-image">
+                <img src="./assets/python.png" alt="NLP - Transformers">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">NLP - Transformers</h3>
+                <p class="project-description">A comprehensive learning path to master transformer
+                    architectures</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">Systems</span>
                 </div>
-                <div class="about-col-2">
-                    <h1>Nix Auto Config</h1>
-
-                    <ul class="tabs">
-                        <li class="tab-item"><a href="#item7" class="active">About</a></li>
-                        <li class="tab-item"><a href="#item8">Tech Stack</a></li>
-                    </ul>
-
-                    <div class="wrapper_tab-content">  
-                        <article id="item7" class="tab-content content-visible">
-                            <!-- <h1>JS</h1> -->
-                            <p>
-                                New version of dotfiles using pure functional Nix Package Manager
-                                <br> <br>
-                                <!-- Checkout the documentation & Blog. -->
-                            </p>
-
-                            <!-- <a href="https://github.com/rvbug/neovim" target="_blank">
-                                <button class="btn">Code</button>
-                            </a> -->
-
-                            <!-- <a href="" target="_blank"> -->
-                            <button class="btn">Coming Soon</button>
-                            <!-- </a> -->
-                        </article>
-
-                        <article id="item8" class="tab-content">
-                            <!-- <h1>Node</h1> -->
-                            <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, hic! Lorem ipsum dolor
-                                sit amet consectetur, adipisicing elit. Quidem, hic!</p> -->
-
-                            <img height="20"
-                                src="https://img.shields.io/badge/Arch%20Linux-1793D1?logo=arch-linux&logoColor=fff&style=for-the-badge"
-                                alt="">
-
-                            <img height="20"
-                                src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"
-                                alt="">
-                            <img height="20"
-                                src="https://img.shields.io/badge/NIXOS-5277C3.svg?style=for-the-badge&logo=NixOS&logoColor=white"
-                                alt="">
-                            <img height="20"
-                                src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0"
-                                alt="">
-
-                            <img height="20"
-                                src="https://img.shields.io/badge/NIX-5277C3.svg?style=for-the-badge&logo=NixOS&logoColor=white"
-                                alt="">
-                        </article>
-                    </div>
-
+                <div class="project-links">
+                    <a href="https://github.com/rvbug/NLP" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                    <!-- <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Blog</span>
+                    </a> -->
+                    <span class="learn-more-btn" onclick="openModal('transformers')">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Learn More</span>
                 </div>
             </div>
         </div>
-    </div>
 
 
-
-    <div class="about"> <!-- main is used -->
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <img src="./assets/cookie-ml-rust.png" alt="">
+        <div class="project-card">
+            <div class="project-image">
+                <img src="./assets/Nix.png" alt="Rust for Linux">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Auto config - Nix </h3>
+                <p class="project-description">Contributing Rust support for the Linux Kernel.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">Systems</span>
                 </div>
-                <div class="about-col-2">
-                    <h1>Cookie ML - Rust</h1>
-
-                    <ul class="tabs">
-                        <li class="tab-item"><a href="#item9" class="active">About</a></li>
-                        <li class="tab-item"><a href="#item10">Tech Stack</a></li>
-                    </ul>
-
-                    <div class="wrapper_tab-content">  
-                        <article id="item9" class="tab-content content-visible">
-                            <!-- <h1>JS</h1> -->
-                            <p>
-                                A simple yet powerful machine learning project structure using Rust
-                                <br> <br>
-                                Checkout the documentation.
-                            </p>
-
-                            <a href="https://github.com/rvbug/cookie-ml-rust" target="_blank">
-                                <button class="btn">Code</button>
-                            </a>
-                            <!-- 
-                            <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" target="_blank">
-                                <button class="btn">Blog</button>
-                            </a> -->
-                        </article>
-
-                        <article id="item10" class="tab-content">
-                            <!-- <h1>Node</h1> -->
-                            <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, hic! Lorem ipsum dolor
-                                sit amet consectetur, adipisicing elit. Quidem, hic!</p> -->
-                            <img height="20"
-                                src="https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-plastic&logo=docker&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-plastic&logo=numpy&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-plastic&logo=pandas&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-plastic&logo=scikit-learn&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-plastic&logo=Matplotlib&logoColor=black">
-                            <img
-                                src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-plastic&logo=TensorFlow&logoColor=white">
-                            <img
-                                src="https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-plastic&logo=jupyter&logoColor=white">
-
-                            <img height="20"
-                                src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"
-                                alt="">
-                            <img src="https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515"
-                                alt="">
-
-                        </article>
-
-                    </div>
-
+                <div class="project-links">
+                    <span class="project-link">
+                        <i class="fas fa-clock"></i>
+                        <span>Coming Soon</span>
+                    </span>
                 </div>
             </div>
         </div>
+
+
+        <div class="project-card">
+            <div class="project-image">
+                <img src="./assets/rust.png" alt="Cookie ML Rust">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Game of Life</h3>
+                <p class="project-description">A high-performance implementation of Conway's Game of Life showcasing
+                    Rust's parallel computing capabilities</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">Systems</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/rvbug/game-of-life/" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                    <!-- <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Blog</span>
+                    </a> -->
+                    <span class="learn-more-btn" onclick="openModal('GameOfLife')">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Learn More</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">
+                <img src="./assets/rust.png" alt="Rust for Linux">
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">Cookie ML - Rust</h3>
+                <p class="project-description">A blazingly fast, type-safe ML project scaffolding tool built with Rust's
+                    performance and reliability.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">Systems</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/rvbug/cookie-ml-rust" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                    <!-- <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Blog</span>
+                    </a> -->
+                    <span class="learn-more-btn" onclick="openModal('CookieMLRust')">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Learn More</span>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 
-
-    <!-- js code -->
-    <script src="./js/swiper-bundle.min.js"></script>
-    <script src=./js/main.js></script>
-
+    <script src="./js/projects.js"></script>
 </body>
 
 </html>

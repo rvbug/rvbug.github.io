@@ -278,4 +278,85 @@ ScrollReveal().reveal('.skills-description, .services-description, .contact-card
 ScrollReveal().reveal('.skills-description, .services-description, .contact-card, .client-swiper, .contact-left h2', { delay: 700, origin: 'left' })
 ScrollReveal().reveal('.experience-card, .service-card, .education, .portfolio .img-card', { delay: 800, origin: 'bottom', interval: 200 })
 ScrollReveal().reveal('.footer .group', { delay: 500, origin: 'top', interval: 200 })
+// 
+
+
+//Three.js Stars Animation
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({
+  canvas: document.getElementById('black-hole-canvas'),
+  alpha: true,
+  antialias: true
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+// Create stars
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCount = 7000; // Increased number of stars
+const posArray = new Float32Array(particlesCount * 3);
+
+// Create stars in a more spread out, spherical distribution
+for (let i = 0; i < particlesCount * 3; i += 3) {
+  // Use spherical coordinates for better distribution
+  const radius = Math.random() * 100; // Increased radius for more depth
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.random() * Math.PI;
+
+  posArray[i] = radius * Math.sin(phi) * Math.cos(theta);
+  posArray[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
+  posArray[i + 2] = radius * Math.cos(phi);
+}
+
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+// Create different sized stars
+const particlesMaterial = new THREE.PointsMaterial({
+  size: 0.01,
+  color: 0xffffff,
+  transparent: true,
+  opacity: 0.8,
+  sizeAttenuation: true // Makes stars smaller when further away
+});
+
+const starField = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(starField);
+
+// Position camera
+camera.position.z = 30;
+
+// Smoother animation
+let time = 0;
+function animate() {
+  requestAnimationFrame(animate);
+  time += 0.0005;
+
+  // Gentle rotating motion
+  starField.rotation.y = time * 0.2;
+  starField.rotation.x = time * 0.1;
+
+  // Subtle pulsing motion
+  starField.position.z = Math.sin(time) * 2;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// Improved window resize handler
+function handleResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+}
+
+window.addEventListener('resize', handleResize);
+
+
+const observerOptions = {
+  threshold: 0.2,
+  rootMargin: '0px'
+};
+
 
