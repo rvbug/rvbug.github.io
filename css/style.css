@@ -414,6 +414,7 @@ header.sticky .nav-bar {
     width: 100%;
     padding: 3rem 1rem;
     overflow: hidden;
+    /* background-color: #000; */
 }
 
 .swiper-slide {
@@ -1593,41 +1594,15 @@ footer a {
         line-height: 50px;
     }
 
-    /*  our client   */
-    .client-swiper .swiper-slide {
-        flex-direction: column;
-    }
-
-    .client-details {
-        text-align: center;
-    }
-
-    /* contact me    */
-
-    .contact .content {
-        flex-direction: column;
-        font-size: 0.9rem;
-    }
-
-    .contact .contact-left {
-        margin-bottom: 40px;
-    }
-
-    .contact-form .second-row {
-        flex-direction: column;
-    }
-
-    .contact-form .second-row input {
-        width: 100%;
-    }
-
-    .footer-container {
-        width: 50%;
-        flex-direction: column;
-    }
-
 
     /* footer */
+
+    .footer-container {
+        /* width: 50%; */
+        width: 100%;
+        flex-direction: column;
+    }
+
 
     footer .footer-container .about,
     .footer-container .info {
