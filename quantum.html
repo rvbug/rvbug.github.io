@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.module.min.js"
+      }
+    }
+  </script>
+    <link rel="stylesheet" href="css/quantum.css">
+</head>
+
+<body>
+    <section class="hero">
+        <canvas id="spacetime-canvas"></canvas>
+        <div class="hero-content">
+            <h1>Quantum Gravity</h1>
+            <p>Intersection of Quantum mechanics and General Relativity</p>
+        </div>
+    </section>
+
+
+    <section class="content">
+        <div class="research-grid">
+            <div class="research-card">
+                <h3>Holographic Principle</h3>
+                <p>Investigating the holographic principle and its implications for quantum gravity, including AdS/CFT
+                    correspondence and black hole information paradox.</p>
+            </div>
+            <div class="research-card">
+                <h3>Loop Quantum Gravity</h3>
+                <p>Exploring discrete quantum geometry and its implications for the very early universe, black holes,
+                    and the nature of spacetime itself.</p>
+            </div>
+            <div class="research-card">
+                <h3>String Theory</h3>
+                <p>Studying string theory as a candidate for quantum gravity, focusing on its predictions for quantum
+                    geometry and multiple dimensions.</p>
+            </div>
+            <div class="research-card">
+                <h3>Emergent Spacetime</h3>
+                <p>Research into how classical spacetime emerges from quantum degrees of freedom, including tensor
+                    networks and entanglement.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="quantum-formulas-vertical">
+        <div class="formulas-container">
+            <h2 class="section-title">Quantum Gravity Formulas</h2>
+            <div class="formula-stack">
+                <div class="formula-card-vertical">
+                    <div class="formula-number">01</div>
+                    <div class="formula-content">
+                        <h3>Geometric Tensor</h3>
+                        <span class="math">G_μν = κ(R_μν - ½Rg_μν)</span>
+                        <small>Quantum curvature tensor describing spacetime geometry</small>
+                    </div>
+                </div>
+                <div class="formula-card-vertical">
+                    <div class="formula-number">02</div>
+                    <div class="formula-content">
+                        <h3>Einstein-Rosen Bridge</h3>
+                        <span class="math">ds² = -c²dt² + dl²/(1 - 2GM/rc²)</span>
+                        <small>Wormhole metric describing quantum gravitational topology</small>
+                    </div>
+                </div>
+                <div class="formula-card-vertical">
+                    <div class="formula-number">03</div>
+                    <div class="formula-content">
+                        <h3>Quantum Gravity Lagrangian</h3>
+                        <span class="math">L_QG = √(-g)[R + ℏ²Ψ(R)]</span>
+                        <small>Quantum gravitational action incorporating quantum corrections</small>
+                    </div>
+                </div>
+                <div class="formula-card-vertical">
+                    <div class="formula-number">04</div>
+                    <div class="formula-content">
+                        <h3>Non-Commutative Geometry</h3>
+                        <span class="math">[x_μ, x_ν] = iθ_μν</span>
+                        <small>Quantum space-time fundamental uncertainty relation</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script type="module">
+        import { initSpacetimeVisualization } from "./js/quantum.js";
+        document.addEventListener('DOMContentLoaded', initSpacetimeVisualization);
+    </script>
+
+
+
+</body>
+
+
+</html>

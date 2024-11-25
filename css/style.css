@@ -403,6 +403,209 @@ header.sticky .nav-bar {
 }
 
 
+/*SWIPER PROJECT SECTION START */
+
+
+.swiper {
+    width: 100%;
+    padding: 3rem 1rem;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    width: 320px;
+    height: 480px;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    transform: scale(0.9);
+}
+
+.swiper-slide-active {
+    transform: scale(1);
+}
+
+.project-image {
+    width: 100%;
+    height: 65%;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.projects h2 {
+    font-size: clamp(5rem, 8vw, 4rem);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #fff, #a6c1ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.project-info {
+    padding: 1.5rem;
+    background: #000;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-info h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.project-info p {
+    color: #fff;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #0066cc;
+    background: rgba(255, 255, 255, 0.9);
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #0066cc;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #0066cc;
+    transform: scale(1.2);
+}
+
+/* ==================== SWIPER PROJECT SECTION START ==================== */
+
+
+.swiper {
+    width: 100%;
+    padding: 3rem 1rem;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    width: 320px;
+    height: 480px;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    transform: scale(0.9);
+}
+
+.swiper-slide-active {
+    transform: scale(1);
+}
+
+.project-image {
+    width: 100%;
+    height: 65%;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.projects h2 {
+    font-size: clamp(5rem, 8vw, 4rem);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #0b062d, #df290d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    justify-content: center;
+}
+
+.project-info {
+    padding: 1.5rem;
+    background: #000;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-info h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.project-info p {
+    color: #fff;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #0066cc;
+    background: rgba(255, 255, 255, 0.9);
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #0066cc;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #0066cc;
+    transform: scale(1.2);
+}
+
+
+
+/*==================== SWIPER PROJECT SECTION END ==================== */
+
+
+
 /* common style for all function*/
 .flex-center {
     display: flex;
@@ -1448,6 +1651,30 @@ footer a {
     }
 
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar ul {
+        gap: 1rem;
+    }
+
+    .projects {
+        padding: 4rem 1rem;
+    }
+
+    .swiper-slide {
+        width: 280px;
+        height: 420px;
+    }
+
+    .project-info h3 {
+        font-size: 1.2rem;
+    }
+}
+
 
 /* media query max-width 730px*/
 @media screen and (max-width: 730px) {

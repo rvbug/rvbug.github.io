@@ -360,3 +360,42 @@ const observerOptions = {
 };
 
 
+
+//For SWIPER PROJECT SECTION
+
+// Initialize Swiper immediately after DOM content loads
+document.addEventListener('DOMContentLoaded', function () {
+  const swiper = new Swiper('.swiper', {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 30,
+    loop: true,
+    grabCursor: true,
+    effect: 'coverflow',
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      480: {
+        slidesPerView: 'auto',
+        spaceBetween: 30
+      }
+    }
+  });
+});
