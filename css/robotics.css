@@ -93,7 +93,7 @@ header.sticky .nav-bar {
 }
 
 .nav-items a:hover {
-    color: #e6e5ef;
+    color: #00ff00;
 }
 
 .nav-menu-btn {
@@ -120,7 +120,7 @@ li {
 }
 
 .hero h1 {
-    background: linear-gradient(45deg, #ff4500, #3340ea);
+    background: linear-gradient(45deg, #96b2aa, #08de5d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 7rem;
@@ -131,11 +131,11 @@ li {
 
 
 .hero h2 {
-    font-weight: 100;
-    font-size: 2rem;
+    font-weight: 400;
+    font-size: 3rem;
     color: #fff;
     text-align: center;
-    line-height: 50px;
+    line-height: 20px;
     font-feature-settings: 1.3em;
     font-size: 2vw;
 }
