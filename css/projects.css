@@ -129,7 +129,7 @@ header.sticky .nav-bar {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url('/api/placeholder/1920/1080') center/cover;
+    /* background: url('/api/placeholder/1920/1080') center/cover; */
     opacity: 0.2;
     animation: scale 20s infinite alternate;
 }
@@ -283,26 +283,182 @@ header.sticky .nav-bar {
     font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+
+
+
+/* media query */
+
+@media screen and (max-width: 1070px) {
+
+    /*  header navigation   */
+    .navigation {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.1);
+        visibility: hidden;
+        opacity: 1;
+        transition: .3s ease;
     }
+
+    .navigation.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
 
     .nav-items {
-        display: none;
+        position: relative;
+        /* background-size: #fff; */
+        background-color: #000;
+        width: 100px;
+        max-width: 600px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+        /* padding: 10px; */
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        /* transform: translateY(-50px); */
+        transition: .3s eas3;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-    }
-}
 
-.nav-menu-btn,
-.nav-close-btn {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
+    .navigation.active .nav-items {
+        transform: translateY(0);
+    }
+
+    .nav-items a {
+        margin: 15px 50px;
+    }
+
+    .nav-close-btn {
+        position: absolute;
+        background: url(/assets/cancel.png)no-repeat;
+        filter: invert(1);
+        background-size: 22px;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+
+    /* making it reactive */
+    .nav-menu-btn {
+        background: url(/assets/menu.png)no-repeat;
+        filter: invert(1);
+        background-size: 30px;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: block;
+    }
+
+
+    /* home section */
+    .home .home-container .info {
+        text-align: center;
+        justify-content: center;
+        font-size: 0.85rem;
+    }
+
+    .home .home-container .info h3 {
+        text-align: center;
+        justify-content: center;
+        font-size: 3vh;
+    }
+
+    #hero-content p {
+        text-align: center;
+        justify-content: center;
+        font-size: 2vh;
+        color: red;
+    }
+
+
+    /* About section */
+    .about .container .content {
+        display: grid;
+        width: 100%;
+        row-gap: 20px;
+    }
+
+
+    .about-img img {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .about-info {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .about-info .professional-list {
+        flex-direction: column;
+    }
+
+    .about-info .professional-list .list-item {
+        justify-content: start;
+    }
+
+    /*   get in touch  */
+    .get-in-touch .contact-card {
+        display: grid;
+        width: 100%;
+    }
+
+    .contact-card .title {
+        font-size: 0.8rem;
+        line-height: 50px;
+    }
+
+
+    /* footer */
+
+    .footer-container {
+        /* width: 50%; */
+        width: 100%;
+        flex-direction: column;
+    }
+
+
+    footer .footer-container .about,
+    .footer-container .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .footer-container .info ul {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .footer-container .info ul li {
+        margin: 5px 0;
+    }
+
+    .footer-container .hr {
+        width: 100%;
+        height: 150px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 10px 0 22px;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -310,27 +466,78 @@ header.sticky .nav-bar {
         display: block;
     }
 
-    .nav-items {
+    .navigation {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 70%;
+        left: 0;
+        width: 100%;
         height: 100vh;
-        background: white;
-        flex-direction: column;
-        padding: 4rem 2rem;
-        transition: right 0.3s ease;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s ease;
+        z-index: 1000;
     }
 
-    .nav-items.active {
-        right: 0;
+    .navigation.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* .nav-items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #000;
+        width: 400px;
+        max-width: 600px;
+        padding: 2rem;
+        border-radius: 10px;
+        transform: translateY(-50px);
+        transition: 0.3s ease;
+    } */
+
+    .nav-items {
+        position: relative;
+        background-size: #fff;
+        background-color: #0e0d0df0;
+        width: 500px;
+        max-width: 600px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+        /* padding: 10px; */
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-50px);
+        transition: .3s ease;
+    }
+
+
+    .navigation.active .nav-items {
+        transform: translateY(0);
+    }
+
+    .nav-items a {
+        margin: 15px 0;
+        color: white;
     }
 
     .nav-close-btn {
-        display: block;
         position: absolute;
         top: 1rem;
         right: 1rem;
+        width: 40px;
+        height: 40px;
+        background: url(/assets/cancel.png) no-repeat;
+        background-size: 22px;
+        background-position: center;
+        filter: invert(1);
+        cursor: pointer;
     }
 }
 
@@ -429,3 +636,13 @@ header.sticky .nav-bar {
     flex: 1;
     padding: 1rem 0;
 }
+
+/* @media screen and (max-width: 320px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+} */

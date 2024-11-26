@@ -375,6 +375,18 @@ header.sticky .nav-bar {
 }
 
 @media (max-width: 768px) {
+
+    .formula-card-vertical {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .formula-number {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+
     .research-grid {
         grid-template-columns: 1fr;
         padding: 1rem;
@@ -450,7 +462,7 @@ header.sticky .nav-bar {
     font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .formula-card-vertical {
         flex-direction: column;
         text-align: center;
@@ -459,5 +471,26 @@ header.sticky .nav-bar {
     .formula-number {
         margin-right: 0;
         margin-bottom: 1rem;
+    }
+} */
+
+@media screen and (max-width: 320px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Handle height-based media queries for better vertical responsiveness */
+@media screen and (max-height: 600px) {
+    .hero {
+        padding: 1rem;
+    }
+
+    .hero-content {
+        padding: 0.5rem;
     }
 }
