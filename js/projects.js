@@ -206,6 +206,18 @@ function openModal(projectId) {
         modalBody.appendChild(sectionElement);
     });
 
+
+    // project.sections.forEach((section, index) => {
+    //     const sectionElement = document.createElement('div');
+    //     sectionElement.className = 'modal-section';
+    //     sectionElement.innerHTML = `
+    //                <div class="modal-text">
+    //                    <p>${section.text}</p>
+    //                </div>
+    //            `;
+    //     modalBody.appendChild(sectionElement);
+    // });
+
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 

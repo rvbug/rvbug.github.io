@@ -626,6 +626,7 @@ header.sticky .nav-bar {
 
 .modal-section {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
     margin-bottom: 2rem;
     opacity: 0;
