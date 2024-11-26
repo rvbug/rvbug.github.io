@@ -41,7 +41,7 @@ header.sticky {
     height: 45px;
     background: black;
     color: #fff;
-    font-size: var(--small-font-size);
+    font-size: 0.9em;
     border-radius: 3px;
     cursor: pointer;
     opacity: 0;
@@ -56,7 +56,7 @@ header.sticky {
 
 
 
-.nav-bar {
+/* .nav-bar {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem 2rem;
@@ -64,6 +64,20 @@ header.sticky {
     justify-content: space-between;
     height: calc(4rem + 1rem);
     max-width: 1250px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    transition: .6s ease;
+} */
+
+
+.nav-bar {
+    position: relative;
+    height: calc(4rem + 1rem);
+    max-width: 1250px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
@@ -86,7 +100,7 @@ header.sticky .nav-bar {
 
 .nav-items {
     display: flex;
-    /* gap: 3.2rem; */
+    gap: 3.2rem;
 }
 
 .nav-bar .logo {
@@ -311,6 +325,10 @@ header.sticky .nav-bar {
         opacity: 1;
     }
 
+    .nav-items {
+        display: flex;
+        gap: 0.2rem;
+    }
 
     .nav-items {
         position: relative;
@@ -367,7 +385,7 @@ header.sticky .nav-bar {
 
 
     /* home section */
-    .home .home-container .info {
+    /* .home .home-container .info {
         text-align: center;
         justify-content: center;
         font-size: 0.85rem;
@@ -377,7 +395,7 @@ header.sticky .nav-bar {
         text-align: center;
         justify-content: center;
         font-size: 3vh;
-    }
+    } */
 
     #hero-content p {
         text-align: center;

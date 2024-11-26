@@ -5,12 +5,6 @@ const closeBtn = document.querySelector(".nav-close-btn");
 const navigation = document.querySelector(".navigation");
 const navItems = document.querySelectorAll(".nav-items a");
 
-console.log("Menu Btn:", menuBtn);
-console.log("Close Btn:", closeBtn);
-console.log("Navigation:", navigation);
-console.log("Nav Items:", navItems);
-
-
 menuBtn.addEventListener("click", () => {
     navigation.classList.add("active");
 });
