@@ -1,163 +1,24 @@
-// import * as THREE from 'three';
+//responsive navigation menu toggle
 
-// function initSpacetimeVisualization() {
-//     const initScene = () => {
-//         const canvas = document.getElementById('spacetime-canvas');
-
-//         if (!canvas) {
-//             console.error('Canvas element not found');
-//             return;
-//         }
-
-//         const scene = new THREE.Scene();
-//         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-//         const renderer = new THREE.WebGLRenderer({
-//             canvas: canvas,
-//             antialias: true,
-//             alpha: true
-//         });
-
-//         const setSize = () => {
-//             camera.aspect = window.innerWidth / window.innerHeight;
-//             camera.updateProjectionMatrix();
-//             renderer.setSize(window.innerWidth, window.innerHeight);
-//             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-//         };
-//         setSize();
-
-//         // Create grid
-//         const createGrid = () => {
-//             const gridSize = 50;
-//             const gridDivisions = 30;
-//             const grid = new THREE.Group();
-
-//             const geometry = new THREE.BufferGeometry();
-//             const vertices = [];
-//             const colors = [];
-
-//             for (let i = 0; i <= gridDivisions; i++) {
-//                 for (let j = 0; j <= gridDivisions; j++) {
-//                     const x = (i - gridDivisions / 2) * (gridSize / gridDivisions);
-//                     const z = (j - gridDivisions / 2) * (gridSize / gridDivisions);
-//                     vertices.push(x, 0, z);
-
-//                     const color = new THREE.Color();
-//                     color.setHSL(0.6, 0.8, 0.5);
-//                     colors.push(color.r, color.g, color.b);
-//                 }
-//             }
-
-//             geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-//             geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-//             // Create grid lines
-//             const indices = [];
-//             for (let i = 0; i <= gridDivisions; i++) {
-//                 for (let j = 0; j < gridDivisions; j++) {
-//                     const a = i * (gridDivisions + 1) + j;
-//                     const b = a + 1;
-//                     indices.push(a, b);
-//                 }
-//             }
-//             for (let i = 0; i < gridDivisions; i++) {
-//                 for (let j = 0; j <= gridDivisions; j++) {
-//                     const a = i * (gridDivisions + 1) + j;
-//                     const b = a + gridDivisions + 1;
-//                     indices.push(a, b);
-//                 }
-//             }
-
-//             geometry.setIndex(indices);
-
-//             const material = new THREE.LineBasicMaterial({
-//                 vertexColors: true,
-//                 opacity: 0.3,
-//                 transparent: true
-//             });
-
-//             const gridMesh = new THREE.LineSegments(geometry, material);
-//             grid.add(gridMesh);
-//             return { grid, geometry };
-//         };
-
-//         // Create Earth
-//         const createEarth = () => {
-//             const geometry = new THREE.SphereGeometry(1.5, 32, 32);
-//             const material = new THREE.MeshBasicMaterial({
-//                 color: 0x87CEEB,
-//                 wireframe: false,
-//             });
-
-//             const earth = new THREE.Mesh(geometry, material);
-//             earth.position.set(0, 2, 0);
-//             return earth;
-//         };
-
-//         const { grid, geometry } = createGrid();
-//         const earth = createEarth();
-//         scene.add(grid);
-//         scene.add(earth);
-
-//         // Camera setup
-//         camera.position.set(0, 30, 50);
-//         camera.lookAt(0, 0, 0);
-
-//         // Animation
-//         let time = 0;
-//         const animate = () => {
-//             requestAnimationFrame(animate);
-//             time += 0.001;
-
-//             // Rotate grid slowly
-//             grid.rotation.y += 0.001;
-//             earth.rotation.y += 0.005;
-
-//             // Update grid vertices to create gravitational well
-//             const positions = geometry.attributes.position.array;
-//             for (let i = 0; i < positions.length; i += 3) {
-//                 const x = positions[i];
-//                 const z = positions[i + 2];
-//                 const dist = Math.sqrt(x * x + z * z);
-//                 // Create gravitational well effect
-//                 positions[i + 1] = -10 / (1 + dist * 0.3) * Math.exp(-dist * 0.1);
-//             }
-//             geometry.attributes.position.needsUpdate = true;
-
-//             renderer.render(scene, camera);
-//         };
-
-//         window.addEventListener('resize', setSize);
-//         animate();
-//         canvas.classList.add('loaded');
-//     };
-
-//     initScene();
-
-//     gsap.to('.hero-content', {
-//         opacity: 1,
-//         duration: 1.5,
-//         delay: 0.5
-//     });
-// }
-
-// gsap.utils.toArray('.research-card').forEach((card, i) => {
-//     gsap.to(card, {
-//         opacity: 1,
-//         y: 0,
-//         duration: 0.8,
-//         delay: 0.2 * i,
-//         scrollTrigger: {
-//             trigger: card,
-//             start: 'top bottom-=100',
-//             toggleActions: 'play none none reverse'
-//         }
-//     });
-// });
+const menuBtn = document.querySelector(".nav-menu-btn");
+const closeBtn = document.querySelector(".nav-close-btn");
+const navigation = document.querySelector(".navigation");
+const navItems = document.querySelectorAll(".nav-items a");
 
 
-// // Export the initialization function
-// export { initSpacetimeVisualization };
+menuBtn.addEventListener("click", () => {
+    navigation.classList.add("active");
+});
 
+closeBtn.addEventListener("click", () => {
+    navigation.classList.remove("active");
+});
+
+navItems.forEach((navItem) => {
+    navItem.addEventListener("click", () => {
+        navigation.classList.remove("active");
+    });
+});
 
 
 import * as THREE from 'three';
