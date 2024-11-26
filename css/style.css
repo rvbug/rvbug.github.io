@@ -1479,7 +1479,7 @@ footer a {
         align-items: center;
         background: var(--transparent-color-01);
         visibility: hidden;
-        opacity: 0;
+        opacity: 1;
         transition: .3s ease;
     }
 
@@ -1492,7 +1492,7 @@ footer a {
     .nav-items {
         position: relative;
         background-size: var(--modal-bg-color);
-        background-color: #fff;
+        background-color: #0e0d0df0;
         width: 300px;
         max-width: 600px;
         display: flex;
@@ -1518,7 +1518,7 @@ footer a {
     .nav-close-btn {
         position: absolute;
         background: url(/assets/cancel.png)no-repeat;
-        /* filter: var(--color-filter); */
+        filter: var(--color-filter);
         background-size: 22px;
         background-position: center;
         width: 40px;
@@ -1533,7 +1533,7 @@ footer a {
     /* making it reactive */
     .nav-menu-btn {
         background: url(/assets/menu.png)no-repeat;
-        /* filter: var(--color-filter); */
+        filter: var(--color-filter);
         background-size: 30px;
         background-position: center;
         width: 40px;
@@ -1554,6 +1554,13 @@ footer a {
         text-align: center;
         justify-content: center;
         font-size: 3vh;
+    }
+
+    #hero-content p {
+        text-align: center;
+        justify-content: center;
+        font-size: 2vh;
+        color: red;
     }
 
 
@@ -1737,11 +1744,11 @@ footer a {
     }
 
     .hero-content p {
-        font-size: 1rem;
+        font-size: 2rem;
     }
 
     .btn {
-        padding: 0.7rem 1.4rem;
+        padding: 0.5rem 1.4rem;
         font-size: 0.9rem;
     }
 }

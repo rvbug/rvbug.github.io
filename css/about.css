@@ -524,7 +524,7 @@ header.sticky .nav-bar {
     .nav-close-btn {
         position: absolute;
         background: url(/assets/cancel.png)no-repeat;
-        /* filter: var(--color-filter); */
+        filter: var(--color-filter);
         background-size: 22px;
         background-position: center;
         width: 40px;
@@ -540,13 +540,16 @@ header.sticky .nav-bar {
     /* making it reactive */
     .nav-menu-btn {
         background: url(/assets/menu.png)no-repeat;
-        /* filter: var(--color-filter); */
+        filter: var(--color-filter);
         background-size: 30px;
         background-position: center;
         width: 40px;
         height: 40px;
         cursor: pointer;
         display: block;
+        z-index: 2;
+        /* filter: brightness(0) invert(1); */
+        /* background-color: rgba(255, 255, 255, 0.2); */
     }
 
 
