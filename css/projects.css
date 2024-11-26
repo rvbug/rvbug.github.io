@@ -86,7 +86,7 @@ header.sticky .nav-bar {
 
 .nav-items {
     display: flex;
-    gap: 3.2rem;
+    /* gap: 3.2rem; */
 }
 
 .nav-bar .logo {
@@ -316,7 +316,7 @@ header.sticky .nav-bar {
         position: relative;
         /* background-size: #fff; */
         background-color: #000;
-        width: 100px;
+        width: 300px;
         max-width: 600px;
         display: flex;
         align-items: center;
