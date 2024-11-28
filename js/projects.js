@@ -179,6 +179,25 @@ const modalData = {
         ]
     },
 
+    spaceInvaders: {
+        title: "Space Invaders",
+        sections: [
+            {
+                // image: "#",
+                text: "Our Rust implementation of Conway's Game of Life demonstrates elegant cellular automation with blazing-fast performance. Built with Rust's zero-cost abstractions and safe concurrency primitives, this version delivers smooth real-time visualization while handling large-scale grid patterns efficiently."
+            },
+            {
+                // image: "#",
+                text: "The project features a clean, modular architecture that separates simulation logic from rendering, utilizing Rust's powerful type system and ownership model. With support for multiple rendering backends and configurable grid sizes, it provides both an educational tool and a performance benchmark."
+            },
+            {
+                // image: "#",
+                text: "Advanced features include parallel grid computation using Rayon, efficient state management with custom data structures, and support for various input patterns (including RLE format). The implementation showcases Rust's perfect balance of high-level abstraction and low-level performance optimization, making complex cellular automata accessible and performant."
+            }
+        ]
+    },
+
+
     //add more project details here
 };
 
