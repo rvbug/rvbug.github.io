@@ -143,6 +143,25 @@ const modalData = {
         ]
     },
 
+
+    NixConfig: {
+        title: "Nix Configuation",
+        sections: [
+            {
+                // image: "#",
+                text: "Nix is a powerful, declarative package manager and build system that allows you to define and manage software environments with reproducibility and consistency across different systems."
+            },
+            {
+                // image: "#",
+                text: "The key advantages over plain dotfiles include its ability to not just manage configuration files, but to completely specify and reproduce entire system configurations, including dependencies, versions, and even entire development environments,"
+            },
+            {
+                // image: "#",
+                text: "Unlike traditional package managers, Nix creates isolated environments where each package is stored in its own directory and can have multiple versions installed simultaneously without conflicts, making dependency management much more straightforward."
+            }
+        ]
+    },
+
     GameOfLife: {
         title: "Game of Life",
         sections: [

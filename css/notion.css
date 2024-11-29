@@ -275,15 +275,24 @@ li {
     background: #2a2a2a;
     border-radius: 10px;
     padding: 1rem;
-    text-align: center;
+    /* text-align: center; */
 }
+
 
 .modal-section img {
     max-width: 100%;
     border-radius: 10px;
 }
 
+.modal-section.customize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .customize-btn {
+    margin-top: 5rem;
     background: #0071e3;
     color: white;
     border: none;
@@ -411,4 +420,81 @@ li {
     .modal-body {
         grid-template-columns: 1fr;
     }
+}
+
+/* footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #000;
+    width: 100%;
+    margin-top: 50px;
+    padding: 3rem 2rem;
+    color: #fff;
+}
+
+footer a {
+    color: #fff;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1150px;
+}
+
+.footer-container .about h2 {
+    font-size: 3em;
+    font-weight: 600;
+    background: linear-gradient(to top, transparent 0%, #fff 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: .8;
+}
+
+.footer-container .about p {
+    font-size: var(--normal-font-size);
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.footer-container,
+.footer-container .follow {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer-container .info h3,
+.footer-container .follow h3 {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.footer-container .info ul,
+.footer-container .follow ul {
+    display: flex;
+}
+
+.footer-container .info a {
+    margin: 20px;
+}
+
+.footer-container .follow a {
+    font-size: 1.5em;
+    margin: 20px;
+}
+
+/* .footer-copyright p {
+    font-size: var(--normal-font-size);
+    font-weight: 300;
+    margin-top: 50px;
+} */
+
+.copyright {
+    margin-top: 2vw;
 }

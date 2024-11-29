@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Template data
     const templates = [
         {
-            title: 'Life OS - Simple Version',
+            title: 'Life OS - Beginner',
             image: './assets/rust.pn',
-            description: 'Managing your life with Notion',
-            features: ['Simple & Intutive', 'Easily Manageable', 'Starter Kit']
+            description: 'A Beginner-Friendly Productivity Notion Template: Streamline Your Tasks, Track Habits, and Prioritize Goals with Ease.',
+            features: ['- Simple & Intutive', '- Idea Capture Section', '- Priorities Tracker', '- Weekly Task view', '- Weekly & Monthly Calendar view', '- To-List', '- Habit Tracker']
         },
         {
-            title: 'Life OS',
-            image: './assets/rust.pn',
+            title: 'Life OS - Advanced',
+            image: './assets/rust.png',
             description: 'Managing your life with Notion',
             features: ['Areas', 'Books', 'Project Tracking', 'Journaling']
         },
@@ -118,26 +118,26 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.1 // Trigger when 10% of the section is visible
     });
 
-    function populatePricingSection() {
-        const pricingSection = document.querySelector('.pricing-section .pricing-grid');
-        pricingSection.innerHTML = templates.map(template => `
-            <div class="pricing-card">
-                <img src="${template.image}" alt="${template.title} Template">
-                <h3>${template.title}</h3>
-                <div class="pricing-details">
-                    <div class="price-usd">
-                        <span class="currency">$</span>
-                        <span class="amount">${template.priceUSD}</span>
-                    </div>
-                    <div class="price-inr">
-                        <span class="currency">₹</span>
-                        <span class="amount">${template.priceINR}</span>
-                    </div>
-                </div>
-                <button class="buy-template">Buy Now</button>
-            </div>
-        `).join('');
-    }
+    // function populatePricingSection() {
+    //     const pricingSection = document.querySelector('.pricing-section .pricing-grid');
+    //     pricingSection.innerHTML = templates.map(template => `
+    //         <div class="pricing-card">
+    //             <img src="${template.image}" alt="${template.title} Template">
+    //             <h3>${template.title}</h3>
+    //             <div class="pricing-details">
+    //                 <div class="price-usd">
+    //                     <span class="currency">$</span>
+    //                     <span class="amount">${template.priceUSD}</span>
+    //                 </div>
+    //                 <div class="price-inr">
+    //                     <span class="currency">₹</span>
+    //                     <span class="amount">${template.priceINR}</span>
+    //                 </div>
+    //             </div>
+    //             <button class="buy-template">Buy Now</button>
+    //         </div>
+    //     `).join('');
+    // }
 
 
     // Start observing the templates section
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial setup
     populateTemplates();
-    populatePricingSection();
+    // populatePricingSection();
 });
 
 
