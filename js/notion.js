@@ -3,71 +3,80 @@ document.addEventListener('DOMContentLoaded', () => {
     const templateModal = document.getElementById('templateModal');
     const closeModalBtn = document.querySelector('.close-modal');
     const templatesSection = document.querySelector('.templates-section');
-
     // Template data
+
+
     const templates = [
         {
             title: 'Life OS - Beginner',
-            image: './assets/rust.pn',
+            mainImage: './assets/Notion-QuickLinks-1.png',
+            previewImage: './assets/rust.png', // Add a separate preview image
             description: 'A Beginner-Friendly Productivity Notion Template: Streamline Your Tasks, Track Habits, and Prioritize Goals with Ease.',
             features: ['- Simple & Intutive', '- Idea Capture Section', '- Priorities Tracker', '- Weekly Task view', '- Weekly & Monthly Calendar view', '- To-List', '- Habit Tracker']
         },
         {
             title: 'Life OS - Advanced',
-            image: './assets/rust.png',
+            mainImage: './assets/Notion-QuickLinks-1.png',
+            previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Managing your life with Notion',
             features: ['Areas', 'Books', 'Project Tracking', 'Journaling']
         },
         {
             title: 'Project & Tasks',
-            image: './assets/rust.pn',
+            mainImage: './assets/Notion-QuickLinks-1.png',
+            previewImage: './assets/rust.png', // Add a separate preview image
             description: 'A comprehensive project and task tracking system',
             features: ['Task lists', 'Progress tracking', 'Time Spent']
         },
         {
             title: 'Personal Planner',
-            image: '/api/placeholder/300/200',
+            mainImage: './assets/Notion-QuickLinks-1.png',
+            previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Daily and weekly personal organization',
             features: ['Goal setting', 'Habit tracker', 'Time blocking']
         },
         {
             title: 'Team Collaboration',
-            image: '/api/placeholder/300/200',
+            mainImage: './assets/Notion-QuickLinks-1.png',
+            previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Streamline team communication and workflow',
             features: ['Meeting notes', 'Task assignment', 'Resource sharing']
         },
         {
             title: 'Content Calendar',
-            image: '/api/placeholder/300/200',
+            mainImage: './assets/Notion-QuickLinks-1.png',
+            previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Plan and track content creation',
             features: ['Editorial calendar', 'Content ideas', 'Publication scheduling']
         },
         {
             title: 'Research Tracker',
-            image: '/api/placeholder/300/200',
+            mainImage: './assets/Notion-QuickLinks-1.png',
+            previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Organize research and academic work',
             features: ['Literature review', 'Citation management', 'Project notes']
         },
         {
             title: 'Project Management',
-            image: '/api/placeholder/300/200',
+            mainImage: './assets/Notion-QuickLinks-1.png',
+            previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Comprehensive project tracking template',
             features: ['Task lists', 'Progress tracking', 'Team collaboration']
         },
-
     ];
 
-    // Updated populateTemplates function to add staggered animation
+    // Updated populateTemplates function to use mainImage
     function populateTemplates() {
         templatesCarousel.innerHTML = templates.map((template, index) => `
         <div class="template-card" style="animation-delay: ${index * 0.2}s">
-            <img src="${template.image}" alt="${template.title} Template">
+            <img src="${template.mainImage}" alt="${template.title} Template">
             <h3>${template.title}</h3>
             <div class="template-add">
                 <i class="fas fa-plus"></i>
             </div>
         </div>
     `).join('');
+
 
         // Add click events to template add buttons
         document.querySelectorAll('.template-card').forEach((card, index) => {
@@ -80,24 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // const templateObserver = new IntersectionObserver((entries) => {
-    //     entries.forEach(entry => {
-    //         if (entry.isIntersecting) {
-    //             // Add a class to trigger animations
-    //             document.querySelectorAll('.template-card').forEach((card, index) => {
-    //                 card.style.animationDelay = `${index * 0.2}s`;
-    //                 card.classList.add('animate-templates');
-    //             });
-
-    //             // Disconnect observer after triggering to prevent repeated animations
-    //             templateObserver.unobserve(entry.target);
-    //         }
-    //     });
-    // }, {
-    //     threshold: 0.1 // Trigger when 10% of the section is visible
-    // });
-
-    // Persistent Animation Observer
+    /// Persistent Animation Observer
     const templateObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -118,42 +110,20 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.1 // Trigger when 10% of the section is visible
     });
 
-    // function populatePricingSection() {
-    //     const pricingSection = document.querySelector('.pricing-section .pricing-grid');
-    //     pricingSection.innerHTML = templates.map(template => `
-    //         <div class="pricing-card">
-    //             <img src="${template.image}" alt="${template.title} Template">
-    //             <h3>${template.title}</h3>
-    //             <div class="pricing-details">
-    //                 <div class="price-usd">
-    //                     <span class="currency">$</span>
-    //                     <span class="amount">${template.priceUSD}</span>
-    //                 </div>
-    //                 <div class="price-inr">
-    //                     <span class="currency">₹</span>
-    //                     <span class="amount">${template.priceINR}</span>
-    //                 </div>
-    //             </div>
-    //             <button class="buy-template">Buy Now</button>
-    //         </div>
-    //     `).join('');
-    // }
-
 
     // Start observing the templates section
     templateObserver.observe(templatesSection);
 
 
 
-
-
-    // Open template modal
+    // Open template modal - Updated to use previewImage
     function openTemplateModal(template) {
         const modalPreview = templateModal.querySelector('.preview img');
         const modalDetails = templateModal.querySelector('.details p');
         const modalFeatures = templateModal.querySelector('.features ul');
 
-        modalPreview.src = template.image;
+        // Use previewImage instead of mainImage
+        modalPreview.src = template.previewImage;
         modalDetails.textContent = template.description;
         modalFeatures.innerHTML = template.features.map(feature => `<li>${feature}</li>`).join('');
 
@@ -174,12 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
     // Close modal on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && templateModal.style.display === 'flex') {
             closeModal();
         }
     });
+
+
+
 
     // Swipe functionality for carousel
     let isDown = false;
@@ -210,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial setup
     populateTemplates();
-    // populatePricingSection();
 });
 
 
@@ -235,4 +208,62 @@ navItems.forEach((navItem) => {
 });
 
 
+// contact form
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
 
+    // Reset previous error messages
+    document.getElementById('nameError').textContent = '';
+    document.getElementById('emailError').textContent = '';
+    document.getElementById('messageError').textContent = '';
+
+    // Get form values
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // Validation flags
+    let isValid = true;
+
+    // Name validation
+    if (name.length < 2) {
+        document.getElementById('nameError').textContent = 'Name must be at least 2 characters long';
+        isValid = false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        document.getElementById('emailError').textContent = 'Please enter a valid email address';
+        isValid = false;
+    }
+
+    // Message validation
+    if (message.length < 10) {
+        document.getElementById('messageError').textContent = 'Message must be at least 10 characters long';
+        isValid = false;
+    }
+
+    // If all validations pass
+    if (isValid) {
+        // Replace with your actual email service/endpoint
+        const formData = new FormData(this);
+        fetch('https://formspree.io/f/YOUR_FORM_ENDPOINT', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert('Message sent successfully!');
+                this.reset(); // Clear form
+            } else {
+                alert('There was a problem sending your message. Please try again.');
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+            alert('There was a network error. Please try again.');
+        });
+    }
+});
