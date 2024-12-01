@@ -8,60 +8,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const templates = [
         {
-            title: 'Life OS - Beginner',
+            title: 'Beginner',
             mainImage: './assets/Notion-QuickLinks-1.png',
-            previewImage: './assets/rust.png', // Add a separate preview image
+            previewImage: './assets/Notion-QuickLinks-1.png', // Add a separate preview image
             description: 'A Beginner-Friendly Productivity Notion Template: Streamline Your Tasks, Track Habits, and Prioritize Goals with Ease.',
             features: ['- Simple & Intutive', '- Idea Capture Section', '- Priorities Tracker', '- Weekly Task view', '- Weekly & Monthly Calendar view', '- To-List', '- Habit Tracker']
         },
         {
-            title: 'Life OS - Advanced',
+            title: 'Advanced',
             mainImage: './assets/Notion-QuickLinks-1.png',
             previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Managing your life with Notion',
             features: ['Areas', 'Books', 'Project Tracking', 'Journaling']
         },
         {
-            title: 'Project & Tasks',
+            title: 'Project Tracker',
             mainImage: './assets/Notion-QuickLinks-1.png',
             previewImage: './assets/rust.png', // Add a separate preview image
             description: 'A comprehensive project and task tracking system',
             features: ['Task lists', 'Progress tracking', 'Time Spent']
         },
         {
-            title: 'Personal Planner',
+            title: 'Habit Tracker',
             mainImage: './assets/Notion-QuickLinks-1.png',
             previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Daily and weekly personal organization',
             features: ['Goal setting', 'Habit tracker', 'Time blocking']
         },
         {
-            title: 'Team Collaboration',
+            title: 'Travel & Itenerary',
             mainImage: './assets/Notion-QuickLinks-1.png',
             previewImage: './assets/rust.png', // Add a separate preview image
             description: 'Streamline team communication and workflow',
             features: ['Meeting notes', 'Task assignment', 'Resource sharing']
-        },
-        {
-            title: 'Content Calendar',
-            mainImage: './assets/Notion-QuickLinks-1.png',
-            previewImage: './assets/rust.png', // Add a separate preview image
-            description: 'Plan and track content creation',
-            features: ['Editorial calendar', 'Content ideas', 'Publication scheduling']
-        },
-        {
-            title: 'Research Tracker',
-            mainImage: './assets/Notion-QuickLinks-1.png',
-            previewImage: './assets/rust.png', // Add a separate preview image
-            description: 'Organize research and academic work',
-            features: ['Literature review', 'Citation management', 'Project notes']
-        },
-        {
-            title: 'Project Management',
-            mainImage: './assets/Notion-QuickLinks-1.png',
-            previewImage: './assets/rust.png', // Add a separate preview image
-            description: 'Comprehensive project tracking template',
-            features: ['Task lists', 'Progress tracking', 'Team collaboration']
         },
     ];
 

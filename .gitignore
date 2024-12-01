@@ -2,7 +2,6 @@
 assets/.DS_Store
 assets/cancel(old).png
 assets/menu(old).png
-.DS_Store
 notion.html
 test.html
 keyboard1.html
@@ -17,3 +16,6 @@ js/notion copy.js
 notion copy.html
 css/notion.css
 notion.html
+css/notion.css
+js/notion.js
+.DS_Store
