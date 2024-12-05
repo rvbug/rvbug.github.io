@@ -675,3 +675,104 @@ footer a {
         /* Smaller font size on mobile */
     }
 }
+
+
+
+
+
+/* early access SECTION START */
+
+.contact-teaser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    /* Ensures vertical centering */
+    padding: 4rem 2rem;
+    background-color: #111;
+}
+
+.contact-card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.card-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #111;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-info i {
+    font-size: 2rem;
+    color: #be3b3b;
+}
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-text span {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.contact-text a {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.plus-button.contact-btn {
+    background-color: #be3b3b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plus-button.contact-btn i {
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .contact-teaser {
+        padding: 2rem 1rem;
+    }
+
+    .card-details {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-text {
+        align-items: center;
+        text-align: center;
+    }
+
+    .plus-button.contact-btn {
+        margin-top: 1rem;
+    }
+}
+
+
+/* early access SECTION END */
