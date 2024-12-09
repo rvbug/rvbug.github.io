@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-32x32.png">
     <title>Notion Templates</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css">
     <link rel="stylesheet" href="./css/notion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-
-    <!-- scroll to top section  -->
+    <!-- Scroll to top button -->
     <div class="scrollToTop-btn flex-center">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- header -->
+    <!-- Header -->
     <header>
         <div class="nav-bar">
-            <a href="/" class="logo">QuBiTAi</a>
+            <a href="./" class="logo">QuBiTAi</a>
             <div class="navigation">
                 <div class="nav-items">
                     <div class="nav-close-btn"></div>
-                    <!-- <a class="active" href="#home">Research</a> -->
                     <a href="./">Home</a>
                     <a href="./quantum.html">Research</a>
                     <a href="./projects.html">Projects</a>
                     <a href="./about.html">About</a>
                     <a href="https://qubitai.in/notes/blog/welcome" target="_blank">Blogs</a>
                     <a href="./robotics.html">Robotics</a>
-                    <a href="#">Notion</a>
+                    <a href="./template.html" class="active">Notion</a>
                     <a href="https://qubitai.in/notes" target="_blank">Notes</a>
                     <a href="./keyboard.html">Keyboards</a>
                     <a href="./#footer">Connect</a>
@@ -40,114 +41,439 @@
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <h2 class="gradient-text">Notion</h2>
-            <h3> Productivity. Unleashed </h3>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Notion</h1>
+            <p>Organize. Simplify.</p>
+            <div class="button-group"></div>
+                <a href="https://qubitai.in/notes/blog/welcome/" class="contact-btn" target="_blank">What's Notion</a>
+            </div>
+            
+        </div>
+    </section>
 
-        <section class="templates-section">
-            <div class="templates-container">
-                <h2 class="gradient-text">Templates</h2>
-                <div class="templates-carousel">
-                    <!-- Template cards will be dynamically generated -->
+    <!-- Templates Section -->
+    <section class="templates section" style="background-color: black;">
+        <div class="container flex-center">
+            <!-- <h1 class="section-title-01">Featured Templates</h1> -->
+            <h2 class="section-title-02" style="color: white;">Templates</h2>
+            
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Template 1 -->
+                    <div class="swiper-slide">
+                        <div class="template-card">
+                            <div class="image-container">
+                                <!-- SVG for card display -->
+                                <div class="template-image" data-modal-src="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                                        <!-- Dark Background -->
+                                        <rect width="200" height="200" fill="#1a1a1a"/>
+                                        <defs>
+                                          <!-- Color Experiments: Replace this gradient with different colors -->
+                                          <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6a97df;stop-opacity:0.5" />
+                                            <stop offset="100%" style="stop-color:#a8b6e6;stop-opacity:0.8" />
+                                          </linearGradient>
+                                        </defs>
+                                        <!-- Outer circular path suggesting quantum orbits -->
+                                        <circle cx="100" cy="50" r="30" fill="none" stroke="url(#blueGradient)" stroke-width="15" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="template-info">
+                                <h3>Prisim - Life OS</h3>
+                                <p>Beginner Template to get you started in Notion</p>
+                                <button class="content-btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 2 -->
+                    <div class="swiper-slide">
+                        <div class="template-card">
+                            <div class="image-container">
+                                <!-- <img src="./assets/C.png" alt="Project Management Template"> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                                    <!-- Dark Background -->
+                                    <rect width="200" height="200" fill="#1a1a1a"/>
+                                    
+                                    <defs>
+                                        <!-- Color Gradient -->
+                                        <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6a97df;stop-opacity:0.5"/>
+                                            <stop offset="100%" style="stop-color:#45A049;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    
+                                    <!-- Heartbeat/signal pulse line moved up -->
+                                    <path d="M20,70 L60,70 L75,50 L100,90 L125,50 L140,70 L180,70" 
+                                          fill="none" stroke="url(#pulseGradient)" stroke-width="6" />
+                                </svg>
+                            </div>
+                            <div class="template-info">
+                                <h3>Pulse OS</h3>
+                                <p>Advanced Template for experienced users</p>
+                                <button class="content-btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 3 -->
+                    <div class="swiper-slide">
+                        <div class="template-card">
+                            <div class="image-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                                    <!-- Dark Background -->
+                                    <rect width="200" height="200" fill="#1a1a1a"/>
+                                    
+                                    <defs>
+                                      <!-- Color Experiments: Replace this gradient -->
+                                      <linearGradient id="cipherGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#6a97df;stop-opacity:0.5" />
+                                        <stop offset="100%" style="stop-color:#a8b6e6;stop-opacity:0.8" />
+                                      </linearGradient>
+                                    </defs>
+                                    
+                                    <!-- Stylized lock/key concept -->
+                                    <path d="M50 70 C50 40, 75 20, 100 20 C125 20, 150 40, 150 70 L150 120 L50 120 Z" 
+                                          fill="none" stroke="url(#cipherGradient)" stroke-width="10" />
+                                </svg>
+                            </div>
+                            <div class="template-info">
+                                <h3>Pulse CRM</h3>
+                                <p>Advanced CRM for your business</p>
+                                <!-- <button class="content-btn">Coming Soon</button> -->
+                                <h4>Coming Soon</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 3 -->
+                    <div class="swiper-slide">
+                        <div class="template-card">
+                            <div class="image-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                                    <!-- Dark Background -->
+                                    <rect width="200" height="200" fill="#1a1a1a"/>
+                                    
+                                    <defs>
+                                        <!-- Color Gradient -->
+                                        <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6a97df;stop-opacity:0.5"/>
+                                            <stop offset="100%" style="stop-color:#45A049;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    
+                                    <g>
+                                        <path d="M50,70 C30,40 70,0 100,30 C130,60 170,40 150,70 C130,100 90,80 100,110 C110,140 70,100 50,70" 
+                                              fill="none" 
+                                              stroke="url(#pulseGradient)" 
+                                              stroke-width="6" 
+                                              stroke-linecap="round" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="template-info">
+                                <h3>Cronos OS</h3>
+                                <p>For Researchers and Scientists</p>
+                                <!-- <button class="content-btn">Coming Soon</button> -->
+                                <h4>Coming Soon</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <!-- Added message -->
+            <div class="coming-soon-message" style="text-align: center; margin-top: 2rem; color: #6a97df; font-style: italic;">
+                Stay tuned! More templates are on the way...
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="gradient-text">Custom Templates</h2>
+            <p class="gradient-text">Want to create a perfect Notion setup?</p>
+            <div class="button-group">
+                <a href="mailto:qubitai@icloud.com" class="contact-btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FIRST TEMPLATE START  =================  -->
+
+    <!-- Template Modals -->
+    <div id="templateModal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <div class="header-info">
+                    <h2>Prisim - Life OS</h2>
+                    <p>Beginner Template to get you started in Notion</p>
+                    <div class="modal-buttons">
+                        <a href="https://xyz.com" target="_blank" class="modal-btn primary-btn">View Demo</a>
+                        <a href="https://notionmarketplace.com" target="_blank" class="modal-btn secondary-btn">Get Template</a>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <div id="templateModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Template Details</h2>
-                    <span class="close-modal">&times;</span>
+            <div class="features-container">
+                <!-- Feature 1 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Overview</h3>
+                        <p>This section provides the overview of this template and additional information</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-intro.png" alt="Feature 1">
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="modal-section preview">
-                        <h3>Preview</h3>
-                        <img src="" alt="Template Preview">
+
+                <!-- Feature 2 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Goal Setting</h3>
+                        <p>This section helps you set goals. Goals are integral to your life and this section helps you build and track your goals</p>
                     </div>
-                    <div class="modal-section details">
-                        <h3>Description </h3>
-                        <p>Comprehensive template information</p>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-Goals.png" alt="Feature 2">
                     </div>
-                    <div class="modal-section features">
-                        <h3>Features</h3>
-                        <ul>
-                            <li>Feature 1</li>
-                            <li>Feature 2</li>
-                            <li>Feature 3</li>
-                        </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Links</h3>
+                        <p>All important links are one place. These are global links accessible from anywhere in the template</p>
                     </div>
-                    <div class="modal-section customize">
-                        <!-- <h3>Download</h3> -->
-                        <button class="customize-btn">Know More</button>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-Links.png" alt="Feature 3">
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Databases</h3>
+                        <p>This is the brain of the tremplate containing various databases, a tracker and the project workflow </p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-Databases.png" alt="Feature 4">
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Habit Tracker</h3>
+                        <p>This section helps you track your habits. Habits are part to your life and this section helps you build and track your habits</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-Habbit-Tracker.png" alt="Feature 5">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="contact-section">
-            <div class="contact-form">
-                <h2>Contact Us</h2>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                        <div class="error" id="nameError"></div>
+
+    <!-- ================= SECOND TEMPLATE START  =================  -->
+    <div id="templateModal2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <div class="header-info">
+                    <h2>Pulse OS</h2>
+                    <p>Advanced Template for experienced users</p>
+                    <div class="modal-buttons">
+                        <a href="https://xyz.com" target="_blank" class="modal-btn primary-btn">View Demo</a>
+                        <a href="https://notionmarketplace.com" target="_blank" class="modal-btn secondary-btn">Get Template</a>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                        <div class="error" id="emailError"></div>
+                </div>
+            </div>
+            <div class="features-container">
+                <!-- Feature 1 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Overview</h3>
+                        <p>This section provides the overview of this template and additional information</p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                        <div class="error" id="messageError"></div>
+                    <div class="feature-image">
+                        <img src="./assets/Notion-Pulse-Template-Overview.png" alt="Feature 1">
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Work at a glance</h3>
+                        <p>Shows your work at a glance including your projects, tasks and more</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Notion-PulseOS-Section1.png" alt="Feature 2">
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Another View of your Projects</h3>
+                        <p>Your projects at a glance including kanban view</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Notion-PulseOS-Section2.png" alt="Feature 3">
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Achievements</h3>
+                        <p>This section helps you track your weekly achievements.</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Notion-PulseOS-Section3.png" alt="Feature 4">
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Backend</h3>
+                        <p>Your entire backend is here. This includes your area, projects, notes section and more</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Notion-PulseOS-Backend.png" alt="Feature 5">
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Entertainment Dashboard</h3>
+                        <p>This section helps you track your movies, tv shows by genre and more</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Notion-PulseOS-Entertainment-pg.png" alt="Feature 5">
+                    </div>
+                </div>
+                
+
             </div>
         </div>
+    </div>
+
+    <!-- ================= THIRD TEMPLATE START  =================  -->
+
+    <div id="templateModal3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <div class="header-info">
+                    <h2>Pulse Personal Dashboard</h2>
+                    <p>Advanced life management dashboard</p>
+                    <div class="modal-buttons">
+                        <a href="https://xyz.com" target="_blank" class="modal-btn primary-btn">View Demo</a>
+                        <a href="https://notionmarketplace.com" target="_blank" class="modal-btn secondary-btn">Get Template</a>
+                    </div>
+                </div>
+            </div>
+            <div class="features-container">
+                <!-- Feature 1 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Overview</h3>
+                        <p>This section provides the overview of this template and additional information</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-intro.png" alt="Feature 1">
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Goal Setting</h3>
+                        <p>This section helps you set goals. Goals are integral to your life and this section helps you build and track your goals</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-Goals.png" alt="Feature 2">
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Links</h3>
+                        <p>All important links are one place. These are global links accessible from anywhere in the template</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-Links.png" alt="Feature 3">
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Databases</h3>
+                        <p>This is the brain of the tremplate containing various databases, a tracker and the project workflow </p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-Databases.png" alt="Feature 4">
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-section">
+                    <div class="feature-text">
+                        <h3>Habit Tracker</h3>
+                        <p>This section helps you track your habits. Habits are part to your life and this section helps you build and track your habits</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./assets/Simple-Template-Habbit-Tracker.png" alt="Feature 5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- ================= FOURTH TEMPLATE START  =================  -->
+
+     <!-- ================= FIFTH TEMPLATE START  =================  -->
 
 
-    </main>
 
+    <!-- ================= END OF ALL TEMPLATES  =================  -->
+
+    <!-- Footer -->
     <section id="footer">
         <footer>
             <div class="footer-container">
                 <div class="follow group">
-                    <h3>Reach out to know more</h3>
+                    <h3>Follow</h3>
                     <ul>
-                        <li><a href="https://linkedin.com/in/idinc" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        </li>
-                        <!-- <li><a href="https://github.com/rvbug" target="_blank"><i class="fab fa-github"></i></a> -->
-                        <!-- </li> -->
-                        <!-- <li><a href="https://twitter.com/rvbugged" target="_blank"><i class="fab fa-twitter"></i></a> -->
-                        <!-- </li> -->
-                        <li class="email"><a href="mailto:qubitai@icloud.com"><i class="fa-solid fa-at"></i></a>
+                        <li><a href="https://linkedin.com/in/idinc" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://rvbug.hashnode.dev/" target="_blank"><i class="fab fa-medium"></i></a></li>
+                        <li><a href="https://github.com/rvbug" target="_blank"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://twitter.com/rvbugged" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li class="email"><a href="mailto:qubitai@icloud.com"><i class="fa-solid fa-at"></i></a></li>
                     </ul>
                 </div>
-                <!-- this is to make the above href to center-->
-                <div class="copyright"> © 2024 Qubitai.</div>
+                <div class="copyright">© 2024 Qubitai.</div>
             </div>
         </footer>
     </section>
 
-
-
-
-    <!-- Add this section right after the templates section -->
-    <!-- <section class="pricing-section">
-        <div class="pricing-container">
-            <h2>Our Templates Marketplace</h2>
-            <div class="pricing-grid">
-                Pricing cards will be dynamically populated -->
-    </div>
-    </div>
-    </section>
-
-
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="./js/notion.js"></script>
 </body>
 

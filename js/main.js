@@ -1,4 +1,3 @@
-
 // NOTION PAGE Intersection Observer for feature sections
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -50,38 +49,6 @@ sections.forEach(section => {
     });
   });
 });
-
-
-// Working if there are 3 tabs
-// const sections = document.querySelectorAll('.row');
-// sections.forEach(section => {
-//   const tabs = section.querySelectorAll('.tabs li');
-//   const tabContent = section.querySelectorAll('.tab-content');
-
-//   // Initially, hide all tab content except the visible one in each section
-//   tabContent.forEach(content => {
-//     if (!content.classList.contains('content-visible')) {
-//       content.style.display = 'none';
-//     }
-//   });
-
-//   tabs.forEach(tab => {
-//     tab.addEventListener('click', () => {
-//       const targetId = tab.firstElementChild.getAttribute('href');
-
-//       tabContent.forEach(content => {
-//         content.style.display = 'none';
-//       });
-
-//       const targetContent = section.querySelector(targetId);
-//       if (targetContent) {
-//         targetContent.style.display = 'block';
-//       } else {
-//         console.error(`Tab content with ID "${targetId}" not found in section.`);
-//       }
-//     });
-//   });
-// });
 
 
 //navigation effect of on scroll
@@ -363,39 +330,59 @@ const observerOptions = {
 
 //For SWIPER PROJECT SECTION
 
-// Initialize Swiper immediately after DOM content loads
+// Initialize Swiper and Modal functionality
 document.addEventListener('DOMContentLoaded', function () {
-  const swiper = new Swiper('.swiper', {
-    slidesPerView: 'auto',
-    centeredSlides: true,
-    spaceBetween: 30,
-    loop: true,
-    grabCursor: true,
-    effect: 'coverflow',
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      320: {
+    // Initialize Swiper
+    const swiper = new Swiper('.mySwiper', {
         slidesPerView: 1,
-        spaceBetween: 20
-      },
-      480: {
-        slidesPerView: 'auto',
-        spaceBetween: 30
-      }
-    }
-  });
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            }
+        }
+    });
+
+    // Modal functionality
+    const modal = document.getElementById("templateModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalText = document.getElementById("modalText");
+    const closeBtn = document.querySelector(".close");
+    const contentBtns = document.querySelectorAll(".content-btn");
+
+    // Add click event to all "Learn More" buttons
+    contentBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const card = this.closest('.template-card');
+            modalImage.src = card.querySelector('img').src;
+            modalTitle.textContent = card.querySelector('h3').textContent;
+            modalText.textContent = card.querySelector('p').textContent;
+            modal.style.display = "block";
+        });
+    });
+
+    // Close modal when clicking the close button
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 });
