@@ -524,7 +524,7 @@ header.sticky .nav-bar {
 .blog-button {
     display: inline-block;
     padding: 1rem 2.5rem;
-    background: linear-gradient(180deg, #4a90e2, #051d39);
+    background: linear-gradient(90deg, #4a90e2, #1870d7);
     border-radius: 30px;
     font-size: 1.1rem;
     font-weight: 500;
