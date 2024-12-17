@@ -552,3 +552,272 @@ header.sticky .nav-bar {
         font-size: 1rem;
     }
 }
+
+
+.research-domains {
+    padding: 4rem 2rem;
+    background: #000;
+}
+
+.research-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.research-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.research-btn.active {
+    background: white;
+    color: black;
+}
+
+.research-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.research-icon i {
+    font-size: 2.5rem;
+    color: #4a90e2;
+    margin-bottom: 1rem;
+}
+
+.research-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.research-description {
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.key-focus h4 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.focus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.focus-list li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.focus-list li i {
+    color: #4a90e2;
+}
+
+.computational-insights {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.3));
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.insight-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.insight-card i {
+    font-size: 2.5rem;
+    color: #4a90e2;
+    margin-bottom: 0.5rem;
+}
+
+.insight-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.collaboration {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #000;
+}
+
+.collab-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.collab-container p {
+    max-width: 42rem;
+    margin: 0 auto 2rem;
+    font-size: 1.25rem;
+    color: #ccc;
+}
+
+.collab-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: white;
+    color: black;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.collab-button:hover {
+    background: #e5e5e5;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .research-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .research-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .computational-insights {
+        display: none;
+    }
+}
+
+.dual-sections-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.collaboration, .blog-section {
+    flex: 1;
+    opacity: 0;
+    transform: translateY(20px);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.animate-section {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dual-sections-container {
+        flex-direction: column;
+    }
+}
+
+.insights-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: #fff;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.computational-insights.hidden {
+    display: none;
+}
+
+.collab-content, .blog-content {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.collab-content p, .blog-content p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    text-align: center;
+    margin: 0;
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+    .dual-sections-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .collab-content, .blog-content {
+        padding: 1.5rem;
+    }
+
+    .collab-content p, .blog-content p {
+        font-size: 1rem;
+    }
+}

@@ -736,6 +736,11 @@ footer a {
     font-size: 1rem;
 }
 
+.contact-text a i {
+    color: #be3b3b;
+    margin-right: 5px;
+}
+
 .plus-button.contact-btn {
     background-color: #be3b3b;
     display: flex;
@@ -744,6 +749,17 @@ footer a {
 }
 
 .plus-button.contact-btn i {
+    color: #fff;
+}
+
+.contact-text a:last-child {
+    margin-top: 0.5rem;
+    color: #be3b3b;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.contact-text a:last-child:hover {
     color: #fff;
 }
 

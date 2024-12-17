@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script type="importmap">
@@ -12,6 +13,7 @@
     }
   </script>
     <link rel="stylesheet" href="css/quantum.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -53,93 +55,190 @@
         </div>
     </section>
 
+    <!-- <section class="content-wrapper">
+        <section class="content half-width">
+            <h2 class="section-title">Principles</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>Loop Quantum Gravity</h3>
+                    <p>Exploring discrete quantum geometry and its implications for the very early universe, black holes,
+                        and the nature of spacetime itself.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Emergent Spacetime</h3>
+                    <p>Research into how classical spacetime emerges from quantum degrees of freedom, including tensor
+                        networks and entanglement.</p>
+                </div>
+            </div>
+        </section> 
 
-    <section class="content">
-        <h2 class="section-title"> Principes </h2>
-        <div class="research-grid">
-            <div class="research-card">
-                <h3>Holographic Principle</h3>
-                <p>Investigating the holographic principle and its implications for quantum gravity, including AdS/CFT
-                    correspondence and black hole information paradox.</p>
+         <section class="quantum-formulas-vertical half-width">
+            <div class="formulas-container">
+                <h2 class="section-title">Research Topics</h2>
+                <div class="formula-stack">
+                    <div class="formula-card-vertical">
+                        <div class="formula-number">01</div>
+                        <div class="formula-content">
+                            <h3>Science of Interstellar</h3>
+                            <span class="math">Rs = 2GM/c²</span>
+                            <small>Black Hole visualization</small>
+                        </div>
+                    </div>
+                    <div class="formula-card-vertical">
+                        <div class="formula-number">02</div>
+                        <div class="formula-content">
+                            <h3>Einstein-Rosen Bridge</h3>
+                            <span class="math">ds² = -c²dt² + dl²/(1 - 2GM/rc²)</span>
+                            <small>Wormhole metric describing quantum gravitational topology</small>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="research-card">
-                <h3>Loop Quantum Gravity</h3>
-                <p>Exploring discrete quantum geometry and its implications for the very early universe, black holes,
-                    and the nature of spacetime itself.</p>
+        </section> -->
+    </section>
+
+    <section class="research-domains">
+        <h2 class="section-title">Explore My Research Domains</h2>
+        <div class="research-buttons">
+            <button class="research-btn active" data-area="Quantum">Quantum</button>
+            <button class="research-btn" data-area="Neural">Neural System</button>
+            <button class="research-btn" data-area="Systems">Adaptive Learning</button>
+        </div>
+        
+        <div class="research-content">
+            <div class="research-info">
+                <div class="research-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <h3 class="research-title">Quantum Research</h3>
+                <p class="research-description">Pushing the boundaries of quantum computation, inspired by the theoretical frontiers explored in Interstellar. We're not just exploring physics—we're rewriting its fundamental understanding.</p>
+                <div class="key-focus">
+                    <h4>Key Focus Areas:</h4>
+                    <ul class="focus-list">
+                        <li><i class="fas fa-cube"></i>Reality Manipulation Theories</li>
+                        <li><i class="fas fa-project-diagram"></i>Dimensional State Analysis</li>
+                        <li><i class="fas fa-puzzle-piece"></i>Interactive Quantum Paradigms</li>
+                    </ul>
+                </div>
             </div>
-            <div class="research-card">
-                <h3>String Theory</h3>
-                <p>Studying string theory as a candidate for quantum gravity, focusing on its predictions for quantum
-                    geometry and multiple dimensions.</p>
+            <div class="computational-insights" id="quantum-insights">
+                <h4 class="insights-title">Computational Insights</h4>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <i class="fas fa-infinity"></i>
+                        <p>Reality Processing Power</p>
+                        <div class="insight-value"><span class="counter">42</span> Dimensions</div>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-dice-d20"></i>
+                        <p>State Complexity</p>
+                        <div class="insight-value"><span class="counter">525</span> Paradigms</div>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-globe-americas"></i>
+                        <p>Multiverse</p>
+                        <div class="insight-value"><span class="counter">128</span> Dimensions</div>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-wave-square"></i>
+                        <p>Quantum Tunneling</p>
+                        <div class="insight-value"><span class="counter">1024</span> States</div>
+                    </div>
+                </div>
             </div>
-            <div class="research-card">
-                <h3>Emergent Spacetime</h3>
-                <p>Research into how classical spacetime emerges from quantum degrees of freedom, including tensor
-                    networks and entanglement.</p>
+
+            <div class="computational-insights hidden" id="neural-insights">
+                <h4 class="insights-title">Evolution Metrics</h4>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <i class="fas fa-dna"></i>
+                        <p>Generation Count</p>
+                        <div class="insight-value"><span class="counter">1000</span> Cycles</div>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-network-wired"></i>
+                        <p>Neural Complexity</p>
+                        <div class="insight-value"><span class="counter">256</span> Nodes</div>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Fitness Score</p>
+                        <div class="insight-value"><span class="counter">98</span>%</div>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-random"></i>
+                        <p>Mutation Rate</p>
+                        <div class="insight-value"><span class="counter">15</span>%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="computational-insights hidden" id="systems-insights">
+                <h3 class="insights-title">System Performance Metrics</h3>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <i class="fas fa-sync-alt"></i>
+                        <div class="insight-value">
+                            <span class="counter">99.99</span>%
+                        </div>
+                        <p>System Uptime</p>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div class="insight-value">
+                            <span class="counter">85</span>%
+                        </div>
+                        <p>Resource Optimization</p>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="insight-value">
+                            <span class="counter">95</span>%
+                        </div>
+                        <p>Prediction Accuracy</p>
+                    </div>
+                    <div class="insight-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="insight-value">
+                            <span class="counter">92</span>%
+                        </div>
+                        <p>System Resilience</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-
-    <section class="quantum-formulas-vertical">
-        <div class="formulas-container">
-            <h2 class="section-title">Research Topics</h2>
-            <div class="formula-stack">
-                <div class="formula-card-vertical">
-                    <div class="formula-number">01</div>
-                    <div class="formula-content">
-                        <h3>Geometric Tensor</h3>
-                        <span class="math">G_μν = κ(R_μν - ½Rg_μν)</span>
-                        <small>Quantum curvature tensor describing spacetime geometry</small>
-                    </div>
-                </div>
-                <div class="formula-card-vertical">
-                    <div class="formula-number">02</div>
-                    <div class="formula-content">
-                        <h3>Einstein-Rosen Bridge</h3>
-                        <span class="math">ds² = -c²dt² + dl²/(1 - 2GM/rc²)</span>
-                        <small>Wormhole metric describing quantum gravitational topology</small>
-                    </div>
-                </div>
-                <!-- <div class="formula-card-vertical">
-                    <div class="formula-number">03</div>
-                    <div class="formula-content">
-                        <h3>Quantum Gravity Lagrangian</h3>
-                        <span class="math">L_QG = √(-g)[R + ℏ²Ψ(R)]</span>
-                        <small>Quantum gravitational action incorporating quantum corrections</small>
-                    </div>
-                </div>
-                <div class="formula-card-vertical">
-                    <div class="formula-number">04</div>
-                    <div class="formula-content">
-                        <h3>Non-Commutative Geometry</h3>
-                        <span class="math">[x_μ, x_ν] = iθ_μν</span>
-                        <small>Quantum space-time fundamental uncertainty relation</small>
-                    </div> -->
+    <div class="dual-sections-container">
+        <section class="collaboration animate-section">
+            <div class="collab-container">
+                <h2 class="section-title">Let's Collaborate</h2>
+                <div class="collab-content">
+                    <p>Reach out and be part of our transformative journey.</p>
+                    <a href="mailto:qubitai@icloud.com" class="blog-button">Contact</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    
-
-
-    <script type="module">
-        import { initSpacetimeVisualization } from "./js/quantum.js";
-        document.addEventListener('DOMContentLoaded', initSpacetimeVisualization);
-    </script>
-
-    <section class="blog-section"></section>
-        <h2 class="section-title">Explore Our Blog</h2>
-        <div class="blog-content">
-            <p>Delve deeper into Quantum Gravity and Interstellar</p>
-            <a href="https://qubitai.in/notes/docs/QuantumGravity/interstellar-science-blog" class="blog-button" target="_blank">
-                Read More
-            </a>
-        </div>
-    </section>
+        <section class="blog-section animate-section">
+            <div class="blog-container">
+                <h2 class="section-title">Explore my Blog</h2>
+                <div class="blog-content">
+                    <p>Delve deeper into Quantum Gravity and Interstellar</p>
+                    <a href="https://qubitai.in/notes/docs/QuantumGravity/interstellar-science-blog" class="blog-button" target="_blank">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
 
 </body>
 
+    
+<script type="module">
+    import { initSpacetimeVisualization } from "./js/quantum.js";
+    document.addEventListener('DOMContentLoaded', initSpacetimeVisualization);
+</script>
 
 </html>

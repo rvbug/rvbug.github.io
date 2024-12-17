@@ -292,4 +292,105 @@ document.addEventListener('DOMContentLoaded', () => {
     formulaCards.forEach(card => {
         observer.observe(card);
     });
+
+    const researchData = {
+        Quantum: {
+            title: "Quantum Computing Research",
+            description: "Exploring quantum algorithms and their applications in solving complex computational problems.",
+            keyFocus: [
+                "Quantum Algorithms",
+                "Quantum Error Correction",
+                "Quantum-Classical Integration"
+            ]
+        },
+        Neural: {
+            title: "Neural Evolution Research",
+            description: "Evolutionary algorithms and neural network architectures that simulate natural selection and adaptation.",
+            keyFocus: [
+                "Evolutionary Strategies",
+                "Genetic Neural Networks",
+                "Adaptive Fitness Functions"
+            ]
+        },
+        Systems: {
+            title: "Adaptive Systems",
+            description: "Developing resilient systems with autonomous optimization and maintenance capabilities.",
+            keyFocus: [
+                "Predictive Maintenance",
+                "Dynamic Allocation",
+                "Intelligence Systems"
+            ]
+        }
+    };
+
+    const buttons = document.querySelectorAll('.research-btn');
+    const researchTitle = document.querySelector('.research-title');
+    const researchDescription = document.querySelector('.research-description');
+    const focusList = document.querySelector('.focus-list');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const area = button.dataset.area;
+            const data = researchData[area];
+
+            // Update buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Update content
+            researchTitle.textContent = data.title;
+            researchDescription.textContent = data.description;
+            focusList.innerHTML = data.keyFocus.map(focus => 
+                `<li><i class="fas fa-microscope"></i>${focus}</li>`
+            ).join('');
+
+            // Update insights visibility
+            document.querySelectorAll('.computational-insights').forEach(insight => {
+                insight.classList.add('hidden');
+            });
+            document.getElementById(`${area.toLowerCase()}-insights`).classList.remove('hidden');
+
+            // Reinitialize counters for the newly visible section
+            initializeCounters(document.getElementById(`${area.toLowerCase()}-insights`));
+        });
+    });
+
+    function initializeCounters(container) {
+        const counters = container.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent);
+            let count = 0;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+
+            const updateCounter = () => {
+                count += increment;
+                if (count < target) {
+                    counter.textContent = Math.round(count);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+
+            updateCounter();
+        });
+    }
+
+    initSpacetimeVisualization();
+    initSectionAnimations();
 });
+
+function initSectionAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-section');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.collaboration, .blog-section').forEach(section => {
+        observer.observe(section);
+    });
+}
