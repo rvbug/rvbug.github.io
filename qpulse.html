@@ -479,13 +479,24 @@
             accent-color: #0071e3;
         }
 
-        .submit-btn {
+        /* .submit-btn {
             width: 100%;
             padding: 16px 32px;
             font-size: 17px;
             margin-bottom: 20px;
             position: relative;
+
+        } */
+
+        .submit-btn {
+            display: block;  
+            width: auto;  
+            max-width: 250px;  
+            margin: 0 auto; 
+            padding: 16px 32px; 
+            border: none;
         }
+
 
         .btn-loading {
             display: none;
@@ -602,6 +613,320 @@
                 width: 50px;
             }
         }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h2 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-header p {
+            font-size: 21px;
+            color: #a1a1a6;
+            font-weight: 400;
+        }
+
+        /* Currency Selector */
+        .currency-selector {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .currency-toggle {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .currency-toggle button {
+            padding: 10px 24px;
+            background: transparent;
+            border: none;
+            color: #a1a1a6;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .currency-toggle button.active {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 32px;
+            position: relative;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #f5f5f7;
+        }
+
+        .plan-description {
+            font-size: 15px;
+            color: #a1a1a6;
+            margin-bottom: 24px;
+        }
+
+        .price-wrapper {
+            margin-bottom: 32px;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .currency {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .amount {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .period {
+            font-size: 18px;
+            color: #a1a1a6;
+            font-weight: 400;
+        }
+
+        .annual-price {
+            font-size: 15px;
+            color: #a1a1a6;
+        }
+
+        .annual-price span {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            color: #d1d1d6;
+            font-size: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: none;
+        }
+
+        /* Early Access Section */
+        .early-access {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 2px solid rgba(231, 152, 57, 0.3);
+            border-radius: 24px;
+            padding: 48px 40px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            margin-top: 40px;
+        }
+
+        .early-access h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .early-access p {
+            font-size: 17px;
+            color: #a1a1a6;
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(198, 29, 29, 0.05);
+        }
+
+        .benefit-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .benefit-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f5f5f7;
+            margin-bottom: 8px;
+        }
+
+        .benefit-detail {
+            font-size: 15px;
+            color: #a1a1a6;
+        }
+
+        .benefit-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #667eea;
+            margin-top: 8px;
+        }
+
+        .early-access-note {
+            margin-top: 24px;
+            font-size: 14px;
+            color: #86868b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-header h2 {
+                font-size: 36px;
+            }
+
+            .pricing-header p {
+                font-size: 18px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .amount {
+                font-size: 48px;
+            }
+
+            .early-access {
+                padding: 32px 24px;
+            }
+
+            .early-access h3 {
+                font-size: 28px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hide/Show based on currency */
+        .price-usd, .price-inr { display: none; }
+        .currency-usd .price-usd { display: flex; }
+        .currency-inr .price-inr { display: flex; }
     </style>
 </head>
 <body>
@@ -712,6 +1037,164 @@
         </div>
     </section>
 
+
+<!-- Pricing section starts -->
+<div class="pricing-container currency-usd">
+        <!-- Header -->
+        <div class="pricing-header">
+            <h2>Choose Your Plan</h2>
+            <p>Start with 14 days free. No credit card required.</p>
+        </div>
+
+        <!-- Currency Selector -->
+        <div class="currency-selector">
+            <div class="currency-toggle">
+                <button class="currency-btn active" data-currency="usd">USD ($)</button>
+                <button class="currency-btn" data-currency="inr">INR (₹)</button>
+            </div>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-grid">
+            <!-- Free Trial -->
+            <div class="pricing-card">
+                <div class="plan-name">Free Trial</div>
+                <div class="plan-description">Experience the full power</div>
+                
+                <div class="price-wrapper">
+                    <div class="price price-usd">
+                        <span class="currency">$</span>
+                        <span class="amount">0</span>
+                    </div>
+                    <div class="price price-inr">
+                        <span class="currency">₹</span>
+                        <span class="amount">0</span>
+                    </div>
+                    <div class="period">for 14 days</div>
+                </div>
+
+                <ul class="features-list">
+                    <li>Full Pro features</li>
+                    <li>No credit card required</li>
+                    <li>Complete ACON intelligence</li>
+                    <li>Cross-device sync</li>
+                </ul>
+
+                <button class="cta-button secondary">Start Free Trial</button>
+            </div>
+
+            <!-- Pro Plan - Featured -->
+            <div class="pricing-card featured">
+                <div class="featured-badge">RECOMMENDED</div>
+                <div class="plan-name">Pro</div>
+                <div class="plan-description">For serious developers</div>
+                
+                <div class="price-wrapper">
+                    <div class="price price-usd">
+                        <span class="currency">$</span>
+                        <span class="amount">11</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="price price-inr">
+                        <span class="currency">₹</span>
+                        <span class="amount">450</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="annual-price price-usd">
+                        or $110/year <span>(save 10%)</span>
+                    </div>
+                    <div class="annual-price price-inr">
+                        or ₹4000/year <span>(save 11%)</span>
+                    </div>
+                </div>
+
+                <ul class="features-list">
+                    <li>Full neuroadaptive intelligence</li>
+                    <li>Personalized RL break timing</li>
+                    <li>Advanced analytics & reports</li>
+                    <li>Cross-device sync</li>
+                    <li>Priority support</li>
+                    <li>All future updates</li>
+                </ul>
+
+                <button class="cta-button">Get Started</button>
+            </div>
+
+            <!-- Team Plan -->
+            <div class="pricing-card">
+                <div class="plan-name">Team</div>
+                <div class="plan-description">For teams of 5+</div>
+                
+                <div class="price-wrapper">
+                    <div class="price price-usd">
+                        <span class="currency">$</span>
+                        <span class="amount">9</span>
+                        <span class="period">/user/month</span>
+                    </div>
+                    <div class="price price-inr">
+                        <span class="currency">₹</span>
+                        <span class="amount">370</span>
+                        <span class="period">/user/month</span>
+                    </div>
+                    <div class="annual-price price-usd">
+                        18% volume discount
+                    </div>
+                    <div class="annual-price price-inr">
+                        18% volume discount
+                    </div>
+                </div>
+
+                <ul class="features-list">
+                    <li>Everything in Pro</li>
+                    <li>Minimum 5 users</li>
+                    <li>Volume pricing</li>
+                    <li>Shared team insights</li>
+                    <li>Dedicated support</li>
+                </ul>
+
+                <button class="cta-button secondary">Contact Us</button>
+            </div>
+        </div>
+
+        <!-- Early Access Section -->
+        <div class="early-access">
+            <h3>Early Access Advantage</h3>
+            <p>Be among the first 15 users and receive exclusive lifetime benefits</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏱️</div>
+                    <div class="benefit-title">Extended Trial</div>
+                    <div class="benefit-detail">6 months free access</div>
+                    <div class="benefit-detail">(instead of 14 days)</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">💎</div>
+                    <div class="benefit-title">Lifetime Discount</div>
+                    <div class="benefit-detail">40% off forever</div>
+                    <!-- <div class="benefit-price price-usd">$6.60/mo or $66/yr</div> -->
+                    <div class="benefit-detail">$6.60/mo or $66/yr</div>
+                    <div class="benefit-price price-inr">₹250/mo or ₹2500/yr</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-title">Product Input</div>
+                    <div class="benefit-detail">Shape the future</div>
+                </div>
+            </div>
+
+            <p class="early-access-note">
+                Limited to first 15 users • Privacy guaranteed • Cancel anytime
+            </p>
+        </div>
+    </div>
+            
+
+
+<!-- Pricing section ends -->
+
 <!-- EARLY ACCESS FORM - EDIT FORMSPREE ID -->
     <section class="form-section" id="early-access-form">
         <div class="form-container">
@@ -731,7 +1214,7 @@
                 <h3>Thank You!</h3>
                 <p>We've received your request. Check your email for confirmation.</p>
                 <a href="projects.html" class="btn btn-primary" style="margin-top: 20px;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="16" height="16" viewBox="24 24 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 12H5M12 19l-7-7 7-7"/>
                     </svg>
                     Back to Projects
@@ -764,7 +1247,6 @@
                             <option value="pycharm">PyCharm</option>
                             <option value="webstorm">WebStorm</option>
                             <option value="sublime">Sublime Text</option>
-                            <option value="atom">Atom</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -805,8 +1287,8 @@
                 </button>
 
                 <p class="form-privacy">
-                    🔒 Your data is secure. We'll only use your email to send product updates. 
-                    Read our <a href="./privacy.html" target="_blank">Privacy Policy</a>.
+                    🔒 Your data is secure. I only use your email to send product updates. 
+                    Read the <a href="./privacy.html" target="_blank">Privacy Policy</a>.
                 </p>
             </form>
         </div>
@@ -1148,6 +1630,37 @@
         document.querySelectorAll('.project-section').forEach(section => {
             observer.observe(section);
         });
+
+        // Currency switcher
+        const container = document.querySelector('.pricing-container');
+        const buttons = document.querySelectorAll('.currency-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                buttons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Switch currency display
+                const currency = button.dataset.currency;
+                container.className = `pricing-container currency-${currency}`;
+            });
+        });
+
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Scroll to your early access form
+                // Replace with your actual form ID
+                const form = document.querySelector('#early-access-form');
+                if (form) {
+                    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
