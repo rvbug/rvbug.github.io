@@ -9,8 +9,6 @@ website:
   favicon: images/AudioWide-White.ico
   navbar:
     right:
-      - text: Home
-        href: ../index.html
       - text: About
         href: https://qubitai.in/about.html
         target: _blank
