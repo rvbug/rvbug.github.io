@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f0f0f0"/>
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">
+    Wormhole Distance vs Velocity
+  </text>
+  
+  <!-- Axes -->
+  <line x1="100" y1="500" x2="700" y2="500" stroke="#000" stroke-width="2"/>
+  <line x1="100" y1="100" x2="100" y2="500" stroke="#000" stroke-width="2"/>
+  
+  <!-- X-axis Label -->
+  <text x="400" y="550" text-anchor="middle" font-family="Arial" font-size="16">
+    Velocity (% of light speed)
+  </text>
+  
+  <!-- Y-axis Label -->
+  <text x="50" y="300" transform="rotate(-90 50,300)" text-anchor="middle" font-family="Arial" font-size="16">
+    Normalized Distance
+  </text>
+  
+  <!-- X-axis Ticks -->
+  <text x="100" y="520" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+  <text x="300" y="520" text-anchor="middle" font-family="Arial" font-size="12">50</text>
+  <text x="500" y="520" text-anchor="middle" font-family="Arial" font-size="12">75</text>
+  <text x="700" y="520" text-anchor="middle" font-family="Arial" font-size="12">100</text>
+  
+  <!-- Y-axis Ticks -->
+  <text x="90" y="100" text-anchor="end" font-family="Arial" font-size="12">2</text>
+  <text x="90" y="300" text-anchor="end" font-family="Arial" font-size="12">1</text>
+  <text x="90" y="500" text-anchor="end" font-family="Arial" font-size="12">0</text>
+  
+  <!-- Grid Lines -->
+  <g stroke="#ddd" stroke-dasharray="5,5">
+    <line x1="100" y1="100" x2="700" y2="100" />
+    <line x1="100" y1="300" x2="700" y2="300" />
+    <line x1="300" y1="100" x2="300" y2="500" />
+    <line x1="500" y1="100" x2="500" y2="500" />
+    <line x1="700" y1="100" x2="700" y2="500" />
+  </g>
+  
+  <!-- Curve Visualization -->
+  <path d="M100,500 C200,400 300,250 400,150 S600,100 700,100" 
+        fill="none" stroke="#FF0000" stroke-width="3"/>
+  
+  <!-- Data Points -->
+  <g fill="#00AA00">
+    <circle cx="100" cy="500" r="5"/>
+    <circle cx="300" cy="350" r="5"/>
+    <circle cx="500" cy="200" r="5"/>
+    <circle cx="700" cy="100" r="5"/>
+  </g>
+  
+  <!-- Legend -->
+  <rect x="620" y="50" width="160" height="80" fill="#ffffff" stroke="#cccccc"/>
+  <circle cx="640" cy="80" r="5" fill="#00AA00"/>
+  <text x="660" y="85" font-family="Arial" font-size="12">Data Points</text>
+  <line x1="640" y1="110" x2="660" y2="110" stroke="#FF0000" stroke-width="3"/>
+  <text x="670" y="115" font-family="Arial" font-size="12">Distance Curve</text>
+</svg>

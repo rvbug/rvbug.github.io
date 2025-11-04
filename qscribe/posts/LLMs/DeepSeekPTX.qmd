@@ -1,0 +1,181 @@
+---
+title: "DeepSeekPTX"
+author: "Rakesh Venkat"
+date: "2025-03-01"
+categories: [LLM]
+image: "img/deepseek.jpg"
+jupyter: python3
+---
+
+# Introduction
+
+Let us now delve into the details of PTX, the parallel thread execution virtual instruction set, and explore how DeepSeek might have approached optimization for their H800 GPUs. PTX optimization is critical for maximizing performance in large language models.
+
+<!-- truncate -->
+
+Since DeepSeek's specific PTX implementations are proprietary, this article focuses on optimization strategies inferred from their research papers and related discussions. We'll explore a few of them within their architecture. For example, **Multi-Head Latent Attention (MHLA)** employs a modified Key and Value cache approach, differing from the standard transformer KV cache concept, to enhance efficiency.
+
+------------------------------------------------------------------------
+
+# Overview
+
+DeepSeek, particularly with their R1 model, has implemented significant optimizations across both training and inference phases. We will delve into these broader optimizations in a separate, more detailed article. In this one, however, our focus will be exclusively on PTX.  
+
+PTX empowers developers with the ability to perform low-level optimizations, granting fine-grained control over register allocation, thread execution, and memory access patterns.
+
+## Register Allocation
+
+1.  Allowing manually optimizing the register allocation, the latency could have been reduced.
+
+2.  Fine-tune thread scheduling allowing them to maximize parallelism across the streaming multiprocessors.
+
+## Custom Memory Management
+
+Implementing custome PTX instructions for accessing memory including global VRAM access by bypassing L1 and L2 cache in a very specific way allowing increasing data transfer pattern thus improving memory bandwidth.
+
+::: tip
+-   **Global VRAM** is largest and slowest memory on the GPU
+-   **Cache** can also introduce overhead and may not always be effective
+-   **Coalesced Access** - Accessing contiguous memory locations in a single transaction significantly improves memory bandwidth.
+-   **Memory Access** - Aligned memory access e.g. to 128-bytes are much more efficient.
+:::
+
+### Cache
+
+Since they were dealing with large and streaming datasets, they miht have bypassed **`L1`** or **`L2`** cache. This can be accessible via PTX that allow to control these behaviour
+
+Below is the sample snippet showing the access. Loads from global memory and bypass both L1 and L2 cache.
+
+``` asm
+.reg .u64 %addr;
+.reg .f32 %data;
+
+ld.global.nc.f32 %data, [%addr]; 
+```
+
+::: info
+> **nc** means no cache\
+> **ld.global.nc.f32** - load 32 bit floating point value from global memory
+:::
+
+### Cache Controls
+
+`.volalite` - This modifer tells compiler that memory location can be modified by other threads/devices preventing complier for any optimization to ensure value in the memory remains constant.
+
+`.wt` and `.wb` - These are write through and write back modifiers controling the cache write policy.
+
+`.wt` writes to both cache and global memory while `.wb` writes only to cache but writes to global memory once cache data is evicted.
+
+::: info
+Deepseek might have used these `write-through` and `write-back` modifiers to further optimize their workload.
+:::
+
+`.relaxed`,`.acquire`,`.release`,`.acquire_release` modifiers are used when dealing with memory coherency between threads i.e. order of memory reads and writes
+
+::: info
+Deepseek most likely used these modifiers when working with shared memory buffers which are accessed by multiple threads.
+:::
+
+### Prefetching
+
+For the predictible memory access, they could have use PTX's prefetch instructions to bring load the data in cache before it is needed hiding memory latency thus improving performance
+
+``` ptx
+reg .u64 %addr;
+prefetch.global [%addr];
+```
+
+::: info
+> **prefetch.global** Prefetch data into L1 cache.
+:::
+
+#### Prefetch Distance and Hints
+
+It is possible that these parameters are tuned to optimizing prefetching performance.
+
+::: info
+> **Prefetch Distance** Number of memory location to prefetch ahead.
+
+> **Prefetch Hints** helps to understand tyoe of memory access patterns based on the type of hardware.
+:::
+
+### Alignment & Coalescing
+
+Since PTX allow precise control over memory aligment and access patterns, they could use this to maximize memory bandwidth. Sample code below.
+
+``` ptx
+.reg .u64 %base_addr;
+.reg .u32 %offset;
+.reg .f32 %data;
+
+mad.lo.u64 %addr, %offset, 4, %base_addr; // Assuming 4-byte floats
+
+// Load coalesced data
+ld.global.v4.f32 {%data, %data+4, %data+8, %data+12}, [%addr];
+```
+
+::: info
+> **ld.global.v4.f32** - Loads vector of 4 32-bit floating values from VRAM ensuring coalesced access.
+
+> **mad.lo.u64** - Multiply add lower 64 bits for calculating memory address.
+:::
+
+#### Vectorized loads
+
+They might have used vectorized loads which allow multiple data element to be transferred into a single memory transactions by maximizing memory bandwidth and also ensure these access are coalesced. Sample code below showing loading and storing 4 floats at once.
+
+``` ptx
+.reg .u64 %addr;
+.reg .v4.f32 %data;
+
+ld.global.v4.f32 %data, [%addr]; 
+st.global.v4.f32 [%addr], %data;
+```
+
+### Shared Memory Optimization
+
+Shared memory is organized in bands so to avoid conflicts they could have used multiple threads access the same banks simultaneously by arranging data carefully.
+
+It could also be possible that they might have used shared on-chip memory to reduce global access. Below code shows data being moved from global memory to shared memory and then use it.
+
+``` ptx
+.shared .f32 shared_data[1024];
+.reg .u32 %thread_id;
+.reg .f32 %local_data;
+
+// Load data from global memory into shared memory
+ld.global.f32 %local_data, [global_addr + %thread_id*4];
+st.shared.f32 [shared_data + %thread_id*4], %local_data;
+
+// Use data from shared memory
+ld.shared.f32 %local_data, [shared_data + %thread_id*4];
+```
+
+## Inter-GPU communcation
+
+Allocate a portion of SM to improve communication by data compression and remove bottlenecks
+
+## Warp Level Optimization
+
+Fine-grain tunining again on warp which contains 32 threads on how they process instructions.
+
+NVIDIA GPUs execute threads in groups of 32, called warps. So PTX can allow developers to write warp-synchronous code, to make it more efficient.
+
+DeepSeek could have used warp-level primitives to perform warp-wide reductions and scans.
+
+#### Warp Shuffle Instructions:
+
+PTX also provides shuffle instructions that allow threads within a warp to exchange data. It can be used to implement efficient inter-thread communication. Optimize data layout for shared memory.
+
+## Conclusion
+
+This article has outlined potential PTX optimizations employed by DeepSeek. These optimizations highlight DeepSeek's impressive ability to leverage fundamental hardware optimization, enabling them to develop models that effectively compete with OpenAI. The difficulty of these low level optimizations cannot be overstated.
+
+## Next
+
+In my next article, we will get into the details of how these optimizations happen in various stages of the architecture, from MHLA to Multi-token.
+
+## References
+
+[DeepSeek R1](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/DeepSeek_R1.pdf)\
+[DeepSeek EP Github](https://github.com/deepseek-ai/DeepEP)

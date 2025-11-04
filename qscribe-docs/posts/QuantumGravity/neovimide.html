@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rakesh Venkat">
+<meta name="dcterms.date" content="2021-08-26">
+
+<title>Neovim IDE – QuBiTAi</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/AudioWide-White.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">QuBiTAi</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://qubitai.in/about.html" target="_blank"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rvbug" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://qfey.in/" target="_blank"> 
+<span class="menu-text">QFey</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://qubitai.in/" target="_blank"> 
+<span class="menu-text">QuBiTAi</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Neovim IDE</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">IDE</div>
+                <div class="quarto-category">Neovim</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Rakesh Venkat </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 26, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>An Integrated Development Environment (IDE) provides a comprehensive list of features like code editor, compiler/interpreter, code completion, debugger and much more.</p>
+<!-- truncate -->
+<hr>
+<p>Modern editors work out of the box. Just install, launch and you are ready to go! But sometimes, it is slow and clunky eating up a lot of memory.</p>
+<p>Then there are terminal based IDEs focusing on pure text manipulation. No fancy interfaces, only powered by keyboard shortcuts and macros. One such IDE is Vim (<strong>Vi</strong> i<strong>M</strong>proved)</p>
+<p>In this blog, I have shared my Neovim setup, plugins and keyboard mappings. This configuration supports various programming languages like <code>Lua</code>, <code>Python for Data Science &amp; ML</code>, <code>OCaml</code>, <code>Rust</code>, <code>Web Development</code>, even Notes and Journaling. Detailed documentation is available on my <a href="https://github.com/rvbug/neovim">github</a>.</p>
+<p>Read on!</p>
+</section>
+<section id="popular-ides" class="level1">
+<h1>Popular IDEs</h1>
+<p>Here’s a 2023 stack overflow survey of the most popular IDEs. Vim is still in the top 5 considering that it was first released in 1991. (<a href="https://survey.stackoverflow.co/2023/#most-popular-technologies-new-collab-tools">Link</a> to the survey)</p>
+<p>![Stackoverflow Survey]<img src="img/Survey.png" class="img-fluid" alt="alt text"></p>
+<hr>
+<section id="vi-improved-vim" class="level2">
+<h2 class="anchored" data-anchor-id="vi-improved-vim">Vi Improved (Vim)</h2>
+<p>Vim was created by Bram Moolenaar. A highly customizable modal, screen-based text editor written in C and Vim Script (VimL). It is known to be very fast, extremely efficient, highly configurable, supporting many programming languages and providing extensive plugin support.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Vim.png" class="img-fluid figure-img"></p>
+<figcaption>VIM</figcaption>
+</figure>
+</div>
+</section>
+<section id="neovim-nvim" class="level2">
+<h2 class="anchored" data-anchor-id="neovim-nvim">Neovim (Nvim)</h2>
+<p>NeoVim was released in 2014 and is a fork of Vim. It uses a fast, small and lightweight scripting language called <a href="https://www.lua.org/">Lua</a>.</p>
+<p>Lua supports procedural, object-oriented and functional programming. It can be embedded into C/C++ quite easily too.</p>
+<p>The goal of this project was not to replace Vim but to extend and incorporate additional features. Almost all of the features of vim are now supported by Neovim.</p>
+<p><code>Note</code>: I have used Neovim and nvim interchangeably to refer to Neovim.</p>
+<p>(This splash screen is because of a plugin called <a href="https://github.com/goolord/alpha-nvim">Alpha</a>)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/neovim.png" class="img-fluid figure-img"></p>
+<figcaption>Neovim</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="configuration" class="level1">
+<h1>Configuration</h1>
+<p>The main configuration directory of nvim is <code>$XDG_CONFIG_HOME/nvim/</code> pointing to this folder - <code>~/.config/nvim/</code></p>
+<p><code>Note</code>: Lua is integrated as the first-class language for Neovim v5.1 and above.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nvim looks for this file when it loads</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/.config/nvim/init.lua</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># if this folder and files does not exist, create them</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> mkdir <span class="ex">.config</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">.config</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> mkdir <span class="ex">nvim</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">nvim</span> </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> touch <span class="ex">init.lua</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="file-structure" class="level2">
+<h2 class="anchored" data-anchor-id="file-structure">File structure</h2>
+<p>I have used <a href="https://github.com/junegunn/vim-plug">VimPlug</a> and <a href="https://github.com/wbthomason/packer.nvim">Packer</a> but I found <a href="https://github.com/folke/lazy.nvim">Lazy</a> package manager to be well organized for my needs.</p>
+<p>Here’s how my files are structured. Anything inside of plugins folder gets called automatically. Details of these files are available on my <a href="https://github.com/rvbug/neovim?tab=readme-ov-file#folder-structure">github</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/.config/nvim/</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> LICENSE  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md  </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> init.lua  </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> lazy-lock.json</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> lua</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> ├── keymaps.lua</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> └── plugins</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── autopairs.lua</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── comments.lua</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── completions.lua</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── db.lua</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── debug.lua</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── floating-help.lua</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── gitblame.lua</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── gitsigns.lua</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── greetings.lua</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── iron.lua</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── lspconfig.lua</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── lualine.lua</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── markdown.lua</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── neorg.lua</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── noice.lua</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── none-ls.lua</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── nvim_tree.lua</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── quarto.lua</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── telescope.lua</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── themes.lua</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── toggleterm.lua</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     ├── treesitter.lua</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     └── zen.lua</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> yarn.lock</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="terminal-tmux" class="level1">
+<h1>Terminal &amp; Tmux</h1>
+<p>I use <a href="https://wezfurlong.org/wezterm/index.html">Wezterm</a> terminal. It is written in rust and supports lua based configuration. <a href="https://github.com/rvbug/neovim/blob/main/.wezterm.lua"><code>.wezterm.lua</code></a> contains my basic setup.</p>
+<p>Using Tmux (Terminal Multiplexer) helps me with multiple sessions, each with multiple windows (tabs). It even allows one to save and restore the sessions.</p>
+<p>You can find the configuration in this <a href="https://github.com/rvbug/neovim/blob/main/.tmux.conf"><code>.tmux.conf</code></a> file.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/tmux.png" class="img-fluid figure-img"></p>
+<figcaption>TMUX</figcaption>
+</figure>
+</div>
+<section id="init-file" class="level2">
+<h2 class="anchored" data-anchor-id="init-file">Init file</h2>
+<p><code>init.lua</code> is the first file that gets loaded when Neovim starts. I am loading <code>keymaps.lua</code> and Lazy package manager via this.</p>
+</section>
+<section id="keymaps" class="level2">
+<h2 class="anchored" data-anchor-id="keymaps">Keymaps</h2>
+<p><code>keymaps.lua</code> is where I have configured my keyboard shortcuts. Look at a few sample keybindings, these are pretty standard ones.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global leader key is &lt;Space&gt; </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vim.g.mapleader</span> = <span class="st">" "</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># in normal mode, use &lt;space&gt;v or &lt;space&gt;sh to run specific commands </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># to split the screen vertically</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">keymap.set</span><span class="er">(</span><span class="st">"n"</span><span class="ex">,</span> <span class="st">"&lt;leader&gt;sv"</span> , <span class="st">"&lt;C-w&gt;v"</span><span class="kw">)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># splits screen horizontally</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">keymap.set</span><span class="er">(</span><span class="st">"n"</span><span class="ex">,</span> <span class="st">"&lt;leader&gt;sh"</span> , <span class="st">"&lt;C-w&gt;s"</span><span class="kw">)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Telescope keymapings</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># find files </span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">keymap.set</span><span class="er">(</span><span class="st">"n"</span><span class="ex">,</span> <span class="st">"&lt;leader&gt;ff"</span>, <span class="st">"&lt;cmd&gt;Telescope find_files&lt;cr&gt;"</span><span class="kw">)</span> </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># live grep </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">keymap.set</span><span class="er">(</span><span class="st">"n"</span><span class="ex">,</span> <span class="st">"&lt;leader&gt;fg"</span>, <span class="st">"&lt;cmd&gt;Telescope live_grep&lt;cr&gt;"</span><span class="kw">)</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># find string under cursor </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">keymap.set</span><span class="er">(</span><span class="st">"n"</span><span class="ex">,</span> <span class="st">"&lt;leader&gt;fc"</span>, <span class="st">"&lt;cmd&gt;Telescope grep_string&lt;cr&gt;"</span><span class="kw">)</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># display list of open buffers</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="ex">keymap.set</span><span class="er">(</span><span class="st">"n"</span><span class="ex">,</span> <span class="st">"&lt;leader&gt;fb"</span>, <span class="st">"&lt;cmd&gt;Telescope buffers&lt;cr&gt;"</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="theme" class="level2">
+<h2 class="anchored" data-anchor-id="theme">Theme</h2>
+<p>There are many color schemes to choose from, I have been using <a href="https://github.com/tiagovla/tokyodark.nvim">Tokyo Dark</a> and the configuration is loaded via <code>themes.lua</code> file.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/theme.png" class="img-fluid figure-img"></p>
+<figcaption>Theme</figcaption>
+</figure>
+</div>
+</section>
+<section id="telescope" class="level2">
+<h2 class="anchored" data-anchor-id="telescope">Telescope</h2>
+<p>A fuzzy finder plugin that helps you to find files and supports live grep along with many other features.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/telescope.png" class="img-fluid figure-img"></p>
+<figcaption>telescope</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="code-completion" class="level1">
+<h1>Code Completion</h1>
+<p><code>completions.lua</code> has the following plugins to support code completions and snippets using LSP (<a href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol</a>).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># client for LSP.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">"hrsh7th/cmp-nvim-lsp"</span><span class="ex">,</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># snippet engine</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">"L3MON4D3/LuaSnip"</span><span class="ex">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># completion source for nvim-cmp</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">"saadparwaiz1/cmp_luasnip"</span><span class="ex">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># additional snippet support </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">"rafamadriz/friendly-snippets"</span><span class="ex">,</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="heres-the-completion-and-snippets-for-python-lua-and-ocaml" class="level4">
+<h4 class="anchored" data-anchor-id="heres-the-completion-and-snippets-for-python-lua-and-ocaml"><strong><em>Here’s the completion and snippets for Python, Lua and Ocaml</em></strong></h4>
+<p><img src="img/completion.png" class="img-fluid" alt="Python"> <img src="img/completion2.png" class="img-fluid" alt="Lua"> <img src="img/completion3.png" class="img-fluid" alt="OCaml"></p>
+<p>The following plugins help with path and command completion too.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># path completion</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">"hrsh7th/cmp-path"</span><span class="ex">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># command line completion</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">"hrsh7th/cmp-cmdline"</span><span class="ex">,</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Path Completion</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/path.png" class="img-fluid figure-img"></p>
+<figcaption>PathCompletion</figcaption>
+</figure>
+</div>
+<p><em>Command Completion</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/command.png" class="img-fluid figure-img"></p>
+<figcaption>Command</figcaption>
+</figure>
+</div>
+</section>
+<section id="quarto-support" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-support">Quarto Support</h2>
+<p>Quarto is heavily used in scientific publishing, my setup supports them.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Quarto1.png" class="img-fluid figure-img"></p>
+<figcaption>Quarto</figcaption>
+</figure>
+</div>
+<p><code>Did you know:</code> Quarto also has great integration with Jupyter Notebook, see the sample below.</p>
+<p><code>The one on the left is the Quarto html format generated from the Jupyter notebook on your right.</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/QuartoJupyter.png" class="img-fluid figure-img"></p>
+<figcaption>QuartoJupyter</figcaption>
+</figure>
+</div>
+</section>
+<section id="git-integration" class="level2">
+<h2 class="anchored" data-anchor-id="git-integration">Git Integration</h2>
+<p>For git integration I use</p>
+<section id="lazygit" class="level4">
+<h4 class="anchored" data-anchor-id="lazygit">Lazygit</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Lazygit.png" class="img-fluid figure-img"></p>
+<figcaption>Lazu</figcaption>
+</figure>
+</div>
+</section>
+<section id="gitblame" class="level4">
+<h4 class="anchored" data-anchor-id="gitblame">Gitblame</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Gitblame.png" class="img-fluid figure-img"></p>
+<figcaption>GitBlame</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="dap-debug-adapter-protocol" class="level2">
+<h2 class="anchored" data-anchor-id="dap-debug-adapter-protocol">DAP (Debug Adapter Protocol)</h2>
+<p>Showing DAP support for Python</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/dap.png" class="img-fluid figure-img"></p>
+<figcaption>DAP</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="next-steps" class="level1">
+<h1>Next steps</h1>
+<p>How do you learn Neovim, I have added the references to some amazing documentation <a href="https://github.com/rvbug/neovim?tab=readme-ov-file#references">here</a>. You can also get extensive help right inside Neovim.</p>
+<p>Checkout <code>:Tutor</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/tutor.png" class="img-fluid figure-img"></p>
+<figcaption>Tutor</figcaption>
+</figure>
+</div>
+<p>Type <code>:help</code> to show up entire documentation but you can also go to specific ones by typing <code>:help usr_0</code> or use <a href="https://neovim.io/doc/user/index.html">Neovim Website</a> to read through it.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/tutorhelp.png" class="img-fluid figure-img"></p>
+<figcaption>TutorHelp</figcaption>
+</figure>
+</div>
+</section>
+<section id="alternatives" class="level1">
+<h1>Alternatives</h1>
+<p>If you decide to try Neovim but do not want to go through the hassle of configuring all by yourself then check out these interesting “starter kit” projects.</p>
+<p>All these projects have extensive documentation on their website but before you try them, backup your existing nvim file under <code>~/.config/</code> folder if it exists.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">~/.config</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> mv <span class="ex">nvim</span> nvim_backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="lazyvim" class="level3">
+<h3 class="anchored" data-anchor-id="lazyvim"><a href="https://www.lazyvim.org/">LazyVim</a></h3>
+<p>Supports Mac/Linux based systems.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/LazyVim/starter ~/.config/nvim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="nvchad" class="level3">
+<h3 class="anchored" data-anchor-id="nvchad"><a href="https://nvchad.com/">NVChad</a></h3>
+<p>To install on Mac/Linux based system, use the following command:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NvChad/NvChad ~/.config/nvim <span class="at">--depth</span> 1 <span class="kw">&amp;&amp;</span> <span class="ex">nvim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lunarvim" class="level3">
+<h3 class="anchored" data-anchor-id="lunarvim"><a href="https://www.lunarvim.org/">LunarVim</a></h3>
+<p>To install, use the following command</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="va">LV_BRANCH</span><span class="op">=</span><span class="st">'release-1.3/neovim-0.9'</span> <span class="fu">bash</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-s</span> https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Yes, it takes time to configure these IDEs but is it really worth the effort? That is the question you need to answer for yourself. If you are unable to decide then I would suggest give it a try.</p>
+<p>Neovim has helped me to design the workflow that I need to get to a complete ‘mouse-less’ environment.</p>
+<p>Check out my <a href="https://github.com/rvbug/neovim">configuration</a> and leave a comment if you have had any similar experiences. Reach out if you have any questions, I’d be happy to help!</p>
+<p><strong><em>Happy Coding!!</em></strong></p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p><a href="https://github.com/rvbug/neovim/">My Configuration (Github)</a></p>
+<p><a href="https://quarto.org/docs/publishing/rstudio-connect.html">Official VI</a><a href="https://quarto.org/docs/publishing/confluence.html">M</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Vim_(text_editor)">VIM</a><a href="https://pandoc.org/">Wiki</a></p>
+<p><a href="https://quarto.org/docs/publishing/confluence.html">Officia</a><a href="https://neovim.io/">l Neovim</a></p>
+<p><a href="https://linuxhandbook.com/vim-cheat-sheet/">Vim Cheat Sheet</a></p>
+<p><a href="https://devhints.io/lua">Lua Cheat Sheet</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/qubitai\.in\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

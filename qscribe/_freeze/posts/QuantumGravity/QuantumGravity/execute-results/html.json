@@ -1,0 +1,12 @@
+{
+  "hash": "5ca7a677df6099b48bb57fa5325b8995",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Quantum Gravity\"\nauthor: \"Rakesh Venkat\"\ndate: \"2021-08-26\"\ncategories: [Quantum, Gravity]\nimage: \"img/jupyter1.png\"\njupyter: python3\n---\n\n",
+    "supporting": [
+      "QuantumGravity_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

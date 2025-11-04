@@ -1,0 +1,779 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/DataScience/ecpe.html",
+    "href": "posts/DataScience/ecpe.html",
+    "title": "Emotional Cause Pair Analysis",
+    "section": "",
+    "text": "Introduction\nAs you move on from working on production grade machine learning projects to the field of research, you get a glimpse of what companies or team of brilliant minds work on.\n\n\nAfter wrapping up our NLP project as part of regular weekend meet, my friends and I decided it was time to take the plunge into state-of-the-art AI/ML topics and look at some advancement in this field.\nIdea was to choose one research paper , understand the scope, problem it is trying to solve and look at proposed architecture for our implementation. Our objective was to LEARN and have FUN along the way.\nPaper published in arxiv.org was selected called as Emotional Cause Pair Extraction (ECPE).\nNote: Images used are from this research paper, and credit goes to the authors. I have just added few annotation on top of it for better understanding.\n\n\nPrerequisites\nThe prerequisites for understanding the research paper is to have excellent knowledge of the following architecture and why they took the decision to go with certain implementation.\n\nRNN (Recurrent Neural Network)\nLSTM (Long Short Term Memory)\nBI-LSTM (Bi-directional LSTM)\nAttention Model\n\nAPIs are provided by Tensorflow & Pytorch to implement these in just few lines of code but our suggestion is to try to understand through 1st principles and then build some of them from scratch (using python). This will give in-depth understanding and intuition of how and why the authors have developed the system the way it is.\nPro tip : You will quickly start going down the rabbit hole as each topic is pretty big in itself. But if you have the passion, you will get through it. Remember - it is no magic but brilliant use of mathematics\n\n\nOverview\nEmotional Cause Pair Extraction (ECPE) - Objective is to extract potential causes that lead to emotional expression in a sentence\nInput - Sentence with 5 clauses :- \nOutput - Emotions and Cause pair\n\n\n\necpe 2\n\n\n\n\nHigh Level\nThe paper proposes to extract all potential pairs of emotions and and corresponding causes in a document via two step process.\nTip: AI and ML are math heavy. Treat it like any other programming language. It takes time to learn. Math is the language of the universe and that was my motivation to learn it. What's yours?\n\nStep 1 - Extraction\nExtraction of individual Emotion \\(E\\) and Cause \\(C\\) from a document can be achieved by either of the two approaches :-\n1.1&gt; Independent Multi-task learning network\n1.2&gt; Interactive Multi-task learning network (enhanced version)\nTip - Learn LaTeX, your friendly neighbourhood high quality typesetting system for writing Technical or Scientific documents\nFinally, the o/p of step 1 is\n\n\n\nStep 1 output\n\n\n\n\nStep 2 - Pairing and Filtering\nThere are 4 sub tasks under this :-\n2.1 Apply cartesian production on all possible pairs - \\( E C\\)\n2.2 Represent each pair by a feature vector\n2.3 Build a logistic regression model on each pairs\n2.4 Remove 0s from the previous steps to get the final set of \\(e\\) & \\(c\\) pairs\n\n\n\nDetails\nLet us get into a bit more details of Step 1\n\n1.1&gt; Independent Multi-task learning network.\nBelow diagram shows some of the components.\nWhere:\n\n\n\nformula\n\n\n\n\n\nalt text\n\n\n\n\n1.2&gt;Interactive Multi-task learning network\nBelow is the enhanced version where the correlation is captured between \\(E\\) & \\(C\\). There are couple of methods here but the architecture remaining the same with slight variations.\n\nInter-EC - Using emotion extraction to improve cause Extraction\n\n\nInter-CE - Using cause extraction to improve emotion extraction\n\n\n\nalt text\n\n\nMoving on to Step 2 :-\n\n\n\nalt text\n\n\n\n\n\n\nSettings\nWe have made some modifications to the settings.\n\nWord2Vec for word embeddings\nUsed both uniform distribution and Xavier for initialization\nMini batch Gradient Decent, Adam optimizer and LR set as 0.0001\nDropouts with regularization at 20% and 30%\n\n\n\nNext steps\nIn the next article, we will take a look at the implementation using Pytorch.\nPro Tip - Use Pytorch (by FaceBook) if you are into research and use Tensorflow (by Google) if you are in real world implementation - though these differentiation is thinning very quickly\n\n\nConclusion\nIf you find this article useful or have any inputs, do reach out to me at Linkedln and follow me on Twitter. Thank you, keep learning!\n\n\nReferences\nOriginal Paper - (https://arxiv.org/abs/2103.01544)"
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html",
+    "href": "posts/Quarto/quarto.html",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "",
+    "text": "After months of wrestling with Docusaurus integration for blogging on qubitai.in, I found myself spending more time managing configurations than actually writing content. Don’t get me wrong—Docusaurus is a fantastic tool for documentation-heavy projects. But for a scientific blog with code outputs, mathematical equations, and research-oriented content? It felt like using a sledgehammer to crack a nut.\n\nEnter Quarto.\nWhen I started working on my research paper on qfey.in, I decided to give Quarto a shot. Within hours, I was trying out beautiful, reproducible content with embedded code execution, stunning visualizations, and zero configuration headaches. The difference was night and day."
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#why-i-made-the-switch",
+    "href": "posts/Quarto/quarto.html#why-i-made-the-switch",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "",
+    "text": "After months of wrestling with Docusaurus integration for blogging on qubitai.in, I found myself spending more time managing configurations than actually writing content. Don’t get me wrong—Docusaurus is a fantastic tool for documentation-heavy projects. But for a scientific blog with code outputs, mathematical equations, and research-oriented content? It felt like using a sledgehammer to crack a nut.\n\nEnter Quarto.\nWhen I started working on my research paper on qfey.in, I decided to give Quarto a shot. Within hours, I was trying out beautiful, reproducible content with embedded code execution, stunning visualizations, and zero configuration headaches. The difference was night and day."
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#what-is-quarto",
+    "href": "posts/Quarto/quarto.html#what-is-quarto",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\nQuarto is an open-source scientific and technical publishing system built on Pandoc. Think of it as the spiritual successor to R Markdown, but supercharged and language-agnostic. Whether you’re working with Python, R, Julia, or Observable JS, Quarto has you covered.\nAt its core, Quarto transforms plain text (Markdown) into:\n\nWebsites and blogs (like this one!)\nBooks and manuscripts (multi-chapter, professional layouts)\nScientific papers (with proper citations and cross-references)\nPresentations (RevealJS slides)\nDashboards (interactive data displays)\n\nThe magic? You write once in Markdown, and Quarto handles the rest—including executing your code and embedding the results directly in your output."
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#why-quarto-over-docusaurus-and-others",
+    "href": "posts/Quarto/quarto.html#why-quarto-over-docusaurus-and-others",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "Why Quarto Over Docusaurus (and Others)?",
+    "text": "Why Quarto Over Docusaurus (and Others)?\n\nThe Docusaurus Dilemma\nDocusaurus excels at what it’s designed for: React-based documentation sites with versioning, localization, and interactive components. But here’s where it fell short for my needs:\n\nConfiguration Complexity: Multiple config files, plugin management, and React component setup felt overwhelming for simple blog posts.\nCode Execution: No native support for running code and displaying outputs. You’re limited to syntax highlighting.\nScientific Writing: LaTeX equations work, but integrating computational outputs requires workarounds.\nBuild Overhead: Node modules, dependency management, and build times added friction to my writing workflow.\n\n\n\nThe Quarto Advantage\nSimplicity: Write Markdown, add YAML headers, done. No build system to configure.\nComputational Narratives: Execute Python, R, or Julia code and embed outputs—plots, tables, data—automatically.\nScientific Publishing: First-class support for citations, cross-references, equations, and academic formatting.\nMultiple Outputs: One source file → HTML, PDF, Word, ePub. Need a website and a PDF report? Write once, render twice.\nPerformance: Lightning-fast rendering with incremental builds. No node_modules bloat.\n\n\nWhat About MkDocs, Jekyll, or Hugo?\nLet’s quickly compare:\n\nMkDocs is excellent for documentation with Material theme, but lacks computational capabilities.\nJekyll and Hugo are fast static site generators, but require external tools for code execution (like Jupyter).\nDocusaurus shines for developer documentation with versioning needs.\nQuarto is purpose-built for scientific, data-driven, and computational content while still being simple for general blogging."
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#getting-started-with-quarto",
+    "href": "posts/Quarto/quarto.html#getting-started-with-quarto",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "Getting Started with Quarto",
+    "text": "Getting Started with Quarto\n\nInstallation\nQuarto is surprisingly easy to install:\n# macOS\nbrew install quarto\n\n# Windows (using Chocolatey)\nchoco install quarto\n\n# Linux\nsudo wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/quarto-1.4.550-linux-amd64.deb\nsudo dpkg -i quarto-1.4.550-linux-amd64.deb\nOr download directly from quarto.org.\n\n\nMy installation\nI use Neovim for writing my blog along with another plugin called “Zen mode”. The setup is available in quarto neovim\n\nBefore ZenMode\n\n\n\nWithoutZen\n\n\n\n\nAfter ZenMode\n\n\n\nWithZen\n\n\nOnce you are ready, you can just run the following commands inside Neovim to activate and preview quarto document.\n:QuartoActivate\n\n:QuartoPreview\n\nWhy I use CLI for writing blogs This helps me to focus and write quickly and some other stuff will come here.\n\n\n\n\nCreating Your First Blog\n# Create a new blog project\nquarto create project blog my-blog\n\ncd my-blog\nThis generates a project structure:\nmy-blog/\n├── _quarto.yml          # Site configuration\n├── index.qmd            # Home page\n├── about.qmd            # About page\n├── posts/               # Blog posts directory\n│   ├── _metadata.yml    # Posts metadata\n│   └── post-1/\n│       └── index.qmd    # Your first post\n└── styles.css           # Custom styling\n\n\nConfiguration\nEdit _quarto.yml:\nproject:\n  type: website\n\nwebsite:\n  title: \"My Scientific Blog\"\n  description: \"Exploring data, code, and ideas\"\n  navbar:\n    left:\n      - href: index.qmd\n        text: Home\n      - href: about.qmd\n        text: About\n      - href: posts.qmd\n        text: Blog\n    right:\n      - icon: github\n        href: https://github.com/yourusername\n      - icon: twitter\n        href: https://twitter.com/yourusername\n  \n  page-footer:\n    center: \"© 2025 Your Name. Made with Quarto.\"\n\nformat:\n  html:\n    theme: cosmo\n    css: styles.css\n    toc: true\n    code-fold: false\n    code-tools: true\n\n\nWriting a Blog Post\nCreate posts/quarto-demo/index.qmd:\n---\ntitle: \"Visualizing Data with Python\"\nauthor: \"Your Name\"\ndate: \"2025-10-19\"\ncategories: [python, data-viz, tutorial]\nimage: \"thumbnail.png\"\n---"
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#introduction",
+    "href": "posts/Quarto/quarto.html#introduction",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "Introduction",
+    "text": "Introduction\nLet’s explore data visualization with Python and matplotlib.\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Generate data\nx = np.linspace(0, 10, 100)\ny1 = np.sin(x)\ny2 = np.cos(x)\n\n# Create plot\nplt.figure(figsize=(10, 6))\nplt.plot(x, y1, label='sin(x)', linewidth=2)\nplt.plot(x, y2, label='cos(x)', linewidth=2)\nplt.xlabel('x')\nplt.ylabel('y')\nplt.title('Trigonometric Functions')\nplt.legend()\nplt.grid(True, alpha=0.3)\nplt.show()\n\n\n\n\n\n\n\n\nThe beauty of Quarto? This code runs during rendering, and the plot appears in your blog automatically!\n\nPreview\n# Preview locally\nquarto preview\n\n# Render to HTML\nquarto render"
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#advanced-features",
+    "href": "posts/Quarto/quarto.html#advanced-features",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "Advanced Features",
+    "text": "Advanced Features\n\n1. Creating a Complete Website\nQuarto isn’t just for blogs. Here’s a complete website structure:\n# _quarto.yml\nproject:\n  type: website\n  output-dir: _site\n\nwebsite:\n  title: \"QubitAI\"\n  navbar:\n    left:\n      - text: \"Home\"\n        href: index.qmd\n      - text: \"Blog\"\n        href: blog.qmd\n      - text: \"Projects\"\n        href: projects.qmd\n      - text: \"Research\"\n        menu:\n          - text: \"Papers\"\n            href: research/papers.qmd\n          - text: \"Talks\"\n            href: research/talks.qmd\n      - text: \"About\"\n        href: about.qmd\n\n\n2. Writing Books\nquarto create project book my-book\nBooks get automatic chapter navigation, cross-references, and can output to PDF, ePub, or HTML:\nbook:\n  title: \"Quantum Computing Fundamentals\"\n  author: \"Your Name\"\n  chapters:\n    - index.qmd\n    - intro.qmd\n    - quantum-basics.qmd\n    - algorithms.qmd\n    - references.qmd\n\n\n3. Python Integration (Real Example)\nLet me show you a practical example with data analysis:\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom scipy import stats\n\n# Generate sample data\nnp.random.seed(42)\nnormal_data = np.random.normal(100, 15, 1000)\nexponential_data = np.random.exponential(2, 1000)\n\n# Create subplots\nfig, axes = plt.subplots(1, 2, figsize=(14, 5))\n\n# Normal distribution\naxes[0].hist(normal_data, bins=30, density=True, alpha=0.7, color='skyblue', edgecolor='black')\naxes[0].set_title('Normal Distribution', fontsize=14, fontweight='bold')\naxes[0].set_xlabel('Value')\naxes[0].set_ylabel('Density')\naxes[0].grid(True, alpha=0.3)\n\n# Add theoretical curve\nx_range = np.linspace(normal_data.min(), normal_data.max(), 100)\naxes[0].plot(x_range, stats.norm.pdf(x_range, 100, 15), 'r-', linewidth=2, label='Theoretical')\naxes[0].legend()\n\n# Exponential distribution\naxes[1].hist(exponential_data, bins=30, density=True, alpha=0.7, color='lightcoral', edgecolor='black')\naxes[1].set_title('Exponential Distribution', fontsize=14, fontweight='bold')\naxes[1].set_xlabel('Value')\naxes[1].set_ylabel('Density')\naxes[1].grid(True, alpha=0.3)\n\n# Add theoretical curve\nx_range_exp = np.linspace(0, exponential_data.max(), 100)\naxes[1].plot(x_range_exp, stats.expon.pdf(x_range_exp, scale=2), 'r-', linewidth=2, label='Theoretical')\naxes[1].legend()\n\nplt.tight_layout()\nplt.show()\n\nprint(f\"Normal: mean={normal_data.mean():.2f}, std={normal_data.std():.2f}\")\nprint(f\"Exponential: mean={exponential_data.mean():.2f}, std={exponential_data.std():.2f}\")\n\n\n\n\n\n\n\nFigure 1: Distribution of Random Variables\n\n\n\n\n\nNormal: mean=100.29, std=14.68\nExponential: mean=2.02, std=2.00\n\n\nThe plot and printed statistics will appear directly in your rendered blog. No manual screenshots needed!\n\n\n4. Cross-References and Citations\nSee @fig-analysis for the distribution comparison.\n\nAccording to @smith2023quantum, quantum computing will revolutionize cryptography.\n\n## References\n\n::: {#refs}\n:::\nAdd a references.bib file:\n@article{smith2023quantum,\n  title={Quantum Computing Applications},\n  author={Smith, John},\n  journal={Nature},\n  year={2023}\n}\n\n\n5. Interactive Elements\nQuarto supports Observable JS for interactivity:\n\ndata = Array.from({length: 100}, (_, i) =&gt; ({\n  x: Math.random() * 100,\n  y: Math.random() * 100,\n  value: Math.random() * 100,\n  category: [\"Quantum\", \"AI\", \"Data Science\"][Math.floor(Math.random() * 3)]\n}))\n\nviewof threshold = Inputs.range([0, 100], {\n  value: 50, \n  step: 1, \n  label: \"Filter by value threshold:\"\n})\n\nfiltered_data = data.filter(d =&gt; d.value &gt; threshold)\n\nPlot.plot({\n  marks: [\n    Plot.dot(filtered_data, {\n      x: \"x\", \n      y: \"y\", \n      fill: \"category\",\n      r: 5,\n      opacity: 0.7\n    })\n  ],\n  color: {legend: true},\n  grid: true,\n  width: 700,\n  height: 500,\n  marginLeft: 50\n})"
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#integrating-quarto-with-existing-websites",
+    "href": "posts/Quarto/quarto.html#integrating-quarto-with-existing-websites",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "Integrating Quarto with Existing Websites",
+    "text": "Integrating Quarto with Existing Websites\nThis is where Quarto really shines for real-world scenarios.\n\nScenario 1: Quarto Blog + Existing HTML Site\nIf you have an existing HTML/React/Vue site and want to add a Quarto blog:\n# _quarto.yml\nproject:\n  type: website\n  output-dir: ../existing-site/blog  # Output to your site's blog folder\n\nwebsite:\n  site-url: \"https://qubitai.in\"\n  bread-crumbs: false\n  navbar:\n    left:\n      - text: \"← Back to Main Site\"\n        href: \"https://qubitai.in\"\nYour existing site can link to /blog/ and Quarto handles everything there.\n\n\nScenario 2: Embedding Quarto Output\nRender Quarto to standalone HTML:\nformat:\n  html:\n    embed-resources: true\n    standalone: true\nThen embed in your existing site:\n&lt;iframe src=\"/quarto-content/article.html\" \n        width=\"100%\" \n        height=\"800px\" \n        frameborder=\"0\"&gt;\n&lt;/iframe&gt;\n\n\nScenario 3: Custom Theme Integration\nMatch Quarto styling to your existing site:\nformat:\n  html:\n    theme: none  # Disable default theme\n    css: \n      - ../main-site/styles.css\n      - custom-quarto.css\n    include-in-header:\n      - ../main-site/header.html\n    include-after-body:\n      - ../main-site/footer.html"
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#my-migration-journey-docusaurus-quarto",
+    "href": "posts/Quarto/quarto.html#my-migration-journey-docusaurus-quarto",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "My Migration Journey: Docusaurus → Quarto",
+    "text": "My Migration Journey: Docusaurus → Quarto\n\nWhat Changed (for the Better)\nBefore (Docusaurus): - 10+ configuration files - node_modules: ~500MB - Build time: 45 seconds - Markdown + MDX components - Separate code blocks (no execution)\nAfter (Quarto): - 1 primary config file (_quarto.yml) - No dependencies folder - Build time: 3 seconds - Pure Markdown + YAML - Live code execution\n\n\nMigration Steps\n\nSet up Quarto project:\nquarto create project blog qscribe\nConvert posts: Migrated Docusaurus MDX to Quarto QMD\n\nChanged frontmatter format\nAdded executable code blocks where relevant"
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#tips-for-success",
+    "href": "posts/Quarto/quarto.html#tips-for-success",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "Tips for Success",
+    "text": "Tips for Success\n\nStart small: Convert one blog post first. Test the workflow.\nUse VS Code: Install the Quarto extension for syntax highlighting, preview, and rendering shortcuts.\nLeverage freeze: For expensive computations:\nexecute:\n  freeze: auto  # Only re-run when code changes\nVersion control: Commit source .qmd files, not rendered _site/ directory.\nCI/CD: Use GitHub Actions for automatic deployment:\nname: Publish\non:\n  push:\n    branches: main\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - uses: quarto-dev/quarto-actions/setup@v2\n      - run: quarto publish gh-pages\n\n\n\n\n\n\n\nNote\n\n\n\nI am working on an open source cli migrtation tool to help out with this conversion."
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#real-world-use-cases",
+    "href": "posts/Quarto/quarto.html#real-world-use-cases",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "Real-World Use Cases",
+    "text": "Real-World Use Cases\nAcademic Research: Publish reproducible papers with embedded analysis\nData Science Portfolios: Showcase projects with live code and visualizations\nTechnical Documentation: Books, tutorials, and API references\nCompany Blogs: Technical content with code examples (engineering blogs)\nCourse Materials: Interactive lessons with executable examples"
+  },
+  {
+    "objectID": "posts/Quarto/quarto.html#conclusion",
+    "href": "posts/Quarto/quarto.html#conclusion",
+    "title": "Docusaurus to Quarto:A Powerful Scientific Blogging",
+    "section": "Conclusion",
+    "text": "Conclusion\nSwitching from Docusaurus to Quarto was one of the best decisions for my technical blog. The simplicity, power, and focus on scientific publishing transformed my workflow. I spend less time fighting with configurations and more time creating content.\nIf you’re running a technical blog, working with data, or publishing research, Quarto deserves serious consideration. It’s not just a tool—it’s a complete publishing system that respects your time and amplifies your content.\nTry it yourself: 1. Install Quarto: brew install quarto (or download from quarto.org). 2. Create a project: quarto create project blog my-blog. 3. Write your first post. 4. Preview: quarto preview.\nFour commands. Zero configuration overhead. Beautiful, reproducible output.\nWelcome to the future of scientific publishing.\n\nResources:\n\nQuarto Documentation\nQuarto Gallery\nAwesome Quarto\n\nHave questions about Quarto or migration? Feel free to reach out!"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html",
+    "href": "posts/LLMs/transformers.html",
+    "title": "Transformers",
+    "section": "",
+    "text": "In my previous blog post, I introduced Deepseek LLM’s innovative parallel thread execution (PTX) mechanism and how they use it for GPU optimization. Today, we’ll cover another foundational topic - Multihead Attention (MHA) before diving into Deepseek’s second groundbreaking innovation known as Multihead Latent Attention (MHLA).\n\n\n\nLogical progression to understand MHLA is as shown in the image below.\n\n\n\nMHLA\n\n\nThe attention mechanism was introduced to solve fundamental limitations in the Encoder-Decoder architecture. Let’s examine why this was necessary.\n\n\n\nBefore attention mechanisms, sequence processing relied on RNN (Recurrent Neural Network) and LSTM (Long Short Term Memory) networks which had significant limitations:\n\nThe encoder processes input token through LSTM/RNN cells, with the final hidden state (h3) passed to the decoder\nAll information from previous hidden states (h0, h1, h2) is compressed into a single vector called the context vector\nThis means that to generate outputs, the decoder only has access to this final hidden state\nAs a result, contextual information is lost when processing longer sequences\n\n\n\n\nEncoder-Decoder\n\n\n\n\n\nThe traditional encoder-decoder suffered from several key limitations:\nInformation Bottleneck: The entire input sequence had to be compressed into a single fixed-length context vector, regardless of the input sequence length.\nLong Range Dependencies: As sequence length increased, the model struggled to maintain relationships between positions.\nVanishing Information: Information from the beginning of long sequences would “fade” by the time it reached the decoder.\nThese limitations were particularly problematic for machine translation tasks where sentences in different languages often have different structures and word orders.\n\n\n\nThe concept of Attention was introduced to solve the above challenges in a landmark paper Neural Machine Translation by Jointly Learning to Align and Translate by Bahdanau, Cho, and Bengio in 2014. It revolutionized the field of sequence processing by allowing neural networks to focus on specific parts of the input when generating outputs. You can find the paper here\n\nDecoder (s1) has now access to every hidden state and also the context of every hidden state in the encoder stage.\n\n\n\n\nEncoder-Decoder-Attention\n\n\nAnother way of imagining the Attention Mechanism is as below. The attention block in between has the context information of inputs and much more richer containing semantic meaning.\n\nSee the attention weights giving the importance for each hidden state in the below image\nKey Improvement: The decoder (s1) now has access to every hidden state from the encoder stage, giving it context from the entire input sequence. The stronger colored bands in this visualization represent higher attention weights, showing which input tokens the model is focusing on when generating each output.\n\n\n\n\nAttention\n\n\nThe Bahdanau attention mechanism allowed decoder to “look back” at the entire sequence of encoder hidden states when generating each output token. Rather than relying solely on a fixed context vector, the decoder could dynamically focus on relevant parts of the input sequence.\n\n\n\nTo understand how everything fits together, let’s revisit the transformer architecture:\n\n\n\nLLM Architecture\n\n\nAs a block schematic, self-attention will look something like this:\n\n\n\nSelfAttention\n\n\nWhere:\n$ X : $ Input embedding (Token Embedding + Positional Encoding)\n$ W_Q : $ Trainable Query Matrix\n$ W_K : $ Trainable Key Matrix\n$ W_V : $ Trainable Value Matrix\n$ (d_k): $ Square Root of keys dimensions\n\nExample: See how the word “Data” interacts with surrounding words. Each word calculates attention scores with every other word in the sequence:\n\n\n\nSelf Attention\n\n\n\n\nThe process works something like this:\n\n\n\nKeysvalue\n\n\nAttention Score will then be calculated as :\n$ x_2 x_1 $\n$ x_2 x_2 $\n$ x_2 x_3 $\n$ x_2 x_4 $\nAttention Weights will be :\n$ Attention Weight = $ softmax \\(([\\alpha_{21},\\alpha_{22},\\alpha_{23},\\alpha_{24}])\\) = \\(([w_{21},w_{22},w_{23},w_{24}])\\)\nFinally Context Vector for \"Data\" will then be :\n$ Context Vector_{Data} = $ $ (w_{21} v_1) + $ $ (w_{22} v_2) + $ $ (w_{23} v_3) + $ $ (w_{24} v_4) $\nWhere: \\(v_1 ,v_1, v_1, v_1\\) are Value Matrix\n\n\n\n\n\nNote: Understanding tensors (multi-dimensional arrays) and matrix multiplication is essential here. With practice, these operations become intuitive.\n\nHere’s how input text is processed through the self-attention blocks, including sample matrix dimensions:\n\n\nThe numbers in brackets represent dimensions (e.g., \\(W_Q\\) has dimensions \\([10, 5]\\))\nThis example processes 6 words (i.e. 6 tokens)\nThe context vector output feeds into the logits layer to calculate probabilities for the next word\nWhile we show just one transformer block here, modern architectures stack multiple blocks\n\n\n\n\n\nAttention-Matrix\n\n\n\n\n\nCausal attention which is also known as Masked Attention is a variant used in language models that ensures tokens can only attend to themselves and previous tokens in the sequence. This maintains the autoregressive property needed for text generation, where each token is predicted based only on previously observed tokens.\n\nAutoregression: The output for each word goes back as an input to predict the next word. \n\nLet’s take a simpler example: in the sentence THE DATA IS HUGE, when predicting the word IS, causal attention only needs to calculate attention scores for THE and DATA (previous and current tokens). This significantly reduces computation compared to full self attention, which would unnecessarily calculate scores for future tokens like HUGE.\n\n\n\nOne significant benefit of causal attention is computational efficiency. Since each token only needs to calculate attention weights for itself and preceding tokens but not future tokens, the number of calculations decreases substantially:\n\nFor the first token: only 1 attention weight calculation\nFor the second token: 2 attention weight calculations\nFor the third token: 3 attention weight calculations\nAnd so on…\n\nIn causal attention, we apply a mask to the attention scores matrix that sets all future position scores to negative infinity before the softmax operation\n\n\n\nCausalAttention\n\n\n\n\n\nBut why would you need Multihead attention? Have a look at this sentence - The programmer compiled the code, but it still had bugs in it.\nIn this sentence, we have two instances of “it”. First “it” refers to “complation of the code” and second “it” refers “bug in the code”. If we get the token ids then it will look something like this.\nBoth instances of ‘it’ have identical token IDs, but they refer to different concepts in the sentence. This shows why we need multiple perspectives of the input sequence, as a single attention mechanism might not capture these different contextual meanings.\n[10] [23] [3] [34] [50] [89] [14] [77] [69] [8] [15] [9] [77] [.]\nThat means the context is completly lost since it will have only one perspective. What if we somehow capture different perspective of a given input sequence?\nInstead of performing a single attention operation, multihead attention performs multiple attention in parallel. Each “head” learns different relationship or patterns or perspective:\n\n\n\nTake a look at this image. Here the input dimension is split into two heads which captures two perspective of a sentence.\n\n\n\nMultiHead\n\n\n\nSplit the embedding dimension into multiple heads\nEach head performs its own Query, Key, Value projections\nCalculate attention independently in each head\nConcatenate results and project back to original dimension\n\nThis allows the model to jointly attend to information from different representation subspaces, capturing different aspects of the input sequence.\nMathematically :-\n\\(\\text{MultiHead}(Q, K, V) = \\text{Concat}(\\text{head}_1, ..., \\text{head}_h) \\circ W^O\\)\nWhere each head is:\n\\(\\text{head}_i = \\text{Attention}(QW^Q_i, KW^K_i, VW^V_i)\\)\n\n\n\nMatrix\n\n\n\n\n\nLet us see some code we discussed so far.\nAssume that the input $ x $ is the input embedding which is tokenized and positional encoding is applied\nOutput of $ x = $ [1, 3, 6] which is read as follows: 3 rows , 6 columns and batch size is 1.\n\n# decode d_out and number of heads\n# head_dimn = d_out/n_heads\n\nd_out = 6\nnum_heads = 2\nhead_dimn = int(d_out/num_heads)\nprint(\"output dimn is:\", d_out)\nprint(\"number of heads is:\", num_heads)\nprint(\"head dimn is:\", head_dimn)\n\nx = torch.tensor([[[0.1, 0.2, 0.3, 0.4, 0.5, 0.6], \n                    [0.7, 0.8, 0.9, 0.10, 0.11, 0.12], \n                    [0.13, 0.14, 0.15, 0.16, 0.17, 0.18]]])\n\nbatch, tokenid, d_in = x.shape\nTrainable matrix $ W_q, W_k, W_v $\n\nW_Query = torch.nn.Linear(d_in, d_out, bias=False)\nW_Key = torch.nn.Linear(d_in, d_out, bias=False)\nW_Value = torch.nn.Linear(d_in, d_out, bias=False)\n\n# get the key , query and values matrix \nkeys = W_Key(x)\nquery = W_Query(x)\nvalues = W_Value(x)\n\n# 3 rows and 6 columns having 1 batch\nprint(query.shape)\nprint(keys.shape)\nprint(values.shape)\n\n\n# convert [batch, tokens, d_out] to [batch, token, num_heads, head_dimn]\n# 3 Dimensional [1,3,6] -&gt; 4 Dimensional [1,3,2,3] i.e. 1 batch of 2x3 having 3 such sets\nkeys = keys.view(batch, tokenid, num_heads, head_dimn)\nquery = query.view(batch, tokenid, num_heads, head_dimn)\nvalues = values.view(batch, tokenid, num_heads, head_dimn)\n\nprint(keys.shape, query.shape, values.shape)\nkeys\n\n\natt_score = query @ keys.transpose(2,3) # this results in Q1 x K1(transpose) & Q2 x K2(transpose)\nprint(att_score.shape)\n# this is attention score of head1 and head 2 with tokenid in columns and tokenids in rows i.e. tokenids x tokenids\natt_score \n\n\n# To get attention weights we need to do the following\n# scaling by sqrt(key dimns) + softmax + causal attention + dropouts\n\n# first apply mask on the upper triangle of the matrix on tokenids which is 3x3\nmask = torch.triu(torch.ones(3,3), diagonal=1).bool()\nmask\n\n# we need to now change the mask to -inf so when we apply softmax, it will be turn to zeros\natt_score.masked_fill_( mask, float('-inf'))\n\n\nsqrt_d = keys.shape[-1]**0.5\nprint(\"square root of keys is : \", sqrt_d)\n\n# apply softmax on the last dimension which is length of the tokenids [batch, num_heads, tokenids, tokenids]\nattn_weights = torch.softmax(att_score/sqrt_d, dim=-1)\nattn_weights\n\n# context vector is attn_weights * value matrix\nvalues.shape, values\n\ncontext_vector = (attn_weights @ values)\ncontext_vector.shape, context_vector\n\n# if you want projection (optional) \ncontext_vec = torch.nn.Module.out_proj \n\n\n\nNow that we’ve established a solid understanding of conventional attention mechanisms, in the next post we’ll explore Deepseek’s innovative Multihead Latent Attention (MHLA). This technique represents a significant advancement that improves both computational efficiency and model performance by operating in a more compact latent space. MHLA reduces computational complexity while maintaining or even enhancing the model’s ability to capture relationships between tokens, particularly for long sequences. Stay tuned to learn how this optimization technique can be applied to your own language models!"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#multihead-latent-attention-roadmap",
+    "href": "posts/LLMs/transformers.html#multihead-latent-attention-roadmap",
+    "title": "Transformers",
+    "section": "",
+    "text": "Logical progression to understand MHLA is as shown in the image below.\n\n\n\nMHLA\n\n\nThe attention mechanism was introduced to solve fundamental limitations in the Encoder-Decoder architecture. Let’s examine why this was necessary."
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#encoder-decoder",
+    "href": "posts/LLMs/transformers.html#encoder-decoder",
+    "title": "Transformers",
+    "section": "",
+    "text": "Before attention mechanisms, sequence processing relied on RNN (Recurrent Neural Network) and LSTM (Long Short Term Memory) networks which had significant limitations:\n\nThe encoder processes input token through LSTM/RNN cells, with the final hidden state (h3) passed to the decoder\nAll information from previous hidden states (h0, h1, h2) is compressed into a single vector called the context vector\nThis means that to generate outputs, the decoder only has access to this final hidden state\nAs a result, contextual information is lost when processing longer sequences\n\n\n\n\nEncoder-Decoder"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#drawback-of-encoder-decoder",
+    "href": "posts/LLMs/transformers.html#drawback-of-encoder-decoder",
+    "title": "Transformers",
+    "section": "",
+    "text": "The traditional encoder-decoder suffered from several key limitations:\nInformation Bottleneck: The entire input sequence had to be compressed into a single fixed-length context vector, regardless of the input sequence length.\nLong Range Dependencies: As sequence length increased, the model struggled to maintain relationships between positions.\nVanishing Information: Information from the beginning of long sequences would “fade” by the time it reached the decoder.\nThese limitations were particularly problematic for machine translation tasks where sentences in different languages often have different structures and word orders."
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#attention",
+    "href": "posts/LLMs/transformers.html#attention",
+    "title": "Transformers",
+    "section": "",
+    "text": "The concept of Attention was introduced to solve the above challenges in a landmark paper Neural Machine Translation by Jointly Learning to Align and Translate by Bahdanau, Cho, and Bengio in 2014. It revolutionized the field of sequence processing by allowing neural networks to focus on specific parts of the input when generating outputs. You can find the paper here\n\nDecoder (s1) has now access to every hidden state and also the context of every hidden state in the encoder stage.\n\n\n\n\nEncoder-Decoder-Attention\n\n\nAnother way of imagining the Attention Mechanism is as below. The attention block in between has the context information of inputs and much more richer containing semantic meaning.\n\nSee the attention weights giving the importance for each hidden state in the below image\nKey Improvement: The decoder (s1) now has access to every hidden state from the encoder stage, giving it context from the entire input sequence. The stronger colored bands in this visualization represent higher attention weights, showing which input tokens the model is focusing on when generating each output.\n\n\n\n\nAttention\n\n\nThe Bahdanau attention mechanism allowed decoder to “look back” at the entire sequence of encoder hidden states when generating each output token. Rather than relying solely on a fixed context vector, the decoder could dynamically focus on relevant parts of the input sequence."
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#self-attention",
+    "href": "posts/LLMs/transformers.html#self-attention",
+    "title": "Transformers",
+    "section": "",
+    "text": "To understand how everything fits together, let’s revisit the transformer architecture:\n\n\n\nLLM Architecture\n\n\nAs a block schematic, self-attention will look something like this:\n\n\n\nSelfAttention\n\n\nWhere:\n$ X : $ Input embedding (Token Embedding + Positional Encoding)\n$ W_Q : $ Trainable Query Matrix\n$ W_K : $ Trainable Key Matrix\n$ W_V : $ Trainable Value Matrix\n$ (d_k): $ Square Root of keys dimensions\n\nExample: See how the word “Data” interacts with surrounding words. Each word calculates attention scores with every other word in the sequence:\n\n\n\nSelf Attention\n\n\n\n\nThe process works something like this:\n\n\n\nKeysvalue\n\n\nAttention Score will then be calculated as :\n$ x_2 x_1 $\n$ x_2 x_2 $\n$ x_2 x_3 $\n$ x_2 x_4 $\nAttention Weights will be :\n$ Attention Weight = $ softmax \\(([\\alpha_{21},\\alpha_{22},\\alpha_{23},\\alpha_{24}])\\) = \\(([w_{21},w_{22},w_{23},w_{24}])\\)\nFinally Context Vector for \"Data\" will then be :\n$ Context Vector_{Data} = $ $ (w_{21} v_1) + $ $ (w_{22} v_2) + $ $ (w_{23} v_3) + $ $ (w_{24} v_4) $\nWhere: \\(v_1 ,v_1, v_1, v_1\\) are Value Matrix"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#self-attention---dimensions",
+    "href": "posts/LLMs/transformers.html#self-attention---dimensions",
+    "title": "Transformers",
+    "section": "",
+    "text": "Note: Understanding tensors (multi-dimensional arrays) and matrix multiplication is essential here. With practice, these operations become intuitive.\n\nHere’s how input text is processed through the self-attention blocks, including sample matrix dimensions:\n\n\nThe numbers in brackets represent dimensions (e.g., \\(W_Q\\) has dimensions \\([10, 5]\\))\nThis example processes 6 words (i.e. 6 tokens)\nThe context vector output feeds into the logits layer to calculate probabilities for the next word\nWhile we show just one transformer block here, modern architectures stack multiple blocks\n\n\n\n\n\nAttention-Matrix"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#causal-attention",
+    "href": "posts/LLMs/transformers.html#causal-attention",
+    "title": "Transformers",
+    "section": "",
+    "text": "Causal attention which is also known as Masked Attention is a variant used in language models that ensures tokens can only attend to themselves and previous tokens in the sequence. This maintains the autoregressive property needed for text generation, where each token is predicted based only on previously observed tokens.\n\nAutoregression: The output for each word goes back as an input to predict the next word. \n\nLet’s take a simpler example: in the sentence THE DATA IS HUGE, when predicting the word IS, causal attention only needs to calculate attention scores for THE and DATA (previous and current tokens). This significantly reduces computation compared to full self attention, which would unnecessarily calculate scores for future tokens like HUGE."
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#efficiency-advantage",
+    "href": "posts/LLMs/transformers.html#efficiency-advantage",
+    "title": "Transformers",
+    "section": "",
+    "text": "One significant benefit of causal attention is computational efficiency. Since each token only needs to calculate attention weights for itself and preceding tokens but not future tokens, the number of calculations decreases substantially:\n\nFor the first token: only 1 attention weight calculation\nFor the second token: 2 attention weight calculations\nFor the third token: 3 attention weight calculations\nAnd so on…\n\nIn causal attention, we apply a mask to the attention scores matrix that sets all future position scores to negative infinity before the softmax operation\n\n\n\nCausalAttention"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#multihead-attention",
+    "href": "posts/LLMs/transformers.html#multihead-attention",
+    "title": "Transformers",
+    "section": "",
+    "text": "But why would you need Multihead attention? Have a look at this sentence - The programmer compiled the code, but it still had bugs in it.\nIn this sentence, we have two instances of “it”. First “it” refers to “complation of the code” and second “it” refers “bug in the code”. If we get the token ids then it will look something like this.\nBoth instances of ‘it’ have identical token IDs, but they refer to different concepts in the sentence. This shows why we need multiple perspectives of the input sequence, as a single attention mechanism might not capture these different contextual meanings.\n[10] [23] [3] [34] [50] [89] [14] [77] [69] [8] [15] [9] [77] [.]\nThat means the context is completly lost since it will have only one perspective. What if we somehow capture different perspective of a given input sequence?\nInstead of performing a single attention operation, multihead attention performs multiple attention in parallel. Each “head” learns different relationship or patterns or perspective:"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#method",
+    "href": "posts/LLMs/transformers.html#method",
+    "title": "Transformers",
+    "section": "",
+    "text": "Take a look at this image. Here the input dimension is split into two heads which captures two perspective of a sentence.\n\n\n\nMultiHead\n\n\n\nSplit the embedding dimension into multiple heads\nEach head performs its own Query, Key, Value projections\nCalculate attention independently in each head\nConcatenate results and project back to original dimension\n\nThis allows the model to jointly attend to information from different representation subspaces, capturing different aspects of the input sequence.\nMathematically :-\n\\(\\text{MultiHead}(Q, K, V) = \\text{Concat}(\\text{head}_1, ..., \\text{head}_h) \\circ W^O\\)\nWhere each head is:\n\\(\\text{head}_i = \\text{Attention}(QW^Q_i, KW^K_i, VW^V_i)\\)\n\n\n\nMatrix"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#code",
+    "href": "posts/LLMs/transformers.html#code",
+    "title": "Transformers",
+    "section": "",
+    "text": "Let us see some code we discussed so far.\nAssume that the input $ x $ is the input embedding which is tokenized and positional encoding is applied\nOutput of $ x = $ [1, 3, 6] which is read as follows: 3 rows , 6 columns and batch size is 1.\n\n# decode d_out and number of heads\n# head_dimn = d_out/n_heads\n\nd_out = 6\nnum_heads = 2\nhead_dimn = int(d_out/num_heads)\nprint(\"output dimn is:\", d_out)\nprint(\"number of heads is:\", num_heads)\nprint(\"head dimn is:\", head_dimn)\n\nx = torch.tensor([[[0.1, 0.2, 0.3, 0.4, 0.5, 0.6], \n                    [0.7, 0.8, 0.9, 0.10, 0.11, 0.12], \n                    [0.13, 0.14, 0.15, 0.16, 0.17, 0.18]]])\n\nbatch, tokenid, d_in = x.shape\nTrainable matrix $ W_q, W_k, W_v $\n\nW_Query = torch.nn.Linear(d_in, d_out, bias=False)\nW_Key = torch.nn.Linear(d_in, d_out, bias=False)\nW_Value = torch.nn.Linear(d_in, d_out, bias=False)\n\n# get the key , query and values matrix \nkeys = W_Key(x)\nquery = W_Query(x)\nvalues = W_Value(x)\n\n# 3 rows and 6 columns having 1 batch\nprint(query.shape)\nprint(keys.shape)\nprint(values.shape)\n\n\n# convert [batch, tokens, d_out] to [batch, token, num_heads, head_dimn]\n# 3 Dimensional [1,3,6] -&gt; 4 Dimensional [1,3,2,3] i.e. 1 batch of 2x3 having 3 such sets\nkeys = keys.view(batch, tokenid, num_heads, head_dimn)\nquery = query.view(batch, tokenid, num_heads, head_dimn)\nvalues = values.view(batch, tokenid, num_heads, head_dimn)\n\nprint(keys.shape, query.shape, values.shape)\nkeys\n\n\natt_score = query @ keys.transpose(2,3) # this results in Q1 x K1(transpose) & Q2 x K2(transpose)\nprint(att_score.shape)\n# this is attention score of head1 and head 2 with tokenid in columns and tokenids in rows i.e. tokenids x tokenids\natt_score \n\n\n# To get attention weights we need to do the following\n# scaling by sqrt(key dimns) + softmax + causal attention + dropouts\n\n# first apply mask on the upper triangle of the matrix on tokenids which is 3x3\nmask = torch.triu(torch.ones(3,3), diagonal=1).bool()\nmask\n\n# we need to now change the mask to -inf so when we apply softmax, it will be turn to zeros\natt_score.masked_fill_( mask, float('-inf'))\n\n\nsqrt_d = keys.shape[-1]**0.5\nprint(\"square root of keys is : \", sqrt_d)\n\n# apply softmax on the last dimension which is length of the tokenids [batch, num_heads, tokenids, tokenids]\nattn_weights = torch.softmax(att_score/sqrt_d, dim=-1)\nattn_weights\n\n# context vector is attn_weights * value matrix\nvalues.shape, values\n\ncontext_vector = (attn_weights @ values)\ncontext_vector.shape, context_vector\n\n# if you want projection (optional) \ncontext_vec = torch.nn.Module.out_proj"
+  },
+  {
+    "objectID": "posts/LLMs/transformers.html#conclusion",
+    "href": "posts/LLMs/transformers.html#conclusion",
+    "title": "Transformers",
+    "section": "",
+    "text": "Now that we’ve established a solid understanding of conventional attention mechanisms, in the next post we’ll explore Deepseek’s innovative Multihead Latent Attention (MHLA). This technique represents a significant advancement that improves both computational efficiency and model performance by operating in a more compact latent space. MHLA reduces computational complexity while maintaining or even enhancing the model’s ability to capture relationships between tokens, particularly for long sequences. Stay tuned to learn how this optimization technique can be applied to your own language models!"
+  },
+  {
+    "objectID": "posts/LLMs/Introduction.html",
+    "href": "posts/LLMs/Introduction.html",
+    "title": "Introduction to LLMs",
+    "section": "",
+    "text": "OpenAI has been at the forefront of developing sophisticated LLMs, often perceived as black boxes. Until DeepSeek’s open-source release, that is. Now, we have a unique opportunity to peek behind the curtain. In this series of articles, I will delve into the inner workings of DeepSeek’s LLMs, starting with the basics before moving on to more advanced topics, covering their architecture and optimization techniques. Here are some of my notes exploring their research papers."
+  },
+  {
+    "objectID": "posts/LLMs/Introduction.html#large-language-models",
+    "href": "posts/LLMs/Introduction.html#large-language-models",
+    "title": "Introduction to LLMs",
+    "section": "",
+    "text": "OpenAI has been at the forefront of developing sophisticated LLMs, often perceived as black boxes. Until DeepSeek’s open-source release, that is. Now, we have a unique opportunity to peek behind the curtain. In this series of articles, I will delve into the inner workings of DeepSeek’s LLMs, starting with the basics before moving on to more advanced topics, covering their architecture and optimization techniques. Here are some of my notes exploring their research papers."
+  },
+  {
+    "objectID": "posts/LLMs/Introduction.html#background",
+    "href": "posts/LLMs/Introduction.html#background",
+    "title": "Introduction to LLMs",
+    "section": "Background",
+    "text": "Background\nDeepSeek has emerged as a significant disruptor in the AI industry, particularly in the realm of large language models (LLMs). It gained recognition for achieving high-level AI performance while utilizing significantly fewer computational resources compared to industry giants like OpenAI.\nDeepSeek leverages techniques like “Mixture of Experts (MoE)” to optimize resource allocation, innovations like Multi-Head Latent Attention (MLA) etc among many others. But the most important breakthrough was their commitment to open-source principles contributing to its rapid growth and influence."
+  },
+  {
+    "objectID": "posts/LLMs/Introduction.html#impact",
+    "href": "posts/LLMs/Introduction.html#impact",
+    "title": "Introduction to LLMs",
+    "section": "Impact",
+    "text": "Impact\nDeepSeek’s success has put pressure on established AI companies to reconsider their development strategies and by democratizing their AI technology, it has made these models more accessible to smaller organizations and developing nations.\nThey developed a model much more powerful (or similar) than OpenAI with significantly less resource. DeepSeek’s rise signifies a shift towards more efficient and accessible AI, challenging the dominance of OpenAI."
+  },
+  {
+    "objectID": "posts/LLMs/Introduction.html#my-motivation",
+    "href": "posts/LLMs/Introduction.html#my-motivation",
+    "title": "Introduction to LLMs",
+    "section": "My Motivation",
+    "text": "My Motivation\nDeepSeek’s achievement, building a powerful model with optimized resources, resonates deeply. It’s a testament to human ingenuity, a reminder that constraints often spark the most innovative solutions. When faced with limitations, we have an incredible ability to find efficient, impactful pathways forward.\n\nWe’ve always defined ourselves by the ability to overcome the impossible. And we count these moments. These moments when we dare to aim higher, to break barriers, to reach for the stars, to make the unknown known. We count these moments as our proudest achievements. But we lost all that. Or perhaps we’ve just forgotten that we are still pioneers. And we’ve barely begun. And that our greatest accomplishments cannot be behind us, because our destiny lies above us. - Cooper, (Movie - Interstellar)"
+  },
+  {
+    "objectID": "posts/LLMs/Introduction.html#llm-architecture",
+    "href": "posts/LLMs/Introduction.html#llm-architecture",
+    "title": "Introduction to LLMs",
+    "section": "LLM Architecture",
+    "text": "LLM Architecture\nLet us see a simple structure of LLM Architecture containing three blocks\n\nInput\nTransformer\nOutput\n\n\n\n\nLLM Architecture\n\n\n\nInput Block\nInput block will process text by tokenizing it and using Embedding layer will create a token embedding. This token embedding layer will be added to positional encoding creating final Input embedding matrix\n\n\nOutput Block\nThis is where the next token will be predicted. Output of transformer block is normalized and send it to logist layer where the word with highest probability is choosen.\n\n\nTransformer Block\nAll the magic happens here. DeepSeek replaced Multi-Head Attention with Multi-Head Latent Attention along with other innovations in the LLM architecture."
+  },
+  {
+    "objectID": "posts/LLMs/Introduction.html#deepseeks-archictecure",
+    "href": "posts/LLMs/Introduction.html#deepseeks-archictecure",
+    "title": "Introduction to LLMs",
+    "section": "DeepSeek’s Archictecure",
+    "text": "DeepSeek’s Archictecure\n\nMulti-Head Latent Attention\n\n\nMixture of Experts (MoE)\n\n\nMulti-Token Prediction\n\n\nReinforcement Learning using GRPO\n\n\nGPU Optimization via PTX"
+  },
+  {
+    "objectID": "posts/LLMs/Introduction.html#references",
+    "href": "posts/LLMs/Introduction.html#references",
+    "title": "Introduction to LLMs",
+    "section": "References",
+    "text": "References\nReinforcement Learning\nRoadmap for LLMs"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html",
+    "href": "posts/LLMs/PTXIntro.html",
+    "title": "Introduction to PTX",
+    "section": "",
+    "text": "Parallel Thread Execution (PTX) is a virtual machine instruction set architecture and can be thought of as the assembly language for NVDIA GPUs. You would need to know few syntax of PTX. This should get you started quickly."
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#basic-structure",
+    "href": "posts/LLMs/PTXIntro.html#basic-structure",
+    "title": "Introduction to PTX",
+    "section": "Basic Structure",
+    "text": "Basic Structure\n.version 7.0                    // PTX version\n.target sm_70                   // Target architecture\n.address_size 64                // 64-bit addressing\n\n.visible .entry kernel_name(   // Kernel name and declaration\n    .param .u64 param1,        // Parameters\n    .param .f32 param2\n)\n{\n    // Kernel body\n}"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#registers",
+    "href": "posts/LLMs/PTXIntro.html#registers",
+    "title": "Introduction to PTX",
+    "section": "Registers",
+    "text": "Registers\n.reg .b32 %r&lt;5&gt;;    // 5 32-bit registers %r0 through %r4\n.reg .f32 %f&lt;3&gt;;    // 3 single-precision float\n.reg .b64 %rd&lt;2&gt;;   // 2 64-bit \n.reg .pred %p&lt;2&gt;;   // 2 predicate registers (used for conditionals)"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#instructions",
+    "href": "posts/LLMs/PTXIntro.html#instructions",
+    "title": "Introduction to PTX",
+    "section": "Instructions",
+    "text": "Instructions\nmov.u32 %r1, %tid.x;       // Move thread(ID) to %r1\nadd.s32 %r3, %r1, %r2;     // Add int\nmul.f32 %f3, %f1, %f2;     // Mul floats\nsetp.lt.s32 %p1, %r1, %r2; // Set predicate if r1 &lt; r2\n@%p1 bra label;            // Conditional branch"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#memory-operations",
+    "href": "posts/LLMs/PTXIntro.html#memory-operations",
+    "title": "Introduction to PTX",
+    "section": "Memory Operations",
+    "text": "Memory Operations\nld.param.u64 %rd1, [param1];       // Load param into register\nld.global.f32 %f1, [%rd1];         // Load from global mem\nst.global.f32 [%rd2], %f2;         // Store to global mem\nld.shared.f32 %f3, [%rd3];         // Load from shared mem\nld.global.v4.f16 {%f1, %f2, %f3, %f4}, [%rd1];  // Vector load"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#special-registers",
+    "href": "posts/LLMs/PTXIntro.html#special-registers",
+    "title": "Introduction to PTX",
+    "section": "Special Registers",
+    "text": "Special Registers\n%tid.x, %tid.y, %tid.z     // Thread (ID) within a block\n%ctaid.x, %ctaid.y, %ctaid.z   // Block (ID) within a grid\n%ntid.x, %ntid.y, %ntid.z  // Block dimensions (threads per block)"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#math-operaations",
+    "href": "posts/LLMs/PTXIntro.html#math-operaations",
+    "title": "Introduction to PTX",
+    "section": "Math Operaations",
+    "text": "Math Operaations\nadd.f32 %f3, %f1, %f2;     // Add\nsub.f32 %f3, %f1, %f2;     // Sub\nmul.f32 %f3, %f1, %f2;     // Mul\ndiv.f32 %f3, %f1, %f2;     // Div\nmad.f32 %f4, %f1, %f2, %f3;  // Multiply & add: (f4 = f1*f2+f3)"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#tensor-core-operations",
+    "href": "posts/LLMs/PTXIntro.html#tensor-core-operations",
+    "title": "Introduction to PTX",
+    "section": "Tensor Core Operations",
+    "text": "Tensor Core Operations\n// Matrix multiply-accumulate using tensor cores\nmma.sync.aligned.m16n8k8.row.col.f16.f16.f16.f16 \n    {%f5, %f6, %f7, %f8},   // Destination registers\n    {%f1, %f2},             // A matrix registers\n    {%f3, %f4},             // B matrix registers\n    {%f5, %f6, %f7, %f8};   // C matrix registers (accumulator)"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#control-flow",
+    "href": "posts/LLMs/PTXIntro.html#control-flow",
+    "title": "Introduction to PTX",
+    "section": "Control Flow",
+    "text": "Control Flow\nbra label;           // Unconditional branch\n@%p1 bra label;      // Conditional branch if predicate = true\nret;                 // Return from kernel"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#code-sample",
+    "href": "posts/LLMs/PTXIntro.html#code-sample",
+    "title": "Introduction to PTX",
+    "section": "Code Sample",
+    "text": "Code Sample\nNow that we know the the basic syntax of PTX, here is one simple C program for vector addition.\n\n#include &lt;stdio.h&gt;\n#include &lt;cuda.h&gt;\n#include &lt;cuda_runtime.h&gt;\n\n// Kernel function to add the elements of two arrays\n__global__ void vectorAdd(int *a, int *b, int *c, int n) {\n    int i = blockIdx.x * blockDim.x + threadIdx.x;\n    if (i &lt; n) {\n        c[i] = a[i] + b[i];\n    }\n}\n\nint main() {\n    int n = 1000;\n    int size = n * sizeof(int);\n    int *a, *b, *c;\n    int *d_a, *d_b, *d_c;\n\n    // Allocate memory on the host\n    a = (int *)malloc(size);\n    b = (int *)malloc(size);\n    c = (int *)malloc(size);\n\n    // Initialize the arrays\n    for (int i = 0; i &lt; n; i++) {\n        a[i] = i;\n        b[i] = i * 2;\n    }\n\n    // Allocate memory on the device\n    cudaMalloc((void **)&d_a, size);\n    cudaMalloc((void **)&d_b, size);\n    cudaMalloc((void **)&d_c, size);\n\n    // Copy data from host to device\n    cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice);\n    cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice);\n\n    // Launch the vectorAdd kernel\n    int threadsPerBlock = 256;\n    int blocksPerGrid = (n + threadsPerBlock - 1) / threadsPerBlock;\n    vectorAdd&lt;&lt;&lt;blocksPerGrid, threadsPerBlock&gt;&gt;&gt;(d_a, d_b, d_c, n);\n\n    // Copy the result from device to host\n    cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost);\n\n    // Free device memory\n    cudaFree(d_a);\n    cudaFree(d_b);\n    cudaFree(d_c);\n\n    // Free host memory\n    free(a);\n    free(b);\n    free(c);\n\n    return 0;\n}\n\nGenerating output\nLet us compile the code using nvcc compiler\n$&gt; nvcc vector.cu -o vector\n$&gt; ./my_kernel\n# output\nc[0] = 0\nc[1] = 3\nc[2] = 6\nc[3] = 9\nc[4] = 12\nc[5] = 15\nc[6] = 18\nc[7] = 21\nc[8] = 24\nc[9] = 27\n\n\nCode Explaination\n// This is for CUDA runtime functions\n#include &lt;cuda_runtime.h&gt; \n\nKernel Function\n\n__global__ specifices that this is CUDA kernel that runs on GPU\n\nThree float arrays are pointers along with array size a, b and c\nblockIdx.x is the block index.\nblockDim.x is number of thread per block\nthreadIdx.x is thread index within a block\nCalculate unique ID for each thread to process a different array element\n\n// CUDA kernel for vector addition\n__global__ void vectorAdd(float *a, float *b, float *c, int n)\n{\n    // Calculate global thread ID\n    int id = blockIdx.x * blockDim.x + threadIdx.x;\n\n    // To make sure we don't go out of bounds\n    if (id &lt; n)\n        c[id] = a[id] + b[id];\n}\n\n\nMain function\nint main()\n{\n    // Vector size\n    int n = 1000000;               // One million elements\n    size_t bytes = n * sizeof(float);  // Calculate memory size in bytes\n    // Allocate host memory\n    float *h_a = (float*)malloc(bytes);  // Allocate memory for array a\n    float *h_b = (float*)malloc(bytes);  // Allocate memory for array b\n    float *h_c = (float*)malloc(bytes);  // Allocate memory for results\n    // Initialize vectors on host\n    for (int i = 0; i &lt; n; i++)\n    {\n        h_a[i] = 1.0f;  // All elements in a are 1.0\n        h_b[i] = 2.0f;  // All elements in b are 2.0\n    }\n}\n\n\nGPU Memory Allocation\n// Allocate device memory\n    float *d_a, *d_b, *d_c;            // Declare device pointers\n    cudaMalloc(&d_a, bytes);           // Allocate memory on GPU for a\n    cudaMalloc(&d_b, bytes);           // Allocate memory on GPU for b\n    cudaMalloc(&d_c, bytes);           // Allocate memory on GPU for c\n\n\nGPU Data Transfer\n// Copy data from host to device\n    cudaMemcpy(d_a, h_a, bytes, cudaMemcpyHostToDevice);  // Copy a to GPU\n    cudaMemcpy(d_b, h_b, bytes, cudaMemcpyHostToDevice);  // Copy b to GPU\n\n\nKernel Launch Configuration\n// Set up execution configuration\n    int blockSize = 256;                         // 256 threads per block\n    int gridSize = (n + blockSize - 1) / blockSize;  // Calculate grid size\n// This formula ensures we have enough blocks to cover all elements\n// Launch kernel\n    vectorAdd&lt;&lt;&lt;gridSize, blockSize&gt;&gt;&gt;(d_a, d_b, d_c, n);\n    // &lt;&lt;&lt;&gt;&gt;&gt; is special CUDA syntax for kernel launch configuration\n    // gridSize = number of blocks, blockSize = threads per block\n\n\nResults and Cleanup\n// Copy result back to host\ncudaMemcpy(h_c, d_c, bytes, cudaMemcpyDeviceToHost);  // Copy results from GPU to CPU\n\n// Free memory\ncudaFree(d_a);  // Free GPU memory for a\ncudaFree(d_b);  // Free GPU memory for b\ncudaFree(d_c);  // Free GPU memory for c\nfree(h_a);      // Free CPU memory for a\nfree(h_b);      // Free CPU memory for b\nfree(h_c);      // Free CPU memory for c"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#ptx-code",
+    "href": "posts/LLMs/PTXIntro.html#ptx-code",
+    "title": "Introduction to PTX",
+    "section": "PTX Code",
+    "text": "PTX Code\nTo extract PTX from the above code, try this the following command.\n$&gt; nvcc -ptx vector.cu -o vector.ptx\n\nPTX file\n\n.visible .entry vectorAdd(\n    .param .u64 vectorAdd_param_0,  // Pointer to array a\n    .param .u64 vectorAdd_param_1,  // Pointer to array b\n    .param .u64 vectorAdd_param_2,  // Pointer to array c\n    .param .u32 vectorAdd_param_3   // Parameter n (size)\n)\n{\n    .reg .pred  %p&lt;2&gt;;          // Predicate registers\n    .reg .f32   %f&lt;4&gt;;          // Float registers\n    .reg .b32   %r&lt;6&gt;;          // 32-bit registers\n    .reg .b64   %rd&lt;11&gt;;        // 64-bit registers\n\n    // Load parameters into registers\n    ld.param.u64    %rd1, [vectorAdd_param_0];\n    ld.param.u64    %rd2, [vectorAdd_param_1];\n    ld.param.u64    %rd3, [vectorAdd_param_2];\n    ld.param.u32    %r2, [vectorAdd_param_3];\n    \n    // Calculate thread ID\n    mov.u32         %r3, %ctaid.x;    // Get block index\n    mov.u32         %r4, %ntid.x;     // Get block size\n    mov.u32         %r5, %tid.x;      // Get thread index within block\n    mad.lo.s32      %r1, %r3, %r4, %r5;  // Calculate global thread ID: blockIdx * blockDim + threadIdx\n    \n    // Check if thread ID is within bounds\n    setp.ge.s32     %p1, %r1, %r2;    // Set predicate if thread ID &gt;= n\n    @%p1 bra        BB0_2;            // If true, jump to the end (BB0_2 label)\n    \n    // Calculate memory addresses\n    cvta.to.global.u64  %rd4, %rd1;   // Convert array a pointer to global address\n    mul.wide.s32    %rd5, %r1, 4;     // Multiply thread ID by 4 (size of float)\n    add.s64         %rd6, %rd4, %rd5; // Calculate address for a[id]\n    \n    cvta.to.global.u64  %rd7, %rd2;   // Convert array b pointer to global address\n    add.s64         %rd8, %rd7, %rd5; // Calculate address for b[id]\n    \n    // Load values, add them, and store result\n    ld.global.f32   %f1, [%rd6];      // Load a[id]\n    ld.global.f32   %f2, [%rd8];      // Load b[id]\n    add.f32         %f3, %f1, %f2;    // Add them: c[id] = a[id] + b[id]\n    \n    cvta.to.global.u64  %rd9, %rd3;   // Convert array c pointer to global address\n    add.s64         %rd10, %rd9, %rd5; // Calculate address for c[id]\n    st.global.f32   [%rd10], %f3;     // Store the result in c[id]\n    \nBB0_2:                                // End label\n    ret;                              // Return from kernel\n}\n\n\nPTX Code\nLet us now review the PTX code\n\n\nEntry Point\nThis section declares entry point for the kernel followed by 4 paramaters which is a pointer to the variable a, b, c and size n.\n\n.visible .entry vectorAdd(           // Declares entry point for kernel\n    .param .u64 vectorAdd_param_0,   // First parameter (pointer to array a)\n    .param .u64 vectorAdd_param_1,   // Second parameter (pointer to array b)\n    .param .u64 vectorAdd_param_2,   // Third parameter (pointer to array c)\n    .param .u32 vectorAdd_param_3    // Fourth parameter (size n)\n)\n\n\nRegister Declaration\nDeclating Predicate registers for conditions, float registers, 32 bit int and register for addresses\n    .reg .pred  %p&lt;2&gt;;          // Predicate r\n    .reg .f32   %f&lt;4&gt;;          // Float \n    .reg .b32   %r&lt;6&gt;;          // 32-bit int\n    .reg .b64   %rd&lt;11&gt;;        // 64-bit for addresses\n\n\nParameter Loading\nThis section loads parameters from kernel into registers. ld is for load.\n\n    ld.param.u64    %rd1, [vectorAdd_param_0];  // Load pointer to array a\n    ld.param.u64    %rd2, [vectorAdd_param_1];  // Load pointer to array b\n    ld.param.u64    %rd3, [vectorAdd_param_2];  // Load pointer to array c\n    ld.param.u32    %r2, [vectorAdd_param_3];   // Load size n\n\n\nThread ID\nNow calcuate unique thread Id using built-on registers.\nFirst get the current block index into %r3, then get number of threads per block into %r4 and then get thread index within this block into %r5. mad is multiply and add in a single instruction and calculate ID by using blockIdx * blockDim + threadIdx.\n    mov.u32         %r3, %ctaid.x;    \n    mov.u32         %r4, %ntid.x;     \n    mov.u32         %r5, %tid.x;      \n    mad.lo.s32      %r1, %r3, %r4, %r5; \n\n\nBounds Checking\nHere we check if thread ID is within bounds of the array and then Set predicate %p1 if thread ID &gt;= n. If true then jump to return label BB0_2\n// \nsetp.ge.s32     %p1, %r1, %r2;    // \n@%p1 bra        BB0_2;            // If true, jump to the return label (BB0_2)\n\n\nMemory Calculations\nCalculate memory address for array elements. Covert array a pointer to global address using cvta. Multiply mul thread Id by 4 which is the size of the float followed by adding address for a.\n\n    cvta.to.global.u64  %rd4, %rd1;   \n    mul.wide.s32    %rd5, %r1, 4;     \n    add.s64         %rd6, %rd4, %rd5; \n    \n    cvta.to.global.u64  %rd7, %rd2;   // Convert array b pointer to global address\n    add.s64         %rd8, %rd7, %rd5; // Calculate address for b[id]\n\n\nLoad, Add and Store\nLoad values from arrays, perform addition, and store result\n    ld.global.f32   %f1, [%rd6];      // Load a[id] into register %f1\n    ld.global.f32   %f2, [%rd8];      // Load b[id] into register %f2\n    add.f32         %f3, %f1, %f2;    // Add them: %f3 = %f1 + %f2\n    \n    cvta.to.global.u64  %rd9, %rd3;   // Convert array c pointer to global address\n    add.s64         %rd10, %rd9, %rd5; // Calculate address for c[id]\n    st.global.f32   [%rd10], %f3;     // Store the result in c[id]\n\n\nReturn from Kernel\nBB0_2:  // Label for our return point\nret;"
+  },
+  {
+    "objectID": "posts/LLMs/PTXIntro.html#conclusion",
+    "href": "posts/LLMs/PTXIntro.html#conclusion",
+    "title": "Introduction to PTX",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis article covered the basic syntax of PTX. The next article will focus on how Deepseek could have possibly optimized their PTX code on their H800 NVIDIA GPUs."
+  },
+  {
+    "objectID": "posts/notion/notion.html",
+    "href": "posts/notion/notion.html",
+    "title": "Notion",
+    "section": "",
+    "text": "As a full-time software engineer balancing family life, personal projects, and professional responsibilities, I’ve spent years searching for the ultimate productivity solution. In 2017, I discovered Notion – a game-changing platform that revolutionized how I manage my life, track projects, and transform ideas into actionable plans."
+  },
+  {
+    "objectID": "posts/notion/notion.html#the-professionals-productivity-challenge",
+    "href": "posts/notion/notion.html#the-professionals-productivity-challenge",
+    "title": "Notion",
+    "section": "",
+    "text": "As a full-time software engineer balancing family life, personal projects, and professional responsibilities, I’ve spent years searching for the ultimate productivity solution. In 2017, I discovered Notion – a game-changing platform that revolutionized how I manage my life, track projects, and transform ideas into actionable plans."
+  },
+  {
+    "objectID": "posts/notion/notion.html#notion-a-powerful-productivity-ecosystem",
+    "href": "posts/notion/notion.html#notion-a-powerful-productivity-ecosystem",
+    "title": "Notion",
+    "section": "Notion: A Powerful Productivity Ecosystem",
+    "text": "Notion: A Powerful Productivity Ecosystem\nNotion is far more than a simple productivity app. It’s a versatile workspace that adapts to your unique workflow, combining note-taking, project management, databases, and collaboration tools into a single, customizable platform."
+  },
+  {
+    "objectID": "posts/notion/notion.html#deep-dive-notions-powerful-features",
+    "href": "posts/notion/notion.html#deep-dive-notions-powerful-features",
+    "title": "Notion",
+    "section": "Deep Dive: Notion’s Powerful Features",
+    "text": "Deep Dive: Notion’s Powerful Features\n\n1. Databases: The Backbone of Intelligent Organization\nNotion’s databases are game-changers for personal productivity:\n\nRelational Databases\n\nLink information across different pages\nCreate complex, interconnected knowledge systems\nTrack relationships between projects, goals, and tasks\n\n\n\nMultiple View Types\n\nTable view for detailed tracking\nKanban boards for visual progress\nCalendar view for time-based organization\nGallery view for visual projects\n\n\n\n\n2. Dynamic Pages and Nested Information\n\nHierarchical page structure\nUnlimited nesting of pages\nSeamless information organization\nContext-rich documentation\n\n\n\n3. Powerful Formulas and Rollups\n\nSpreadsheet-like calculations\nAggregate data across databases\nCreate dynamic, self-updating dashboards\nAutomate tracking and reporting\n\n\n\n4. Linked Databases: Breaking Information Silos\n\nReference same database in multiple views\nMaintain data consistency\nCreate project-specific perspectives\nReduce redundant data entry\n\n\n\n5. Rich Embedding Capabilities\n\nEmbed images, videos, and external content\nIntegrate with multiple platforms\nCreate comprehensive, multimedia workspaces\nCentralize information from various sources"
+  },
+  {
+    "objectID": "posts/notion/notion.html#my-notion-ecosystem-practical-implementation",
+    "href": "posts/notion/notion.html#my-notion-ecosystem-practical-implementation",
+    "title": "Notion",
+    "section": "My Notion Ecosystem: Practical Implementation",
+    "text": "My Notion Ecosystem: Practical Implementation\n\nSpecialized Trackers\n\nTravel Tracker\n\nTrip logging\nExpense management\nFuture planning\nMemory collection\n\nHabit Tracker\n\nDaily/weekly habit monitoring\nProgress visualization\nAccountability mechanisms\n\nMeal Planner\n\nRecipe management\nGrocery lists\nNutrition tracking\n\nProject Management\n\nMilestone tracking\nResource allocation\nProgress monitoring"
+  },
+  {
+    "objectID": "posts/notion/notion.html#integration-strategy",
+    "href": "posts/notion/notion.html#integration-strategy",
+    "title": "Notion",
+    "section": "Integration Strategy",
+    "text": "Integration Strategy\nNotion works best as part of a broader productivity ecosystem:\n\nApple Notes for quick captures\nApple Reminders for time-sensitive tasks\nApple Calendar for scheduling"
+  },
+  {
+    "objectID": "posts/notion/notion.html#weekly-review-process",
+    "href": "posts/notion/notion.html#weekly-review-process",
+    "title": "Notion",
+    "section": "Weekly Review Process",
+    "text": "Weekly Review Process\n\nReview captured ideas\nUpdate project trackers\nAdjust goals\nReflect on achievements"
+  },
+  {
+    "objectID": "posts/notion/notion.html#key-advantages",
+    "href": "posts/notion/notion.html#key-advantages",
+    "title": "Notion",
+    "section": "Key Advantages",
+    "text": "Key Advantages\n\nFlexibility: Fully customizable workflows\nIntegration: Connects life and work domains\nVisualization: Intuitive data representation\nAccessibility: Cross-device availability\nCollaboration: Easy sharing and teamwork"
+  },
+  {
+    "objectID": "posts/notion/notion.html#technical-insights-for-engineers",
+    "href": "posts/notion/notion.html#technical-insights-for-engineers",
+    "title": "Notion",
+    "section": "Technical Insights for Engineers",
+    "text": "Technical Insights for Engineers\nThink of Notion like code: - Templates = Modular code - Databases = Structured data models - Views = Different data rendering methods"
+  },
+  {
+    "objectID": "posts/notion/notion.html#getting-started-your-notion-journey",
+    "href": "posts/notion/notion.html#getting-started-your-notion-journey",
+    "title": "Notion",
+    "section": "Getting Started: Your Notion Journey",
+    "text": "Getting Started: Your Notion Journey\n\nDownload Notion\nStart with basic templates\nExperiment gradually\nDevelop your unique system\n\nThe perfect productivity system evolves with you.\nDisclaimer: Personal experience. Results may vary."
+  },
+  {
+    "objectID": "posts/QuantumGravity/QuantumML.html",
+    "href": "posts/QuantumGravity/QuantumML.html",
+    "title": "Quantm Machine Learning",
+    "section": "",
+    "text": "My love for Quantum Physics rekindled in 2017 while studying the foundation of mathematics used in Machine Learning and Deep Learning.\n\n\nAnother interesting branch gaining momentum is Quantum Machine Learning (QML) - an intersection between Quantum Physics and ML. QML can speed up training and evaluation of ML models and, in turn, help develop new quantum algorithms. This blog is an introduction to QML.\n\n\n\nalt text\n\n\nSource code provided in this article is available in my Github repo."
+  },
+  {
+    "objectID": "posts/QuantumGravity/QuantumML.html#qubits",
+    "href": "posts/QuantumGravity/QuantumML.html#qubits",
+    "title": "Quantm Machine Learning",
+    "section": "Qubits",
+    "text": "Qubits\nIn classical computers a bit can be either in a 0 or 1 state.\nBut Qubits can not only be in 0 or 1 but can also be in both states simultaneously - this is known as superposition."
+  },
+  {
+    "objectID": "posts/QuantumGravity/QuantumML.html#bloch-sphere",
+    "href": "posts/QuantumGravity/QuantumML.html#bloch-sphere",
+    "title": "Quantm Machine Learning",
+    "section": "Bloch Sphere",
+    "text": "Bloch Sphere\nThe state of the qubits is represented using Bloch Sphere and it helps to understand the behaviour of quantum circuits and algorithms.\nImage Credit - Wiki\n![Bloch sphere - Wikipedia]"
+  },
+  {
+    "objectID": "posts/QuantumGravity/QuantumML.html#gates",
+    "href": "posts/QuantumGravity/QuantumML.html#gates",
+    "title": "Quantm Machine Learning",
+    "section": "Gates",
+    "text": "Gates\nGates helps us to manipulate the state of the qubits. Some gates can be controlled and adjusted like a tuning nob. The state of the qubits can be changed by rotating parametrised gates around the X, Y, and Z axes. The rotation is explained using these formulas."
+  },
+  {
+    "objectID": "posts/QuantumGravity/QuantumML.html#ket",
+    "href": "posts/QuantumGravity/QuantumML.html#ket",
+    "title": "Quantm Machine Learning",
+    "section": "Ket",
+    "text": "Ket\nKet vector represents the state of a quantum particle and is denoted as:\nProgrammatically , it can be represented as an array as show below:\nimport numpy as np\n\nk0 = np.array([1,0]) # ket 0\nk1 = np.array([0,1]) # ket 1\n\nk0, k1\n\n# output\n#(array([1, 0]), array([0, 1]))"
+  },
+  {
+    "objectID": "posts/QuantumGravity/QuantumML.html#quantum-neural-network",
+    "href": "posts/QuantumGravity/QuantumML.html#quantum-neural-network",
+    "title": "Quantm Machine Learning",
+    "section": "Quantum Neural Network",
+    "text": "Quantum Neural Network\nEquivalent to creating a Neural Network for Deep Learning on classical computers, QML uses trainable quantum circuits which should be differentiable.\n![Quantum Circuit] \n\nA function f(x) is said to be differentiable if a derivate exists for that function."
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#yaml",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#yaml",
+    "title": "Cookie Cutter V2.0",
+    "section": "YAML",
+    "text": "YAML\nYAML is a text based data serialization language for managing your configuration files. YAML stands for Yet Another Markup Language or YAML ain't markup language. You can read more about it here.\nHere’s the YAML format used in my project.\n  # support for data version control\n  - .dvc:\n\n  # if you plan to use docker container\n  - docker:\n    - Dockerfile\n\n  # basic ML development files\n  - src:\n    - __init__.py\n    - data_pipeline.py\n    - data_processing.py\n\n  ####"
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#argparse",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#argparse",
+    "title": "Cookie Cutter V2.0",
+    "section": "Argparse",
+    "text": "Argparse\nEverything starts with the main function. It uses argparse to parse command line arguments provided to the script. It then loads the yaml config file.\n# parse the arguments provided on the command line\nargs = parse_args()\n\n# Load yaml config\nconfig = load_config()\nThe parser will look for specific flags and take action. More about that in the Help section below.\nparser.add_argument(\"--n\", \"--name\", #...)\nparser.add_argument(\"--p\", \"--path\",  #...) \nparser.add_argument(\"--c\", \"--config\",  #...)\nparser.add_argument(\"--v\", \"--venv\",  #...)"
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#file-and-directories",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#file-and-directories",
+    "title": "Cookie Cutter V2.0",
+    "section": "File and Directories",
+    "text": "File and Directories\nBased on how YAML is structured, the script will create files, directories and sub-directories via a function create_directories\ndef create_directories(project_path, config):\n\nif isinstance(config, str):\n        item_path = os.path.join(project_path, config)\n        with open(item_path, \"w\"):\n            pass  # empty file\n\n#..."
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#virtual-env",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#virtual-env",
+    "title": "Cookie Cutter V2.0",
+    "section": "Virtual env",
+    "text": "Virtual env\nIf you provide flag to create a virtual environment, the script will create one for you. There is a function called create_virtual_env to do exactly that.\ndef create_virtual_env(project_path, activate=True):\n#...\nif not os.path.exists(venv_path):\n        venv.create(venv_path, with_pip=True)\n#..."
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#help",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#help",
+    "title": "Cookie Cutter V2.0",
+    "section": "Help",
+    "text": "Help\nWhen you use -h flag, it will show you how to use the script.\nIf you want to give a specific name to your project use --n or N flag. If not, it will create a default directory called ml-cookie-cutter.\nSpecify the path where the project needs to be created using --p or P flag.\nFinally, if you want the script to create a virtual environment for you, go ahead and use the --v or --venv flag. By default, the name of the environment is venv.\n\n$&gt; python3 main.py --h\n\n# usage: ML Cookie Cutter [-h] [--n N] [--p P] [--c C] [--v]\n\n# Creates ML project cookie cutter structure\n\n#optional arguments:\n#  -h, --help       show this help message and exit\n#  --n N, --name N  Name of the directory to be created, default = ml-cookie-cutter\n#  --p P, --path P    provide the path where, default is $HOME dir\n#  --v, --venv        create a virtual env. [ignore if you are already on a virtual env]\n\n# Enjoy and happy coding"
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#final-step",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#final-step",
+    "title": "Cookie Cutter V2.0",
+    "section": "Final step",
+    "text": "Final step\nOnce you have the virtual environment set up, you can activate it as shown below. You should see that it in your command prompt; go ahead and start installing all your Data science and ML libraries.\nFor deactivating simply type deactivate\n# go to the project folder\n$&gt; cd ml-cookie-cutter\n# activate the environment \n$&gt; source venv/bin/activate \n\n# venv is activated \n(venv) $&gt; pip install numpy pandas pytorch seaborn notebook\n\n# To deactive use the following command\n(venv) $&gt; deactivate\n$&gt;\nOn windows if you use PowerShell activate using Activate.ps1"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html",
+    "href": "posts/QuantumGravity/neovimide.html",
+    "title": "Neovim IDE",
+    "section": "",
+    "text": "An Integrated Development Environment (IDE) provides a comprehensive list of features like code editor, compiler/interpreter, code completion, debugger and much more.\n\n\nModern editors work out of the box. Just install, launch and you are ready to go! But sometimes, it is slow and clunky eating up a lot of memory.\nThen there are terminal based IDEs focusing on pure text manipulation. No fancy interfaces, only powered by keyboard shortcuts and macros. One such IDE is Vim (Vi iMproved)\nIn this blog, I have shared my Neovim setup, plugins and keyboard mappings. This configuration supports various programming languages like Lua, Python for Data Science & ML, OCaml, Rust, Web Development, even Notes and Journaling. Detailed documentation is available on my github.\nRead on!"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#vi-improved-vim",
+    "href": "posts/QuantumGravity/neovimide.html#vi-improved-vim",
+    "title": "Neovim IDE",
+    "section": "Vi Improved (Vim)",
+    "text": "Vi Improved (Vim)\nVim was created by Bram Moolenaar. A highly customizable modal, screen-based text editor written in C and Vim Script (VimL). It is known to be very fast, extremely efficient, highly configurable, supporting many programming languages and providing extensive plugin support.\n\n\n\nVIM"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#neovim-nvim",
+    "href": "posts/QuantumGravity/neovimide.html#neovim-nvim",
+    "title": "Neovim IDE",
+    "section": "Neovim (Nvim)",
+    "text": "Neovim (Nvim)\nNeoVim was released in 2014 and is a fork of Vim. It uses a fast, small and lightweight scripting language called Lua.\nLua supports procedural, object-oriented and functional programming. It can be embedded into C/C++ quite easily too.\nThe goal of this project was not to replace Vim but to extend and incorporate additional features. Almost all of the features of vim are now supported by Neovim.\nNote: I have used Neovim and nvim interchangeably to refer to Neovim.\n(This splash screen is because of a plugin called Alpha)\n\n\n\nNeovim"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#file-structure",
+    "href": "posts/QuantumGravity/neovimide.html#file-structure",
+    "title": "Neovim IDE",
+    "section": "File structure",
+    "text": "File structure\nI have used VimPlug and Packer but I found Lazy package manager to be well organized for my needs.\nHere’s how my files are structured. Anything inside of plugins folder gets called automatically. Details of these files are available on my github.\n~/.config/nvim/\n├── LICENSE  \n├── README.md  \n├── init.lua  \n├── lazy-lock.json\n├── lua\n│   ├── keymaps.lua\n│   └── plugins\n│       ├── autopairs.lua\n│       ├── comments.lua\n│       ├── completions.lua\n│       ├── db.lua\n│       ├── debug.lua\n│       ├── floating-help.lua\n│       ├── gitblame.lua\n│       ├── gitsigns.lua\n│       ├── greetings.lua\n│       ├── iron.lua\n│       ├── lspconfig.lua\n│       ├── lualine.lua\n│       ├── markdown.lua\n│       ├── neorg.lua\n│       ├── noice.lua\n│       ├── none-ls.lua\n│       ├── nvim_tree.lua\n│       ├── quarto.lua\n│       ├── telescope.lua\n│       ├── themes.lua\n│       ├── toggleterm.lua\n│       ├── treesitter.lua\n│       └── zen.lua\n└── yarn.lock"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#init-file",
+    "href": "posts/QuantumGravity/neovimide.html#init-file",
+    "title": "Neovim IDE",
+    "section": "Init file",
+    "text": "Init file\ninit.lua is the first file that gets loaded when Neovim starts. I am loading keymaps.lua and Lazy package manager via this."
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#keymaps",
+    "href": "posts/QuantumGravity/neovimide.html#keymaps",
+    "title": "Neovim IDE",
+    "section": "Keymaps",
+    "text": "Keymaps\nkeymaps.lua is where I have configured my keyboard shortcuts. Look at a few sample keybindings, these are pretty standard ones.\n# global leader key is &lt;Space&gt; \nvim.g.mapleader = \" \"\n\n# in normal mode, use &lt;space&gt;v or &lt;space&gt;sh to run specific commands \n\n# to split the screen vertically\nkeymap.set(\"n\", \"&lt;leader&gt;sv\" , \"&lt;C-w&gt;v\")\n# splits screen horizontally\nkeymap.set(\"n\", \"&lt;leader&gt;sh\" , \"&lt;C-w&gt;s\")\n\n## Telescope keymapings\n\n# find files \nkeymap.set(\"n\", \"&lt;leader&gt;ff\", \"&lt;cmd&gt;Telescope find_files&lt;cr&gt;\") \n# live grep \nkeymap.set(\"n\", \"&lt;leader&gt;fg\", \"&lt;cmd&gt;Telescope live_grep&lt;cr&gt;\") \n# find string under cursor \nkeymap.set(\"n\", \"&lt;leader&gt;fc\", \"&lt;cmd&gt;Telescope grep_string&lt;cr&gt;\") \n# display list of open buffers\nkeymap.set(\"n\", \"&lt;leader&gt;fb\", \"&lt;cmd&gt;Telescope buffers&lt;cr&gt;\")"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#theme",
+    "href": "posts/QuantumGravity/neovimide.html#theme",
+    "title": "Neovim IDE",
+    "section": "Theme",
+    "text": "Theme\nThere are many color schemes to choose from, I have been using Tokyo Dark and the configuration is loaded via themes.lua file.\n\n\n\nTheme"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#telescope",
+    "href": "posts/QuantumGravity/neovimide.html#telescope",
+    "title": "Neovim IDE",
+    "section": "Telescope",
+    "text": "Telescope\nA fuzzy finder plugin that helps you to find files and supports live grep along with many other features.\n\n\n\ntelescope"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#quarto-support",
+    "href": "posts/QuantumGravity/neovimide.html#quarto-support",
+    "title": "Neovim IDE",
+    "section": "Quarto Support",
+    "text": "Quarto Support\nQuarto is heavily used in scientific publishing, my setup supports them.\n\n\n\nQuarto\n\n\nDid you know: Quarto also has great integration with Jupyter Notebook, see the sample below.\nThe one on the left is the Quarto html format generated from the Jupyter notebook on your right.\n\n\n\nQuartoJupyter"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#git-integration",
+    "href": "posts/QuantumGravity/neovimide.html#git-integration",
+    "title": "Neovim IDE",
+    "section": "Git Integration",
+    "text": "Git Integration\nFor git integration I use\n\nLazygit\n\n\n\nLazu\n\n\n\n\nGitblame\n\n\n\nGitBlame"
+  },
+  {
+    "objectID": "posts/QuantumGravity/neovimide.html#dap-debug-adapter-protocol",
+    "href": "posts/QuantumGravity/neovimide.html#dap-debug-adapter-protocol",
+    "title": "Neovim IDE",
+    "section": "DAP (Debug Adapter Protocol)",
+    "text": "DAP (Debug Adapter Protocol)\nShowing DAP support for Python\n\n\n\nDAP"
+  },
+  {
+    "objectID": "posts/QuantumGravity/Dotfiles.html",
+    "href": "posts/QuantumGravity/Dotfiles.html",
+    "title": "Dotfiles",
+    "section": "",
+    "text": "In the first part of my Productivity series, we talked about configuring Neovim as your IDE. You can check out that blog and my configuration here.\n\n\nIn this part, let us talk about the magic of .dotfiles, how to automate your development workflow, manage repetitive tasks by installing softwares, setting up editor shortcuts, and even configuring the development environment across multiple machines for a unified experience."
+  },
+  {
+    "objectID": "posts/QuantumGravity/Dotfiles.html#the-list",
+    "href": "posts/QuantumGravity/Dotfiles.html#the-list",
+    "title": "Dotfiles",
+    "section": "The List",
+    "text": "The List\nSince these are highly personal configurations, the requirement was to make these scripts flexible and easy to use and maintain . The newer version now uses text files from the previous YAML based configuration.\nBelow are the three text files used in the script:\nsoftware_list.txt - List of all softwares to be installed on your machine.\npip_list.txt - If you are into Data Science or ML then you can add or remove the libraries. e.g. If you use PyTorch , just swap it with Tensorflow.\nconfig_list.txt - List of all dotfiles to be maintained.\nNote: YAML is a widely used data serialization language for writing configuration files."
+  },
+  {
+    "objectID": "posts/QuantumGravity/Dotfiles.html#mac",
+    "href": "posts/QuantumGravity/Dotfiles.html#mac",
+    "title": "Dotfiles",
+    "section": "Mac",
+    "text": "Mac\nIf mac is detected then it will look if Homebrew (package manager) and git is installed already.\n\nHomebrew & Git\n# check if homebrew is already installed\nif command -v brew &&gt;/dev/null; then\n  echo \"Homebrew already installed\"\nelse\n# if not install \n  echo \"##### Installing homebrew...\"\n#...\nfi\n\n#...\n\n# checking for git on your machine.\nif command -v git &&gt;/dev/null; then\n  echo \"git already installed...\"\n#...\n\n\nInstalling softwares\nThe next step is to check if software_list.txt file is available to start the installation process. For certain softwares like Lua, specific version is required. For OCaml, users have an option to skip the installation.\nNote: Ocaml is a general purpose “functional” programming language. You can read more about it here.\n # check if lua is already is installed\nif brew list lua &&gt;/dev/null; then\n#...\n# if not then install via brew\nbrew install lua@5.4\n\n#...\n\n# check with user for OCaml installation\nread -p \"do you want to install ocaml? (y/n): \" choice\n#...\n\n\nData Science and ML\nThen comes installing Data Science tools. The only requirement is to have pyyaml installed on your machine.\n# check for pyyaml installation\n# install if not available.\nif brew list pyyaml &&gt;/dev/null; then\nI have a repo where you get a cookie-cutter template for ML projects. It downloads the repo and sets up your machine to get you started immediately.\n# checks if cookie-cutter is already installed\n# in your home directory\nif [ -d \"$HOME/ml-cookie-cutter\" ]; then\n\n# if not then download the repo \n# install and activate virtual env \necho \"####### activating the venv...\"\nsource venv/bin/activate \n\n# ensure pip is installed and then start \n# installing the ML libraries\npip3 install $cfg\n\n# Once done the cleanup starts...\n# delete the downloaded repo and \n# deactivate the virtual env\n#...\n\n\nFinal configuration\nNow on to the final steps of the installation process - Back up the existing configuration files and check for Neovim.\n# Take the backup of the existing config files\ncp $HOME/$line $HOME/$line.bak.$(date +%Y-%m-%d-%H:%M:%S)\n\n# If Neovim is already installed, need to \n# backup the existing configuration\ncp -r $HOME/.config/nvim/ $HOME/.config/nvim.bak.$dt\nThe script will check for xcode command-line tools\n# check for commandline tools\nxcode-select --version &gt; /dev/null\n\n# if not then install them\nxcode-select --install"
+  },
+  {
+    "objectID": "posts/QuantumGravity/Dotfiles.html#linux",
+    "href": "posts/QuantumGravity/Dotfiles.html#linux",
+    "title": "Dotfiles",
+    "section": "Linux",
+    "text": "Linux\nFor Linux, most of the process remains the same with a few subtle differences.\n\nOS and Package Manager\nThe script first checks the version of Linux and sets the package manager.\n# if Ubuntu or Debian, then set the package as ap-get\npkg_mgr=apt-get\n# If Fedora, then go for dnf \npkg_mgr=dnf \n# if dnf is not available go for yum\n\n\nAdditional checks\nNever (ever) run any script as a root user, the script warns if you do so and also check for sudo access. Few software installations are skipped if it is not supported by that operating system.\n# caution the user if it is root user\nuser=$(whoami)\nif [ \"$user\" == \"root\" ]; then\n\n# Option to run this with sudo access\nread -p \"do you want to run this script as sudo (y/n)?\" choice\n\n# check if you want to upgrade your system\n# before starting the installation\n$su_user $pkg_mgr update -y"
+  },
+  {
+    "objectID": "posts/QuantumGravity/Dotfiles.html#docker-support",
+    "href": "posts/QuantumGravity/Dotfiles.html#docker-support",
+    "title": "Dotfiles",
+    "section": "Docker Support",
+    "text": "Docker Support\nIf you want to try out this script on docker containers then here are some helpful commands. You can download the images and run the container as shown below.\n# To pull the images\ndocker pull fedora # debian # or ubuntu\n\n# run the container\n$&gt; docker run --name fedora -d -i -t fedora /bin/bash\n\n# check the processes\n$&gt; docker ps\n\n# to drop inside the container\n# replace the container-id with the number \n# shown with the above command\n$&gt; docker exec -it \"container-id\" /bin/bash\nNote If you are using the docker machine, you will be dropped into the container as “root”."
+  },
+  {
+    "objectID": "posts/QuantumGravity/Dotfiles.html#config-files",
+    "href": "posts/QuantumGravity/Dotfiles.html#config-files",
+    "title": "Dotfiles",
+    "section": "Config files",
+    "text": "Config files\nI used the following files for my machine configuration:\n\n.zshrc - This helps to configure your shell and is known to provide great customization.\n.tmux.conf - If you are like me managing multiple projects, why not consider a terminal multiplexer like tmux. It helps create sessions with multiple windows and panes which can be attached and detached easily.\n.wezterm.lua - I migrated from iterm to a rust based terminal called wezterm, which uses lua based configuration.\nstartship.toml - It is used for customizing your shell prompt."
+  },
+  {
+    "objectID": "posts/Docusaurus/docusauras.html#installation",
+    "href": "posts/Docusaurus/docusauras.html#installation",
+    "title": "Introduction to Docusaurus",
+    "section": "Installation",
+    "text": "Installation\nYou can create a new Docusaurus project using either yarn or npm:\n\nUsing Yarn\nyarn create docusaurus my-website classic\n\n\nUsing npm\nnpx create-docusaurus@latest my-website classic\n\n\nproject Structure\nmy-website/\n│\n├── docs/                  # Markdown documentation files\n├── blog/                  # Blog posts\n├── src/                   # Custom React components\n│   ├── components/\n│   └── pages/\n├── static/                # Static assets\n├── docusaurus.config.js   # Configuration file\n├── sidebars.js            # Sidebar configuration\n└── package.json           # Project dependencies\n\n\nConfguration\nThe primary configuration file is docusaurus.config.js. Here’s a basic example:\nmodule.exports = {\n  title: 'My Documentation Site',\n  tagline: 'Awesome Documentation',\n  url: 'https://your-website.com',\n  baseUrl: '/',\n  theme: '@docusaurus/theme-classic',\n  presets: [\n    [\n      '@docusaurus/preset-classic',\n      {\n        docs: {\n          sidebarPath: require.resolve('./sidebars.js'),\n        },\n        blog: {\n          showReadingTime: true,\n        },\n        theme: {\n          customCss: require.resolve('./src/css/custom.css'),\n        },\n      },\n    ],\n  ],\n};\n\n\nBulding the site\nStart the local development server\nyarn start\n# or\nnpm run start\n\n\nPublishing the site\nDocusaurus provides built-in support for GitHub Pages:\nGIT_USER=&lt;GITHUB_USERNAME&gt; yarn deploy\n# or\nUSE_SSH=true yarn deploy"
+  },
+  {
+    "objectID": "posts/LLMs/gpu.html",
+    "href": "posts/LLMs/gpu.html",
+    "title": "Introduction to GPU",
+    "section": "",
+    "text": "In my last blog, I quickly introduced to DeepSeek and some of the components the used. In this blog, we will get down to basics of GPU and specifically NVIDIA GPU architecture, how CUDA programs gets compiled.\n\n\n\nWhat is the difference between a CPU and GPU?\nA&gt; CPUs are for general-purpose computing where as GPUs are optimized for performing same operations on multuple data points simultaneously achieveing in high level of parallelism.\nB&gt; CPUs are best suited which runnign complex logic where as GPUs are ideally for massively parallel computations like graphics rendering, deep learning and scientific simulations.\nC&gt; CPU is optimized for low-latency access to relatively small amount of memory. GPU is typically used for high-bandwidth to large amount of dataset in parallel.\n\n\n\nHere’s a quick introduction to GPU, it’s architecture and CUDA programming workflow.\nThe cuda program workflow is as shown below. It starts off with your program which has extension of “.cu”. This code can be written in C, C++ or Fortran.\n\n\n\nThis is a very basic flow of a CUDA program.\n\n\n\nCuda Program Overview\n\n\n\n\n\n\n\n\nCUDA Workflow\n\n\nTypically these programs has both CPU and GPU instructions running on host machine. The CPU piece of code is called the host code and GPU code section is called device code typically which has global and device function.\nThis code is compiled using NVCC compiler separating both the CPU and GPU code. The CPU code uses CPU complier like GCC converting to the object code.\nAt the same time the 1st pass of the GPU converts the GPU code is converted to PTX code. This is a low level IR (Intermediate Representation) is then compiled to convert it to device specific code known as SASS code.\nFinal stage is to link the host object code with SASS and run the code to run on host machine.\nPTX is an abstraction layer helping code portabiloty between NVIDIA decides. This helps tools and libraries to manupulate code code before GPU execution, an approach whichDeepSeek team did. We will have a separate article going over the PTX.\n\n\n\nBefore we delve deeper into the PTX optimization by DeepSeek, let us first talk about GPU .\n\n\n\nGPU Structure\n\n\nThere are : 1. 7 Graphic Processing Clusters (GPC) 2. Each GPC had 12 Streaming Multiprocessors (SM). 3. Every SM will have 4 Warps and 1 Ray Tracing core 4. A single Warp will have 32 CUDA core and 1 Tensor Code. 5. 12 Graphic Memory Controllers 6. Two L2 Cache of 6MB SRAM each 7. NVLink 8. PCIe Interface\nSo in total in one NVDIA GPU there could be about :\n\n10752 CUDA cores\n\n\n336 Tensor cores\n\n\n84 Ray tracing cores\n\n\n\n\n\n\n\nCUDA Cores\n\n\nHere are the three cores available in these GPUs\n\nCUDA Core is used for game and game engines.\nTensor Core is exclusively for Matrix Multiplication and Geometric Transformation which is used in AI/ML\nRay Tracing is used ror Ray Tracing algorithms.\n\n\n\n\nWith basic introduction to GPU out of the way. let us move to PTX. See you in my next arcticle."
+  },
+  {
+    "objectID": "posts/LLMs/gpu.html#cpu-vs-gpu",
+    "href": "posts/LLMs/gpu.html#cpu-vs-gpu",
+    "title": "Introduction to GPU",
+    "section": "",
+    "text": "What is the difference between a CPU and GPU?\nA&gt; CPUs are for general-purpose computing where as GPUs are optimized for performing same operations on multuple data points simultaneously achieveing in high level of parallelism.\nB&gt; CPUs are best suited which runnign complex logic where as GPUs are ideally for massively parallel computations like graphics rendering, deep learning and scientific simulations.\nC&gt; CPU is optimized for low-latency access to relatively small amount of memory. GPU is typically used for high-bandwidth to large amount of dataset in parallel."
+  },
+  {
+    "objectID": "posts/LLMs/gpu.html#gpu",
+    "href": "posts/LLMs/gpu.html#gpu",
+    "title": "Introduction to GPU",
+    "section": "",
+    "text": "Here’s a quick introduction to GPU, it’s architecture and CUDA programming workflow.\nThe cuda program workflow is as shown below. It starts off with your program which has extension of “.cu”. This code can be written in C, C++ or Fortran."
+  },
+  {
+    "objectID": "posts/LLMs/gpu.html#basic-flow",
+    "href": "posts/LLMs/gpu.html#basic-flow",
+    "title": "Introduction to GPU",
+    "section": "",
+    "text": "This is a very basic flow of a CUDA program.\n\n\n\nCuda Program Overview"
+  },
+  {
+    "objectID": "posts/LLMs/gpu.html#detailed-workflow",
+    "href": "posts/LLMs/gpu.html#detailed-workflow",
+    "title": "Introduction to GPU",
+    "section": "",
+    "text": "CUDA Workflow\n\n\nTypically these programs has both CPU and GPU instructions running on host machine. The CPU piece of code is called the host code and GPU code section is called device code typically which has global and device function.\nThis code is compiled using NVCC compiler separating both the CPU and GPU code. The CPU code uses CPU complier like GCC converting to the object code.\nAt the same time the 1st pass of the GPU converts the GPU code is converted to PTX code. This is a low level IR (Intermediate Representation) is then compiled to convert it to device specific code known as SASS code.\nFinal stage is to link the host object code with SASS and run the code to run on host machine.\nPTX is an abstraction layer helping code portabiloty between NVIDIA decides. This helps tools and libraries to manupulate code code before GPU execution, an approach whichDeepSeek team did. We will have a separate article going over the PTX."
+  },
+  {
+    "objectID": "posts/LLMs/gpu.html#structure",
+    "href": "posts/LLMs/gpu.html#structure",
+    "title": "Introduction to GPU",
+    "section": "",
+    "text": "Before we delve deeper into the PTX optimization by DeepSeek, let us first talk about GPU .\n\n\n\nGPU Structure\n\n\nThere are : 1. 7 Graphic Processing Clusters (GPC) 2. Each GPC had 12 Streaming Multiprocessors (SM). 3. Every SM will have 4 Warps and 1 Ray Tracing core 4. A single Warp will have 32 CUDA core and 1 Tensor Code. 5. 12 Graphic Memory Controllers 6. Two L2 Cache of 6MB SRAM each 7. NVLink 8. PCIe Interface\nSo in total in one NVDIA GPU there could be about :\n\n10752 CUDA cores\n\n\n336 Tensor cores\n\n\n84 Ray tracing cores"
+  },
+  {
+    "objectID": "posts/LLMs/gpu.html#core",
+    "href": "posts/LLMs/gpu.html#core",
+    "title": "Introduction to GPU",
+    "section": "",
+    "text": "CUDA Cores\n\n\nHere are the three cores available in these GPUs\n\nCUDA Core is used for game and game engines.\nTensor Core is exclusively for Matrix Multiplication and Geometric Transformation which is used in AI/ML\nRay Tracing is used ror Ray Tracing algorithms."
+  },
+  {
+    "objectID": "posts/LLMs/gpu.html#next-steps",
+    "href": "posts/LLMs/gpu.html#next-steps",
+    "title": "Introduction to GPU",
+    "section": "",
+    "text": "With basic introduction to GPU out of the way. let us move to PTX. See you in my next arcticle."
+  },
+  {
+    "objectID": "posts/LLMs/DeepSeekPTX.html",
+    "href": "posts/LLMs/DeepSeekPTX.html",
+    "title": "DeepSeekPTX",
+    "section": "",
+    "text": "Let us now delve into the details of PTX, the parallel thread execution virtual instruction set, and explore how DeepSeek might have approached optimization for their H800 GPUs. PTX optimization is critical for maximizing performance in large language models.\n\nSince DeepSeek’s specific PTX implementations are proprietary, this article focuses on optimization strategies inferred from their research papers and related discussions. We’ll explore a few of them within their architecture. For example, Multi-Head Latent Attention (MHLA) employs a modified Key and Value cache approach, differing from the standard transformer KV cache concept, to enhance efficiency."
+  },
+  {
+    "objectID": "posts/LLMs/DeepSeekPTX.html#register-allocation",
+    "href": "posts/LLMs/DeepSeekPTX.html#register-allocation",
+    "title": "DeepSeekPTX",
+    "section": "Register Allocation",
+    "text": "Register Allocation\n\nAllowing manually optimizing the register allocation, the latency could have been reduced.\nFine-tune thread scheduling allowing them to maximize parallelism across the streaming multiprocessors."
+  },
+  {
+    "objectID": "posts/LLMs/DeepSeekPTX.html#custom-memory-management",
+    "href": "posts/LLMs/DeepSeekPTX.html#custom-memory-management",
+    "title": "DeepSeekPTX",
+    "section": "Custom Memory Management",
+    "text": "Custom Memory Management\nImplementing custome PTX instructions for accessing memory including global VRAM access by bypassing L1 and L2 cache in a very specific way allowing increasing data transfer pattern thus improving memory bandwidth.\n\n\nGlobal VRAM is largest and slowest memory on the GPU\nCache can also introduce overhead and may not always be effective\nCoalesced Access - Accessing contiguous memory locations in a single transaction significantly improves memory bandwidth.\nMemory Access - Aligned memory access e.g. to 128-bytes are much more efficient.\n\n\n\nCache\nSince they were dealing with large and streaming datasets, they miht have bypassed L1 or L2 cache. This can be accessible via PTX that allow to control these behaviour\nBelow is the sample snippet showing the access. Loads from global memory and bypass both L1 and L2 cache.\n.reg .u64 %addr;\n.reg .f32 %data;\n\nld.global.nc.f32 %data, [%addr]; \n\n\nnc means no cache\nld.global.nc.f32 - load 32 bit floating point value from global memory\n\n\n\n\nCache Controls\n.volalite - This modifer tells compiler that memory location can be modified by other threads/devices preventing complier for any optimization to ensure value in the memory remains constant.\n.wt and .wb - These are write through and write back modifiers controling the cache write policy.\n.wt writes to both cache and global memory while .wb writes only to cache but writes to global memory once cache data is evicted.\n\nDeepseek might have used these write-through and write-back modifiers to further optimize their workload.\n\n.relaxed,.acquire,.release,.acquire_release modifiers are used when dealing with memory coherency between threads i.e. order of memory reads and writes\n\nDeepseek most likely used these modifiers when working with shared memory buffers which are accessed by multiple threads.\n\n\n\nPrefetching\nFor the predictible memory access, they could have use PTX’s prefetch instructions to bring load the data in cache before it is needed hiding memory latency thus improving performance\nreg .u64 %addr;\nprefetch.global [%addr];\n\n\nprefetch.global Prefetch data into L1 cache.\n\n\n\nPrefetch Distance and Hints\nIt is possible that these parameters are tuned to optimizing prefetching performance.\n\n\nPrefetch Distance Number of memory location to prefetch ahead.\n\n\nPrefetch Hints helps to understand tyoe of memory access patterns based on the type of hardware.\n\n\n\n\n\nAlignment & Coalescing\nSince PTX allow precise control over memory aligment and access patterns, they could use this to maximize memory bandwidth. Sample code below.\n.reg .u64 %base_addr;\n.reg .u32 %offset;\n.reg .f32 %data;\n\nmad.lo.u64 %addr, %offset, 4, %base_addr; // Assuming 4-byte floats\n\n// Load coalesced data\nld.global.v4.f32 {%data, %data+4, %data+8, %data+12}, [%addr];\n\n\nld.global.v4.f32 - Loads vector of 4 32-bit floating values from VRAM ensuring coalesced access.\n\n\nmad.lo.u64 - Multiply add lower 64 bits for calculating memory address.\n\n\n\nVectorized loads\nThey might have used vectorized loads which allow multiple data element to be transferred into a single memory transactions by maximizing memory bandwidth and also ensure these access are coalesced. Sample code below showing loading and storing 4 floats at once.\n.reg .u64 %addr;\n.reg .v4.f32 %data;\n\nld.global.v4.f32 %data, [%addr]; \nst.global.v4.f32 [%addr], %data;\n\n\n\nShared Memory Optimization\nShared memory is organized in bands so to avoid conflicts they could have used multiple threads access the same banks simultaneously by arranging data carefully.\nIt could also be possible that they might have used shared on-chip memory to reduce global access. Below code shows data being moved from global memory to shared memory and then use it.\n.shared .f32 shared_data[1024];\n.reg .u32 %thread_id;\n.reg .f32 %local_data;\n\n// Load data from global memory into shared memory\nld.global.f32 %local_data, [global_addr + %thread_id*4];\nst.shared.f32 [shared_data + %thread_id*4], %local_data;\n\n// Use data from shared memory\nld.shared.f32 %local_data, [shared_data + %thread_id*4];"
+  },
+  {
+    "objectID": "posts/LLMs/DeepSeekPTX.html#inter-gpu-communcation",
+    "href": "posts/LLMs/DeepSeekPTX.html#inter-gpu-communcation",
+    "title": "DeepSeekPTX",
+    "section": "Inter-GPU communcation",
+    "text": "Inter-GPU communcation\nAllocate a portion of SM to improve communication by data compression and remove bottlenecks"
+  },
+  {
+    "objectID": "posts/LLMs/DeepSeekPTX.html#warp-level-optimization",
+    "href": "posts/LLMs/DeepSeekPTX.html#warp-level-optimization",
+    "title": "DeepSeekPTX",
+    "section": "Warp Level Optimization",
+    "text": "Warp Level Optimization\nFine-grain tunining again on warp which contains 32 threads on how they process instructions.\nNVIDIA GPUs execute threads in groups of 32, called warps. So PTX can allow developers to write warp-synchronous code, to make it more efficient.\nDeepSeek could have used warp-level primitives to perform warp-wide reductions and scans.\n\nWarp Shuffle Instructions:\nPTX also provides shuffle instructions that allow threads within a warp to exchange data. It can be used to implement efficient inter-thread communication. Optimize data layout for shared memory."
+  },
+  {
+    "objectID": "posts/LLMs/DeepSeekPTX.html#conclusion",
+    "href": "posts/LLMs/DeepSeekPTX.html#conclusion",
+    "title": "DeepSeekPTX",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis article has outlined potential PTX optimizations employed by DeepSeek. These optimizations highlight DeepSeek’s impressive ability to leverage fundamental hardware optimization, enabling them to develop models that effectively compete with OpenAI. The difficulty of these low level optimizations cannot be overstated."
+  },
+  {
+    "objectID": "posts/LLMs/DeepSeekPTX.html#next",
+    "href": "posts/LLMs/DeepSeekPTX.html#next",
+    "title": "DeepSeekPTX",
+    "section": "Next",
+    "text": "Next\nIn my next article, we will get into the details of how these optimizations happen in various stages of the architecture, from MHLA to Multi-token."
+  },
+  {
+    "objectID": "posts/LLMs/DeepSeekPTX.html#references",
+    "href": "posts/LLMs/DeepSeekPTX.html#references",
+    "title": "DeepSeekPTX",
+    "section": "References",
+    "text": "References\nDeepSeek R1\nDeepSeek EP Github"
+  },
+  {
+    "objectID": "posts/LLMs/Tokenizer.html#types-of-tokenizer",
+    "href": "posts/LLMs/Tokenizer.html#types-of-tokenizer",
+    "title": "Tokenizer",
+    "section": "Types of Tokenizer",
+    "text": "Types of Tokenizer\nTo tokenize the input text, there are three types which are available. Sub-Word based tokenizers are what is typically used in LLMs.\n\nByte Pair Encoding (BPE) is one such library."
+  },
+  {
+    "objectID": "posts/LLMs/Tokenizer.html#byte-pair-encoding-bpe",
+    "href": "posts/LLMs/Tokenizer.html#byte-pair-encoding-bpe",
+    "title": "Tokenizer",
+    "section": "Byte Pair Encoding (BPE)",
+    "text": "Byte Pair Encoding (BPE)\n\n\nOrginally BPE was developed as a compression algorithm.\nCheckout more details and the example used from Wiki\n\n\n\n\n\nalt text"
+  },
+  {
+    "objectID": "posts/LLMs/Tokenizer.html#modified-bpe",
+    "href": "posts/LLMs/Tokenizer.html#modified-bpe",
+    "title": "Tokenizer",
+    "section": "Modified BPE",
+    "text": "Modified BPE\n\nIn LLM, we use something called Modified Byte Pair Encoding. Used for encoding plain text to tokens\n\n\n\n\nalt text"
+  },
+  {
+    "objectID": "posts/LLMs/Tokenizer.html#bpe-library",
+    "href": "posts/LLMs/Tokenizer.html#bpe-library",
+    "title": "Tokenizer",
+    "section": "BPE Library",
+    "text": "BPE Library\nIn Rust, you can use Tiktoken-rs for BPE\n\nEquivalent Python library is available\n\nTiktoken"
+  },
+  {
+    "objectID": "posts/LLMs/Tokenizer.html#rust-code",
+    "href": "posts/LLMs/Tokenizer.html#rust-code",
+    "title": "Tokenizer",
+    "section": "Rust Code",
+    "text": "Rust Code\nBelow is the rust code using Tiktoken-rs\nuse tiktoken_rs::o200k_base;\n\nfn main() {\n    let bpe = o200k_base().unwrap();\n    let token: Vec&lt;u32&gt; = bpe.encode_with_special_tokens(\"This is multi line sentence for BPE with rust and a sentence   with spaces\");\n\n    println!(\"Token: {:?}\", token);\n    println!(\"Decoding the token {:?}\", bpe.decode(token));\n\n}\nOutput of this program is as shown below\n$&gt; cargo run\n\n## OUTPUT\n\n#Token: [2500, 382, 12151, 2543, 21872, 395, 418, 3111, 483, 20294, 326, 261, 21872, 256, 483, 18608]\n#Decoding the token Ok(\"This is multi line sentence for BPE with rust and a sentence   with spaces\")"
+  },
+  {
+    "objectID": "posts/LLMs/Tokenizer.html#python-code",
+    "href": "posts/LLMs/Tokenizer.html#python-code",
+    "title": "Tokenizer",
+    "section": "Python Code",
+    "text": "Python Code\nimport tiktoken\ntokenizer = tiktoken.get_encoding(\"o200k_base\")\n\ntext_data = ( \"Ecode using BPE via Python\")\n\nencoder_output = tokenizer.encode(text_data, allowed_special={\"&lt;|END|&gt;\"})\nprint(encoder_output)\n\n\ndecoder_output = tokenizer.decode(encoder_output)\n\nprint(decoder_output)\n$&gt; python3 bpe_example.py\n\n## OUTPUT\n\n# [36, 3056, 2360, 418, 3111, 4493, 26534]\n# Ecode using BPE via Python"
+  },
+  {
+    "objectID": "posts/DataScience/datascience_ml_structure.html",
+    "href": "posts/DataScience/datascience_ml_structure.html",
+    "title": "Data Science and ML",
+    "section": "",
+    "text": "Introduction\nIn this article, I will explain how I set up my Data Science (DS) or Machine Learning (ML) projects and the tools I use to make the process as effective as possible. This is purely based on my experience and might help someone who is new to DS or ML. There might be a better option out there but this works extremely very well for me, especially when working on multiple projects simultaneously.\n\n\n\n\nTools\nYou can choose from a variety of IDE/tools out there but it all comes down to your preference and taste. Some of them are…\n\nPyCharm\nSpyder\nJupyter Notebook\n\nIf it is your personal project, you can use Google Colab — This gives you free access to GPUs and TPUs (Tensor Processing Units). Jupyter even works well for learning programming language like Julia.\nTo track your tasks, you can use any project management or Kanban tool like Trello (easy to set up) or Notion (needs time to set it up but extremely effective).\n\n\nStructure\nYou need to first install Python and Jupyter notebook via pip install jupyter. You can skip this step if you have already installed them.\nOnce installed, you can add additional configuration by installing NBExtensions using pip install jupyter_contrib_nbextensions.\nNow, when you start Jupyter Notebook, you should see nbextensions Tab like below.\nThese are the ones which I use — Collapsible Headings, Table of Contents and Variable inspector but feel free to add additional extensions. \n\n\nSample Jupyter Notebook\nThis is what the NBExtension selection will help you do. Create a new section using markdown and Contents gets filled in automatically. This also helps you to jump between the section while keeping the notebook clean.\n\n\n\nJupyter 2\n\n\n\n\nSetting up Folder Structures\nTypically, my folder structure is as below — You can add more folders/sub-folders or modify it according to your requirements.\ndata - Stores all the data is in various formats (.json, .csv, .xlsx etc).\nreports - All the reports are stored in here.\nmode - If you are working on ML models, you can use this to store all your model checkpoints.\ntechnicalPaper - Finally, technical paper (.ipynb or a word doc) to be presented to your team.\n\n\nNaming Jupyter Notebooks\nI use the following names to differentiate between experiments and final code\n**projectName_EDA_ML_Experiements.ipnyb** - All your analysis will be here. You will start exploring, understanding, cleaning up data, running your models, metrics and performance. This is your playground. During the exploratory phase, this file will be filled with lots of code, data type conversions, distributions, data transformations, plots, sample code etc. This is a necessary step to understand the data.\n**projectName.ipynb** - Where the final code lives all cleaned up. If you want to work on additional data points, go back to the experiment notebook so you can keep this neat and clean.\n**projectName_ResearchPaper.ipynb** - This is where I usually capture my notes, references, website and Math formulas etc. This then becomes your research/white paper to be published.\n\n\nProject Tracking\nUsually enterprise level project takes much longer, it has multiple tasks which includes gathering additional inputs from Product Owners/ Business/Sales team and other stakeholders — not to mention additional rush of ideas when you are in “The Zone”\nFor tracking, I have experimented with couple of tools -\n1&gt; The old fashioned but effective way — Pen and Paper\n2&gt; To use some kind of Kanban tool like Trello.\nBut the one which is been very effective for me over the past year is an app called Notion. This helps me to view the tasks for the day, plan for the week and hit the quarterly goals.\nAt the end of the day when you see the status of your task as completed like below, you’d know you had a great day!!!\n\n\n\nNotion\n\n\n\n\nConclusion\nI had done a great deal of experiments before narrowing it down to these processes, so if this article helps you in any way do let me know.\nHappy Learning!!!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Blogs",
+    "section": "",
+    "text": "Blogs\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nDocusaurus to Quarto:A Powerful Scientific Blogging\n\n\n\nQuarto\n\nStatic Site\n\n\n\nDiscover why I migrated from Docusaurus to Quarto for my blog, and how you can harness Quarto’s power for scientific content, beautiful websites, and seamless publishing.\n\n\n\n\n\nNov 8, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to PTX\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to GPU\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to LLMs\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDeepSeekPTX\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nTransformers\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nTokenizer\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nNeovim IDE\n\n\n\nIDE\n\nNeovim\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDotfiles\n\n\n\nDotfiles\n\nSetup\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nNotion\n\n\n\nnotion\n\nproducitivity\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nData Science and ML\n\n\n\nDatascience\n\nML\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nEmotional Cause Pair Analysis\n\n\n\nDatascience\n\nML\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nCookie Cutter V2.0\n\n\n\nIDE\n\nNeovim\n\n\n\n\n\n\n\n\n\nApr 21, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nQuantm Machine Learning\n\n\n\nQuantum\n\nML\n\n\n\n\n\n\n\n\n\nApr 21, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to Docusaurus\n\n\n\nDocusaurus\n\nStatic Site\n\n\n\n\n\n\n\n\n\nMar 5, 2020\n\n\nRakesh Venkat\n\n\n\n\n\nNo matching items"
+  }
+]

@@ -1,0 +1,452 @@
+---
+title: "Introduction to PTX"
+author: "Rakesh Venkat"
+date: "2025-03-01"
+categories: [LLM]
+image: "img/ptx.png"
+jupyter: python3
+---
+
+# Introduction
+
+Parallel Thread Execution (PTX) is a virtual machine instruction set architecture and can be thought of as the assembly language for NVDIA GPUs. You would need to know few syntax of PTX. This should get you started quickly.
+
+<!-- truncate -->
+
+------------------------------------------------------------------------
+
+# PTX Syntax
+
+Here are few syntax of PTX for your references.
+
+## **Basic Structure**
+
+``` ptx
+.version 7.0                    // PTX version
+.target sm_70                   // Target architecture
+.address_size 64                // 64-bit addressing
+
+.visible .entry kernel_name(   // Kernel name and declaration
+    .param .u64 param1,        // Parameters
+    .param .f32 param2
+)
+{
+    // Kernel body
+}
+```
+
+## **Registers**
+
+``` ptx
+.reg .b32 %r<5>;    // 5 32-bit registers %r0 through %r4
+.reg .f32 %f<3>;    // 3 single-precision float
+.reg .b64 %rd<2>;   // 2 64-bit 
+.reg .pred %p<2>;   // 2 predicate registers (used for conditionals)
+```
+
+## **Instructions**
+
+``` ptx
+mov.u32 %r1, %tid.x;       // Move thread(ID) to %r1
+add.s32 %r3, %r1, %r2;     // Add int
+mul.f32 %f3, %f1, %f2;     // Mul floats
+setp.lt.s32 %p1, %r1, %r2; // Set predicate if r1 < r2
+@%p1 bra label;            // Conditional branch
+```
+
+## **Memory Operations**
+
+``` ptx
+ld.param.u64 %rd1, [param1];       // Load param into register
+ld.global.f32 %f1, [%rd1];         // Load from global mem
+st.global.f32 [%rd2], %f2;         // Store to global mem
+ld.shared.f32 %f3, [%rd3];         // Load from shared mem
+ld.global.v4.f16 {%f1, %f2, %f3, %f4}, [%rd1];  // Vector load
+```
+
+## **Special Registers**
+
+``` ptx
+%tid.x, %tid.y, %tid.z     // Thread (ID) within a block
+%ctaid.x, %ctaid.y, %ctaid.z   // Block (ID) within a grid
+%ntid.x, %ntid.y, %ntid.z  // Block dimensions (threads per block)
+```
+
+## **Math Operaations**
+
+``` ptx
+add.f32 %f3, %f1, %f2;     // Add
+sub.f32 %f3, %f1, %f2;     // Sub
+mul.f32 %f3, %f1, %f2;     // Mul
+div.f32 %f3, %f1, %f2;     // Div
+mad.f32 %f4, %f1, %f2, %f3;  // Multiply & add: (f4 = f1*f2+f3)
+```
+
+## **Tensor Core Operations**
+
+``` ptx
+// Matrix multiply-accumulate using tensor cores
+mma.sync.aligned.m16n8k8.row.col.f16.f16.f16.f16 
+    {%f5, %f6, %f7, %f8},   // Destination registers
+    {%f1, %f2},             // A matrix registers
+    {%f3, %f4},             // B matrix registers
+    {%f5, %f6, %f7, %f8};   // C matrix registers (accumulator)
+```
+
+## **Control Flow**
+
+``` ptx
+bra label;           // Unconditional branch
+@%p1 bra label;      // Conditional branch if predicate = true
+ret;                 // Return from kernel
+```
+
+## Code Sample
+
+Now that we know the the basic syntax of PTX, here is one simple C program for vector addition.
+
+``` c
+
+#include <stdio.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
+
+// Kernel function to add the elements of two arrays
+__global__ void vectorAdd(int *a, int *b, int *c, int n) {
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i < n) {
+        c[i] = a[i] + b[i];
+    }
+}
+
+int main() {
+    int n = 1000;
+    int size = n * sizeof(int);
+    int *a, *b, *c;
+    int *d_a, *d_b, *d_c;
+
+    // Allocate memory on the host
+    a = (int *)malloc(size);
+    b = (int *)malloc(size);
+    c = (int *)malloc(size);
+
+    // Initialize the arrays
+    for (int i = 0; i < n; i++) {
+        a[i] = i;
+        b[i] = i * 2;
+    }
+
+    // Allocate memory on the device
+    cudaMalloc((void **)&d_a, size);
+    cudaMalloc((void **)&d_b, size);
+    cudaMalloc((void **)&d_c, size);
+
+    // Copy data from host to device
+    cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice);
+
+    // Launch the vectorAdd kernel
+    int threadsPerBlock = 256;
+    int blocksPerGrid = (n + threadsPerBlock - 1) / threadsPerBlock;
+    vectorAdd<<<blocksPerGrid, threadsPerBlock>>>(d_a, d_b, d_c, n);
+
+    // Copy the result from device to host
+    cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost);
+
+    // Free device memory
+    cudaFree(d_a);
+    cudaFree(d_b);
+    cudaFree(d_c);
+
+    // Free host memory
+    free(a);
+    free(b);
+    free(c);
+
+    return 0;
+}
+```
+
+### Generating output
+
+Let us compile the code using `nvcc` compiler
+
+``` bash
+$> nvcc vector.cu -o vector
+$> ./my_kernel
+```
+
+``` bash
+# output
+c[0] = 0
+c[1] = 3
+c[2] = 6
+c[3] = 9
+c[4] = 12
+c[5] = 15
+c[6] = 18
+c[7] = 21
+c[8] = 24
+c[9] = 27
+```
+
+### Code Explaination
+
+``` c
+// This is for CUDA runtime functions
+#include <cuda_runtime.h> 
+```
+
+#### Kernel Function
+
+-   *`__global__`* specifices that this is CUDA kernel that runs on GPU\
+-   Three float arrays are pointers along with array size `a`, `b` and `c`
+-   *`blockIdx.x`* is the block index.
+-   *`blockDim.x`* is number of thread per block
+-   *`threadIdx.x`* is thread index within a block
+-   Calculate unique ID for each thread to process a different array element
+
+``` c
+// CUDA kernel for vector addition
+__global__ void vectorAdd(float *a, float *b, float *c, int n)
+{
+    // Calculate global thread ID
+    int id = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // To make sure we don't go out of bounds
+    if (id < n)
+        c[id] = a[id] + b[id];
+}
+```
+
+#### Main function
+
+``` c
+int main()
+{
+    // Vector size
+    int n = 1000000;               // One million elements
+    size_t bytes = n * sizeof(float);  // Calculate memory size in bytes
+    // Allocate host memory
+    float *h_a = (float*)malloc(bytes);  // Allocate memory for array a
+    float *h_b = (float*)malloc(bytes);  // Allocate memory for array b
+    float *h_c = (float*)malloc(bytes);  // Allocate memory for results
+    // Initialize vectors on host
+    for (int i = 0; i < n; i++)
+    {
+        h_a[i] = 1.0f;  // All elements in a are 1.0
+        h_b[i] = 2.0f;  // All elements in b are 2.0
+    }
+}
+```
+
+#### GPU Memory Allocation
+
+``` c
+// Allocate device memory
+    float *d_a, *d_b, *d_c;            // Declare device pointers
+    cudaMalloc(&d_a, bytes);           // Allocate memory on GPU for a
+    cudaMalloc(&d_b, bytes);           // Allocate memory on GPU for b
+    cudaMalloc(&d_c, bytes);           // Allocate memory on GPU for c
+```
+
+#### GPU Data Transfer
+
+``` c
+// Copy data from host to device
+    cudaMemcpy(d_a, h_a, bytes, cudaMemcpyHostToDevice);  // Copy a to GPU
+    cudaMemcpy(d_b, h_b, bytes, cudaMemcpyHostToDevice);  // Copy b to GPU
+```
+
+#### Kernel Launch Configuration
+
+``` c
+// Set up execution configuration
+    int blockSize = 256;                         // 256 threads per block
+    int gridSize = (n + blockSize - 1) / blockSize;  // Calculate grid size
+// This formula ensures we have enough blocks to cover all elements
+// Launch kernel
+    vectorAdd<<<gridSize, blockSize>>>(d_a, d_b, d_c, n);
+    // <<<>>> is special CUDA syntax for kernel launch configuration
+    // gridSize = number of blocks, blockSize = threads per block
+```
+
+#### Results and Cleanup
+
+``` c
+// Copy result back to host
+cudaMemcpy(h_c, d_c, bytes, cudaMemcpyDeviceToHost);  // Copy results from GPU to CPU
+
+// Free memory
+cudaFree(d_a);  // Free GPU memory for a
+cudaFree(d_b);  // Free GPU memory for b
+cudaFree(d_c);  // Free GPU memory for c
+free(h_a);      // Free CPU memory for a
+free(h_b);      // Free CPU memory for b
+free(h_c);      // Free CPU memory for c
+```
+
+## PTX Code
+
+To extract PTX from the above code, try this the following command.
+
+``` bash
+$> nvcc -ptx vector.cu -o vector.ptx
+```
+
+### PTX file
+
+``` ptx
+
+.visible .entry vectorAdd(
+    .param .u64 vectorAdd_param_0,  // Pointer to array a
+    .param .u64 vectorAdd_param_1,  // Pointer to array b
+    .param .u64 vectorAdd_param_2,  // Pointer to array c
+    .param .u32 vectorAdd_param_3   // Parameter n (size)
+)
+{
+    .reg .pred  %p<2>;          // Predicate registers
+    .reg .f32   %f<4>;          // Float registers
+    .reg .b32   %r<6>;          // 32-bit registers
+    .reg .b64   %rd<11>;        // 64-bit registers
+
+    // Load parameters into registers
+    ld.param.u64    %rd1, [vectorAdd_param_0];
+    ld.param.u64    %rd2, [vectorAdd_param_1];
+    ld.param.u64    %rd3, [vectorAdd_param_2];
+    ld.param.u32    %r2, [vectorAdd_param_3];
+    
+    // Calculate thread ID
+    mov.u32         %r3, %ctaid.x;    // Get block index
+    mov.u32         %r4, %ntid.x;     // Get block size
+    mov.u32         %r5, %tid.x;      // Get thread index within block
+    mad.lo.s32      %r1, %r3, %r4, %r5;  // Calculate global thread ID: blockIdx * blockDim + threadIdx
+    
+    // Check if thread ID is within bounds
+    setp.ge.s32     %p1, %r1, %r2;    // Set predicate if thread ID >= n
+    @%p1 bra        BB0_2;            // If true, jump to the end (BB0_2 label)
+    
+    // Calculate memory addresses
+    cvta.to.global.u64  %rd4, %rd1;   // Convert array a pointer to global address
+    mul.wide.s32    %rd5, %r1, 4;     // Multiply thread ID by 4 (size of float)
+    add.s64         %rd6, %rd4, %rd5; // Calculate address for a[id]
+    
+    cvta.to.global.u64  %rd7, %rd2;   // Convert array b pointer to global address
+    add.s64         %rd8, %rd7, %rd5; // Calculate address for b[id]
+    
+    // Load values, add them, and store result
+    ld.global.f32   %f1, [%rd6];      // Load a[id]
+    ld.global.f32   %f2, [%rd8];      // Load b[id]
+    add.f32         %f3, %f1, %f2;    // Add them: c[id] = a[id] + b[id]
+    
+    cvta.to.global.u64  %rd9, %rd3;   // Convert array c pointer to global address
+    add.s64         %rd10, %rd9, %rd5; // Calculate address for c[id]
+    st.global.f32   [%rd10], %f3;     // Store the result in c[id]
+    
+BB0_2:                                // End label
+    ret;                              // Return from kernel
+}
+```
+
+### PTX Code
+
+Let us now review the PTX code
+
+### Entry Point
+
+This section declares entry point for the kernel followed by 4 paramaters which is a pointer to the variable a, b, c and size n.
+
+``` ptx
+
+.visible .entry vectorAdd(           // Declares entry point for kernel
+    .param .u64 vectorAdd_param_0,   // First parameter (pointer to array a)
+    .param .u64 vectorAdd_param_1,   // Second parameter (pointer to array b)
+    .param .u64 vectorAdd_param_2,   // Third parameter (pointer to array c)
+    .param .u32 vectorAdd_param_3    // Fourth parameter (size n)
+)
+```
+
+### Register Declaration
+
+Declating Predicate registers for conditions, float registers, 32 bit int and register for addresses
+
+``` ptx
+    .reg .pred  %p<2>;          // Predicate r
+    .reg .f32   %f<4>;          // Float 
+    .reg .b32   %r<6>;          // 32-bit int
+    .reg .b64   %rd<11>;        // 64-bit for addresses
+```
+
+### Parameter Loading
+
+This section loads parameters from kernel into registers. `ld` is for load.
+
+``` ptx
+
+    ld.param.u64    %rd1, [vectorAdd_param_0];  // Load pointer to array a
+    ld.param.u64    %rd2, [vectorAdd_param_1];  // Load pointer to array b
+    ld.param.u64    %rd3, [vectorAdd_param_2];  // Load pointer to array c
+    ld.param.u32    %r2, [vectorAdd_param_3];   // Load size n
+```
+
+### Thread ID
+
+Now calcuate unique thread Id using built-on registers.
+
+First get the current block index into `%r3`, then get number of threads per block into `%r4` and then get thread index within this block into `%r5`. `mad` is multiply and add in a single instruction and calculate ID by using `blockIdx * blockDim + threadIdx`.
+
+``` ptx
+    mov.u32         %r3, %ctaid.x;    
+    mov.u32         %r4, %ntid.x;     
+    mov.u32         %r5, %tid.x;      
+    mad.lo.s32      %r1, %r3, %r4, %r5; 
+```
+
+### Bounds Checking
+
+Here we check if thread ID is within bounds of the array and then Set predicate `%p1` if thread ID \>= n. If true then jump to return label `BB0_2`
+
+``` ptx
+// 
+setp.ge.s32     %p1, %r1, %r2;    // 
+@%p1 bra        BB0_2;            // If true, jump to the return label (BB0_2)
+```
+
+### Memory Calculations
+
+Calculate memory address for array elements. Covert array `a` pointer to global address using `cvta`. Multiply `mul` thread Id by 4 which is the size of the float followed by adding address for `a`.
+
+``` ptx
+
+    cvta.to.global.u64  %rd4, %rd1;   
+    mul.wide.s32    %rd5, %r1, 4;     
+    add.s64         %rd6, %rd4, %rd5; 
+    
+    cvta.to.global.u64  %rd7, %rd2;   // Convert array b pointer to global address
+    add.s64         %rd8, %rd7, %rd5; // Calculate address for b[id]
+```
+
+### Load, Add and Store
+
+Load values from arrays, perform addition, and store result
+
+``` ptx
+    ld.global.f32   %f1, [%rd6];      // Load a[id] into register %f1
+    ld.global.f32   %f2, [%rd8];      // Load b[id] into register %f2
+    add.f32         %f3, %f1, %f2;    // Add them: %f3 = %f1 + %f2
+    
+    cvta.to.global.u64  %rd9, %rd3;   // Convert array c pointer to global address
+    add.s64         %rd10, %rd9, %rd5; // Calculate address for c[id]
+    st.global.f32   [%rd10], %f3;     // Store the result in c[id]
+```
+
+### Return from Kernel
+
+``` ptx
+BB0_2:  // Label for our return point
+ret;                             
+```
+
+## Conclusion
+
+This article covered the basic syntax of PTX. The next article will focus on how Deepseek could have possibly optimized their PTX code on their H800 NVIDIA GPUs.
