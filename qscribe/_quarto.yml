@@ -9,8 +9,6 @@ website:
   favicon: images/AudioWide-White.ico
   navbar:
     right:
-      - text: Home
-        href: ../index.html
       - text: QFey
         href: https://qfey.in/
         target: _blank
@@ -24,13 +22,16 @@ website:
         href: https://github.com/rvbug
         target: _blank
 
+# format:
+#   html:
+#     theme:
+#       - cosmo
+#       - brand
+#     css: styles.css
 
-format:
-  html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+theme:
+  light: cosmo
+  dark: darkly
 
 editor: visual
 
