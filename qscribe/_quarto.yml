@@ -9,18 +9,21 @@ website:
   favicon: images/AudioWide-White.ico
   navbar:
     right:
-      - text: About
-        href: https://qubitai.in/about.html
-        target: _blank
-      - icon: github
-        href: https://github.com/rvbug
-        target: _blank
+      - text: Home
+        href: ../index.html
       - text: QFey
         href: https://qfey.in/
         target: _blank
       - text: QuBiTAi
         href: https://qubitai.in/
         target: _blank
+      - text: About
+        href: https://qubitai.in/about.html
+        target: _blank
+      - icon: github
+        href: https://github.com/rvbug
+        target: _blank
+
 
 format:
   html:
