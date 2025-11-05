@@ -530,10 +530,6 @@ format:
          - uses: quarto-dev/quarto-actions/setup@v2
          - run: quarto publish gh-pages
    ```
-   
-:::{.callout-note}
-I am working on an open source cli migrtation tool to help out with this conversion.
-:::
 
 ## Real-World Use Cases
 
