@@ -70,13 +70,14 @@ Let's quickly compare:
 
 ## Getting Started with Quarto
 
+
 ### Installation
 
-Quarto is surprisingly easy to install:
+First step is to install Quarto CLI from [quarto.org](https://quarto.org/docs/get-started/).
 
 ```bash
 # macOS
-brew install quarto
+brew install quarto 
 
 # Windows (using Chocolatey)
 choco install quarto
@@ -86,22 +87,16 @@ sudo wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/qu
 sudo dpkg -i quarto-1.4.550-linux-amd64.deb
 ```
 
-Or download directly from [quarto.org](https://quarto.org/docs/get-started/).
+Second, choose the tool. I use [`RStudio`](https://posit.co/download/rstudio-desktop/) but ,my preferred way is to use Quarto on Neovim via a plugin called [`quarto-nvim`](https://github.com/quarto-dev/quarto-nvim)
+
+### RStudio
+
+![RStudio](img/rstudio.png)
 
 
-### My installation
+### My installation - Neovim
 
-I use Neovim for writing my blog along with another plugin called "Zen mode". The setup is available in [quarto neovim](https://quarto.org/docs/tools/neovim.html)
-
-
-
-#### Before ZenMode
-
-![WithoutZen](img/neovim-b4zen.png)
-
-
-
-#### After ZenMode
+On Neovim, I use a plugin called "Zen mode" for focus mode. Read more about this plugn [here](https://github.com/folke/zen-mode.nvim)
 
 
 ![WithZen](img/neovim-withzen.png)
@@ -114,6 +109,11 @@ Once you are ready, you can just run the following commands inside Neovim to act
 
 :QuartoPreview
 ```
+
+::: {.callout-tip}
+## Neovim Setup 
+If you want to know more about neovim, checkout my [setup](https://github.com/rvbug/neovim)  
+:::
 
 
 > Why I use CLI for writing blogs
@@ -489,7 +489,7 @@ format:
 - Pure Markdown + YAML
 - Live code execution
 
-### Migration Steps
+### Manual Migration 
 
 1. **Set up Quarto project**:
    ```bash
@@ -500,13 +500,40 @@ format:
    - Changed frontmatter format
    - Added executable code blocks where relevant
 
+### Automated Migration - Better Approach
+
+I have created a `cli` script **Doc2Quarto** to help you with this migration. This is an open source tool. Instructions are available [here](https://github.com/rvbug/doc2quarto).
+
+
+![Doc2Quarto](img/Doc2Quarto_text_n_logo.png)
+
+
+here's how it looks
+
+```bash
+
+$> doc2quarto --help
+
+Converts markdown.md to Quarto .qmd format
+
+Usage: doc2quarto --source <SOURCE> --dest <DEST>
+
+Options:
+  -s, --source <SOURCE>  source directory containing Docusaurus markdown files
+  -d, --dest <DEST>      destination directory for converted Quarto files
+  -h, --help             Print help
+
+
+```
+
+![CLIPreview](img/Doc2Quarto-cli.png)
 
 
 ## Tips for Success
 
 1. **Start small**: Convert one blog post first. Test the workflow.
 
-2. **Use VS Code**: Install the Quarto extension for syntax highlighting, preview, and rendering shortcuts.
+2. **Use VSCode**: If you are VSCOde, just install the Quarto extension for syntax highlighting, preview, and rendering shortcuts.
 
 3. **Leverage freeze**: For expensive computations:
    ```yaml

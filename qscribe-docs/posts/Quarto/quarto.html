@@ -425,9 +425,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="getting-started-with-quarto">Getting Started with Quarto</h2>
 <section id="installation" class="level3">
 <h3 class="anchored" data-anchor-id="installation">Installation</h3>
-<p>Quarto is surprisingly easy to install:</p>
+<p>First step is to install Quarto CLI from <a href="https://quarto.org/docs/get-started/">quarto.org</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># macOS</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install quarto</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install quarto </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows (using Chocolatey)</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">choco</span> install quarto</span>
@@ -435,22 +435,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/quarto-1.4.550-linux-amd64.deb</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> quarto-1.4.550-linux-amd64.deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or download directly from <a href="https://quarto.org/docs/get-started/">quarto.org</a>.</p>
+<p>Second, choose the tool. I use <a href="https://posit.co/download/rstudio-desktop/"><code>RStudio</code></a> but ,my preferred way is to use Quarto on Neovim via a plugin called <a href="https://github.com/quarto-dev/quarto-nvim"><code>quarto-nvim</code></a></p>
 </section>
-<section id="my-installation" class="level3">
-<h3 class="anchored" data-anchor-id="my-installation">My installation</h3>
-<p>I use Neovim for writing my blog along with another plugin called “Zen mode”. The setup is available in <a href="https://quarto.org/docs/tools/neovim.html">quarto neovim</a></p>
-<section id="before-zenmode" class="level4">
-<h4 class="anchored" data-anchor-id="before-zenmode">Before ZenMode</h4>
+<section id="rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/neovim-b4zen.png" class="img-fluid figure-img"></p>
-<figcaption>WithoutZen</figcaption>
+<p><img src="img/rstudio.png" class="img-fluid figure-img"></p>
+<figcaption>RStudio</figcaption>
 </figure>
 </div>
 </section>
-<section id="after-zenmode" class="level4">
-<h4 class="anchored" data-anchor-id="after-zenmode">After ZenMode</h4>
+<section id="my-installation---neovim" class="level3">
+<h3 class="anchored" data-anchor-id="my-installation---neovim">My installation - Neovim</h3>
+<p>On Neovim, I use a plugin called “Zen mode” for focus mode. Read more about this plugn <a href="https://github.com/folke/zen-mode.nvim">here</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/neovim-withzen.png" class="img-fluid figure-img"></p>
@@ -461,10 +459,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">:QuartoActivate</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">:QuartoPreview</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Neovim Setup
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you want to know more about neovim, checkout my <a href="https://github.com/rvbug/neovim">setup</a></p>
+</div>
+</div>
 <blockquote class="blockquote">
 <p>Why I use CLI for writing blogs This helps me to focus and write quickly and some other stuff will come here.</p>
 </blockquote>
-</section>
 </section>
 <section id="creating-your-first-blog" class="level3">
 <h3 class="anchored" data-anchor-id="creating-your-first-blog">Creating Your First Blog</h3>
@@ -532,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Let’s explore data visualization with Python and matplotlib.</p>
-<div id="0d00c7ed" class="cell" data-execution_count="1">
+<div id="0fcc9760" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -816,8 +826,8 @@ Exponential: mean=2.02, std=2.00</code></pre>
 <p><strong>Before (Docusaurus)</strong>: - 10+ configuration files - node_modules: ~500MB - Build time: 45 seconds - Markdown + MDX components - Separate code blocks (no execution)</p>
 <p><strong>After (Quarto)</strong>: - 1 primary config file (<code>_quarto.yml</code>) - No dependencies folder - Build time: 3 seconds - Pure Markdown + YAML - Live code execution</p>
 </section>
-<section id="migration-steps" class="level3">
-<h3 class="anchored" data-anchor-id="migration-steps">Migration Steps</h3>
+<section id="manual-migration" class="level3">
+<h3 class="anchored" data-anchor-id="manual-migration">Manual Migration</h3>
 <ol type="1">
 <li><p><strong>Set up Quarto project</strong>:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project blog qscribe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
@@ -828,42 +838,58 @@ Exponential: mean=2.02, std=2.00</code></pre>
 </ul></li>
 </ol>
 </section>
+<section id="automated-migration---better-approach" class="level3">
+<h3 class="anchored" data-anchor-id="automated-migration---better-approach">Automated Migration - Better Approach</h3>
+<p>I have created a <code>cli</code> script <strong>Doc2Quarto</strong> to help you with this migration. This is an open source tool. Instructions are available <a href="https://github.com/rvbug/doc2quarto">here</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Doc2Quarto_text_n_logo.png" class="img-fluid figure-img"></p>
+<figcaption>Doc2Quarto</figcaption>
+</figure>
+</div>
+<p>here’s how it looks</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> doc2quarto <span class="ex">--help</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Converts</span> markdown.md to Quarto .qmd format</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> doc2quarto <span class="at">--source</span> <span class="op">&lt;</span>SOURCE<span class="op">&gt;</span> --dest <span class="op">&lt;</span>DEST<span class="op">&gt;</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Options:</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-s,</span> <span class="at">--source</span> <span class="op">&lt;</span>SOURCE<span class="op">&gt;</span>  source directory containing Docusaurus markdown files</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-d,</span> <span class="at">--dest</span> <span class="op">&lt;</span>DEST<span class="op">&gt;</span>      destination directory for converted Quarto files</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-h,</span> <span class="at">--help</span>             Print help</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Doc2Quarto-cli.png" class="img-fluid figure-img"></p>
+<figcaption>CLIPreview</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="tips-for-success" class="level2">
 <h2 class="anchored" data-anchor-id="tips-for-success">Tips for Success</h2>
 <ol type="1">
 <li><p><strong>Start small</strong>: Convert one blog post first. Test the workflow.</p></li>
-<li><p><strong>Use VS Code</strong>: Install the Quarto extension for syntax highlighting, preview, and rendering shortcuts.</p></li>
+<li><p><strong>Use VSCode</strong>: If you are VSCOde, just install the Quarto extension for syntax highlighting, preview, and rendering shortcuts.</p></li>
 <li><p><strong>Leverage freeze</strong>: For expensive computations:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto</span><span class="co">  # Only re-run when code changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb23"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto</span><span class="co">  # Only re-run when code changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><strong>Version control</strong>: Commit source <code>.qmd</code> files, not rendered <code>_site/</code> directory.</p></li>
 <li><p><strong>CI/CD</strong>: Use GitHub Actions for automatic deployment:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Publish</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build-deploy</span><span class="kw">:</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v2</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> quarto publish gh-pages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb24"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Publish</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build-deploy</span><span class="kw">:</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v2</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> quarto publish gh-pages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>I am working on an open source cli migrtation tool to help out with this conversion.</p>
-</div>
-</div>
 </section>
 <section id="real-world-use-cases" class="level2">
 <h2 class="anchored" data-anchor-id="real-world-use-cases">Real-World Use Cases</h2>
