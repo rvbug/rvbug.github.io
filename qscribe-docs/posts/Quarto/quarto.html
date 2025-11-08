@@ -542,7 +542,7 @@ Neovim Setup
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Let’s explore data visualization with Python and matplotlib.</p>
-<div id="0fcc9760" class="cell" data-execution_count="1">
+<div id="6e959411" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -848,18 +848,15 @@ Exponential: mean=2.02, std=2.00</code></pre>
 </figure>
 </div>
 <p>here’s how it looks</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> doc2quarto <span class="ex">--help</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Converts</span> markdown.md to Quarto .qmd format</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> doc2quarto <span class="at">--source</span> <span class="op">&lt;</span>SOURCE<span class="op">&gt;</span> --dest <span class="op">&lt;</span>DEST<span class="op">&gt;</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Options:</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-s,</span> <span class="at">--source</span> <span class="op">&lt;</span>SOURCE<span class="op">&gt;</span>  source directory containing Docusaurus markdown files</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-d,</span> <span class="at">--dest</span> <span class="op">&lt;</span>DEST<span class="op">&gt;</span>      destination directory for converted Quarto files</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-h,</span> <span class="at">--help</span>             Print help</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> doc2quarto <span class="ex">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>Converts markdown.md to Quarto .qmd format</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>Usage: doc2quarto --source <span class="dt">&lt;</span><span class="kw">SOURCE</span><span class="dt">&gt;</span> --dest <span class="dt">&lt;</span><span class="kw">DEST</span><span class="dt">&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>Options:</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  -s, --source <span class="dt">&lt;</span><span class="kw">SOURCE</span><span class="dt">&gt;</span>  source directory containing Docusaurus markdown files</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  -d, --dest <span class="dt">&lt;</span><span class="kw">DEST</span><span class="dt">&gt;</span>      destination directory for converted Quarto files</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  -h, --help             Print help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/Doc2Quarto-cli.png" class="img-fluid figure-img"></p>
@@ -868,42 +865,72 @@ Exponential: mean=2.02, std=2.00</code></pre>
 </div>
 </section>
 </section>
+<section id="doc2quarto-installation" class="level2">
+<h2 class="anchored" data-anchor-id="doc2quarto-installation">Doc2Quarto Installation</h2>
+<section id="option-1-install-from-crates.io-rust-users" class="level3">
+<h3 class="anchored" data-anchor-id="option-1-install-from-crates.io-rust-users">Option 1: Install from crates.io (Rust Users)</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># requires rust</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> cargo <span class="fu">install</span> doc2quarto</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="option-2-using-homebrew-on-macos" class="level3">
+<h3 class="anchored" data-anchor-id="option-2-using-homebrew-on-macos">Option 2: Using homebrew on MacOS</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> brew <span class="fu">install</span> rvbug/tap/doc2quarto</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="option-3-debian-linux" class="level3">
+<h3 class="anchored" data-anchor-id="option-3-debian-linux">Option 3: Debian (Linux)</h3>
+<p>Download the .deb package from <a href="https://github.com/rvbug/doc2quarto/releases/latest">releases</a>:</p>
+<pre><code># Download latest release 
+$&gt; wget https://github.com/rvbug/doc2quarto/releases/download/v0.1.1/doc2quarto_0.1.1-1_amd64.deb
+
+# Install
+$&gt; sudo dpkg -i doc2quarto_0.1.1-1_amd64.deb</code></pre>
+<p>For more information please checkout my <a href="https://github.com/rvbug/doc2quarto">Github Repo</a></p>
+</section>
+</section>
 <section id="tips-for-success" class="level2">
 <h2 class="anchored" data-anchor-id="tips-for-success">Tips for Success</h2>
 <ol type="1">
 <li><p><strong>Start small</strong>: Convert one blog post first. Test the workflow.</p></li>
 <li><p><strong>Use VSCode</strong>: If you are VSCOde, just install the Quarto extension for syntax highlighting, preview, and rendering shortcuts.</p></li>
 <li><p><strong>Leverage freeze</strong>: For expensive computations:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto</span><span class="co">  # Only re-run when code changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb27"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto</span><span class="co">  # Only re-run when code changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><strong>Version control</strong>: Commit source <code>.qmd</code> files, not rendered <code>_site/</code> directory.</p></li>
 <li><p><strong>CI/CD</strong>: Use GitHub Actions for automatic deployment:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Publish</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build-deploy</span><span class="kw">:</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v2</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> quarto publish gh-pages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb28"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Publish</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> main</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build-deploy</span><span class="kw">:</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v2</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> quarto publish gh-pages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </section>
 <section id="real-world-use-cases" class="level2">
 <h2 class="anchored" data-anchor-id="real-world-use-cases">Real-World Use Cases</h2>
-<p><strong>Academic Research</strong>: Publish reproducible papers with embedded analysis</p>
-<p><strong>Data Science Portfolios</strong>: Showcase projects with live code and visualizations</p>
-<p><strong>Technical Documentation</strong>: Books, tutorials, and API references</p>
-<p><strong>Company Blogs</strong>: Technical content with code examples (engineering blogs)</p>
-<p><strong>Course Materials</strong>: Interactive lessons with executable examples</p>
+<ul>
+<li><p><strong>Academic Research</strong>: Publish reproducible papers with embedded analysis</p></li>
+<li><p><strong>Data Science Portfolios</strong>: Showcase projects with live code and visualizations</p></li>
+<li><p><strong>Technical Documentation</strong>: Books, tutorials, and API references</p></li>
+<li><p><strong>Company Blogs</strong>: Technical content with code examples (engineering blogs)</p></li>
+<li><p><strong>Course Materials</strong>: Interactive lessons with executable examples</p></li>
+</ul>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>Switching from Docusaurus to Quarto was one of the best decisions for my technical blog. The simplicity, power, and focus on scientific publishing transformed my workflow. I spend less time fighting with configurations and more time creating content.</p>
 <p>If you’re running a technical blog, working with data, or publishing research, Quarto deserves serious consideration. It’s not just a tool—it’s a complete publishing system that respects your time and amplifies your content.</p>
-<p><strong>Try it yourself</strong>: 1. Install Quarto: <code>brew install quarto</code> (or download from <a href="https://quarto.org">quarto.org</a>). 2. Create a project: <code>quarto create project blog my-blog</code>. 3. Write your first post. 4. Preview: <code>quarto preview</code>.</p>
+<p><strong>Try it yourself</strong>:</p>
+<ol type="1">
+<li>Install Quarto: <code>brew install quarto</code> (or download from <a href="https://quarto.org">quarto.org</a>).</li>
+<li>Create a project: <code>quarto create project blog my-blog</code>.</li>
+<li>Write your first post.</li>
+<li>Preview: <code>quarto preview</code>.</li>
+</ol>
 <p>Four commands. Zero configuration overhead. Beautiful, reproducible output.</p>
 <p>Welcome to the future of scientific publishing.</p>
 <hr>

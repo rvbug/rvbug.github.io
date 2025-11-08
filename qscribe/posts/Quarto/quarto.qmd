@@ -511,9 +511,10 @@ I have created a `cli` script **Doc2Quarto** to help you with this migration. Th
 here's how it looks
 
 ```bash
-
 $> doc2quarto --help
+```
 
+```markdown
 Converts markdown.md to Quarto .qmd format
 
 Usage: doc2quarto --source <SOURCE> --dest <DEST>
@@ -523,10 +524,35 @@ Options:
   -d, --dest <DEST>      destination directory for converted Quarto files
   -h, --help             Print help
 
-
 ```
 
 ![CLIPreview](img/Doc2Quarto-cli.png)
+
+## Doc2Quarto Installation
+
+### Option 1: Install from crates.io (Rust Users)
+```bash
+# requires rust
+$> cargo install doc2quarto
+```
+
+### Option 2: Using homebrew on MacOS 
+```bash
+$> brew install rvbug/tap/doc2quarto
+```
+
+### Option 3: Debian (Linux)
+Download the .deb package from [releases](https://github.com/rvbug/doc2quarto/releases/latest):
+
+```
+# Download latest release 
+$> wget https://github.com/rvbug/doc2quarto/releases/download/v0.1.1/doc2quarto_0.1.1-1_amd64.deb
+
+# Install
+$> sudo dpkg -i doc2quarto_0.1.1-1_amd64.deb
+```
+
+For more information please checkout my [Github Repo](https://github.com/rvbug/doc2quarto)
 
 
 ## Tips for Success
@@ -560,15 +586,15 @@ Options:
 
 ## Real-World Use Cases
 
-**Academic Research**: Publish reproducible papers with embedded analysis
+* **Academic Research**: Publish reproducible papers with embedded analysis
 
-**Data Science Portfolios**: Showcase projects with live code and visualizations
+* **Data Science Portfolios**: Showcase projects with live code and visualizations
 
-**Technical Documentation**: Books, tutorials, and API references
+* **Technical Documentation**: Books, tutorials, and API references
 
-**Company Blogs**: Technical content with code examples (engineering blogs)
+* **Company Blogs**: Technical content with code examples (engineering blogs)
 
-**Course Materials**: Interactive lessons with executable examples
+* **Course Materials**: Interactive lessons with executable examples
 
 ## Conclusion
 
@@ -577,6 +603,7 @@ Switching from Docusaurus to Quarto was one of the best decisions for my technic
 If you're running a technical blog, working with data, or publishing research, Quarto deserves serious consideration. It's not just a tool—it's a complete publishing system that respects your time and amplifies your content.
 
 **Try it yourself**:
+
 1. Install Quarto: `brew install quarto` (or download from [quarto.org](https://quarto.org)). 
 2. Create a project: `quarto create project blog my-blog`. 
 3. Write your first post. 
