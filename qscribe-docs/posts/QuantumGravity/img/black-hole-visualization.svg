@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <!-- Background - Deep Space -->
+  <defs>
+    <!-- Radial Gradient for Black Hole -->
+    <radialGradient id="blackHoleGradient">
+      <stop offset="0%" stop-color="#1A1A2E"/>
+      <stop offset="50%" stop-color="#16213E"/>
+      <stop offset="100%" stop-color="#0F3460"/>
+    </radialGradient>
+    
+    <!-- Light Bending Effect Gradient -->
+    <radialGradient id="eventHorizonGradient">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Space Background -->
+  <rect width="600" height="600" fill="#000015"/>
+  
+  <!-- Gravitational Lensing Effect -->
+  <circle cx="300" cy="300" r="280" fill="url(#eventHorizonGradient)"/>
+  
+  <!-- Black Hole Core -->
+  <circle cx="300" cy="300" r="150" fill="url(#blackHoleGradient)"/>
+  
+  <!-- Event Horizon -->
+  <circle cx="300" cy="300" r="200" stroke="#4A4E69" stroke-width="2" fill="none"/>
+  
+  <!-- Accretion Disk -->
+  <g>
+    <ellipse cx="300" cy="300" rx="250" ry="80" 
+             fill="none" 
+             stroke="rgba(255,165,0,0.6)" 
+             stroke-width="15"/>
+    <ellipse cx="300" cy="300" rx="230" ry="60" 
+             fill="none" 
+             stroke="rgba(255,140,0,0.4)" 
+             stroke-width="10"/>
+  </g>
+  
+  <!-- Mathematical Annotations -->
+  <text x="20" y="50" font-family="Arial" font-size="16" fill="white">
+    Schwarzschild Radius: Rs = 2GM/c²
+  </text>
+  <text x="20" y="580" font-family="Arial" font-size="16" fill="white">
+    Gravitational Time Dilation: t' = t / √(1 - Rs/r)
+  </text>
+  
+  <!-- Light Ray Bending Paths -->
+  <g stroke="rgba(255,255,255,0.3)" stroke-dasharray="5,5">
+    <path d="M300,100 Q400,200 300,500" fill="none"/>
+    <path d="M300,500 Q200,400 300,100" fill="none"/>
+  </g>
+</svg>
