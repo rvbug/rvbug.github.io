@@ -375,9 +375,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Close modal when clicking the close button
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = "none";
-    });
+    // closeBtn.addEventListener('click', function() {
+    //     modal.style.display = "none";
+    // });
 
     // Close modal when clicking outside
     window.addEventListener('click', function(event) {

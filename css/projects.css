@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root {
+    /* 🎨 CHANGE THIS COLOR TO TEST DIFFERENT DARK THEMES */
+    --card-background-dark: #1a1a1a; /* Very dark gray, close to black */
+    --text-light: #f5f5f5; /* Light text for titles */
+    --text-muted-light: #b0b0b0; /* Muted text for descriptions */
+    --accent-color: #0984e3; /* Primary accent color (Blue) */
+    --body-background: #f5f5f5; /* Light background for the page body */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +17,8 @@
 }
 
 body {
-    background: #f5f5f5;
+    /* background: #f5f5f5; */
+    background: var(--body-background);
     color: #333;
     line-height: 1.6;
 }
@@ -184,8 +194,14 @@ header.sticky .nav-bar {
     text-align: center;
 }
 
+.projects-container {
+    max-width: 1250px;
+    margin: 4rem auto;
+    padding: 0 20px;
+}
 
-.projects-grid {
+
+/* .projects-grid {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
@@ -212,6 +228,251 @@ header.sticky .nav-bar {
     height: 200px;
     overflow: hidden;
     position: relative;
+} */
+
+.projects-grid {
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
+    /* padding: 2rem; */
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    /* gap: 2rem; */
+    display: none; /* Hide the old grid layout completely */
+}
+
+.project-card {
+    display: none; /* Hide the old cards */
+}
+
+
+/* ======================================================= */
+/* NEW TWO-COLUMN PRODUCT SECTION STYLING (Apple-Inspired) */
+/* ======================================================= */
+
+.projects-container {
+    max-width: 1250px; /* Use the same max-width as the nav-bar */
+    margin: 4rem auto;
+    padding: 0 20px;
+}
+
+.product-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 0; 
+    margin-bottom: 2rem;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); 
+}
+
+/* .product-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 0;
+    margin-bottom: 2rem;
+    background: var(--card-background-dark); 
+    color: var(--text-light); 
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(242, 240, 240, 0.5); 
+} */
+
+/* .product-image-container {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem;
+    min-width: 300px;
+    order: 2; 
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+} */
+
+.product-image-container {
+    /* Keep flex: 1.5, this is correct for making the column wider */
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem;
+    min-width: 300px;
+    order: 2; /* Default: Image on Right */
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.product-content {
+    flex: 1;
+    padding: 0 2rem;
+    order: 1; /* Default: Content on Left */
+    /* Control the maximum width of the text block to prevent it from stretching too far */
+    max-width: 500px; 
+}
+
+.product-icon {
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
+    object-fit:contain;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+/* Reverse layout: Image on Left, Content on Right */
+.product-section.reverse-layout .product-image-container {
+    order: 1;
+}
+
+.product-section.reverse-layout .product-content {
+    order: 2;
+}
+
+.product-image-container img {
+    /* 💡 THE FIX: Increase the max-height to a larger value */
+min-width: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.product-title {
+    font-size: 3.5rem; /* Large and bold title */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #2d3436;
+}
+
+.product-description {
+    font-size: 1.3rem;
+    color: #636e72;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* .tech-stack {
+    margin-bottom: 1.5rem;
+} */
+
+.tech-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    /* Default colors from the accent variable */
+    color: var(--accent-color); 
+    background: rgba(9, 132, 227, 0.1); 
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+/* Rust */
+span.tech-tag[title*="Rust"] {
+    color: #f75841; /* Rust Orange */
+    background: rgba(247, 88, 65, 0.1);
+    border-color: #f75841;
+}
+
+/* Python */
+span.tech-tag[title*="Python"] {
+    color: #1c88e0; /* Python Blue */
+    background: rgba(6, 130, 232, 0.1);
+    border-color: #306998;
+}
+
+/* Swift */
+span.tech-tag[title*="Swift"] {
+    color: #fa733d; /* Swift Orange */
+    background: rgba(250, 115, 61, 0.1);
+    border-color: #fa733d;
+}
+
+/* Lua */
+span.tech-tag[title*="Lua"] {
+    color: #000080; /* Lua Navy */
+    background: rgba(0, 0, 128, 0.1);
+    border-color: #000080;
+}
+
+/* Docker */
+span.tech-tag[title*="Docker"] {
+    color: #2496ed; /* Docker Blue */
+    background: rgba(36, 150, 237, 0.1);
+    border-color: #2496ed;
+}
+
+/* Shell */
+span.tech-tag[title*="Shell"] {
+    color: #89e051; /* Shell Green */
+    background: rgba(137, 224, 81, 0.1);
+    border-color: #89e051;
+}
+
+/* TensorFlow */
+span.tech-tag[title*="TensorFlow"] {
+    color: #ff6f00; /* TensorFlow Orange */
+    background: rgba(255, 111, 0, 0.1);
+    border-color: #ff6f00;
+}
+
+.product-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.product-link, .learn-more-btn {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0984e3;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.product-link:hover, .learn-more-btn:hover {
+    color: #0770c5;
+}
+
+
+/* Media Query for Mobile: Stack columns vertically */
+@media (max-width: 900px) {
+    .product-section {
+        flex-direction: column;
+        padding: 4rem 0;
+    }
+
+    /* Reset the order for mobile to ensure natural top-to-bottom flow */
+    .product-section .product-image-container,
+    .product-section .product-content,
+    .product-section.reverse-layout .product-image-container,
+    .product-section.reverse-layout .product-content {
+        order: initial;
+        padding: 0 20px;
+        /* Remove max-width on content to allow it to fill mobile screen */
+        max-width: 100%; 
+    }
+    
+    .product-image-container {
+        padding: 2rem 20px 0;
+    }
+    
+    .product-content {
+        padding: 2rem 20px;
+    }
+
+    .product-title {
+        font-size: 2.5rem;
+    }
+    
+    .product-description {
+        font-size: 1.1rem;
+    }
 }
 
 .project-image img {
@@ -484,6 +745,12 @@ header.sticky .nav-bar {
         display: block;
     }
 
+    .product-image-container img {
+        /* Ensure this max-height is also increased for mobile, or removed if you want it big */
+        max-height: 550px; /* Match the desktop increase */
+        /* Optionally, you might want to reduce this slightly for small phone screens */
+    }
+
     .navigation {
         position: fixed;
         top: 0;
@@ -665,3 +932,90 @@ header.sticky .nav-bar {
         font-size: 0.9rem;
     }
 } */
+
+.product-long-description {
+    font-size: 1rem;
+    color: var(--text-muted-light); 
+    line-height: 1.6;
+    /* 💡 CHANGE 1: Increased margin-bottom for space between text and tags */
+    margin-bottom: 2.5rem; 
+}
+
+
+
+/* footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #0b0b0b;
+    width: 100%;
+    margin-top: 50px;
+    padding: 3rem 2rem;
+    color: #0d0d0d;
+}
+
+footer a {
+    color: #fff;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1150px;
+}
+
+.footer-container .about h2 {
+    font-size: 3em;
+    font-weight: 600;
+    background: linear-gradient(to top, transparent 0%, #fff 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: .8;
+}
+
+.footer-container .about p {
+    font-size: var(--normal-font-size);
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.footer-container,
+.footer-container .follow {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer-container .info h3,
+.footer-container .follow h3 {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.footer-container .info ul,
+.footer-container .follow ul {
+    display: flex;
+}
+
+.footer-container .info a {
+    margin: 20px;
+}
+
+.footer-container .follow a {
+    font-size: 1.5em;
+    margin: 20px;
+}
+
+/* .footer-copyright p {
+    font-size: var(--normal-font-size);
+    font-weight: 300;
+    margin-top: 50px;
+} */
+
+.copyright {
+    margin-top: 2vw;
+}

@@ -52,6 +52,13 @@ body {
     /* Prevent horizontal scrolling */
 }
 
+html, body {
+    width: 100%;
+    /* Ensure height calculation is based on viewport */
+    min-height: 100vh; 
+    overflow-x: hidden; /* Prevents horizontal scroll from misplaced elements */
+}
+
 
 a {
     text-decoration: none;
@@ -407,7 +414,6 @@ header.sticky .nav-bar {
 }
 
 
-/*SWIPER PROJECT SECTION START */
 
 
 .swiper {
@@ -509,7 +515,7 @@ header.sticky .nav-bar {
 /* ==================== SWIPER PROJECT SECTION START ==================== */
 
 
-.swiper {
+/* .swiper {
     width: 100%;
     padding: 3rem 1rem;
     overflow: hidden;
@@ -603,7 +609,7 @@ header.sticky .nav-bar {
     opacity: 1;
     background: #0066cc;
     transform: scale(1.2);
-}
+} */
 
 
 
@@ -1366,15 +1372,15 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #000;
+    background: #fff;
     width: 100%;
     margin-top: 50px;
     padding: 3rem 2rem;
-    color: #fff;
+    color: #0d0d0d;
 }
 
 footer a {
-    color: #fff;
+    color: #0b0b0b;
 }
 
 .footer-container {
@@ -1800,7 +1806,7 @@ footer a {
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .hero-content p {
@@ -1810,6 +1816,22 @@ footer a {
     .btn {
         padding: 0.5rem 1.4rem;
         font-size: 0.9rem;
+    }
+
+    /* Set the smallest size for all banner titles (This will fix the "too small" look) */
+    .banner-title {
+        font-size: 2.2rem;
+    }
+
+    .banner-subtitle {
+        font-size: 1rem; /* Smallest practical size */
+    }
+
+    /* Set smallest padding for short screens to reduce height */
+    .research-banner, 
+    .products-banner, 
+    .blog-banner {
+        padding: 80px 15px; 
     }
 }
 
@@ -1834,3 +1856,275 @@ footer a {
         padding: 0.5rem;
     }
 }
+
+.research-banner {
+    /* Off-white background as requested */
+    background-color: #fFF; 
+    padding: 350px 20px; /* Generous padding for prominence */
+    text-align: center;
+}
+
+.banner-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.banner-title {
+    /* Replicating a typical large Hero title size */
+    font-size: 4rem; /* Adjust this value if your Hero title is bigger/smaller */
+    font-weight: 700;
+    color: #2b2727; /* Dark text for contrast against off-white */
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+.banner-subtitle {
+    font-size: 1.5rem; /* Smaller than the title, but still prominent */
+    font-weight: 400;
+    color: #100f0f; /* Slightly muted color */
+    margin-bottom: 40px; /* Space between subtitle and button */
+}
+
+.banner-btn {
+    /* Styling the button prominently */
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #0984e3; /* Using a common accent blue */
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.banner-btn:hover {
+    background-color: #0770c5;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+    .research-banner{
+        padding: 300px 20px;
+    }
+
+    .banner-title {
+        font-size: 3.5rem;
+    }
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+
+.products-banner {
+    background-color: #000000; 
+    padding: 350px 20px; 
+    text-align: center;
+}
+
+.products-banner .banner-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.products-banner .banner-title {
+    color: #ffffff; 
+    font-size: 3.5rem; 
+    font-weight: 700;
+    margin-bottom: 10px; 
+    line-height: 1.1;
+}
+
+.products-banner .banner-subtitle {
+    color: #cccccc; 
+    font-size: 1.5rem; 
+    font-weight: 400;
+    margin-bottom: 40px; 
+}
+
+.products-banner .banner-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #0984e3; 
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.products-banner .banner-btn:hover {
+    background-color: #0770c5;
+    transform: translateY(-2px);
+}
+
+
+
+.blog-banner {
+    background-color: #fff; 
+    padding: 350px 20px; 
+    text-align: center;
+}
+
+
+.blog-banner .banner-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.blog-banner .banner-title {
+    color: #333333; 
+    font-size: 3.5rem; 
+    font-weight: 700;
+    margin-bottom: 10px; 
+    line-height: 1.1;
+}
+
+.blog-banner .banner-subtitle {
+    /* Muted dark gray */
+    color: #666666; 
+    font-size: 1.5rem; 
+    font-weight: 400;
+    margin-bottom: 40px; 
+}
+
+.blog-banner .banner-btn {
+    /* Keep the button the same accent blue style for consistency */
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #0984e3; 
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* Subtle shadow for white section */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.blog-banner .banner-btn:hover {
+    background-color: #0770c5;
+    transform: translateY(-2px);
+}
+
+/* Tech Stack Ticker */
+        .tech-stack-section {
+            width: 100%;
+            padding: 60px 0;
+            background: #000000;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tech-stack-section::before,
+        .tech-stack-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .tech-stack-section::before {
+            left: 0;
+            background: linear-gradient(to right, #000 0%, transparent 100%);
+        }
+
+        .tech-stack-section::after {
+            right: 0;
+            background: linear-gradient(to left, #000 0%, transparent 100%);
+        }
+
+        .tech-label {
+            text-align: center;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #86868b;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .ticker-wrapper {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .ticker {
+            display: flex;
+            gap: 60px;
+            animation: scroll 30s linear infinite;
+            padding: 0 30px;
+        }
+
+        .ticker:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            min-width: 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-logo {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover .tech-logo {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tech-name {
+            font-size: 14px;
+            color: #a1a1a6;
+            font-weight: 500;
+        }
+
+        .tech-category {
+            font-size: 11px;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }

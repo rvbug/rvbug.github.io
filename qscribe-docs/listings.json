@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Quarto/doc2quarto.html",
       "/posts/Quarto/quarto.html",
       "/posts/LLMs/PTXIntro.html",
       "/posts/LLMs/gpu.html",
@@ -9,6 +10,7 @@
       "/posts/LLMs/DeepSeekPTX.html",
       "/posts/LLMs/transformers.html",
       "/posts/LLMs/Tokenizer.html",
+      "/posts/Quarto/dotfiles.html",
       "/posts/QuantumGravity/neovimide.html",
       "/posts/QuantumGravity/Dotfiles.html",
       "/posts/notion/notion.html",

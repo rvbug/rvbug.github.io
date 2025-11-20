@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
     <title>Projects</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./css/projects.css">
@@ -17,342 +16,228 @@
             <a href="/" class="logo">QuBiTAi</a>
             <div class="navigation">
                 <div class="nav-items">
-                    <div class="nav-close-btn">
-                        <!-- <i class="fas fa-times"></i> -->
-                    </div>
-                    <a href="./">Home</a>
+                    <div class="nav-items">
+                    <div class="nav-close-btn"></div>
+                    <!-- <a class="active" href="#home">Research</a> -->
                     <a href="https://qfey.in/" target="_blank">QFey</a>
-                    <a href="./qpulse.html" target="_blank">QPulse</a>
                     <a href="./projects.html">Projects</a>
-                    <a href="./about.html">About</a>
-                    <!-- <a href="https://qubitai.in/notes/blog/welcome" t arget="_blank">Blogs</a> -->
-                    <a href="./qscribe-docs/" target="_blank">Blogs</a>
+                    <a href="./products.html">Products</a>
+                     <a href="./qscribe-docs/" target="_blank">Blogs</a>
                     <!-- <a href="./robotics.html">Robotics</a> -->
-                    <a href="./notion.html">Notion</a>
-                    <!-- <a href="https://qubitai.in/notes" target="_blank">Notes</a> -->
-                    <a href="./keyboard.html">Keyboards</a>
+                    <!-- <a href="./notion.html">Notion</a>  -->
+                    <!-- <a href="./keyboard.html">Keyboards</a> -->
+                    <a href="./about.html">About</a>
                     <a href="./#footer">Connect</a>
+                </div>
                 </div>
             </div>
             <div class="nav-menu-btn">
-                <!-- <i class="fas fa-bars"></i> -->
-            </div>
+                </div>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>Projects</h1>
-            <p>Bold. Creative</p>
+            <p>Bold . Open Source</p>
         </div>
     </section>
 
-    <div class="projects-grid">
-
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/qpulse_icon_large.png" alt="ACON v2.0">
+    <div class="projects-container">
+        <!-- <section class="product-section reverse-layout project-item" id="qpulse">
+            <div class="product-image-container">
+                <img src="./assets/qpulse_icon_large.png" alt="QPulse Neuroadaptive Detection">
             </div>
-            <div class="project-content">
-                <h3 class="project-title">QPulse</h3>
-                <p class="project-description">Neuroadaptive Detection</p>
+            <div class="product-content">
+                <img src="./assets/qpulse_icon_large.png" alt="QPulse Icon" class="product-icon">
+                <h2 class="product-title">QPulse</h2>
+                <p class="product-description">Neuroadaptive Detection</p>
+                <p class="product-long-description">QPulse uses cutting-edge quantum-inspired algorithms to provide real-time, ultra-low-latency detection, adapting to complex neural patterns for enhanced security and monitoring.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Swift</span>
+                    <span class="tech-tag" title="Rust">Rust</span>
+                    <span class="tech-tag" title="Python">Python</span>
+                    <span class="tech-tag" title="Swift">Swift</span>
                 </div>
-                <div class="project-links">
-                    <!-- <a href="https://github.com/rvbug/neovim" class="project-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span>Code</span>
-                    </a> -->
-                    <a href="./qpulse.html" class="project-link">
+                <div class="product-links">
+                    <a href="./qpulse.html" class="product-link">
                         <i class="fas fa-external-link-alt"></i>
                         <span>Learn More</span>
                     </a>
-                    <span class="learn-more-btn">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Coming Soon</span>
-                    </span>
+                    <a href="https://github.com/YourRepo/qpulse" class="product-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code (Placeholder)</span>
+                    </a>
                 </div>
             </div>
-        </div>
+        </section> -->
 
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/Neovim.png" alt="Neovim IDE">
+        <section class="product-section reverse-layout project-item" id="doc2quarto">
+            <div class="product-image-container">
+                <img src="./assets/Doc2Quarto_text_n_logo.png" alt="doc2quarto">
             </div>
-            <div class="project-content">
-                <h3 class="project-title">Neovim IDE</h3>
-                <p class="project-description">A blazingly fast IDE setup with custom developer workflow.</p>
+            <div class="product-content">
+                <img src="./assets/doc2quartologo.png" alt="doc2quarto" class="product-icon">
+                <h2 class="product-title">Doc2Quarto</h2>
+                <p class="product-description">CLI</p>
+                <p class="product-long-description">Tool to convert Docusaurus document to Quarto .qmd format.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Lua</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">OCaml</span>
+                    <span class="tech-tag" title="Rust">Rust</span>
+                    <span class="tech-tag" title="Quarto">Quarto</span>
                 </div>
-                <div class="project-links">
-                    <a href="https://github.com/rvbug/neovim" class="project-link" target="_blank">
+                <div class="product-links">
+                    <a href="./qscribe-docs/posts/Quarto/quarto.html" class="product-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Learn More</span>
+                    </a>
+                    <a href="https://github.com/rvbug/neovim" class="product-link" target="_blank">
                         <i class="fab fa-github"></i>
                         <span>Code</span>
                     </a>
-                    <a href="https://rvbug.hashnode.dev/configuring-neovim" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Blog</span>
-                    </a>
-                    <span class="learn-more-btn" onclick="openModal('neovim')">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Learn More</span>
-                    </span>
                 </div>
             </div>
-        </div>
+        </section>
 
-
-        <div class="modal-overlay" id="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="modal-header">
-                    <h2 class="modal-title" id="modal-title">Project Title</h2>
-                </div>
-                <div class="modal-body" id="modal-body">
-                    <!-- Modal sections will be dynamically inserted here -->
-                </div>
+        <section class="product-section reverse-layout project-item" id="neovim">
+            <div class="product-image-container">
+                <img src="./assets/Neovim-Screenshot.png" alt="neovim">
             </div>
-        </div>
-
-
-
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/Shell Scripting.png" alt="dotfiles">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">.dotfiles</h3>
-                <p class="project-description">A sophisticated dotfiles framework for seamless machine setup and
-                    consistent developer environments</p>
+            <div class="product-content">
+                <img src="./assets/Neovim-Vector.png" alt="neovim" class="product-icon">
+                <h2 class="product-title">Neovim</h2>
+                <p class="product-description">IDE Setup</p>
+                <p class="product-long-description">A blazingly fast IDE setup with custom developer workflow.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Shell</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag" title="neovim">Neovim</span>
+                    <span class="tech-tag" title="lua">lua</span>
                 </div>
-                <div class="project-links">
-                    <a href="https://github.com/rvbug/.dotfiles" class="project-link" target="_blank">
+                <div class="product-links">
+                    <a href="./qscribe-docs/posts/QuantumGravity/neovimide.html" class="product-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Learn More</span>
+                    </a>
+                    <a href="https://github.com/rvbug/neovim" class="product-link" target="_blank">
                         <i class="fab fa-github"></i>
                         <span>Code</span>
                     </a>
-                    <a href="https://rvbug.hashnode.dev/productivity-series-ii-dotfiles" class="project-link"
-                        target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Blog</span>
-                    </a>
-                    <span class="learn-more-btn" onclick="openModal('dotfiles')">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Learn More</span>
-                    </span>
-                </div>
-            </div>
-        </div>
 
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/python.png" alt=" Cookie ML">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Cookie ML - Python</h3>
-                <p class="project-description">A simple yet powerful machine learning project structure.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">TensorFlow</span>
-                    <span class="tech-tag">scikit-learn</span>
+                    <!-- <span class="learn-more-btn" onclick="openModal('neovim')">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Details</span>
+                    </span> -->
+
                 </div>
-                <div class="project-links">
-                    <a href="https://github.com/rvbug/cookie-ml" class="project-link" target="_blank">
+            </div>
+        </section>
+
+        <section class="product-section reverse-layout project-item" id="dotfiles">
+            <div class="product-image-container">
+                <img src="./assets/Dotfile.gif" alt="dotfiles">
+            </div>
+            <div class="product-content">
+                <img src="./assets/dotfiles-vector.png" alt="dotfiles" class="product-icon">
+                <h2 class="product-title">.Dotfiles</h2>
+                <p class="product-description">IDE Setup</p>
+                <p class="product-long-description">A sophisticated dotfiles framework for seamless machine setup.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag" title="ShellScript">Shell Script</span>
+                    <span class="tech-tag" title="Python">Python</span>
+                </div>
+                <div class="product-links">
+                    <a href="./qscribe-docs/posts/QuantumGravity/Dotfiles.html" class="product-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Learn More</span>
+                    </a>
+                    <a href="https://github.com/rvbug/.dotfiles" class="product-link" target="_blank">
                         <i class="fab fa-github"></i>
                         <span>Code</span>
                     </a>
-                    <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Blog</span>
-                    </a>
-                    <span class="learn-more-btn" onclick="openModal('CookieML')">
+
+                    <!-- <span class="learn-more-btn" onclick="openModal('dotfiles')">
                         <i class="fas fa-info-circle"></i>
+                        <span>Details</span>
+                    </span> -->
+
+                </div>
+            </div>
+        </section>
+
+        <section class="product-section reverse-layout project-item" id="cookie-ml-py">
+            <div class="product-image-container">
+                <img src="./assets/infinity-vector.png" alt="cookie-ml-py">
+            </div>
+            <div class="product-content">
+                <img src="./assets/infinity-vector.png" alt="cookie-ml-py" class="product-icon">
+                <h2 class="product-title">Cookie ML</h2>
+                <p class="product-description">CLI</p>
+                <p class="product-long-description">A simple yet powerful machine learning project structure.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag" title="Python">Python</span>
+                </div>
+                <div class="product-links">
+                    <a href="./qscribe-docs/posts/QuantumGravity/CookieCutterv2.html" class="product-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
                         <span>Learn More</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/rust.png" alt="Rust for Linux">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Rust For Linux</h3>
-                <p class="project-description">Contributing Rust support for the Linux Kernel.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">Linux</span>
-                    <span class="tech-tag">Systems</span>
-                </div>
-                <div class="project-links">
-                    <span class="project-link">
-                        <i class="fas fa-clock"></i>
-                        <span>Coming Soon</span>
-                    </span>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/python.png" alt="NLP - Transformers">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">NLP - Transformers</h3>
-                <p class="project-description">A comprehensive learning path to master transformer
-                    architectures</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">Linux</span>
-                    <span class="tech-tag">Systems</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/rvbug/NLP" class="project-link" target="_blank">
+                    </a>
+                    <a href="https://github.com/rvbug/cookie-ml" class="product-link" target="_blank">
                         <i class="fab fa-github"></i>
                         <span>Code</span>
                     </a>
-                    <!-- <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Blog</span>
-                    </a> -->
-                    <span class="learn-more-btn" onclick="openModal('transformers')">
+
+                    <!-- <span class="learn-more-btn" onclick="openModal('CookieML')">
                         <i class="fas fa-info-circle"></i>
-                        <span>Learn More</span>
-                </div>
-            </div>
-        </div>
+                        <span>Details</span>
+                    </span> -->
 
+                </div>
+            </div>
+        </section>
 
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/Nix.png" alt="Nix Config">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Auto config - Nix </h3>
-                <p class="project-description">Cross-platform development env powered by Nix's
-                    functional package manager and system configuration</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">Linux</span>
-                    <span class="tech-tag">Systems</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/rvbug/nix" class="project-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span>Code</span>
-                    </a>
-                    <a href="https://qubitai.in/notes/blog/Nix" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Blog</span>
-                    </a>
-                    <span class="learn-more-btn" onclick="openModal('NixConfig')">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Learn More</span>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/rust.png" alt="Cookie ML Rust">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Game of Life</h3>
-                <p class="project-description">A high-performance implementation of Conway's Game of Life showcasing
-                    Rust's parallel computing capabilities</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">Linux</span>
-                    <span class="tech-tag">Systems</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/rvbug/game-of-life/" class="project-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span>Code</span>
-                    </a>
-                    <!-- <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Blog</span>
-                    </a> -->
-                    <span class="learn-more-btn" onclick="openModal('GameOfLife')">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Learn More</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/rust.png" alt="Rust for Linux">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Cookie ML - Rust</h3>
-                <p class="project-description">A blazingly fast, type-safe ML project scaffolding tool built with Rust's
-                    performance and reliability.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">Linux</span>
-                    <span class="tech-tag">Systems</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/rvbug/cookie-ml-rust" class="project-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span>Code</span>
-                    </a>
-                    <!-- <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Blog</span>
-                    </a> -->
-                    <span class="learn-more-btn" onclick="openModal('CookieMLRust')">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Learn More</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image">
-                <img src="./assets/rust.png" alt="Space Invaders">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Space Invaders</h3>
-                <p class="project-description">A terminal based Space Invaders game.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">TUI</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/rvbug/space-invaders" class="project-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span>Code</span>
-                    </a>
-                    <!-- <a href="https://rvbug.hashnode.dev/ml-cookie-cutter-v-20" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Blog</span>
-                    </a> -->
-                    <span class="learn-more-btn" onclick="openModal('spaceInvaders')">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Learn More</span>
-                </div>
-            </div>
-        </div>
+        
 
 
     </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Project Title</h2>
+            </div>
+            <div class="modal-body" id="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <section id="footer">
+        <footer>
+            <div class="footer-container">
+                <div class="follow group">
+                    <h3>Follow</h3>
+                    <ul>
+                        <li><a href="https://linkedin.com/in/idinc" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li><a href="./qscribe-docs/" target="_blank"><i class="fab fa-medium"></i></a>
+                        </li>
+                        <li><a href="https://github.com/rvbug" target="_blank"><i class="fab fa-github"></i></a>
+                        </li>
+                        <li><a href="https://twitter.com/rvbugged" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="email"><a href="mailto:qubit.ai@gmail.com"><i class="fa-solid fa-at"></i></a>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="tos.html">Terms of Service</a>
+                </div>
+                <!-- this is to make the above href to center-->
+                <div class="copyright"> © 2025 Qubitai.</div>
+            </div>
+        </footer>
+    </section>
+
 
 
     <script src="./js/projects.js"></script>

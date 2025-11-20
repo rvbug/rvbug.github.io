@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/projects.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav-bar">
+            <a href="/" class="logo">QuBiTAi</a>
+            <div class="navigation">
+                <div class="nav-items">
+                    <div class="nav-items">
+                    <div class="nav-close-btn"></div>
+                    <!-- <a class="active" href="#home">Research</a> -->
+                    <a href="https://qfey.in/" target="_blank">QFey</a>
+                    <a href="./projects.html">Projects</a>
+                    <a href="./products.html">Products</a>
+                     <a href="./qscribe-docs/" target="_blank">Blogs</a>
+                    <!-- <a href="./robotics.html">Robotics</a> -->
+                    <!-- <a href="./notion.html">Notion</a>  -->
+                    <!-- <a href="./keyboard.html">Keyboards</a> -->
+                    <a href="./about.html">About</a>
+                    <a href="./#footer">Connect</a>
+                </div>
+                </div>
+            </div>
+            <div class="nav-menu-btn">
+                </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Products</h1>
+            <p>Creative . Innovation</p>
+        </div>
+    </section>
+
+    <div class="projects-container">
+        <section class="product-section reverse-layout project-item" id="doc2quarto">
+            <div class="product-image-container">
+                <img src="./assets/ComingSoon-Vector.png" alt="doc2quarto">
+            </div>
+            <div class="product-content">
+                <img src="./assets/qpulse_icon_large.png" alt="doc2quarto" class="product-icon">
+                <h2 class="product-title">QPulse</h2>
+                <p class="product-description">Cognitive CLI</p>
+                <p class="product-long-description">Powered by RL and designed to disappear</p>
+                <div class="tech-stack">
+                    <span class="tech-tag" title="Rust">Rust</span>
+                    <span class="tech-tag" title="Quarto">Quarto</span>
+                </div>
+                <div class="product-links">
+                    <a href="./qpulse.html" class="product-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Sign up for early access</span>
+                    </a>
+                    <!-- 
+                    <a href="https://github.com/rvbug/neovim" class="product-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                    <span class="learn-more-btn" onclick="openModal('neovim')">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Details</span>
+                    </span> -->
+
+                </div>
+            </div>
+        </section>
+
+        <section class="product-section reverse-layout project-item" id="CDO">
+            <div class="product-image-container">
+                <img src="./assets/ComingSoon-Vector.png" alt="CDO">
+            </div>
+            <div class="product-content">
+                <img src="./assets/cdo-vector.png" alt="CDO" class="product-icon">
+                <h2 class="product-title">CDO</h2>
+                <p class="product-description"></p>
+                <!-- <p class="product-long-description">Coming soon.</p> -->
+                <div class="tech-stack">
+                    <span class="tech-tag" title="Rust">Rust</span>
+                </div>
+                <!-- <div class="product-links">
+                    <a href="./qscribe-docs/posts/QuantumGravity/neovimide.html" class="product-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Learn More</span>
+                    </a>
+                    <a href="https://github.com/rvbug/neovim" class="product-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                </div> -->
+            </div>
+        </section>
+
+        <section class="product-section reverse-layout project-item" id="rustimator">
+            <div class="product-image-container">
+                <img src="./assets/ComingSoon-Vector.png" alt="rustimator">
+            </div>
+            <div class="product-content">
+                <img src="./assets/Rustimator-Vector.png" alt="rustimator" class="product-icon">
+                <h2 class="product-title">Rustimator</h2>
+                <p class="product-description"></p>
+                <!-- <p class="product-long-description">Coming soon.</p> -->
+                <div class="tech-stack">
+                    <span class="tech-tag" title="Rust">Rust</span>
+                </div>
+                <!-- <div class="product-links">
+                    <a href="./qscribe-docs/posts/QuantumGravity/neovimide.html" class="product-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Learn More</span>
+                    </a>
+                    <a href="https://github.com/rvbug/neovim" class="product-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Code</span>
+                    </a>
+                </div> -->
+            </div>
+        </section>
+
+
+
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Project Title</h2>
+            </div>
+            <div class="modal-body" id="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <section id="footer">
+        <footer>
+            <div class="footer-container">
+                <div class="follow group">
+                    <h3>Follow</h3>
+                    <ul>
+                        <li><a href="https://linkedin.com/in/idinc" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li><a href="./qscribe-docs/" target="_blank"><i class="fab fa-medium"></i></a>
+                        </li>
+                        <li><a href="https://github.com/rvbug" target="_blank"><i class="fab fa-github"></i></a>
+                        </li>
+                        <li><a href="https://twitter.com/rvbugged" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="email"><a href="mailto:qubit.ai@gmail.com"><i class="fa-solid fa-at"></i></a>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="tos.html">Terms of Service</a>
+                </div>
+                <!-- this is to make the above href to center-->
+                <div class="copyright"> © 2025 Qubitai.</div>
+            </div>
+        </footer>
+    </section>
+
+
+
+    <script src="./js/projects.js"></script>
+</body>
+
+</html>
