@@ -1,13 +1,30 @@
 ---
-title: "My Story"
+title: "About"
 author: "Rakesh Venkat"
-format: revealjs
+format: 
+  revealjs:
+    theme: blood
 ---
 
-## Introduction
 
-Here’s to the crazy ones — engineers who build things. 
-The ones who see what could be, not just what is. 
-The ones who dream in code, and bend time to wake up in a new universe.
+> Here’s to the crazy ones — engineers who build things.  
+> <br>
+> The ones who see what could be, not just what is.  
+> <br>
+> The ones who dream in code, and bend time to wake up in a new universe.  
+>
+> <br>
+
 
 ## Next Slide
+
+Content
+
+
+
+## Another slide
+
+content
+
+
+

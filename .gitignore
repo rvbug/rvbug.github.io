@@ -24,3 +24,5 @@ quantum.html
 .Rproj.user
 project-template.html
 venv
+/qscribe/posts/story/*
+/qscribe-docs/posts/story/
