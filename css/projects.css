@@ -1019,3 +1019,53 @@ footer a {
 .copyright {
     margin-top: 2vw;
 }
+
+/* Live dot*/
+/* --- Project Status Tag --- */
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    /* Position relative for subtle blinking animation, even if not used */
+    position: relative; 
+}
+
+/* Live Status (Green) */
+.status-tag.live {
+    color: #2ecc71; /* Green text */
+    background-color: rgba(46, 204, 113, 0.1); /* Light green background */
+}
+.status-tag.live .status-dot {
+    background-color: #2ecc71;
+}
+
+/* Not Live Status (Red) */
+.status-tag.not-live {
+    color: #e74c3c; /* Red text */
+    background-color: rgba(231, 76, 60, 0.1); /* Light red background */
+}
+.status-tag.not-live .status-dot {
+    background-color: #e74c3c;
+}
+
+/* Development Status (Yellow/Orange) - Optional */
+.status-tag.dev {
+    color: #f39c12; /* Orange text */
+    background-color: rgba(243, 156, 18, 0.1); /* Light orange background */
+}
+.status-tag.dev .status-dot {
+    background-color: #f39c12;
+}
