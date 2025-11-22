@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+    <title>QFEY</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.module.min.js"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <link rel="stylesheet" href="./css/qfey.css">
+</head>
+
+
+
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="./index.html" class="logo-link">
+                <div class="logo">
+                    <div class="logo-symbol">
+                        <i class="fas fa-atom" style="color: var(--primary);"></i>
+                    </div>
+                    <div class="logo-text">QuBiTAi</div>
+                </div>
+            </a>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-items">
+                <a href="./index.html" class="nav-item">Home</a>
+                <a href="./qresearch.html" class="nav-item">Quantum Research</a>
+                <a href="./ciop.html" class="nav-item">CIOP</a>
+                <a href="/qpapers-published/" class="nav-item">QPapers</a>
+                <!-- <a href="/qbits-notes/" class="nav-item">Qbits</a> -->
+                <!-- <a href="#" class="nav-item">About</a> -->
+                <!-- <a href="https://qubitai.in/#footer" class="nav-item" target="_blank">Connect</a> -->
+            </div>
+        </nav>
+
+        <section class="hero">
+            <canvas class="quantum-canvas"></canvas>
+            <div class="hero-content">
+                <h1 class="hero-title">Research</h1>
+                <h2 class="hero-subtitle" id="animated-subtitle">RL & Quantum</h2>
+                <div class="cta-buttons">
+                   </div>
+            </div>
+        </section>
+
+        <section class="enigma-section" id="ciop">
+            <h1 class="hero-title">CIOP</h1>
+            <h2 class="hero-subtitle">Cognitive Interaction Optimization Platform</h2>
+            <!-- <p class="enigma-description">
+                Real-time reinforcement learning for human–computer interaction.
+            </p> -->
+
+            <div class="enigma-grid">
+                <div class="enigma-card">
+                    <div class="enigma-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="enigma-card-title">COWI</h3>
+                    <p class="enigma-description"> Cognitive Optimization Workflow Intelligence </p>
+                </div>
+                <div class="enigma-card">
+                    <div class="enigma-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="enigma-card-title">ACON</h3>
+                    <p class="enigma-description"> Autonomous Command Optimization Network </p>
+                </div>
+                <!-- <div class="enigma-card">
+                    <div class="enigma-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="enigma-card-title">Quantum Integration</h3>
+                  </div>
+               </div> -->
+
+            </div>
+            <div class="cta-buttons">
+                <a href="./ciop.html" class="cta-btn primary-btn">Learn More</a>
+            </div>
+        </section>
+
+        <section class="enigma-section" id="quantum-computing-research">
+            <h1 class="hero-title">Quantum Computing</h1>
+            <h2 class="hero-subtitle">Explore . Advance</h2>
+            <div class="enigma-grid">
+                <div class="enigma-card">
+                    <div class="enigma-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="enigma-card-title">Quantum Algorithms</h3>
+                   </div>
+                <div class="enigma-card">
+                    <div class="enigma-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="enigma-card-title">Quantum Error Correction</h3>
+                   </div>
+                <div class="enigma-card">
+                    <div class="enigma-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="enigma-card-title">Quantum Integration</h3>
+                  </div>
+               </div>
+            </div>   
+            <div class="cta-buttons">
+                <a href="#" class="cta-btn primary-btn">Coming Soon</a>
+            </div> 
+        </section>
+
+
+        <section id="connect" class="connect-section">
+            <div class="connect-container">
+                <h2 class="connect-title">Connect</h2>
+                <p class="connect-description">
+                    Questions on my research?
+                </p>
+                <div class="connect-email">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:qfey@icloud.com" class="email-link">qfey@icloud.com</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="secret-teaser">
+            <i class="fas fa-key"></i>
+        </div>
+
+        <div class="scrollToTop-btn flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+
+        <div class="secret-modal">
+            <div class="secret-content">
+                <div class="secret-close">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="secret-badge">Classified</div>
+                <h3 class="secret-title">Quantum Entanglement</h3>
+                <div class="terminal-effect">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                       <span class="terminal-text">Initializing...</span>
+                    </div>
+                </div>
+              </div>
+        </div>
+
+        <!-- <footer class="footer">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <p class="copyright">© 2025 QFEY,  A  <a href="https://qubitai.in/" target="_blank" class="footer-link">QubitAI </a> Creation. All rights reserved.</p>
+        </footer> -->
+
+        <footer class="footer">
+            <div class="footer-links">
+                <div class="social-links">
+                    <a href="https://github.com/rvbug" target="_blank" rel="noopener noreferrer" class="footer-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com/rvbugged" target="_blank" rel="noopener noreferrer" class="footer-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:qfey@icloud.com" class="footer-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="policy-links">
+                    <a href="./privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="./tos.html" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+            <p class="copyright">© 2025 QFEY, A <a href="https://qubitai.in/" target="_blank" class="footer-link">QubitAI</a> Creation. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script type="module" src="./js/qfey.js"></script>
+</body>
+
+</html>

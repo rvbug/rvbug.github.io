@@ -3,7 +3,7 @@ title: "Doc2Quarto: Seamlessly Migrate from Docusaurus to Quarto"
 author: "Your Name"
 date: "2025-11-20"
 categories: [documentation, rust, quarto, docusaurus, migration]
-image: "https://github.com/user-attachments/assets/9028c193-4bce-47d2-a6be-6e01c387d980"
+image: "./img/Doc2Quarto-cli.png"
 description: "A powerful CLI tool built in Rust to automate the conversion of Docusaurus markdown files to Quarto format"
 format:
   html:
@@ -24,16 +24,20 @@ Documentation is the backbone of any successful software project. As our needs e
 Before diving into the tool itself, let's understand why you might want to make this transition:
 
 **Academic Publishing Excellence**
-: Quarto provides native support for citations, cross-references, and LaTeX, making it ideal for technical documentation that requires scholarly rigor.
+
+:   Quarto provides native support for citations, cross-references, and LaTeX, making it ideal for technical documentation that requires scholarly rigor.
 
 **Multi-format Output**
-: Generate PDF, HTML, DOCX, and more from the same source file. This flexibility is invaluable for teams that need to deliver documentation in multiple formats.
+
+:   Generate PDF, HTML, DOCX, and more from the same source file. This flexibility is invaluable for teams that need to deliver documentation in multiple formats.
 
 **Jupyter Integration**
-: Seamlessly embed executable code blocks and live visualizations, perfect for data science and computational documentation.
+
+:   Seamlessly embed executable code blocks and live visualizations, perfect for data science and computational documentation.
 
 **Enhanced Flexibility**
-: Better suited for technical documentation, research outputs, and complex publishing workflows.
+
+:   Better suited for technical documentation, research outputs, and complex publishing workflows.
 
 ## Key Features
 
@@ -44,7 +48,8 @@ Doc2Quarto handles the heavy lifting of migration with these powerful features:
 The tool intelligently converts Docusaurus-specific frontmatter fields to their Quarto equivalents:
 
 **Before (Docusaurus):**
-```yaml
+
+``` yaml
 ---
 title: "Getting Started"
 order: 1
@@ -52,7 +57,8 @@ order: 1
 ```
 
 **After (Quarto):**
-```yaml
+
+``` yaml
 ---
 title: "Getting Started"
 order: 1
@@ -64,7 +70,8 @@ order: 1
 One of the most significant syntax differences between the two platforms is how they handle callout boxes. Doc2Quarto automatically transforms these:
 
 **Before (Docusaurus):**
-```markdown
+
+``` markdown
 :::note Important Information
 This is a note with a custom title
 :::
@@ -75,7 +82,8 @@ Be careful with this operation
 ```
 
 **After (Quarto):**
-```markdown
+
+``` markdown
 :::: {.callout-note}
 ## Important Information
 This is a note with a custom title
@@ -90,29 +98,29 @@ The tool supports all standard admonition types:
 
 | Docusaurus | Quarto Callout |
 |------------|----------------|
-| `note` | `note` |
-| `tip` | `tip` |
-| `info` | `note` |
-| `caution` | `caution` |
-| `warning` | `warning` |
-| `danger` | `important` |
+| `note`     | `note`         |
+| `tip`      | `tip`          |
+| `info`     | `note`         |
+| `caution`  | `caution`      |
+| `warning`  | `warning`      |
+| `danger`   | `important`    |
 
 ### Structure Preservation
 
 Your carefully organized documentation structure remains intact. Doc2Quarto:
 
-- Maintains directory hierarchy
-- Copies image folders alongside converted files
-- Preserves relative paths and references
-- Changes file extensions from `.md` to `.qmd`
+-   Maintains directory hierarchy
+-   Copies image folders alongside converted files
+-   Preserves relative paths and references
+-   Changes file extensions from `.md` to `.qmd`
 
 ### Progress Tracking
 
 For large documentation projects, the tool provides visual feedback with:
 
-- Progress bars showing conversion status
-- Real-time file processing messages
-- Summary statistics upon completion
+-   Progress bars showing conversion status
+-   Real-time file processing messages
+-   Summary statistics upon completion
 
 ## Installation
 
@@ -122,7 +130,7 @@ Doc2Quarto offers multiple installation methods to suit your workflow:
 
 If you have Rust installed:
 
-```bash
+``` bash
 cargo install doc2quarto
 ```
 
@@ -130,7 +138,7 @@ cargo install doc2quarto
 
 For macOS users with Homebrew:
 
-```bash
+``` bash
 brew install rvbug/tap/doc2quarto
 ```
 
@@ -138,7 +146,7 @@ brew install rvbug/tap/doc2quarto
 
 Download and install the `.deb` package:
 
-```bash
+``` bash
 # Download latest release
 wget https://github.com/rvbug/doc2quarto/releases/download/v0.1.1/doc2quarto_0.1.1-1_amd64.deb
 
@@ -150,7 +158,7 @@ sudo dpkg -i doc2quarto_0.1.1-1_amd64.deb
 
 For the latest development version:
 
-```bash
+``` bash
 git clone https://github.com/rvbug/doc2quarto.git
 cd doc2quarto
 cargo install --path .
@@ -160,7 +168,7 @@ cargo install --path .
 
 After installation, verify it works:
 
-```bash
+``` bash
 doc2quarto --help
 ```
 
@@ -168,20 +176,20 @@ doc2quarto --help
 
 Using Doc2Quarto is straightforward. The basic command structure is:
 
-```bash
+``` bash
 doc2quarto --source ./docs --dest ./quarto-docs
 ```
 
 Or using short flags:
 
-```bash
+``` bash
 doc2quarto -s ./docs -d ./quarto-docs
 ```
 
 ### Command-Line Arguments
 
 | Flag | Short | Description | Required |
-|------|-------|-------------|----------|
+|----------------|----------------|-----------------------|------------------|
 | `--source` | `-s` | Source directory containing Docusaurus markdown files | Yes |
 | `--dest` | `-d` | Destination directory for Quarto files | Yes |
 
@@ -193,7 +201,7 @@ Let's walk through a complete migration example:
 
 Your Docusaurus project structure:
 
-```
+```         
 docs/
 ├── intro.md
 ├── guide/
@@ -206,12 +214,13 @@ docs/
 
 ### Running the Conversion
 
-```bash
+``` bash
 doc2quarto --source ./docs --dest ./quarto-docs
 ```
 
 Output:
-```
+
+```         
 Doc2Quarto - Docusaurus to Quarto Converter
 =============================================
 ✓ Found 3 .md files in source directory
@@ -227,7 +236,7 @@ Conversion completed!
 
 Your new Quarto structure:
 
-```
+```         
 quarto-docs/
 ├── intro.qmd
 ├── guide/
@@ -244,55 +253,55 @@ Notice how the `img` folder is automatically copied alongside the converted file
 
 Doc2Quarto is built with modern Rust practices, leveraging these excellent libraries:
 
-- **Clap**: Ergonomic command-line argument parsing
-- **Indicatif**: Beautiful progress bars and spinners
-- **Regex**: Pattern matching for syntax transformation
-- **WalkDir**: Recursive directory traversal
-- **Colored**: Terminal output styling
+-   **Clap**: Ergonomic command-line argument parsing
+-   **Indicatif**: Beautiful progress bars and spinners
+-   **Regex**: Pattern matching for syntax transformation
+-   **WalkDir**: Recursive directory traversal
+-   **Colored**: Terminal output styling
 
 The conversion pipeline follows a clean architecture:
 
-1. **Discovery**: Recursively find all `.md` files
-2. **Processing**: For each file:
-   - Read content
-   - Convert frontmatter
-   - Transform admonitions
-   - Preserve structure
-3. **Output**: Write `.qmd` files with copied assets
+1.  **Discovery**: Recursively find all `.md` files
+2.  **Processing**: For each file:
+    -   Read content
+    -   Convert frontmatter
+    -   Transform admonitions
+    -   Preserve structure
+3.  **Output**: Write `.qmd` files with copied assets
 
 ## Current Limitations
 
 While Doc2Quarto handles the most common conversion scenarios, be aware of these limitations:
 
-:::: {.callout-warning}
+::: callout-warning
 ## Known Limitations
 
-- Content between admonitions and frontmatter is preserved as-is
-- Custom Docusaurus components are not converted
-- MDX features are not supported
-- This is a one-time migration tool, not a continuous sync solution
-::::
+-   Content between admonitions and frontmatter is preserved as-is
+-   Custom Docusaurus components are not converted
+-   MDX features are not supported
+-   This is a one-time migration tool, not a continuous sync solution
+:::
 
 ## Post-Migration Checklist
 
 After running Doc2Quarto, follow these steps:
 
-1. **Review Generated Files**: Spot-check a few `.qmd` files to ensure conversion quality
-2. **Test Rendering**: Run `quarto preview` on your new documentation
-3. **Check References**: Verify internal links and image references work correctly
-4. **Update Configuration**: Create or update your `_quarto.yml` configuration file
-5. **Customize**: Add Quarto-specific features like citations, cross-references, or executable code blocks
+1.  **Review Generated Files**: Spot-check a few `.qmd` files to ensure conversion quality
+2.  **Test Rendering**: Run `quarto preview` on your new documentation
+3.  **Check References**: Verify internal links and image references work correctly
+4.  **Update Configuration**: Create or update your `_quarto.yml` configuration file
+5.  **Customize**: Add Quarto-specific features like citations, cross-references, or executable code blocks
 
 ## Future Roadmap
 
 The project has exciting features planned:
 
-- [ ] Support for additional frontmatter fields
-- [ ] MDX component detection with migration warnings
-- [ ] Dry-run mode for preview before conversion
-- [ ] Configuration file support for custom transformations
-- [ ] Parallel processing for large documentation sets
-- [ ] Extended platform support (Windows, additional Linux distros)
+-   [ ] Support for additional frontmatter fields
+-   [ ] MDX component detection with migration warnings
+-   [ ] Dry-run mode for preview before conversion
+-   [ ] Configuration file support for custom transformations
+-   [ ] Parallel processing for large documentation sets
+-   [ ] Extended platform support (Windows, additional Linux distros)
 
 ## Contributing
 
@@ -307,4 +316,3 @@ Migrating documentation platforms doesn't have to be painful. Doc2Quarto streaml
 With its robust feature set, multiple installation options, and active development, Doc2Quarto is the ideal tool for teams ready to unlock Quarto's powerful publishing capabilities.
 
 Ready to migrate? Install Doc2Quarto today and start enjoying the benefits of Quarto's advanced documentation features!
-

@@ -1,0 +1,43 @@
+---
+title: "Research Papers"
+format: html
+toc: false
+---
+
+------------------------------------------------------------------------
+
+# CIOP - Cognitive Interaction Optimization Platform
+
+<!-- CIOP consists of two sub projects -->
+
+# \> **Autonomous Command Optimization Network (ACON)**
+
+-   [v1.0 via Multi-Arm Bandit](./acon.qmd) - <b>[**Completed**]{style="color:green;"}
+
+
+<br>
+<br>
+
+
+
+# \> **QPulse** - A context-aware system 
+-   **v1.0: Implementation** - <b>[*In Progress*]{style="color:red;"}
+
+&nbsp; &nbsp; &nbsp;  [*Sign up*](https://qubitai.in/qpulse.html) for exclusive access
+
+
+<br>
+<br>
+
+
+
+# \> **Cognitive Optimization Workflow Intelligence (CIOW)**
+
+-   **v1.0: Practical Implementation** - <b>[*Coming Soon*]{style="color:gray;"}
+
+
+<br>
+
+# Quantum Spacetime Intelligence System (QSIS)
+
+-   **v1.0:** <b>[*Coming Soon*]{style="color:gray;"}
