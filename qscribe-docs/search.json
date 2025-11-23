@@ -429,42 +429,42 @@
   {
     "objectID": "posts/QuantumGravity/QuantumML.html",
     "href": "posts/QuantumGravity/QuantumML.html",
-    "title": "Quantm Machine Learning",
+    "title": "Quantum Machine Learning",
     "section": "",
     "text": "My love for Quantum Physics rekindled in 2017 while studying the foundation of mathematics used in Machine Learning and Deep Learning.\n\n\nAnother interesting branch gaining momentum is Quantum Machine Learning (QML) - an intersection between Quantum Physics and ML. QML can speed up training and evaluation of ML models and, in turn, help develop new quantum algorithms. This blog is an introduction to QML.\n\n\n\nalt text\n\n\nSource code provided in this article is available in my Github repo."
   },
   {
     "objectID": "posts/QuantumGravity/QuantumML.html#qubits",
     "href": "posts/QuantumGravity/QuantumML.html#qubits",
-    "title": "Quantm Machine Learning",
+    "title": "Quantum Machine Learning",
     "section": "Qubits",
     "text": "Qubits\nIn classical computers a bit can be either in a 0 or 1 state.\nBut Qubits can not only be in 0 or 1 but can also be in both states simultaneously - this is known as superposition."
   },
   {
     "objectID": "posts/QuantumGravity/QuantumML.html#bloch-sphere",
     "href": "posts/QuantumGravity/QuantumML.html#bloch-sphere",
-    "title": "Quantm Machine Learning",
+    "title": "Quantum Machine Learning",
     "section": "Bloch Sphere",
     "text": "Bloch Sphere\nThe state of the qubits is represented using Bloch Sphere and it helps to understand the behaviour of quantum circuits and algorithms.\nImage Credit - Wiki\n![Bloch sphere - Wikipedia]"
   },
   {
     "objectID": "posts/QuantumGravity/QuantumML.html#gates",
     "href": "posts/QuantumGravity/QuantumML.html#gates",
-    "title": "Quantm Machine Learning",
+    "title": "Quantum Machine Learning",
     "section": "Gates",
     "text": "Gates\nGates helps us to manipulate the state of the qubits. Some gates can be controlled and adjusted like a tuning nob. The state of the qubits can be changed by rotating parametrised gates around the X, Y, and Z axes. The rotation is explained using these formulas."
   },
   {
     "objectID": "posts/QuantumGravity/QuantumML.html#ket",
     "href": "posts/QuantumGravity/QuantumML.html#ket",
-    "title": "Quantm Machine Learning",
+    "title": "Quantum Machine Learning",
     "section": "Ket",
     "text": "Ket\nKet vector represents the state of a quantum particle and is denoted as:\nProgrammatically , it can be represented as an array as show below:\nimport numpy as np\n\nk0 = np.array([1,0]) # ket 0\nk1 = np.array([0,1]) # ket 1\n\nk0, k1\n\n# output\n#(array([1, 0]), array([0, 1]))"
   },
   {
     "objectID": "posts/QuantumGravity/QuantumML.html#quantum-neural-network",
     "href": "posts/QuantumGravity/QuantumML.html#quantum-neural-network",
-    "title": "Quantm Machine Learning",
+    "title": "Quantum Machine Learning",
     "section": "Quantum Neural Network",
     "text": "Quantum Neural Network\nEquivalent to creating a Neural Network for Deep Learning on classical computers, QML uses trainable quantum circuits which should be differentiable.\n![Quantum Circuit] \n\nA function f(x) is said to be differentiable if a derivate exists for that function."
   },
