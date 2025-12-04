@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Book",
     "section": "",
-    "text": "The Book",
+    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards above to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools and experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools around Rust / Ratatui / docs automation\n\n🧰 Libraries for working with generated JSON data\n\n🗂 More utilities for automating documentation workflows\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book” — most of them in Rust, some around Ratatui, and others around documentation and tooling.\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching (version + timestamp based)\n\nProduces ratcrate.json for other tools to consume\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli (planned)\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details in a compact way\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui (planned)\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nGenerate chapter structures\n\nInsert placeholders for diagrams/screenshots\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -201,6 +201,91 @@
     "crumbs": [
       "doc2quarto",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+    ]
+  },
+  {
+    "objectID": "rat-cli/index.html",
+    "href": "rat-cli/index.html",
+    "title": "∞ Coming Soon",
+    "section": "",
+    "text": "This project is currently under active development",
+    "crumbs": [
+      "rat-cli",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>∞ Coming Soon</span>"
+    ]
+  },
+  {
+    "objectID": "rat-cli/index.html#what-this-page-will-contain",
+    "href": "rat-cli/index.html#what-this-page-will-contain",
+    "title": "∞ Coming Soon",
+    "section": "What This Page Will Contain",
+    "text": "What This Page Will Contain\nThis section will be replaced once the project reaches its first public draft.\nIt will eventually include:\n\nProject overview\n\nMotivation & goals\n\nArchitecture & workflow diagrams\n\nSetup / installation instructions\n\nFeature tour\n\nScreenshots or TUI previews",
+    "crumbs": [
+      "rat-cli",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>∞ Coming Soon</span>"
+    ]
+  },
+  {
+    "objectID": "rat-cli/index.html#current-status",
+    "href": "rat-cli/index.html#current-status",
+    "title": "∞ Coming Soon",
+    "section": "Current Status",
+    "text": "Current Status\nThis project is part of the larger ecosystem of tools I’m building:\n\nratcrate-core → Completed. The engine that gathers metadata\n\nratcrate-cli → (In Progress) terminal exploration tool\n\nratcrate-tui → (In Progress) Visual TUI interface\n\n\nThis project will be published once the foundation is stable.\nStay tuned for regular updates!",
+    "crumbs": [
+      "rat-cli",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>∞ Coming Soon</span>"
+    ]
+  },
+  {
+    "objectID": "rat-cli/index.html#follow-the-updates",
+    "href": "rat-cli/index.html#follow-the-updates",
+    "title": "∞ Coming Soon",
+    "section": "Follow the Updates",
+    "text": "Follow the Updates\nIf you’d like to know when this project is released, follow me here:\n\n🐙 GitHub: https://github.com/rvbug\n\n\n\n🐦 X / Twitter: https://x.com/rvbugged\n\n\n\n🌐 Website: https://qubitai.in",
+    "crumbs": [
+      "rat-cli",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>∞ Coming Soon</span>"
+    ]
+  },
+  {
+    "objectID": "rat-cli/index.html#support-my-work",
+    "href": "rat-cli/index.html#support-my-work",
+    "title": "∞ Coming Soon",
+    "section": "Support My Work",
+    "text": "Support My Work\nThis project is free and open source.\nIf you’d like to support its development:",
+    "crumbs": [
+      "rat-cli",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>∞ Coming Soon</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome-to-the-documentation-hub-for-my-open-source-projects.",
+    "href": "index.html#welcome-to-the-documentation-hub-for-my-open-source-projects.",
+    "title": "Book",
+    "section": "",
+    "text": "This site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome-to-the-documentation-hub.",
+    "href": "index.html#welcome-to-the-documentation-hub.",
+    "title": "Book",
+    "section": "",
+    "text": "This site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#documentation-hub.",
+    "href": "index.html#documentation-hub.",
+    "title": "Book",
+    "section": "",
+    "text": "This site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   }
 ]

@@ -1,15 +1,23 @@
 ---
 title: "Overview"
 format: html
+toc: true
 ---
 
-# The Book
 
-> ##### Welcome to the documentation hub for my open source projects.
+
+::: {style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;"}
+<!-- Placeholder for image -->
+
+<img src="./images/TheBook.png" alt="Coming Soon Banner" width="50%"/>
+:::
+
+# Documentation hub.
+
 >
 > This site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.
 
-## How to Use This Site
+# How to Use This Site
 
 -   Use the **sidebar** or the project cards above to jump into a specific project.\
 -   Within each project:
@@ -20,7 +28,7 @@ format: html
 This site is primarily written for **future me** — but if you’re reading it later\
 as a user or contributor, I hope it gives you clear insight into how everything fits together
 
-## Roadmap & Future Projects
+# Roadmap & Future Projects
 
 This hub is designed to grow over time as more tools and experiments appear.
 
@@ -38,7 +46,7 @@ When a new project is created, it will get:
 
 #  {.unnumbered}
 
-## About Me
+# About Me
 
 I’m **Rakesh V**, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.
 
@@ -50,9 +58,9 @@ If you’d like to know more about my background, how these tools came about, an
 
 <br><br>
 
-------------------------------------------------------------------------
 
-## Projects Overview
+
+# Projects Overview
 
 ::::: columns
 ::: {.column width="50%"}

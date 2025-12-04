@@ -48,11 +48,11 @@ Stay tuned for regular updates!
 
 If you’d like to know when this project is released, follow me here:
 
->   🐙 GitHub: <https://github.com/rvbug>\
+> 🐙 GitHub: <https://github.com/rvbug>\
 
->   🐦 X / Twitter: <https://x.com/rvbugged>\
+> 🐦 X / Twitter: <https://x.com/rvbugged>\
 
->   🌐 Website: <https://qubitai.in>
+> 🌐 Website: <https://qubitai.in>
 
 ------------------------------------------------------------------------
 
@@ -63,6 +63,6 @@ If you’d like to support its development:
 
 <br> <br>
 
----
+------------------------------------------------------------------------
 
 [![Ko-Fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rvbugged)              [![Github Sponsors](https://img.shields.io/github/sponsors/rvbug)](https://github.com/sponsors/ratcrate)
