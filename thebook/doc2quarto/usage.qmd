@@ -1,0 +1,92 @@
+---
+title: "Using the CLI"
+format: html
+---
+
+# Introduction
+
+The Doc2Quarto utility is designed for straightforward command-line execution, requiring only the source directory of your existing Docusaurus documentation and a desired destination directory for the converted Quarto files.
+
+# Prerequisites
+
+Doc2Quarto is built with Rust and packaged as a standalone binary. After installation (e.g., via cargo install), the doc2quarto command will be available in your system's path.
+
+# Command Syntax
+
+The application uses the clap crate for argument parsing, defining two required arguments: `--source` and `--dest`.
+
+The general command structure is:
+
+``` bash
+$> doc2quarto -s <SOURCE_DIR> -d <DESTINATION_DIR>
+```
+
+| Option | Long Name | Description | Example |
+|-----------------|-----------------|-----------------|-----------------------|
+| `-s` | `--source` | The directory containing your Docusaurus `.md` files (the source docs root). | `./my-docusaurus-docs/` |
+| `-d` | `--dest` | The directory where the converted `.qmd` files will be written. This directory will be created if it does not exist. | `./quarto-book/chapters/` |
+| `-h` | `--help` | Print help | `doc2-quarto —help` |
+| `-v` | `--version` | Prints Version | `doc2quarto --version` |
+
+# Example Execution
+
+Imagine your Docusaurus files are in a directory structure like this:
+
+```{markdown}
+my-project/
+├── docusaurus-docs/
+│   ├── intro.md
+│   └── guide/
+│       ├── setup.md
+│       └── images/
+│           └── diagram.png
+└── ...
+```
+
+To convert these files and place them into a new Quarto book structure:
+
+``` bash
+$> doc2quarto --source docusaurus-docs --dest quarto-book/docs
+```
+
+# During Execution
+
+-   Validation: The tool checks that docusaurus-docs exists.
+-   Creation: The destination directory quarto-book/docs is created.
+-   Discovery: All .md files in docusaurus-docs are found recursively.
+-   Conversion & Copying:
+    -   docusaurus-docs/intro.md is converted to quarto-book/docs/intro.qmd.
+    -   docusaurus-docs/guide/setup.md is converted to quarto-book/docs/guide/setup.qmd.
+    -   The docusaurus-docs/guide/images/ folder is copied to quarto-book/docs/guide/images/.
+-   A progress bar provides visual feedback on the conversion process for large projects:
+
+``` bash
+ℹ Found 25 markdown files
+[✓] [########################################] 25/25 Processed: setup.md
+Conversion completed!
+```
+
+-   The resulting Quarto files (.qmd) are then ready to be referenced in your main \_quarto.yml file.
+
+# Example \_quarto.yml configuration
+
+```{markdown}
+project:
+  type: book
+book:
+  title: "My Converted Book"
+  chapters:
+    - index.qmd
+    - docs/intro.qmd
+    - docs/guide/setup.qmd # Reference the converted files
+```
+
+# Error Handling
+
+Doc2Quarto includes checks for critical errors (as seen in main.rs):
+
+If the source directory (-s) does not exist, the program will exit with an error.
+
+If no .md files are found in the source directory, the program will exit.
+
+The creation of the destination directory (-d) is handled gracefully; if it fails (due to permissions, for example), the program will report the error.

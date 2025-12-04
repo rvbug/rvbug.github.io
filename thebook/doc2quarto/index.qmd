@@ -1,0 +1,54 @@
+---
+title: "Doc2Quarto"
+author: "Rakesh V"
+date: "30 Nov 2025"
+format:
+  html
+code-summary: "Show Source Code"
+---
+
+# Overview
+
+Doc2Quarto is a command-line utility written in Rust designed to streamline the migration of documentation projects from the [Docusaurus](https://docusaurus.io/) framework to the [Quarto](https://quarto.org/) publishing system.
+
+Migrating large documentation sites can be tedious, often requiring manual adjustments to frontmatter, custom admonition syntax, and directory structures. Doc2Quarto automates these common, repetitive transformation tasks, allowing authors to focus on content updates and Quarto-specific enhancements.
+
+# Why Doc2Quarto?
+
+Docusaurus and Quarto both use Markdown, but they differ in crucial ways:
+
+## Frontmatter: 
+
+Docusaurus uses specific YAML fields like sidebar_position for navigation, which must be mapped to Quarto's order field.
+
+## Admonitions: 
+
+Docusaurus uses the :::type Title syntax, while Quarto uses standardized Markdown Callouts 
+`(:::: {<type>} or :::: {.callout-<type>})`.
+
+## File Structure: 
+
+Quarto books often use the .qmd extension and rely on a strict file hierarchy for book rendering.
+
+This utility addresses these differences by providing a quick and reliable conversion pipeline.
+
+# Features
+
+Doc2Quarto offers a robust set of features to ensure a smooth transition:
+
+- [ ] Recursive File Conversion: Scans a source directory and processes all .md files found recursively.
+
+- [ ] Frontmatter Conversion: Automatically maps Docusaurus-specific frontmatter (e.g., sidebar_position) to its Quarto equivalent (order).
+
+- [ ] Admonition/Callout Transformation: Converts common Docusaurus admonition syntaxes 
+`(:::note, :::tip, etc.)` into Quarto's standard callout blocks. 
+
+- [ ] Directory Preservation: Maintains the relative directory structure from the source to the destination, ensuring internal links remain valid.
+
+- [ ] Image Folder Copying: Automatically identifies and copies co-located img folders used by Docusaurus into the corresponding Quarto destination directory.
+
+- [ ] Progress Tracking: Provides visual feedback via a progress bar (using the indicatif crate) for large documentation sets.
+
+<br>
+
+> ###  The following chapters detail how to use Doc2Quarto and provide an in-depth look at its Rust implementation.

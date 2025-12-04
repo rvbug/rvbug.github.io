@@ -1,0 +1,223 @@
+---
+title: "Core Logic"
+format: html
+---
+
+# Conversion Logic Deep Dive"
+
+The core transformation logic of Doc2Quarto resides in the `lib.rs` file, primarily within the process_files and `convert_content` functions. This chapter details how Docusaurus-specific syntax is systematically mapped to Quarto standards.
+
+------------------------------------------------------------------------
+
+# Doc2Quarto Architecture Overview
+
+The tool follows a clear, single-pass pipeline for each file, ensuring efficient and atomic conversion. The primary goal is to handle the Markdown content and preserve the file and asset structure.
+
+------------------------------------------------------------------------
+
+# The Conversion Pipeline
+
+The `process_files` function orchestrates the entire process for a single file:
+
+1.  Read Content: Reads the source `.md` file content into a `String`.
+
+2.  Convert Content: Calls convert_content to perform the syntax transformations.
+
+3.  Path Calculation: Calculates the relative_path from the source_root to preserve the file hierarchy.
+
+4.  Destination Path: Constructs the full dest_path, ensuring the extension is changed from .md to .qmd.
+
+5.  Directory Setup: Creates any necessary parent directories at the destination.
+
+6.  Write Content: Writes the transformed content to the new .qmd file.
+
+7.  Image Copying: Calls copy_img_folder to handle associated assets.
+
+------------------------------------------------------------------------
+
+# Frontmatter Transformation
+
+The function `convert_frontmatter` handles the YAML metadata block at the top of the file. This is crucial for Quarto to correctly interpret navigation and chapter order.
+
+`sidebar_position` to `order`
+
+Docusaurus uses sidebar_position to set the order of documents in a sidebar:
+
+``` markdown
+# Docusaurus Frontmatter
+---
+id: intro
+title: Introduction
+sidebar_position: 1
+---
+```
+
+Doc2Quarto maps this directly to the Quarto book's order field:
+
+``` markdown
+# Quarto Frontmatter
+---
+id: intro
+title: Introduction
+order: 1 # Converted from sidebar_position
+---
+```
+
+------------------------------------------------------------------------
+
+# Admonition/Callout Transformation
+
+One of the most significant changes is the conversion of Docusaurus admonitions (which use a triple-colon syntax) to Quarto's standard Callout blocks (which use a quadruple-colon syntax with a class identifier).
+
+The convert_admonitions function uses a regular expression (`Regex::new(r"^:::(\w)+(.*)$")`) to identify the opening tag and extract the type and optional title.
+
+------------------------------------------------------------------------
+
+# Type Mapping
+
+## Admonitions
+
+The conversion logic performs a mapping to ensure Docusaurus types correctly translate to Quarto's built-in callout types:
+
+| Docusaurus       | Quarto               |
+|------------------|----------------------|
+| `:::note`        | `:::: {note}`        |
+| \``:::tip`\`     | \``:::: {tip}`\`     |
+| \``:::info`\`    | \``:::: {info}`\`    |
+| \``:::caution`\` | \``:::: {caution}`\` |
+| \``:::warning`\` | \``:::: {warning}`\` |
+| \``:::danger`\`  | \``:::: {danger}`\`  |
+
+------------------------------------------------------------------------
+
+## Example Conversion
+
+A Docusaurus note with a title:
+
+``` markdown
+:::tip Useful Tip Remember to clear your cache after deployment.
+:::
+```
+
+Is converted by Doc2Quarto into the Quarto syntax:
+
+``` markdown
+::: callout-tip
+## Useful Tip
+Remember to clear your cache after deployment.
+:::
+```
+
+------------------------------------------------------------------------
+
+# Asset Handling (copy_img_folder)
+
+Documentation sites heavily rely on images. The `copy_img_folder` function ensures that any img directory co-located with a source Markdown file is copied to the exact relative location in the destination structure. This prevents broken image links, as the relative paths within the converted .qmd file remain valid.
+
+``` rust
+// Snippet from lib.rs: 
+// Checks if the 'img' folder exists and copies its contents 
+
+if img_folder.exists() && img_folder.is_dir() 
+  { // ... logic to create destination folder and copy files ... }
+```
+
+This feature is crucial for maintaining the integrity of image references without requiring manual path adjustments after conversion.
+
+------------------------------------------------------------------------
+
+# Core Implementation in Rust
+
+The `lib.rs` file contains the logic that parses and transforms the Markdown content. Below are key snippets demonstrating how the conversion works.
+
+## The Content Converter
+
+This function acts as a state machine to correctly isolate and handle the YAML frontmatter from the main body content.
+
+``` rust
+pub fn convert_content(content: &str) -> String {
+    let mut result = String::new();
+    let mut in_frontmatter = false;
+    let mut frontmatter_lines = Vec::new();
+
+    // Process the file line by line
+    for line in content.lines() {
+        // Toggle the frontmatter state on encountering "---"
+        if line == "---" {
+            if !in_frontmatter {
+                in_frontmatter = true;
+                continue;
+            } else {
+                // End of frontmatter - convert and add to result
+                result.push_str("---\n");
+                result.push_str(&convert_frontmatter(&frontmatter_lines));
+                frontmatter_lines.clear();
+                in_frontmatter = false; 
+                continue;
+            }
+        }
+
+        if in_frontmatter {
+            // Collect frontmatter lines for processing
+            frontmatter_lines.push(line);
+        } else {
+            // Convert admonitions in the content
+            let converted_line = convert_admonitions(line);
+            result.push_str(&converted_line);
+            result.push('\n');
+        }
+    }
+    result
+}
+
+```
+
+# Admonition Regex (convert_admonitions)
+
+The conversion of custom Docusaurus admonition syntax relies on a single Regular Expression to capture the type and optional title, which are then used to format the Quarto callout block.
+
+pub fn convert_admonitions(line: &str) -\> String { // Regex to capture: ::: (1:type) (2:optional title) let admonition_start = Regex::new(r"\^:::(\w)+(.\*)$").unwrap();
+    let admonition_end = Regex::new(r"^:::$").unwrap();
+
+```rust       
+pub fn convert_admonitions(line: &str) -> String {
+    // Regex to capture: ::: (1:type) (2:optional title)
+    let admonition_start = Regex::new(r"^:::(\w)+(.*)$").unwrap();
+    let admonition_end = Regex::new(r"^:::$").unwrap();
+
+    // Convert opening admonition syntax
+    if let Some(caps) = admonition_start.captures(line) {
+        let admonition_type = &caps[1];
+        let title = caps.get(2).map(|m| m.as_str().trim()).unwrap_or("");
+
+        // Map Docusaurus admonitions to Quarto callout types
+        let quarto_type = match admonition_type.to_lowercase().as_str() {
+            "note" => "note",
+            "tip" => "tip",
+            "info" => "note",
+            // ... (other types)
+            "danger" => "important",
+            _ => admonition_type,
+        };
+
+        // Build Quarto callout syntax
+        if title.is_empty() {
+            format!(":::: {{{}}}", quarto_type)
+        } else {
+            // If there's a title, use the .callout-type syntax and add a subheading
+            format!(":::: {{.callout-{}}}\n## {}", quarto_type, title)
+        }
+     }
+    // Convert closing admonition syntax
+    else if admonition_end.is_match(line) {
+        "::::".to_string()
+    }
+    // Return line unchanged if it is not an admonition
+    else {
+        line.to_string()
+    }
+  }
+
+} 
+```
+

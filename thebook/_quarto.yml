@@ -46,6 +46,12 @@ book:
     - part: "rat-tui"
       chapters:
         - rat-tui/index.qmd
+    # Part 4: Doc2Quarto
+    - part: "doc2quarto"
+      chapters:
+        - doc2quarto/index.qmd
+        - doc2quarto/usage.qmd
+        - doc2quarto/logic.qmd
         
 
 bibliography: references.bib

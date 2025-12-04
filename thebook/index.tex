@@ -545,7 +545,7 @@ This book covers:
   Future roadmap
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, bottomrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, opacityback=0, rightrule=.15mm, leftrule=.75mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, toptitle=1mm, left=2mm, titlerule=0mm, arc=.35mm]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, arc=.35mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, opacityback=0, toptitle=1mm, breakable, coltitle=black, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, left=2mm, colback=white]
 
 This project is currently private and will be open-sourced later.
 
@@ -1860,6 +1860,524 @@ If you'd like to support its development:
 \href{https://ko-fi.com/rvbugged}{\pandocbounded{\includesvg[keepaspectratio]{index_files/mediabag/githubbutton_sm.svg}}}
 ~~~~~~~~~~~~
 \href{https://github.com/sponsors/ratcrate}{\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/rvbug.pdf}}}
+
+\part{doc2quarto}
+
+\chapter{Doc2Quarto}\label{doc2quarto-1}
+
+\chapter{Overview}\label{overview-2}
+
+Doc2Quarto is a command-line utility written in Rust designed to
+streamline the migration of documentation projects from the
+\href{https://docusaurus.io/}{Docusaurus} framework to the
+\href{https://quarto.org/}{Quarto} publishing system.
+
+Migrating large documentation sites can be tedious, often requiring
+manual adjustments to frontmatter, custom admonition syntax, and
+directory structures. Doc2Quarto automates these common, repetitive
+transformation tasks, allowing authors to focus on content updates and
+Quarto-specific enhancements.
+
+\chapter{Why Doc2Quarto?}\label{why-doc2quarto}
+
+Docusaurus and Quarto both use Markdown, but they differ in crucial
+ways:
+
+\section{Frontmatter:}\label{frontmatter}
+
+Docusaurus uses specific YAML fields like sidebar\_position for
+navigation, which must be mapped to Quarto's order field.
+
+\section{Admonitions:}\label{admonitions}
+
+Docusaurus uses the :::type Title syntax, while Quarto uses standardized
+Markdown Callouts
+\texttt{(::::\ \{\textless{}type\textgreater{}\}\ or\ ::::\ \{.callout-\textless{}type\textgreater{}\})}.
+
+\section{File Structure:}\label{file-structure}
+
+Quarto books often use the .qmd extension and rely on a strict file
+hierarchy for book rendering.
+
+This utility addresses these differences by providing a quick and
+reliable conversion pipeline.
+
+\chapter{Features}\label{features}
+
+Doc2Quarto offers a robust set of features to ensure a smooth
+transition:
+
+\begin{itemize}
+\item[$\square$]
+  Recursive File Conversion: Scans a source directory and processes all
+  .md files found recursively.
+\item[$\square$]
+  Frontmatter Conversion: Automatically maps Docusaurus-specific
+  frontmatter (e.g., sidebar\_position) to its Quarto equivalent
+  (order).
+\item[$\square$]
+  Admonition/Callout Transformation: Converts common Docusaurus
+  admonition syntaxes \texttt{(:::note,\ :::tip,\ etc.)} into Quarto's
+  standard callout blocks.
+\item[$\square$]
+  Directory Preservation: Maintains the relative directory structure
+  from the source to the destination, ensuring internal links remain
+  valid.
+\item[$\square$]
+  Image Folder Copying: Automatically identifies and copies co-located
+  img folders used by Docusaurus into the corresponding Quarto
+  destination directory.
+\item[$\square$]
+  Progress Tracking: Provides visual feedback via a progress bar (using
+  the indicatif crate) for large documentation sets.
+\end{itemize}
+
+\begin{quote}
+\subsection{The following chapters detail how to use Doc2Quarto and
+provide an in-depth look at its Rust
+implementation.}\label{the-following-chapters-detail-how-to-use-doc2quarto-and-provide-an-in-depth-look-at-its-rust-implementation.}
+\end{quote}
+
+\chapter{Using the CLI}\label{using-the-cli}
+
+\chapter{Introduction}\label{introduction}
+
+The Doc2Quarto utility is designed for straightforward command-line
+execution, requiring only the source directory of your existing
+Docusaurus documentation and a desired destination directory for the
+converted Quarto files.
+
+\chapter{Prerequisites}\label{prerequisites}
+
+Doc2Quarto is built with Rust and packaged as a standalone binary. After
+installation (e.g., via cargo install), the doc2quarto command will be
+available in your system's path.
+
+\chapter{Command Syntax}\label{command-syntax}
+
+The application uses the clap crate for argument parsing, defining two
+required arguments: \texttt{-\/-source} and \texttt{-\/-dest}.
+
+The general command structure is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\OperatorTok{\textgreater{}}\NormalTok{ doc2quarto }\ExtensionTok{{-}s} \OperatorTok{\textless{}}\NormalTok{SOURCE\_DIR}\OperatorTok{\textgreater{}}\NormalTok{ {-}d }\OperatorTok{\textless{}}\NormalTok{DESTINATION\_DIR}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2297}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2297}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2297}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3108}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Option
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Long Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{-s} & \texttt{-\/-source} & The directory containing your
+Docusaurus \texttt{.md} files (the source docs root). &
+\texttt{./my-docusaurus-docs/} \\
+\texttt{-d} & \texttt{-\/-dest} & The directory where the converted
+\texttt{.qmd} files will be written. This directory will be created if
+it does not exist. & \texttt{./quarto-book/chapters/} \\
+\texttt{-h} & \texttt{-\/-help} & Print help &
+\texttt{doc2-quarto\ —help} \\
+\texttt{-v} & \texttt{-\/-version} & Prints Version &
+\texttt{doc2quarto\ -\/-version} \\
+\end{longtable}
+
+\chapter{Example Execution}\label{example-execution}
+
+Imagine your Docusaurus files are in a directory structure like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my{-}project/}
+\NormalTok{├── docusaurus{-}docs/}
+\NormalTok{│   ├── intro.md}
+\NormalTok{│   └── guide/}
+\NormalTok{│       ├── setup.md}
+\NormalTok{│       └── images/}
+\NormalTok{│           └── diagram.png}
+\NormalTok{└── ...}
+\end{Highlighting}
+\end{Shaded}
+
+To convert these files and place them into a new Quarto book structure:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{$}\OperatorTok{\textgreater{}}\NormalTok{ doc2quarto }\ExtensionTok{{-}{-}source}\NormalTok{ docusaurus{-}docs }\AttributeTok{{-}{-}dest}\NormalTok{ quarto{-}book/docs}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{During Execution}\label{during-execution}
+
+\begin{itemize}
+\tightlist
+\item
+  Validation: The tool checks that docusaurus-docs exists.
+\item
+  Creation: The destination directory quarto-book/docs is created.
+\item
+  Discovery: All .md files in docusaurus-docs are found recursively.
+\item
+  Conversion \& Copying:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    docusaurus-docs/intro.md is converted to quarto-book/docs/intro.qmd.
+  \item
+    docusaurus-docs/guide/setup.md is converted to
+    quarto-book/docs/guide/setup.qmd.
+  \item
+    The docusaurus-docs/guide/images/ folder is copied to
+    quarto-book/docs/guide/images/.
+  \end{itemize}
+\item
+  A progress bar provides visual feedback on the conversion process for
+  large projects:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{ℹ}\NormalTok{ Found 25 markdown files}
+\ExtensionTok{[✓]} \PreprocessorTok{[}\SpecialStringTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}\PreprocessorTok{]}\NormalTok{ 25/25 Processed: setup.md}
+\ExtensionTok{Conversion}\NormalTok{ completed!}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The resulting Quarto files (.qmd) are then ready to be referenced in
+  your main \_quarto.yml file.
+\end{itemize}
+
+\chapter{Example \_quarto.yml
+configuration}\label{example-_quarto.yml-configuration}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{project:}
+\NormalTok{  type: book}
+\NormalTok{book:}
+\NormalTok{  title: "My Converted Book"}
+\NormalTok{  chapters:}
+\NormalTok{    {-} index.qmd}
+\NormalTok{    {-} docs/intro.qmd}
+\NormalTok{    {-} docs/guide/setup.qmd \# Reference the converted files}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{Error Handling}\label{error-handling}
+
+Doc2Quarto includes checks for critical errors (as seen in main.rs):
+
+If the source directory (-s) does not exist, the program will exit with
+an error.
+
+If no .md files are found in the source directory, the program will
+exit.
+
+The creation of the destination directory (-d) is handled gracefully; if
+it fails (due to permissions, for example), the program will report the
+error.
+
+\chapter{logic}\label{logic}
+
+\chapter{Conversion Logic Deep Dive''}\label{conversion-logic-deep-dive}
+
+The core transformation logic of Doc2Quarto resides in the
+\texttt{lib.rs} file, primarily within the process\_files and
+\texttt{convert\_content} functions. This chapter details how
+Docusaurus-specific syntax is systematically mapped to Quarto standards.
+
+--
+
+\chapter{Doc2Quarto Architecture
+Overview}\label{doc2quarto-architecture-overview}
+
+The tool follows a clear, single-pass pipeline for each file, ensuring
+efficient and atomic conversion. The primary goal is to handle the
+Markdown content and preserve the file and asset structure.
+
+--
+
+\chapter{The Conversion Pipeline}\label{the-conversion-pipeline}
+
+The \texttt{process\_files} function orchestrates the entire process for
+a single file:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Read Content: Reads the source \texttt{.md} file content into a
+  \texttt{String}.
+\item
+  Convert Content: Calls convert\_content to perform the syntax
+  transformations.
+\item
+  Path Calculation: Calculates the relative\_path from the source\_root
+  to preserve the file hierarchy.
+\item
+  Destination Path: Constructs the full dest\_path, ensuring the
+  extension is changed from .md to .qmd.
+\item
+  Directory Setup: Creates any necessary parent directories at the
+  destination.
+\item
+  Write Content: Writes the transformed content to the new .qmd file.
+\item
+  Image Copying: Calls copy\_img\_folder to handle associated assets.
+\end{enumerate}
+
+--
+
+\chapter{Frontmatter Transformation}\label{frontmatter-transformation}
+
+The function \texttt{convert\_frontmatter} handles the YAML metadata
+block at the top of the file. This is crucial for Quarto to correctly
+interpret navigation and chapter order.
+
+\texttt{sidebar\_position} to \texttt{order}
+
+Docusaurus uses sidebar\_position to set the order of documents in a
+sidebar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# Docusaurus Frontmatter}
+\NormalTok{{-}{-}{-}}
+\NormalTok{id: intro}
+\NormalTok{title: Introduction}
+\NormalTok{sidebar\_position: 1}
+\NormalTok{{-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
+
+Doc2Quarto maps this directly to the Quarto book's order field:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# Quarto Frontmatter}
+\NormalTok{{-}{-}{-}}
+\NormalTok{id: intro}
+\NormalTok{title: Introduction}
+\NormalTok{order: 1 \# Converted from sidebar\_position}
+\NormalTok{{-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\chapter{Admonition/Callout
+Transformation}\label{admonitioncallout-transformation}
+
+One of the most significant changes is the conversion of Docusaurus
+admonitions (which use a triple-colon syntax) to Quarto's standard
+Callout blocks (which use a quadruple-colon syntax with a class
+identifier).
+
+The convert\_admonitions function uses a regular expression
+(\texttt{Regex::new(r"\^{}:::(\textbackslash{}w)+(.*)\$")}) to identify
+the opening tag and extract the type and optional title.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\chapter{Type Mapping}\label{type-mapping}
+
+\section{Admonitions}\label{admonitions-1}
+
+The conversion logic performs a mapping to ensure Docusaurus types
+correctly translate to Quarto's built-in callout types:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Docusaurus & Quarto \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{:::note} & \texttt{::::\ \{note\}} \\
+`\texttt{:::tip}` & `\texttt{::::\ \{tip\}}` \\
+`\texttt{:::info}` & `\texttt{::::\ \{info\}}` \\
+`\texttt{:::caution}` & `\texttt{::::\ \{caution\}}` \\
+`\texttt{:::warning}` & `\texttt{::::\ \{warning\}}` \\
+`\texttt{:::danger}` & `\texttt{::::\ \{danger\}}` \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Example Conversion}\label{example-conversion}
+
+A Docusaurus note with a title:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{:::tip Useful Tip Remember to clear your cache after deployment.}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+Is converted by Doc2Quarto into the Quarto syntax:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: callout{-}tip}
+\FunctionTok{\#\# Useful Tip}
+\NormalTok{Remember to clear your cache after deployment.}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\chapter{Asset Handling
+(copy\_img\_folder)}\label{asset-handling-copy_img_folder}
+
+Documentation sites heavily rely on images. The
+\texttt{copy\_img\_folder} function ensures that any img directory
+co-located with a source Markdown file is copied to the exact relative
+location in the destination structure. This prevents broken image links,
+as the relative paths within the converted .qmd file remain valid.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Snippet from lib.rs: }
+\CommentTok{// Checks if the \textquotesingle{}img\textquotesingle{} folder exists and copies its contents }
+
+\ControlFlowTok{if}\NormalTok{ img\_folder}\OperatorTok{.}\NormalTok{exists() }\OperatorTok{\&\&}\NormalTok{ img\_folder}\OperatorTok{.}\NormalTok{is\_dir() }
+  \OperatorTok{\{} \CommentTok{// ... logic to create destination folder and copy files ... \}}
+\end{Highlighting}
+\end{Shaded}
+
+This feature is crucial for maintaining the integrity of image
+references without requiring manual path adjustments after conversion.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\chapter{Core Implementation in Rust}\label{core-implementation-in-rust}
+
+The \texttt{lib.rs} file contains the logic that parses and transforms
+the Markdown content. Below are key snippets demonstrating how the
+conversion works.
+
+\section{The Content Converter}\label{the-content-converter}
+
+This function acts as a state machine to correctly isolate and handle
+the YAML frontmatter from the main body content.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pub} \KeywordTok{fn}\NormalTok{ convert\_content(content}\OperatorTok{:} \OperatorTok{\&}\DataTypeTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \DataTypeTok{String} \OperatorTok{\{}
+    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ result }\OperatorTok{=} \DataTypeTok{String}\PreprocessorTok{::}\NormalTok{new()}\OperatorTok{;}
+    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ in\_frontmatter }\OperatorTok{=} \ConstantTok{false}\OperatorTok{;}
+    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ frontmatter\_lines }\OperatorTok{=} \DataTypeTok{Vec}\PreprocessorTok{::}\NormalTok{new()}\OperatorTok{;}
+
+    \CommentTok{// Process the file line by line}
+    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ content}\OperatorTok{.}\NormalTok{lines() }\OperatorTok{\{}
+        \CommentTok{// Toggle the frontmatter state on encountering "{-}{-}{-}"}
+        \ControlFlowTok{if}\NormalTok{ line }\OperatorTok{==} \StringTok{"{-}{-}{-}"} \OperatorTok{\{}
+            \ControlFlowTok{if} \OperatorTok{!}\NormalTok{in\_frontmatter }\OperatorTok{\{}
+\NormalTok{                in\_frontmatter }\OperatorTok{=} \ConstantTok{true}\OperatorTok{;}
+                \ControlFlowTok{continue}\OperatorTok{;}
+            \OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}
+                \CommentTok{// End of frontmatter {-} convert and add to result}
+\NormalTok{                result}\OperatorTok{.}\NormalTok{push\_str(}\StringTok{"{-}{-}{-}}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}\OperatorTok{;}
+\NormalTok{                result}\OperatorTok{.}\NormalTok{push\_str(}\OperatorTok{\&}\NormalTok{convert\_frontmatter(}\OperatorTok{\&}\NormalTok{frontmatter\_lines))}\OperatorTok{;}
+\NormalTok{                frontmatter\_lines}\OperatorTok{.}\NormalTok{clear()}\OperatorTok{;}
+\NormalTok{                in\_frontmatter }\OperatorTok{=} \ConstantTok{false}\OperatorTok{;} \CommentTok{// Add this line for clarity}
+                \ControlFlowTok{continue}\OperatorTok{;}
+            \OperatorTok{\}}
+        \OperatorTok{\}}
+
+        \ControlFlowTok{if}\NormalTok{ in\_frontmatter }\OperatorTok{\{}
+            \CommentTok{// Collect frontmatter lines for processing}
+\NormalTok{            frontmatter\_lines}\OperatorTok{.}\NormalTok{push(line)}\OperatorTok{;}
+        \OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}
+            \CommentTok{// Convert admonitions in the content}
+            \KeywordTok{let}\NormalTok{ converted\_line }\OperatorTok{=}\NormalTok{ convert\_admonitions(line)}\OperatorTok{;}
+\NormalTok{            result}\OperatorTok{.}\NormalTok{push\_str(}\OperatorTok{\&}\NormalTok{converted\_line)}\OperatorTok{;}
+\NormalTok{            result}\OperatorTok{.}\NormalTok{push(}\CharTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\CharTok{\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+\NormalTok{    result}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{Admonition Regex
+(convert\_admonitions)}\label{admonition-regex-convert_admonitions}
+
+The conversion of custom Docusaurus admonition syntax relies on a single
+Regular Expression to capture the type and optional title, which are
+then used to format the Quarto callout block.
+
+pub fn convert\_admonitions(line: \&str) -\textgreater{} String \{ //
+Regex to capture: ::: (1:type) (2:optional title) let admonition\_start
+= Regex::new(r''\^{}:::(\w)+(.*)\(").unwrap();
+    let admonition_end = Regex::new(r"^:::\)``).unwrap();
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pub} \KeywordTok{fn}\NormalTok{ convert\_admonitions(line}\OperatorTok{:} \OperatorTok{\&}\DataTypeTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \DataTypeTok{String} \OperatorTok{\{}
+    \CommentTok{// Regex to capture: ::: (1:type) (2:optional title)}
+    \KeywordTok{let}\NormalTok{ admonition\_start }\OperatorTok{=} \PreprocessorTok{Regex::}\NormalTok{new(}\StringTok{r"\^{}:::(\textbackslash{}w)+(.*)$"}\NormalTok{)}\OperatorTok{.}\NormalTok{unwrap()}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ admonition\_end }\OperatorTok{=} \PreprocessorTok{Regex::}\NormalTok{new(}\StringTok{r"\^{}:::$"}\NormalTok{)}\OperatorTok{.}\NormalTok{unwrap()}\OperatorTok{;}
+
+    \CommentTok{// Convert opening admonition syntax}
+    \ControlFlowTok{if} \KeywordTok{let} \ConstantTok{Some}\NormalTok{(caps) }\OperatorTok{=}\NormalTok{ admonition\_start}\OperatorTok{.}\NormalTok{captures(line) }\OperatorTok{\{}
+        \KeywordTok{let}\NormalTok{ admonition\_type }\OperatorTok{=} \OperatorTok{\&}\NormalTok{caps[}\DecValTok{1}\NormalTok{]}\OperatorTok{;}
+        \KeywordTok{let}\NormalTok{ title }\OperatorTok{=}\NormalTok{ caps}\OperatorTok{.}\NormalTok{get(}\DecValTok{2}\NormalTok{)}\OperatorTok{.}\NormalTok{map(}\OperatorTok{|}\NormalTok{m}\OperatorTok{|}\NormalTok{ m}\OperatorTok{.}\NormalTok{as\_str()}\OperatorTok{.}\NormalTok{trim())}\OperatorTok{.}\NormalTok{unwrap\_or(}\StringTok{""}\NormalTok{)}\OperatorTok{;}
+
+        \CommentTok{// Map Docusaurus admonitions to Quarto callout types}
+        \KeywordTok{let}\NormalTok{ quarto\_type }\OperatorTok{=} \ControlFlowTok{match}\NormalTok{ admonition\_type}\OperatorTok{.}\NormalTok{to\_lowercase()}\OperatorTok{.}\NormalTok{as\_str() }\OperatorTok{\{}
+            \StringTok{"note"} \OperatorTok{=\textgreater{}} \StringTok{"note"}\OperatorTok{,}
+            \StringTok{"tip"} \OperatorTok{=\textgreater{}} \StringTok{"tip"}\OperatorTok{,}
+            \StringTok{"info"} \OperatorTok{=\textgreater{}} \StringTok{"note"}\OperatorTok{,}
+            \CommentTok{// ... (other types)}
+            \StringTok{"danger"} \OperatorTok{=\textgreater{}} \StringTok{"important"}\OperatorTok{,}
+\NormalTok{            \_ }\OperatorTok{=\textgreater{}}\NormalTok{ admonition\_type}\OperatorTok{,}
+        \OperatorTok{\};}
+
+        \CommentTok{// Build Quarto callout syntax}
+        \ControlFlowTok{if}\NormalTok{ title}\OperatorTok{.}\NormalTok{is\_empty() }\OperatorTok{\{}
+            \PreprocessorTok{format!}\NormalTok{(}\StringTok{":::: \{\{\{\}\}\}"}\OperatorTok{,}\NormalTok{ quarto\_type)}
+        \OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}
+            \CommentTok{// If there\textquotesingle{}s a title, use the .callout{-}type syntax and add a subheading}
+            \PreprocessorTok{format!}\NormalTok{(}\StringTok{":::: \{\{.callout{-}\{\}\}\}}\SpecialCharTok{\textbackslash{}n}\StringTok{\#\# \{\}"}\OperatorTok{,}\NormalTok{ quarto\_type}\OperatorTok{,}\NormalTok{ title)}
+        \OperatorTok{\}}
+     \OperatorTok{\}}
+    \CommentTok{// Convert closing admonition syntax}
+    \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ admonition\_end}\OperatorTok{.}\NormalTok{is\_match(line) }\OperatorTok{\{}
+        \StringTok{"::::"}\OperatorTok{.}\NormalTok{to\_string()}
+    \OperatorTok{\}}
+    \CommentTok{// Return line unchanged if it is not an admonition}
+    \ControlFlowTok{else} \OperatorTok{\{}
+\NormalTok{        line}\OperatorTok{.}\NormalTok{to\_string()}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+
+\OperatorTok{\}} 
+\end{Highlighting}
+\end{Shaded}
+
+::: :::: ::::: :::::: ::::::: :::::::: ::::::::: :::::::::: :::::::::::
+:::::::::::: ::::::::::::: ::::::::::::::
 
 
 

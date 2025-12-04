@@ -48,5 +48,159 @@
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
+  },
+  {
+    "objectID": "doc2quarto/index.html",
+    "href": "doc2quarto/index.html",
+    "title": "Doc2Quarto",
+    "section": "",
+    "text": "Overview\nDoc2Quarto is a command-line utility written in Rust designed to streamline the migration of documentation projects from the Docusaurus framework to the Quarto publishing system.\nMigrating large documentation sites can be tedious, often requiring manual adjustments to frontmatter, custom admonition syntax, and directory structures. Doc2Quarto automates these common, repetitive transformation tasks, allowing authors to focus on content updates and Quarto-specific enhancements.",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Doc2Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/index.html#frontmatter",
+    "href": "doc2quarto/index.html#frontmatter",
+    "title": "Doc2Quarto",
+    "section": "Frontmatter:",
+    "text": "Frontmatter:\nDocusaurus uses specific YAML fields like sidebar_position for navigation, which must be mapped to Quarto’s order field.",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Doc2Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/index.html#admonitions",
+    "href": "doc2quarto/index.html#admonitions",
+    "title": "Doc2Quarto",
+    "section": "Admonitions:",
+    "text": "Admonitions:\nDocusaurus uses the :::type Title syntax, while Quarto uses standardized Markdown Callouts (:::: {&lt;type&gt;} or :::: {.callout-&lt;type&gt;}).",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Doc2Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/index.html#file-structure",
+    "href": "doc2quarto/index.html#file-structure",
+    "title": "Doc2Quarto",
+    "section": "File Structure:",
+    "text": "File Structure:\nQuarto books often use the .qmd extension and rely on a strict file hierarchy for book rendering.\nThis utility addresses these differences by providing a quick and reliable conversion pipeline.",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Doc2Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/usage.html",
+    "href": "doc2quarto/usage.html",
+    "title": "Using the CLI",
+    "section": "",
+    "text": "Introduction\nThe Doc2Quarto utility is designed for straightforward command-line execution, requiring only the source directory of your existing Docusaurus documentation and a desired destination directory for the converted Quarto files.\n\n\nPrerequisites\nDoc2Quarto is built with Rust and packaged as a standalone binary. After installation (e.g., via cargo install), the doc2quarto command will be available in your system’s path.\n\n\nCommand Syntax\nThe application uses the clap crate for argument parsing, defining two required arguments: --source and --dest.\nThe general command structure is:\n$&gt; doc2quarto -s &lt;SOURCE_DIR&gt; -d &lt;DESTINATION_DIR&gt;\n\n\n\n\n\n\n\n\n\nOption\nLong Name\nDescription\nExample\n\n\n\n\n-s\n--source\nThe directory containing your Docusaurus .md files (the source docs root).\n./my-docusaurus-docs/\n\n\n-d\n--dest\nThe directory where the converted .qmd files will be written. This directory will be created if it does not exist.\n./quarto-book/chapters/\n\n\n-h\n--help\nPrint help\ndoc2-quarto —help\n\n\n-v\n--version\nPrints Version\ndoc2quarto --version\n\n\n\n\n\nExample Execution\nImagine your Docusaurus files are in a directory structure like this:\nmy-project/\n├── docusaurus-docs/\n│   ├── intro.md\n│   └── guide/\n│       ├── setup.md\n│       └── images/\n│           └── diagram.png\n└── ...\nTo convert these files and place them into a new Quarto book structure:\n$&gt; doc2quarto --source docusaurus-docs --dest quarto-book/docs\n\n\nDuring Execution\n\nValidation: The tool checks that docusaurus-docs exists.\nCreation: The destination directory quarto-book/docs is created.\nDiscovery: All .md files in docusaurus-docs are found recursively.\nConversion & Copying:\n\ndocusaurus-docs/intro.md is converted to quarto-book/docs/intro.qmd.\ndocusaurus-docs/guide/setup.md is converted to quarto-book/docs/guide/setup.qmd.\nThe docusaurus-docs/guide/images/ folder is copied to quarto-book/docs/guide/images/.\n\nA progress bar provides visual feedback on the conversion process for large projects:\n\nℹ Found 25 markdown files\n[✓] [########################################] 25/25 Processed: setup.md\nConversion completed!\n\nThe resulting Quarto files (.qmd) are then ready to be referenced in your main _quarto.yml file.\n\n\n\nExample _quarto.yml configuration\nproject:\n  type: book\nbook:\n  title: \"My Converted Book\"\n  chapters:\n    - index.qmd\n    - docs/intro.qmd\n    - docs/guide/setup.qmd # Reference the converted files\n\n\nError Handling\nDoc2Quarto includes checks for critical errors (as seen in main.rs):\nIf the source directory (-s) does not exist, the program will exit with an error.\nIf no .md files are found in the source directory, the program will exit.\nThe creation of the destination directory (-d) is handled gracefully; if it fails (due to permissions, for example), the program will report the error.",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Using the CLI</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html",
+    "href": "doc2quarto/logic.html",
+    "title": "logic",
+    "section": "",
+    "text": "Conversion Logic Deep Dive”\nThe core transformation logic of Doc2Quarto resides in the lib.rs file, primarily within the process_files and convert_content functions. This chapter details how Docusaurus-specific syntax is systematically mapped to Quarto standards.\n–",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html#docusaurus-frontmatter",
+    "href": "doc2quarto/logic.html#docusaurus-frontmatter",
+    "title": "logic",
+    "section": "# Docusaurus Frontmatter",
+    "text": "# Docusaurus Frontmatter\nid: intro title: Introduction sidebar_position: 1 —\nDoc2Quarto maps this directly to the Quarto book’s order field:",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html#quarto-frontmatter",
+    "href": "doc2quarto/logic.html#quarto-frontmatter",
+    "title": "logic",
+    "section": "# Quarto Frontmatter",
+    "text": "# Quarto Frontmatter\nid: intro title: Introduction order: 1 # Converted from sidebar_position —\nAdmonition/Callout Transformation (convert_admonitions)\nOne of the most significant changes is the conversion of Docusaurus admonitions (which use a triple-colon syntax) to Quarto’s standard Callout blocks (which use a quadruple-colon syntax with a class identifier).\nThe convert_admonitions function uses a regular expression (Regex::new(r”^:::()+(.*)$“)) to identify the opening tag and extract the type and optional title.\nType Mapping\nThe conversion logic performs a mapping to ensure Docusaurus types correctly translate to Quarto’s built-in callout types:\nDocusaurus Admonition\nQuarto Callout Type\n\n\n\n\n\n\n\n\n\n\n\n\nExample Conversion\nA Docusaurus note with a title:\n:::tip Useful Tip Remember to clear your cache after deployment.\n\nIs converted by Doc2Quarto into the Quarto syntax:\n\n\n\n\n\n\nUseful Tip\n\n\n\nRemember to clear your cache after deployment.\n\n\nAsset Handling (copy_img_folder)\nDocumentation sites heavily rely on images. The copy_img_folder function ensures that any img directory co-located with a source Markdown file is copied to the exact relative location in the destination structure. This prevents broken image links, as the relative paths within the converted .qmd file remain valid.\n// Snippet from lib.rs: // Checks if the ‘img’ folder exists and copies its contents if img_folder.exists() && img_folder.is_dir() { // … logic to create destination folder and copy files … }\nThis feature is crucial for maintaining the integrity of image references without requiring manual path adjustments after conversion.\n\nCore Implementation in Rust\n\nThe lib.rs file contains the logic that parses and transforms the Markdown content. Below are key snippets demonstrating how the conversion works.\nThe Content Converter (convert_content)\nThis function acts as a state machine to correctly isolate and handle the YAML frontmatter from the main body content.\npub fn convert_content(content: &str) -&gt; String { let mut result = String::new(); let mut in_frontmatter = false; let mut frontmatter_lines = Vec::new();\n// Process the file line by line\nfor line in content.lines() {\n    // Toggle the frontmatter state on encountering \"---\"\n    if line == \"---\" {\n        if !in_frontmatter {\n            in_frontmatter = true;\n            continue;\n        } else {\n            // End of frontmatter - convert and add to result\n            result.push_str(\"---\\n\");\n            result.push_str(&convert_frontmatter(&frontmatter_lines));\n            frontmatter_lines.clear();\n            in_frontmatter = false; // Add this line for clarity\n            continue;\n        }\n    }\n\n    if in_frontmatter {\n        // Collect frontmatter lines for processing\n        frontmatter_lines.push(line);\n    } else {\n        // Convert admonitions in the content\n        let converted_line = convert_admonitions(line);\n        result.push_str(&converted_line);\n        result.push('\\n');\n    }\n}\nresult\n}\nAdmonition Regex (convert_admonitions)\nThe conversion of custom Docusaurus admonition syntax relies on a single Regular Expression to capture the type and optional title, which are then used to format the Quarto callout block.\npub fn convert_admonitions(line: &str) -&gt; String { // Regex to capture: ::: (1:type) (2:optional title) let admonition_start = Regex::new(r”^:::()+(.*)\\(\").unwrap();\n    let admonition_end = Regex::new(r\"^:::\\)“).unwrap();\n// Convert opening admonition syntax\nif let Some(caps) = admonition_start.captures(line) {\n    let admonition_type = &caps[1];\n    let title = caps.get(2).map(|m| m.as_str().trim()).unwrap_or(\"\");\n\n    // Map Docusaurus admonitions to Quarto callout types\n    let quarto_type = match admonition_type.to_lowercase().as_str() {\n        \"note\" =&gt; \"note\",\n        \"tip\" =&gt; \"tip\",\n        \"info\" =&gt; \"note\",\n        // ... (other types)\n        \"danger\" =&gt; \"important\",\n        _ =&gt; admonition_type,\n    };\n\n    // Build Quarto callout syntax\n    if title.is_empty() {\n        format!(\":::: {{{}}}\", quarto_type)\n    } else {\n        // If there's a title, use the .callout-type syntax and add a subheading\n        format!(\":::: {{.callout-{}}}\\n## {}\", quarto_type, title)\n    }\n }\n// Convert closing admonition syntax\nelse if admonition_end.is_match(line) {\n    \"::::\".to_string()\n}\n// Return line unchanged if it is not an admonition\nelse {\n    line.to_string()\n}\n}",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html#type-mapping",
+    "href": "doc2quarto/logic.html#type-mapping",
+    "title": "logic",
+    "section": "Type Mapping",
+    "text": "Type Mapping\nThe conversion logic performs a mapping to ensure Docusaurus types correctly translate to Quarto’s built-in callout types:\n\nAdmonitions\n\n\nDocusaurus\nQuarto\n\n\n\n\n:::note\n:::: {note}\n\n\n`:::tip`\n`:::: {tip}`\n\n\n`:::info`\n`:::: {info}`\n\n\n`:::caution`\n`:::: {caution}`\n\n\n`:::warning`\n`:::: {warning}`\n\n\n`:::danger`\n`:::: {danger}`\n\n\n\nDocusaurus Admonition\nQuarto Callout Type",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>logic</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html#example-conversion",
+    "href": "doc2quarto/logic.html#example-conversion",
+    "title": "logic",
+    "section": "Example Conversion",
+    "text": "Example Conversion\nA Docusaurus note with a title:\n:::tip Useful Tip Remember to clear your cache after deployment.\n:::\nIs converted by Doc2Quarto into the Quarto syntax:\n::: callout-tip\n## Useful Tip\nRemember to clear your cache after deployment.\n:::",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html#the-content-converter-convert_content",
+    "href": "doc2quarto/logic.html#the-content-converter-convert_content",
+    "title": "logic",
+    "section": "The Content Converter (convert_content)",
+    "text": "The Content Converter (convert_content)\nThis function acts as a state machine to correctly isolate and handle the YAML frontmatter from the main body content.\npub fn convert_content(content: &str) -\\&gt; String { let mut result = String::new(); let mut in_frontmatter = false; let mut frontmatter_lines = Vec::new();\n// Process the file line by line for line in content.lines() { // Toggle the frontmatter state on encountering “—” if line == “—” { if !in_frontmatter { in_frontmatter = true; continue; } else { // End of frontmatter - convert and add to result result.push_str(“—”); result.push_str(&convert_frontmatter(&frontmatter_lines)); frontmatter_lines.clear(); in_frontmatter = false; // Add this line for clarity continue; } }\nif in_frontmatter {\n    // Collect frontmatter lines for processing\n    frontmatter_lines.push(line);\n} else {\n    // Convert admonitions in the content\n    let converted_line = convert_admonitions(line);\n    result.push_str(&converted_line);\n    result.push('\\n');\n}\n} result\n}\n\n# Admonition Regex (convert_admonitions)\n\nThe conversion of custom Docusaurus admonition syntax relies on a single Regular Expression to capture the type and optional title, which are then used to format the Quarto callout block.\n\npub fn convert_admonitions(line: &str) -\\&gt; String { // Regex to capture: ::: (1:type) (2:optional title) let admonition_start = Regex::new(r\"\\^:::(\\w)+(.\\*)$\").unwrap();\n    let admonition_end = Regex::new(r\"^:::$\").unwrap();\n// Convert opening admonition syntax if let Some(caps) = admonition_start.captures(line) { let admonition_type = &caps[1]; let title = caps.get(2).map(|m| m.as_str().trim()).unwrap_or(““);\n// Map Docusaurus admonitions to Quarto callout types\nlet quarto_type = match admonition_type.to_lowercase().as_str() {\n    \"note\" =&gt; \"note\",\n    \"tip\" =&gt; \"tip\",\n    \"info\" =&gt; \"note\",\n    // ... (other types)\n    \"danger\" =&gt; \"important\",\n    _ =&gt; admonition_type,\n};\n\n// Build Quarto callout syntax\nif title.is_empty() {\n    format!(\":::: {{{}}}\", quarto_type)\n} else {\n    // If there's a title, use the .callout-type syntax and add a subheading\n    format!(\":::: {{.callout-{}}}\\n## {}\", quarto_type, title)\n}\n} // Convert closing admonition syntax else if admonition_end.is_match(line) { “::::”.to_string() } // Return line unchanged if it is not an admonition else { line.to_string() } ```\n} ::: :::: ::::: :::::: ::::::: :::::::: ::::::::: :::::::::: ::::::::::: :::::::::::: ::::::::::::: ::::::::::::::",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>logic</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html#the-conversion-pipeline",
+    "href": "doc2quarto/logic.html#the-conversion-pipeline",
+    "title": "logic",
+    "section": "The Conversion Pipeline",
+    "text": "The Conversion Pipeline\nThe process_files function orchestrates the entire process for a single file:\n\nRead Content: Reads the source .md file content into a String.\nConvert Content: Calls convert_content to perform the syntax transformations.\nPath Calculation: Calculates the relative_path from the source_root to preserve the file hierarchy.\nDestination Path: Constructs the full dest_path, ensuring the extension is changed from .md to .qmd.\nDirectory Setup: Creates any necessary parent directories at the destination.\nWrite Content: Writes the transformed content to the new .qmd file.\nImage Copying: Calls copy_img_folder to handle associated assets.",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>logic</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html#admonitions",
+    "href": "doc2quarto/logic.html#admonitions",
+    "title": "logic",
+    "section": "Admonitions",
+    "text": "Admonitions\nThe conversion logic performs a mapping to ensure Docusaurus types correctly translate to Quarto’s built-in callout types:\n\n\n\nDocusaurus\nQuarto\n\n\n\n\n:::note\n:::: {note}\n\n\n`:::tip`\n`:::: {tip}`\n\n\n`:::info`\n`:::: {info}`\n\n\n`:::caution`\n`:::: {caution}`\n\n\n`:::warning`\n`:::: {warning}`\n\n\n`:::danger`\n`:::: {danger}`",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+    ]
+  },
+  {
+    "objectID": "doc2quarto/logic.html#the-content-converter",
+    "href": "doc2quarto/logic.html#the-content-converter",
+    "title": "logic",
+    "section": "The Content Converter",
+    "text": "The Content Converter\nThis function acts as a state machine to correctly isolate and handle the YAML frontmatter from the main body content.\npub fn convert_content(content: &str) -&gt; String {\n    let mut result = String::new();\n    let mut in_frontmatter = false;\n    let mut frontmatter_lines = Vec::new();\n\n    // Process the file line by line\n    for line in content.lines() {\n        // Toggle the frontmatter state on encountering \"---\"\n        if line == \"---\" {\n            if !in_frontmatter {\n                in_frontmatter = true;\n                continue;\n            } else {\n                // End of frontmatter - convert and add to result\n                result.push_str(\"---\\n\");\n                result.push_str(&convert_frontmatter(&frontmatter_lines));\n                frontmatter_lines.clear();\n                in_frontmatter = false; // Add this line for clarity\n                continue;\n            }\n        }\n\n        if in_frontmatter {\n            // Collect frontmatter lines for processing\n            frontmatter_lines.push(line);\n        } else {\n            // Convert admonitions in the content\n            let converted_line = convert_admonitions(line);\n            result.push_str(&converted_line);\n            result.push('\\n');\n        }\n    }\n    result\n}",
+    "crumbs": [
+      "doc2quarto",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+    ]
   }
 ]

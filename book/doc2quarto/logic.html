@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>∞ Coming Soon – Book</title>
+<title>logic – Book</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../doc2quarto/index.html" rel="next">
-<link href="../rat-cli/index.html" rel="prev">
+<link href="../doc2quarto/usage.html" rel="prev">
 <link href="../images/AudioWide-White.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -71,10 +105,39 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-tui/index.html">rat-tui</a></li><li class="breadcrumb-item"><a href="../rat-tui/index.html"><span class="chapter-title">∞ Coming Soon</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../doc2quarto/index.html">doc2quarto</a></li><li class="breadcrumb-item"><a href="../doc2quarto/logic.html"><span class="chapter-title">Core Logic</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -93,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -270,7 +333,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">∞ Coming Soon</span></a>
+  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">∞ Coming Soon</span></a>
   </div>
 </li>
       </ul>
@@ -296,7 +359,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../doc2quarto/logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">logic</span></a>
+  <a href="../doc2quarto/logic.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Core Logic</span></a>
   </div>
 </li>
       </ul>
@@ -308,16 +371,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-tui/index.html">rat-tui</a></li><li class="breadcrumb-item"><a href="../rat-tui/index.html"><span class="chapter-title">∞ Coming Soon</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../doc2quarto/index.html">doc2quarto</a></li><li class="breadcrumb-item"><a href="../doc2quarto/logic.html"><span class="chapter-title">Core Logic</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">∞ Coming Soon</span></h1>
+<h1 class="title"><span class="chapter-title">logic</span></h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta">
 
     
   
@@ -329,70 +392,209 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="this-project-is-currently-under-active-development" class="level2" style="text-align:center; padding-top: 0rem; padding-bottom: 0rem;">
-<h2 class="anchored" data-anchor-id="this-project-is-currently-under-active-development">This project is currently under active development</h2>
+<section id="conversion-logic-deep-dive" class="level1">
+<h1>Conversion Logic Deep Dive”</h1>
+<p>The core transformation logic of Doc2Quarto resides in the <code>lib.rs</code> file, primarily within the process_files and <code>convert_content</code> functions. This chapter details how Docusaurus-specific syntax is systematically mapped to Quarto standards.</p>
+<p>–</p>
 </section>
-<div style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;">
-<!-- Placeholder for image -->
-<p><img src="./images/ComingSoon.png" alt="Coming Soon Banner" width="50%"></p>
-</div>
-<section id="what-this-page-will-contain" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-page-will-contain">What This Page Will Contain</h2>
-<p>This section will be replaced once the project reaches its first public draft.<br>
-It will eventually include:</p>
-<ul>
-<li><strong>Project overview</strong><br>
-</li>
-<li><strong>Motivation &amp; goals</strong><br>
-</li>
-<li><strong>Architecture &amp; workflow diagrams</strong><br>
-</li>
-<li><strong>Setup / installation instructions</strong><br>
-</li>
-<li><strong>Feature tour</strong><br>
-</li>
-<li><strong>Screenshots or TUI previews</strong></li>
-</ul>
+<section id="doc2quarto-architecture-overview" class="level1">
+<h1>Doc2Quarto Architecture Overview</h1>
+<p>The tool follows a clear, single-pass pipeline for each file, ensuring efficient and atomic conversion. The primary goal is to handle the Markdown content and preserve the file and asset structure.</p>
+<p>–</p>
+</section>
+<section id="the-conversion-pipeline" class="level1">
+<h1>The Conversion Pipeline</h1>
+<p>The <code>process_files</code> function orchestrates the entire process for a single file:</p>
+<ol type="1">
+<li><p>Read Content: Reads the source <code>.md</code> file content into a <code>String</code>.</p></li>
+<li><p>Convert Content: Calls convert_content to perform the syntax transformations.</p></li>
+<li><p>Path Calculation: Calculates the relative_path from the source_root to preserve the file hierarchy.</p></li>
+<li><p>Destination Path: Constructs the full dest_path, ensuring the extension is changed from .md to .qmd.</p></li>
+<li><p>Directory Setup: Creates any necessary parent directories at the destination.</p></li>
+<li><p>Write Content: Writes the transformed content to the new .qmd file.</p></li>
+<li><p>Image Copying: Calls copy_img_folder to handle associated assets.</p></li>
+</ol>
+<p>–</p>
+</section>
+<section id="frontmatter-transformation" class="level1">
+<h1>Frontmatter Transformation</h1>
+<p>The function <code>convert_frontmatter</code> handles the YAML metadata block at the top of the file. This is crucial for Quarto to correctly interpret navigation and chapter order.</p>
+<p><code>sidebar_position</code> to <code>order</code></p>
+<p>Docusaurus uses sidebar_position to set the order of documents in a sidebar:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Docusaurus Frontmatter</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>id: intro</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>title: Introduction</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sidebar_position: 1</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>---</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Doc2Quarto maps this directly to the Quarto book’s order field:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Quarto Frontmatter</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>id: intro</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>title: Introduction</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>order: 1 # Converted from sidebar_position</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>---</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </section>
-<section id="current-status" class="level2">
-<h2 class="anchored" data-anchor-id="current-status">Current Status</h2>
-<p>This project is part of the larger ecosystem of tools I’m building:</p>
-<ul>
-<li><code>ratcrate-core</code> → Completed. The engine that gathers metadata<br>
-</li>
-<li><code>ratcrate-cli</code> → (In Progress) terminal exploration tool<br>
-</li>
-<li><code>ratcrate-tui</code> → (In Progress) Visual TUI interface<br>
-</li>
-</ul>
-<p>This project will be published once the foundation is stable.</p>
-<p>Stay tuned for regular updates!</p>
+<section id="admonitioncallout-transformation" class="level1">
+<h1>Admonition/Callout Transformation</h1>
+<p>One of the most significant changes is the conversion of Docusaurus admonitions (which use a triple-colon syntax) to Quarto’s standard Callout blocks (which use a quadruple-colon syntax with a class identifier).</p>
+<p>The convert_admonitions function uses a regular expression (<code>Regex::new(r"^:::(\w)+(.*)$")</code>) to identify the opening tag and extract the type and optional title.</p>
 <hr>
 </section>
-<section id="follow-the-updates" class="level2">
-<h2 class="anchored" data-anchor-id="follow-the-updates">Follow the Updates</h2>
-<p>If you’d like to know when this project is released, follow me here:</p>
-<blockquote class="blockquote">
-<p>🐙 GitHub: <a href="https://github.com/rvbug" class="uri">https://github.com/rvbug</a><br>
-</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>🐦 X / Twitter: <a href="https://x.com/rvbugged" class="uri">https://x.com/rvbugged</a><br>
-</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>🌐 Website: <a href="https://qubitai.in" class="uri">https://qubitai.in</a></p>
-</blockquote>
+<section id="type-mapping" class="level1">
+<h1>Type Mapping</h1>
+<section id="admonitions" class="level2">
+<h2 class="anchored" data-anchor-id="admonitions">Admonitions</h2>
+<p>The conversion logic performs a mapping to ensure Docusaurus types correctly translate to Quarto’s built-in callout types:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Docusaurus</th>
+<th>Quarto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:::note</code></td>
+<td><code>:::: {note}</code></td>
+</tr>
+<tr class="even">
+<td>`<code>:::tip</code>`</td>
+<td>`<code>:::: {tip}</code>`</td>
+</tr>
+<tr class="odd">
+<td>`<code>:::info</code>`</td>
+<td>`<code>:::: {info}</code>`</td>
+</tr>
+<tr class="even">
+<td>`<code>:::caution</code>`</td>
+<td>`<code>:::: {caution}</code>`</td>
+</tr>
+<tr class="odd">
+<td>`<code>:::warning</code>`</td>
+<td>`<code>:::: {warning}</code>`</td>
+</tr>
+<tr class="even">
+<td>`<code>:::danger</code>`</td>
+<td>`<code>:::: {danger}</code>`</td>
+</tr>
+</tbody>
+</table>
 <hr>
 </section>
-<section id="support-my-work" class="level2">
-<h2 class="anchored" data-anchor-id="support-my-work">Support My Work</h2>
-<p>This project is free and open source.<br>
-If you’d like to support its development:</p>
-<p><br> <br></p>
+<section id="example-conversion" class="level2">
+<h2 class="anchored" data-anchor-id="example-conversion">Example Conversion</h2>
+<p>A Docusaurus note with a title:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>:::tip Useful Tip Remember to clear your cache after deployment.</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Is converted by Doc2Quarto into the Quarto syntax:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">## Useful Tip</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Remember to clear your cache after deployment.</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
-<p><a href="https://ko-fi.com/rvbugged"><img src="https://ko-fi.com/img/githubbutton_sm.svg" class="img-fluid" alt="Ko-Fi"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/sponsors/ratcrate"><img src="https://img.shields.io/github/sponsors/rvbug.png" class="img-fluid" alt="Github Sponsors"></a></p>
+</section>
+</section>
+<section id="asset-handling-copy_img_folder" class="level1">
+<h1>Asset Handling (copy_img_folder)</h1>
+<p>Documentation sites heavily rely on images. The <code>copy_img_folder</code> function ensures that any img directory co-located with a source Markdown file is copied to the exact relative location in the destination structure. This prevents broken image links, as the relative paths within the converted .qmd file remain valid.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Snippet from lib.rs: </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Checks if the 'img' folder exists and copies its contents </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> img_folder<span class="op">.</span>exists() <span class="op">&amp;&amp;</span> img_folder<span class="op">.</span>is_dir() </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span> <span class="co">// ... logic to create destination folder and copy files ... }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This feature is crucial for maintaining the integrity of image references without requiring manual path adjustments after conversion.</p>
+<hr>
+</section>
+<section id="core-implementation-in-rust" class="level1">
+<h1>Core Implementation in Rust</h1>
+<p>The <code>lib.rs</code> file contains the logic that parses and transforms the Markdown content. Below are key snippets demonstrating how the conversion works.</p>
+<section id="the-content-converter" class="level2">
+<h2 class="anchored" data-anchor-id="the-content-converter">The Content Converter</h2>
+<p>This function acts as a state machine to correctly isolate and handle the YAML frontmatter from the main body content.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> convert_content(content<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> result <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>new()<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> in_frontmatter <span class="op">=</span> <span class="cn">false</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> frontmatter_lines <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Process the file line by line</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> content<span class="op">.</span>lines() <span class="op">{</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Toggle the frontmatter state on encountering "---"</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line <span class="op">==</span> <span class="st">"---"</span> <span class="op">{</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">!</span>in_frontmatter <span class="op">{</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                in_frontmatter <span class="op">=</span> <span class="cn">true</span><span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                <span class="co">// End of frontmatter - convert and add to result</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                result<span class="op">.</span>push_str(<span class="st">"---</span><span class="sc">\n</span><span class="st">"</span>)<span class="op">;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                result<span class="op">.</span>push_str(<span class="op">&amp;</span>convert_frontmatter(<span class="op">&amp;</span>frontmatter_lines))<span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                frontmatter_lines<span class="op">.</span>clear()<span class="op">;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                in_frontmatter <span class="op">=</span> <span class="cn">false</span><span class="op">;</span> <span class="co">// Add this line for clarity</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> in_frontmatter <span class="op">{</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Collect frontmatter lines for processing</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            frontmatter_lines<span class="op">.</span>push(line)<span class="op">;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Convert admonitions in the content</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> converted_line <span class="op">=</span> convert_admonitions(line)<span class="op">;</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>            result<span class="op">.</span>push_str(<span class="op">&amp;</span>converted_line)<span class="op">;</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>            result<span class="op">.</span>push(<span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span>)<span class="op">;</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    result</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="admonition-regex-convert_admonitions" class="level1">
+<h1>Admonition Regex (convert_admonitions)</h1>
+<p>The conversion of custom Docusaurus admonition syntax relies on a single Regular Expression to capture the type and optional title, which are then used to format the Quarto callout block.</p>
+<p>pub fn convert_admonitions(line: &amp;str) -&gt; String { // Regex to capture: ::: (1:type) (2:optional title) let admonition_start = Regex::new(r”^:::()+(.*)<span class="math inline">\(").unwrap();
+    let admonition_end = Regex::new(r"^:::\)</span>“).unwrap();</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> convert_admonitions(line<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Regex to capture: ::: (1:type) (2:optional title)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> admonition_start <span class="op">=</span> <span class="pp">Regex::</span>new(<span class="st">r"^:::(\w)+(.*)$"</span>)<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> admonition_end <span class="op">=</span> <span class="pp">Regex::</span>new(<span class="st">r"^:::$"</span>)<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Convert opening admonition syntax</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Some</span>(caps) <span class="op">=</span> admonition_start<span class="op">.</span>captures(line) <span class="op">{</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> admonition_type <span class="op">=</span> <span class="op">&amp;</span>caps[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> title <span class="op">=</span> caps<span class="op">.</span>get(<span class="dv">2</span>)<span class="op">.</span>map(<span class="op">|</span>m<span class="op">|</span> m<span class="op">.</span>as_str()<span class="op">.</span>trim())<span class="op">.</span>unwrap_or(<span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Map Docusaurus admonitions to Quarto callout types</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> quarto_type <span class="op">=</span> <span class="cf">match</span> admonition_type<span class="op">.</span>to_lowercase()<span class="op">.</span>as_str() <span class="op">{</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"note"</span> <span class="op">=&gt;</span> <span class="st">"note"</span><span class="op">,</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"tip"</span> <span class="op">=&gt;</span> <span class="st">"tip"</span><span class="op">,</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"info"</span> <span class="op">=&gt;</span> <span class="st">"note"</span><span class="op">,</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            <span class="co">// ... (other types)</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"danger"</span> <span class="op">=&gt;</span> <span class="st">"important"</span><span class="op">,</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            _ <span class="op">=&gt;</span> admonition_type<span class="op">,</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">};</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Build Quarto callout syntax</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> title<span class="op">.</span>is_empty() <span class="op">{</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>            <span class="pp">format!</span>(<span class="st">":::: {{{}}}"</span><span class="op">,</span> quarto_type)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            <span class="co">// If there's a title, use the .callout-type syntax and add a subheading</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>            <span class="pp">format!</span>(<span class="st">":::: {{.callout-{}}}</span><span class="sc">\n</span><span class="st">## {}"</span><span class="op">,</span> quarto_type<span class="op">,</span> title)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>     <span class="op">}</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Convert closing admonition syntax</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> admonition_end<span class="op">.</span>is_match(line) <span class="op">{</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">"::::"</span><span class="op">.</span>to_string()</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Return line unchanged if it is not an admonition</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        line<span class="op">.</span>to_string()</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>::: :::: ::::: :::::: ::::::: :::::::: ::::::::: :::::::::: ::::::::::: :::::::::::: ::::::::::::: ::::::::::::::</p>
 
 
 </section>
@@ -797,16 +999,13 @@ If you’d like to support its development:</p>
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../rat-cli/index.html" class="pagination-link" aria-label="∞ Coming Soon">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">∞ Coming Soon</span></span>
+      <a href="../doc2quarto/usage.html" class="pagination-link" aria-label="Using the CLI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Using the CLI</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../doc2quarto/index.html" class="pagination-link" aria-label="Doc2Quarto">
-        <span class="nav-page-text"><span class="chapter-title">Doc2Quarto</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

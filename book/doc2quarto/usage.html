@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>∞ Coming Soon – Book</title>
+<title>Using the CLI – Book</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../doc2quarto/index.html" rel="next">
-<link href="../rat-cli/index.html" rel="prev">
+<link href="../doc2quarto/logic.html" rel="next">
+<link href="../doc2quarto/index.html" rel="prev">
 <link href="../images/AudioWide-White.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -74,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-tui/index.html">rat-tui</a></li><li class="breadcrumb-item"><a href="../rat-tui/index.html"><span class="chapter-title">∞ Coming Soon</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../doc2quarto/index.html">doc2quarto</a></li><li class="breadcrumb-item"><a href="../doc2quarto/usage.html"><span class="chapter-title">Using the CLI</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -93,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -270,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">∞ Coming Soon</span></a>
+  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">∞ Coming Soon</span></a>
   </div>
 </li>
       </ul>
@@ -291,7 +326,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../doc2quarto/usage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using the CLI</span></a>
+  <a href="../doc2quarto/usage.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Using the CLI</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -308,16 +343,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-tui/index.html">rat-tui</a></li><li class="breadcrumb-item"><a href="../rat-tui/index.html"><span class="chapter-title">∞ Coming Soon</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../doc2quarto/index.html">doc2quarto</a></li><li class="breadcrumb-item"><a href="../doc2quarto/usage.html"><span class="chapter-title">Using the CLI</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">∞ Coming Soon</span></h1>
+<h1 class="title"><span class="chapter-title">Using the CLI</span></h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta">
 
     
   
@@ -329,70 +364,114 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="this-project-is-currently-under-active-development" class="level2" style="text-align:center; padding-top: 0rem; padding-bottom: 0rem;">
-<h2 class="anchored" data-anchor-id="this-project-is-currently-under-active-development">This project is currently under active development</h2>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The Doc2Quarto utility is designed for straightforward command-line execution, requiring only the source directory of your existing Docusaurus documentation and a desired destination directory for the converted Quarto files.</p>
 </section>
-<div style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;">
-<!-- Placeholder for image -->
-<p><img src="./images/ComingSoon.png" alt="Coming Soon Banner" width="50%"></p>
-</div>
-<section id="what-this-page-will-contain" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-page-will-contain">What This Page Will Contain</h2>
-<p>This section will be replaced once the project reaches its first public draft.<br>
-It will eventually include:</p>
+<section id="prerequisites" class="level1">
+<h1>Prerequisites</h1>
+<p>Doc2Quarto is built with Rust and packaged as a standalone binary. After installation (e.g., via cargo install), the doc2quarto command will be available in your system’s path.</p>
+</section>
+<section id="command-syntax" class="level1">
+<h1>Command Syntax</h1>
+<p>The application uses the clap crate for argument parsing, defining two required arguments: <code>--source</code> and <code>--dest</code>.</p>
+<p>The general command structure is:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> doc2quarto <span class="ex">-s</span> <span class="op">&lt;</span>SOURCE_DIR<span class="op">&gt;</span> -d <span class="op">&lt;</span>DESTINATION_DIR<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Long Name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-s</code></td>
+<td><code>--source</code></td>
+<td>The directory containing your Docusaurus <code>.md</code> files (the source docs root).</td>
+<td><code>./my-docusaurus-docs/</code></td>
+</tr>
+<tr class="even">
+<td><code>-d</code></td>
+<td><code>--dest</code></td>
+<td>The directory where the converted <code>.qmd</code> files will be written. This directory will be created if it does not exist.</td>
+<td><code>./quarto-book/chapters/</code></td>
+</tr>
+<tr class="odd">
+<td><code>-h</code></td>
+<td><code>--help</code></td>
+<td>Print help</td>
+<td><code>doc2-quarto —help</code></td>
+</tr>
+<tr class="even">
+<td><code>-v</code></td>
+<td><code>--version</code></td>
+<td>Prints Version</td>
+<td><code>doc2quarto --version</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-execution" class="level1">
+<h1>Example Execution</h1>
+<p>Imagine your Docusaurus files are in a directory structure like this:</p>
+<pre class="{markdown}"><code>my-project/
+├── docusaurus-docs/
+│   ├── intro.md
+│   └── guide/
+│       ├── setup.md
+│       └── images/
+│           └── diagram.png
+└── ...</code></pre>
+<p>To convert these files and place them into a new Quarto book structure:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> doc2quarto <span class="ex">--source</span> docusaurus-docs <span class="at">--dest</span> quarto-book/docs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="during-execution" class="level1">
+<h1>During Execution</h1>
 <ul>
-<li><strong>Project overview</strong><br>
-</li>
-<li><strong>Motivation &amp; goals</strong><br>
-</li>
-<li><strong>Architecture &amp; workflow diagrams</strong><br>
-</li>
-<li><strong>Setup / installation instructions</strong><br>
-</li>
-<li><strong>Feature tour</strong><br>
-</li>
-<li><strong>Screenshots or TUI previews</strong></li>
-</ul>
-<hr>
-</section>
-<section id="current-status" class="level2">
-<h2 class="anchored" data-anchor-id="current-status">Current Status</h2>
-<p>This project is part of the larger ecosystem of tools I’m building:</p>
+<li>Validation: The tool checks that docusaurus-docs exists.</li>
+<li>Creation: The destination directory quarto-book/docs is created.</li>
+<li>Discovery: All .md files in docusaurus-docs are found recursively.</li>
+<li>Conversion &amp; Copying:
 <ul>
-<li><code>ratcrate-core</code> → Completed. The engine that gathers metadata<br>
-</li>
-<li><code>ratcrate-cli</code> → (In Progress) terminal exploration tool<br>
-</li>
-<li><code>ratcrate-tui</code> → (In Progress) Visual TUI interface<br>
-</li>
+<li>docusaurus-docs/intro.md is converted to quarto-book/docs/intro.qmd.</li>
+<li>docusaurus-docs/guide/setup.md is converted to quarto-book/docs/guide/setup.qmd.</li>
+<li>The docusaurus-docs/guide/images/ folder is copied to quarto-book/docs/guide/images/.</li>
+</ul></li>
+<li>A progress bar provides visual feedback on the conversion process for large projects:</li>
 </ul>
-<p>This project will be published once the foundation is stable.</p>
-<p>Stay tuned for regular updates!</p>
-<hr>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ℹ</span> Found 25 markdown files</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[✓]</span> <span class="pp">[</span><span class="ss">########################################</span><span class="pp">]</span> 25/25 Processed: setup.md</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Conversion</span> completed!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>The resulting Quarto files (.qmd) are then ready to be referenced in your main _quarto.yml file.</li>
+</ul>
 </section>
-<section id="follow-the-updates" class="level2">
-<h2 class="anchored" data-anchor-id="follow-the-updates">Follow the Updates</h2>
-<p>If you’d like to know when this project is released, follow me here:</p>
-<blockquote class="blockquote">
-<p>🐙 GitHub: <a href="https://github.com/rvbug" class="uri">https://github.com/rvbug</a><br>
-</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>🐦 X / Twitter: <a href="https://x.com/rvbugged" class="uri">https://x.com/rvbugged</a><br>
-</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>🌐 Website: <a href="https://qubitai.in" class="uri">https://qubitai.in</a></p>
-</blockquote>
-<hr>
+<section id="example-_quarto.yml-configuration" class="level1">
+<h1>Example _quarto.yml configuration</h1>
+<pre class="{markdown}"><code>project:
+  type: book
+book:
+  title: "My Converted Book"
+  chapters:
+    - index.qmd
+    - docs/intro.qmd
+    - docs/guide/setup.qmd # Reference the converted files</code></pre>
 </section>
-<section id="support-my-work" class="level2">
-<h2 class="anchored" data-anchor-id="support-my-work">Support My Work</h2>
-<p>This project is free and open source.<br>
-If you’d like to support its development:</p>
-<p><br> <br></p>
-<hr>
-<p><a href="https://ko-fi.com/rvbugged"><img src="https://ko-fi.com/img/githubbutton_sm.svg" class="img-fluid" alt="Ko-Fi"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/sponsors/ratcrate"><img src="https://img.shields.io/github/sponsors/rvbug.png" class="img-fluid" alt="Github Sponsors"></a></p>
+<section id="error-handling" class="level1">
+<h1>Error Handling</h1>
+<p>Doc2Quarto includes checks for critical errors (as seen in main.rs):</p>
+<p>If the source directory (-s) does not exist, the program will exit with an error.</p>
+<p>If no .md files are found in the source directory, the program will exit.</p>
+<p>The creation of the destination directory (-d) is handled gracefully; if it fails (due to permissions, for example), the program will report the error.</p>
 
 
 </section>
@@ -797,15 +876,15 @@ If you’d like to support its development:</p>
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../rat-cli/index.html" class="pagination-link" aria-label="∞ Coming Soon">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">∞ Coming Soon</span></span>
+      <a href="../doc2quarto/index.html" class="pagination-link" aria-label="Doc2Quarto">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Doc2Quarto</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../doc2quarto/index.html" class="pagination-link" aria-label="Doc2Quarto">
-        <span class="nav-page-text"><span class="chapter-title">Doc2Quarto</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../doc2quarto/logic.html" class="pagination-link" aria-label="logic">
+        <span class="nav-page-text"><span class="chapter-title">logic</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
