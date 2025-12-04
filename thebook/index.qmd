@@ -100,7 +100,7 @@ Very meta. Very fun.
 :::
 
 ::: {.column width="50%"}
-### ☁︎ doc2quarto *(planned)*
+### ☁︎ doc2quarto 
 
 A helper tool for turning rough notes, markdown, or code comments into\
 **structured Quarto documentation**.
