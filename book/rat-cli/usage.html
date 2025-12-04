@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>09-workflow-diagram – Book</title>
+<title>usage – Book</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../rat-core/10-code-snippets.html" rel="next">
-<link href="../rat-core/08-json-output.html" rel="prev">
+<link href="../rat-cli/datamodel.html" rel="next">
+<link href="../rat-cli/index.html" rel="prev">
 <link href="../images/AudioWide-White.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -70,9 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -86,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-core/index.html">rat-core</a></li><li class="breadcrumb-item"><a href="../rat-core/09-workflow-diagram.html"><span class="chapter-title">09-workflow-diagram</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-cli/index.html">rat-cli</a></li><li class="breadcrumb-item"><a href="../rat-cli/usage.html"><span class="chapter-title">Usage Demonstration</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -196,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-core/09-workflow-diagram.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">09-workflow-diagram</span></a>
+  <a href="../rat-core/09-workflow-diagram.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">09-workflow-diagram</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -262,12 +259,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-cli/usage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">usage</span></a>
+  <a href="../rat-cli/usage.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Usage Demonstration</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-cli/datamodel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">datamodel</span></a>
+  <a href="../rat-cli/datamodel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Model</span></a>
   </div>
 </li>
       </ul>
@@ -323,9 +320,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-core/index.html">rat-core</a></li><li class="breadcrumb-item"><a href="../rat-core/09-workflow-diagram.html"><span class="chapter-title">09-workflow-diagram</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-cli/index.html">rat-cli</a></li><li class="breadcrumb-item"><a href="../rat-cli/usage.html"><span class="chapter-title">Usage Demonstration</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">09-workflow-diagram</span></h1>
+<h1 class="title"><span class="chapter-title">usage</span></h1>
 </div>
 
 
@@ -342,38 +339,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="chapter-9-full-workflow-diagram" class="level1">
-<h1>Chapter 9 — Full Workflow Diagram</h1>
-<section id="technical-workflow-diagram" class="level2">
-<h2 class="anchored" data-anchor-id="technical-workflow-diagram">Technical Workflow Diagram</h2>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    A[Sparse Index Clone] --&gt; B[Parse for Ratatui Dependents]
-    B --&gt; C[Index Cache Lookup]
-    C --&gt;|New crate| D[Fetch crates.io Metadata]
-    C --&gt;|Version changed| D
-    C --&gt;|Stale (&gt;24h)| D
-    C --&gt;|Fresh (&lt;24h)| E[Load from Metadata Cache]
-    D --&gt; F[Update Metadata Cache]
-    D --&gt; G[Update Index Cache]
-    E --&gt; G
-    F --&gt; H[Append to Partial Data]
-    G --&gt; H
-    H --&gt; I[Generate Final ratcrate.json]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Placeholder: Image version of diagram</p>
+<section id="usage-demonstration" class="level1">
+<h1>Usage Demonstration</h1>
+<p>The following animation illustrates the core capabilities of the tool: the default listing, searching with a query, and using the interactive fzf mode.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -778,13 +748,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../rat-core/08-json-output.html" class="pagination-link" aria-label="08-json-output">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">08-json-output</span></span>
+      <a href="../rat-cli/index.html" class="pagination-link" aria-label="introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../rat-core/10-code-snippets.html" class="pagination-link" aria-label="10-code-snippets">
-        <span class="nav-page-text"><span class="chapter-title">10-code-snippets</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../rat-cli/datamodel.html" class="pagination-link" aria-label="Data Model">
+        <span class="nav-page-text"><span class="chapter-title">Data Model</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

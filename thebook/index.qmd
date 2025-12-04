@@ -4,8 +4,6 @@ format: html
 toc: true
 ---
 
-
-
 ::: {style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;"}
 <!-- Placeholder for image -->
 
@@ -14,7 +12,6 @@ toc: true
 
 # Documentation hub.
 
->
 > This site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.
 
 # How to Use This Site
@@ -57,8 +54,6 @@ If you’d like to know more about my background, how these tools came about, an
 ➡️ [Read more in “Author” section](about-author.qmd)
 
 <br><br>
-
-
 
 # Projects Overview
 
@@ -108,7 +103,7 @@ Very meta. Very fun.
 :::
 
 ::: {.column width="50%"}
-### ☁︎ doc2quarto 
+### ☁︎ doc2quarto
 
 A helper tool for turning rough notes, markdown, or code comments into\
 **structured Quarto documentation**.

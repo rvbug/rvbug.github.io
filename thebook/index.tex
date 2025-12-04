@@ -228,6 +228,12 @@
 \begin{document}
 \maketitle
 
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
 
 \bookmarksetup{startatroot}
 
@@ -235,18 +241,16 @@
 
 \bookmarksetup{startatroot}
 
-\chapter{The Book}\label{the-book}
+\chapter{Documentation hub.}\label{documentation-hub.}
 
 \begin{quote}
-\mbox{}%
-\paragraph{Welcome to the documentation hub for my open source
-projects.}\label{welcome-to-the-documentation-hub-for-my-open-source-projects.}
-
 This site collects Technical Docs, Architecture Notes, and Design
 Decisions for all my projects.
 \end{quote}
 
-\section{How to Use This Site}\label{how-to-use-this-site}
+\bookmarksetup{startatroot}
+
+\chapter{How to Use This Site}\label{how-to-use-this-site}
 
 \begin{itemize}
 \tightlist
@@ -272,7 +276,9 @@ reading it later\\
 as a user or contributor, I hope it gives you clear insight into how
 everything fits together
 
-\section{Roadmap \& Future Projects}\label{roadmap-future-projects}
+\bookmarksetup{startatroot}
+
+\chapter{Roadmap \& Future Projects}\label{roadmap-future-projects}
 
 This hub is designed to grow over time as more tools and experiments
 appear.
@@ -308,7 +314,9 @@ When a new project is created, it will get:
 
 \markboth{}{}
 
-\section{About Me}\label{about-me}
+\bookmarksetup{startatroot}
+
+\chapter{About Me}\label{about-me}
 
 I'm \textbf{Rakesh V}, a developer and tinkerer who enjoys building
 tools that make it easier to think, automate, and explore ideas.
@@ -321,9 +329,9 @@ about, and how to support my work, see:
 
 ➡️ \href{about-author.qmd}{Read more in ``Author'' section}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\bookmarksetup{startatroot}
 
-\section{Projects Overview}\label{projects-overview}
+\chapter{Projects Overview}\label{projects-overview}
 
 \subsection{🐀 ratcrate-core}\label{ratcrate-core}
 
@@ -384,8 +392,7 @@ Very meta. Very fun.
 
 ➡️ \href{rat-tui/index.qmd}{Read the ratcrate-tui docs »}
 
-\subsection{\texorpdfstring{☁︎ doc2quarto
-\emph{(planned)}}{☁︎ doc2quarto (planned)}}\label{doc2quarto-planned}
+\subsection{☁︎ doc2quarto}\label{doc2quarto}
 
 A helper tool for turning rough notes, markdown, or code comments into\\
 \textbf{structured Quarto documentation}.
@@ -545,7 +552,7 @@ This book covers:
   Future roadmap
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, arc=.35mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, opacityback=0, toptitle=1mm, breakable, coltitle=black, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, bottomtitle=1mm, leftrule=.75mm, bottomrule=.15mm, left=2mm, colback=white, breakable, colframe=quarto-callout-note-color-frame, titlerule=0mm, opacitybacktitle=0.6, toptitle=1mm, toprule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, coltitle=black, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white]
 
 This project is currently private and will be open-sourced later.
 
@@ -1702,6 +1709,274 @@ diagram}\label{placeholder-ecosystem-diagram}
 
 \part{rat-cli}
 
+\chapter{introduction}\label{introduction}
+
+\chapter{\texorpdfstring{1. Introduction: The \texttt{ratcrate}
+Project}{1. Introduction: The ratcrate Project}}\label{introduction-the-ratcrate-project}
+
+\texttt{ratcrate} is a highly efficient command-line interface (CLI)
+application written in \textbf{Rust} designed to be the primary tool for
+discovering, searching, and managing packages within the rapidly growing
+\textbf{Ratatui (Terminal User Interface) ecosystem}.
+
+The project's goal is to provide developers with instant,
+terminal-native access to up-to-date crate information, bypassing the
+need to browse websites.
+
+\section{1.1 Key Features}\label{key-features}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Offline Access:} Intelligent caching ensures that data is only
+  downloaded when stale (older than 1 day) or when a manual refresh is
+  requested.
+\item
+  \textbf{Fuzzy Search:} Filter crates by name or description using the
+  \texttt{-q,\ -\/-query} argument.
+\item
+  \textbf{Interactive Selection:} Integrates seamlessly with the
+  external \textbf{\texttt{fzf}} utility for interactive, searchable
+  selection (\texttt{-f}).
+\item
+  \textbf{Statistical Breakdown:} Provides a clear summary of total,
+  core, and community crates (\texttt{-t}).
+\item
+  \textbf{Configurable Display:} Supports both a default colorful list
+  view and an optional structured table view.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\chapter{2. Getting Started and Usage}\label{getting-started-and-usage}
+
+\section{2.1 Prerequisites}\label{prerequisites}
+
+To build and run \texttt{ratcrate}, you must have the following
+installed:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Rust Toolchain:} Install Rust and Cargo via
+  \href{https://rustup.rs/}{rustup}.
+\item
+  \textbf{fzf (Optional):} The fuzzy finder utility is required to use
+  the interactive selection mode (\texttt{-f}). Install it via your
+  operating system's package manager (e.g.,
+  \texttt{sudo\ apt\ install\ fzf} or \texttt{brew\ install\ fzf}).
+\end{enumerate}
+
+\section{2.2 Building and Running}\label{building-and-running}
+
+Clone the repository (or ensure the files are in one directory) and use
+Cargo to build and run the application.
+
+```bash \# Build and run the executable cargo run --release
+
+\chapter{Run with a standard query}\label{run-with-a-standard-query}
+
+cargo run -- -q ``widgets''
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1370}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1781}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1644}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5205}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Flag
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Long
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{none} & \texttt{none} & \texttt{none} & Show top 10 crates \\
+\texttt{-q} & \texttt{-\/-query} & String & Search term to filter crates
+by name or description. \\
+\texttt{-t} & \texttt{-\/-total} & \texttt{none} & \textbf{Show total
+count} incld. Core vs.~Community \\
+\texttt{-l} & \texttt{-\/-limit} & \texttt{usize} & Maximum number of
+results to display (default: 10). \\
+\texttt{-r} & \texttt{-\/-refresh} & \texttt{none} & Force re-download
+of remote data, bypassing the cache check. \\
+\texttt{-c} & \texttt{-\/-cache-info} & \texttt{none} & Display the
+cache directory and file path \\
+\texttt{-f} & \texttt{-\/-fzf} & \texttt{none} & Use \texttt{fzf} for
+interactive selection of a crate. \\
+none & \texttt{-\/-table} & \texttt{none} & Use the table view (requires
+compiling with the \texttt{table} feature). \\
+\end{longtable}
+
+\chapter{usage}\label{usage}
+
+\chapter{Usage Demonstration}\label{usage-demonstration}
+
+The following animation illustrates the core capabilities of the tool:
+the default listing, searching with a query, and using the interactive
+fzf mode.
+
+\chapter{datamodel}\label{datamodel}
+
+\chapter{Data Model}\label{data-model}
+
+This module provides the strongly-typed contracts for all data received
+from the remote source. This is crucial for Rust's type safety and for
+using the \texttt{serde} crate effectively for JSON handling.
+
+\section{\texorpdfstring{\textbf{Key
+Structures:}}{Key Structures:}}\label{key-structures}
+
+\begin{itemize}
+\item
+  \textbf{\texttt{CratePackage}}: Holds all metadata for an individual
+  crate (e.g., \texttt{name}, \texttt{downloads},
+  \texttt{is\_core\_library}).
+\item
+  \textbf{\texttt{Metadata}}: Stores global statistics and generation
+  information (\texttt{total\_crates}, \texttt{generated\_at},
+  \texttt{core\_libraries}, \texttt{community\_packages}).
+\item
+  \textbf{\texttt{CratesData}}: The root structure containing the
+  \texttt{Metadata} and the
+  \texttt{Vec\textless{}CratePackage\textgreater{}}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// types.rs: Metadata Definition}
+
+\AttributeTok{\#[}\NormalTok{derive}\AttributeTok{(}\BuiltInTok{Debug}\OperatorTok{,} \BuiltInTok{Clone}\OperatorTok{,}\NormalTok{ Serialize}\OperatorTok{,}\NormalTok{ Deserialize}\AttributeTok{)]}
+\KeywordTok{pub} \KeywordTok{struct}\NormalTok{ Metadata }\OperatorTok{\{}
+    \KeywordTok{pub}\NormalTok{ version}\OperatorTok{:} \DataTypeTok{String}\OperatorTok{,}
+    \KeywordTok{pub}\NormalTok{ generated\_at}\OperatorTok{:} \DataTypeTok{String}\OperatorTok{,}
+    \KeywordTok{pub}\NormalTok{ total\_crates}\OperatorTok{:} \DataTypeTok{usize}\OperatorTok{,}
+    \KeywordTok{pub}\NormalTok{ core\_libraries}\OperatorTok{:} \DataTypeTok{usize}\OperatorTok{,}
+    \KeywordTok{pub}\NormalTok{ community\_packages}\OperatorTok{:} \DataTypeTok{usize}\OperatorTok{,}
+    \CommentTok{// ...}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Data Persistence and
+Retrieval}\label{data-persistence-and-retrieval}
+
+This module abstracts the process of fetching and storing data. It
+decides whether to serve data from the local filesystem or make an HTTP
+request using \texttt{reqwest}.
+
+\subsection{Cache Stale Logic}\label{cache-stale-logic}
+
+The \texttt{is\_cache\_stale()} function determines if the cache needs
+an update by checking the modified timestamp of the
+\texttt{ratcrate.json} file against the maximum age
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// cache.rs: Cache Stale Check}
+
+\KeywordTok{const}\NormalTok{ CACHE\_MAX\_AGE\_DAYS}\OperatorTok{:} \DataTypeTok{u64} \OperatorTok{=} \DecValTok{1}\OperatorTok{;}
+
+\KeywordTok{pub} \KeywordTok{fn}\NormalTok{ is\_cache\_stale() }\OperatorTok{{-}\textgreater{}} \DataTypeTok{Result}\OperatorTok{\textless{}}\DataTypeTok{bool}\OperatorTok{\textgreater{}} \OperatorTok{\{}
+    \CommentTok{// ... logic to check file existence and modified timestamp ...}
+    \KeywordTok{let}\NormalTok{ age }\OperatorTok{=} \PreprocessorTok{SystemTime::}\NormalTok{now()}\OperatorTok{.}\NormalTok{duration\_since(modified)}\OperatorTok{?;}
+    
+    \CommentTok{// Returns true if the cache file is older than 1 day}
+    \ConstantTok{Ok}\NormalTok{(age }\OperatorTok{\textgreater{}} \PreprocessorTok{Duration::}\NormalTok{from\_secs(CACHE\_MAX\_AGE\_DAYS }\OperatorTok{*} \DecValTok{24} \OperatorTok{*} \DecValTok{3600}\NormalTok{))}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Data Retrieval Flow}\label{data-retrieval-flow}
+
+The public function \texttt{get\_data} orchestrates the data retrieval,
+showing status messages to the user.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// cache.rs: get\_data Workflow}
+
+\KeywordTok{pub} \KeywordTok{fn}\NormalTok{ get\_data(force\_refresh}\OperatorTok{:} \DataTypeTok{bool}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \DataTypeTok{Result}\OperatorTok{\textless{}}\NormalTok{CratesData}\OperatorTok{\textgreater{}} \OperatorTok{\{}
+    \ControlFlowTok{if}\NormalTok{ force\_refresh }\OperatorTok{\{}
+\NormalTok{        download\_fresh\_data()}
+    \OperatorTok{\}} \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ is\_cache\_stale()}\OperatorTok{?} \OperatorTok{\{}
+\NormalTok{        download\_fresh\_data() }\CommentTok{// Cache is stale}
+    \OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}
+\NormalTok{        load\_from\_cache() }\CommentTok{// Cache is fresh}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{\texorpdfstring{\texttt{main.rs}: Execution and
+Display}{main.rs: Execution and Display}}\label{main.rs-execution-and-display}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// main.rs: Main Function Control Flow Snippet}
+
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{{-}\textgreater{}} \DataTypeTok{Result}\OperatorTok{\textless{}}\NormalTok{()}\OperatorTok{\textgreater{}} \OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ args }\OperatorTok{=} \PreprocessorTok{Cli::}\NormalTok{parse()}\OperatorTok{;}
+\NormalTok{    print\_banner()}\OperatorTok{;}
+
+    \ControlFlowTok{if}\NormalTok{ args}\OperatorTok{.}\NormalTok{cache\_info }\OperatorTok{\{}
+        \ControlFlowTok{return}\NormalTok{ show\_cache\_info()}\OperatorTok{;} \CommentTok{// Exit 1: Cache Info}
+    \OperatorTok{\}}
+
+    \KeywordTok{let}\NormalTok{ crates\_data }\OperatorTok{=}\NormalTok{ get\_data(args}\OperatorTok{.}\NormalTok{refresh)}\OperatorTok{?;}
+
+    \ControlFlowTok{if}\NormalTok{ args}\OperatorTok{.}\NormalTok{total }\OperatorTok{\{}
+\NormalTok{        display\_total\_crates(}\OperatorTok{\&}\NormalTok{crates\_data}\OperatorTok{.}\NormalTok{metadata)}\OperatorTok{;}
+        \ControlFlowTok{return} \ConstantTok{Ok}\NormalTok{(())}\OperatorTok{;} \CommentTok{// Exit 2: Total Stats}
+    \OperatorTok{\}}
+
+    \ControlFlowTok{if}\NormalTok{ args}\OperatorTok{.}\NormalTok{fzf }\OperatorTok{\{}
+        \ControlFlowTok{if}\NormalTok{ launch\_fzf(}\OperatorTok{...}\NormalTok{) }\OperatorTok{\{}
+            \ControlFlowTok{return} \ConstantTok{Ok}\NormalTok{(())}\OperatorTok{;} \CommentTok{// Exit 3: fzf selection successful}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+
+    \CommentTok{// Default listing (table or pretty{-}print)}
+    \CommentTok{// ...}
+    \ConstantTok{Ok}\NormalTok{(())}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{\texorpdfstring{Interactive \texttt{fzf}
+Implementation}{Interactive fzf Implementation}}\label{interactive-fzf-implementation}
+
+The \texttt{launch\_fzf} function interacts with the operating system to
+pipe data to the \texttt{fzf} external process.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Crate list is formatted into simplified strings
+  (\texttt{name\ —\ description\ (downloads)}).
+\item
+  \texttt{std::process::Command} spawns \texttt{fzf} and pipes the list
+  to its standard input (\texttt{stdin}).
+\item
+  The user selection is read from \texttt{fzf}'s standard output
+  (\texttt{stdout}).
+\item
+  The selected name is used to look up the full \texttt{CratePackage}
+  details for display.
+\end{enumerate}
+
+This approach minimizes the complexity of managing a custom TUI library
+for interaction.
+
+\part{rat-tui}
+
 \chapter{∞ Coming Soon}\label{coming-soon}
 
 \section{This project is currently under active
@@ -1780,90 +2055,9 @@ If you'd like to support its development:
 ~~~~~~~~~~~~
 \href{https://github.com/sponsors/ratcrate}{\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/rvbug.pdf}}}
 
-\part{rat-tui}
-
-\chapter{∞ Coming Soon}\label{coming-soon-1}
-
-\section{This project is currently under active
-development}\label{this-project-is-currently-under-active-development-1}
-
-\section{What This Page Will
-Contain}\label{what-this-page-will-contain-1}
-
-This section will be replaced once the project reaches its first public
-draft.\\
-It will eventually include:
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Project overview}\\
-\item
-  \textbf{Motivation \& goals}\\
-\item
-  \textbf{Architecture \& workflow diagrams}\\
-\item
-  \textbf{Setup / installation instructions}\\
-\item
-  \textbf{Feature tour}\\
-\item
-  \textbf{Screenshots or TUI previews}
-\end{itemize}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\section{Current Status}\label{current-status-1}
-
-This project is part of the larger ecosystem of tools I'm building:
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{ratcrate-core} → Completed. The engine that gathers metadata\\
-\item
-  \texttt{ratcrate-cli} → (In Progress) terminal exploration tool\\
-\item
-  \texttt{ratcrate-tui} → (In Progress) Visual TUI interface\\
-\end{itemize}
-
-This project will be published once the foundation is stable.
-
-Stay tuned for regular updates!
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\section{Follow the Updates}\label{follow-the-updates-1}
-
-If you'd like to know when this project is released, follow me here:
-
-\begin{quote}
-🐙 GitHub: \url{https://github.com/rvbug}\\
-\end{quote}
-
-\begin{quote}
-🐦 X / Twitter: \url{https://x.com/rvbugged}\\
-\end{quote}
-
-\begin{quote}
-🌐 Website: \url{https://qubitai.in}
-\end{quote}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\section{Support My Work}\label{support-my-work-1}
-
-This project is free and open source.\\
-If you'd like to support its development:
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\href{https://ko-fi.com/rvbugged}{\pandocbounded{\includesvg[keepaspectratio]{index_files/mediabag/githubbutton_sm.svg}}}
-~~~~~~~~~~~~
-\href{https://github.com/sponsors/ratcrate}{\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/rvbug.pdf}}}
-
 \part{doc2quarto}
 
-\chapter{Doc2Quarto}\label{doc2quarto-1}
+\chapter{Doc2Quarto}\label{doc2quarto-2}
 
 \chapter{Overview}\label{overview-2}
 
@@ -1940,14 +2134,14 @@ implementation.}\label{the-following-chapters-detail-how-to-use-doc2quarto-and-p
 
 \chapter{Using the CLI}\label{using-the-cli}
 
-\chapter{Introduction}\label{introduction}
+\chapter{Introduction}\label{introduction-1}
 
 The Doc2Quarto utility is designed for straightforward command-line
 execution, requiring only the source directory of your existing
 Docusaurus documentation and a desired destination directory for the
 converted Quarto files.
 
-\chapter{Prerequisites}\label{prerequisites}
+\chapter{Prerequisites}\label{prerequisites-1}
 
 Doc2Quarto is built with Rust and packaged as a standalone binary. After
 installation (e.g., via cargo install), the doc2quarto command will be
@@ -2096,7 +2290,7 @@ The creation of the destination directory (-d) is handled gracefully; if
 it fails (due to permissions, for example), the program will report the
 error.
 
-\chapter{logic}\label{logic}
+\chapter{Core Logic}\label{core-logic}
 
 \chapter{Conversion Logic Deep Dive''}\label{conversion-logic-deep-dive}
 
@@ -2105,7 +2299,7 @@ The core transformation logic of Doc2Quarto resides in the
 \texttt{convert\_content} functions. This chapter details how
 Docusaurus-specific syntax is systematically mapped to Quarto standards.
 
---
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \chapter{Doc2Quarto Architecture
 Overview}\label{doc2quarto-architecture-overview}
@@ -2114,7 +2308,7 @@ The tool follows a clear, single-pass pipeline for each file, ensuring
 efficient and atomic conversion. The primary goal is to handle the
 Markdown content and preserve the file and asset structure.
 
---
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \chapter{The Conversion Pipeline}\label{the-conversion-pipeline}
 
@@ -2144,7 +2338,7 @@ a single file:
   Image Copying: Calls copy\_img\_folder to handle associated assets.
 \end{enumerate}
 
---
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \chapter{Frontmatter Transformation}\label{frontmatter-transformation}
 
@@ -2299,7 +2493,7 @@ the YAML frontmatter from the main body content.
 \NormalTok{                result}\OperatorTok{.}\NormalTok{push\_str(}\StringTok{"{-}{-}{-}}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}\OperatorTok{;}
 \NormalTok{                result}\OperatorTok{.}\NormalTok{push\_str(}\OperatorTok{\&}\NormalTok{convert\_frontmatter(}\OperatorTok{\&}\NormalTok{frontmatter\_lines))}\OperatorTok{;}
 \NormalTok{                frontmatter\_lines}\OperatorTok{.}\NormalTok{clear()}\OperatorTok{;}
-\NormalTok{                in\_frontmatter }\OperatorTok{=} \ConstantTok{false}\OperatorTok{;} \CommentTok{// Add this line for clarity}
+\NormalTok{                in\_frontmatter }\OperatorTok{=} \ConstantTok{false}\OperatorTok{;} 
                 \ControlFlowTok{continue}\OperatorTok{;}
             \OperatorTok{\}}
         \OperatorTok{\}}
@@ -2369,15 +2563,12 @@ Regex to capture: ::: (1:type) (2:optional title) let admonition\_start
     \ControlFlowTok{else} \OperatorTok{\{}
 \NormalTok{        line}\OperatorTok{.}\NormalTok{to\_string()}
     \OperatorTok{\}}
-\OperatorTok{\}}
-
+  \OperatorTok{\}}
 
 \OperatorTok{\}} 
 \end{Highlighting}
 \end{Shaded}
 
-::: :::: ::::: :::::: ::::::: :::::::: ::::::::: :::::::::: :::::::::::
-:::::::::::: ::::::::::::: ::::::::::::::
 
 
 

@@ -42,6 +42,8 @@ book:
     - part: "rat-cli"
       chapters:
         - rat-cli/index.qmd
+        - rat-cli/usage.qmd
+        - rat-cli/datamodel.qmd
     # Part 3: rat-tui
     - part: "rat-tui"
       chapters:

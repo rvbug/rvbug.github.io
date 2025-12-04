@@ -1,0 +1,116 @@
+---
+title: ""
+format: html
+---
+
+# Data Model
+
+This module provides the strongly-typed contracts for all data received from the remote source. This is crucial for Rust's type safety and for using the `serde` crate effectively for JSON handling.
+
+## **Key Structures:**
+
+-   **`CratePackage`**: Holds all metadata for an individual crate (e.g., `name`, `downloads`, `is_core_library`).
+
+-   **`Metadata`**: Stores global statistics and generation information (`total_crates`, `generated_at`, `core_libraries`, `community_packages`).
+
+-   **`CratesData`**: The root structure containing the `Metadata` and the `Vec<CratePackage>`.
+
+``` rust
+// types.rs: Metadata Definition
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Metadata {
+    pub version: String,
+    pub generated_at: String,
+    pub total_crates: usize,
+    pub core_libraries: usize,
+    pub community_packages: usize,
+    // ...
+}
+```
+
+## Data Persistence and Retrieval
+
+This module abstracts the process of fetching and storing data. It decides whether to serve data from the local filesystem or make an HTTP request using `reqwest`.
+
+### Cache Stale Logic
+
+The `is_cache_stale()` function determines if the cache needs an update by checking the modified timestamp of the `ratcrate.json` file against the maximum age
+
+``` rust
+// cache.rs: Cache Stale Check
+
+const CACHE_MAX_AGE_DAYS: u64 = 1;
+
+pub fn is_cache_stale() -> Result<bool> {
+    // ... logic to check file existence and modified timestamp ...
+    let age = SystemTime::now().duration_since(modified)?;
+    
+    // Returns true if the cache file is older than 1 day
+    Ok(age > Duration::from_secs(CACHE_MAX_AGE_DAYS * 24 * 3600))
+}
+```
+
+### Data Retrieval Flow
+
+The public function `get_data` orchestrates the data retrieval, showing status messages to the user.
+
+``` rust
+// cache.rs: get_data Workflow
+
+pub fn get_data(force_refresh: bool) -> Result<CratesData> {
+    if force_refresh {
+        download_fresh_data()
+    } else if is_cache_stale()? {
+        download_fresh_data() // Cache is stale
+    } else {
+        load_from_cache() // Cache is fresh
+    }
+}
+```
+
+### `main.rs`: Execution and Display
+
+``` rust
+// main.rs: Main Function Control Flow Snippet
+
+fn main() -> Result<()> {
+    let args = Cli::parse();
+    print_banner();
+
+    if args.cache_info {
+        return show_cache_info(); // Exit 1: Cache Info
+    }
+
+    let crates_data = get_data(args.refresh)?;
+
+    if args.total {
+        display_total_crates(&crates_data.metadata);
+        return Ok(()); // Exit 2: Total Stats
+    }
+
+    if args.fzf {
+        if launch_fzf(...) {
+            return Ok(()); // Exit 3: fzf selection successful
+        }
+    }
+
+    // Default listing (table or pretty-print)
+    // ...
+    Ok(())
+}
+```
+
+### Interactive `fzf` Implementation
+
+The `launch_fzf` function interacts with the operating system to pipe data to the `fzf` external process.
+
+1.  Crate list is formatted into simplified strings (`name — description (downloads)`).
+
+2.  `std::process::Command` spawns `fzf` and pipes the list to its standard input (`stdin`).
+
+3.  The user selection is read from `fzf`'s standard output (`stdout`).
+
+4.  The selected name is used to look up the full `CratePackage` details for display.
+
+This approach minimizes the complexity of managing a custom TUI library for interaction.

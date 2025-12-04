@@ -1,68 +1,51 @@
 ---
-title: ""
-page-layout: full
+title: "Introduction"
+format: html
 toc: false
 ---
 
-::: {style="text-align:center; padding-top: 0rem; padding-bottom: 0rem;"}
-# ∞ Coming Soon
+# The `ratcrate-cli` Project
 
-## This project is currently under active development
-:::
+`ratcrate` is a highly efficient command-line interface (CLI) application written in **Rust** designed to be the primary tool for discovering, searching, and managing packages within the rapidly growing **Ratatui (Terminal User Interface) ecosystem**.
 
-::: {style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;"}
-<!-- Placeholder for image -->
+The project's goal is to provide developers with instant, terminal-native access to up-to-date crate information, bypassing the need to browse websites.
 
-<img src="./images/ComingSoon.png" alt="Coming Soon Banner" width="50%"/>
-:::
+## Key Features
 
-## What This Page Will Contain
-
-This section will be replaced once the project reaches its first public draft.\
-It will eventually include:
-
--   **Project overview**\
--   **Motivation & goals**\
--   **Architecture & workflow diagrams**\
--   **Setup / installation instructions**\
--   **Feature tour**\
--   **Screenshots or TUI previews**
+-   **Offline Access:** Intelligent caching ensures that data is only downloaded when stale (older than 1 day) or when a manual refresh is requested.
+-   **Fuzzy Search:** Filter crates by name or description using the `-q, --query` argument.
+-   **Interactive Selection:** Integrates seamlessly with the external **`fzf`** utility for interactive, searchable selection (`-f`).
+-   **Statistical Breakdown:** Provides a clear summary of total, core, and community crates (`-t`).
+-   **Configurable Display:** Supports both a default colorful list view and an optional structured table view.
 
 ------------------------------------------------------------------------
 
-## Current Status
+# Getting Started and Usage
 
-This project is part of the larger ecosystem of tools I'm building:
+## Prerequisites
 
--   `ratcrate-core` → Completed. The engine that gathers metadata\
--   `ratcrate-cli` → (In Progress) terminal exploration tool\
--   `ratcrate-tui` → (In Progress) Visual TUI interface\
+To build and run `ratcrate`, you must have the following installed:
 
-This project will be published once the foundation is stable.
+1.  **Rust Toolchain:** Install Rust and Cargo via [rustup](https://rustup.rs/).
+2.  **fzf (Optional):** The fuzzy finder utility is required to use the interactive selection mode (`-f`). Install it via your operating system's package manager (e.g., `sudo apt install fzf` or `brew install fzf`).
 
-Stay tuned for regular updates!
+## Building and Running
 
-------------------------------------------------------------------------
+Clone the repository (or ensure the files are in one directory) and use Cargo to build and run the application.
 
-## Follow the Updates
+\`\`\`bash \# Build and run the executable cargo run --release
 
-If you’d like to know when this project is released, follow me here:
+# Run with a standard query
 
-> 🐙 GitHub: <https://github.com/rvbug>\
+cargo run -- -q "widgets"
 
-> 🐦 X / Twitter: <https://x.com/rvbugged>\
-
-> 🌐 Website: <https://qubitai.in>
-
-------------------------------------------------------------------------
-
-## Support My Work
-
-This project is free and open source.\
-If you’d like to support its development:
-
-<br> <br>
-
-------------------------------------------------------------------------
-
-[![Ko-Fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rvbugged)              [![Github Sponsors](https://img.shields.io/github/sponsors/rvbug)](https://github.com/sponsors/ratcrate)
+| Flag | Long | Type | Description |
+|----------|-------------|------------|--------------------------------------|
+| `none` | `none` | `none` | Show top 10 crates |
+| `-q` | `--query` | String | Search term to filter crates by name or description. |
+| `-t` | `--total` | `none` | **Show total count** incld. Core vs. Community |
+| `-l` | `--limit` | `usize` | Maximum number of results to display (default: 10). |
+| `-r` | `--refresh` | `none` | Force re-download of remote data, bypassing the cache check. |
+| `-c` | `--cache-info` | `none` | Display the cache directory and file path |
+| `-f` | `--fzf` | `none` | Use `fzf` for interactive selection of a crate. |
+| none | `--table` | `none` | Use the table view (requires compiling with the `table` feature). |

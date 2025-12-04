@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>logic – Book</title>
+<title>Core Logic – Book</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -317,7 +317,17 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-cli/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">∞ Coming Soon</span></a>
+  <a href="../rat-cli/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rat-cli/usage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">usage</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rat-cli/datamodel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">datamodel</span></a>
   </div>
 </li>
       </ul>
@@ -375,7 +385,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../doc2quarto/index.html">doc2quarto</a></li><li class="breadcrumb-item"><a href="../doc2quarto/logic.html"><span class="chapter-title">Core Logic</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">logic</span></h1>
+<h1 class="title"><span class="chapter-title">Core Logic</span></h1>
 </div>
 
 
@@ -395,12 +405,12 @@ window.Quarto = {
 <section id="conversion-logic-deep-dive" class="level1">
 <h1>Conversion Logic Deep Dive”</h1>
 <p>The core transformation logic of Doc2Quarto resides in the <code>lib.rs</code> file, primarily within the process_files and <code>convert_content</code> functions. This chapter details how Docusaurus-specific syntax is systematically mapped to Quarto standards.</p>
-<p>–</p>
+<hr>
 </section>
 <section id="doc2quarto-architecture-overview" class="level1">
 <h1>Doc2Quarto Architecture Overview</h1>
 <p>The tool follows a clear, single-pass pipeline for each file, ensuring efficient and atomic conversion. The primary goal is to handle the Markdown content and preserve the file and asset structure.</p>
-<p>–</p>
+<hr>
 </section>
 <section id="the-conversion-pipeline" class="level1">
 <h1>The Conversion Pipeline</h1>
@@ -414,7 +424,7 @@ window.Quarto = {
 <li><p>Write Content: Writes the transformed content to the new .qmd file.</p></li>
 <li><p>Image Copying: Calls copy_img_folder to handle associated assets.</p></li>
 </ol>
-<p>–</p>
+<hr>
 </section>
 <section id="frontmatter-transformation" class="level1">
 <h1>Frontmatter Transformation</h1>
@@ -530,7 +540,7 @@ window.Quarto = {
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                result<span class="op">.</span>push_str(<span class="st">"---</span><span class="sc">\n</span><span class="st">"</span>)<span class="op">;</span></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                result<span class="op">.</span>push_str(<span class="op">&amp;</span>convert_frontmatter(<span class="op">&amp;</span>frontmatter_lines))<span class="op">;</span></span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                frontmatter_lines<span class="op">.</span>clear()<span class="op">;</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                in_frontmatter <span class="op">=</span> <span class="cn">false</span><span class="op">;</span> <span class="co">// Add this line for clarity</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                in_frontmatter <span class="op">=</span> <span class="cn">false</span><span class="op">;</span> </span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span><span class="op">;</span></span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
@@ -590,11 +600,9 @@ window.Quarto = {
 <span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="op">{</span></span>
 <span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        line<span class="op">.</span>to_string()</span>
 <span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
 <span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>::: :::: ::::: :::::: ::::::: :::::::: ::::::::: :::::::::: ::::::::::: :::::::::::: ::::::::::::: ::::::::::::::</p>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
