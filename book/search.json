@@ -324,9 +324,9 @@
   {
     "objectID": "rat-cli/usage.html",
     "href": "rat-cli/usage.html",
-    "title": "usage",
+    "title": "Usage Demonstration",
     "section": "",
-    "text": "Usage Demonstration\nThe following animation illustrates the core capabilities of the tool: the default listing, searching with a query, and using the interactive fzf mode.",
+    "text": "The following animation illustrates the core capabilities of the tool: the default listing, searching with a query, and using the interactive fzf mode.",
     "crumbs": [
       "rat-cli",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>Usage Demonstration</span>"

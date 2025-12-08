@@ -4,5 +4,5 @@ format: html
 ---
 
 # Usage Demonstration
-The following animation illustrates the core capabilities of the tool: the default listing, searching with a query, and using the interactive fzf mode.
 
+The following animation illustrates the core capabilities of the tool: the default listing, searching with a query, and using the interactive fzf mode.

@@ -10,6 +10,8 @@ toc: false
 
 The project's goal is to provide developers with instant, terminal-native access to up-to-date crate information, bypassing the need to browse websites.
 
+![Demo](images/ratcrate-cli-demo-small.gif){fig-alt="Ratcrate CLI Demo" fig-align="center"}
+
 ## Key Features
 
 -   **Offline Access:** Intelligent caching ensures that data is only downloaded when stale (older than 1 day) or when a manual refresh is requested.
@@ -40,7 +42,7 @@ Clone the repository (or ensure the files are in one directory) and use Cargo to
 cargo run -- -q "widgets"
 
 | Flag | Long | Type | Description |
-|----------|-------------|------------|--------------------------------------|
+|----------------|----------------|----------------|------------------------|
 | `none` | `none` | `none` | Show top 10 crates |
 | `-q` | `--query` | String | Search term to filter crates by name or description. |
 | `-t` | `--total` | `none` | **Show total count** incld. Core vs. Community |
