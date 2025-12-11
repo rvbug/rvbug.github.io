@@ -42,7 +42,7 @@ Clone the repository (or ensure the files are in one directory) and use Cargo to
 cargo run -- -q "widgets"
 
 | Flag | Long | Type | Description |
-|----------------|----------------|----------------|------------------------|
+|-----------------|-----------------|-----------------|---------------------|
 | `none` | `none` | `none` | Show top 10 crates |
 | `-q` | `--query` | String | Search term to filter crates by name or description. |
 | `-t` | `--total` | `none` | **Show total count** incld. Core vs. Community |
