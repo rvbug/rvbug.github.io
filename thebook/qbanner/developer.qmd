@@ -1,0 +1,35 @@
+---
+title: "Developer Notes"
+subtitle: "Technical Implementation Details"
+format: html
+---
+
+This section documents key technical decisions and challenging aspects of the `qbanner` implementation.
+
+### 1. The Builder Pattern
+
+The `Banner` struct is a classic implementation of the **Builder Pattern**.
+
+**Self-Referential Methods:** All configuration methods (e.g., `color()`, `alignment()`) take `self` by value and return `Self` (the struct itself). This enables chaining: `Banner::new().method_a().method_b()`. \* **Finalizing Methods:** Only `render()` and `to_string()` consume the builder (or take a reference) and execute the final logic, breaking the chain.
+
+### 2. Correcting Visual Width (UTF-8)
+
+A critical fix in the library was ensuring correct horizontal centering and wrapping for Unicode fonts (`Font::Unicode`).
+
+-   **The Problem:** Rust's standard `.len()` method returns the **byte count** of a string. Multi-byte Unicode characters (like '█') are typically 3 bytes long but occupy only **one** visual column in the terminal. Using `.len()` resulted in padded strings that were visually pushed far to the right. **The Solution:** The logic was updated to use `.chars().count()` in all width calculations (in `lib.rs`) to get the true **character count** (i.e., visual column width).
+
+### 3. Stripping ANSI Codes
+
+To accurately calculate the width of a colored banner, any hidden color escape codes must be ignored.
+
+The `strip_ansi_codes` function (defined in `lib.rs`) iterates through characters and explicitly skips sequences starting with the **Escape character** (`x1B` or `u{1B}`), looking for the sequence terminator (a letter). This ensures that while the colored text is processed, the width calculation only counts the *visible* characters.
+
+```{rust}
+   
+  fn strip_ansi_codes(text: &str) -> String { 
+    // Looks for the start of an ANSI escape sequence (x1B[) 
+    // and skips all characters until the sequence ends (a letter). 
+    // 
+    ... 
+  }
+```

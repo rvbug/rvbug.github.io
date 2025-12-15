@@ -1,0 +1,41 @@
+---
+title: "Fonts and Fallback"
+subtitle: "Customizing the Banner Appearance"
+format: html
+---
+
+The appearance of the banner text is governed by the `Font` enum and the built-in fallback logic.
+
+### The `Font` Enum
+
+The `qbanner` library includes three embedded fonts, which are static arrays of strings defined in `font.rs`.
+
+-   **`Font::Unicode` (Default):** Uses modern box-drawing characters (like `█`, `║`, `╗`). This is the recommended choice for a clean, bold look on modern terminals.
+-   **`Font::Standard`:** Uses classic ASCII characters (`/`, `\`, `_`, `|`). Offers high compatibility but a more retro aesthetic.
+-   **`Font::Small`:** A highly compact, 3-line ASCII font. Used primarily as a quick fallback when terminal space is limited.
+
+### The Font Data Structure
+
+All fonts conform to the `FontData` structure, which makes it easy to add new fonts.
+
+\`\`\`rust pub(crate) struct FontData { pub height: usize, pub chars: &'static \[(&'static str, &'static \[&'static str\])\], }
+
+Each entry in `chars` is a tuple: `("CHARACTER_KEY", ["LINE_1", "LINE_2", ...])`.
+
+### 3. Terminal Fitting and Fallback
+
+By default, `qbanner` attempts to ensure the banner fits the current terminal width.
+
+#### `fit_to_terminal(self, fit: bool)`
+
+If `fit` is `true` (default), the library calculates the banner's visual width (correctly accounting for multi-byte Unicode characters) and compares it to the terminal width.
+
+#### `fallback_strategy(self, strategy: FallbackStrategy)`
+
+If the banner is too wide, the `FallbackStrategy` determines how to handle it:
+
+|  |  |
+|----|----|
+| **Strategy** | **Description** |
+| `FallbackStrategy::SmallFontThenPlain` | (Default) Tries the `Font::Small`. If it still doesn't fit, it prints the original text as a single line. |
+| `FallbackStrategy::PlainText` | Immediately falls back to printing the original input text, without attempting a smaller font. |

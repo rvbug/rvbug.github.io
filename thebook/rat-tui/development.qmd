@@ -1,0 +1,55 @@
+---
+title: "Development & Contribution"
+---
+
+# 🏗️ Development & Contribution
+
+We welcome and appreciate all forms of contribution, from bug reports and feature suggestions to code submissions!
+
+## Project Structure
+
+The application is structured into a few key Rust modules:
+
+| File/Module | Description |
+|:---|:---|
+| `src/main.rs` | **TUI Logic.** Contains the `App` state, all TUI rendering (`ui`, `render_list`, `render_detail`, etc.), and the event handling loop (`handle_events`). This is where you'll find the Ratatui code. |
+| `src/cache.rs` | **Data Layer.** Manages the remote data fetching (`download_fresh_data`) and local caching (`load_from_cache`, `is_cache_stale`). Uses `reqwest` and `dirs`. |
+| `src/types.rs` | **Data Types.** Defines the `CratePackage`, `Metadata`, and `CratesData` structs that mirror the remote JSON data structure. Uses `serde`. |
+| `Cargo.toml` | Project manifest. Key dependencies are `ratatui` (for the TUI framework), `crossterm` (for terminal backend), and `reqwest` (for networking). |
+
+## Build & Test
+
+To get your development environment ready:
+
+1.  **Clone the repository:** `bash     git clone [https://github.com/rvbug/ratcrates.git](https://github.com/rvbug/ratcrates.git)     cd ratcrates`
+2.  **Run in development mode:** `bash     cargo run`
+3.  **Run unit tests (mainly for caching):** `bash     cargo test`
+
+## Contributing Code
+
+If you have a bug fix or feature you'd like to implement:
+
+1.  **Fork** the repository on GitHub.
+2.  **Create a new branch** for your work: `bash     git checkout -b feature/my-new-feature`
+3.  **Implement** your changes.
+4.  **Test** your changes thoroughly.
+5.  **Commit** your changes using a descriptive commit message (e.g., following the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification). `bash     git commit -m 'feat: add jump to last search result command'`
+6.  **Push** your branch and open a **Pull Request** against the `main` branch of the original repository.
+
+## Adding New Commands
+
+To add a new command (e.g., `:mycmd`), you would modify `src/main.rs`: Extend **`execute_command`:** Add a new `match` arm in the `execute_command` function within the `App` implementation.
+
+``` rust
+    // In App::execute_command
+    match command {
+        // ... existing commands
+        "mycmd" => {
+            // Your new command logic goes here
+            self.status_message = "Executed mycmd!".to_string();
+        }
+        // ...
+    }
+```
+
+2.  \*\*Update \`render_help\`:\*\* Add the new command to the list in the \`render_help\` function to ensure it appears in the in-app help view.

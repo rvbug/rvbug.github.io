@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction – Book</title>
+<title>Qbanner: Terminal Banners for CLI Applications – Book</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../rat-cli/usage.html" rel="next">
-<link href="../rat-core/18-ecosystem-and-integrations.html" rel="prev">
+<link href="../doc2quarto/logic.html" rel="prev">
 <link href="../images/AudioWide-White.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -74,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-cli/index.html">rat-cli</a></li><li class="breadcrumb-item"><a href="../rat-cli/index.html"><span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qbanner/index.html">qbanner</a></li><li class="breadcrumb-item"><a href="../qbanner/index.html"><span class="chapter-title">Qbanner: Terminal Banners for CLI Applications</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -254,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-cli/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introduction</span></a>
+  <a href="../rat-cli/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -280,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">∞ Coming Soon</span></a>
+  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ratcrate-tui: Ratatui Ecosystem Explorer</span></a>
   </div>
 </li>
       </ul>
@@ -311,18 +345,49 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">qbanner</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qbanner/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Qbanner: Terminal Banners for CLI Applications</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#quick-start" id="toc-quick-start" class="nav-link" data-scroll-target="#quick-start">Quick Start</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-cli/index.html">rat-cli</a></li><li class="breadcrumb-item"><a href="../rat-cli/index.html"><span class="chapter-title">Introduction</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qbanner/index.html">qbanner</a></li><li class="breadcrumb-item"><a href="../qbanner/index.html"><span class="chapter-title">Qbanner: Terminal Banners for CLI Applications</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-title">Qbanner: Terminal Banners for CLI Applications</span></h1>
+<p class="subtitle lead">Stylish, Resizable, and Color-Ready ASCII Art Banners</p>
 </div>
 
 
@@ -339,113 +404,57 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="the-ratcrate-cli-project" class="level1">
-<h1>The <code>ratcrate-cli</code> Project</h1>
-<p><code>ratcrate</code> is a highly efficient command-line interface (CLI) application written in <strong>Rust</strong> designed to be the primary tool for discovering, searching, and managing packages within the rapidly growing <strong>Ratatui (Terminal User Interface) ecosystem</strong>.</p>
-<p>The project’s goal is to provide developers with instant, terminal-native access to up-to-date crate information, bypassing the need to browse websites.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ratcrate-cli-demo-small.gif" class="img-fluid figure-img" alt="Ratcrate CLI Demo"></p>
-<figcaption>Demo</figcaption>
-</figure>
-</div>
-<section id="key-features" class="level2">
-<h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p><code>qbanner</code> is a simple yet powerful Rust library designed to display highly customizable ASCII art banners in command-line interface (CLI) applications. It uses a modern builder pattern, supports Unicode, gradients, and automatically adjusts to fit the user’s terminal size.</p>
+<p><img src="./images/demo.gif" class="img-fluid"></p>
+<section id="key-features" class="level3">
+<h3 class="anchored" data-anchor-id="key-features">Key Features</h3>
 <ul>
-<li><strong>Offline Access:</strong> Intelligent caching ensures that data is only downloaded when stale (older than 1 day) or when a manual refresh is requested.</li>
-<li><strong>Fuzzy Search:</strong> Filter crates by name or description using the <code>-q, --query</code> argument.</li>
-<li><strong>Interactive Selection:</strong> Integrates seamlessly with the external <strong><code>fzf</code></strong> utility for interactive, searchable selection (<code>-f</code>).</li>
-<li><strong>Statistical Breakdown:</strong> Provides a clear summary of total, core, and community crates (<code>-t</code>).</li>
-<li><strong>Configurable Display:</strong> Supports both a default colorful list view and an optional structured table view.</li>
+<li><strong>Builder Pattern:</strong> Easy-to-use, chainable methods for configuration.</li>
+<li><strong>Terminal Awareness:</strong> Automatically detects terminal width for centering and resizing.</li>
+<li><strong>Color &amp; Gradient:</strong> Support for standard ANSI colors, bright colors, and dynamic RGB gradients.</li>
+<li><strong>Fonts:</strong> Includes modern Unicode, classic Standard, and compact Small fonts.</li>
+<li><strong>Fallback Logic:</strong> Gracefully falls back to smaller fonts or plain text if the banner exceeds terminal width.</li>
+<li><strong>Screen Management:</strong> Option to automatically clear the screen before rendering.</li>
 </ul>
-<hr>
+</section>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<p>Add <code>qbanner</code> and its dependencies (if necessary, though <code>qbanner</code> bundles most of its needs) to your <code>Cargo.toml</code>:</p>
+<p>```toml</p>
+<p>[dependencies] qbanner = { path = “path/to/qbanner” } # If developing locally # qbanner = “1.0” # If published on crates.io owo-colors = “3.5” terminal_size = “0.3”</p>
+<p>```</p>
+</section>
+<section id="quick-start" class="level3">
+<h3 class="anchored" data-anchor-id="quick-start">Quick Start</h3>
+<p>The core of the library is the <code>Banner</code> struct, configured entirely through method chaining.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">qbanner::</span><span class="op">{</span>Banner<span class="op">,</span> Color<span class="op">,</span> Alignment<span class="op">};</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 1. Simple, centered, cyan Unicode banner</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Banner::</span>new(<span class="st">"Welcome"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>color(<span class="pp">Color::</span>Cyan)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>alignment(<span class="pp">Alignment::</span>Center)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>render()<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 2. Banner with an RGB gradient and a subtitle</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Banner::</span>new(<span class="st">"DevOps"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>gradient(<span class="pp">vec!</span>[</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">255</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">,</span> <span class="co">// Orange</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>)  <span class="co">// Pink</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>subtitle(<span class="st">"CI/CD Pipeline v2.1"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>render()<span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="getting-started-and-usage" class="level1">
-<h1>Getting Started and Usage</h1>
-<section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>To build and run <code>ratcrate</code>, you must have the following installed:</p>
-<ol type="1">
-<li><strong>Rust Toolchain:</strong> Install Rust and Cargo via <a href="https://rustup.rs/">rustup</a>.</li>
-<li><strong>fzf (Optional):</strong> The fuzzy finder utility is required to use the interactive selection mode (<code>-f</code>). Install it via your operating system’s package manager (e.g., <code>sudo apt install fzf</code> or <code>brew install fzf</code>).</li>
-</ol>
-</section>
-<section id="building-and-running" class="level2">
-<h2 class="anchored" data-anchor-id="building-and-running">Building and Running</h2>
-<p>Clone the repository (or ensure the files are in one directory) and use Cargo to build and run the application.</p>
-<p>```bash # Build and run the executable cargo run –release</p>
-</section>
-</section>
-<section id="run-with-a-standard-query" class="level1">
-<h1>Run with a standard query</h1>
-<p>cargo run – -q “widgets”</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 27%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Flag</th>
-<th>Long</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>none</code></td>
-<td><code>none</code></td>
-<td><code>none</code></td>
-<td>Show top 10 crates</td>
-</tr>
-<tr class="even">
-<td><code>-q</code></td>
-<td><code>--query</code></td>
-<td>String</td>
-<td>Search term to filter crates by name or description.</td>
-</tr>
-<tr class="odd">
-<td><code>-t</code></td>
-<td><code>--total</code></td>
-<td><code>none</code></td>
-<td><strong>Show total count</strong> incld. Core vs.&nbsp;Community</td>
-</tr>
-<tr class="even">
-<td><code>-l</code></td>
-<td><code>--limit</code></td>
-<td><code>usize</code></td>
-<td>Maximum number of results to display (default: 10).</td>
-</tr>
-<tr class="odd">
-<td><code>-r</code></td>
-<td><code>--refresh</code></td>
-<td><code>none</code></td>
-<td>Force re-download of remote data, bypassing the cache check.</td>
-</tr>
-<tr class="even">
-<td><code>-c</code></td>
-<td><code>--cache-info</code></td>
-<td><code>none</code></td>
-<td>Display the cache directory and file path</td>
-</tr>
-<tr class="odd">
-<td><code>-f</code></td>
-<td><code>--fzf</code></td>
-<td><code>none</code></td>
-<td>Use <code>fzf</code> for interactive selection of a crate.</td>
-</tr>
-<tr class="even">
-<td>none</td>
-<td><code>--table</code></td>
-<td><code>none</code></td>
-<td>Use the table view (requires compiling with the <code>table</code> feature).</td>
-</tr>
-</tbody>
-</table>
+<section id="references" class="level1">
+<h1>References</h1>
+<ul>
+<li><p>API Reference</p></li>
+<li><p>Developer Notes</p></li>
+</ul>
 
 
 </section>
@@ -852,14 +861,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../rat-core/18-ecosystem-and-integrations.html" class="pagination-link" aria-label="18-Ecosystem-and-Integration">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">18-Ecosystem-and-Integration</span></span>
+      <a href="../doc2quarto/logic.html" class="pagination-link" aria-label="Core Logic">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Core Logic</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../rat-cli/usage.html" class="pagination-link" aria-label="Usage Demonstration">
-        <span class="nav-page-text"><span class="chapter-title">Usage Demonstration</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

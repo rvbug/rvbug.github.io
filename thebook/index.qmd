@@ -73,7 +73,7 @@ The **engine** behind the Ratatui ecosystem index.
 :::
 
 ::: {.column width="50%"}
-### 💻 ratcrate-cli *(planned)*
+### 💻 ratcrate-cli
 
 A command-line interface for exploring the Ratatui ecosystem.
 
@@ -118,3 +118,32 @@ A helper tool for turning rough notes, markdown, or code comments into\
 :::::
 
 ------------------------------------------------------------------------
+
+
+::::: columns
+::: {.column width="50%"}
+### 🎛 QBanner 
+
+A **Ratatui-based TUI** for browsing Ratatui crates.\
+Very meta. Very fun.
+
+-   Terminal UI built with Ratatui\
+-   Interactive search and filters\
+-   Crate detail views with stats and links\
+-   Powered by `ratcrate-core` data
+
+➡️ [Read the Qbanner Libraryi docs »](qbanner/index.qmd)
+:::
+
+::: {.column width="50%"}
+### ☁ QSwitch (Planned)
+
+A helper tool for turning rough notes, markdown, or code comments into\
+**structured Quarto documentation**.
+
+-   Optimized workflow
+
+➡️ [Coming Soons »]()
+:::
+:::::
+

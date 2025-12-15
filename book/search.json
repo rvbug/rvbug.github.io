@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Book",
     "section": "",
-    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards above to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools and experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools around Rust / Ratatui / docs automation\n\n🧰 Libraries for working with generated JSON data\n\n🗂 More utilities for automating documentation workflows\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book” — most of them in Rust, some around Ratatui, and others around documentation and tooling.\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching (version + timestamp based)\n\nProduces ratcrate.json for other tools to consume\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli (planned)\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details in a compact way\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui (planned)\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nGenerate chapter structures\n\nInsert placeholders for diagrams/screenshots\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »",
+    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards above to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools and experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools around Rust / Ratatui / docs automation\n\n🧰 Libraries for working with generated JSON data\n\n🗂 More utilities for automating documentation workflows\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book” — most of them in Rust, some around Ratatui, and others around documentation and tooling.\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching (version + timestamp based)\n\nProduces ratcrate.json for other tools to consume\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details in a compact way\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui (planned)\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nGenerate chapter structures\n\nInsert placeholders for diagrams/screenshots\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »\n\n\n\n\n\n\n\n🎛 QBanner\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the Qbanner Libraryi docs »\n\n\n\n☁ QSwitch (Planned)\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nOptimized workflow\n\n➡️ Coming Soons »",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -107,12 +107,12 @@
   {
     "objectID": "doc2quarto/logic.html",
     "href": "doc2quarto/logic.html",
-    "title": "logic",
+    "title": "Core Logic",
     "section": "",
-    "text": "Conversion Logic Deep Dive”\nThe core transformation logic of Doc2Quarto resides in the lib.rs file, primarily within the process_files and convert_content functions. This chapter details how Docusaurus-specific syntax is systematically mapped to Quarto standards.\n–",
+    "text": "Conversion Logic Deep Dive”\nThe core transformation logic of Doc2Quarto resides in the lib.rs file, primarily within the process_files and convert_content functions. This chapter details how Docusaurus-specific syntax is systematically mapped to Quarto standards.",
     "crumbs": [
       "doc2quarto",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Core Logic</span>"
     ]
   },
   {
@@ -151,12 +151,12 @@
   {
     "objectID": "doc2quarto/logic.html#example-conversion",
     "href": "doc2quarto/logic.html#example-conversion",
-    "title": "logic",
+    "title": "Core Logic",
     "section": "Example Conversion",
     "text": "Example Conversion\nA Docusaurus note with a title:\n:::tip Useful Tip Remember to clear your cache after deployment.\n:::\nIs converted by Doc2Quarto into the Quarto syntax:\n::: callout-tip\n## Useful Tip\nRemember to clear your cache after deployment.\n:::",
     "crumbs": [
       "doc2quarto",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Core Logic</span>"
     ]
   },
   {
@@ -184,23 +184,23 @@
   {
     "objectID": "doc2quarto/logic.html#admonitions",
     "href": "doc2quarto/logic.html#admonitions",
-    "title": "logic",
+    "title": "Core Logic",
     "section": "Admonitions",
     "text": "Admonitions\nThe conversion logic performs a mapping to ensure Docusaurus types correctly translate to Quarto’s built-in callout types:\n\n\n\nDocusaurus\nQuarto\n\n\n\n\n:::note\n:::: {note}\n\n\n`:::tip`\n`:::: {tip}`\n\n\n`:::info`\n`:::: {info}`\n\n\n`:::caution`\n`:::: {caution}`\n\n\n`:::warning`\n`:::: {warning}`\n\n\n`:::danger`\n`:::: {danger}`",
     "crumbs": [
       "doc2quarto",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Core Logic</span>"
     ]
   },
   {
     "objectID": "doc2quarto/logic.html#the-content-converter",
     "href": "doc2quarto/logic.html#the-content-converter",
-    "title": "logic",
+    "title": "Core Logic",
     "section": "The Content Converter",
-    "text": "The Content Converter\nThis function acts as a state machine to correctly isolate and handle the YAML frontmatter from the main body content.\npub fn convert_content(content: &str) -&gt; String {\n    let mut result = String::new();\n    let mut in_frontmatter = false;\n    let mut frontmatter_lines = Vec::new();\n\n    // Process the file line by line\n    for line in content.lines() {\n        // Toggle the frontmatter state on encountering \"---\"\n        if line == \"---\" {\n            if !in_frontmatter {\n                in_frontmatter = true;\n                continue;\n            } else {\n                // End of frontmatter - convert and add to result\n                result.push_str(\"---\\n\");\n                result.push_str(&convert_frontmatter(&frontmatter_lines));\n                frontmatter_lines.clear();\n                in_frontmatter = false; // Add this line for clarity\n                continue;\n            }\n        }\n\n        if in_frontmatter {\n            // Collect frontmatter lines for processing\n            frontmatter_lines.push(line);\n        } else {\n            // Convert admonitions in the content\n            let converted_line = convert_admonitions(line);\n            result.push_str(&converted_line);\n            result.push('\\n');\n        }\n    }\n    result\n}",
+    "text": "The Content Converter\nThis function acts as a state machine to correctly isolate and handle the YAML frontmatter from the main body content.\npub fn convert_content(content: &str) -&gt; String {\n    let mut result = String::new();\n    let mut in_frontmatter = false;\n    let mut frontmatter_lines = Vec::new();\n\n    // Process the file line by line\n    for line in content.lines() {\n        // Toggle the frontmatter state on encountering \"---\"\n        if line == \"---\" {\n            if !in_frontmatter {\n                in_frontmatter = true;\n                continue;\n            } else {\n                // End of frontmatter - convert and add to result\n                result.push_str(\"---\\n\");\n                result.push_str(&convert_frontmatter(&frontmatter_lines));\n                frontmatter_lines.clear();\n                in_frontmatter = false; \n                continue;\n            }\n        }\n\n        if in_frontmatter {\n            // Collect frontmatter lines for processing\n            frontmatter_lines.push(line);\n        } else {\n            // Convert admonitions in the content\n            let converted_line = convert_admonitions(line);\n            result.push_str(&converted_line);\n            result.push('\\n');\n        }\n    }\n    result\n}",
     "crumbs": [
       "doc2quarto",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Core Logic</span>"
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Core Logic</span>"
     ]
   },
   {
@@ -368,12 +368,12 @@
   {
     "objectID": "rat-tui/index.html",
     "href": "rat-tui/index.html",
-    "title": "∞ Coming Soon",
+    "title": "ratcrate-tui: Ratatui Ecosystem Explorer",
     "section": "",
-    "text": "This project is currently under active development",
+    "text": "📦 What is ratcrate-tui?\nratcrates is a powerful and fast Terminal User Interface (TUI) application designed to help you discover and manage crates within the Ratatui ecosystem. It provides a seamless, terminal-native experience for navigating lists of libraries, viewing detailed statistics, and quickly finding the right package for your project.\nBuilt entirely in Rust, ratcrates is an example of the clean and efficient TUIs you can build with ratatui itself.",
     "crumbs": [
       "rat-tui",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>∞ Coming Soon</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>ratcrate-tui: Ratatui Ecosystem Explorer</span>"
     ]
   },
   {
@@ -418,6 +418,160 @@
     "crumbs": [
       "rat-tui",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>∞ Coming Soon</span>"
+    ]
+  },
+  {
+    "objectID": "qbanner/index.html",
+    "href": "qbanner/index.html",
+    "title": "Qbanner: Terminal Banners for CLI Applications",
+    "section": "",
+    "text": "Introduction\nqbanner is a simple yet powerful Rust library designed to display highly customizable ASCII art banners in command-line interface (CLI) applications. It uses a modern builder pattern, supports Unicode, gradients, and automatically adjusts to fit the user’s terminal size.",
+    "crumbs": [
+      "qbanner",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Qbanner: Terminal Banners for CLI Applications</span>"
+    ]
+  },
+  {
+    "objectID": "qbanner/index.html#introduction",
+    "href": "qbanner/index.html#introduction",
+    "title": "Qbanner: Terminal Banners for CLI Applications",
+    "section": "",
+    "text": "Key Features\n\nBuilder Pattern: Easy-to-use, chainable methods for configuration.\nTerminal Awareness: Automatically detects terminal width for centering and resizing.\nColor & Gradient: Support for standard ANSI colors, bright colors, and dynamic RGB gradients.\nFonts: Includes modern Unicode, classic Standard, and compact Small fonts.\nFallback Logic: Gracefully falls back to smaller fonts or plain text if the banner exceeds terminal width.\nScreen Management: Option to automatically clear the screen before rendering.\n\n\n\nInstallation\nAdd qbanner and its dependencies (if necessary, though qbanner bundles most of its needs) to your Cargo.toml:\n```toml\n[dependencies] qbanner = { path = “path/to/qbanner” } # If developing locally # qbanner = “1.0” # If published on crates.io owo-colors = “3.5” terminal_size = “0.3”\n```\n\n\nQuick Start\nThe core of the library is the Banner struct, configured entirely through method chaining.\nuse qbanner::{Banner, Color, Alignment};\n\nfn main() {\n    // 1. Simple, centered, cyan Unicode banner\n    Banner::new(\"Welcome\")\n        .color(Color::Cyan)\n        .alignment(Alignment::Center)\n        .render();\n\n    // 2. Banner with an RGB gradient and a subtitle\n    Banner::new(\"DevOps\")\n        .gradient(vec![\n            (255, 100, 0), // Orange\n            (255, 0, 100)  // Pink\n        ])\n        .subtitle(\"CI/CD Pipeline v2.1\")\n        .render();\n}",
+    "crumbs": [
+      "qbanner",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Qbanner: Terminal Banners for CLI Applications</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/index.html#what-is-ratcrates",
+    "href": "rat-tui/index.html#what-is-ratcrates",
+    "title": "ratcrate-tui: Ratatui Ecosystem Explorer",
+    "section": "",
+    "text": "✨ Key Features\n\nInstant Access: Fast data retrieval using local caching, ensuring the application is responsive.\nComprehensive Data: Displays package name, description, version, downloads (total and weekly), repository links, and categories for every crate.\nSmart Filtering: Quickly switch between showing all crates, core libraries only, or various filtered lists like Top Downloads or Newest.\nVim-Style Navigation: Use familiar keys like j, k, Ctrl+d, Ctrl+u, g, and G to move through lists.\nInteractive Command Mode: Execute powerful search and filter commands using the : prompt.\n\n\n\n🎯 Ecosystem Goal\nThe primary purpose of ratcrates is to make the rich collection of Ratatui-related crates more accessible and discoverable, promoting the adoption and growth of the TUI community in Rust.\nTo get started, checkout the usage guide",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>ratcrate-tui: Ratatui Ecosystem Explorer</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/index.html#what-is-ratcrate-tui",
+    "href": "rat-tui/index.html#what-is-ratcrate-tui",
+    "title": "ratcrate-tui: Ratatui Ecosystem Explorer",
+    "section": "",
+    "text": "✨ Key Features\n\nInstant Access: Fast data retrieval using local caching, ensuring the application is responsive.\nComprehensive Data: Displays package name, description, version, downloads (total and weekly), repository links, and categories for every crate.\nSmart Filtering: Quickly switch between showing all crates, core libraries only, or various filtered lists like Top Downloads or Newest.\nVim-Style Navigation: Use familiar keys like j, k, Ctrl+d, Ctrl+u, g, and G to move through lists.\nInteractive Command Mode: Execute powerful search and filter commands using the : prompt.\n\n\n\n🎯 Ecosystem Goal\nThe primary purpose of ratcrates is to make the rich collection of Ratatui-related crates more accessible and discoverable, promoting the adoption and growth of the TUI community in Rust.\nTo get started, checkout the usage guide",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>ratcrate-tui: Ratatui Ecosystem Explorer</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/usage.html",
+    "href": "rat-tui/usage.html",
+    "title": "Usage Guide",
+    "section": "",
+    "text": "🚀 Exploring Crates: The ratcrates Usage Guide\nThe ratcrates TUI is designed for fast, keyboard-driven exploration. It features a split-pane layout: the left pane shows the Crate List, and the right pane shows the Detail view, Statistics view, or Help view.",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Usage Guide</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/usage.html#core-interface-layout",
+    "href": "rat-tui/usage.html#core-interface-layout",
+    "title": "Usage Guide",
+    "section": "Core Interface Layout",
+    "text": "Core Interface Layout\nThe screen is generally divided into three horizontal areas:\n\nMain Content Area (Top): Split into the Crate List (35%) and the Detail/View pane (65%).\nStatus/Command Bar (Bottom): Displays the current application mode, status messages, and command input.\n\n\nCaching Mechanism\nratcrates relies on a local JSON data file, stored in your system’s cache directory (~/.cache/ratcrate on Linux/macOS).\n\nOn startup, it checks if the cache is older than 1 day (CACHE_MAX_AGE_DAYS: u64 = 1 in src/cache.rs).\nIf stale or missing, it automatically downloads the latest data.\nOtherwise, it loads the data from the local cache instantly.",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Usage Guide</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/usage.html#controls-normal-mode",
+    "href": "rat-tui/usage.html#controls-normal-mode",
+    "title": "Usage Guide",
+    "section": "⌨️ Controls: Normal Mode",
+    "text": "⌨️ Controls: Normal Mode\nThis is the default mode for navigation.\n\n\n\n\n\n\n\n\nKeybind\nAction\nDescription\n\n\n\n\nj or ↓\nMove down\nSelect the next crate in the list.\n\n\nk or ↑\nMove up\nSelect the previous crate in the list.\n\n\nCtrl+d\nPage down\nJump down by 10 items (jump = 10).\n\n\nCtrl+u\nPage up\nJump up by 10 items (jump = 10).\n\n\ng\nGo to top\nSelect the first item (list_state.select(Some(0))).\n\n\nG\nGo to bottom\nSelect the last item (list_state.select(Some(len - 1))).\n\n\nTAB\nToggle View\nSwitches between List and Stats views.\n\n\n?\nToggle Help\nToggles the Help view.\n\n\n:\nEnter Command Mode\nBegin typing a command.\n\n\n/\nQuick Search\nEnter Command Mode with :search pre-typed.\n\n\nq\nQuit\nExit the application gracefully.",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Usage Guide</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/usage.html#views",
+    "href": "rat-tui/usage.html#views",
+    "title": "Usage Guide",
+    "section": "📊 Views",
+    "text": "📊 Views\n\n1. List + Detail View (View::List)\n\nList Pane: Shows the crate name, core/community icon (⭐ or 📦), total downloads (↓), and weekly downloads (📈).\nDetail Pane: Shows full metadata for the currently selected crate, including description (with word wrap), version, download stats, installation command, and links.\n\n\n\n2. Statistics View (View::Stats)\nToggled by pressing TAB. This view aggregates data across all known crates:\n\nTotal packages, core libraries, and community packages count.\nTotal and average downloads.\nA simple bar chart visualizing the core vs. community distribution.\nThe Top 5 Most Downloaded crates.\n\n\n\n3. Help View (View::Help)\nToggled by pressing ?. Provides an on-screen reference for all keybindings and commands.",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Usage Guide</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/usage.html#commands-command-mode",
+    "href": "rat-tui/usage.html#commands-command-mode",
+    "title": "Usage Guide",
+    "section": "⚡ Commands: Command Mode",
+    "text": "⚡ Commands: Command Mode\nPressing : transitions the TUI into Command Mode, which is indicated by the COMMAND badge in the status bar.\n\n\n\n\n\n\n\n\nCommand\nArguments\nDescription\n\n\n\n\nq, quit\n\nExit the application.\n\n\nall\n\nResets the list to show all available crates.\n\n\ncore\n\nFilters the list to show only crates marked as a Core Library (is_core_library: true).\n\n\ntop\n[N]\nFilters the list to show the top N crates ranked by Total Downloads. Default N is 10.\n\n\nrecent\n[N]\nFilters the list to show the top N crates ranked by Weekly Downloads (recent_downloads).\n\n\nnew\n[N]\nFilters the list to show the top N newest crates (sorted by created_at).\n\n\nsearch\n&lt;query&gt;\nFilters crates where the name or description contains the query string (case-insensitive).\n\n\n\n\nCommand Examples\n```bash :top 5 # Show the 5 most downloaded crates :recent 20 # Show the 20 crates with the highest weekly downloads :search logging # Find crates related to logging /tui-rs # Quick search for ‘tui-rs’ :core # Show only core libraries",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Usage Guide</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/development.html",
+    "href": "rat-tui/development.html",
+    "title": "Development & Contribution",
+    "section": "",
+    "text": "🏗️ Development & Contribution\nWe welcome and appreciate all forms of contribution, from bug reports and feature suggestions to code submissions!",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Development & Contribution</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/development.html#project-structure",
+    "href": "rat-tui/development.html#project-structure",
+    "title": "Development & Contribution",
+    "section": "Project Structure",
+    "text": "Project Structure\nThe application is structured into a few key Rust modules:\n\n\n\n\n\n\n\nFile/Module\nDescription\n\n\n\n\nsrc/main.rs\nTUI Logic. Contains the App state, all TUI rendering (ui, render_list, render_detail, etc.), and the event handling loop (handle_events). This is where you’ll find the Ratatui code.\n\n\nsrc/cache.rs\nData Layer. Manages the remote data fetching (download_fresh_data) and local caching (load_from_cache, is_cache_stale). Uses reqwest and dirs.\n\n\nsrc/types.rs\nData Types. Defines the CratePackage, Metadata, and CratesData structs that mirror the remote JSON data structure. Uses serde.\n\n\nCargo.toml\nProject manifest. Key dependencies are ratatui (for the TUI framework), crossterm (for terminal backend), and reqwest (for networking).",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Development & Contribution</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/development.html#build-test",
+    "href": "rat-tui/development.html#build-test",
+    "title": "Development & Contribution",
+    "section": "Build & Test",
+    "text": "Build & Test\nTo get your development environment ready:\n\nClone the repository: bash     git clone [https://github.com/rvbug/ratcrates.git](https://github.com/rvbug/ratcrates.git)     cd ratcrates\nRun in development mode: bash     cargo run\nRun unit tests (mainly for caching): bash     cargo test",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Development & Contribution</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/development.html#contributing-code",
+    "href": "rat-tui/development.html#contributing-code",
+    "title": "Development & Contribution",
+    "section": "Contributing Code",
+    "text": "Contributing Code\nIf you have a bug fix or feature you’d like to implement:\n\nFork the repository on GitHub.\nCreate a new branch for your work: bash     git checkout -b feature/my-new-feature\nImplement your changes.\nTest your changes thoroughly.\nCommit your changes using a descriptive commit message (e.g., following the Conventional Commits specification). bash     git commit -m 'feat: add jump to last search result command'\nPush your branch and open a Pull Request against the main branch of the original repository.",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Development & Contribution</span>"
+    ]
+  },
+  {
+    "objectID": "rat-tui/development.html#adding-new-commands",
+    "href": "rat-tui/development.html#adding-new-commands",
+    "title": "Development & Contribution",
+    "section": "Adding New Commands",
+    "text": "Adding New Commands\nTo add a new command (e.g., :mycmd), you would modify src/main.rs: Extend execute_command: Add a new match arm in the execute_command function within the App implementation.\n    // In App::execute_command\n    match command {\n        // ... existing commands\n        \"mycmd\" =&gt; {\n            // Your new command logic goes here\n            self.status_message = \"Executed mycmd!\".to_string();\n        }\n        // ...\n    }\n\n**Update `render_help`:** Add the new command to the list in the `render_help` function to ensure it appears in the in-app help view.",
+    "crumbs": [
+      "rat-tui",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Development & Contribution</span>"
     ]
   }
 ]

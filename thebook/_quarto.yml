@@ -48,12 +48,18 @@ book:
     - part: "rat-tui"
       chapters:
         - rat-tui/index.qmd
+        - rat-tui/usage.qmd
+        - rat-tui/development.qmd
     # Part 4: Doc2Quarto
     - part: "doc2quarto"
       chapters:
         - doc2quarto/index.qmd
         - doc2quarto/usage.qmd
         - doc2quarto/logic.qmd
+    # Part 5: QBanner
+    - part: "qbanner"
+      chapters:
+        - qbanner/index.qmd
         
 
 bibliography: references.bib

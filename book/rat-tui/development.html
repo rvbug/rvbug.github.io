@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction – Book</title>
+<title>Development &amp; Contribution – Book</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../rat-cli/usage.html" rel="next">
-<link href="../rat-core/18-ecosystem-and-integrations.html" rel="prev">
+<link href="../doc2quarto/index.html" rel="next">
+<link href="../rat-tui/usage.html" rel="prev">
 <link href="../images/AudioWide-White.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -83,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-cli/index.html">rat-cli</a></li><li class="breadcrumb-item"><a href="../rat-cli/index.html"><span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-tui/index.html">rat-tui</a></li><li class="breadcrumb-item"><a href="../rat-tui/development.html"><span class="chapter-title">Development &amp; Contribution</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -254,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-cli/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introduction</span></a>
+  <a href="../rat-cli/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -280,7 +315,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">∞ Coming Soon</span></a>
+  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ratcrate-tui: Ratatui Ecosystem Explorer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rat-tui/usage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Usage Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rat-tui/development.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Development &amp; Contribution</span></a>
   </div>
 </li>
       </ul>
@@ -311,6 +356,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">qbanner</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qbanner/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Qbanner: Terminal Banners for CLI Applications</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -320,9 +381,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-cli/index.html">rat-cli</a></li><li class="breadcrumb-item"><a href="../rat-cli/index.html"><span class="chapter-title">Introduction</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-tui/index.html">rat-tui</a></li><li class="breadcrumb-item"><a href="../rat-tui/development.html"><span class="chapter-title">Development &amp; Contribution</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-title">Development &amp; Contribution</span></h1>
 </div>
 
 
@@ -339,115 +400,82 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="the-ratcrate-cli-project" class="level1">
-<h1>The <code>ratcrate-cli</code> Project</h1>
-<p><code>ratcrate</code> is a highly efficient command-line interface (CLI) application written in <strong>Rust</strong> designed to be the primary tool for discovering, searching, and managing packages within the rapidly growing <strong>Ratatui (Terminal User Interface) ecosystem</strong>.</p>
-<p>The project’s goal is to provide developers with instant, terminal-native access to up-to-date crate information, bypassing the need to browse websites.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ratcrate-cli-demo-small.gif" class="img-fluid figure-img" alt="Ratcrate CLI Demo"></p>
-<figcaption>Demo</figcaption>
-</figure>
-</div>
-<section id="key-features" class="level2">
-<h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
-<ul>
-<li><strong>Offline Access:</strong> Intelligent caching ensures that data is only downloaded when stale (older than 1 day) or when a manual refresh is requested.</li>
-<li><strong>Fuzzy Search:</strong> Filter crates by name or description using the <code>-q, --query</code> argument.</li>
-<li><strong>Interactive Selection:</strong> Integrates seamlessly with the external <strong><code>fzf</code></strong> utility for interactive, searchable selection (<code>-f</code>).</li>
-<li><strong>Statistical Breakdown:</strong> Provides a clear summary of total, core, and community crates (<code>-t</code>).</li>
-<li><strong>Configurable Display:</strong> Supports both a default colorful list view and an optional structured table view.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="getting-started-and-usage" class="level1">
-<h1>Getting Started and Usage</h1>
-<section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>To build and run <code>ratcrate</code>, you must have the following installed:</p>
-<ol type="1">
-<li><strong>Rust Toolchain:</strong> Install Rust and Cargo via <a href="https://rustup.rs/">rustup</a>.</li>
-<li><strong>fzf (Optional):</strong> The fuzzy finder utility is required to use the interactive selection mode (<code>-f</code>). Install it via your operating system’s package manager (e.g., <code>sudo apt install fzf</code> or <code>brew install fzf</code>).</li>
-</ol>
-</section>
-<section id="building-and-running" class="level2">
-<h2 class="anchored" data-anchor-id="building-and-running">Building and Running</h2>
-<p>Clone the repository (or ensure the files are in one directory) and use Cargo to build and run the application.</p>
-<p>```bash # Build and run the executable cargo run –release</p>
-</section>
-</section>
-<section id="run-with-a-standard-query" class="level1">
-<h1>Run with a standard query</h1>
-<p>cargo run – -q “widgets”</p>
+<section id="development-contribution" class="level1">
+<h1>🏗️ Development &amp; Contribution</h1>
+<p>We welcome and appreciate all forms of contribution, from bug reports and feature suggestions to code submissions!</p>
+<section id="project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure">Project Structure</h2>
+<p>The application is structured into a few key Rust modules:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 27%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Flag</th>
-<th>Long</th>
-<th>Type</th>
-<th>Description</th>
+<th style="text-align: left;">File/Module</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>none</code></td>
-<td><code>none</code></td>
-<td><code>none</code></td>
-<td>Show top 10 crates</td>
+<td style="text-align: left;"><code>src/main.rs</code></td>
+<td style="text-align: left;"><strong>TUI Logic.</strong> Contains the <code>App</code> state, all TUI rendering (<code>ui</code>, <code>render_list</code>, <code>render_detail</code>, etc.), and the event handling loop (<code>handle_events</code>). This is where you’ll find the Ratatui code.</td>
 </tr>
 <tr class="even">
-<td><code>-q</code></td>
-<td><code>--query</code></td>
-<td>String</td>
-<td>Search term to filter crates by name or description.</td>
+<td style="text-align: left;"><code>src/cache.rs</code></td>
+<td style="text-align: left;"><strong>Data Layer.</strong> Manages the remote data fetching (<code>download_fresh_data</code>) and local caching (<code>load_from_cache</code>, <code>is_cache_stale</code>). Uses <code>reqwest</code> and <code>dirs</code>.</td>
 </tr>
 <tr class="odd">
-<td><code>-t</code></td>
-<td><code>--total</code></td>
-<td><code>none</code></td>
-<td><strong>Show total count</strong> incld. Core vs.&nbsp;Community</td>
+<td style="text-align: left;"><code>src/types.rs</code></td>
+<td style="text-align: left;"><strong>Data Types.</strong> Defines the <code>CratePackage</code>, <code>Metadata</code>, and <code>CratesData</code> structs that mirror the remote JSON data structure. Uses <code>serde</code>.</td>
 </tr>
 <tr class="even">
-<td><code>-l</code></td>
-<td><code>--limit</code></td>
-<td><code>usize</code></td>
-<td>Maximum number of results to display (default: 10).</td>
-</tr>
-<tr class="odd">
-<td><code>-r</code></td>
-<td><code>--refresh</code></td>
-<td><code>none</code></td>
-<td>Force re-download of remote data, bypassing the cache check.</td>
-</tr>
-<tr class="even">
-<td><code>-c</code></td>
-<td><code>--cache-info</code></td>
-<td><code>none</code></td>
-<td>Display the cache directory and file path</td>
-</tr>
-<tr class="odd">
-<td><code>-f</code></td>
-<td><code>--fzf</code></td>
-<td><code>none</code></td>
-<td>Use <code>fzf</code> for interactive selection of a crate.</td>
-</tr>
-<tr class="even">
-<td>none</td>
-<td><code>--table</code></td>
-<td><code>none</code></td>
-<td>Use the table view (requires compiling with the <code>table</code> feature).</td>
+<td style="text-align: left;"><code>Cargo.toml</code></td>
+<td style="text-align: left;">Project manifest. Key dependencies are <code>ratatui</code> (for the TUI framework), <code>crossterm</code> (for terminal backend), and <code>reqwest</code> (for networking).</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="build-test" class="level2">
+<h2 class="anchored" data-anchor-id="build-test">Build &amp; Test</h2>
+<p>To get your development environment ready:</p>
+<ol type="1">
+<li><strong>Clone the repository:</strong> <code>bash     git clone [https://github.com/rvbug/ratcrates.git](https://github.com/rvbug/ratcrates.git)     cd ratcrates</code></li>
+<li><strong>Run in development mode:</strong> <code>bash     cargo run</code></li>
+<li><strong>Run unit tests (mainly for caching):</strong> <code>bash     cargo test</code></li>
+</ol>
+</section>
+<section id="contributing-code" class="level2">
+<h2 class="anchored" data-anchor-id="contributing-code">Contributing Code</h2>
+<p>If you have a bug fix or feature you’d like to implement:</p>
+<ol type="1">
+<li><strong>Fork</strong> the repository on GitHub.</li>
+<li><strong>Create a new branch</strong> for your work: <code>bash     git checkout -b feature/my-new-feature</code></li>
+<li><strong>Implement</strong> your changes.</li>
+<li><strong>Test</strong> your changes thoroughly.</li>
+<li><strong>Commit</strong> your changes using a descriptive commit message (e.g., following the <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> specification). <code>bash     git commit -m 'feat: add jump to last search result command'</code></li>
+<li><strong>Push</strong> your branch and open a <strong>Pull Request</strong> against the <code>main</code> branch of the original repository.</li>
+</ol>
+</section>
+<section id="adding-new-commands" class="level2">
+<h2 class="anchored" data-anchor-id="adding-new-commands">Adding New Commands</h2>
+<p>To add a new command (e.g., <code>:mycmd</code>), you would modify <code>src/main.rs</code>: Extend <strong><code>execute_command</code>:</strong> Add a new <code>match</code> arm in the <code>execute_command</code> function within the <code>App</code> implementation.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">// In App::execute_command</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> command <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ... existing commands</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mycmd"</span> <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Your new command logic goes here</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">self</span><span class="op">.</span>status_message <span class="op">=</span> <span class="st">"Executed mycmd!"</span><span class="op">.</span>to_string()<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ...</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>**Update `render_help`:** Add the new command to the list in the `render_help` function to ensure it appears in the in-app help view.</li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -852,13 +880,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../rat-core/18-ecosystem-and-integrations.html" class="pagination-link" aria-label="18-Ecosystem-and-Integration">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">18-Ecosystem-and-Integration</span></span>
+      <a href="../rat-tui/usage.html" class="pagination-link" aria-label="Usage Guide">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Usage Guide</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../rat-cli/usage.html" class="pagination-link" aria-label="Usage Demonstration">
-        <span class="nav-page-text"><span class="chapter-title">Usage Demonstration</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../doc2quarto/index.html" class="pagination-link" aria-label="Doc2Quarto">
+        <span class="nav-page-text"><span class="chapter-title">Doc2Quarto</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

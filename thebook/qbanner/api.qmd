@@ -1,0 +1,109 @@
+---
+title: "API Reference"
+subtitle: "The qbanner::Banner Builder"
+format: html
+---
+
+The entire functionality of `qbanner` is exposed through the chainable methods of the `Banner` struct.
+
+## New Banner
+
+```{rust}
+
+Banner::new(text: impl Into<String>)
+
+```
+
+Creates a new banner builder instance. This is the starting point for all banners.
+
+| Parameter | Type                | Description                             |
+|:----------|:--------------------|:----------------------------------------|
+| `text`    | `impl Into<String>` | The text content to render as a banner. |
+
+## Set Color
+
+```{rust}
+
+color(self, color: Color) -> Self
+
+```
+
+Sets a single, solid color for the banner text. This overrides any previously set gradient.
+
+| Parameter | Type | Description |
+|------------------------|------------------------|------------------------|
+| `color` | `Color` | An enum defining the ANSI color (e.g., `Color::Cyan`, `Color::BrightRed`). |
+
+## Set Gradient
+
+```{rust}
+
+gradient(self, colors: Vec<(u8, u8, u8)>) -> Self
+
+```
+
+Sets an RGB color gradient. The color of each line of the banner is interpolated between the colors provided in the vector. This overrides any previously set single color.
+
+| Parameter | Type | Description |
+|:-----------------------|:-----------------------|:-----------------------|
+| `colors` | `Vec<(u8, u8, u8)>` | A vector of RGB tuples (0-255). Must contain at least two colors for interpolation. |
+
+## Subtitle
+
+```{rust}
+
+subtitle(self, subtitle: impl Into<String>) -> Self
+
+```
+
+Adds a line of text below the main banner. The subtitle inherits the coloring and alignment of the main banner.
+
+## Banner Alignment
+
+```{rust}
+
+alignment(self, alignment: Alignment) -> Self
+
+```
+
+Sets the alignment of the banner within the terminal width.
+
+| Parameter | Type | Options |
+|:-----------------------|:-----------------------|:-----------------------|
+| `alignment` | `Alignment` | `Alignment::Left`, `Alignment::Center`, `Alignment::Right` |
+
+## Set Font
+
+```{rust}
+
+font(self, font: Font) -> Self`
+
+```
+
+Sets the ASCII art font style. Defaults to `Font::Unicode`.
+
+## Clear Screen
+
+```{rust}
+
+clear_screen(self, clear: bool) -> Self
+
+```
+
+If set to `true` (default), uses an ANSI escape sequence to clear the entire terminal screen before rendering.
+
+## Render
+
+```{rust}
+render(&self)
+```
+
+**Finalizing Method:** Prints the fully constructed and styled banner directly to standard output (`stdout`).
+
+## Render String
+
+```{rust}
+to_string(&self) -> String
+```
+
+**Finalizing Method:** Renders the banner but returns the output as a `String` instead of printing it. Useful for logging or saving the output.

@@ -1,0 +1,68 @@
+---
+title: "Qbanner: Terminal Banners for CLI Applications"
+subtitle: "Stylish, Resizable, and Color-Ready ASCII Art Banners"
+format: 
+  html:
+    toc: true
+    code-fold: false
+---
+
+## Introduction
+
+`qbanner` is a simple yet powerful Rust library designed to display highly customizable ASCII art banners in command-line interface (CLI) applications. It uses a modern builder pattern, supports Unicode, gradients, and automatically adjusts to fit the user's terminal size.
+
+![](./images/demo.gif)
+
+### Key Features
+
+-   **Builder Pattern:** Easy-to-use, chainable methods for configuration.
+-   **Terminal Awareness:** Automatically detects terminal width for centering and resizing.
+-   **Color & Gradient:** Support for standard ANSI colors, bright colors, and dynamic RGB gradients.
+-   **Fonts:** Includes modern Unicode, classic Standard, and compact Small fonts.
+-   **Fallback Logic:** Gracefully falls back to smaller fonts or plain text if the banner exceeds terminal width.
+-   **Screen Management:** Option to automatically clear the screen before rendering.
+
+### Installation
+
+Add `qbanner` and its dependencies (if necessary, though `qbanner` bundles most of its needs) to your `Cargo.toml`:
+
+\`\`\`toml
+
+\[dependencies\]
+qbanner = { path = "path/to/qbanner" } \# If developing locally
+# qbanner = "1.0" \# If published on crates.io
+owo-colors = "3.5"
+terminal_size = "0.3"
+
+\`\`\`
+
+### Quick Start
+
+The core of the library is the `Banner` struct, configured entirely through method chaining.
+
+``` rust
+use qbanner::{Banner, Color, Alignment};
+
+fn main() {
+    // 1. Simple, centered, cyan Unicode banner
+    Banner::new("Welcome")
+        .color(Color::Cyan)
+        .alignment(Alignment::Center)
+        .render();
+
+    // 2. Banner with an RGB gradient and a subtitle
+    Banner::new("DevOps")
+        .gradient(vec![
+            (255, 100, 0), // Orange
+            (255, 0, 100)  // Pink
+        ])
+        .subtitle("CI/CD Pipeline v2.1")
+        .render();
+}
+```
+
+# References
+
+-   API Reference
+
+-   Developer Notes

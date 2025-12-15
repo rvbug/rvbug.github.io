@@ -1,68 +1,24 @@
 ---
-title: ""
-page-layout: full
+title: "ratcrate-tui: Ratatui Ecosystem Explorer"
 toc: false
 ---
 
-::: {style="text-align:center; padding-top: 0rem; padding-bottom: 0rem;"}
-# ∞ Coming Soon
+## 📦 What is `ratcrate-tui`?
 
-## This project is currently under active development
-:::
+**ratcrates** is a powerful and fast **Terminal User Interface (TUI)** application designed to help you discover and manage crates within the [Ratatui](https://ratatui.rs/) ecosystem. It provides a seamless, terminal-native experience for navigating lists of libraries, viewing detailed statistics, and quickly finding the right package for your project.
 
-::: {style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;"}
-<!-- Placeholder for image -->
+Built entirely in Rust, `ratcrates` is an example of the clean and efficient TUIs you can build with `ratatui` itself.
 
-<img src="./images/ComingSoon.png" alt="Coming Soon Banner" width="50%"/>
-:::
+### ✨ Key Features
 
-## What This Page Will Contain
+-   **Instant Access:** Fast data retrieval using local caching, ensuring the application is responsive.
+-   **Comprehensive Data:** Displays package name, description, version, downloads (total and weekly), repository links, and categories for every crate.
+-   **Smart Filtering:** Quickly switch between showing **all crates**, **core libraries** only, or various filtered lists like **Top Downloads** or **Newest**.
+-   **Vim-Style Navigation:** Use familiar keys like `j`, `k`, `Ctrl+d`, `Ctrl+u`, `g`, and `G` to move through lists.
+-   **Interactive Command Mode:** Execute powerful search and filter commands using the `:` prompt.
 
-This section will be replaced once the project reaches its first public draft.\
-It will eventually include:
+### 🎯 Ecosystem Goal
 
--   **Project overview**\
--   **Motivation & goals**\
--   **Architecture & workflow diagrams**\
--   **Setup / installation instructions**\
--   **Feature tour**\
--   **Screenshots or TUI previews**
+The primary purpose of `ratcrates` is to make the rich collection of Ratatui-related crates more accessible and discoverable, promoting the adoption and growth of the TUI community in Rust.
 
-------------------------------------------------------------------------
-
-## Current Status
-
-This project is part of the larger ecosystem of tools I'm building:
-
--   `ratcrate-core` → Completed. The engine that gathers metadata\
--   `ratcrate-cli` → (In Progress) terminal exploration tool\
--   `ratcrate-tui` → (In Progress) Visual TUI interface\
-
-This project will be published once the foundation is stable.
-
-Stay tuned for regular updates!
-
-------------------------------------------------------------------------
-
-## Follow the Updates
-
-If you’d like to know when this project is released, follow me here:
-
->   🐙 GitHub: <https://github.com/rvbug>\
-
->   🐦 X / Twitter: <https://x.com/rvbugged>\
-
->   🌐 Website: <https://qubitai.in>
-
-------------------------------------------------------------------------
-
-## Support My Work
-
-This project is free and open source.\
-If you’d like to support its development:
-
-<br> <br>
-
----
-
-[![Ko-Fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rvbugged)              [![Github Sponsors](https://img.shields.io/github/sponsors/rvbug)](https://github.com/sponsors/ratcrate)
+To get started, checkout the [usage guide](usage.qmd)

@@ -1,0 +1,78 @@
+---
+title: "Usage Guide"
+---
+
+# 🚀 Exploring Crates: The `ratcrates` Usage Guide
+
+The `ratcrates` TUI is designed for fast, keyboard-driven exploration. It features a split-pane layout: the left pane shows the **Crate List**, and the right pane shows the **Detail** view, **Statistics** view, or **Help** view.
+
+## Core Interface Layout
+
+The screen is generally divided into three horizontal areas:
+
+1.  **Main Content Area (Top):** Split into the Crate List (35%) and the Detail/View pane (65%).
+2.  **Status/Command Bar (Bottom):** Displays the current application mode, status messages, and command input.
+
+### Caching Mechanism
+
+`ratcrates` relies on a local JSON data file, stored in your system's cache directory (`~/.cache/ratcrate` on Linux/macOS).
+
+-   On startup, it checks if the cache is older than **1 day** (`CACHE_MAX_AGE_DAYS: u64 = 1` in `src/cache.rs`).
+-   If stale or missing, it **automatically downloads** the latest data.
+-   Otherwise, it loads the data from the local cache instantly.
+
+## ⌨️ Controls: Normal Mode
+
+This is the default mode for navigation.
+
+| Keybind | Action | Description |
+|:-----------------------|:-----------------------|:-----------------------|
+| `j` or `↓` | Move down | Select the next crate in the list. |
+| `k` or `↑` | Move up | Select the previous crate in the list. |
+| `Ctrl+d` | Page down | Jump down by 10 items (`jump = 10`). |
+| `Ctrl+u` | Page up | Jump up by 10 items (`jump = 10`). |
+| `g` | Go to top | Select the first item (`list_state.select(Some(0))`). |
+| `G` | Go to bottom | Select the last item (`list_state.select(Some(len - 1))`). |
+| `TAB` | Toggle View | Switches between **List** and **Stats** views. |
+| `?` | Toggle Help | Toggles the **Help** view. |
+| `:` | Enter Command Mode | Begin typing a command. |
+| `/` | Quick Search | Enter Command Mode with `:search` pre-typed. |
+| `q` | Quit | Exit the application gracefully. |
+
+## 📊 Views
+
+### 1. List + Detail View (`View::List`)
+
+-   **List Pane:** Shows the crate name, core/community icon (`⭐` or `📦`), total downloads (`↓`), and weekly downloads (`📈`).
+-   **Detail Pane:** Shows full metadata for the currently selected crate, including description (with word wrap), version, download stats, installation command, and links.
+
+### 2. Statistics View (`View::Stats`)
+
+Toggled by pressing `TAB`. This view aggregates data across all known crates:
+
+-   Total packages, core libraries, and community packages count.
+-   Total and average downloads.
+-   A simple bar chart visualizing the core vs. community distribution.
+-   The **Top 5 Most Downloaded** crates.
+
+### 3. Help View (`View::Help`)
+
+Toggled by pressing `?`. Provides an on-screen reference for all keybindings and commands.
+
+## ⚡ Commands: Command Mode
+
+Pressing `:` transitions the TUI into **Command Mode**, which is indicated by the `COMMAND` badge in the status bar.
+
+| Command | Arguments | Description |
+|:-----------------------|:-----------------------|:-----------------------|
+| `q`, `quit` |  | Exit the application. |
+| `all` |  | Resets the list to show all available crates. |
+| `core` |  | Filters the list to show only crates marked as a Core Library (`is_core_library: true`). |
+| `top` | `[N]` | Filters the list to show the top `N` crates ranked by **Total Downloads**. Default `N` is 10. |
+| `recent` | `[N]` | Filters the list to show the top `N` crates ranked by **Weekly Downloads** (`recent_downloads`). |
+| `new` | `[N]` | Filters the list to show the top `N` newest crates (sorted by `created_at`). |
+| `search` | `<query>` | Filters crates where the `name` or `description` contains the query string (case-insensitive). |
+
+### Command Examples
+
+\`\`\`bash :top 5 \# Show the 5 most downloaded crates :recent 20 \# Show the 20 crates with the highest weekly downloads :search logging \# Find crates related to logging /tui-rs \# Quick search for 'tui-rs' :core \# Show only core libraries
