@@ -353,8 +353,7 @@ The \textbf{engine} behind the Ratatui ecosystem index.
 
 ➡️ \href{rat-core/index.qmd}{Read the ratcrate-core docs »}
 
-\subsection{\texorpdfstring{💻 ratcrate-cli
-\emph{(planned)}}{💻 ratcrate-cli (planned)}}\label{ratcrate-cli-planned}
+\subsection{💻 ratcrate-cli}\label{ratcrate-cli}
 
 A command-line interface for exploring the Ratatui ecosystem.
 
@@ -412,6 +411,38 @@ A helper tool for turning rough notes, markdown, or code comments into\\
 ➡️ \href{doc2quarto/index.qmd}{Read the doc2quarto docs »}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🎛 QBanner}\label{qbanner}
+
+A \textbf{Ratatui-based TUI} for browsing Ratatui crates.\\
+Very meta. Very fun.
+
+\begin{itemize}
+\tightlist
+\item
+  Terminal UI built with Ratatui\\
+\item
+  Interactive search and filters\\
+\item
+  Crate detail views with stats and links\\
+\item
+  Powered by \texttt{ratcrate-core} data
+\end{itemize}
+
+➡️ \href{qbanner/index.qmd}{Read the Qbanner Libraryi docs »}
+
+\subsection{☁ QSwitch (Planned)}\label{qswitch-planned}
+
+A helper tool for turning rough notes, markdown, or code comments into\\
+\textbf{structured Quarto documentation}.
+
+\begin{itemize}
+\tightlist
+\item
+  Optimized workflow
+\end{itemize}
+
+➡️ \href{}{Coming Soons »}
 
 \bookmarksetup{startatroot}
 
@@ -552,7 +583,7 @@ This book covers:
   Future roadmap
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, opacitybacktitle=0.6, bottomtitle=1mm, opacityback=0, arc=.35mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black, breakable, rightrule=.15mm, bottomrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, leftrule=.75mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacityback=0, rightrule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colframe=quarto-callout-note-color-frame, coltitle=black, leftrule=.75mm, opacitybacktitle=0.6, bottomrule=.15mm, breakable, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, colback=white, left=2mm, toptitle=1mm, titlerule=0mm]
 
 This project is currently private and will be open-sourced later.
 
@@ -1633,7 +1664,7 @@ Integrations}\label{chapter-18-ecosystem-integrations}
 
 \section{1. Planned Tools}\label{planned-tools}
 
-\subsection{🟦 ratcrate-cli}\label{ratcrate-cli}
+\subsection{🟦 ratcrate-cli}\label{ratcrate-cli-1}
 
 A simple command-line browser for Ratatui crates.
 
@@ -1790,10 +1821,10 @@ Cargo to build and run the application.
 cargo run -- -q ``widgets''
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2361}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2917}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2703}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Flag
@@ -1983,83 +2014,343 @@ for interaction.
 
 \part{rat-tui}
 
-\chapter{∞ Coming Soon}\label{coming-soon}
+\chapter{ratcrate-tui: Ratatui Ecosystem
+Explorer}\label{ratcrate-tui-ratatui-ecosystem-explorer}
 
-\section{This project is currently under active
-development}\label{this-project-is-currently-under-active-development}
+\section{\texorpdfstring{📦 What is
+\texttt{ratcrate-tui}?}{📦 What is ratcrate-tui?}}\label{what-is-ratcrate-tui}
 
-\section{What This Page Will Contain}\label{what-this-page-will-contain}
+\textbf{ratcrates} is a powerful and fast \textbf{Terminal User
+Interface (TUI)} application designed to help you discover and manage
+crates within the \href{https://ratatui.rs/}{Ratatui} ecosystem. It
+provides a seamless, terminal-native experience for navigating lists of
+libraries, viewing detailed statistics, and quickly finding the right
+package for your project.
 
-This section will be replaced once the project reaches its first public
-draft.\\
-It will eventually include:
+Built entirely in Rust, \texttt{ratcrates} is an example of the clean
+and efficient TUIs you can build with \texttt{ratatui} itself.
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Project overview}\\
-\item
-  \textbf{Motivation \& goals}\\
-\item
-  \textbf{Architecture \& workflow diagrams}\\
-\item
-  \textbf{Setup / installation instructions}\\
-\item
-  \textbf{Feature tour}\\
-\item
-  \textbf{Screenshots or TUI previews}
-\end{itemize}
+\pandocbounded{\includegraphics[keepaspectratio]{rat-tui/./images/ratcrate-tui.gif}}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\section{Current Status}\label{current-status}
-
-This project is part of the larger ecosystem of tools I'm building:
+\subsection{✨ Key Features}\label{key-features-1}
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{ratcrate-core} → Completed. The engine that gathers metadata\\
+  \textbf{Instant Access:} Fast data retrieval using local caching,
+  ensuring the application is responsive.
 \item
-  \texttt{ratcrate-cli} → (In Progress) terminal exploration tool\\
+  \textbf{Comprehensive Data:} Displays package name, description,
+  version, downloads (total and weekly), repository links, and
+  categories for every crate.
 \item
-  \texttt{ratcrate-tui} → (In Progress) Visual TUI interface\\
+  \textbf{Smart Filtering:} Quickly switch between showing \textbf{all
+  crates}, \textbf{core libraries} only, or various filtered lists like
+  \textbf{Top Downloads} or \textbf{Newest}.
+\item
+  \textbf{Vim-Style Navigation:} Use familiar keys like \texttt{j},
+  \texttt{k}, \texttt{Ctrl+d}, \texttt{Ctrl+u}, \texttt{g}, and
+  \texttt{G} to move through lists.
+\item
+  \textbf{Interactive Command Mode:} Execute powerful search and filter
+  commands using the \texttt{:} prompt.
 \end{itemize}
 
-This project will be published once the foundation is stable.
+\subsection{🎯 Ecosystem Goal}\label{ecosystem-goal}
 
-Stay tuned for regular updates!
+The primary purpose of \texttt{ratcrates} is to make the rich collection
+of Ratatui-related crates more accessible and discoverable, promoting
+the adoption and growth of the TUI community in Rust.
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+To get started, checkout the \href{usage.qmd}{usage guide}
 
-\section{Follow the Updates}\label{follow-the-updates}
+\chapter{Usage Guide}\label{usage-guide}
 
-If you'd like to know when this project is released, follow me here:
+\chapter{\texorpdfstring{🚀 Exploring Crates: The \texttt{ratcrates}
+Usage
+Guide}{🚀 Exploring Crates: The ratcrates Usage Guide}}\label{exploring-crates-the-ratcrates-usage-guide}
 
-\begin{quote}
-🐙 GitHub: \url{https://github.com/rvbug}\\
-\end{quote}
+The \texttt{ratcrates} TUI is designed for fast, keyboard-driven
+exploration. It features a split-pane layout: the left pane shows the
+\textbf{Crate List}, and the right pane shows the \textbf{Detail} view,
+\textbf{Statistics} view, or \textbf{Help} view.
 
-\begin{quote}
-🐦 X / Twitter: \url{https://x.com/rvbugged}\\
-\end{quote}
+\section{Core Interface Layout}\label{core-interface-layout}
 
-\begin{quote}
-🌐 Website: \url{https://qubitai.in}
-\end{quote}
+The screen is generally divided into three horizontal areas:
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Main Content Area (Top):} Split into the Crate List (35\%) and
+  the Detail/View pane (65\%).
+\item
+  \textbf{Status/Command Bar (Bottom):} Displays the current application
+  mode, status messages, and command input.
+\end{enumerate}
 
-\section{Support My Work}\label{support-my-work}
+\subsection{Caching Mechanism}\label{caching-mechanism}
 
-This project is free and open source.\\
-If you'd like to support its development:
+\texttt{ratcrates} relies on a local JSON data file, stored in your
+system's cache directory (\texttt{\textasciitilde{}/.cache/ratcrate} on
+Linux/macOS).
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\begin{itemize}
+\tightlist
+\item
+  On startup, it checks if the cache is older than \textbf{1 day}
+  (\texttt{CACHE\_MAX\_AGE\_DAYS:\ u64\ =\ 1} in \texttt{src/cache.rs}).
+\item
+  If stale or missing, it \textbf{automatically downloads} the latest
+  data.
+\item
+  Otherwise, it loads the data from the local cache instantly.
+\end{itemize}
 
-\href{https://ko-fi.com/rvbugged}{\pandocbounded{\includesvg[keepaspectratio]{index_files/mediabag/githubbutton_sm.svg}}}
-~~~~~~~~~~~~
-\href{https://github.com/sponsors/ratcrate}{\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/rvbug.pdf}}}
+\section{⌨️ Controls: Normal Mode}\label{controls-normal-mode}
+
+This is the default mode for navigation.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Keybind
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{j} or \texttt{↓} & Move down & Select the next crate in the
+list. \\
+\texttt{k} or \texttt{↑} & Move up & Select the previous crate in the
+list. \\
+\texttt{Ctrl+d} & Page down & Jump down by 10 items
+(\texttt{jump\ =\ 10}). \\
+\texttt{Ctrl+u} & Page up & Jump up by 10 items
+(\texttt{jump\ =\ 10}). \\
+\texttt{g} & Go to top & Select the first item
+(\texttt{list\_state.select(Some(0))}). \\
+\texttt{G} & Go to bottom & Select the last item
+(\texttt{list\_state.select(Some(len\ -\ 1))}). \\
+\texttt{TAB} & Toggle View & Switches between \textbf{List} and
+\textbf{Stats} views. \\
+\texttt{?} & Toggle Help & Toggles the \textbf{Help} view. \\
+\texttt{:} & Enter Command Mode & Begin typing a command. \\
+\texttt{/} & Quick Search & Enter Command Mode with \texttt{:search}
+pre-typed. \\
+\texttt{q} & Quit & Exit the application gracefully. \\
+\end{longtable}
+
+\section{📊 Views}\label{views}
+
+\subsection{\texorpdfstring{1. List + Detail View
+(\texttt{View::List})}{1. List + Detail View (View::List)}}\label{list-detail-view-viewlist}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{List Pane:} Shows the crate name, core/community icon
+  (\texttt{⭐} or \texttt{📦}), total downloads (\texttt{↓}), and weekly
+  downloads (\texttt{📈}).
+\item
+  \textbf{Detail Pane:} Shows full metadata for the currently selected
+  crate, including description (with word wrap), version, download
+  stats, installation command, and links.
+\end{itemize}
+
+\subsection{\texorpdfstring{2. Statistics View
+(\texttt{View::Stats})}{2. Statistics View (View::Stats)}}\label{statistics-view-viewstats}
+
+Toggled by pressing \texttt{TAB}. This view aggregates data across all
+known crates:
+
+\begin{itemize}
+\tightlist
+\item
+  Total packages, core libraries, and community packages count.
+\item
+  Total and average downloads.
+\item
+  A simple bar chart visualizing the core vs.~community distribution.
+\item
+  The \textbf{Top 5 Most Downloaded} crates.
+\end{itemize}
+
+\subsection{\texorpdfstring{3. Help View
+(\texttt{View::Help})}{3. Help View (View::Help)}}\label{help-view-viewhelp}
+
+Toggled by pressing \texttt{?}. Provides an on-screen reference for all
+keybindings and commands.
+
+\section{⚡ Commands: Command Mode}\label{commands-command-mode}
+
+Pressing \texttt{:} transitions the TUI into \textbf{Command Mode},
+which is indicated by the \texttt{COMMAND} badge in the status bar.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Arguments
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{q}, \texttt{quit} & & Exit the application. \\
+\texttt{all} & & Resets the list to show all available crates. \\
+\texttt{core} & & Filters the list to show only crates marked as a Core
+Library (\texttt{is\_core\_library:\ true}). \\
+\texttt{top} & \texttt{{[}N{]}} & Filters the list to show the top
+\texttt{N} crates ranked by \textbf{Total Downloads}. Default \texttt{N}
+is 10. \\
+\texttt{recent} & \texttt{{[}N{]}} & Filters the list to show the top
+\texttt{N} crates ranked by \textbf{Weekly Downloads}
+(\texttt{recent\_downloads}). \\
+\texttt{new} & \texttt{{[}N{]}} & Filters the list to show the top
+\texttt{N} newest crates (sorted by \texttt{created\_at}). \\
+\texttt{search} & \texttt{\textless{}query\textgreater{}} & Filters
+crates where the \texttt{name} or \texttt{description} contains the
+query string (case-insensitive). \\
+\end{longtable}
+
+\subsection{Command Examples}\label{command-examples}
+
+```bash :top 5 \# Show the 5 most downloaded crates :recent 20 \# Show
+the 20 crates with the highest weekly downloads :search logging \# Find
+crates related to logging /tui-rs \# Quick search for `tui-rs' :core \#
+Show only core libraries
+
+\chapter{Development \& Contribution}\label{development-contribution}
+
+\chapter{🏗️ Development \&
+Contribution}\label{development-contribution-1}
+
+We welcome and appreciate all forms of contribution, from bug reports
+and feature suggestions to code submissions!
+
+\section{Project Structure}\label{project-structure}
+
+The application is structured into a few key Rust modules:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+File/Module
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{src/main.rs} & \textbf{TUI Logic.} Contains the \texttt{App}
+state, all TUI rendering (\texttt{ui}, \texttt{render\_list},
+\texttt{render\_detail}, etc.), and the event handling loop
+(\texttt{handle\_events}). This is where you'll find the Ratatui
+code. \\
+\texttt{src/cache.rs} & \textbf{Data Layer.} Manages the remote data
+fetching (\texttt{download\_fresh\_data}) and local caching
+(\texttt{load\_from\_cache}, \texttt{is\_cache\_stale}). Uses
+\texttt{reqwest} and \texttt{dirs}. \\
+\texttt{src/types.rs} & \textbf{Data Types.} Defines the
+\texttt{CratePackage}, \texttt{Metadata}, and \texttt{CratesData}
+structs that mirror the remote JSON data structure. Uses
+\texttt{serde}. \\
+\texttt{Cargo.toml} & Project manifest. Key dependencies are
+\texttt{ratatui} (for the TUI framework), \texttt{crossterm} (for
+terminal backend), and \texttt{reqwest} (for networking). \\
+\end{longtable}
+
+\section{Build \& Test}\label{build-test}
+
+To get your development environment ready:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Clone the repository:}
+  \texttt{bash\ \ \ \ \ git\ clone\ {[}https://github.com/rvbug/ratcrates.git{]}(https://github.com/rvbug/ratcrates.git)\ \ \ \ \ cd\ ratcrates}
+\item
+  \textbf{Run in development mode:} \texttt{bash\ \ \ \ \ cargo\ run}
+\item
+  \textbf{Run unit tests (mainly for caching):}
+  \texttt{bash\ \ \ \ \ cargo\ test}
+\end{enumerate}
+
+\section{Contributing Code}\label{contributing-code}
+
+If you have a bug fix or feature you'd like to implement:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Fork} the repository on GitHub.
+\item
+  \textbf{Create a new branch} for your work:
+  \texttt{bash\ \ \ \ \ git\ checkout\ -b\ feature/my-new-feature}
+\item
+  \textbf{Implement} your changes.
+\item
+  \textbf{Test} your changes thoroughly.
+\item
+  \textbf{Commit} your changes using a descriptive commit message (e.g.,
+  following the
+  \href{https://www.conventionalcommits.org/en/v1.0.0/}{Conventional
+  Commits} specification).
+  \texttt{bash\ \ \ \ \ git\ commit\ -m\ \textquotesingle{}feat:\ add\ jump\ to\ last\ search\ result\ command\textquotesingle{}}
+\item
+  \textbf{Push} your branch and open a \textbf{Pull Request} against the
+  \texttt{main} branch of the original repository.
+\end{enumerate}
+
+\section{Adding New Commands}\label{adding-new-commands}
+
+To add a new command (e.g., \texttt{:mycmd}), you would modify
+\texttt{src/main.rs}: Extend \textbf{\texttt{execute\_command}:} Add a
+new \texttt{match} arm in the \texttt{execute\_command} function within
+the \texttt{App} implementation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{// In App::execute\_command}
+    \ControlFlowTok{match}\NormalTok{ command }\OperatorTok{\{}
+        \CommentTok{// ... existing commands}
+        \StringTok{"mycmd"} \OperatorTok{=\textgreater{}} \OperatorTok{\{}
+            \CommentTok{// Your new command logic goes here}
+            \KeywordTok{self}\OperatorTok{.}\NormalTok{status\_message }\OperatorTok{=} \StringTok{"Executed mycmd!"}\OperatorTok{.}\NormalTok{to\_string()}\OperatorTok{;}
+        \OperatorTok{\}}
+        \CommentTok{// ...}
+    \OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  **Update `render\_help`:** Add the new command to the list in the
+  `render\_help` function to ensure it appears in the in-app help view.
+\end{enumerate}
 
 \part{doc2quarto}
 
@@ -2575,6 +2866,97 @@ Regex to capture: ::: (1:type) (2:optional title) let admonition\_start
 \end{Highlighting}
 \end{Shaded}
 
+\part{qbanner}
+
+\chapter{Qbanner: Terminal Banners for CLI
+Applications}\label{qbanner-terminal-banners-for-cli-applications}
+
+Stylish, Resizable, and Color-Ready ASCII Art Banners
+
+\hfill\break
+
+\section{Introduction}\label{introduction-2}
+
+\texttt{qbanner} is a simple yet powerful Rust library designed to
+display highly customizable ASCII art banners in command-line interface
+(CLI) applications. It uses a modern builder pattern, supports Unicode,
+gradients, and automatically adjusts to fit the user's terminal size.
+
+\pandocbounded{\includegraphics[keepaspectratio]{qbanner/./images/demo.gif}}
+
+\subsection{Key Features}\label{key-features-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Builder Pattern:} Easy-to-use, chainable methods for
+  configuration.
+\item
+  \textbf{Terminal Awareness:} Automatically detects terminal width for
+  centering and resizing.
+\item
+  \textbf{Color \& Gradient:} Support for standard ANSI colors, bright
+  colors, and dynamic RGB gradients.
+\item
+  \textbf{Fonts:} Includes modern Unicode, classic Standard, and compact
+  Small fonts.
+\item
+  \textbf{Fallback Logic:} Gracefully falls back to smaller fonts or
+  plain text if the banner exceeds terminal width.
+\item
+  \textbf{Screen Management:} Option to automatically clear the screen
+  before rendering.
+\end{itemize}
+
+\subsection{Installation}\label{installation}
+
+Add \texttt{qbanner} and its dependencies (if necessary, though
+\texttt{qbanner} bundles most of its needs) to your \texttt{Cargo.toml}:
+
+```toml
+
+{[}dependencies{]} qbanner = \{ path = ``path/to/qbanner'' \} \# If
+developing locally \# qbanner = ``1.0'' \# If published on crates.io
+owo-colors = ``3.5'' terminal\_size = ``0.3''
+
+```
+
+\subsection{Quick Start}\label{quick-start}
+
+The core of the library is the \texttt{Banner} struct, configured
+entirely through method chaining.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{use} \PreprocessorTok{qbanner::}\OperatorTok{\{}\NormalTok{Banner}\OperatorTok{,}\NormalTok{ Color}\OperatorTok{,}\NormalTok{ Alignment}\OperatorTok{\};}
+
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \CommentTok{// 1. Simple, centered, cyan Unicode banner}
+    \PreprocessorTok{Banner::}\NormalTok{new(}\StringTok{"Welcome"}\NormalTok{)}
+        \OperatorTok{.}\NormalTok{color(}\PreprocessorTok{Color::}\NormalTok{Cyan)}
+        \OperatorTok{.}\NormalTok{alignment(}\PreprocessorTok{Alignment::}\NormalTok{Center)}
+        \OperatorTok{.}\NormalTok{render()}\OperatorTok{;}
+
+    \CommentTok{// 2. Banner with an RGB gradient and a subtitle}
+    \PreprocessorTok{Banner::}\NormalTok{new(}\StringTok{"DevOps"}\NormalTok{)}
+        \OperatorTok{.}\NormalTok{gradient(}\PreprocessorTok{vec!}\NormalTok{[}
+\NormalTok{            (}\DecValTok{255}\OperatorTok{,} \DecValTok{100}\OperatorTok{,} \DecValTok{0}\NormalTok{)}\OperatorTok{,} \CommentTok{// Orange}
+\NormalTok{            (}\DecValTok{255}\OperatorTok{,} \DecValTok{0}\OperatorTok{,} \DecValTok{100}\NormalTok{)  }\CommentTok{// Pink}
+\NormalTok{        ])}
+        \OperatorTok{.}\NormalTok{subtitle(}\StringTok{"CI/CD Pipeline v2.1"}\NormalTok{)}
+        \OperatorTok{.}\NormalTok{render()}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{References}\label{references}
+
+\begin{itemize}
+\item
+  API Reference
+\item
+  Developer Notes
+\end{itemize}
 
 
 

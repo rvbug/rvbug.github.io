@@ -9,6 +9,8 @@ toc: false
 
 Built entirely in Rust, `ratcrates` is an example of the clean and efficient TUIs you can build with `ratatui` itself.
 
+![](./images/ratcrate-tui.gif)
+
 ### ✨ Key Features
 
 -   **Instant Access:** Fast data retrieval using local caching, ensuring the application is responsive.
