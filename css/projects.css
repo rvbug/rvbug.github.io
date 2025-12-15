@@ -1063,7 +1063,7 @@ footer a {
 
 /* Development Status (Yellow/Orange) - Optional */
 .status-tag.dev {
-    color: #f39c12; /* Orange text */
+    color: #955f08; /* Orange text */
     background-color: rgba(243, 156, 18, 0.1); /* Light orange background */
 }
 .status-tag.dev .status-dot {
