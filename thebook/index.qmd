@@ -119,10 +119,9 @@ A helper tool for turning rough notes, markdown, or code comments into\
 
 ------------------------------------------------------------------------
 
-
 ::::: columns
 ::: {.column width="50%"}
-### 🎛 QBanner 
+### 🎛 QBanner
 
 A **Ratatui-based TUI** for browsing Ratatui crates.\
 Very meta. Very fun.
@@ -146,4 +145,3 @@ A helper tool for turning rough notes, markdown, or code comments into\
 ➡️ [Coming Soons »]()
 :::
 :::::
-

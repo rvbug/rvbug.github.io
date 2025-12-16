@@ -54,10 +54,15 @@ If you’re reading it as someone else:
 You can find me here:
 
 -   🐙 GitHub: <https://github.com/rvbug>\
+
 -   🌐 Website: <https://qubitai.in>\
+
 -   🐦 X (Twitter): <https://x.com/rvbugged>\
--   💼 LinkedIn: *(add your real profile URL here)*
 
-## <br> <br>
+-   💼 LinkedIn: <https://www.linkedin.com/in/rvbugged/>\
 
-[![Ko-Fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rvbugged)              [![Github Sponsors](https://img.shields.io/github/sponsors/rvbug)](https://github.com/sponsors/ratcrate)
+-   🐙 Mastadon: [https://mastodon.social/\@rvbugged](https://mastodon.social/@rvbugged){.uri}\
+
+## Sponsor
+
+[![Ko-Fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rvbugged)

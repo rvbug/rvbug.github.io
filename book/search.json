@@ -573,5 +573,55 @@
       "rat-tui",
       "<span class='chapter-number'>27</span>  <span class='chapter-title'>Development & Contribution</span>"
     ]
+  },
+  {
+    "objectID": "about-author.html",
+    "href": "about-author.html",
+    "title": "Author",
+    "section": "",
+    "text": "About the Author\nHi, I’m Rakesh Venkat — a developer, researcher, and lifelong tinkerer who likes building tools that:\nMost of the projects in this book revolves around:\nI think of this book as a logbook of the systems I’m building and how they fit together.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+    ]
+  },
+  {
+    "objectID": "about-author.html#what-im-trying-to-do-with-these-projects",
+    "href": "about-author.html#what-im-trying-to-do-with-these-projects",
+    "title": "Author",
+    "section": "What I’m Trying to Do With These Projects",
+    "text": "What I’m Trying to Do With These Projects\nThe broader goals behind these tools:\n\nBuild high-leverage tools that save time for other developers.\n\nCollect and organize knowledge (like the Ratatui ecosystem) so people don’t have to rediscover the same things repeatedly.\nTreat documentation as a first-class artifact, not an afterthought.\n\nratcrate-core is one piece of that: a way to turn a noisy, low-level index into a structured, queryable view of an ecosystem.\nFuture projects like ratcrate-cli, ratcrate-tui, and doc2quarto are meant to build on top of that foundation.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+    ]
+  },
+  {
+    "objectID": "about-author.html#a-note-to-future-me-and-future-readers",
+    "href": "about-author.html#a-note-to-future-me-and-future-readers",
+    "title": "Author",
+    "section": "A Note to Future Me (and Future Readers)",
+    "text": "A Note to Future Me (and Future Readers)\nThis book is partly a gift to future me: so I can come back in six months, read a chapter, and instantly remember why I made certain decisions.\nIf you’re reading it as someone else:\n\nI hope it helps you understand the design of these projects.\nI’d love it if it inspires you to build your own tools, or contribute ideas and improvements.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+    ]
+  },
+  {
+    "objectID": "about-author.html#links",
+    "href": "about-author.html#links",
+    "title": "Author",
+    "section": "Links",
+    "text": "Links\nYou can find me here:\n\n🐙 GitHub: https://github.com/rvbug\n\n🌐 Website: https://qubitai.in\n\n🐦 X (Twitter): https://x.com/rvbugged\n\n💼 LinkedIn: https://www.linkedin.com/in/rvbugged/\n\n🐙 Mastadon: https://mastodon.social/@rvbugged",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+    ]
+  },
+  {
+    "objectID": "about-author.html#sponsor",
+    "href": "about-author.html#sponsor",
+    "title": "Author",
+    "section": "Sponsor",
+    "text": "Sponsor\n\n\n\nKo-Fi",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+    ]
   }
 ]
