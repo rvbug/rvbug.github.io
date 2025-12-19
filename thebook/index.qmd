@@ -27,13 +27,13 @@ as a user or contributor, I hope it gives you clear insight into how everything 
 
 # Roadmap & Future Projects
 
-This hub is designed to grow over time as more tools and experiments appear.
+This hub is designed to grow over time as more tools , research, libraries experiments appear.
 
 Planned additions include:
 
--   🧪 Experimental tools around Rust / Ratatui / docs automation\
--   🧰 Libraries for working with generated JSON data\
--   🗂 More utilities for automating documentation workflows
+-   🧪 Experimental tools automation, research, quantum computing etc\
+-   🧰 Libraries or platform to enhance productivity\
+-   🗂 More utilities on workflows automation
 
 When a new project is created, it will get:
 
@@ -47,7 +47,7 @@ When a new project is created, it will get:
 
 I’m **Rakesh V**, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.
 
-I maintain the projects in this “book” — most of them in Rust, some around Ratatui, and others around documentation and tooling.
+I maintain the projects in this “book”
 
 If you’d like to know more about my background, how these tools came about, and how to support my work, see:
 
@@ -64,10 +64,16 @@ If you’d like to know more about my background, how these tools came about, an
 The **engine** behind the Ratatui ecosystem index.
 
 -   Scans the crates.io sparse index\
+
 -   Finds all crates depending on `ratatui`\
+
 -   Enriches them with crates.io metadata\
--   Applies smart caching (version + timestamp based)\
+
+-   Applies smart caching\
+
 -   Produces `ratcrate.json` for other tools to consume
+
+-   To be open sourced soon
 
 ➡️ [Read the ratcrate-core docs »](rat-core/index.qmd)
 :::
@@ -79,7 +85,7 @@ A command-line interface for exploring the Ratatui ecosystem.
 
 -   Reads `ratcrate.json` produced by `ratcrate-core`\
 -   Search and filter Ratatui crates from the terminal\
--   Show stats, links, and crate details in a compact way
+-   Show stats, links, and crate details
 
 ➡️ [Read the ratcrate-cli docs »](rat-cli/index.qmd)
 :::
@@ -89,7 +95,7 @@ A command-line interface for exploring the Ratatui ecosystem.
 
 ::::: columns
 ::: {.column width="50%"}
-### 🎛 ratcrate-tui *(planned)*
+### 🎛 ratcrate-tui
 
 A **Ratatui-based TUI** for browsing Ratatui crates.\
 Very meta. Very fun.
@@ -109,8 +115,6 @@ A helper tool for turning rough notes, markdown, or code comments into\
 **structured Quarto documentation**.
 
 -   Convert notes into `.qmd` skeletons\
--   Generate chapter structures\
--   Insert placeholders for diagrams/screenshots\
 -   Ideal for standardizing docs across all projects
 
 ➡️ [Read the doc2quarto docs »](doc2quarto/index.qmd)
@@ -121,26 +125,21 @@ A helper tool for turning rough notes, markdown, or code comments into\
 
 ::::: columns
 ::: {.column width="50%"}
-### 🎛 QBanner
+### 🎛 QBanner (Coming Soon)
 
-A **Ratatui-based TUI** for browsing Ratatui crates.\
-Very meta. Very fun.
+A light-weight **rust based** library for CLI Banners
 
--   Terminal UI built with Ratatui\
--   Interactive search and filters\
--   Crate detail views with stats and links\
--   Powered by `ratcrate-core` data
+-   Works on all rust cli projects and easy to use
+
+-   Supports Ratatui basic and advanced layouts\
+
+-   Works on **shell scripts** too!
 
 ➡️ [Read the Qbanner Libraryi docs »](qbanner/index.qmd)
 :::
 
 ::: {.column width="50%"}
 ### ☁ QSwitch (Planned)
-
-A helper tool for turning rough notes, markdown, or code comments into\
-**structured Quarto documentation**.
-
--   Optimized workflow
 
 ➡️ [Coming Soons »]()
 :::

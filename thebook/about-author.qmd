@@ -1,7 +1,9 @@
 ---
-title: "Author"
+title: " "
 format: html
 ---
+
+![](./images/Banner.png){align="center" fig-align="center" width="50%"}
 
 # About the Author
 
@@ -16,7 +18,7 @@ Most of the projects in this book revolves around:
 -   🦀 **Rust** and terminal tools\
 -   🧪 **Ratatui** TUIs (very meta)\
 -   📚 **Documentation** and knowledge organization\
--   🧩 Small research & experiments that later become libraries or tools
+-   🧩 Research & experiments that later become libraries or tools
 
 I think of this book as a logbook of the systems I’m building and how they fit together.
 
@@ -29,10 +31,6 @@ The broader goals behind these tools:
 -   Build **high-leverage tools** that save time for other developers.\
 -   Collect and organize knowledge (like the Ratatui ecosystem) so people don’t have to rediscover the same things repeatedly.
 -   Treat documentation as a first-class artifact, not an afterthought.
-
-`ratcrate-core` is one piece of that: a way to turn a noisy, low-level index into a structured, queryable view of an ecosystem.
-
-Future projects like `ratcrate-cli`, `ratcrate-tui`, and `doc2quarto` are meant to build on top of that foundation.
 
 ------------------------------------------------------------------------
 

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Book",
     "section": "",
-    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards above to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools and experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools around Rust / Ratatui / docs automation\n\n🧰 Libraries for working with generated JSON data\n\n🗂 More utilities for automating documentation workflows\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book” — most of them in Rust, some around Ratatui, and others around documentation and tooling.\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching (version + timestamp based)\n\nProduces ratcrate.json for other tools to consume\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details in a compact way\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui (planned)\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nGenerate chapter structures\n\nInsert placeholders for diagrams/screenshots\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »\n\n\n\n\n\n\n\n🎛 QBanner\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the Qbanner Libraryi docs »\n\n\n\n☁ QSwitch (Planned)\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nOptimized workflow\n\n➡️ Coming Soons »",
+    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards above to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools , research, libraries experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools automation, research, quantum computing etc\n\n🧰 Libraries or platform to enhance productivity\n\n🗂 More utilities on workflows automation\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book”\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching\n\nProduces ratcrate.json for other tools to consume\nTo be open sourced soon\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »\n\n\n\n\n\n\n\n🎛 QBanner (Coming Soon)\nA light-weight rust based library for CLI Banners\n\nWorks on all rust cli projects and easy to use\nSupports Ratatui basic and advanced layouts\n\nWorks on shell scripts too!\n\n➡️ Read the Qbanner Libraryi docs »\n\n\n\n☁ QSwitch (Planned)\n➡️ Coming Soons »",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -581,7 +581,7 @@
     "section": "",
     "text": "About the Author\nHi, I’m Rakesh Venkat — a developer, researcher, and lifelong tinkerer who likes building tools that:\nMost of the projects in this book revolves around:\nI think of this book as a logbook of the systems I’m building and how they fit together.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>about-author.html</span>"
     ]
   },
   {
@@ -589,9 +589,9 @@
     "href": "about-author.html#what-im-trying-to-do-with-these-projects",
     "title": "Author",
     "section": "What I’m Trying to Do With These Projects",
-    "text": "What I’m Trying to Do With These Projects\nThe broader goals behind these tools:\n\nBuild high-leverage tools that save time for other developers.\n\nCollect and organize knowledge (like the Ratatui ecosystem) so people don’t have to rediscover the same things repeatedly.\nTreat documentation as a first-class artifact, not an afterthought.\n\nratcrate-core is one piece of that: a way to turn a noisy, low-level index into a structured, queryable view of an ecosystem.\nFuture projects like ratcrate-cli, ratcrate-tui, and doc2quarto are meant to build on top of that foundation.",
+    "text": "What I’m Trying to Do With These Projects\nThe broader goals behind these tools:\n\nBuild high-leverage tools that save time for other developers.\n\nCollect and organize knowledge (like the Ratatui ecosystem) so people don’t have to rediscover the same things repeatedly.\nTreat documentation as a first-class artifact, not an afterthought.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>about-author.html</span>"
     ]
   },
   {
@@ -601,7 +601,7 @@
     "section": "A Note to Future Me (and Future Readers)",
     "text": "A Note to Future Me (and Future Readers)\nThis book is partly a gift to future me: so I can come back in six months, read a chapter, and instantly remember why I made certain decisions.\nIf you’re reading it as someone else:\n\nI hope it helps you understand the design of these projects.\nI’d love it if it inspires you to build your own tools, or contribute ideas and improvements.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>about-author.html</span>"
     ]
   },
   {
@@ -611,7 +611,7 @@
     "section": "Links",
     "text": "Links\nYou can find me here:\n\n🐙 GitHub: https://github.com/rvbug\n\n🌐 Website: https://qubitai.in\n\n🐦 X (Twitter): https://x.com/rvbugged\n\n💼 LinkedIn: https://www.linkedin.com/in/rvbugged/\n\n🐙 Mastadon: https://mastodon.social/@rvbugged",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>about-author.html</span>"
     ]
   },
   {
@@ -621,7 +621,7 @@
     "section": "Sponsor",
     "text": "Sponsor\n\n\n\nKo-Fi",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Author</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>about-author.html</span>"
     ]
   }
 ]

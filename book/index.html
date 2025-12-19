@@ -418,14 +418,14 @@ as a user or contributor, I hope it gives you clear insight into how everything 
 </section>
 <section id="roadmap-future-projects" class="level1">
 <h1>Roadmap &amp; Future Projects</h1>
-<p>This hub is designed to grow over time as more tools and experiments appear.</p>
+<p>This hub is designed to grow over time as more tools , research, libraries experiments appear.</p>
 <p>Planned additions include:</p>
 <ul>
-<li>🧪 Experimental tools around Rust / Ratatui / docs automation<br>
+<li>🧪 Experimental tools automation, research, quantum computing etc<br>
 </li>
-<li>🧰 Libraries for working with generated JSON data<br>
+<li>🧰 Libraries or platform to enhance productivity<br>
 </li>
-<li>🗂 More utilities for automating documentation workflows</li>
+<li>🗂 More utilities on workflows automation</li>
 </ul>
 <p>When a new project is created, it will get:</p>
 <ul>
@@ -442,7 +442,7 @@ as a user or contributor, I hope it gives you clear insight into how everything 
 <section id="about-me" class="level1">
 <h1>About Me</h1>
 <p>I’m <strong>Rakesh V</strong>, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.</p>
-<p>I maintain the projects in this “book” — most of them in Rust, some around Ratatui, and others around documentation and tooling.</p>
+<p>I maintain the projects in this “book”</p>
 <p>If you’d like to know more about my background, how these tools came about, and how to support my work, see:</p>
 <p>➡️ <a href="./about-author.html">Read more in “Author” section</a></p>
 <p><br><br></p>
@@ -455,15 +455,16 @@ as a user or contributor, I hope it gives you clear insight into how everything 
 <h3 class="anchored" data-anchor-id="ratcrate-core">🐀 ratcrate-core</h3>
 <p>The <strong>engine</strong> behind the Ratatui ecosystem index.</p>
 <ul>
-<li>Scans the crates.io sparse index<br>
-</li>
-<li>Finds all crates depending on <code>ratatui</code><br>
-</li>
-<li>Enriches them with crates.io metadata<br>
-</li>
-<li>Applies smart caching (version + timestamp based)<br>
-</li>
-<li>Produces <code>ratcrate.json</code> for other tools to consume</li>
+<li><p>Scans the crates.io sparse index<br>
+</p></li>
+<li><p>Finds all crates depending on <code>ratatui</code><br>
+</p></li>
+<li><p>Enriches them with crates.io metadata<br>
+</p></li>
+<li><p>Applies smart caching<br>
+</p></li>
+<li><p>Produces <code>ratcrate.json</code> for other tools to consume</p></li>
+<li><p>To be open sourced soon</p></li>
 </ul>
 <p>➡️ <a href="./rat-core/index.html">Read the ratcrate-core docs »</a></p>
 </section>
@@ -476,7 +477,7 @@ as a user or contributor, I hope it gives you clear insight into how everything 
 </li>
 <li>Search and filter Ratatui crates from the terminal<br>
 </li>
-<li>Show stats, links, and crate details in a compact way</li>
+<li>Show stats, links, and crate details</li>
 </ul>
 <p>➡️ <a href="./rat-cli/index.html">Read the ratcrate-cli docs »</a></p>
 </section>
@@ -485,8 +486,8 @@ as a user or contributor, I hope it gives you clear insight into how everything 
 <hr>
 <div class="columns">
 <div class="column" style="width:50%;">
-<section id="ratcrate-tui-planned" class="level3">
-<h3 class="anchored" data-anchor-id="ratcrate-tui-planned">🎛 ratcrate-tui <em>(planned)</em></h3>
+<section id="ratcrate-tui" class="level3">
+<h3 class="anchored" data-anchor-id="ratcrate-tui">🎛 ratcrate-tui</h3>
 <p>A <strong>Ratatui-based TUI</strong> for browsing Ratatui crates.<br>
 Very meta. Very fun.</p>
 <ul>
@@ -508,10 +509,6 @@ Very meta. Very fun.</p>
 <ul>
 <li>Convert notes into <code>.qmd</code> skeletons<br>
 </li>
-<li>Generate chapter structures<br>
-</li>
-<li>Insert placeholders for diagrams/screenshots<br>
-</li>
 <li>Ideal for standardizing docs across all projects</li>
 </ul>
 <p>➡️ <a href="./doc2quarto/index.html">Read the doc2quarto docs »</a></p>
@@ -521,29 +518,20 @@ Very meta. Very fun.</p>
 <hr>
 <div class="columns">
 <div class="column" style="width:50%;">
-<section id="qbanner" class="level3">
-<h3 class="anchored" data-anchor-id="qbanner">🎛 QBanner</h3>
-<p>A <strong>Ratatui-based TUI</strong> for browsing Ratatui crates.<br>
-Very meta. Very fun.</p>
+<section id="qbanner-coming-soon" class="level3">
+<h3 class="anchored" data-anchor-id="qbanner-coming-soon">🎛 QBanner (Coming Soon)</h3>
+<p>A light-weight <strong>rust based</strong> library for CLI Banners</p>
 <ul>
-<li>Terminal UI built with Ratatui<br>
-</li>
-<li>Interactive search and filters<br>
-</li>
-<li>Crate detail views with stats and links<br>
-</li>
-<li>Powered by <code>ratcrate-core</code> data</li>
+<li><p>Works on all rust cli projects and easy to use</p></li>
+<li><p>Supports Ratatui basic and advanced layouts<br>
+</p></li>
+<li><p>Works on <strong>shell scripts</strong> too!</p></li>
 </ul>
 <p>➡️ <a href="./qbanner/index.html">Read the Qbanner Libraryi docs »</a></p>
 </section>
 </div><div class="column" style="width:50%;">
 <section id="qswitch-planned" class="level3">
 <h3 class="anchored" data-anchor-id="qswitch-planned">☁ QSwitch (Planned)</h3>
-<p>A helper tool for turning rough notes, markdown, or code comments into<br>
-<strong>structured Quarto documentation</strong>.</p>
-<ul>
-<li>Optimized workflow</li>
-</ul>
 <p>➡️ <a href="">Coming Soons »</a></p>
 </section>
 </div>
