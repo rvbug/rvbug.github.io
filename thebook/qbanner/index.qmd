@@ -9,6 +9,8 @@ format:
 
 ## Introduction
 
+**(Tentative Release Date : 22nd Jan)**
+
 `qbanner` is a simple yet powerful Rust library designed to display highly customizable ASCII art banners in command-line interface (CLI) applications. It uses a modern builder pattern, supports Unicode, gradients, and automatically adjusts to fit the user's terminal size.
 
 ![](./images/demo.gif)
@@ -21,20 +23,17 @@ format:
 -   **Fonts:** Includes modern Unicode, classic Standard, and compact Small fonts.
 -   **Fallback Logic:** Gracefully falls back to smaller fonts or plain text if the banner exceeds terminal width.
 -   **Screen Management:** Option to automatically clear the screen before rendering.
+-   **Shell Script:** Supports shell Scripts
+-   **Embedded Systems:** Works on Embedded devices
 
 ### Installation
 
-Add `qbanner` and its dependencies (if necessary, though `qbanner` bundles most of its needs) to your `Cargo.toml`:
+Add `qbanner`to your `Cargo.toml`:
 
-\`\`\`toml
-
-\[dependencies\]
-qbanner = { path = "path/to/qbanner" } \# If developing locally
-# qbanner = "1.0" \# If published on crates.io
-owo-colors = "3.5"
-terminal_size = "0.3"
-
-\`\`\`
+``` toml
+[dependencies]
+qbanner = "0.1"
+```
 
 ### Quick Start
 

@@ -31,7 +31,7 @@ color(self, color: Color) -> Self
 Sets a single, solid color for the banner text. This overrides any previously set gradient.
 
 | Parameter | Type | Description |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | `color` | `Color` | An enum defining the ANSI color (e.g., `Color::Cyan`, `Color::BrightRed`). |
 
 ## Set Gradient
@@ -45,7 +45,7 @@ gradient(self, colors: Vec<(u8, u8, u8)>) -> Self
 Sets an RGB color gradient. The color of each line of the banner is interpolated between the colors provided in the vector. This overrides any previously set single color.
 
 | Parameter | Type | Description |
-|:-----------------------|:-----------------------|:-----------------------|
+|:---|:---|:---|
 | `colors` | `Vec<(u8, u8, u8)>` | A vector of RGB tuples (0-255). Must contain at least two colors for interpolation. |
 
 ## Subtitle
@@ -69,7 +69,7 @@ alignment(self, alignment: Alignment) -> Self
 Sets the alignment of the banner within the terminal width.
 
 | Parameter | Type | Options |
-|:-----------------------|:-----------------------|:-----------------------|
+|:---|:---|:---|
 | `alignment` | `Alignment` | `Alignment::Left`, `Alignment::Center`, `Alignment::Right` |
 
 ## Set Font
