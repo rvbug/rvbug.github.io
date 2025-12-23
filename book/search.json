@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Book",
     "section": "",
-    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards above to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools , research, libraries experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools automation, research, quantum computing etc\n\n🧰 Libraries or platform to enhance productivity\n\n🗂 More utilities on workflows automation\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book”\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching\n\nProduces ratcrate.json for other tools to consume\nTo be open sourced soon\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »\n\n\n\n\n\n\n\n🎛 QBanner (Coming Soon)\nA light-weight rust based library for CLI Banners\n\nWorks on all rust cli projects and easy to use\nSupports Ratatui basic and advanced layouts\n\nWorks on shell scripts too!\n\n➡️ Read the Qbanner Libraryi docs »\n\n\n\n☁ QSwitch (Planned)\n➡️ Coming Soons »",
+    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards below to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools , research, libraries experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools automation, research, quantum computing etc\n\n🧰 Libraries or platform to enhance productivity\n\n🗂 More utilities on workflows automation\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book”\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching\n\nProduces ratcrate.json for other tools to consume\nTo be open sourced soon\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »\n\n\n\n\n\n\n\n↯ QBanner (Coming Soon)\nA light-weight rust based library for CLI Banners\n\nWorks on all rust cli projects and easy to use\nSupports Ratatui basic and advanced layouts\n\nWorks on shell scripts too!\n\n➡️ Read the Qbanner Libraryi docs »\n\n\n\n🎚️ QSwitch (Planned)\n➡️ Coming Soon »\n\n\n\n\n\n\n\n📡 Challenges (Coming Soon)\nDocumenting common challenges during these projects\n➡️ Coming Soon\n\n\n\n📚 Books I read (Coming Soon)\n➡️ Coming Soon",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -425,10 +425,10 @@
     "href": "qbanner/index.html",
     "title": "Qbanner: Terminal Banners for CLI Applications",
     "section": "",
-    "text": "Introduction\nqbanner is a simple yet powerful Rust library designed to display highly customizable ASCII art banners in command-line interface (CLI) applications. It uses a modern builder pattern, supports Unicode, gradients, and automatically adjusts to fit the user’s terminal size.",
+    "text": "Introduction\n(Tentative Release Date : 22nd Jan)\nqbanner is a simple yet powerful Rust library designed to display highly customizable ASCII art banners in command-line interface (CLI) applications. It uses a modern builder pattern, supports Unicode, gradients, and automatically adjusts to fit the user’s terminal size.",
     "crumbs": [
       "qbanner",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Qbanner: Terminal Banners for CLI Applications</span>"
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Qbanner: Terminal Banners for CLI Applications</span>"
     ]
   },
   {
@@ -436,10 +436,10 @@
     "href": "qbanner/index.html#introduction",
     "title": "Qbanner: Terminal Banners for CLI Applications",
     "section": "",
-    "text": "Key Features\n\nBuilder Pattern: Easy-to-use, chainable methods for configuration.\nTerminal Awareness: Automatically detects terminal width for centering and resizing.\nColor & Gradient: Support for standard ANSI colors, bright colors, and dynamic RGB gradients.\nFonts: Includes modern Unicode, classic Standard, and compact Small fonts.\nFallback Logic: Gracefully falls back to smaller fonts or plain text if the banner exceeds terminal width.\nScreen Management: Option to automatically clear the screen before rendering.\n\n\n\nInstallation\nAdd qbanner and its dependencies (if necessary, though qbanner bundles most of its needs) to your Cargo.toml:\n```toml\n[dependencies] qbanner = { path = “path/to/qbanner” } # If developing locally # qbanner = “1.0” # If published on crates.io owo-colors = “3.5” terminal_size = “0.3”\n```\n\n\nQuick Start\nThe core of the library is the Banner struct, configured entirely through method chaining.\nuse qbanner::{Banner, Color, Alignment};\n\nfn main() {\n    // 1. Simple, centered, cyan Unicode banner\n    Banner::new(\"Welcome\")\n        .color(Color::Cyan)\n        .alignment(Alignment::Center)\n        .render();\n\n    // 2. Banner with an RGB gradient and a subtitle\n    Banner::new(\"DevOps\")\n        .gradient(vec![\n            (255, 100, 0), // Orange\n            (255, 0, 100)  // Pink\n        ])\n        .subtitle(\"CI/CD Pipeline v2.1\")\n        .render();\n}",
+    "text": "Key Features\n\nBuilder Pattern: Easy-to-use, chainable methods for configuration.\nTerminal Awareness: Automatically detects terminal width for centering and resizing.\nColor & Gradient: Support for standard ANSI colors, bright colors, and dynamic RGB gradients.\nFonts: Includes modern Unicode, classic Standard, and compact Small fonts.\nFallback Logic: Gracefully falls back to smaller fonts or plain text if the banner exceeds terminal width.\nScreen Management: Option to automatically clear the screen before rendering.\nShell Script: Supports shell Scripts\nEmbedded Systems: Works on Embedded devices\n\n\n\nInstallation\nAdd qbannerto your Cargo.toml:\n[dependencies]\nqbanner = \"0.1\"\n\n\nQuick Start\nThe core of the library is the Banner struct, configured entirely through method chaining.\nuse qbanner::{Banner, Color, Alignment};\n\nfn main() {\n    // 1. Simple, centered, cyan Unicode banner\n    Banner::new(\"Welcome\")\n        .color(Color::Cyan)\n        .alignment(Alignment::Center)\n        .render();\n\n    // 2. Banner with an RGB gradient and a subtitle\n    Banner::new(\"DevOps\")\n        .gradient(vec![\n            (255, 100, 0), // Orange\n            (255, 0, 100)  // Pink\n        ])\n        .subtitle(\"CI/CD Pipeline v2.1\")\n        .render();\n}",
     "crumbs": [
       "qbanner",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Qbanner: Terminal Banners for CLI Applications</span>"
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Qbanner: Terminal Banners for CLI Applications</span>"
     ]
   },
   {
@@ -577,7 +577,7 @@
   {
     "objectID": "about-author.html",
     "href": "about-author.html",
-    "title": "Author",
+    "title": "About the Author",
     "section": "",
     "text": "About the Author\nHi, I’m Rakesh Venkat — a developer, researcher, and lifelong tinkerer who likes building tools that:\nMost of the projects in this book revolves around:\nI think of this book as a logbook of the systems I’m building and how they fit together.",
     "crumbs": [
@@ -587,7 +587,7 @@
   {
     "objectID": "about-author.html#what-im-trying-to-do-with-these-projects",
     "href": "about-author.html#what-im-trying-to-do-with-these-projects",
-    "title": "Author",
+    "title": "About the Author",
     "section": "What I’m Trying to Do With These Projects",
     "text": "What I’m Trying to Do With These Projects\nThe broader goals behind these tools:\n\nBuild high-leverage tools that save time for other developers.\n\nCollect and organize knowledge (like the Ratatui ecosystem) so people don’t have to rediscover the same things repeatedly.\nTreat documentation as a first-class artifact, not an afterthought.",
     "crumbs": [
@@ -597,7 +597,7 @@
   {
     "objectID": "about-author.html#a-note-to-future-me-and-future-readers",
     "href": "about-author.html#a-note-to-future-me-and-future-readers",
-    "title": "Author",
+    "title": "About the Author",
     "section": "A Note to Future Me (and Future Readers)",
     "text": "A Note to Future Me (and Future Readers)\nThis book is partly a gift to future me: so I can come back in six months, read a chapter, and instantly remember why I made certain decisions.\nIf you’re reading it as someone else:\n\nI hope it helps you understand the design of these projects.\nI’d love it if it inspires you to build your own tools, or contribute ideas and improvements.",
     "crumbs": [
@@ -607,7 +607,7 @@
   {
     "objectID": "about-author.html#links",
     "href": "about-author.html#links",
-    "title": "Author",
+    "title": "About the Author",
     "section": "Links",
     "text": "Links\nYou can find me here:\n\n🐙 GitHub: https://github.com/rvbug\n\n🌐 Website: https://qubitai.in\n\n🐦 X (Twitter): https://x.com/rvbugged\n\n💼 LinkedIn: https://www.linkedin.com/in/rvbugged/\n\n🐙 Mastadon: https://mastodon.social/@rvbugged",
     "crumbs": [
@@ -617,7 +617,7 @@
   {
     "objectID": "about-author.html#sponsor",
     "href": "about-author.html#sponsor",
-    "title": "Author",
+    "title": "About the Author",
     "section": "Sponsor",
     "text": "Sponsor\n\n\n\nKo-Fi",
     "crumbs": [

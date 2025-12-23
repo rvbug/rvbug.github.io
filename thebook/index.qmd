@@ -16,7 +16,7 @@ toc: true
 
 # How to Use This Site
 
--   Use the **sidebar** or the project cards above to jump into a specific project.\
+-   Use the **sidebar** or the project cards below to jump into a specific project.\
 -   Within each project:
     -   Start with the *Overview* chapter
     -   Then read Architecture / Workflow chapters
@@ -125,7 +125,7 @@ A helper tool for turning rough notes, markdown, or code comments into\
 
 ::::: columns
 ::: {.column width="50%"}
-### 🎛 QBanner (Coming Soon)
+### ↯ QBanner (Coming Soon)
 
 A light-weight **rust based** library for CLI Banners
 
@@ -139,8 +139,26 @@ A light-weight **rust based** library for CLI Banners
 :::
 
 ::: {.column width="50%"}
-### ☁ QSwitch (Planned)
+### 🎚️ QSwitch (Planned)
 
-➡️ [Coming Soons »]()
+➡️ [Coming Soon »]()
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+### 📡 Challenges (Coming Soon)
+
+Documenting common challenges during these projects
+
+➡️ [Coming Soon]()
+:::
+
+::: {.column width="50%"}
+### 📚 Books I read (Coming Soon)
+
+➡️ [Coming Soon]()
 :::
 :::::

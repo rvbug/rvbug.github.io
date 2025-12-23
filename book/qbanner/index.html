@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../about-author.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Author</span></a>
+  <a href="../about-author.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">about-author.html</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -416,6 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p><strong>(Tentative Release Date : 22nd Jan)</strong></p>
 <p><code>qbanner</code> is a simple yet powerful Rust library designed to display highly customizable ASCII art banners in command-line interface (CLI) applications. It uses a modern builder pattern, supports Unicode, gradients, and automatically adjusts to fit the user’s terminal size.</p>
 <p><img src="./images/demo.gif" class="img-fluid"></p>
 <section id="key-features" class="level3">
@@ -427,36 +428,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Fonts:</strong> Includes modern Unicode, classic Standard, and compact Small fonts.</li>
 <li><strong>Fallback Logic:</strong> Gracefully falls back to smaller fonts or plain text if the banner exceeds terminal width.</li>
 <li><strong>Screen Management:</strong> Option to automatically clear the screen before rendering.</li>
+<li><strong>Shell Script:</strong> Supports shell Scripts</li>
+<li><strong>Embedded Systems:</strong> Works on Embedded devices</li>
 </ul>
 </section>
 <section id="installation" class="level3">
 <h3 class="anchored" data-anchor-id="installation">Installation</h3>
-<p>Add <code>qbanner</code> and its dependencies (if necessary, though <code>qbanner</code> bundles most of its needs) to your <code>Cargo.toml</code>:</p>
-<p>```toml</p>
-<p>[dependencies] qbanner = { path = “path/to/qbanner” } # If developing locally # qbanner = “1.0” # If published on crates.io owo-colors = “3.5” terminal_size = “0.3”</p>
-<p>```</p>
+<p>Add <code>qbanner</code>to your <code>Cargo.toml</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[dependencies]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">qbanner</span> <span class="op">=</span> <span class="st">"0.1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="quick-start" class="level3">
 <h3 class="anchored" data-anchor-id="quick-start">Quick Start</h3>
 <p>The core of the library is the <code>Banner</code> struct, configured entirely through method chaining.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">qbanner::</span><span class="op">{</span>Banner<span class="op">,</span> Color<span class="op">,</span> Alignment<span class="op">};</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 1. Simple, centered, cyan Unicode banner</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Banner::</span>new(<span class="st">"Welcome"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>color(<span class="pp">Color::</span>Cyan)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>alignment(<span class="pp">Alignment::</span>Center)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>render()<span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 2. Banner with an RGB gradient and a subtitle</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Banner::</span>new(<span class="st">"DevOps"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>gradient(<span class="pp">vec!</span>[</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">255</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">,</span> <span class="co">// Orange</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>)  <span class="co">// Pink</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        ])</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>subtitle(<span class="st">"CI/CD Pipeline v2.1"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>render()<span class="op">;</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">qbanner::</span><span class="op">{</span>Banner<span class="op">,</span> Color<span class="op">,</span> Alignment<span class="op">};</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 1. Simple, centered, cyan Unicode banner</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Banner::</span>new(<span class="st">"Welcome"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>color(<span class="pp">Color::</span>Cyan)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>alignment(<span class="pp">Alignment::</span>Center)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>render()<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 2. Banner with an RGB gradient and a subtitle</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Banner::</span>new(<span class="st">"DevOps"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>gradient(<span class="pp">vec!</span>[</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">255</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">,</span> <span class="co">// Orange</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>)  <span class="co">// Pink</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>subtitle(<span class="st">"CI/CD Pipeline v2.1"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>render()<span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="references" class="level1">
