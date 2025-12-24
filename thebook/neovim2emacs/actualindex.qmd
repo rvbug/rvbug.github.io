@@ -1,0 +1,72 @@
+---
+title: "The Big Migration: Neovim to Emacs"
+subtitle: "Switching to the eLisp"
+author: "Rakesh V"
+date: "2023-11-23"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+    highlight-style: dracula
+---
+
+## Introduction
+
+I first encountered vim way back in 1999 after multiple failed attempts and finally installing Red Hat on my desktop. Yes those were the days!!.
+
+As I was learning Linux, I constantly have to use this editor by typing "vim filename". It was just the screen with white text. Do not remember how I learnt to move through the text exactly but became proficient over a period of time.
+
+In 2004, I saw someone using a text editor different than VIm which caught my eye. This was emacs. It was then in 2021, I decided to slowly start exploring the Neovim plugins I use daily to map it to emacs. More about that in the migration guide.
+
+While Neovim and Emacs both are keyboard-centric and highly extensible, they offer vastly different approaches to the computing experience.
+
+This document serves as a transition guide and a personal manifesto on why I am moving my entire workflow from the modal speed of Neovim to the infinite horizons of Emacs.
+
+------------------------------------------------------------------------
+
+## Editor's View
+
+### Neovim: The Surgeon's Scalpel
+
+Neovim is a modern refactor of Vim, designed for users who value speed, minimalism, and the Unix philosophy. It is built around **modal editing**, where the system behavior changes depending on what mode you are on.
+
+\<Image of neovim working\>
+
+### Emacs: The Operating System
+
+Emacs is often described as "an operating system that happens to have a text editor." It is a programmable environment built on **Emacs Lisp (Elisp)**.
+
+------------------------------------------------------------------------
+
+## Why I am using Neovim
+
+because I was so used to Vim, my natural progression was to start with Neovim. I still to. this day love it as my daily driver if I am coding or writing blogs. The entire project management including notes was setup in Notion. It was my second brain only to realize that I am switching from one app to another and losing my flow. Also I was not very happy with Notion's privacy policy.
+
+\<notion screenshots\>
+
+I even tried with "Neorg", Obsidian too, but something did not click for me. So i decided to give emacs a try once again after 17 years.
+
+------------------------------------------------------------------------
+
+## The Decision to Move to Emacs
+
+One of the primary factor to pushed me toward Emacs were powerful Org-mode and Org Roam:
+
+### The Power of Org-mode
+
+While Neovim has projects like `neorg`, nothing compares to the "Killer App" of Emacs: **Org-mode**. \* **Literate Programming:** Combining code, execution results, and prose in one document. \* **Task Management:** A built-in system for TODOs, agendas, and time-tracking that is unmatched by any third-party app. \* **The Zettelkasten:** Using `org-roam` to build a second brain within the same environment where I write my code.
+
+In the [migration](migration.qmd), we will go over the plugins I used and Neovim and the replacement I decided for my emacs configuration. The only caveat was to learn the keybindings again which according to me should not take long.. Just hoping !!!
+
+## Package Comparison Table (2025)
+
+| Category | Neovim Equivalent | Emacs Recommended | Why? |
+|:---|:---|:---|:---|
+| **LSP** | `nvim-lspconfig` | **Eglot** | Built-in, stable, no-nonsense. |
+| **Git** | `lazygit` / `gitsigns` | **Magit** | The best Git interface in existence. |
+| **Notes** | `neorg` / `obsidian` | **Org-mode** | A complete productivity ecosystem. |
+| **Search** | `telescope.nvim` | **Vertico + Consult** | Modular, native, and fast. |
+| **Terminal** | `toggleterm.nvim` | **vterm** | Full terminal emulation inside a buffer. |
+
+------------------------------------------------------------------------

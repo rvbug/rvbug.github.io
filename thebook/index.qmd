@@ -162,3 +162,21 @@ Documenting common challenges during these projects
 ➡️ [Coming Soon]()
 :::
 :::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+### 📡 neovim to emacs migration
+
+Documenting my journey from neovim to emacs
+
+➡️ [Read my journey »](neovim2emacs/index.qmd)
+:::
+
+::: {.column width="50%"}
+### 📚
+
+➡️ [Coming Soon]()
+:::
+:::::

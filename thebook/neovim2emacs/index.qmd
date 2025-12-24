@@ -1,0 +1,62 @@
+---
+title: "Neovim to Emacs"
+subtitle: "My journey"
+author: "Rakesh V"
+date: "2023-11-23"
+format:
+  html:
+    page-layout: full
+    toc: false
+    toc-depth: 3
+---
+
+# The great migration - Neovim to Emacs
+
+::: callout-note
+## In Progress
+
+Please note this configuration is in progress.
+:::
+
+## Complete Package Comparison Table
+
+| **Category/Plugin** | **Best (Recommended)** | **Alternative 2** | **Alternative 3** | **Notes** | **Exploration** |
+|------------|------------|------------|------------|------------|------------|
+| **Package Manager** | **Elpaca** | straight.el | package.el (built-in) | Elpaca: async, parallel installs, interactive UI. straight.el: reproducible builds. package.el: simple but limited. | Setup completed. Will be moving to literal configuration |
+| **LazyGit** | **Magit** | Diff-hl + VC | Forge (for GitHub/GitLab) | Magit is the gold standard - many switch to Emacs just for it. Forge adds PR/issue management. |  |
+| **LSP** | **Eglot** (built-in Emacs 29+) | lsp-mode | lsp-bridge | Eglot is minimal, fast, built-in. Works out-of-box for shell, Rust, Python. Just enable with `eglot-ensure`. |  |
+| **Debugger** | **Dape** | dap-mode | Built-in GUD | Dape is newer, lighter, simpler than dap-mode. Both support DAP protocol. Built-in GUD for basic debugging. |  |
+| **Quarto** | **quarto-mode** (with polymode) | markdown-mode + org-mode | poly-markdown | Official quarto-mode package. Requires polymode, markdown-mode. Supports preview via `quarto-preview`. |  |
+| **Toggle Term (tmux-like)** | **vterm** | eat (Emulate A Terminal) | eshell + multi-term | Vterm is fastest, most complete terminal. Eat is pure elisp (no compilation). Eshell is built-in. |  |
+| **Autopairs** | **electric-pair-mode** (built-in) | smartparens | elec-pair + paren | electric-pair-mode is built-in Emacs, works out-of-box. Smartparens for more features. |  |
+| **Code Runner (Python/Jupyter)** | **python-mode** + **ob-python** (org-babel) | python-pytest + quickrun | jupyter-mode (emacs-jupyter) | Use org-babel for literate programming. quickrun for quick execution. jupyter-mode for notebooks. Rust: cargo-mode or quickrun. |  |
+| **Music Player** | **EMMS** (Emacs Multimedia System) | Bongo | Listen.el | EMMS is mature, feature-rich (mpv/vlc backend). Bongo is simpler. Listen.el is newest/simplest. |  |
+| **Project Management** | **project.el** (built-in) | Projectile | find-file-in-project | project.el is built-in (Emacs 28+), fast. Projectile more features. Works with Vertico/Consult. |  |
+| **Telescope** | **Vertico + Consult + Marginalia + Orderless** | Ivy + Counsel + Swiper | Helm | Vertico stack is modern, fast, modular. Native completion. Ivy/Helm are older but still popular. |  |
+| **Zen Mode** | **writeroom-mode** | olivetti | darkroom | Writeroom-mode most popular. Olivetti focuses on centered text. All distraction-free. |  |
+| **Comments** | **comment-dwim** (built-in) | evil-nerd-commenter | comment-line | comment-dwim is built-in (`M-;`). evil-nerd-commenter for more features. |  |
+| **Folders/Tree + Icons** | **dired** + **all-the-icons-dired** / **nerd-icons-dired** | treemacs + all-the-icons | neotree + all-the-icons | Dired is built-in, powerful. Add icons with all-the-icons-dired. Treemacs for IDE-like tree. |  |
+| **Markdown Support** | **markdown-mode** | gfm-mode (GitHub Flavored) | poly-markdown | markdown-mode is standard. gfm-mode for GitHub. poly-markdown for code blocks. |  |
+| **LaTeX Support** | **AUCTeX** | Built-in latex-mode | CDLaTeX (math) | AUCTeX is the standard. Supports preview, compilation. CDLaTeX for fast math input. |  |
+| **Codeium AI** | **codeium.el** | tabnine | copilot.el | Codeium.el is free, fast, supports 70+ languages. Works with company-mode or corfu. |  |
+| **iron.nvim (REPL)** | **ob-python/ob-**\* (org-babel) | python-mode REPL | comint-mode | Org-babel for literate programming. python-mode has built-in REPL. comint for general REPL. |  |
+| **Org-mode** | **org-mode** (built-in) | org-agenda | org-roam (Zettelkasten) | Org-mode is THE reason many use Emacs. Built-in, powerful. org-roam for note-taking. |  |
+
+------------------------------------------------------------------------
+
+## Power User Essentials (Missing from Neovim List)
+
+| **Category** | **Package** | **Why Critical** | **Priority** |
+|------------------|------------------|------------------|------------------|
+| **Keybinding Discovery** | which-key | See available commands as you type | HIGH |
+| **In-buffer Completion** | corfu + cape | Faster than company, native completion | HIGH |
+| **Navigation** | avy | Jump anywhere instantly | HIGH |
+| **Context Actions** | embark | Power-user workflow enhancer | HIGH |
+| **Spell Check** | jinx | Modern, fast, language-aware | MEDIUM |
+| **Note-taking** | denote or org-roam | Zettelkasten for org-mode | HIGH |
+| **Keybinding Config** | general.el | Clean, organized keybindings | MEDIUM |
+| **Help System** | helpful | Better documentation viewer | MEDIUM |
+| **History** | savehist + recentf | Remember everything (built-in) | HIGH |
+| **Search** | rg.el or deadgrep | Fast project search with ripgrep | HIGH |
+
+------------------------------------------------------------------------

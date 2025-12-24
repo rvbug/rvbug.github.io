@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.16)  16 DEC 2025 11:52
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.16)  23 DEC 2025 17:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1330,6 +1330,11 @@ Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=
 chapter 6.
 Missing character: There is no 🐀 (U+1F400) in font [lmsans10-bold]:mapping=tex-text;!
 
+Underfull \hbox (badness 10000) in paragraph at lines 341--343
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 343--345
 
  []
@@ -1341,11 +1346,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--347
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 347--349
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 349--351
 
  []
 
@@ -1365,22 +1365,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 365--367
 Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 🎛 (U+1F39B) in font [lmsans10-bold]:mapping=tex-text;!
-LaTeX Font Info:    Font shape `TU/lmss/bx/it' in size <12> not available
-(Font)              Font shape `TU/lmss/bx/sl' tried instead on input line 375.
-
-Underfull \hbox (badness 10000) in paragraph at lines 383--385
-
- []
-
 [9
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 385--387
+Underfull \hbox (badness 10000) in paragraph at lines 382--384
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 387--389
+Underfull \hbox (badness 10000) in paragraph at lines 384--386
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--388
 
  []
 
@@ -1389,88 +1387,92 @@ Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=
 Missing character: There is no ☁ (U+2601) in font [lmsans10-bold]:mapping=tex-text;!
 Missing character: There is no ︎ (U+FE0E) in font [lmsans10-bold]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--404
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 404--406
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 406--408
+Underfull \hbox (badness 10000) in paragraph at lines 401--403
 
  []
 
 Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 🎛 (U+1F39B) in font [lmsans10-bold]:mapping=tex-text;!
+Missing character: There is no ↯ (U+21AF) in font [lmsans10-bold]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--425
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 425--427
+Underfull \hbox (badness 10000) in paragraph at lines 418--420
 
  []
 
+Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 🎚 (U+1F39A) in font [lmsans10-bold]:mapping=tex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmsans10-bold]:mapping=tex-text;!
+Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--429
-
- []
+Package hyperref Warning: Suppressing link with empty target on input line 427.
 
 [10]
-Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ☁ (U+2601) in font [lmsans10-bold]:mapping=tex-text;!
+Missing character: There is no 📡 (U+1F4E1) in font [lmsans10-bold]:mapping=tex-text;!
 Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
 
-Package hyperref Warning: Suppressing link with empty target on input line 445.
+Package hyperref Warning: Suppressing link with empty target on input line 435.
+
+Missing character: There is no 📚 (U+1F4DA) in font [lmsans10-bold]:mapping=tex-text;!
+Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
+
+Package hyperref Warning: Suppressing link with empty target on input line 440.
+
+Missing character: There is no 📡 (U+1F4E1) in font [lmsans10-bold]:mapping=tex-text;!
+Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 📚 (U+1F4DA) in font [lmsans10-bold]:mapping=tex-text;!
+Missing character: There is no ➡ (U+27A1) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=tex-text;!
+
+Package hyperref Warning: Suppressing link with empty target on input line 453.
 
 [11]
 chapter 7.
+File: ./images/Banner.png Graphic file (type bmp)
+<./images/Banner.png>
 [12
 
 ]
 chapter 8.
 
-Underfull \hbox (badness 10000) in paragraph at lines 461--463
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 463--465
-
- []
-
-Missing character: There is no 🦀 (U+1F980) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 🦀 (U+1F980) in font [lmroman10-regular]:mapping=tex-text;!
-
 Underfull \hbox (badness 10000) in paragraph at lines 473--475
 
  []
 
-Missing character: There is no 🧪 (U+1F9EA) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 🧪 (U+1F9EA) in font [lmroman10-regular]:mapping=tex-text;!
 
 Underfull \hbox (badness 10000) in paragraph at lines 475--477
 
  []
 
+Missing character: There is no 🦀 (U+1F980) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 🦀 (U+1F980) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--487
+
+ []
+
+Missing character: There is no 🧪 (U+1F9EA) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 🧪 (U+1F9EA) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--489
+
+ []
+
 Missing character: There is no 📚 (U+1F4DA) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 📚 (U+1F4DA) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 477--479
+Underfull \hbox (badness 10000) in paragraph at lines 489--491
 
  []
 
 Missing character: There is no 🧩 (U+1F9E9) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 🧩 (U+1F9E9) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 495--498
+Underfull \hbox (badness 10000) in paragraph at lines 507--510
 
  []
 
@@ -1480,58 +1482,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 495--498
 Missing character: There is no 🐙 (U+1F419) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 🐙 (U+1F419) in font [lmroman10-regular]:mapping=tex-text;!
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 538.
+(Font)              scaled to size 7.665pt on input line 544.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 538.
+(Font)              scaled to size 5.475pt on input line 544.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 538.
+(Font)              scaled to size 10.95099pt on input line 544.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66568pt on input line 538.
+(Font)              scaled to size 7.66568pt on input line 544.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4755pt on input line 538.
+(Font)              scaled to size 5.4755pt on input line 544.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 538.
+(Font)              scaled to size 10.94882pt on input line 544.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.66417pt on input line 538.
+(Font)              scaled to size 7.66417pt on input line 544.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.47441pt on input line 538.
-
-Underfull \hbox (badness 10000) in paragraph at lines 538--540
-
- []
-
-Missing character: There is no 🌐 (U+1F310) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 🌐 (U+1F310) in font [lmroman10-regular]:mapping=tex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 540--542
-
- []
-
-Missing character: There is no 🐦 (U+1F426) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 🐦 (U+1F426) in font [lmroman10-regular]:mapping=tex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 542--544
-
- []
-
-Missing character: There is no 💼 (U+1F4BC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 💼 (U+1F4BC) in font [lmroman10-regular]:mapping=tex-text;!
+(Font)              scaled to size 5.47441pt on input line 544.
 
 Underfull \hbox (badness 10000) in paragraph at lines 544--546
 
  []
 
+Missing character: There is no 🌐 (U+1F310) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 🌐 (U+1F310) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 546--548
+
+ []
+
+Missing character: There is no 🐦 (U+1F426) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 🐦 (U+1F426) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--550
+
+ []
+
+Missing character: There is no 💼 (U+1F4BC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 💼 (U+1F4BC) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--552
+
+ []
+
 Missing character: There is no 🐙 (U+1F419) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 🐙 (U+1F419) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--547
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
 
  []
 
 
 Package svg Warning: You didn't enable `shell escape' (or `write18')
 (svg)                so it wasn't possible to launch the Inkscape export
-(svg)                for `index_files/mediabag/githubbutton_sm.svg' on input line 553.
+(svg)                for `index_files/mediabag/githubbutton_sm.svg' on input line 559.
 
 
 ! Package svg Error: File `githubbutton_sm_svg-tex.pdf' is missing.
@@ -1540,7 +1542,7 @@ See the svg package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.553 ...ndex_files/mediabag/githubbutton_sm.svg}}
+l.559 ...ndex_files/mediabag/githubbutton_sm.svg}}
                                                   
 Did you run the export with Inkscape? There's no file
 `./svg-inkscape/githubbutton_sm_svg-tex.pdf'
@@ -1548,11 +1550,11 @@ although `index_files/mediabag/githubbutton_sm.svg' was found.
 
  
 Here is how much of TeX's memory you used:
- 39685 strings out of 470134
- 818232 string characters out of 5476438
+ 39694 strings out of 470134
+ 818336 string characters out of 5476438
  1539199 words of memory out of 5000000
- 67728 multiletter control sequences out of 15000+600000
- 634176 words of font info for 93 fonts, out of 8000000 for 9000
+ 67736 multiletter control sequences out of 15000+600000
+ 634168 words of font info for 92 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 108i,7n,114p,11227b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,8n,114p,11227b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
 Output written on index.pdf (13 pages).

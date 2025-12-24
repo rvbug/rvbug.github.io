@@ -1,0 +1,208 @@
+---
+title: "Neovim to Emacs"
+subtitle: "My journey"
+author: "Rakesh V"
+date: "2023-11-23"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+    highlight-style: dracula
+---
+
+# Emacs Configuration Guide - Neovim to Emacs Migration (2025)
+
+## Complete Package Comparison Table
+
+| **Category/Plugin** | **Best (Recommended)** | **Alternative 2** | **Alternative 3** | **Notes** |
+|---------------|---------------|---------------|---------------|---------------|
+| **Package Manager** | **Elpaca** | straight.el | package.el (built-in) | Elpaca: async, parallel installs, interactive UI. straight.el: reproducible builds. package.el: simple but limited. |
+| **LazyGit** | **Magit** | Diff-hl + VC | Forge (for GitHub/GitLab) | Magit is the gold standard - many switch to Emacs just for it. Forge adds PR/issue management. |
+| **LSP** | **Eglot** (built-in Emacs 29+) | lsp-mode | lsp-bridge | Eglot is minimal, fast, built-in. Works out-of-box for shell, Rust, Python. Just enable with `eglot-ensure`. |
+| **Debugger** | **Dape** | dap-mode | Built-in GUD | Dape is newer, lighter, simpler than dap-mode. Both support DAP protocol. Built-in GUD for basic debugging. |
+| **Quarto** | **quarto-mode** (with polymode) | markdown-mode + org-mode | poly-markdown | Official quarto-mode package. Requires polymode, markdown-mode. Supports preview via `quarto-preview`. |
+| **Toggle Term (tmux-like)** | **vterm** | eat (Emulate A Terminal) | eshell + multi-term | Vterm is fastest, most complete terminal. Eat is pure elisp (no compilation). Eshell is built-in. |
+| **Autopairs** | **electric-pair-mode** (built-in) | smartparens | elec-pair + paren | electric-pair-mode is built-in Emacs, works out-of-box. Smartparens for more features. |
+| **Code Runner (Python/Jupyter)** | **python-mode** + **ob-python** (org-babel) | python-pytest + quickrun | jupyter-mode (emacs-jupyter) | Use org-babel for literate programming. quickrun for quick execution. jupyter-mode for notebooks. Rust: cargo-mode or quickrun. |
+| **Music Player** | **EMMS** (Emacs Multimedia System) | Bongo | Listen.el | EMMS is mature, feature-rich (mpv/vlc backend). Bongo is simpler. Listen.el is newest/simplest. |
+| **Project Management** | **project.el** (built-in) | Projectile | find-file-in-project | project.el is built-in (Emacs 28+), fast. Projectile more features. Works with Vertico/Consult. |
+| **Telescope** | **Vertico + Consult + Marginalia + Orderless** | Ivy + Counsel + Swiper | Helm | Vertico stack is modern, fast, modular. Native completion. Ivy/Helm are older but still popular. |
+| **Zen Mode** | **writeroom-mode** | olivetti | darkroom | Writeroom-mode most popular. Olivetti focuses on centered text. All distraction-free. |
+| **Comments** | **comment-dwim** (built-in) | evil-nerd-commenter | comment-line | comment-dwim is built-in (`M-;`). evil-nerd-commenter for more features. |
+| **Folders/Tree + Icons** | **dired** + **all-the-icons-dired** / **nerd-icons-dired** | treemacs + all-the-icons | neotree + all-the-icons | Dired is built-in, powerful. Add icons with all-the-icons-dired. Treemacs for IDE-like tree. |
+| **Markdown Support** | **markdown-mode** | gfm-mode (GitHub Flavored) | poly-markdown | markdown-mode is standard. gfm-mode for GitHub. poly-markdown for code blocks. |
+| **LaTeX Support** | **AUCTeX** | Built-in latex-mode | CDLaTeX (math) | AUCTeX is the standard. Supports preview, compilation. CDLaTeX for fast math input. |
+| **Codeium AI** | **codeium.el** | tabnine | copilot.el | Codeium.el is free, fast, supports 70+ languages. Works with company-mode or corfu. |
+| **iron.nvim (REPL)** | **ob-python/ob-**\* (org-babel) | python-mode REPL | comint-mode | Org-babel for literate programming. python-mode has built-in REPL. comint for general REPL. |
+| **Org-mode** | **org-mode** (built-in) | org-agenda | org-roam (Zettelkasten) | Org-mode is THE reason many use Emacs. Built-in, powerful. org-roam for note-taking. |
+
+------------------------------------------------------------------------
+
+## Power User Essentials (Missing from Neovim List)
+
+| **Category** | **Package** | **Why Critical** | **Priority** |
+|------------------|------------------|------------------|------------------|
+| **Keybinding Discovery** | which-key | See available commands as you type | HIGH |
+| **In-buffer Completion** | corfu + cape | Faster than company, native completion | HIGH |
+| **Navigation** | avy | Jump anywhere instantly | HIGH |
+| **Context Actions** | embark | Power-user workflow enhancer | HIGH |
+| **Spell Check** | jinx | Modern, fast, language-aware | MEDIUM |
+| **Note-taking** | denote or org-roam | Zettelkasten for org-mode | HIGH |
+| **Keybinding Config** | general.el | Clean, organized keybindings | MEDIUM |
+| **Help System** | helpful | Better documentation viewer | MEDIUM |
+| **History** | savehist + recentf | Remember everything (built-in) | HIGH |
+| **Search** | rg.el or deadgrep | Fast project search with ripgrep | HIGH |
+
+------------------------------------------------------------------------
+
+## Font Recommendations
+
+| **Font**           | **Style**            | **Best For**          |
+|--------------------|----------------------|-----------------------|
+| **Geist Mono**     | Modern, clean        | All-purpose coding    |
+| **Iosevka**        | Narrow, customizable | Dense code, terminals |
+| **JetBrains Mono** | Readable, ligatures  | Long coding sessions  |
+| **Fira Code**      | Popular, ligatures   | General programming   |
+
+**Configuration:**
+
+``` elisp
+(set-face-attribute 'default nil :font "Geist Mono-12")
+```
+
+------------------------------------------------------------------------
+
+## Color Scheme Recommendations
+
+| **Theme** | **Style** | **Best For** | **Built-in?** |
+|------------------|------------------|------------------|------------------|
+| **modus-themes** | Accessible, professional | All languages, accessibility | ✅ Yes (Emacs 28+) |
+| **doom-one** (doom-themes) | Modern, vibrant | Dark coding | ❌ No |
+| **ef-themes** | Colorful, elegant | Variety, by modus author | ❌ No |
+| **nano-theme** | Minimal, clean | Distraction-free | ❌ No |
+| **kanagawa-theme** | Calm, nature-inspired | Python, Rust, Markdown | ❌ No (MELPA) |
+
+------------------------------------------------------------------------
+
+## Language-Specific Setup
+
+### Rust Configuration
+
+-   **LSP**: `rust-analyzer` (install system-wide, Eglot auto-detects)
+-   **Syntax**: `rust-mode`
+-   **Cargo**: `cargo-mode` for running tests/build
+-   **Debugging**: Dape with `lldb`
+-   **Formatter**: Built-in with rust-analyzer
+
+### Python Configuration
+
+-   **LSP**: `pyright` or `pylsp` (Eglot auto-detects)
+-   **Mode**: `python-mode` (built-in)
+-   **Testing**: `python-pytest`
+-   **Notebooks**: `jupyter-mode` or org-babel
+-   **Formatter**: Use Eglot's format-on-save
+
+### Shell Script Configuration
+
+-   **LSP**: `bash-language-server` (Eglot auto-detects)
+-   **Mode**: `sh-mode` (built-in)
+-   **Linting**: `flycheck` with shellcheck
+
+------------------------------------------------------------------------
+
+## Essential Configuration Structure
+
+### early-init.el
+
+``` elisp
+;; Disable package.el if using Elpaca
+(setq package-enable-at-startup nil)
+
+;; Performance tweaks
+(setq gc-cons-threshold most-positive-fixnum)
+(setq native-comp-async-report-warnings-errors nil)
+
+;; Disable unnecessary UI elements
+(setq inhibit-startup-screen t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+```
+
+### init.el Basic Structure
+
+``` elisp
+;; Reset GC threshold after startup
+(add-hook 'emacs-startup-hook
+  (lambda ()
+    (setq gc-cons-threshold (* 16 1024 1024))))
+
+;; Elpaca bootstrap
+;; ... (bootstrap code from Elpaca docs)
+
+;; Essential built-in configurations
+(use-package emacs
+  :ensure nil
+  :init
+  (electric-pair-mode 1)
+  (savehist-mode 1)
+  (recentf-mode 1)
+  (global-auto-revert-mode 1))
+
+;; Load packages in order:
+;; 1. Core utilities (which-key, helpful)
+;; 2. Completion (vertico stack, corfu)
+;; 3. Navigation (avy, project)
+;; 4. Development (eglot, magit, dape)
+;; 5. Language modes
+;; 6. Org-mode configuration
+```
+
+------------------------------------------------------------------------
+
+## Minimal Fast Startup Checklist
+
+✅ **Use Elpaca** for async package loading\
+✅ **Use native packages** where possible (Eglot, project.el, electric-pair-mode)\
+✅ **Configure early-init.el** for performance\
+✅ **Defer non-essential packages** with `:defer t`\
+✅ **Use `:hook` for mode-specific packages**\
+✅ **Enable native compilation** (Emacs 28+)\
+✅ **Keep startup under 1 second** (use `emacs-init-time`)
+
+------------------------------------------------------------------------
+
+## Priority Installation Order
+
+1.  **Package Manager**: Elpaca
+2.  **Core**: which-key, helpful, savehist, recentf
+3.  **Completion**: Vertico + Consult + Marginalia + Orderless + Corfu + Cape
+4.  **Navigation**: avy, embark, project.el
+5.  **Git**: Magit (+ Forge if needed)
+6.  **LSP**: Eglot (built-in, just configure)
+7.  **Languages**: rust-mode, python-mode, markdown-mode, AUCTeX
+8.  **Terminal**: vterm
+9.  **Org**: org-mode, org-roam or denote
+10. **Theme**: modus-themes or kanagawa-theme
+
+------------------------------------------------------------------------
+
+## Performance Tips
+
+-   **Startup Time Target**: Under 1 second
+-   **Use `use-package` with `:defer t`** for non-essential packages
+-   **Lazy-load language modes** with `:mode` or `:hook`
+-   **Profile startup**: `M-x emacs-init-time` or use `esup` package
+-   **Native compilation**: Ensure `native-comp` is enabled (Emacs 28+)
+-   **Minimize custom-file writes**: Set `custom-file` to temporary location
+
+------------------------------------------------------------------------
+
+## Resources
+
+-   **Eglot**: Built-in Emacs 29+, minimal LSP client
+-   **Vertico/Consult/Corfu**: Modern completion ecosystem
+-   **System Craft**: YouTube channel for Emacs tutorials
+-   **Emacs documentation**: `C-h i` for built-in manuals
+-   **r/emacs**: Active community on Reddit

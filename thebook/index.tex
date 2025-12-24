@@ -255,7 +255,7 @@ Decisions for all my projects.
 \begin{itemize}
 \tightlist
 \item
-  Use the \textbf{sidebar} or the project cards above to jump into a
+  Use the \textbf{sidebar} or the project cards below to jump into a
   specific project.\\
 \item
   Within each project:
@@ -280,19 +280,19 @@ everything fits together
 
 \chapter{Roadmap \& Future Projects}\label{roadmap-future-projects}
 
-This hub is designed to grow over time as more tools and experiments
-appear.
+This hub is designed to grow over time as more tools , research,
+libraries experiments appear.
 
 Planned additions include:
 
 \begin{itemize}
 \tightlist
 \item
-  🧪 Experimental tools around Rust / Ratatui / docs automation\\
+  🧪 Experimental tools automation, research, quantum computing etc\\
 \item
-  🧰 Libraries for working with generated JSON data\\
+  🧰 Libraries or platform to enhance productivity\\
 \item
-  🗂 More utilities for automating documentation workflows
+  🗂 More utilities on workflows automation
 \end{itemize}
 
 When a new project is created, it will get:
@@ -321,8 +321,7 @@ When a new project is created, it will get:
 I'm \textbf{Rakesh V}, a developer and tinkerer who enjoys building
 tools that make it easier to think, automate, and explore ideas.
 
-I maintain the projects in this ``book'' --- most of them in Rust, some
-around Ratatui, and others around documentation and tooling.
+I maintain the projects in this ``book''
 
 If you'd like to know more about my background, how these tools came
 about, and how to support my work, see:
@@ -338,7 +337,6 @@ about, and how to support my work, see:
 The \textbf{engine} behind the Ratatui ecosystem index.
 
 \begin{itemize}
-\tightlist
 \item
   Scans the crates.io sparse index\\
 \item
@@ -346,9 +344,11 @@ The \textbf{engine} behind the Ratatui ecosystem index.
 \item
   Enriches them with crates.io metadata\\
 \item
-  Applies smart caching (version + timestamp based)\\
+  Applies smart caching\\
 \item
   Produces \texttt{ratcrate.json} for other tools to consume
+\item
+  To be open sourced soon
 \end{itemize}
 
 ➡️ \href{rat-core/index.qmd}{Read the ratcrate-core docs »}
@@ -364,15 +364,14 @@ A command-line interface for exploring the Ratatui ecosystem.
 \item
   Search and filter Ratatui crates from the terminal\\
 \item
-  Show stats, links, and crate details in a compact way
+  Show stats, links, and crate details
 \end{itemize}
 
 ➡️ \href{rat-cli/index.qmd}{Read the ratcrate-cli docs »}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{\texorpdfstring{🎛 ratcrate-tui
-\emph{(planned)}}{🎛 ratcrate-tui (planned)}}\label{ratcrate-tui-planned}
+\subsection{🎛 ratcrate-tui}\label{ratcrate-tui}
 
 A \textbf{Ratatui-based TUI} for browsing Ratatui crates.\\
 Very meta. Very fun.
@@ -401,10 +400,6 @@ A helper tool for turning rough notes, markdown, or code comments into\\
 \item
   Convert notes into \texttt{.qmd} skeletons\\
 \item
-  Generate chapter structures\\
-\item
-  Insert placeholders for diagrams/screenshots\\
-\item
   Ideal for standardizing docs across all projects
 \end{itemize}
 
@@ -412,41 +407,58 @@ A helper tool for turning rough notes, markdown, or code comments into\\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{🎛 QBanner}\label{qbanner}
+\subsection{↯ QBanner (Coming Soon)}\label{qbanner-coming-soon}
 
-A \textbf{Ratatui-based TUI} for browsing Ratatui crates.\\
-Very meta. Very fun.
+A light-weight \textbf{rust based} library for CLI Banners
 
 \begin{itemize}
-\tightlist
 \item
-  Terminal UI built with Ratatui\\
+  Works on all rust cli projects and easy to use
 \item
-  Interactive search and filters\\
+  Supports Ratatui basic and advanced layouts\\
 \item
-  Crate detail views with stats and links\\
-\item
-  Powered by \texttt{ratcrate-core} data
+  Works on \textbf{shell scripts} too!
 \end{itemize}
 
 ➡️ \href{qbanner/index.qmd}{Read the Qbanner Libraryi docs »}
 
-\subsection{☁ QSwitch (Planned)}\label{qswitch-planned}
+\subsection{🎚️ QSwitch (Planned)}\label{qswitch-planned}
 
-A helper tool for turning rough notes, markdown, or code comments into\\
-\textbf{structured Quarto documentation}.
+➡️ \href{}{Coming Soon »}
 
-\begin{itemize}
-\tightlist
-\item
-  Optimized workflow
-\end{itemize}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-➡️ \href{}{Coming Soons »}
+\subsection{📡 Challenges (Coming Soon)}\label{challenges-coming-soon}
+
+Documenting common challenges during these projects
+
+➡️ \href{}{Coming Soon}
+
+\subsection{📚 Books I read (Coming
+Soon)}\label{books-i-read-coming-soon}
+
+➡️ \href{}{Coming Soon}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📡 neovim to emacs
+migration}\label{neovim-to-emacs-migration}
+
+Documenting my journey from neovim to emacs
+
+➡️ \href{neovim2emacs/index.qmd}{Read my journey »}
+
+\subsection{📚}\label{section-1}
+
+➡️ \href{}{Coming Soon}
 
 \bookmarksetup{startatroot}
 
-\chapter{Author}\label{author}
+\chapter{}\label{section-2}
+
+\begin{center}
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{./images/Banner.png}
+\end{center}
 
 \bookmarksetup{startatroot}
 
@@ -476,7 +488,7 @@ Most of the projects in this book revolves around:
 \item
   📚 \textbf{Documentation} and knowledge organization\\
 \item
-  🧩 Small research \& experiments that later become libraries or tools
+  🧩 Research \& experiments that later become libraries or tools
 \end{itemize}
 
 I think of this book as a logbook of the systems I'm building and how
@@ -500,12 +512,6 @@ The broader goals behind these tools:
 \item
   Treat documentation as a first-class artifact, not an afterthought.
 \end{itemize}
-
-\texttt{ratcrate-core} is one piece of that: a way to turn a noisy,
-low-level index into a structured, queryable view of an ecosystem.
-
-Future projects like \texttt{ratcrate-cli}, \texttt{ratcrate-tui}, and
-\texttt{doc2quarto} are meant to build on top of that foundation.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -590,7 +596,7 @@ This book covers:
   Future roadmap
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, bottomrule=.15mm, opacityback=0, toprule=.15mm, opacitybacktitle=0.6, coltitle=black, colback=white, bottomtitle=1mm, left=2mm, colframe=quarto-callout-note-color-frame, breakable, titlerule=0mm, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, breakable, arc=.35mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, left=2mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, coltitle=black, toprule=.15mm, titlerule=0mm, bottomtitle=1mm, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm]
 
 This project is currently private and will be open-sourced later.
 
@@ -1675,7 +1681,7 @@ Integrations}\label{chapter-18-ecosystem-integrations}
 
 A simple command-line browser for Ratatui crates.
 
-\subsection{🟥 ratcrate-tui}\label{ratcrate-tui}
+\subsection{🟥 ratcrate-tui}\label{ratcrate-tui-1}
 
 A terminal UI (written in Ratatui) for searching and exploring packages.
 
@@ -2884,6 +2890,8 @@ Stylish, Resizable, and Color-Ready ASCII Art Banners
 
 \section{Introduction}\label{introduction-2}
 
+\textbf{(Tentative Release Date : 22nd Jan)}
+
 \texttt{qbanner} is a simple yet powerful Rust library designed to
 display highly customizable ASCII art banners in command-line interface
 (CLI) applications. It uses a modern builder pattern, supports Unicode,
@@ -2913,20 +2921,22 @@ gradients, and automatically adjusts to fit the user's terminal size.
 \item
   \textbf{Screen Management:} Option to automatically clear the screen
   before rendering.
+\item
+  \textbf{Shell Script:} Supports shell Scripts
+\item
+  \textbf{Embedded Systems:} Works on Embedded devices
 \end{itemize}
 
 \subsection{Installation}\label{installation}
 
-Add \texttt{qbanner} and its dependencies (if necessary, though
-\texttt{qbanner} bundles most of its needs) to your \texttt{Cargo.toml}:
+Add \texttt{qbanner}to your \texttt{Cargo.toml}:
 
-```toml
-
-{[}dependencies{]} qbanner = \{ path = ``path/to/qbanner'' \} \# If
-developing locally \# qbanner = ``1.0'' \# If published on crates.io
-owo-colors = ``3.5'' terminal\_size = ``0.3''
-
-```
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{[dependencies]}
+\DataTypeTok{qbanner} \OperatorTok{=} \StringTok{"0.1"}
+\end{Highlighting}
+\end{Shaded}
 
 \subsection{Quick Start}\label{quick-start}
 
@@ -2963,6 +2973,525 @@ entirely through method chaining.
   API Reference
 \item
   Developer Notes
+\end{itemize}
+
+\part{neovim2emacs}
+
+\chapter{The Big Migration: Neovim to
+Emacs}\label{the-big-migration-neovim-to-emacs}
+
+Switching to the eLisp
+
+\hfill\break
+
+\section{Introduction}\label{introduction-3}
+
+I first encountered vim way back in 1999 after multiple failed attempts
+and finally installing Red Hat on my desktop. Yes those were the days!!.
+
+As I was learning Linux, I constantly have to use this editor by typing
+``vim filename''. It was just the screen with white text. Do not
+remember how I learnt to move through the text exactly but became
+proficient over a period of time.
+
+In 2004, I saw someone using a text editor different than VIm which
+caught my eye. This was emacs. It was then in 2021, I decided to slowly
+start exploring the Neovim plugins I use daily to map it to emacs. More
+about that in the migration guide.
+
+While Neovim and Emacs both are keyboard-centric and highly extensible,
+they offer vastly different approaches to the computing experience.
+
+This document serves as a transition guide and a personal manifesto on
+why I am moving my entire workflow from the modal speed of Neovim to the
+infinite horizons of Emacs.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Editor's View}\label{editors-view}
+
+\subsection{Neovim: The Surgeon's
+Scalpel}\label{neovim-the-surgeons-scalpel}
+
+Neovim is a modern refactor of Vim, designed for users who value speed,
+minimalism, and the Unix philosophy. It is built around \textbf{modal
+editing}, where the system behavior changes depending on what mode you
+are on.
+
+\textless Image of neovim working\textgreater{}
+
+\subsection{Emacs: The Operating
+System}\label{emacs-the-operating-system}
+
+Emacs is often described as ``an operating system that happens to have a
+text editor.'' It is a programmable environment built on \textbf{Emacs
+Lisp (Elisp)}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Why I am using Neovim}\label{why-i-am-using-neovim}
+
+because I was so used to Vim, my natural progression was to start with
+Neovim. I still to. this day love it as my daily driver if I am coding
+or writing blogs. The entire project management including notes was
+setup in Notion. It was my second brain only to realize that I am
+switching from one app to another and losing my flow. Also I was not
+very happy with Notion's privacy policy.
+
+\textless notion screenshots\textgreater{}
+
+I even tried with ``Neorg'', Obsidian too, but something did not click
+for me. So i decided to give emacs a try once again after 17 years.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{The Decision to Move to
+Emacs}\label{the-decision-to-move-to-emacs}
+
+One of the primary factor to pushed me toward Emacs were powerful
+Org-mode and Org Roam:
+
+\subsection{The Power of Org-mode}\label{the-power-of-org-mode}
+
+While Neovim has projects like \texttt{neorg}, nothing compares to the
+``Killer App'' of Emacs: \textbf{Org-mode}. * \textbf{Literate
+Programming:} Combining code, execution results, and prose in one
+document. * \textbf{Task Management:} A built-in system for TODOs,
+agendas, and time-tracking that is unmatched by any third-party app. *
+\textbf{The Zettelkasten:} Using \texttt{org-roam} to build a second
+brain within the same environment where I write my code.
+
+In the \href{migration.qmd}{migration}, we will go over the plugins I
+used and Neovim and the replacement I decided for my emacs
+configuration. The only caveat was to learn the keybindings again which
+according to me should not take long.. Just hoping !!!
+
+\section{Package Comparison Table
+(2025)}\label{package-comparison-table-2025}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Category
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Neovim Equivalent
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Emacs Recommended
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Why?
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{LSP} & \texttt{nvim-lspconfig} & \textbf{Eglot} & Built-in,
+stable, no-nonsense. \\
+\textbf{Git} & \texttt{lazygit} / \texttt{gitsigns} & \textbf{Magit} &
+The best Git interface in existence. \\
+\textbf{Notes} & \texttt{neorg} / \texttt{obsidian} & \textbf{Org-mode}
+& A complete productivity ecosystem. \\
+\textbf{Search} & \texttt{telescope.nvim} & \textbf{Vertico + Consult} &
+Modular, native, and fast. \\
+\textbf{Terminal} & \texttt{toggleterm.nvim} & \textbf{vterm} & Full
+terminal emulation inside a buffer. \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\chapter{Neovim to Emacs}\label{neovim-to-emacs}
+
+My journey
+
+\hfill\break
+
+\chapter{Emacs Configuration Guide - Neovim to Emacs Migration
+(2025)}\label{emacs-configuration-guide---neovim-to-emacs-migration-2025}
+
+\section{Complete Package Comparison
+Table}\label{complete-package-comparison-table}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Category/Plugin}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Best (Recommended)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Alternative 2}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Alternative 3}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Notes}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Package Manager} & \textbf{Elpaca} & straight.el & package.el
+(built-in) & Elpaca: async, parallel installs, interactive UI.
+straight.el: reproducible builds. package.el: simple but limited. \\
+\textbf{LazyGit} & \textbf{Magit} & Diff-hl + VC & Forge (for
+GitHub/GitLab) & Magit is the gold standard - many switch to Emacs just
+for it. Forge adds PR/issue management. \\
+\textbf{LSP} & \textbf{Eglot} (built-in Emacs 29+) & lsp-mode &
+lsp-bridge & Eglot is minimal, fast, built-in. Works out-of-box for
+shell, Rust, Python. Just enable with \texttt{eglot-ensure}. \\
+\textbf{Debugger} & \textbf{Dape} & dap-mode & Built-in GUD & Dape is
+newer, lighter, simpler than dap-mode. Both support DAP protocol.
+Built-in GUD for basic debugging. \\
+\textbf{Quarto} & \textbf{quarto-mode} (with polymode) & markdown-mode +
+org-mode & poly-markdown & Official quarto-mode package. Requires
+polymode, markdown-mode. Supports preview via
+\texttt{quarto-preview}. \\
+\textbf{Toggle Term (tmux-like)} & \textbf{vterm} & eat (Emulate A
+Terminal) & eshell + multi-term & Vterm is fastest, most complete
+terminal. Eat is pure elisp (no compilation). Eshell is built-in. \\
+\textbf{Autopairs} & \textbf{electric-pair-mode} (built-in) &
+smartparens & elec-pair + paren & electric-pair-mode is built-in Emacs,
+works out-of-box. Smartparens for more features. \\
+\textbf{Code Runner (Python/Jupyter)} & \textbf{python-mode} +
+\textbf{ob-python} (org-babel) & python-pytest + quickrun & jupyter-mode
+(emacs-jupyter) & Use org-babel for literate programming. quickrun for
+quick execution. jupyter-mode for notebooks. Rust: cargo-mode or
+quickrun. \\
+\textbf{Music Player} & \textbf{EMMS} (Emacs Multimedia System) & Bongo
+& Listen.el & EMMS is mature, feature-rich (mpv/vlc backend). Bongo is
+simpler. Listen.el is newest/simplest. \\
+\textbf{Project Management} & \textbf{project.el} (built-in) &
+Projectile & find-file-in-project & project.el is built-in (Emacs 28+),
+fast. Projectile more features. Works with Vertico/Consult. \\
+\textbf{Telescope} & \textbf{Vertico + Consult + Marginalia + Orderless}
+& Ivy + Counsel + Swiper & Helm & Vertico stack is modern, fast,
+modular. Native completion. Ivy/Helm are older but still popular. \\
+\textbf{Zen Mode} & \textbf{writeroom-mode} & olivetti & darkroom &
+Writeroom-mode most popular. Olivetti focuses on centered text. All
+distraction-free. \\
+\textbf{Comments} & \textbf{comment-dwim} (built-in) &
+evil-nerd-commenter & comment-line & comment-dwim is built-in
+(\texttt{M-;}). evil-nerd-commenter for more features. \\
+\textbf{Folders/Tree + Icons} & \textbf{dired} +
+\textbf{all-the-icons-dired} / \textbf{nerd-icons-dired} & treemacs +
+all-the-icons & neotree + all-the-icons & Dired is built-in, powerful.
+Add icons with all-the-icons-dired. Treemacs for IDE-like tree. \\
+\textbf{Markdown Support} & \textbf{markdown-mode} & gfm-mode (GitHub
+Flavored) & poly-markdown & markdown-mode is standard. gfm-mode for
+GitHub. poly-markdown for code blocks. \\
+\textbf{LaTeX Support} & \textbf{AUCTeX} & Built-in latex-mode & CDLaTeX
+(math) & AUCTeX is the standard. Supports preview, compilation. CDLaTeX
+for fast math input. \\
+\textbf{Codeium AI} & \textbf{codeium.el} & tabnine & copilot.el &
+Codeium.el is free, fast, supports 70+ languages. Works with
+company-mode or corfu. \\
+\textbf{iron.nvim (REPL)} & \textbf{ob-python/ob-}* (org-babel) &
+python-mode REPL & comint-mode & Org-babel for literate programming.
+python-mode has built-in REPL. comint for general REPL. \\
+\textbf{Org-mode} & \textbf{org-mode} (built-in) & org-agenda & org-roam
+(Zettelkasten) & Org-mode is THE reason many use Emacs. Built-in,
+powerful. org-roam for note-taking. \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Power User Essentials (Missing from Neovim
+List)}\label{power-user-essentials-missing-from-neovim-list}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Category}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Package}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Why Critical}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Priority}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Keybinding Discovery} & which-key & See available commands as
+you type & HIGH \\
+\textbf{In-buffer Completion} & corfu + cape & Faster than company,
+native completion & HIGH \\
+\textbf{Navigation} & avy & Jump anywhere instantly & HIGH \\
+\textbf{Context Actions} & embark & Power-user workflow enhancer &
+HIGH \\
+\textbf{Spell Check} & jinx & Modern, fast, language-aware & MEDIUM \\
+\textbf{Note-taking} & denote or org-roam & Zettelkasten for org-mode &
+HIGH \\
+\textbf{Keybinding Config} & general.el & Clean, organized keybindings &
+MEDIUM \\
+\textbf{Help System} & helpful & Better documentation viewer & MEDIUM \\
+\textbf{History} & savehist + recentf & Remember everything (built-in) &
+HIGH \\
+\textbf{Search} & rg.el or deadgrep & Fast project search with ripgrep &
+HIGH \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Font Recommendations}\label{font-recommendations}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+\textbf{Font} & \textbf{Style} & \textbf{Best For} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Geist Mono} & Modern, clean & All-purpose coding \\
+\textbf{Iosevka} & Narrow, customizable & Dense code, terminals \\
+\textbf{JetBrains Mono} & Readable, ligatures & Long coding sessions \\
+\textbf{Fira Code} & Popular, ligatures & General programming \\
+\end{longtable}
+
+\textbf{Configuration:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(set{-}face{-}attribute \textquotesingle{}default nil :font "Geist Mono{-}12")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Color Scheme
+Recommendations}\label{color-scheme-recommendations}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Theme}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Style}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Best For}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Built-in?}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{modus-themes} & Accessible, professional & All languages,
+accessibility & ✅ Yes (Emacs 28+) \\
+\textbf{doom-one} (doom-themes) & Modern, vibrant & Dark coding & ❌
+No \\
+\textbf{ef-themes} & Colorful, elegant & Variety, by modus author & ❌
+No \\
+\textbf{nano-theme} & Minimal, clean & Distraction-free & ❌ No \\
+\textbf{kanagawa-theme} & Calm, nature-inspired & Python, Rust, Markdown
+& ❌ No (MELPA) \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Language-Specific Setup}\label{language-specific-setup}
+
+\subsection{Rust Configuration}\label{rust-configuration}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{LSP}: \texttt{rust-analyzer} (install system-wide, Eglot
+  auto-detects)
+\item
+  \textbf{Syntax}: \texttt{rust-mode}
+\item
+  \textbf{Cargo}: \texttt{cargo-mode} for running tests/build
+\item
+  \textbf{Debugging}: Dape with \texttt{lldb}
+\item
+  \textbf{Formatter}: Built-in with rust-analyzer
+\end{itemize}
+
+\subsection{Python Configuration}\label{python-configuration}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{LSP}: \texttt{pyright} or \texttt{pylsp} (Eglot auto-detects)
+\item
+  \textbf{Mode}: \texttt{python-mode} (built-in)
+\item
+  \textbf{Testing}: \texttt{python-pytest}
+\item
+  \textbf{Notebooks}: \texttt{jupyter-mode} or org-babel
+\item
+  \textbf{Formatter}: Use Eglot's format-on-save
+\end{itemize}
+
+\subsection{Shell Script
+Configuration}\label{shell-script-configuration}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{LSP}: \texttt{bash-language-server} (Eglot auto-detects)
+\item
+  \textbf{Mode}: \texttt{sh-mode} (built-in)
+\item
+  \textbf{Linting}: \texttt{flycheck} with shellcheck
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Essential Configuration
+Structure}\label{essential-configuration-structure}
+
+\subsection{early-init.el}\label{early-init.el}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{;; Disable package.el if using Elpaca}
+\NormalTok{(setq package{-}enable{-}at{-}startup nil)}
+
+\NormalTok{;; Performance tweaks}
+\NormalTok{(setq gc{-}cons{-}threshold most{-}positive{-}fixnum)}
+\NormalTok{(setq native{-}comp{-}async{-}report{-}warnings{-}errors nil)}
+
+\NormalTok{;; Disable unnecessary UI elements}
+\NormalTok{(setq inhibit{-}startup{-}screen t)}
+\NormalTok{(menu{-}bar{-}mode {-}1)}
+\NormalTok{(tool{-}bar{-}mode {-}1)}
+\NormalTok{(scroll{-}bar{-}mode {-}1)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{init.el Basic Structure}\label{init.el-basic-structure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{;; Reset GC threshold after startup}
+\NormalTok{(add{-}hook \textquotesingle{}emacs{-}startup{-}hook}
+\NormalTok{  (lambda ()}
+\NormalTok{    (setq gc{-}cons{-}threshold (* 16 1024 1024))))}
+
+\NormalTok{;; Elpaca bootstrap}
+\NormalTok{;; ... (bootstrap code from Elpaca docs)}
+
+\NormalTok{;; Essential built{-}in configurations}
+\NormalTok{(use{-}package emacs}
+\NormalTok{  :ensure nil}
+\NormalTok{  :init}
+\NormalTok{  (electric{-}pair{-}mode 1)}
+\NormalTok{  (savehist{-}mode 1)}
+\NormalTok{  (recentf{-}mode 1)}
+\NormalTok{  (global{-}auto{-}revert{-}mode 1))}
+
+\NormalTok{;; Load packages in order:}
+\NormalTok{;; 1. Core utilities (which{-}key, helpful)}
+\NormalTok{;; 2. Completion (vertico stack, corfu)}
+\NormalTok{;; 3. Navigation (avy, project)}
+\NormalTok{;; 4. Development (eglot, magit, dape)}
+\NormalTok{;; 5. Language modes}
+\NormalTok{;; 6. Org{-}mode configuration}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Minimal Fast Startup
+Checklist}\label{minimal-fast-startup-checklist}
+
+✅ \textbf{Use Elpaca} for async package loading\\
+✅ \textbf{Use native packages} where possible (Eglot, project.el,
+electric-pair-mode)\\
+✅ \textbf{Configure early-init.el} for performance\\
+✅ \textbf{Defer non-essential packages} with \texttt{:defer\ t}\\
+✅ \textbf{Use \texttt{:hook} for mode-specific packages}\\
+✅ \textbf{Enable native compilation} (Emacs 28+)\\
+✅ \textbf{Keep startup under 1 second} (use \texttt{emacs-init-time})
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Priority Installation Order}\label{priority-installation-order}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Package Manager}: Elpaca
+\item
+  \textbf{Core}: which-key, helpful, savehist, recentf
+\item
+  \textbf{Completion}: Vertico + Consult + Marginalia + Orderless +
+  Corfu + Cape
+\item
+  \textbf{Navigation}: avy, embark, project.el
+\item
+  \textbf{Git}: Magit (+ Forge if needed)
+\item
+  \textbf{LSP}: Eglot (built-in, just configure)
+\item
+  \textbf{Languages}: rust-mode, python-mode, markdown-mode, AUCTeX
+\item
+  \textbf{Terminal}: vterm
+\item
+  \textbf{Org}: org-mode, org-roam or denote
+\item
+  \textbf{Theme}: modus-themes or kanagawa-theme
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Performance Tips}\label{performance-tips}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Startup Time Target}: Under 1 second
+\item
+  \textbf{Use \texttt{use-package} with \texttt{:defer\ t}} for
+  non-essential packages
+\item
+  \textbf{Lazy-load language modes} with \texttt{:mode} or
+  \texttt{:hook}
+\item
+  \textbf{Profile startup}: \texttt{M-x\ emacs-init-time} or use
+  \texttt{esup} package
+\item
+  \textbf{Native compilation}: Ensure \texttt{native-comp} is enabled
+  (Emacs 28+)
+\item
+  \textbf{Minimize custom-file writes}: Set \texttt{custom-file} to
+  temporary location
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Resources}\label{resources}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Eglot}: Built-in Emacs 29+, minimal LSP client
+\item
+  \textbf{Vertico/Consult/Corfu}: Modern completion ecosystem
+\item
+  \textbf{System Craft}: YouTube channel for Emacs tutorials
+\item
+  \textbf{Emacs documentation}: \texttt{C-h\ i} for built-in manuals
+\item
+  \textbf{r/emacs}: Active community on Reddit
 \end{itemize}
 
 

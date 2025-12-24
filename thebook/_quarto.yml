@@ -60,7 +60,11 @@ book:
     - part: "qbanner"
       chapters:
         - qbanner/index.qmd
-        
+    # Part 6: Neovim2Emacs
+    - part: "neovim2emacs"
+      chapters:
+        - neovim2emacs/index.qmd
+
 
 bibliography: references.bib
 toc: false

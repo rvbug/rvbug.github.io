@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Book",
     "section": "",
-    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards below to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools , research, libraries experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools automation, research, quantum computing etc\n\n🧰 Libraries or platform to enhance productivity\n\n🗂 More utilities on workflows automation\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book”\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching\n\nProduces ratcrate.json for other tools to consume\nTo be open sourced soon\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »\n\n\n\n\n\n\n\n↯ QBanner (Coming Soon)\nA light-weight rust based library for CLI Banners\n\nWorks on all rust cli projects and easy to use\nSupports Ratatui basic and advanced layouts\n\nWorks on shell scripts too!\n\n➡️ Read the Qbanner Libraryi docs »\n\n\n\n🎚️ QSwitch (Planned)\n➡️ Coming Soon »\n\n\n\n\n\n\n\n📡 Challenges (Coming Soon)\nDocumenting common challenges during these projects\n➡️ Coming Soon\n\n\n\n📚 Books I read (Coming Soon)\n➡️ Coming Soon",
+    "text": "Documentation hub.\n\nThis site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.\n\n\n\nHow to Use This Site\n\nUse the sidebar or the project cards below to jump into a specific project.\n\nWithin each project:\n\nStart with the Overview chapter\nThen read Architecture / Workflow chapters\nDive into Code Snippets, Testing, and Future Work as needed\n\n\nThis site is primarily written for future me — but if you’re reading it later\nas a user or contributor, I hope it gives you clear insight into how everything fits together\n\n\nRoadmap & Future Projects\nThis hub is designed to grow over time as more tools , research, libraries experiments appear.\nPlanned additions include:\n\n🧪 Experimental tools automation, research, quantum computing etc\n\n🧰 Libraries or platform to enhance productivity\n\n🗂 More utilities on workflows automation\n\nWhen a new project is created, it will get:\n\nIts own folder (e.g. new-project/)\n\nIts own mini “book” of chapters\n\nA card on this page linking into its docs\n\n\n\n\n\n\nAbout Me\nI’m Rakesh V, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.\nI maintain the projects in this “book”\nIf you’d like to know more about my background, how these tools came about, and how to support my work, see:\n➡️ Read more in “Author” section\n\n\n\nProjects Overview\n\n\n\n🐀 ratcrate-core\nThe engine behind the Ratatui ecosystem index.\n\nScans the crates.io sparse index\n\nFinds all crates depending on ratatui\n\nEnriches them with crates.io metadata\n\nApplies smart caching\n\nProduces ratcrate.json for other tools to consume\nTo be open sourced soon\n\n➡️ Read the ratcrate-core docs »\n\n\n\n💻 ratcrate-cli\nA command-line interface for exploring the Ratatui ecosystem.\n\nReads ratcrate.json produced by ratcrate-core\n\nSearch and filter Ratatui crates from the terminal\n\nShow stats, links, and crate details\n\n➡️ Read the ratcrate-cli docs »\n\n\n\n\n\n\n\n🎛 ratcrate-tui\nA Ratatui-based TUI for browsing Ratatui crates.\nVery meta. Very fun.\n\nTerminal UI built with Ratatui\n\nInteractive search and filters\n\nCrate detail views with stats and links\n\nPowered by ratcrate-core data\n\n➡️ Read the ratcrate-tui docs »\n\n\n\n☁︎ doc2quarto\nA helper tool for turning rough notes, markdown, or code comments into\nstructured Quarto documentation.\n\nConvert notes into .qmd skeletons\n\nIdeal for standardizing docs across all projects\n\n➡️ Read the doc2quarto docs »\n\n\n\n\n\n\n\n↯ QBanner (Coming Soon)\nA light-weight rust based library for CLI Banners\n\nWorks on all rust cli projects and easy to use\nSupports Ratatui basic and advanced layouts\n\nWorks on shell scripts too!\n\n➡️ Read the Qbanner Libraryi docs »\n\n\n\n🎚️ QSwitch (Planned)\n➡️ Coming Soon »\n\n\n\n\n\n\n\n📡 Challenges (Coming Soon)\nDocumenting common challenges during these projects\n➡️ Coming Soon\n\n\n\n📚 Books I read (Coming Soon)\n➡️ Coming Soon\n\n\n\n\n\n\n\n📡 neovim to emacs migration\nDocumenting my journey from neovim to emacs\n➡️ Read my journey »\n\n\n\n📚\n➡️ Coming Soon",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -335,9 +335,9 @@
   {
     "objectID": "rat-cli/datamodel.html",
     "href": "rat-cli/datamodel.html",
-    "title": "datamodel",
+    "title": "Data Model",
     "section": "",
-    "text": "Data Model\nThis module provides the strongly-typed contracts for all data received from the remote source. This is crucial for Rust’s type safety and for using the serde crate effectively for JSON handling.",
+    "text": "Key Structures:\nThis module provides the strongly-typed contracts for all data received from the remote source. This is crucial for Rust’s type safety and for using the serde crate effectively for JSON handling.",
     "crumbs": [
       "rat-cli",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>Data Model</span>"
@@ -346,9 +346,9 @@
   {
     "objectID": "rat-cli/datamodel.html#key-structures",
     "href": "rat-cli/datamodel.html#key-structures",
-    "title": "datamodel",
-    "section": "Key Structures:",
-    "text": "Key Structures:\n\nCratePackage: Holds all metadata for an individual crate (e.g., name, downloads, is_core_library).\nMetadata: Stores global statistics and generation information (total_crates, generated_at, core_libraries, community_packages).\nCratesData: The root structure containing the Metadata and the Vec&lt;CratePackage&gt;.\n\n// types.rs: Metadata Definition\n\n#[derive(Debug, Clone, Serialize, Deserialize)]\npub struct Metadata {\n    pub version: String,\n    pub generated_at: String,\n    pub total_crates: usize,\n    pub core_libraries: usize,\n    pub community_packages: usize,\n    // ...\n}",
+    "title": "Data Model",
+    "section": "",
+    "text": "CratePackage: Holds all metadata for an individual crate (e.g., name, downloads, is_core_library).\nMetadata: Stores global statistics and generation information (total_crates, generated_at, core_libraries, community_packages).\nCratesData: The root structure containing the Metadata and the Vec&lt;CratePackage&gt;.\n\n// types.rs: Metadata Definition\n\n#[derive(Debug, Clone, Serialize, Deserialize)]\npub struct Metadata {\n    pub version: String,\n    pub generated_at: String,\n    pub total_crates: usize,\n    pub core_libraries: usize,\n    pub community_packages: usize,\n    // ...\n}",
     "crumbs": [
       "rat-cli",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>Data Model</span>"
@@ -357,7 +357,7 @@
   {
     "objectID": "rat-cli/datamodel.html#data-persistence-and-retrieval",
     "href": "rat-cli/datamodel.html#data-persistence-and-retrieval",
-    "title": "datamodel",
+    "title": "Data Model",
     "section": "Data Persistence and Retrieval",
     "text": "Data Persistence and Retrieval\nThis module abstracts the process of fetching and storing data. It decides whether to serve data from the local filesystem or make an HTTP request using reqwest.\n\nCache Stale Logic\nThe is_cache_stale() function determines if the cache needs an update by checking the modified timestamp of the ratcrate.json file against the maximum age\n// cache.rs: Cache Stale Check\n\nconst CACHE_MAX_AGE_DAYS: u64 = 1;\n\npub fn is_cache_stale() -&gt; Result&lt;bool&gt; {\n    // ... logic to check file existence and modified timestamp ...\n    let age = SystemTime::now().duration_since(modified)?;\n    \n    // Returns true if the cache file is older than 1 day\n    Ok(age &gt; Duration::from_secs(CACHE_MAX_AGE_DAYS * 24 * 3600))\n}\n\n\nData Retrieval Flow\nThe public function get_data orchestrates the data retrieval, showing status messages to the user.\n// cache.rs: get_data Workflow\n\npub fn get_data(force_refresh: bool) -&gt; Result&lt;CratesData&gt; {\n    if force_refresh {\n        download_fresh_data()\n    } else if is_cache_stale()? {\n        download_fresh_data() // Cache is stale\n    } else {\n        load_from_cache() // Cache is fresh\n    }\n}\n\n\nmain.rs: Execution and Display\n// main.rs: Main Function Control Flow Snippet\n\nfn main() -&gt; Result&lt;()&gt; {\n    let args = Cli::parse();\n    print_banner();\n\n    if args.cache_info {\n        return show_cache_info(); // Exit 1: Cache Info\n    }\n\n    let crates_data = get_data(args.refresh)?;\n\n    if args.total {\n        display_total_crates(&crates_data.metadata);\n        return Ok(()); // Exit 2: Total Stats\n    }\n\n    if args.fzf {\n        if launch_fzf(...) {\n            return Ok(()); // Exit 3: fzf selection successful\n        }\n    }\n\n    // Default listing (table or pretty-print)\n    // ...\n    Ok(())\n}\n\n\nInteractive fzf Implementation\nThe launch_fzf function interacts with the operating system to pipe data to the fzf external process.\n\nCrate list is formatted into simplified strings (name — description (downloads)).\nstd::process::Command spawns fzf and pipes the list to its standard input (stdin).\nThe user selection is read from fzf’s standard output (stdout).\nThe selected name is used to look up the full CratePackage details for display.\n\nThis approach minimizes the complexity of managing a custom TUI library for interaction.",
     "crumbs": [
@@ -622,6 +622,545 @@
     "text": "Sponsor\n\n\n\nKo-Fi",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>about-author.html</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html",
+    "href": "neovim2emacs/index.html",
+    "title": "Neovim to Emacs",
+    "section": "",
+    "text": "The great migration - Neovim to Emacs",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#editors-view",
+    "href": "neovim2emacs/index.html#editors-view",
+    "title": "The Big Migration: Neovim to Emacs",
+    "section": "Editor’s View",
+    "text": "Editor’s View\n\nNeovim: The Surgeon’s Scalpel\nNeovim is a modern refactor of Vim, designed for users who value speed, minimalism, and the Unix philosophy. It is built around modal editing, where the system behavior changes depending on what mode you are on.\n&lt;Image of neovim working&gt;\n\n\nEmacs: The Operating System\nEmacs is often described as “an operating system that happens to have a text editor.” It is a programmable environment built on Emacs Lisp (Elisp).",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>The Big Migration: Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#why-i-am-using-neovim",
+    "href": "neovim2emacs/index.html#why-i-am-using-neovim",
+    "title": "The Big Migration: Neovim to Emacs",
+    "section": "Why I am using Neovim",
+    "text": "Why I am using Neovim\nbecause I was so used to Vim, my natural progression was to start with Neovim. I still to. this day love it as my daily driver if I am coding or writing blogs. The entire project management including notes was setup in Notion. It was my second brain only to realize that I am switching from one app to another and losing my flow. Also I was not very happy with Notion’s privacy policy.\n&lt;notion screenshots&gt;\nI even tried with “Neorg”, Obsidian too, but something did not click for me. So i decided to give emacs a try once again after 17 years.",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>The Big Migration: Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#the-decision-to-move-to-emacs",
+    "href": "neovim2emacs/index.html#the-decision-to-move-to-emacs",
+    "title": "The Big Migration: Neovim to Emacs",
+    "section": "The Decision to Move to Emacs",
+    "text": "The Decision to Move to Emacs\nOne of the primary factor to pushed me toward Emacs were powerful Org-mode and Org Roam:\n\nThe Power of Org-mode\nWhile Neovim has projects like neorg, nothing compares to the “Killer App” of Emacs: Org-mode. * Literate Programming: Combining code, execution results, and prose in one document. * Task Management: A built-in system for TODOs, agendas, and time-tracking that is unmatched by any third-party app. * The Zettelkasten: Using org-roam to build a second brain within the same environment where I write my code.\nIn the migration, we will go over the plugins I used and Neovim and the replacement I decided for my emacs configuration. The only caveat was to learn the keybindings again which according to me should not take long.. Just hoping !!!",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>The Big Migration: Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#package-comparison-table-2025",
+    "href": "neovim2emacs/index.html#package-comparison-table-2025",
+    "title": "The Big Migration: Neovim to Emacs",
+    "section": "Package Comparison Table (2025)",
+    "text": "Package Comparison Table (2025)\n\n\n\n\n\n\n\n\n\nCategory\nNeovim Equivalent\nEmacs Recommended\nWhy?\n\n\n\n\nLSP\nnvim-lspconfig\nEglot\nBuilt-in, stable, no-nonsense.\n\n\nGit\nlazygit / gitsigns\nMagit\nThe best Git interface in existence.\n\n\nNotes\nneorg / obsidian\nOrg-mode\nA complete productivity ecosystem.\n\n\nSearch\ntelescope.nvim\nVertico + Consult\nModular, native, and fast.\n\n\nTerminal\ntoggleterm.nvim\nvterm\nFull terminal emulation inside a buffer.",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>The Big Migration: Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html",
+    "href": "neovim2emacs/migration.html",
+    "title": "Neovim to Emacs",
+    "section": "",
+    "text": "Emacs Configuration Guide - Neovim to Emacs Migration (2025)",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#complete-package-comparison-table",
+    "href": "neovim2emacs/migration.html#complete-package-comparison-table",
+    "title": "Neovim to Emacs",
+    "section": "Complete Package Comparison Table",
+    "text": "Complete Package Comparison Table\n\n\n\n\n\n\n\n\n\n\n\nCategory/Plugin\nBest (Recommended)\nAlternative 2\nAlternative 3\nNotes\nExploration\n\n\n\n\nPackage Manager\nElpaca\nstraight.el\npackage.el (built-in)\nElpaca: async, parallel installs, interactive UI. straight.el: reproducible builds. package.el: simple but limited.\nelpaca-manager\n\n\nLazyGit\nMagit\nDiff-hl + VC\nForge (for GitHub/GitLab)\nMagit is the gold standard - many switch to Emacs just for it. Forge adds PR/issue management.\n\n\n\nLSP\nEglot (built-in Emacs 29+)\nlsp-mode\nlsp-bridge\nEglot is minimal, fast, built-in. Works out-of-box for shell, Rust, Python. Just enable with eglot-ensure.\n\n\n\nDebugger\nDape\ndap-mode\nBuilt-in GUD\nDape is newer, lighter, simpler than dap-mode. Both support DAP protocol. Built-in GUD for basic debugging.\n\n\n\nQuarto\nquarto-mode (with polymode)\nmarkdown-mode + org-mode\npoly-markdown\nOfficial quarto-mode package. Requires polymode, markdown-mode. Supports preview via quarto-preview.\n\n\n\nToggle Term (tmux-like)\nvterm\neat (Emulate A Terminal)\neshell + multi-term\nVterm is fastest, most complete terminal. Eat is pure elisp (no compilation). Eshell is built-in.\n\n\n\nAutopairs\nelectric-pair-mode (built-in)\nsmartparens\nelec-pair + paren\nelectric-pair-mode is built-in Emacs, works out-of-box. Smartparens for more features.\n\n\n\nCode Runner (Python/Jupyter)\npython-mode + ob-python (org-babel)\npython-pytest + quickrun\njupyter-mode (emacs-jupyter)\nUse org-babel for literate programming. quickrun for quick execution. jupyter-mode for notebooks. Rust: cargo-mode or quickrun.\n\n\n\nMusic Player\nEMMS (Emacs Multimedia System)\nBongo\nListen.el\nEMMS is mature, feature-rich (mpv/vlc backend). Bongo is simpler. Listen.el is newest/simplest.\n\n\n\nProject Management\nproject.el (built-in)\nProjectile\nfind-file-in-project\nproject.el is built-in (Emacs 28+), fast. Projectile more features. Works with Vertico/Consult.\n\n\n\nTelescope\nVertico + Consult + Marginalia + Orderless\nIvy + Counsel + Swiper\nHelm\nVertico stack is modern, fast, modular. Native completion. Ivy/Helm are older but still popular.\n\n\n\nZen Mode\nwriteroom-mode\nolivetti\ndarkroom\nWriteroom-mode most popular. Olivetti focuses on centered text. All distraction-free.\n\n\n\nComments\ncomment-dwim (built-in)\nevil-nerd-commenter\ncomment-line\ncomment-dwim is built-in (M-;). evil-nerd-commenter for more features.\n\n\n\nFolders/Tree + Icons\ndired + all-the-icons-dired / nerd-icons-dired\ntreemacs + all-the-icons\nneotree + all-the-icons\nDired is built-in, powerful. Add icons with all-the-icons-dired. Treemacs for IDE-like tree.\n\n\n\nMarkdown Support\nmarkdown-mode\ngfm-mode (GitHub Flavored)\npoly-markdown\nmarkdown-mode is standard. gfm-mode for GitHub. poly-markdown for code blocks.\n\n\n\nLaTeX Support\nAUCTeX\nBuilt-in latex-mode\nCDLaTeX (math)\nAUCTeX is the standard. Supports preview, compilation. CDLaTeX for fast math input.\n\n\n\nCodeium AI\ncodeium.el\ntabnine\ncopilot.el\nCodeium.el is free, fast, supports 70+ languages. Works with company-mode or corfu.\n\n\n\niron.nvim (REPL)\nob-python/ob-* (org-babel)\npython-mode REPL\ncomint-mode\nOrg-babel for literate programming. python-mode has built-in REPL. comint for general REPL.\n\n\n\nOrg-mode\norg-mode (built-in)\norg-agenda\norg-roam (Zettelkasten)\nOrg-mode is THE reason many use Emacs. Built-in, powerful. org-roam for note-taking.",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#power-user-essentials-missing-from-neovim-list",
+    "href": "neovim2emacs/migration.html#power-user-essentials-missing-from-neovim-list",
+    "title": "Neovim to Emacs",
+    "section": "Power User Essentials (Missing from Neovim List)",
+    "text": "Power User Essentials (Missing from Neovim List)\n\n\n\n\n\n\n\n\n\nCategory\nPackage\nWhy Critical\nPriority\n\n\n\n\nKeybinding Discovery\nwhich-key\nSee available commands as you type\nHIGH\n\n\nIn-buffer Completion\ncorfu + cape\nFaster than company, native completion\nHIGH\n\n\nNavigation\navy\nJump anywhere instantly\nHIGH\n\n\nContext Actions\nembark\nPower-user workflow enhancer\nHIGH\n\n\nSpell Check\njinx\nModern, fast, language-aware\nMEDIUM\n\n\nNote-taking\ndenote or org-roam\nZettelkasten for org-mode\nHIGH\n\n\nKeybinding Config\ngeneral.el\nClean, organized keybindings\nMEDIUM\n\n\nHelp System\nhelpful\nBetter documentation viewer\nMEDIUM\n\n\nHistory\nsavehist + recentf\nRemember everything (built-in)\nHIGH\n\n\nSearch\nrg.el or deadgrep\nFast project search with ripgrep\nHIGH",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#font-recommendations",
+    "href": "neovim2emacs/migration.html#font-recommendations",
+    "title": "Neovim to Emacs",
+    "section": "Font Recommendations",
+    "text": "Font Recommendations\n\n\n\nFont\nStyle\nBest For\n\n\n\n\nGeist Mono\nModern, clean\nAll-purpose coding\n\n\nIosevka\nNarrow, customizable\nDense code, terminals\n\n\nJetBrains Mono\nReadable, ligatures\nLong coding sessions\n\n\nFira Code\nPopular, ligatures\nGeneral programming\n\n\n\nConfiguration:\n(set-face-attribute 'default nil :font \"Geist Mono-12\")",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#color-scheme-recommendations",
+    "href": "neovim2emacs/migration.html#color-scheme-recommendations",
+    "title": "Neovim to Emacs",
+    "section": "Color Scheme Recommendations",
+    "text": "Color Scheme Recommendations\n\n\n\n\n\n\n\n\n\nTheme\nStyle\nBest For\nBuilt-in?\n\n\n\n\nmodus-themes\nAccessible, professional\nAll languages, accessibility\n✅ Yes (Emacs 28+)\n\n\ndoom-one (doom-themes)\nModern, vibrant\nDark coding\n❌ No\n\n\nef-themes\nColorful, elegant\nVariety, by modus author\n❌ No\n\n\nnano-theme\nMinimal, clean\nDistraction-free\n❌ No\n\n\nkanagawa-theme\nCalm, nature-inspired\nPython, Rust, Markdown\n❌ No (MELPA)",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#language-specific-setup",
+    "href": "neovim2emacs/migration.html#language-specific-setup",
+    "title": "Neovim to Emacs",
+    "section": "Language-Specific Setup",
+    "text": "Language-Specific Setup\n\nRust Configuration\n\nLSP: rust-analyzer (install system-wide, Eglot auto-detects)\nSyntax: rust-mode\nCargo: cargo-mode for running tests/build\nDebugging: Dape with lldb\nFormatter: Built-in with rust-analyzer\n\n\n\nPython Configuration\n\nLSP: pyright or pylsp (Eglot auto-detects)\nMode: python-mode (built-in)\nTesting: python-pytest\nNotebooks: jupyter-mode or org-babel\nFormatter: Use Eglot’s format-on-save\n\n\n\nShell Script Configuration\n\nLSP: bash-language-server (Eglot auto-detects)\nMode: sh-mode (built-in)\nLinting: flycheck with shellcheck",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#essential-configuration-structure",
+    "href": "neovim2emacs/migration.html#essential-configuration-structure",
+    "title": "Neovim to Emacs",
+    "section": "Essential Configuration Structure",
+    "text": "Essential Configuration Structure\n\nearly-init.el\n;; Disable package.el if using Elpaca\n(setq package-enable-at-startup nil)\n\n;; Performance tweaks\n(setq gc-cons-threshold most-positive-fixnum)\n(setq native-comp-async-report-warnings-errors nil)\n\n;; Disable unnecessary UI elements\n(setq inhibit-startup-screen t)\n(menu-bar-mode -1)\n(tool-bar-mode -1)\n(scroll-bar-mode -1)\n\n\ninit.el Basic Structure\n;; Reset GC threshold after startup\n(add-hook 'emacs-startup-hook\n  (lambda ()\n    (setq gc-cons-threshold (* 16 1024 1024))))\n\n;; Elpaca bootstrap\n;; ... (bootstrap code from Elpaca docs)\n\n;; Essential built-in configurations\n(use-package emacs\n  :ensure nil\n  :init\n  (electric-pair-mode 1)\n  (savehist-mode 1)\n  (recentf-mode 1)\n  (global-auto-revert-mode 1))\n\n;; Load packages in order:\n;; 1. Core utilities (which-key, helpful)\n;; 2. Completion (vertico stack, corfu)\n;; 3. Navigation (avy, project)\n;; 4. Development (eglot, magit, dape)\n;; 5. Language modes\n;; 6. Org-mode configuration",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#minimal-fast-startup-checklist",
+    "href": "neovim2emacs/migration.html#minimal-fast-startup-checklist",
+    "title": "Neovim to Emacs",
+    "section": "Minimal Fast Startup Checklist",
+    "text": "Minimal Fast Startup Checklist\n✅ Use Elpaca for async package loading\n✅ Use native packages where possible (Eglot, project.el, electric-pair-mode)\n✅ Configure early-init.el for performance\n✅ Defer non-essential packages with :defer t\n✅ Use :hook for mode-specific packages\n✅ Enable native compilation (Emacs 28+)\n✅ Keep startup under 1 second (use emacs-init-time)",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#priority-installation-order",
+    "href": "neovim2emacs/migration.html#priority-installation-order",
+    "title": "Neovim to Emacs",
+    "section": "Priority Installation Order",
+    "text": "Priority Installation Order\n\nPackage Manager: Elpaca\nCore: which-key, helpful, savehist, recentf\nCompletion: Vertico + Consult + Marginalia + Orderless + Corfu + Cape\nNavigation: avy, embark, project.el\nGit: Magit (+ Forge if needed)\nLSP: Eglot (built-in, just configure)\nLanguages: rust-mode, python-mode, markdown-mode, AUCTeX\nTerminal: vterm\nOrg: org-mode, org-roam or denote\nTheme: modus-themes or kanagawa-theme",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#performance-tips",
+    "href": "neovim2emacs/migration.html#performance-tips",
+    "title": "Neovim to Emacs",
+    "section": "Performance Tips",
+    "text": "Performance Tips\n\nStartup Time Target: Under 1 second\nUse use-package with :defer t for non-essential packages\nLazy-load language modes with :mode or :hook\nProfile startup: M-x emacs-init-time or use esup package\nNative compilation: Ensure native-comp is enabled (Emacs 28+)\nMinimize custom-file writes: Set custom-file to temporary location",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/migration.html#resources",
+    "href": "neovim2emacs/migration.html#resources",
+    "title": "Neovim to Emacs",
+    "section": "Resources",
+    "text": "Resources\n\nEglot: Built-in Emacs 29+, minimal LSP client\nVertico/Consult/Corfu: Modern completion ecosystem\nSystem Craft: YouTube channel for Emacs tutorials\nEmacs documentation: C-h i for built-in manuals\nr/emacs: Active community on Reddit",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/09-workflow-diagram.html",
+    "href": "rat-core/09-workflow-diagram.html",
+    "title": "09-workflow-diagram",
+    "section": "",
+    "text": "Chapter 9 — Full Workflow Diagram",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>09-workflow-diagram</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/09-workflow-diagram.html#technical-workflow-diagram",
+    "href": "rat-core/09-workflow-diagram.html#technical-workflow-diagram",
+    "title": "09-workflow-diagram",
+    "section": "Technical Workflow Diagram",
+    "text": "Technical Workflow Diagram\n\n\n\n\n\nflowchart TD\n    A[Sparse Index Clone] --&gt; B[Parse for Ratatui Dependents]\n    B --&gt; C[Index Cache Lookup]\n    C --&gt;|New crate| D[Fetch crates.io Metadata]\n    C --&gt;|Version changed| D\n    C --&gt;|Stale (&gt;24h)| D\n    C --&gt;|Fresh (&lt;24h)| E[Load from Metadata Cache]\n    D --&gt; F[Update Metadata Cache]\n    D --&gt; G[Update Index Cache]\n    E --&gt; G\n    F --&gt; H[Append to Partial Data]\n    G --&gt; H\n    H --&gt; I[Generate Final ratcrate.json]\n\n\n\n\n\n\nPlaceholder: Image version of diagram",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>09-workflow-diagram</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/10-code-snippets.html",
+    "href": "rat-core/10-code-snippets.html",
+    "title": "10-code-snippets",
+    "section": "",
+    "text": "Chapter 10 — Important Code Snippets",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>10-code-snippets</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/10-code-snippets.html#parsing-sparse-index-line",
+    "href": "rat-core/10-code-snippets.html#parsing-sparse-index-line",
+    "title": "10-code-snippets",
+    "section": "Parsing Sparse Index Line",
+    "text": "Parsing Sparse Index Line\nlet entry: SparseIndexEntry = serde_json::from_str(line)?;\nif new crate or version changed or stale {\n    fetch\n} else {\n    use cached metadata\n}",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>10-code-snippets</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/10-code-snippets.html#atomic-write",
+    "href": "rat-core/10-code-snippets.html#atomic-write",
+    "title": "10-code-snippets",
+    "section": "Atomic Write",
+    "text": "Atomic Write\nlet tmp = path.with_extension(\"tmp\");\nfs::write(&tmp, data)?;\nfs::rename(&tmp, &path)?;\nPlaceholder: Add screenshots of code later",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>10-code-snippets</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/12-contributing.html",
+    "href": "rat-core/12-contributing.html",
+    "title": "12-contributing",
+    "section": "",
+    "text": "Chapter 12 — Contributing\nThis project will be open-sourced later.\nContributions are welcome after the public release.",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>12-contributing</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/12-contributing.html#guidelines",
+    "href": "rat-core/12-contributing.html#guidelines",
+    "title": "12-contributing",
+    "section": "Guidelines",
+    "text": "Guidelines\n\nWrite small, atomic PRs\n\nInclude tests for new logic\n\nAdd/update documentation\n\nFollow Rust formatting and linting",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>12-contributing</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/12-contributing.html#placeholder-contribution-workflow-diagram",
+    "href": "rat-core/12-contributing.html#placeholder-contribution-workflow-diagram",
+    "title": "12-contributing",
+    "section": "Placeholder: Contribution workflow diagram",
+    "text": "Placeholder: Contribution workflow diagram",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>12-contributing</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/15-performance-and-scaling.html",
+    "href": "rat-core/15-performance-and-scaling.html",
+    "title": "15-Performance-and-Scaling",
+    "section": "",
+    "text": "📘 15-performance-and-scaling.qmd\nThis chapter covers how ratcrate-core performs today and how it will scale with the expanding Ratatui ecosystem.",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>15-Performance-and-Scaling</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/15-performance-and-scaling.html#first-run-vs-cached-runs",
+    "href": "rat-core/15-performance-and-scaling.html#first-run-vs-cached-runs",
+    "title": "15-Performance-and-Scaling",
+    "section": "1. First-Run vs Cached-Runs",
+    "text": "1. First-Run vs Cached-Runs\n\nCold Run (no caches)\n\nFull sparse index scan\n\n50–200+ crates depending on Ratatui\n\nAll crates.io metadata fetched\n\n~100 seconds typical\n\n\n\nWarm Run (caches present)\n\nReads sparse index again\n\nBut 0 HTTP calls\n\n~5 seconds typical",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>15-Performance-and-Scaling</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/15-performance-and-scaling.html#where-time-is-spent",
+    "href": "rat-core/15-performance-and-scaling.html#where-time-is-spent",
+    "title": "15-Performance-and-Scaling",
+    "section": "2. Where Time is Spent",
+    "text": "2. Where Time is Spent\n\nSparse Index Parsing\n\nDisk IO bound\nMany small files\n\n\n\nCrates.io API\n\nNetwork bound\nRate-limited (1 request/sec recommended)\n\n\n\nJSON Serialization\n\nNegligible compared to above",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>15-Performance-and-Scaling</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/15-performance-and-scaling.html#current-optimizations",
+    "href": "rat-core/15-performance-and-scaling.html#current-optimizations",
+    "title": "15-Performance-and-Scaling",
+    "section": "3. Current Optimizations",
+    "text": "3. Current Optimizations\n\nIncremental caching\n\nOnly fetches metadata if:\n\nNew crate\nNew version\nStale (&gt;24h)\n\nAtomic writes to avoid corruption\n\nResume support to avoid wasted work",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>15-Performance-and-Scaling</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/15-performance-and-scaling.html#future-optimization-ideas",
+    "href": "rat-core/15-performance-and-scaling.html#future-optimization-ideas",
+    "title": "15-Performance-and-Scaling",
+    "section": "4. Future Optimization Ideas",
+    "text": "4. Future Optimization Ideas\n\nParallel sparse index scanning\n\nBatch HTTP calls (crates.io API doesn’t support this yet)\n\nPersistent HTTP connections\n\nCompression for cached JSON\n\nLocal SQLite cache instead of JSON files",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>15-Performance-and-Scaling</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/15-performance-and-scaling.html#placeholder-benchmark-figures",
+    "href": "rat-core/15-performance-and-scaling.html#placeholder-benchmark-figures",
+    "title": "15-Performance-and-Scaling",
+    "section": "Placeholder: Benchmark Figures",
+    "text": "Placeholder: Benchmark Figures\n\nScreenshot: cold run timings\n\nScreenshot: warm run timings\n\nScreenshot: flamegraph (future work)",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>15-Performance-and-Scaling</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/04-sparse-index.html",
+    "href": "rat-core/04-sparse-index.html",
+    "title": "04-sparse-index",
+    "section": "",
+    "text": "Chapter 4 — Sparse Index Parsing\nThe crates.io sparse index is a massive tree of directories where each file contains line-delimited JSON, one line per version.",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>04-sparse-index</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/04-sparse-index.html#example-entry",
+    "href": "rat-core/04-sparse-index.html#example-entry",
+    "title": "04-sparse-index",
+    "section": "Example Entry",
+    "text": "Example Entry\n{\"name\":\"a-tui-tool\",\"vers\":\"0.4.1\",\"deps\":[{\"name\":\"ratatui\"}],\"yanked\":false}",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>04-sparse-index</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/04-sparse-index.html#what-ratcrate-core-extracts",
+    "href": "rat-core/04-sparse-index.html#what-ratcrate-core-extracts",
+    "title": "04-sparse-index",
+    "section": "What ratcrate-core Extracts",
+    "text": "What ratcrate-core Extracts\n\nLatest non-yanked version\nDependency list → look for \"name\": \"ratatui\"",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>04-sparse-index</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/04-sparse-index.html#algorithm-summary",
+    "href": "rat-core/04-sparse-index.html#algorithm-summary",
+    "title": "04-sparse-index",
+    "section": "Algorithm Summary",
+    "text": "Algorithm Summary\n\nWalk the directory tree\nFor each file:\n\nRead line by line\nParse as JSON\nSkip yanked versions\nIf any version depends on ratatui → track latest version\n\n\nPlaceholder: Code snippet screenshot",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>04-sparse-index</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/index.html",
+    "href": "rat-core/index.html",
+    "title": "Ratcrate-core Documentation",
+    "section": "",
+    "text": "Welcome to the official documentation for ratcrate-core, the backend engine powering the Ratatui ecosystem index.\n\nThis book covers:\n\nThe origin story\nTechnical architecture\nSparse index parsing\nMetadata enrichment\nMulti-day caching\nState & checkpointing\nFinal JSON output\nCode walkthroughs\nFuture roadmap\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis project is currently private and will be open-sourced later.",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Ratcrate-core Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/01-origin.html",
+    "href": "rat-core/01-origin.html",
+    "title": "01-Origin",
+    "section": "",
+    "text": "Chapter 1 — Origin of the Idea\nThe idea for ratcrate-core began while exploring the growing ecosystem around the Rust TUI framework Ratatui.\nDespite hundreds of crates and applications using Ratatui, there was:\nSo ratcrate-core was born.",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>01-Origin</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/01-origin.html#goals",
+    "href": "rat-core/01-origin.html#goals",
+    "title": "01-Origin",
+    "section": "Goals",
+    "text": "Goals\n\nDiscover all crates depending on ratatui\nEnrich them with crates.io metadata\nCache results for fast incremental runs\nOutput a unified dataset usable by:\n\nratcrate-cli\nratcrate-tui\nratcrate-web",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>01-Origin</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/01-origin.html#placeholder-photo-architecture-sketch",
+    "href": "rat-core/01-origin.html#placeholder-photo-architecture-sketch",
+    "title": "01-Origin",
+    "section": "Placeholder: Photo / Architecture Sketch",
+    "text": "Placeholder: Photo / Architecture Sketch",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>01-Origin</span>"
+    ]
+  },
+  {
+    "objectID": "rat-core/01-origin.html#architecture",
+    "href": "rat-core/01-origin.html#architecture",
+    "title": "01-Origin",
+    "section": "architecture",
+    "text": "architecture",
+    "crumbs": [
+      "rat-core",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>01-Origin</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#complete-package-comparison-table",
+    "href": "neovim2emacs/index.html#complete-package-comparison-table",
+    "title": "Neovim to Emacs",
+    "section": "Complete Package Comparison Table",
+    "text": "Complete Package Comparison Table\n\n\n\n\n\n\n\n\n\n\n\nCategory/Plugin\nBest (Recommended)\nAlternative 2\nAlternative 3\nNotes\nExploration\n\n\n\n\nPackage Manager\nElpaca\nstraight.el\npackage.el (built-in)\nElpaca: async, parallel installs, interactive UI. straight.el: reproducible builds. package.el: simple but limited.\nSetup completed. Will be moving to literal configuration\n\n\nLazyGit\nMagit\nDiff-hl + VC\nForge (for GitHub/GitLab)\nMagit is the gold standard - many switch to Emacs just for it. Forge adds PR/issue management.\n\n\n\nLSP\nEglot (built-in Emacs 29+)\nlsp-mode\nlsp-bridge\nEglot is minimal, fast, built-in. Works out-of-box for shell, Rust, Python. Just enable with eglot-ensure.\n\n\n\nDebugger\nDape\ndap-mode\nBuilt-in GUD\nDape is newer, lighter, simpler than dap-mode. Both support DAP protocol. Built-in GUD for basic debugging.\n\n\n\nQuarto\nquarto-mode (with polymode)\nmarkdown-mode + org-mode\npoly-markdown\nOfficial quarto-mode package. Requires polymode, markdown-mode. Supports preview via quarto-preview.\n\n\n\nToggle Term (tmux-like)\nvterm\neat (Emulate A Terminal)\neshell + multi-term\nVterm is fastest, most complete terminal. Eat is pure elisp (no compilation). Eshell is built-in.\n\n\n\nAutopairs\nelectric-pair-mode (built-in)\nsmartparens\nelec-pair + paren\nelectric-pair-mode is built-in Emacs, works out-of-box. Smartparens for more features.\n\n\n\nCode Runner (Python/Jupyter)\npython-mode + ob-python (org-babel)\npython-pytest + quickrun\njupyter-mode (emacs-jupyter)\nUse org-babel for literate programming. quickrun for quick execution. jupyter-mode for notebooks. Rust: cargo-mode or quickrun.\n\n\n\nMusic Player\nEMMS (Emacs Multimedia System)\nBongo\nListen.el\nEMMS is mature, feature-rich (mpv/vlc backend). Bongo is simpler. Listen.el is newest/simplest.\n\n\n\nProject Management\nproject.el (built-in)\nProjectile\nfind-file-in-project\nproject.el is built-in (Emacs 28+), fast. Projectile more features. Works with Vertico/Consult.\n\n\n\nTelescope\nVertico + Consult + Marginalia + Orderless\nIvy + Counsel + Swiper\nHelm\nVertico stack is modern, fast, modular. Native completion. Ivy/Helm are older but still popular.\n\n\n\nZen Mode\nwriteroom-mode\nolivetti\ndarkroom\nWriteroom-mode most popular. Olivetti focuses on centered text. All distraction-free.\n\n\n\nComments\ncomment-dwim (built-in)\nevil-nerd-commenter\ncomment-line\ncomment-dwim is built-in (M-;). evil-nerd-commenter for more features.\n\n\n\nFolders/Tree + Icons\ndired + all-the-icons-dired / nerd-icons-dired\ntreemacs + all-the-icons\nneotree + all-the-icons\nDired is built-in, powerful. Add icons with all-the-icons-dired. Treemacs for IDE-like tree.\n\n\n\nMarkdown Support\nmarkdown-mode\ngfm-mode (GitHub Flavored)\npoly-markdown\nmarkdown-mode is standard. gfm-mode for GitHub. poly-markdown for code blocks.\n\n\n\nLaTeX Support\nAUCTeX\nBuilt-in latex-mode\nCDLaTeX (math)\nAUCTeX is the standard. Supports preview, compilation. CDLaTeX for fast math input.\n\n\n\nCodeium AI\ncodeium.el\ntabnine\ncopilot.el\nCodeium.el is free, fast, supports 70+ languages. Works with company-mode or corfu.\n\n\n\niron.nvim (REPL)\nob-python/ob-* (org-babel)\npython-mode REPL\ncomint-mode\nOrg-babel for literate programming. python-mode has built-in REPL. comint for general REPL.\n\n\n\nOrg-mode\norg-mode (built-in)\norg-agenda\norg-roam (Zettelkasten)\nOrg-mode is THE reason many use Emacs. Built-in, powerful. org-roam for note-taking.",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#power-user-essentials-missing-from-neovim-list",
+    "href": "neovim2emacs/index.html#power-user-essentials-missing-from-neovim-list",
+    "title": "Neovim to Emacs",
+    "section": "Power User Essentials (Missing from Neovim List)",
+    "text": "Power User Essentials (Missing from Neovim List)\n\n\n\n\n\n\n\n\n\nCategory\nPackage\nWhy Critical\nPriority\n\n\n\n\nKeybinding Discovery\nwhich-key\nSee available commands as you type\nHIGH\n\n\nIn-buffer Completion\ncorfu + cape\nFaster than company, native completion\nHIGH\n\n\nNavigation\navy\nJump anywhere instantly\nHIGH\n\n\nContext Actions\nembark\nPower-user workflow enhancer\nHIGH\n\n\nSpell Check\njinx\nModern, fast, language-aware\nMEDIUM\n\n\nNote-taking\ndenote or org-roam\nZettelkasten for org-mode\nHIGH\n\n\nKeybinding Config\ngeneral.el\nClean, organized keybindings\nMEDIUM\n\n\nHelp System\nhelpful\nBetter documentation viewer\nMEDIUM\n\n\nHistory\nsavehist + recentf\nRemember everything (built-in)\nHIGH\n\n\nSearch\nrg.el or deadgrep\nFast project search with ripgrep\nHIGH",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#font-recommendations",
+    "href": "neovim2emacs/index.html#font-recommendations",
+    "title": "Neovim to Emacs",
+    "section": "Font Recommendations",
+    "text": "Font Recommendations\n\n\n\nFont\nStyle\nBest For\n\n\n\n\nGeist Mono\nModern, clean\nAll-purpose coding\n\n\nIosevka\nNarrow, customizable\nDense code, terminals\n\n\nJetBrains Mono\nReadable, ligatures\nLong coding sessions\n\n\nFira Code\nPopular, ligatures\nGeneral programming\n\n\n\nConfiguration:\n(set-face-attribute 'default nil :font \"Geist Mono-12\")",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#color-scheme-recommendations",
+    "href": "neovim2emacs/index.html#color-scheme-recommendations",
+    "title": "Neovim to Emacs",
+    "section": "Color Scheme Recommendations",
+    "text": "Color Scheme Recommendations\n\n\n\n\n\n\n\n\n\nTheme\nStyle\nBest For\nBuilt-in?\n\n\n\n\nmodus-themes\nAccessible, professional\nAll languages, accessibility\n✅ Yes (Emacs 28+)\n\n\ndoom-one (doom-themes)\nModern, vibrant\nDark coding\n❌ No\n\n\nef-themes\nColorful, elegant\nVariety, by modus author\n❌ No\n\n\nnano-theme\nMinimal, clean\nDistraction-free\n❌ No\n\n\nkanagawa-theme\nCalm, nature-inspired\nPython, Rust, Markdown\n❌ No (MELPA)",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#language-specific-setup",
+    "href": "neovim2emacs/index.html#language-specific-setup",
+    "title": "Neovim to Emacs",
+    "section": "Language-Specific Setup",
+    "text": "Language-Specific Setup\n\nRust Configuration\n\nLSP: rust-analyzer (install system-wide, Eglot auto-detects)\nSyntax: rust-mode\nCargo: cargo-mode for running tests/build\nDebugging: Dape with lldb\nFormatter: Built-in with rust-analyzer\n\n\n\nPython Configuration\n\nLSP: pyright or pylsp (Eglot auto-detects)\nMode: python-mode (built-in)\nTesting: python-pytest\nNotebooks: jupyter-mode or org-babel\nFormatter: Use Eglot’s format-on-save\n\n\n\nShell Script Configuration\n\nLSP: bash-language-server (Eglot auto-detects)\nMode: sh-mode (built-in)\nLinting: flycheck with shellcheck",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#essential-configuration-structure",
+    "href": "neovim2emacs/index.html#essential-configuration-structure",
+    "title": "Neovim to Emacs",
+    "section": "Essential Configuration Structure",
+    "text": "Essential Configuration Structure\n\nearly-init.el\n;; Disable package.el if using Elpaca\n(setq package-enable-at-startup nil)\n\n;; Performance tweaks\n(setq gc-cons-threshold most-positive-fixnum)\n(setq native-comp-async-report-warnings-errors nil)\n\n;; Disable unnecessary UI elements\n(setq inhibit-startup-screen t)\n(menu-bar-mode -1)\n(tool-bar-mode -1)\n(scroll-bar-mode -1)\n\n\ninit.el Basic Structure\n;; Reset GC threshold after startup\n(add-hook 'emacs-startup-hook\n  (lambda ()\n    (setq gc-cons-threshold (* 16 1024 1024))))\n\n;; Elpaca bootstrap\n;; ... (bootstrap code from Elpaca docs)\n\n;; Essential built-in configurations\n(use-package emacs\n  :ensure nil\n  :init\n  (electric-pair-mode 1)\n  (savehist-mode 1)\n  (recentf-mode 1)\n  (global-auto-revert-mode 1))\n\n;; Load packages in order:\n;; 1. Core utilities (which-key, helpful)\n;; 2. Completion (vertico stack, corfu)\n;; 3. Navigation (avy, project)\n;; 4. Development (eglot, magit, dape)\n;; 5. Language modes\n;; 6. Org-mode configuration",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#minimal-fast-startup-checklist",
+    "href": "neovim2emacs/index.html#minimal-fast-startup-checklist",
+    "title": "Neovim to Emacs",
+    "section": "Minimal Fast Startup Checklist",
+    "text": "Minimal Fast Startup Checklist\n✅ Use Elpaca for async package loading\n✅ Use native packages where possible (Eglot, project.el, electric-pair-mode)\n✅ Configure early-init.el for performance\n✅ Defer non-essential packages with :defer t\n✅ Use :hook for mode-specific packages\n✅ Enable native compilation (Emacs 28+)\n✅ Keep startup under 1 second (use emacs-init-time)",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#priority-installation-order",
+    "href": "neovim2emacs/index.html#priority-installation-order",
+    "title": "Neovim to Emacs",
+    "section": "Priority Installation Order",
+    "text": "Priority Installation Order\n\nPackage Manager: Elpaca\nCore: which-key, helpful, savehist, recentf\nCompletion: Vertico + Consult + Marginalia + Orderless + Corfu + Cape\nNavigation: avy, embark, project.el\nGit: Magit (+ Forge if needed)\nLSP: Eglot (built-in, just configure)\nLanguages: rust-mode, python-mode, markdown-mode, AUCTeX\nTerminal: vterm\nOrg: org-mode, org-roam or denote\nTheme: modus-themes or kanagawa-theme",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#performance-tips",
+    "href": "neovim2emacs/index.html#performance-tips",
+    "title": "Neovim to Emacs",
+    "section": "Performance Tips",
+    "text": "Performance Tips\n\nStartup Time Target: Under 1 second\nUse use-package with :defer t for non-essential packages\nLazy-load language modes with :mode or :hook\nProfile startup: M-x emacs-init-time or use esup package\nNative compilation: Ensure native-comp is enabled (Emacs 28+)\nMinimize custom-file writes: Set custom-file to temporary location",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
+    ]
+  },
+  {
+    "objectID": "neovim2emacs/index.html#resources",
+    "href": "neovim2emacs/index.html#resources",
+    "title": "Neovim to Emacs",
+    "section": "Resources",
+    "text": "Resources\n\nEglot: Built-in Emacs 29+, minimal LSP client\nVertico/Consult/Corfu: Modern completion ecosystem\nSystem Craft: YouTube channel for Emacs tutorials\nEmacs documentation: C-h i for built-in manuals\nr/emacs: Active community on Reddit",
+    "crumbs": [
+      "neovim2emacs",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Neovim to Emacs</span>"
     ]
   }
 ]
