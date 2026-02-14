@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Story | Rustimate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-dim: #86868b;
+            --accent: #ff4d00;
+            --cursor-color: #d1d1d1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            /* Light frosted glass effect */
+            background-color: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 12px 0;
+            transition: all 0.3s ease;
+        }
+
+        .container.nav-content {
+            max-width: 1100px; /* Aligns with your content width */
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Brand Styles */
+        .nav-left { display: flex; align-items: center; gap: 16px; }
+
+        .brand-qubit {
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .brand-rustimate {
+            font-weight: 400;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-left .divider {
+            width: 1px;
+            height: 14px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Nav Links */
+        .nav-links { display: flex; gap: 24px; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 13px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hamburger Menu (Mobile) */
+        .hamburger {
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text-main);
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            /* background: rgba(0,0,0,0.6); */
+            background: rgba(255, 255, 250, 0.05);
+             border: 1px solid rgba(255,255,255,0.08);
+            /* border-top: 1px solid var(--glass-border); */
+            border-top: 1px solid rgba(255,255,255,0.1);
+            /* padding: 20px; */
+             padding: 20px 24px;
+             border-radius: 16px;
+             /* box-shadow: 0 8px 32px rgba(0,0,0,0.4); */
+             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+             width: calc(100% - 32px); /* spacing from edges */
+            max-width: 600px;
+            margin: 12px auto 0 auto; /* centers + gap from nav */
+        }
+        .mobile-menu::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.06);
+            pointer-events: none;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 12px 0;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+
+        .stage {
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 40px;
+            position: relative;
+        }
+
+        /* Centered Intro Screen */
+        .typewriter-container {
+            display: flex;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(24px, 5vw, 40px);
+            font-weight: 500;
+            transition: opacity 0.8s ease;
+            transform: translateY(-20px); /* Balance centering */
+        }
+
+        .cursor {
+            width: 5px;
+            height: 1.2em;
+            background-color: var(--cursor-color);
+            display: inline-block;
+            margin-left: 8px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 1s ease;
+            cursor: pointer;
+            color: var(--text-dim);
+        }
+
+        .scroll-indicator.visible { opacity: 1; transform: translateY(0); }
+
+        /* Story Content Area */
+        .story-content {
+            max-width: 800px;
+            width: 100%;
+            text-align: left;
+            display: none;
+            padding-top: 19vh; 
+            padding-bottom: 15vh;
+        }
+
+        .story-content.active { display: block; }
+
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 1.2s cubic-bezier(0.2, 0, 0.2, 1), 
+                        transform 1.2s cubic-bezier(0.2, 0, 0.2, 1);
+            margin-bottom: 12px; /* Base margin */
+            font-size: clamp(18px, 3.2vw, 22px);
+            line-height: 1.5;
+        }
+
+        .reveal-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reduced spacer gap */
+        .spacer { height: 06px; }
+
+        .orange { color: var(--accent); font-weight: 500; }
+
+        .signature {
+            margin-top: 30px;
+            font-family: 'JetBrains Mono';
+            font-size: 18px;
+            color: var(--text-dim);
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+        .signature.show { opacity: 0.5; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="nav-left">
+                <a href="https://qubitai.in" class="brand-qubit">Qubit AI</a>
+                <div class="divider"></div>
+                <a href="./rustimate.html" class="brand-rustimate">Rustimate</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="#reference">RSL</a>
+                <a href="./why.html">Why</a>
+                <a href="./rustimate.html#pricing">Pricing</a>
+                <a href="./rustimate.html#treesitter">Tree-sitter</a>
+            </div>
+
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#reference">RSL</a>
+            <a href="./why.html">Why</a>
+            <a href="./#pricing">Pricing</a>
+            <a href="#treesitter">Tree-sitter</a>
+        </div>
+    </nav>
+
+    <div class="stage">
+        <div class="typewriter-container" id="intro-box">
+            <span id="typewriter-text"></span>
+            <span class="cursor"></span>
+        </div>
+
+        <div class="scroll-indicator" id="arrow-btn">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" 
+                stroke="currentColor" stroke-width="2.5" 
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+
+        <div class="story-content" id="story-block">
+            <p class="reveal-item">Technical knowledge shapes the world. It deserves expression that reflects its precision.</p>
+            
+            <div class="reveal-item spacer"></div>
+            
+            <p class="reveal-item">Developers, researchers, and engineers spend years building systems. Their work deserves presentation that matches the craft.</p>
+            
+            <div class="reveal-item spacer"></div>
+            
+            <p class="reveal-item">Rustimate brings logic into motion — directly from the terminal.</p>
+            
+            <div class="reveal-item spacer"></div>
+            
+            <p class="reveal-item">Designed for the quiet expert — the builder, the researcher, the developer — who values clarity and precision in every detail.</p>
+            
+            <div class="reveal-item spacer"></div>
+            
+            <p class="reveal-item">Rustimate doesn’t just animate text.</p>
+            <p class="reveal-item orange">It animates attention.</p>
+            
+            <div class="signature" id="signature">/ rustimate_story.rsl</div>
+        </div>
+    </div>
+
+    <script>
+        const textElement = document.getElementById('typewriter-text');
+        const introBox = document.getElementById('intro-box');
+        const arrow = document.getElementById('arrow-btn');
+        const storyBlock = document.getElementById('story-block');
+        const signature = document.getElementById('signature');
+
+        function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+        async function typeText(text, speed) {
+            for (let i = 0; i < text.length; i++) {
+                textElement.innerText += text.charAt(i);
+                await sleep(speed);
+            }
+        }
+
+        async function deleteText(speed) {
+            let text = textElement.innerText;
+            while (text.length > 0) {
+                text = text.slice(0, -1);
+                textElement.innerText = text;
+                await sleep(speed);
+            }
+        }
+
+        // async function runIntro() {
+        //     await sleep(800);
+        //     await typeText("Rustimate", 110);
+        //     await sleep(1500);
+        //     await deleteText(45); 
+        //     await sleep(400);
+        //     await typeText("Why", 130);
+        //     await sleep(800);
+        //     arrow.classList.add('visible');
+        // }
+
+        async function runIntro() {
+            await sleep(800);
+            await typeText("Rustimate", 70);  /* Faster typing (was 110) */
+            await sleep(1000);               /* Shorter pause (was 1500) */
+            await deleteText(25);            /* Rapid backspace (was 45) */
+            await sleep(300);
+            await typeText("Why", 80);       /* Faster typing (was 130) */
+            await sleep(800);
+            arrow.classList.add('visible');
+        }
+
+        arrow.addEventListener('click', async () => {
+            introBox.style.opacity = "0";
+            arrow.style.opacity = "0";
+            await sleep(800);
+             
+            introBox.style.display = "none";
+            arrow.style.display = "none";
+
+            storyBlock.classList.add('active');
+            
+            const items = document.querySelectorAll('.reveal-item');
+            for (let i = 0; i < items.length; i++) {
+                await sleep(220); 
+                items[i].classList.add('show');
+            }
+            
+            await sleep(600);
+            signature.classList.add('show');
+        });
+
+        runIntro();
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
