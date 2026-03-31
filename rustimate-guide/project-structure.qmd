@@ -1,0 +1,57 @@
+---
+title: "Project Structure"
+description: "Recommended layout for a Rustimate project."
+---
+
+<br>
+I propose a well-organised Rustimate project which separates scripts, assets, and outputs.
+Feel free to have your own structure
+
+## Layout
+
+```
+project/
+│
+├─ scripts/
+│   ├─ intro.rsl
+│   └─ binary_search.rsl
+│
+├─ assets/
+│   ├─ images/
+│   └─ icons/
+│
+├─ output/
+│   ├─ intro.mp4
+│   └─ binary_search.mp4
+│
+└─ rustimate.toml
+```
+
+## Folder purposes
+
+| Folder / File | Purpose |
+|---|---|
+| `scripts/` | All `.rsl` source files |
+| `assets/` | Images, icons, and other static files used by scenes |
+| `output/` | Rendered video and image exports |
+| `rustimate.toml` | Project-level configuration (optional) |
+
+## Docs project layout
+
+If you are building a Quarto documentation site alongside Rustimate, the structure may extend to:
+
+```
+docs/
+│
+├─ _quarto.yml
+├─ index.qmd
+├─ installation.qmd
+├─ cli.qmd
+├─ rsl-reference.qmd
+├─ quickstart.qmd
+├─ examples.qmd
+├─ rustimate-guide.qmd
+├─ project-structure.qmd
+├─ editor-integration.qmd
+└─ troubleshooting.qmd
+```

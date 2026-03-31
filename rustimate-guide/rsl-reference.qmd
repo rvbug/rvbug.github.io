@@ -1,0 +1,261 @@
+---
+title: ""
+description: "."
+---
+
+
+# RSL reference
+
+RSL (Rustimate Studio Language) is the language used to describe the outcome. 
+
+
+An RSL file defines scenes, objects, timeline events, transitions, and visual properties.  
+Think of it as a sequence of instructions an, object declarations.
+
+::: {.callout-tip}
+##  RSL compiler coming in 2027
+Native RSL compiler is in development. The current interpreter handles the full feature set described here.
+:::
+
+
+# Scenes 
+
+This is the basic building block of RSL. It contains the keyword scene with a scene name.
+Scenes define logical sections of the visualization. A single `.rsl` file can contain multiple scenes.  
+
+
+```bash
+scene "scene_name" {
+
+}
+```
+
+::: {.callout-tip}
+##  Syntax checking
+The RSL syntax checking and errors will improve in the upcoming Rustimate versions among many other exciting features.
+:::
+
+
+# Components
+
+Inside every scene, there are many components. It ranges from mode, animation, editor etc.
+This section has detailed information of the components
+
+## Mode - Presentation
+
+In presentation mode, v0.1.0, any sub-components add will use a black background.
+
+```bash
+scene "intro" {
+  mode: presentation
+}
+```
+
+### Text 
+
+While presentation mode renders any sub-components added on it but the best way is to add many text blocks you want.
+
+```bash
+scene "intro" {
+  mode: presentation
+  text "Hello world"
+  text "Rustimate"
+}
+```
+
+You can also add use text like this though I would suggest you use terminal mode which we will discuss below
+
+```bash
+scene "intro" {
+text "fn main() {"
+    text "    println!(\"Hello from Rustimate\");"
+    text "}"
+
+}
+```
+
+### Rustimate Guide
+
+![](images/presentation_code.mp4){fig-align="center"}
+
+
+### Animation
+
+There are two values used by Animation which are `static` & `typewriter`. Static is default value.
+
+
+```bash
+scene "intro" {
+  mode: presentation
+  animation: typewriter
+  text "Hello world"
+  text "Rustimate"
+}
+```
+
+### Rustimate Guide 
+
+![](images/presentation_animation.mp4){fig-align="center"}
+
+
+### Transition
+
+Transition currently have one value called `fade`
+
+```bash
+scene "intro" {
+  mode: presentation
+  animation: typewriter
+  text "Hello world"
+  text "Rustimate"
+}
+
+scene "fade" {
+  transition: fade
+  mode: presentation
+  text "fade effect"
+}
+```
+
+### Rustimate Guide
+
+![](images/presentation_fade.mp4){fig-align="center"}
+
+
+## Mode - Editor
+
+Rustimate can recreate real developer editor environments as the visual backdrop. It does not rendering the IDE itself.
+The default theme is `monokai`
+
+You can use this code to explain part of your code. Editor mode will help 
+
+```bash
+scene “scene2” {
+    mode: editor
+    editor: neovim
+}
+```
+
+## Rustimate Neovim
+
+![](images/neovim_ide.mp4){fig-align="center"}
+
+
+```bash
+scene “scene2” {
+    mode: editor
+    editor: emacs
+}
+```
+## Rustimate emacs
+
+![](images/emacs_ide.mp4){fig-align="center"}
+
+
+
+## Editor Themes
+
+Themes control the colour system and visual style of the entire scene.  
+Rustimate `v0.1.0` uses three themes for both editors
+
+* Monokai (default)
+* Dracula
+* Nord
+
+
+```bash
+scene “scene2” {
+    mode: editor
+    editor: emacs/neovim
+    theme: nord/dracula/monokai
+}
+```
+
+::: {.callout-tip}
+##  Themes
+More themes and additional editor support will be added soon.
+:::
+
+
+### Nord Theme
+This is how the nord theme would look like in emacs. 
+
+![](images/emacs_ide_nord.mp4){fig-align="center"}
+
+
+### Dracula Theme
+This is how the dracula theme would look like in Neovim 
+
+![](images/neovim_ide_dracula.mp4){fig-align="center"}
+
+
+
+## Files
+
+You can render specific lines of a real code file using theme and editor:
+
+```bash
+scene "Code" {
+  mode: editor
+  editor: neovim
+  animation: typewriter
+  file: "main.rs"
+}
+```
+
+## Rustimate Guide
+
+![](images/file_editor.mp4){fig-align="center"}
+
+
+
+##  Lines
+
+Imagine you want to render only specific lines from the *main.rs* file. This is where `lines` are quite helpful
+
+```bash
+scene "Code" {
+  mode: editor
+  editor: neovim
+  animation: typewriter
+  file: "main.rs"
+  lines: 5..8
+}
+```
+
+## Rustimate Guide
+
+![](images/file_editor_lines.mp4){fig-align="center"}
+
+
+## Highlight
+
+What if during your explaination, you want to highlight important or specific lines of code.
+This is where `highlight` comes into play.
+
+The below rsl file will help you extract lines from 5 to 8 and highlight line 6.
+And yes, you can include the animation too!
+
+
+```bash
+scene "Code" {
+  mode: editor
+  animation: typewriter
+  editor: neovim
+  animation: typewriter
+  file: "main.rs"
+  lines: 5..8
+  highlight: [6]
+}
+```
+
+
+## Rustimate Guide
+![](images/file_editor_highlight.mp4){fig-align="center"}
+
+
+
+
+
+
+

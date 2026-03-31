@@ -1,0 +1,57 @@
+---
+title: "License Activation"
+---
+
+# Intro
+
+After you purchase `Creator` or `Pro` license, you will  receive a `license.key` file via email within 12 hours.
+
+
+## Add your license
+
+```bash
+$> rustimate license add license.key
+```
+
+## Rustimate Guide
+
+![](images/license.mp4){fig-align="center"}
+
+
+Rustimate verifies the license **locally** — no internet connection or login required. 
+Once verified, the appropriate tier is activated.
+
+## License tiers
+
+Hers's how tiers are setup 
+
+| Tier | Resolution | Watermark | Commercial Use | Scenes |
+|---|---|---|---|---|
+| **Community** | 720p | Yes | No | 5  |
+| **Creator** | 1080p Full HD | No | Yes | Unlimited |
+| **Pro** | 4K Ultra HD | No | Yes | Unlimited |
+
+::: {.callout-note}
+## One-time purchase
+Rustimate uses a one-time license model — you own the version you purchase. All v1.x updates are included. 
+Future upgrades (GPU, live preview, etc.) will be offered as optional discounted upgrades for existing license holders.
+:::
+
+## Privacy
+
+- Rustimate will always (and forever) run **locally**. 
+
+- It never require any internet access after installation. 
+
+- It does not connect any usage data and everything stays in your machine.
+
+
+## Troubleshooting license issues
+
+If your license is not recognised, verify it was added correctly:
+
+```bash
+rustimate license add license.key
+```
+
+See [Troubleshooting](troubleshooting.qmd) for more.

@@ -1,0 +1,97 @@
+---
+title: "Editor Integration"
+---
+
+## Overview
+
+This guide covers the installation of the `rustimate` Tree-sitter grammar for few editors like 
+`Neovim`, `Helix` and `emacs`. 
+
+
+
+## Neovim (Lazy.nvim)
+
+To avoid manual path hacking, we let Lazy manage the repository as a dependency. This ensures the `highlights.scm` is automatically added to the Neovim Runtime Path (RTP).
+
+``` lua
+
+-- lua/plugins/treesitter.lua
+return {
+  -- 1. Tell Lazy about your repo so it manages the PATH for you
+  {
+    "rvbug/tree-sitter-rustimate",
+    lazy = true, -- Only loads when needed
+  },
+
+  -- 2. Your standard Treesitter config
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "master",
+    build = ":TSUpdate",
+    dependencies = { "tree-sitter-rustimate" }, -- This is the key!
+    config = function()
+      local parsers = require("nvim-treesitter.parsers")
+
+      -- Register the parser
+      parsers.get_parser_configs().rustimate = {
+        install_info = {
+          url = "https://github.com/rvbug/tree-sitter-rustimate.git",
+          files = { "src/parser.c" },
+          branch = "main",
+        },
+        filetype = "rsl",
+      }
+
+      -- Standard Setup
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "lua", "rust", "markdown", "vimdoc" },
+        auto_install = true,
+        highlight = { enable = true },
+      })
+    end,
+  },
+}
+```
+
+## Helix
+
+Helix requires explicit grammar fetching and building via the CLI.
+
+**File:** `~/.config/helix/languages.toml`
+
+``` toml
+[[language]]
+name = "rustimate"
+scope = "source.rsl"
+file-types = ["rsl"]
+grammar = "rustimate"
+
+[[grammar]]
+name = "rustimate"
+source = { git = "[https://github.com/rvbug/tree-sitter-rustimate](https://github.com/rvbug/tree-sitter-rustimate)", rev = "main" }
+```
+
+**Commands:**
+
+1.  `hx --grammar fetch`
+
+2.  `hx --grammar build`
+
+## Emacs (built-in treesit)
+
+For Emacs 29+, use the built-in `treesit` library.
+
+**File:** `config.org`
+
+``` elisp
+(setq treesit-language-source-alist
+      '((rustimate "[https://github.com/rvbug/tree-sitter-rustimate](https://github.com/rvbug/tree-sitter-rustimate)")))
+
+;; Install via M-x treesit-install-language-grammar RET rustimate
+(add-to-list 'major-mode-remap-alist '(rsl-mode . rustimate-ts-mode))
+```
+
+
+# Coming Soon
+
+LSP for `Rustimate` will be available for public beta soon!

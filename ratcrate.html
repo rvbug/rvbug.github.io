@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RatCrate | The Ecosystem</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --bg: #000000;
+        /* --accent: #ff3b30; */
+         --accent: #100ceb; 
+        --term-green: #a6e22e;  /* Package names & checkmarks */
+        --term-gold: #e6db74;   /* Results & Downloads labels */
+        --term-blue: #66d9ef;   /* Query labels & Links */
+        --term-purple: #ae81ff; /* Version numbers */
+        --term-dim: #75715e;    /* Dividers & Headers */
+        --term-text: #f8f8f2;   /* Main descriptions */
+    }
+
+
+    .glass-text {
+        font-size: 50px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        
+        /* The Glass Secret: Low opacity white + Blur */
+        color: rgba(241, 142, 142, 0.253);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        /* Edge highlight to give it dimension */
+        text-shadow: 0px 0px 1px rgba(214, 12, 12, 0.3);
+    }
+
+
+
+        /* Apply colors to the CLI lines */
+        .prompt { color: var(--accent); font-weight: bold; }
+        .success, .res-title { color: var(--term-green); }
+        .res-version { color: var(--term-purple); }
+        .res-desc { color: var(--term-text); }
+        .res-label { color: var(--term-gold); }
+        .res-link { color: var(--term-blue); text-decoration: underline; }
+        .dim, .divider { color: var(--term-dim); }
+
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* --- NAV (Fixed the Hamburger Logic here too) --- */
+        nav {
+            position: fixed; top: 0; width: 100%; height: 54px;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(20px);
+            z-index: 1000; display: flex; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-links{
+            display:flex;
+            gap:28px;
+        } 
+        .nav-links a{
+            text-decoration:none;
+            color:#fff;
+            font-size:14px;
+            opacity:.7;
+        }
+        .nav-links a:hover{opacity:1}
+
+        .nav-inner { width: 100%; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; padding: 0 24px; align-items: center; }
+        .logo { font-weight: 800; font-size: 18px; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
+        
+       .hamburger {
+        display: none; /* Hidden by default on Desktop */
+        font-size: 24px;
+        cursor: pointer;
+        position: fixed;
+        right: 24px;
+        top: 12px;
+        z-index: 10005;
+        color: #fff;
+    }
+
+        .mobile {
+            position: fixed; right: -100%; top: 0; width: 100%; height: 50vh; 
+            background: #fff; z-index: 10004; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px;
+        }
+        .mobile.active { right: 0; }
+        .mobile a { color: #000; text-decoration: none; font-size: 24px; font-weight: 700; }
+
+        /* --- HERO --- */
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: clamp(50px, 10vw, 120px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.9; margin-bottom: 20px; }
+        .hero p { color: var(--text-secondary); font-size: 21px; max-width: 600px; line-height: 1.4; }
+
+        /* --- THE APPLE SWITCHER --- */
+        .switcher-container { max-width: 1100px; margin: 0 auto 100px; padding: 0 20px; }
+        
+        .tabs {
+            display: flex; justify-content: center; gap: 40px; border-bottom: 1px solid #333; margin-bottom: 50px; position: relative;
+        }
+        .tab-btn {
+            background: none; border: none; color: var(--text-secondary); font-size: 18px; font-weight: 600; padding: 15px 0; cursor: pointer; transition: 0.3s; position: relative;
+        }
+        .tab-btn.active { color: #fff; }
+        .tab-btn.active::after {
+            content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background: var(--accent);
+        }
+
+
+/* .display-stage {
+    width: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center; 
+    padding: 40px 0;
+    overflow-x: hidden;
+} */
+       
+
+.display-stage {
+    height: auto !important; /* Overrides any fixed height */
+    min-height: 60vh;
+    overflow: visible !important; /* Allows scrolling */
+}
+
+
+ /* CLI Simulation */
+
+.cli-container {
+    width: 100%;
+    max-width: 850px;
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.prompt { color: #ff3b30; font-weight: bold; }
+.dim { color: #666; }
+.success { color: #34c759; }
+
+/* Result Formatting */
+.result-block { margin: 15px 0; }
+.res-title { color: #fff; font-weight: bold; }
+.res-desc { color: #86868b; }
+.res-meta { color: #555; font-size: 13px; }
+
+.cli-terminal {
+    width: 100%;
+    max-width: 900px;
+    /* This padding is the 'Safe Zone' that prevents cutting */
+    padding: 0 30px; 
+    margin: 0 auto;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* Sequential Typewriter Animation */
+.cli-terminal div {
+    opacity: 0;
+    /* animation: cliReveal 0.1s forwards; */
+}
+
+.cli-line { opacity: 0; }
+
+
+
+.animate-start .cli-line {
+    animation: cliReveal 0.05s forwards;
+}
+
+.cli-terminal div, .cli-terminal span {
+    opacity: 0;
+    animation: cliReveal 0.05s forwards;
+}
+
+@keyframes cliReveal {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Delay each line for a "loading" effect */
+/* STAGGERED ORDERING: Ensuring top-to-bottom flow */
+.l1 { animation-delay: 0.1s; } /* ❯ ratcrate-cli -q music */
+.l2 { animation-delay: 0.5s; } /* ratcrate text */
+.l3 { animation-delay: 0.7s; } /* First Divider */
+.l4 { animation-delay: 1.0s; } /* Loaded from cache */
+.l5 { animation-delay: 1.2s; } /* Results count */
+.l6 { animation-delay: 1.4s; } /* Second Divider */
+
+/* Individual blocks within results */
+/* Strict Cascade Delays */
+.animate-start .l1 { animation-delay: 0.1s; }
+.animate-start .l2 { animation-delay: 0.6s; }
+.animate-start .l3 { animation-delay: 0.8s; }
+.animate-start .l4 { animation-delay: 1.2s; }
+.animate-start .l5 { animation-delay: 1.4s; }
+.animate-start .l6 { animation-delay: 1.6s; }
+.animate-start .res-1 { animation-delay: 2.0s; }
+.animate-start .res-2 { animation-delay: 2.4s; }
+.animate-start .res-3 { animation-delay: 2.8s; }
+.animate-start .res-4 { animation-delay: 3.2s; }
+
+
+        /* TUI EMULATION (Ratatui style) */
+    .ratatui-window {
+    width: 100%;
+    max-width: 1000px;
+    background: #000; /* Pure Black to blend with page */
+    border: none; /* Removed the outer box */
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.tui-body {
+    display: flex;
+    height: 550px;
+    /* Added a top border to start the TUI section subtly */
+    border-top: 1px solid #222; 
+}
+
+/* Sidebar List */
+.tui-list {
+    width: 35%;
+    border-right: 1px solid #1a1a1a; /* Very subtle separator */
+    padding: 10px 20px;
+    overflow-y: auto;
+}
+
+.tui-item {
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--term-dim); /* Muted by default */
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+
+.tui-detail-content {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+.tui-detail-content.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.tui-item.selected {
+    background: #2f3549 !important; /* Ratatui Selection Blue */
+    color: #fff !important;
+    border-radius: 2px;
+}
+/* Right Panel (Help/Commands) */
+.tui-panel {
+    width: 65%;
+    padding: 30px;
+    background: #000;
+}
+
+.tui-section-title { 
+    color: var(--term-gold); 
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px; 
+    display: block; 
+}
+.tui-command { color: #bb9af7; }
+.tui-help-text { color: #9ece6a; font-size: 13px; margin-bottom: 5px; }
+
+/* Bottom Status Bar - Floating Style */
+.tui-status {
+    border-top: 1px solid #1a1a1a;
+    background: #000;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 25px;
+    font-size: 11px;
+    color: var(--term-dim);
+}
+
+.status-tag {
+    color: #000;
+    background: var(--term-blue);
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+/* --- TUI RESPONSIVITY (iPhone SE / S8 Fix) --- */
+/* Responsive Stacking */
+@media (max-width: 768px) {
+    .tui-body { flex-direction: column; height: auto; }
+    .tui-list { width: 100%; border-right: none; border-bottom: 1px solid #1a1a1a; height: 250px; }
+    .tui-panel { width: 100%; }
+
+    .web-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .web-result-item {
+        grid-column: span 1 !important; /* Undo the "span 2" for the 3rd item */
+        padding: 25px !important; /* Slimmer padding for small screens */
+    }
+
+    .web-title {
+        font-size: 22px !important;
+    }
+
+    .web-input-display {
+        font-size: 32px !important; /* Scale down typing text so it doesn't wrap weirdly */
+    }
+}
+
+#view-web {
+    -webkit-overflow-scrolling: touch;
+}   
+       
+
+        /* --- UTILS --- */
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.5s forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+
+        @media (max-width: 991px) {
+    .hamburger {
+        display: block !important;
+    }
+    .nav-links {
+        display: none !important;
+    }
+}
+
+
+.showcase-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    min-height: 80vh;
+}
+
+@media (max-width: 375px) {
+    .cli-terminal {
+        font-size: 11px; /* Smaller text for SE */
+        padding: 10px;
+    }
+    .hero h1 { font-size: 42px; }
+}
+
+/* Styling for iPhone 12 Pro / S8 */
+@media (min-width: 376px) and (max-width: 480px) {
+    .cli-terminal { font-size: 13px; }
+}
+
+@media (max-width: 400px) {
+    .cli-terminal {
+        padding: 0 16px; /* Slightly tighter for small screens */
+        font-size: 12px; /* Scale text down so it fits */
+    }
+    
+    /* Ensure the prompt symbol ❯ has enough breathing room */
+    .prompt {
+        margin-right: 4px;
+    }
+
+    /* Force the long divider lines to not push the width out */
+    .divider {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: clip;
+    }
+}
+
+@media (max-width: 600px) {
+    .display-stage {
+        justify-content: flex-start; 
+        padding: 20px 0;
+    }
+    
+    .cli-terminal {
+        padding: 0 20px; /* Reliable gutter for iPhone SE/S8 */
+    }
+    
+    .divider {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+
+/* WEB Styles start */
+/* --- WEB VERSION: AIRPODS AESTHETIC --- */
+.web-hero {
+    text-align: center;
+    padding: 60px 0 40px;
+}
+
+.web-search-container {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 60px;
+}
+
+/* Typing Search Bar with Cursor */
+.web-input-display {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #333;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 10px;
+    outline: none;
+    display: inline-block;
+    min-height: 60px;
+}
+
+.cursor {
+    border-right: 3px solid var(--accent);
+    animation: blink 0.8s infinite;
+}
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* .web-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    opacity: 0; 
+    transition: opacity 0.5s ease;
+} */
+.web-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Forces two equal columns on desktop */
+    gap: 30px; /* Adjusted gap for better fit */
+    max-width: 1000px;
+    margin: 0 auto;
+    opacity: 0; 
+    transition: opacity 0.5s ease;
+}
+
+.web-grid.visible { opacity: 1; }
+
+/* .web-result-item {
+    padding: 40px;
+    background: #0a0a0a;
+    border-radius: 24px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+} */
+
+
+.web-result-item {
+    padding: 40px;
+    background: #0a0a0a;
+    border-radius: 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Keeps the 'meta' stats at the bottom of the box */
+    min-height: 280px; /* Optional: ensures boxes are the same height if descriptions vary */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+
+.web-result-item.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.web-result-item:hover { transform: scale(1.02); }
+
+.web-title { font-size: 28px; font-weight: 800; margin-bottom: 12px; display: block; }
+.web-description { color: #86868b; font-size: 17px; line-height: 1.5; margin-bottom: 24px; }
+.web-stats { display: flex; gap: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--term-green); }
+.web-badge { padding: 4px 12px; background: rgba(255,255,255,0.05); border-radius: 100px; color: #fff; }
+
+/* WEB Styles end */
+
+
+/* Final section */
+
+.ecosystem-final {
+    padding: 180px 20px;
+    background: #000;
+    text-align: center;
+}
+
+/* .gradient-text {
+    font-size: clamp(32px, 7vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 100px;
+    background: linear-gradient(180deg, #ed8181 0%, #4f4fe6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+} */
+
+.gradient-text {
+    /* Increased maximum from 56px to 80px and preferred from 7vw to 9vw */
+    font-size: clamp(40px, 9vw, 80px); 
+    font-weight: 800;
+    letter-spacing: -0.04em; /* Slightly tighter tracking for larger text looks more premium */
+    margin-bottom: 100px;
+    background: linear-gradient(180deg, #ed8181 0%, #4f4fe6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    line-height: 1.1; /* Ensures the gradient doesn't clip if the text wraps */
+}
+
+/* Premium Gradient for the Hero */
+.hero-gradient {
+    /* background: linear-gradient(180deg, var(--accent) 0%, #a31d16 100%); */
+    background: linear-gradient(180deg, #e7e6e0 0%, #d2a335 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.ecosystem-final h2 {
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.ecosystem-final h3 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 80px;
+    color: #fff;
+}
+
+.trinity-grid {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* .trinity-item {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.4s;
+    flex: 1;
+} */
+
+.trinity-item {
+    text-decoration: none;
+    color: #fff;
+    flex: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.trinity-item:hover { opacity: 0.6; }
+
+.trinity-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.trinity-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 24px;
+    stroke: #fff;
+}
+
+.trinity-item h4 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+
+.trinity-item p {
+    font-size: 14px;
+    color: #86868b;
+    line-height: 1.4;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.brew-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--term-green);
+    margin-top: 15px;
+    display: block;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .trinity-grid { flex-direction: column; gap: 80px; }
+    .gradient-text { margin-bottom: 60px; }
+}
+
+
+
+/* footer section */
+
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="./index.html" class="logo">QuBiTAi</a>
+            <a href="" class="logo">Ratcrate Ecosystem.</a>
+            <div class="nav-links">
+                <a href="./projects.html">Works</a>
+                <a href="./write.html">Write</a>
+            </div>
+            <div class="hamburger" id="hamburger">☰</div>
+        </div>
+    </nav>
+
+    <div class="mobile" id="mobileMenu">
+        <a href="./projects.html">Systems</a>
+        <a href="./write.html">Write</a>
+    </div>
+
+    <section class="hero">
+         <h1 class="fade-in">
+            Powerfully<br>
+            <span class="hero-gradient">Versatile.</span>
+        </h1>
+        <!-- <p class="fade-in">A unified ecosystem for high-stakes evaluation. One engine, three interfaces, zero compromise.</p> -->
+        <!-- <p class="fade-in">One engine. Three Interfaces. Zero Compromise.</p> -->
+        <p class="glass-text">One engine. Three Interfaces. Zero Compromise.</p>
+    </section>
+
+    <section class="switcher-container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchView('web', this)">Web Tool</button>
+            <button class="tab-btn" onclick="switchView('cli', this)">CLI</button>
+            <button class="tab-btn" onclick="switchView('tui', this)">Ratatui TUI</button>
+        </div>
+
+    <!-- Web Results Grid start -->
+    <div id="view-web" class="content-view">
+    <div class="web-hero">
+        <div class="web-search-container">
+            <span class="web-input-display" id="web-typing-target"><span class="cursor"></span></span>
+        </div>
+
+        <div class="web-grid" id="web-results-grid">
+            <div class="web-result-item">
+                <span class="web-title">CLI-Rhythm</span>
+                <p class="web-description">A simple and functional CLI music player. Purpose-built for high-fidelity local libraries.</p>
+                <div class="web-stats">
+                    <span class="web-badge">v1.0.1</span>
+                    <span>↑ 5.1K Downloads</span>
+                    <span style="color:#66d9ef">GitHub</span>
+                </div>
+            </div>
+
+            <div class="web-result-item">
+                <span class="web-title">angry-duiker</span>
+                <p class="web-description">A TUI DLNA music player. Stream seamless audio across your local network with zero latency.</p>
+                <div class="web-stats">
+                    <span class="web-badge">v0.14.1</span>
+                    <span>↑ 20.0K Downloads</span>
+                    <span style="color:#66d9ef">GitLab</span>
+                </div>
+            </div>
+
+            <div class="web-result-item">
+                <span class="web-title">apple-music-tui</span>
+                <p class="web-description">A TUI remote controller for macOS Music.app. Native control meets terminal efficiency.</p>
+                <div class="web-stats">
+                    <span class="web-badge">v0.2.3</span>
+                    <span>↑ 83 Downloads</span>
+                </div>
+            </div>
+
+            <div class="web-result-item">
+                <span class="web-title">audioleaf</span>
+                <p class="web-description">A TUI music player for local libraries.</p>
+                <div class="web-stats">
+                    <span class="web-badge">v0.1.0</span>
+                    <span>↑ 1234 Downloads</span>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+    <!-- Web Results Grid ends -->
+
+            <div id="view-cli" class="content-view hidden">
+                <div class="cli-terminal" id="cli-terminal-body">
+                    <div class="cli-line l1"><span class="prompt">❯</span> ratcrate-cli -q music</div>
+                    
+                    <div class="cli-line l2" style="margin-top:10px;">ratcrate <span class="dim">(discover ratatui crates)</span></div>
+                    <div class="cli-line l3 divider">────────────────────────────────────────────────────────</div>
+                    
+                    <div class="cli-line l4"><span class="success">✓</span> Loaded from cache</div>
+                    <div class="cli-line l5"><span class="res-label">Results:</span> <span class="success">10</span> / 32 | <span class="res-link">Query:</span> music</div>
+                    <div class="cli-line l6 divider">────────────────────────────────────────────────────────</div>
+                    
+                    <div class="cli-line res-1">
+                        <div><span class="success">1. CLI-Rhythm</span> <span class="res-version">v1.0.1</span></div>
+                        <div class="res-desc">A simple and functional CLI music player.</div>
+                        <div><span class="res-label">Downloads:</span> 5135 <span class="res-label">Repo:</span> <span class="res-link">github.com/Arklingh/CLI-Rhythm</span></div>
+                        <div class="divider">────────────────────────────────────────────────────────</div>
+                    </div>
+
+                    <div class="cli-line res-2">
+                        <div><span class="success">2. angry-duiker</span> <span class="res-version">v0.14.1</span></div>
+                        <div class="res-desc">A TUI DLNA music player</div>
+                        <div><span class="res-label">Downloads:</span> 20008 <span class="res-label">Repo:</span> <span class="res-link">gitlab.com/fizzizist/angry-duiker-2</span></div>
+                        <div class="divider">────────────────────────────────────────────────────────</div>
+                    </div>
+
+                    <div class="cli-line res-3">
+                        <div><span class="success">3. apple-music-tui</span> <span class="res-version">v0.2.3</span></div>
+                        <div class="res-desc">A TUI remote controller for macOS Music.app</div>
+                        <div><span class="res-label">Downloads:</span> 83 <span class="res-label">Repo:</span> <span class="res-link">github.com/ori0o0p/apple-music-tui</span></div>
+                        <div class="divider">────────────────────────────────────────────────────────</div>
+                    </div>
+
+                    <div class="cli-line res-4">
+                        <div><span class="success">4. audioleaf</span> <span class="res-version">v0.1.0</span></div>
+                        <div class="res-desc">A TUI music player for local libraries</div>
+                        <div><span class="res-label">Downloads:</span> 1234 <span class="res-label">Repo:</span> <span class="res-link">github.com/lemonadecat/audioleaf</span></div>
+                        <div class="divider">────────────────────────────────────────────────────────</div>
+                    </div>
+
+                </div>
+            </div>
+
+      
+
+ <div id="view-tui" class="content-view hidden">
+    <div class="ratatui-window">
+        <div class="tui-body">
+            <aside class="tui-list" id="tui-list-container">
+                <div class="tui-item selected" data-index="0"><span>📦</span> CLI-Rhythm</div>
+                <div class="tui-item" data-index="1"><span>📦</span> angry-duiker</div>
+                <div class="tui-item" data-index="2"><span>📦</span> apple-music-tui</div>
+                <div class="tui-item" data-index="3"><span>📦</span> audioleaf</div>
+
+            </aside>
+
+            <main class="tui-panel" id="tui-details">
+                <div class="tui-detail-content active" id="detail-0">
+                    <span class="tui-section-title">📝 Description:</span>
+                    <p class="res-title" style="font-size: 18px; margin-bottom: 10px;">CLI-Rhythm v1.0.1</p>
+                    <p class="res-desc" style="margin-bottom: 20px; line-height: 1.6;">A simple and functional CLI music player. Built with performance in mind for local library management.</p>
+                    <p class="res-label">Downloads: <span class="success">5,135</span></p>
+                    <p class="res-link" style="margin-top: 15px; font-family: 'JetBrains Mono';">cargo add CLI-Rhythm</p>
+                </div>
+
+                <div class="tui-detail-content" id="detail-1" style="display:none;">
+                    <span class="tui-section-title">📝 Description:</span>
+                    <p class="res-title" style="font-size: 18px; margin-bottom: 10px;">angry-duiker v0.14.1</p>
+                    <p class="res-desc" style="margin-bottom: 20px; line-height: 1.6;">A TUI DLNA music player for local networks. Streams high-quality audio from media servers.</p>
+                    <p class="res-label">Downloads: <span class="success">20,008</span></p>
+                    <p class="res-link" style="margin-top: 15px; font-family: 'JetBrains Mono';">cargo add angry-duiker</p>
+                </div>
+
+                <div class="tui-detail-content" id="detail-1" style="display:none;">
+                    <span class="tui-section-title">📝 Description:</span>
+                    <p class="res-title" style="font-size: 18px; margin-bottom: 10px;">apple-music-tui</p>
+                    <p class="res-desc" style="margin-bottom: 20px; line-height: 1.6;">A TUI DLNA music player for local networks. Streams high-quality audio from media servers.</p>
+                    <p class="res-label">Downloads: <span class="success">20,008</span></p>
+                    <p class="res-link" style="margin-top: 15px; font-family: 'JetBrains Mono';">cargo add angry-duiker</p>
+                </div>
+
+                <div class="tui-detail-content" id="detail-1" style="display:none;">
+                    <span class="tui-section-title">📝 Description:</span>
+                    <p class="res-title" style="font-size: 18px; margin-bottom: 10px;">audioleaf</p>
+                    <p class="res-desc" style="margin-bottom: 20px; line-height: 1.6;">A TUI DLNA music player for local networks. Streams high-quality audio from media servers.</p>
+                    <p class="res-label">Downloads: <span class="success">20,008</span></p>
+                    <p class="res-link" style="margin-top: 15px; font-family: 'JetBrains Mono';">cargo add angry-duiker</p>
+                </div>
+
+
+
+            </main>
+        </div>
+
+        <footer class="tui-status">
+            <span class="status-tag">NORMAL</span>
+            <span>Found 32 crates matching 'music'</span>
+        </footer>
+    </div>
+</div>
+</section>
+
+<section class="ecosystem-final">
+    <h3 class="gradient-text">Choose your interface.</h3>
+
+    <div class="trinity-grid" id="trinity-trigger">
+        <a href="https://ratcrate.in" class="trinity-item", target="_blank">
+            <svg class="trinity-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+                <circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 0 20M2 12h20"/>
+            </svg>
+            <h4>Web</h4>
+            <p>Visual exploration for everyone.</p>
+        </a>
+
+        <div class="trinity-item">
+            <svg class="trinity-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+                <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+            </svg>
+            <h4>Terminal</h4>
+            <p>For the power user.</p>
+            <span class="brew-tag">brew install ratcrate-cli</span>
+            <span class="brew-tag">brew install ratcrate-tui</span>
+        </div>
+
+
+        <a href="https://qubitai.in/book/rat-tui"  class="trinity-item" target="_blank">
+    <svg class="trinity-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+    </svg>
+    <h4>Docs</h4>
+    <p>Technical guides.</p>
+</a>
+    
+
+    <!-- 
+        <a href="https://github.com/ratcrate" class="trinity-item">
+            <svg class="trinity-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            <h4>Source</h4>
+            <p>Docs.</p>
+        </a> -->
+
+
+</div>
+
+
+
+
+</section>
+
+    <script>
+        // Hamburger & Mobile Logic (The fix that works)
+        const burger = document.getElementById('hamburger');
+        const mobile = document.getElementById('mobileMenu');
+
+        function toggleMenu() {
+            const isActive = mobile.classList.toggle('active');
+            burger.innerHTML = isActive ? '✕' : '☰';
+            burger.style.setProperty('color', isActive ? '#000' : '#fff', 'important');
+            document.body.style.overflow = isActive ? 'hidden' : '';
+        }
+        burger.onclick = toggleMenu;
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobile.classList.contains('active')) toggleMenu();
+        });  
+
+    
+let tuiInterval;
+function startTuiCycle() {
+    const items = document.querySelectorAll('.tui-item');
+    const details = document.querySelectorAll('.tui-detail-content');
+    let currentStep = 0;
+
+    clearInterval(tuiInterval);
+    tuiInterval = setInterval(() => {
+        // FIX: Use the length of the details array instead of a hard-coded 2
+        currentStep = (currentStep + 1) % details.length; 
+
+        // Update List Selection
+        items.forEach(item => item.classList.remove('selected'));
+        if(items[currentStep]) {
+            items[currentStep].classList.add('selected');
+            
+            // OPTIONAL: Smooth scroll the sidebar if the selected item goes off-screen
+            items[currentStep].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Update Detail Pane
+        details.forEach(detail => {
+            detail.style.display = 'none';
+            detail.classList.remove('active');
+        });
+        
+        if(details[currentStep]) {
+            details[currentStep].style.display = 'block';
+            // Slight delay to trigger the CSS transition defined in your styles
+            setTimeout(() => details[currentStep].classList.add('active'), 10);
+        }
+        
+    }, 1000); // 2 seconds is better for readability than 1000ms
+}
+
+// Update your existing switchView function to include the trigger:
+function switchView(viewId, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.content-view').forEach(v => v.classList.add('hidden'));
+    const activeView = document.getElementById('view-' + viewId);
+    activeView.classList.remove('hidden');
+
+    if (viewId === 'cli') {
+        const cliBody = document.getElementById('cli-terminal-body');
+        cliBody.classList.remove('animate-start');
+        void cliBody.offsetWidth;
+        cliBody.classList.add('animate-start');
+        clearInterval(tuiInterval); // Stop TUI animation if we leave the tab
+    }
+
+    if (viewId === 'tui') {
+        startTuiCycle(); // Start cycling when tab is clicked
+    }
+
+    if (viewId === 'web') runWebSequence();
+
+}
+
+// web section
+function runWebSequence() {
+    const target = document.getElementById('web-typing-target');
+    const grid = document.getElementById('web-results-grid');
+    const items = document.querySelectorAll('.web-result-item');
+    const text = "music";
+    
+    // Reset Everything
+    target.innerHTML = '<span class="cursor"></span>';
+    grid.classList.remove('visible');
+    items.forEach(item => item.classList.remove('reveal'));
+
+    // Typing effect
+    let charIndex = 0;
+    const typeInterval = setInterval(() => {
+        if (charIndex < text.length) {
+            // Insert character before the cursor span
+            target.insertAdjacentHTML('beforeend', text[charIndex]);
+            const cursor = target.querySelector('.cursor');
+            target.appendChild(cursor); 
+            charIndex++;
+        } else {
+            clearInterval(typeInterval);
+            // Reveal Results
+            setTimeout(() => {
+                grid.classList.add('visible');
+                items.forEach((item, idx) => {
+                    setTimeout(() => item.classList.add('reveal'), idx * 200);
+                });
+            }, 300);
+        }
+    }, 150);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    runWebSequence();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        threshold: 0.2 // Trigger when 20% of the section is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const items = entry.target.querySelectorAll('.trinity-item');
+                items.forEach((item, index) => {
+                    // Staggered reveal: 0ms, 200ms, 400ms
+                    setTimeout(() => {
+                        item.classList.add('active');
+                    }, index * 200);
+                });
+                observer.unobserve(entry.target); // Run only once
+            }
+        });
+    }, observerOptions);
+
+    const trigger = document.querySelector('#trinity-trigger');
+    if (trigger) observer.observe(trigger);
+});
+
+    </script>
+</body>
+</html>

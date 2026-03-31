@@ -1,0 +1,210 @@
+---
+title: "CLI Reference"
+description: "Rustimate command-line arguments and flags."
+---
+
+<br>
+
+## CLI Arguments
+
+Rustimate has various arguments. We will go over them one by one
+
+::: callout-tip
+You can use short arguments instead of the longer ones
+:::
+
+``` bash
+ $ rustimate --help 
+  Usage: rustimate [OPTIONS]
+
+  Options:
+    -i, --input <FILE>     [default: project.rsl]
+    -o, --output <OUTPUT>  [default: output.mp4]
+    -f, --format <FORMAT>  [default: desktop]
+    -m, --metrics
+    -d, --demo
+    -h, --help             Print help 
+    -V, --version          Print version
+```
+
+### `Rustimate Guide`
+
+![](images/rustimate-help-01.mp4)
+
+## Options Explained
+
+### Input
+
+This is the input arguments to specify the name of the `.rsl` file. Rustimate operates on `.rsl` scripts via the command line.
+
+::: callout-important
+For version 0.1.0, the input file should be in the current location
+:::
+
+```         
+rustimate --input hello.rsl
+
+# or
+
+rustimate -i hello.rsl
+```
+
+### Output
+
+The default output will be `output.mp4` unless specified by output argument. You do not need to specify the extension , it is inferred automatically.
+
+```         
+rustimate --input hello.rsl --ouput hello
+
+# or
+
+rustimate -i hello.rsl --output hello
+```
+
+::: callout-important
+For version 0.1.0, the output file will be created in the current location
+:::
+
+## Basic usage
+
+### Default .rsl file
+
+Rustimate by default look for *project.rsl* file for rendering
+
+``` bash
+rustimate 
+```
+
+### Custom .rsl name
+
+If you want to rustimate process a specific file, you can provide the **`-i`** argument
+
+``` bash
+rustimate -input yourownfile.rsl
+
+# or
+
+rustimate -i yourownfile.rsl
+```
+
+### Output
+
+By default, the output file is always named as `output.mp4` unless you specify with **`-o`** argument. You do not have to add the extension
+
+``` bash
+rustimate --input yourownfile.rsl --output yourownfile.mp4
+
+# or avoid the extension
+
+rustimate -i yourownfile.rsl --output yourownfile
+```
+
+## Formats
+
+### Desktop
+
+This is the default format
+
+``` bash
+rustimate -i format.rsl --output fileformat --format desktop
+
+# or
+rustimate -i format.rsl -o fileformat -f desktop
+```
+
+### Rustimate Guide - Desktop
+
+![](images/desktop.mp4){fig-align="center"}
+
+### Shorts
+
+``` bash
+rustimate -i format.rsl --output fileformat --format shorts
+
+# or
+rustimate -i format.rsl -o fileformat -f shorts
+```
+
+### Rustimate Guide - Shorts
+
+![](images/shorts.mp4){fig-align="center"}
+
+### Square
+
+``` bash
+
+rustimate -i format.rsl --output fileformat --format square
+
+# or
+rustimate -i format.rsl -o fileformat -f square
+```
+
+### Rustimate Guide - Square
+
+![](images/square.mp4){fig-align="center"}
+
+::: callout-note
+Resolution limits depend on your license tier. See [License](license.qmd) for details.
+:::
+
+------------------------------------------------------------------------
+
+::: callout-note
+## Coming soon
+
+-   Currently only `cpu` is supported. GPU acceleration is planned for a future release.
+:::
+
+## Metrics
+
+### Performance History
+
+Rustimate automatically records rendering metrics after each run:
+
+| Metric       | Description                                |
+|--------------|--------------------------------------------|
+| Date Time    | Date & Time when the frames were generated |
+| Scenes       | Scenes in the .rsl file                    |
+| Total frames | Number of frames generated                 |
+| Resolution   | Resolution of the frames                   |
+| FPS          | Frames rendered per second                 |
+| Render time  | Time taken to complete full rendering      |
+
+### Performance Summary
+
+| Metric  | Description                      |
+|---------|----------------------------------|
+| Current | Current Run (seconds)            |
+| Average | Average rendering time (seconds) |
+| Samples | Number of samples available      |
+| Record  | Shortest time taken              |
+
+::: callout-note
+The metrics shows the recent 8 rendering only
+:::
+
+## Rustimate Guide
+
+![](images/metrics.mp4){fig-align="center"}
+
+::: callout-note
+## Coming soon
+
+Terminal doesn't yet support colored output and is planned for next release.
+:::
+
+## Activate License
+
+Activates Rustimate using a purchased license key file.
+
+``` bash
+rustimate license add license.key
+```
+
+### Rustimate Guide
+
+![](images/license.mp4){fig-align="center"}
+
+<br>
+
+See [License Activation](license.qmd) for more information

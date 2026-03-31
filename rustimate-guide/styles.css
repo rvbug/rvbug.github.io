@@ -1,0 +1,55 @@
+/* ── Rustimate Docs · styles.css ───────────────────────── */
+
+/* Callout / media placeholder helper */
+.media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #6c757d;
+  border-radius: 8px;
+  background: #f8f9fa;
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 2rem;
+  margin: 1.5rem 0;
+  min-height: 180px;
+  text-align: center;
+}
+
+/* Dark mode placeholder */
+.quarto-dark .media-placeholder {
+  background: #1e1e2e;
+  border-color: #444;
+  color: #aaa;
+}
+
+/* Inline command style */
+code.cli {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Step badges used in workflow diagrams */
+.step-badge {
+  display: inline-block;
+  background: #3d8bcd;
+  color: white;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  font-weight: bold;
+  margin-right: 0.4rem;
+  font-size: 0.85rem;
+}
+
+/* Tier comparison table tweaks */
+.tier-table th {
+  background: #3d8bcd;
+  color: white;
+}

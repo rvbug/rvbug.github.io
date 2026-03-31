@@ -1,0 +1,127 @@
+---
+title: "Troubleshooting"
+
+---
+
+# Installation
+
+## On Mac & Linux 
+If you get error saying `brew is not available`  or `curl command not found` then check if these are installed on your machine 
+
+```bash
+$> whereis brew
+# or
+$> whereis curl
+```
+
+## Windows
+
+Preferred way is to install via `scoop`. To install scoop follow their documentation
+
+```ps1
+$> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+$> Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+```
+
+
+
+#  Command not found
+
+Once you have installed rustimate, and if you run into `command not found` 
+
+Check the following
+
+If the Rustimate is already in your system path
+
+### Linux and Mac 
+
+```bash 
+which rustimate
+or
+whereis rustimate
+```
+
+### In Windows
+
+```bash
+where rustimate
+```
+
+**Fix:** Re-run the install command for your platform. See [Installation ](installation.qmd).
+
+---
+
+## Scoop Error 
+If you get scoop echecksum error, follow the steps below
+
+```ps1
+$> scoop cache rm rustimate
+$> scoop update
+```
+
+You can uninstall the older version via this command
+```
+$> scoop uninstall rustimate
+```
+
+Then finally install rustimate again
+
+```ps1
+$> scoop install rustimate
+```
+
+
+## License not recognised
+
+Verify the license key was added correctly:
+
+```bash
+rustimate license add license.key
+```
+
+Make sure you are pointing to the correct path of the `license.key` file received by email.
+Download the key to your machine, place it the same directory where you will run `rustimate` from.
+
+
+## Unexpected output resolution
+
+Resolution limits are tied to your license tier:
+
+| Tier | Max resolution |
+|---|---|
+| Community | 720p |
+| Creator | 1080p |
+| Pro | 4K |
+
+If you are trying to render above your tier's limit, Rustimate will fall back to the maximum allowed. 
+
+You can upgrade the tier at any time [Rustimate](https://qubitai.in/rustimate.html#pricing).
+
+
+## RSL script not parsing
+
+Common causes:
+
+- Missing `scene` declaration at the top of the file
+- Indentation inconsistencies in `step` blocks
+- Referencing an object before it is declared
+
+---
+
+## Video not exporting
+
+Make sure the `--output` flag includes a valid file extension:
+
+```bash
+rustimate script.rsl --output output.mp4
+```
+
+
+
+
+---
+
+## Still stuck?
+
+- Check the [Rustimate website](https://qubitai.in/rustimate.html) for updates
+- Pro license holders can reach me at support@qubitai.in

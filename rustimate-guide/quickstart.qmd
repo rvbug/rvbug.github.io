@@ -1,0 +1,151 @@
+---
+title: "Quickstart"
+description: ""
+---
+
+By the end of this guide you will:
+
+-   Render your first demo script
+-   Write your first `.rsl` script
+-   Render a visualization
+-   Export a video
+
+::: note
+**All videos are generated using Rustimate!**
+:::
+
+<br>
+
+## 1 · Install Rustimate
+
+::: panel-tabset
+### macOS (Homebrew)
+
+``` bash
+brew install rustimate
+```
+
+### macOS / Linux (curl)
+
+``` bash
+curl -fsSL https://rustimate.com/install.sh | bash
+```
+
+### Windows
+
+``` powershell
+scoop install rustimate
+```
+:::
+
+Verify:
+
+``` bash
+rustimate --version
+# rustimate 0.1.0
+```
+
+------------------------------------------------------------------------
+
+## 2. Run the demo
+
+To get started , run the demo command.
+
+``` bash
+
+rustimate --demo
+
+# use shorthand
+rustimate -d
+```
+
+### `Rustimate Guide`
+
+![](images/rustimatedemorun.mp4){fig-align="center"}
+
+Open your current folder and you should be able to see a mp4 `rustimate-demo.mp4`
+
+## 3. Help
+
+You can use `help` command to know more about the arguments available.
+
+``` bash
+
+rustimate --help
+
+or
+
+rustimate -h
+```
+### `Rustimate Guide`
+
+![](images/rustimate-help-01.mp4)
+
+## 4 · Create your first script
+
+Create a file called `hello.rsl` and add the following snippet.
+
+This script defines a simple scene with a text element.
+
+
+``` bash
+scene "scene1" {
+  mode: presentation
+  text  "Hello World"
+  text  "Welcome to Rustimate Guide"
+}
+```
+
+
+::: {.callout-note}
+I use Neovim but you can use any editor of your choice to add the following snippet
+:::
+
+### `Rustimate Guide`
+
+![](images/command.mp4){fig-align="center"}
+
+
+
+To run this .rsl file, run the following command to see the frames and ETA.
+
+Rustimate will now:
+
+1.  Parse the RSL script
+2.  Generate frames
+3.  Encode the video
+4.  Generate `firstrsl.mp4` in your current folder
+
+
+::: {.callout-tip}
+ You can avoid adding  `.mp4` extension
+:::
+
+``` bash
+rustimate -i hello.rs -o firstrsl 
+```
+
+### `Rustimate Guide`
+
+![](images/firstrsl.mp4){fig-align="center"}
+
+
+
+### That's it!
+
+You just created your first Rustimate visualization. 
+
+From here, RSL scripts can power code walk through and do much more.
+
+I am excited to see what you create.
+
+::: callout-note
+See [License tiers](license.qmd) for what each tier unlocks.
+:::
+
+------------------------------------------------------------------------
+
+## Next steps
+
+-   [CLI reference →](cli.qmd) — full list of flags and arguments
+-   [RSL Reference →](rsl-reference.qmd) — everything you can express in RSL

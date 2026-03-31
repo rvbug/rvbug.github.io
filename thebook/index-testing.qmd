@@ -1,0 +1,78 @@
+---
+title: "Documentation hub."
+subtitle: "Architecture & Design Decisions"
+format: 
+  html:
+    page-layout: full
+listing:
+  id: project-links
+  type: grid
+  grid-columns: 2
+  categories: true
+  filter-ui: true
+  fields: [title, description, categories]
+  contents:
+    - title: "ratcrate-core"
+      description: "The engine behind the Ratatui ecosystem. Scans crates.io and produces ratcrate.json."
+      path: "rat-core/index.qmd"
+      categories: [Rust, Engine]
+    - title: "ratcrate-cli"
+      description: "A command-line interface for exploring Ratatui crates with search and filtering."
+      path: "rat-cli/index.qmd"
+      categories: [Rust, CLI]
+    - title: "doc2quarto"
+      description: "Helper tool for turning rough notes into structured Quarto documentation."
+      path: "doc2quarto/index.qmd"
+      categories: [Python, Tooling]
+    - title: "QBanner"
+      description: "A lightweight Rust-based library for high-performance CLI Banners."
+      path: "qbanner/index.qmd"
+      categories: [Rust, Library]
+---
+
+# Overview
+
+This site is primarily written for **future me** — a central repository for technical logic.
+
+
+::: {.hero-section style="text-align:center; padding: 4rem 0;"}
+# Documentation hub.
+> Architecture Notes and Design Decisions for the 1QubitAI ecosystem.
+:::
+
+---
+
+## Projects
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+### 🐀 ratcrate-core
+**The Engine.** Scans crates.io, enriches metadata, and produces the backbone `ratcrate.json`.
+[Read the Docs »](rat-core/index.qmd){.btn .btn-outline-primary .btn-sm}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### 💻 ratcrate-cli
+**The Interface.** Search and filter the Ratatui ecosystem directly from your terminal.
+[Read the Docs »](rat-cli/index.qmd){.btn .btn-outline-primary .btn-sm}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### ☁︎ doc2quarto
+**The Pipeline.** Automated transformation of rough notes into structured Quarto books.
+[Read the Docs »](doc2quarto/index.qmd){.btn .btn-outline-primary .btn-sm}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### ↯ QBanner
+**The Visuals.** A high-performance Rust library for CLI banners and layout headers.
+[Read the Docs »](qbanner/index.qmd){.btn .btn-outline-primary .btn-sm}
+:::
+
+:::
+
+---
+
+# About Me
+I’m **Rakesh V**, a developer building tools for automation and systems logic.

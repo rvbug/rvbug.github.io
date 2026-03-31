@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #111111;
+            --secondary: #86868b;
+            --active-light: #e0e0e0; /* Very light color for active state */
+        }
+
+        html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'EB Garamond', serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .home-trigger {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            width: 12px;
+            height: 12px;
+            background: var(--text);
+            border-radius: 50%;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .container { display: flex; min-height: 100vh; }
+
+        .left-pane {
+            flex: 1;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 60px;
+        }
+
+        /* Transition for the doodle swap */
+        #doodle {
+            max-width: 80%;
+            height: auto;
+            mix-blend-mode: multiply;
+            transition: opacity 0.5s ease;
+        }
+
+        .right-pane {
+            flex: 1;
+            padding: 120px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Transition for the text content swap */
+        #content-area {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .letter-header { margin-bottom: 80px; }
+        .meta { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
+        h1 { font-size: 42px; font-weight: 400; font-style: italic; line-height: 1.2; }
+        
+        .letter-content { max-width: 540px; }
+       .letter-content p {
+    font-size: 22px;
+    line-height: 1.7;
+    margin-bottom: 1.2em;
+    color: #1d1d1f;
+    opacity: 0;
+    transform: translateY(15px);
+    /* Transition handles the 'drift' up */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+        .letter-content p.animate {
+            animation: paragraphFadeIn 0.8s ease forwards;
+        }
+
+        .letter-content p.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+@keyframes paragraphFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+        /* FIXED VOLUME NAV: Uniform spacing and light active color */
+        .volume-nav {
+            margin-top: 100px;
+            display: flex;
+            gap: 25px; /* Uniform gap */
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .vol-link {
+            text-decoration: none;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        /* Active state: Very light and subtle */
+        .vol-link.active {
+            color: var(--active-light);
+            cursor: default;
+        }
+
+        @media (max-width: 1024px) {
+            .container { flex-direction: column; }
+            .left-pane { position: relative; height: auto; min-height: 45vh; padding: 100px 40px 40px 40px; }
+            .right-pane { width: 100%; padding: 60px 30px 120px 30px; }
+            h1 { font-size: 34px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="./thoughts.html" class="home-trigger"></a>
+
+    <div class="container">
+        <div class="left-pane">
+            <img src="./assets/thoughts.png" alt="Doodle" id="doodle">
+        </div>
+
+        <div class="right-pane">
+        <div id="content-area">
+            <header class="letter-header">
+                <div class="meta" id="date-meta"></div>
+                <h1 id="main-title"></h1>
+            </header>
+            <article class="letter-content" id="letter-body">
+                </article>
+        </div>
+
+        <nav class="volume-nav">
+            <span class="vol-link active" onclick="loadVolume(1)">01</span>
+            <!-- <span class="vol-link" onclick="loadVolume(2)">02</span>
+            <span class="vol-link" onclick="loadVolume(3)">03</span> -->
+        </nav>
+    </div>
+</div>
+
+<div id="hidden-letters" style="display: none;">
+    <div id="letter-1" data-meta="Introduction" data-title="Darkness." data-img="./assets/kuro-handwritten.png">
+        <p><strong>玄 (Kuro)</strong> means black, but it is often associated with depth, emptiness or the void.</p>
+ <p>This archive is that sanctuary for these possibilities. It exists for the ideas that do not fit into a standard but touch the soul of a system.</p>
+<p>There is no noise here noise but just a profound silence where the thoughts quietly intersect the engineering.</p>
+    </div>
+
+
+</div>
+
+<div id="hidden-letters" style="display: none;">
+<!--     
+    <div id="letter-1" data-meta="Introduction" data-title="The Profound Darkness." data-img="kuro-doodle.png">
+        
+        <p>In the modern world, darkness is often seen as a void—a place where information is missing. This is a misunderstanding.</p>
+        
+        <p><strong>玄 (Kuro)</strong> represents a specific kind of darkness. It is the color of the universe before the light of observation touches it. It is not empty; it is dense with every possibility that has yet to happen.</p>
+        
+        <p>This archive is a sanctuary for those possibilities. It exists to house the ideas that do not fit into a standard architectural diagram but are essential to the soul of a system.</p>
+        
+        <p>There is no tracking here. No metrics. No noise. There is only the thought, the ink, and the void. This is the quiet intersection where engineering meets the unknown.</p>
+    </div>
+
+</div> -->
+
+<script>
+function loadVolume(num) {
+    const source = document.getElementById('letter-' + num);
+    if (!source) return;
+
+    const contentArea = document.getElementById('content-area');
+    const doodle = document.getElementById('doodle');
+    const links = document.querySelectorAll('.vol-link');
+
+    // Fade out for the swap
+    contentArea.style.opacity = 0;
+    doodle.style.opacity = 0;
+
+    setTimeout(() => {
+        // Inject the content from the hidden div
+        document.getElementById('date-meta').innerText = source.getAttribute('data-meta');
+        document.getElementById('main-title').innerHTML = source.getAttribute('data-title');
+        
+        const body = document.getElementById('letter-body');
+        body.innerHTML = source.innerHTML; 
+        doodle.src = source.getAttribute('data-img');
+
+        // Update Navigation dots
+        links.forEach((link, i) => {
+            if (i + 1 === num) link.classList.add('active');
+            else link.classList.remove('active');
+        });
+
+        // Fade back in
+        contentArea.style.opacity = 1;
+        doodle.style.opacity = 1;
+
+        // Trigger the upward "drift" animation
+        animateParagraphs();
+        
+        window.scrollTo(0, 0);
+    }, 400);
+}
+
+function animateParagraphs() {
+    const paragraphs = document.querySelectorAll('#letter-body p');
+    paragraphs.forEach((p, index) => {
+        p.classList.remove('revealed');
+        setTimeout(() => {
+            p.style.transitionDelay = (index * 0.12) + 's';
+            p.classList.add('revealed');
+        }, 50);
+    });
+}
+
+// CRITICAL FIX: Load Volume 01 immediately on page load
+window.addEventListener('DOMContentLoaded', () => {
+    loadVolume(1); 
+});
+</script>
+</body>
+</html>

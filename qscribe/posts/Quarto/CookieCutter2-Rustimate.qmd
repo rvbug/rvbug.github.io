@@ -1,0 +1,102 @@
+---
+title: "Cookie-ML - via Rustimate Guide"
+author: "Rakesh Venkat"
+date: 2026-02-19
+format:
+  html:
+    toc: true
+    code-fold: true
+    theme: cosmo
+---
+
+# Preface
+
+I wrote a text blog about building a Cookie-ML V2.0 which you can find th elink here [Cookie V2.0](https://qubitai.in/qscribe-docs/posts/QuantumGravity/CookieCutterv2.html)
+
+# Why Re-write it again
+
+This is a new format which I am testing , it is called `Rustimate Guide`. My attempt to make this more interesting.
+
+# Introduction
+
+I go by one simple principle…
+
+> If you repeat the same steps twice, then automate it the third time.
+
+# Project Structure
+
+Here’s the structure I use for all my ML projects. These are pretty standard ones.
+
+Here's the top - main folder structure
+
+<video width="100%" height="auto" autoplay loop muted playsinline>
+
+<source src="./videos/main_folder.mp4" type="video/mp4">
+
+Your browser does not support the video tag. </video>
+
+{{< video ./videos/main_folder.mp4 autoplay="true" loop="true" muted="true" >}}
+
+{{< video "./videos/main_folder.mp4" autoplay="true" loop="true" muted="true" >}}
+
+Checkout what is inside the configuration folders
+
+<video width="100%" height="auto" autoplay loop muted playsinline>
+
+<source src="./videos/8.infra_folder.mp4" type="video/mp4">
+
+Your browser does not support the video tag. </video>
+
+{{< video "./videos/8.infra_folder.mp4" autoplay="true" loop="true" muted="true" >}}
+
+The complete data management structure is as below
+
+<video width="100%" height="auto" autoplay loop muted playsinline>
+
+<source src="./videos/9.data_mgmt.mp4" type="video/mp4">
+
+Your browser does not support the video tag. </video>
+
+When you initially in experimenting phase to build the model, you would likely use Jupyter Notebook and you need a structure to store those artefacts as well. Check how that looks
+
+{{< video "./videos/10.report.mp4" autoplay="true" loop="true" muted="true" >}}
+
+Finally the data pipeline looks something like this
+
+{{< video ./videos/11.output.mp4 autoplay="true" loop="true" muted="true" >}}
+
+# Script
+
+One of the main pre-requisites for this script is `pyyaml`.
+
+You can find the documentation [here](https://pyyaml.org/wiki/PyYAMLDocumentation). Install them via [pip](https://pip.pypa.io/en/stable/).
+
+## Argparse
+
+Everything starts with the main function. It uses argparse to parse command line arguments provided to the script. It then loads the yaml config file. Check out highlighted line `3` & `5`.
+
+<video width="100%" height="auto" autoplay  muted playsinline>
+
+# Checking Here
+
+<source src="./videos/12.Code_main.mp4" type="video/mp4">
+
+Your browser does not support the video tag. </video>
+
+Where us this file?
+
+{{< video "./videos/12.Code_main.mp4" autoplay="true" muted="true" >}}
+
+## **File and Directories**
+
+Based on how YAML is structured, the script will create files, directories and sub-directories via a function `create_directories`. Line 1 and 4 is highlighted for reference.
+
+<video width="100%" height="auto" autoplay muted playsinline>
+
+<source src="./videos/12.Code_main.mp4" type="video/mp4">
+
+Your browser does not support the video tag. </video>
+
+# Create Dir
+
+{{< video ./videos/13.create_dir.mp4 autoplay="true" loop="true" muted="true" >}}

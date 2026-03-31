@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Quarto/CookieCutter2-Rustimate.html",
       "/posts/Quarto/doc2quarto.html",
       "/posts/Quarto/quarto.html",
       "/posts/LLMs/PTXIntro.html",

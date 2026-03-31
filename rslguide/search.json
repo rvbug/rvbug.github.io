@@ -1,0 +1,704 @@
+[
+  {
+    "objectID": "quickstart.html",
+    "href": "quickstart.html",
+    "title": "Quickstart",
+    "section": "",
+    "text": "By the end of this guide you will:",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#install-rustimate",
+    "href": "quickstart.html#install-rustimate",
+    "title": "Quickstart",
+    "section": "1 · Install Rustimate",
+    "text": "1 · Install Rustimate\n\nmacOS (Homebrew)macOS / Linux (curl)Windows\n\n\nbrew install rustimate\n\n\ncurl -fsSL https://rustimate.com/install.sh | bash\n\n\nscoop install rustimate\n\n\n\nVerify:\nrustimate --version\n# rustimate 0.1.0",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#run-the-demo",
+    "href": "quickstart.html#run-the-demo",
+    "title": "Quickstart",
+    "section": "2. Run the demo",
+    "text": "2. Run the demo\nTo get started , run the demo command.\n\nrustimate --demo\n\n# use shorthand\nrustimate -d\n\nRustimate Guide\n\n\nVideo\n\n\nOpen your current folder and you should be able to see a mp4 rustimate-demo.mp4",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#help",
+    "href": "quickstart.html#help",
+    "title": "Quickstart",
+    "section": "3. Help",
+    "text": "3. Help\nYou can use help command to know more about the arguments available.\n\nrustimate --help\n\nor\n\nrustimate -h\n\nRustimate Guide\nVideo",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#create-your-first-script",
+    "href": "quickstart.html#create-your-first-script",
+    "title": "Quickstart",
+    "section": "4 · Create your first script",
+    "text": "4 · Create your first script\nCreate a file called hello.rsl and add the following snippet.\nThis script defines a simple scene with a text element.\nscene \"scene1\" {\n  mode: presentation\n  text  \"Hello World\"\n  text  \"Welcome to Rustimate Guide\"\n}\n\n\n\n\n\n\nNote\n\n\n\nI use Neovim but you can use any editor of your choice to add the following snippet\n\n\n\nRustimate Guide\n\n\nVideo\n\n\nTo run this .rsl file, run the following command to see the frames and ETA.\nRustimate will now:\n\nParse the RSL script\nGenerate frames\nEncode the video\nGenerate firstrsl.mp4 in your current folder\n\n\n\n\n\n\n\nTip\n\n\n\nYou can avoid adding .mp4 extension\n\n\nrustimate -i hello.rs -o firstrsl \n\n\nRustimate Guide\n\n\nVideo\n\n\n\n\nThat’s it!\nYou just created your first Rustimate visualization.\nFrom here, RSL scripts can power code walk through and do much more.\nI am excited to see what you create.\n\n\n\n\n\n\nNote\n\n\n\nSee License tiers for what each tier unlocks.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#next-steps",
+    "href": "quickstart.html#next-steps",
+    "title": "Quickstart",
+    "section": "Next steps",
+    "text": "Next steps\n\nCLI reference → — full list of flags and arguments\nRSL Reference → — everything you can express in RSL",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html",
+    "href": "troubleshooting.html",
+    "title": "Troubleshooting",
+    "section": "",
+    "text": "If you get error saying brew is not available or curl command not found then check if these are installed on your machine\n$&gt; whereis brew\n# or\n$&gt; whereis curl\n\n\n\nPreferred way is to install via scoop. To install scoop follow their documentation\n$&gt; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser\n$&gt; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html#on-mac-linux",
+    "href": "troubleshooting.html#on-mac-linux",
+    "title": "Troubleshooting",
+    "section": "",
+    "text": "If you get error saying brew is not available or curl command not found then check if these are installed on your machine\n$&gt; whereis brew\n# or\n$&gt; whereis curl",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html#windows",
+    "href": "troubleshooting.html#windows",
+    "title": "Troubleshooting",
+    "section": "",
+    "text": "Preferred way is to install via scoop. To install scoop follow their documentation\n$&gt; Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser\n$&gt; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html#scoop-error",
+    "href": "troubleshooting.html#scoop-error",
+    "title": "Troubleshooting",
+    "section": "Scoop Error",
+    "text": "Scoop Error\nIf you get scoop echecksum error, follow the steps below\n$&gt; scoop cache rm rustimate\n$&gt; scoop update\nYou can uninstall the older version via this command\n$&gt; scoop uninstall rustimate\nThen finally install rustimate again\n$&gt; scoop install rustimate",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html#license-not-recognised",
+    "href": "troubleshooting.html#license-not-recognised",
+    "title": "Troubleshooting",
+    "section": "License not recognised",
+    "text": "License not recognised\nVerify the license key was added correctly:\nrustimate license add license.key\nMake sure you are pointing to the correct path of the license.key file received by email. Download the key to your machine, place it the same directory where you will run rustimate from.",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html#unexpected-output-resolution",
+    "href": "troubleshooting.html#unexpected-output-resolution",
+    "title": "Troubleshooting",
+    "section": "Unexpected output resolution",
+    "text": "Unexpected output resolution\nResolution limits are tied to your license tier:\n\n\n\nTier\nMax resolution\n\n\n\n\nCommunity\n720p\n\n\nCreator\n1080p\n\n\nPro\n4K\n\n\n\nIf you are trying to render above your tier’s limit, Rustimate will fall back to the maximum allowed.\nYou can upgrade the tier at any time Rustimate.",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html#rsl-script-not-parsing",
+    "href": "troubleshooting.html#rsl-script-not-parsing",
+    "title": "Troubleshooting",
+    "section": "RSL script not parsing",
+    "text": "RSL script not parsing\nCommon causes:\n\nMissing scene declaration at the top of the file\nIndentation inconsistencies in step blocks\nReferencing an object before it is declared",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html#video-not-exporting",
+    "href": "troubleshooting.html#video-not-exporting",
+    "title": "Troubleshooting",
+    "section": "Video not exporting",
+    "text": "Video not exporting\nMake sure the --output flag includes a valid file extension:\nrustimate script.rsl --output output.mp4",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "troubleshooting.html#still-stuck",
+    "href": "troubleshooting.html#still-stuck",
+    "title": "Troubleshooting",
+    "section": "Still stuck?",
+    "text": "Still stuck?\n\nCheck the Rustimate website for updates\nPro license holders can reach me at support@qubitai.in",
+    "crumbs": [
+      "Docs",
+      "Support",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html",
+    "href": "rsl-reference.html",
+    "title": "RSL reference",
+    "section": "",
+    "text": "RSL (Rustimate Studio Language) is the language used to describe the outcome.\nAn RSL file defines scenes, objects, timeline events, transitions, and visual properties.\nThink of it as a sequence of instructions an, object declarations.\n\n\n\n\n\n\nRSL compiler coming in 2027\n\n\n\nNative RSL compiler is in development. The current interpreter handles the full feature set described here.",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#mode---presentation",
+    "href": "rsl-reference.html#mode---presentation",
+    "title": "RSL reference",
+    "section": "Mode - Presentation",
+    "text": "Mode - Presentation\nIn presentation mode, v0.1.0, any sub-components add will use a black background.\nscene \"intro\" {\n  mode: presentation\n}\n\nText\nWhile presentation mode renders any sub-components added on it but the best way is to add many text blocks you want.\nscene \"intro\" {\n  mode: presentation\n  text \"Hello world\"\n  text \"Rustimate\"\n}\nYou can also add use text like this though I would suggest you use terminal mode which we will discuss below\nscene \"intro\" {\ntext \"fn main() {\"\n    text \"    println!(\\\"Hello from Rustimate\\\");\"\n    text \"}\"\n\n}\n\n\nRustimate Guide\n\n\nVideo\n\n\n\n\nAnimation\nThere are two values used by Animation which are static & typewriter. Static is default value.\nscene \"intro\" {\n  mode: presentation\n  animation: typewriter\n  text \"Hello world\"\n  text \"Rustimate\"\n}\n\n\nRustimate Guide\n\n\nVideo\n\n\n\n\nTransition\nTransition currently have one value called fade\nscene \"intro\" {\n  mode: presentation\n  animation: typewriter\n  text \"Hello world\"\n  text \"Rustimate\"\n}\n\nscene \"fade\" {\n  transition: fade\n  mode: presentation\n  text \"fade effect\"\n}\n\n\nRustimate Guide\n\n\nVideo",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#mode---editor",
+    "href": "rsl-reference.html#mode---editor",
+    "title": "RSL reference",
+    "section": "Mode - Editor",
+    "text": "Mode - Editor\nRustimate can recreate real developer editor environments as the visual backdrop. It does not rendering the IDE itself. The default theme is monokai\nYou can use this code to explain part of your code. Editor mode will help\nscene “scene2” {\n    mode: editor\n    editor: neovim\n}",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#rustimate-neovim",
+    "href": "rsl-reference.html#rustimate-neovim",
+    "title": "RSL reference",
+    "section": "Rustimate Neovim",
+    "text": "Rustimate Neovim\n\n\nVideo\n\n\nscene “scene2” {\n    mode: editor\n    editor: emacs\n}",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#rustimate-emacs",
+    "href": "rsl-reference.html#rustimate-emacs",
+    "title": "RSL reference",
+    "section": "Rustimate emacs",
+    "text": "Rustimate emacs\n\n\nVideo",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#editor-themes",
+    "href": "rsl-reference.html#editor-themes",
+    "title": "RSL reference",
+    "section": "Editor Themes",
+    "text": "Editor Themes\nThemes control the colour system and visual style of the entire scene.\nRustimate v0.1.0 uses three themes for both editors\n\nMonokai (default)\nDracula\nNord\n\nscene “scene2” {\n    mode: editor\n    editor: emacs/neovim\n    theme: nord/dracula/monokai\n}\n\n\n\n\n\n\nThemes\n\n\n\nMore themes and additional editor support will be added soon.\n\n\n\nNord Theme\nThis is how the nord theme would look like in emacs.\n\n\nVideo\n\n\n\n\nDracula Theme\nThis is how the dracula theme would look like in Neovim\n\n\nVideo",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#files",
+    "href": "rsl-reference.html#files",
+    "title": "RSL reference",
+    "section": "Files",
+    "text": "Files\nYou can render specific lines of a real code file using theme and editor:\nscene \"Code\" {\n  mode: editor\n  editor: neovim\n  animation: typewriter\n  file: \"main.rs\"\n}",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#rustimate-guide-3",
+    "href": "rsl-reference.html#rustimate-guide-3",
+    "title": "RSL reference",
+    "section": "Rustimate Guide",
+    "text": "Rustimate Guide\n\n\nVideo",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#lines",
+    "href": "rsl-reference.html#lines",
+    "title": "RSL reference",
+    "section": "Lines",
+    "text": "Lines\nImagine you want to render only specific lines from the main.rs file. This is where lines are quite helpful\nscene \"Code\" {\n  mode: editor\n  editor: neovim\n  animation: typewriter\n  file: \"main.rs\"\n  lines: 5..8\n}",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#rustimate-guide-4",
+    "href": "rsl-reference.html#rustimate-guide-4",
+    "title": "RSL reference",
+    "section": "Rustimate Guide",
+    "text": "Rustimate Guide\n\n\nVideo",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#highlight",
+    "href": "rsl-reference.html#highlight",
+    "title": "RSL reference",
+    "section": "Highlight",
+    "text": "Highlight\nWhat if during your explaination, you want to highlight important or specific lines of code. This is where highlight comes into play.\nThe below rsl file will help you extract lines from 5 to 8 and highlight line 6. And yes, you can include the animation too!\nscene \"Code\" {\n  mode: editor\n  animation: typewriter\n  editor: neovim\n  animation: typewriter\n  file: \"main.rs\"\n  lines: 5..8\n  highlight: [6]\n}",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "rsl-reference.html#rustimate-guide-5",
+    "href": "rsl-reference.html#rustimate-guide-5",
+    "title": "RSL reference",
+    "section": "Rustimate Guide",
+    "text": "Rustimate Guide\n\n\nVideo",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "RSL reference"
+    ]
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Rustimate Guide",
+    "section": "Introduction",
+    "text": "Introduction\nRustimate is a programmable engine for visual technical story telling. It lets you write scripts and render explanations.\nIt is designed for:\n\nTechnical bloggers\nEducators\nResearchers\nDocumentation writers",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#how-it-works",
+    "href": "index.html#how-it-works",
+    "title": "Rustimate Guide",
+    "section": "How it works",
+    "text": "How it works\nRustimate uses a domain-specific language called RSL (Rustimate Studio Language) to describe scenes. It’s engine renders these instructions into visual frames and export to mp4.\nYou just write a .rsl file and Rustimate takes care of the rendering",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#features",
+    "href": "index.html#features",
+    "title": "Rustimate Guide",
+    "section": "Features",
+    "text": "Features\nThis version v0.1.0 has following features.\n\nCross-platform support which includes Mac, Linux and Windows\nCLI based workflow\nFully functional Community Edition\nExport to 4K format for Pro users\nYour data stays locally\nEditor tooling available through Tree-Sitter & Language Server Protocol (LSP)\n\n\n\n\n\n\n\n\nVideo",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#next-steps",
+    "href": "index.html#next-steps",
+    "title": "Rustimate Guide",
+    "section": "Next steps",
+    "text": "Next steps\n\nInstall Rustimate →\n5-minute Quickstart →\nRSL Language Reference →",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "editor.html",
+    "href": "editor.html",
+    "title": "Editor Integration",
+    "section": "",
+    "text": "This guide covers the installation of the rustimate Tree-sitter grammar for few editors like Neovim, Helix and emacs.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Editor Integration"
+    ]
+  },
+  {
+    "objectID": "editor.html#overview",
+    "href": "editor.html#overview",
+    "title": "Editor Integration",
+    "section": "",
+    "text": "This guide covers the installation of the rustimate Tree-sitter grammar for few editors like Neovim, Helix and emacs.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Editor Integration"
+    ]
+  },
+  {
+    "objectID": "editor.html#neovim-lazy.nvim",
+    "href": "editor.html#neovim-lazy.nvim",
+    "title": "Editor Integration",
+    "section": "Neovim (Lazy.nvim)",
+    "text": "Neovim (Lazy.nvim)\nTo avoid manual path hacking, we let Lazy manage the repository as a dependency. This ensures the highlights.scm is automatically added to the Neovim Runtime Path (RTP).\n\n-- lua/plugins/treesitter.lua\nreturn {\n  -- 1. Tell Lazy about your repo so it manages the PATH for you\n  {\n    \"rvbug/tree-sitter-rustimate\",\n    lazy = true, -- Only loads when needed\n  },\n\n  -- 2. Your standard Treesitter config\n  {\n    \"nvim-treesitter/nvim-treesitter\",\n    branch = \"master\",\n    build = \":TSUpdate\",\n    dependencies = { \"tree-sitter-rustimate\" }, -- This is the key!\n    config = function()\n      local parsers = require(\"nvim-treesitter.parsers\")\n\n      -- Register the parser\n      parsers.get_parser_configs().rustimate = {\n        install_info = {\n          url = \"https://github.com/rvbug/tree-sitter-rustimate.git\",\n          files = { \"src/parser.c\" },\n          branch = \"main\",\n        },\n        filetype = \"rsl\",\n      }\n\n      -- Standard Setup\n      require(\"nvim-treesitter.configs\").setup({\n        ensure_installed = { \"lua\", \"rust\", \"markdown\", \"vimdoc\" },\n        auto_install = true,\n        highlight = { enable = true },\n      })\n    end,\n  },\n}",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Editor Integration"
+    ]
+  },
+  {
+    "objectID": "editor.html#helix",
+    "href": "editor.html#helix",
+    "title": "Editor Integration",
+    "section": "Helix",
+    "text": "Helix\nHelix requires explicit grammar fetching and building via the CLI.\nFile: ~/.config/helix/languages.toml\n[[language]]\nname = \"rustimate\"\nscope = \"source.rsl\"\nfile-types = [\"rsl\"]\ngrammar = \"rustimate\"\n\n[[grammar]]\nname = \"rustimate\"\nsource = { git = \"[https://github.com/rvbug/tree-sitter-rustimate](https://github.com/rvbug/tree-sitter-rustimate)\", rev = \"main\" }\nCommands:\n\nhx --grammar fetch\nhx --grammar build",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Editor Integration"
+    ]
+  },
+  {
+    "objectID": "editor.html#emacs-built-in-treesit",
+    "href": "editor.html#emacs-built-in-treesit",
+    "title": "Editor Integration",
+    "section": "Emacs (built-in treesit)",
+    "text": "Emacs (built-in treesit)\nFor Emacs 29+, use the built-in treesit library.\nFile: config.org\n(setq treesit-language-source-alist\n      '((rustimate \"[https://github.com/rvbug/tree-sitter-rustimate](https://github.com/rvbug/tree-sitter-rustimate)\")))\n\n;; Install via M-x treesit-install-language-grammar RET rustimate\n(add-to-list 'major-mode-remap-alist '(rsl-mode . rustimate-ts-mode))",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Editor Integration"
+    ]
+  },
+  {
+    "objectID": "rustimate-guide.html",
+    "href": "rustimate-guide.html",
+    "title": "Rustimate Guide",
+    "section": "",
+    "text": "Rustimate Guide is a structured narrative format that tightly integrates:\nIt allows authors to publish visual technical tutorials where animations and explanations live side by side."
+  },
+  {
+    "objectID": "rustimate-guide.html#use-cases",
+    "href": "rustimate-guide.html#use-cases",
+    "title": "Rustimate Guide",
+    "section": "Use cases",
+    "text": "Use cases\n\nTechnical blog posts\nProduct documentation\nResearch explanations\nEducational content and courses\n\n\n\n\n\n\n\nQuarto Markdown support — coming next\n\n\n\nNative Quarto & Markdown rendering support is on the Rustimate roadmap."
+  },
+  {
+    "objectID": "cli.html#cli-arguments",
+    "href": "cli.html#cli-arguments",
+    "title": "CLI Reference",
+    "section": "CLI Arguments",
+    "text": "CLI Arguments\nRustimate has various arguments. We will go over them one by one\n\n\n\n\n\n\nTip\n\n\n\nYou can use short arguments instead of the longer ones\n\n\n $ rustimate --help \n  Usage: rustimate [OPTIONS]\n\n  Options:\n    -i, --input &lt;FILE&gt;     [default: project.rsl]\n    -o, --output &lt;OUTPUT&gt;  [default: output.mp4]\n    -f, --format &lt;FORMAT&gt;  [default: desktop]\n    -m, --metrics\n    -d, --demo\n    -h, --help             Print help \n    -V, --version          Print version\n\nRustimate Guide\nVideo",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "CLI Reference"
+    ]
+  },
+  {
+    "objectID": "cli.html#options-explained",
+    "href": "cli.html#options-explained",
+    "title": "CLI Reference",
+    "section": "Options Explained",
+    "text": "Options Explained\n\nInput\nThis is the input arguments to specify the name of the .rsl file. Rustimate operates on .rsl scripts via the command line.\n\n\n\n\n\n\nImportant\n\n\n\nFor version 0.1.0, the input file should be in the current location\n\n\nrustimate --input hello.rsl\n\n# or\n\nrustimate -i hello.rsl\n\n\nOutput\nThe default output will be output.mp4 unless specified by output argument. You do not need to specify the extension , it is inferred automatically.\nrustimate --input hello.rsl --ouput hello\n\n# or\n\nrustimate -i hello.rsl --output hello\n\n\n\n\n\n\nImportant\n\n\n\nFor version 0.1.0, the output file will be created in the current location",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "CLI Reference"
+    ]
+  },
+  {
+    "objectID": "cli.html#basic-usage",
+    "href": "cli.html#basic-usage",
+    "title": "CLI Reference",
+    "section": "Basic usage",
+    "text": "Basic usage\n\nDefault .rsl file\nRustimate by default look for project.rsl file for rendering\nrustimate \n\n\nCustom .rsl name\nIf you want to rustimate process a specific file, you can provide the -i argument\nrustimate -input yourownfile.rsl\n\n# or\n\nrustimate -i yourownfile.rsl\n\n\nOutput\nBy default, the output file is always named as output.mp4 unless you specify with -o argument. You do not have to add the extension\nrustimate --input yourownfile.rsl --output yourownfile.mp4\n\n# or avoid the extension\n\nrustimate -i yourownfile.rsl --output yourownfile",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "CLI Reference"
+    ]
+  },
+  {
+    "objectID": "cli.html#formats",
+    "href": "cli.html#formats",
+    "title": "CLI Reference",
+    "section": "Formats",
+    "text": "Formats\n\nDesktop\nThis is the default format\nrustimate -i format.rsl --output fileformat --format desktop\n\n# or\nrustimate -i format.rsl -o fileformat -f desktop\n\n\nRustimate Guide - Desktop\n\n\nVideo\n\n\n\n\nShorts\nrustimate -i format.rsl --output fileformat --format shorts\n\n# or\nrustimate -i format.rsl -o fileformat -f shorts\n\n\nRustimate Guide - Shorts\n\n\nVideo\n\n\n\n\nSquare\n\nrustimate -i format.rsl --output fileformat --format square\n\n# or\nrustimate -i format.rsl -o fileformat -f square\n\n\nRustimate Guide - Square\n\n\nVideo\n\n\n\n\n\n\n\n\nNote\n\n\n\nResolution limits depend on your license tier. See License for details.\n\n\n\n\n\n\n\n\n\nComing soon\n\n\n\n\nCurrently only cpu is supported. GPU acceleration is planned for a future release.",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "CLI Reference"
+    ]
+  },
+  {
+    "objectID": "cli.html#metrics",
+    "href": "cli.html#metrics",
+    "title": "CLI Reference",
+    "section": "Metrics",
+    "text": "Metrics\n\nPerformance History\nRustimate automatically records rendering metrics after each run:\n\n\n\nMetric\nDescription\n\n\n\n\nDate Time\nDate & Time when the frames were generated\n\n\nScenes\nScenes in the .rsl file\n\n\nTotal frames\nNumber of frames generated\n\n\nResolution\nResolution of the frames\n\n\nFPS\nFrames rendered per second\n\n\nRender time\nTime taken to complete full rendering\n\n\n\n\n\nPerformance Summary\n\n\n\nMetric\nDescription\n\n\n\n\nCurrent\nCurrent Run (seconds)\n\n\nAverage\nAverage rendering time (seconds)\n\n\nSamples\nNumber of samples available\n\n\nRecord\nShortest time taken\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe metrics shows the recent 8 rendering only",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "CLI Reference"
+    ]
+  },
+  {
+    "objectID": "cli.html#rustimate-guide-1",
+    "href": "cli.html#rustimate-guide-1",
+    "title": "CLI Reference",
+    "section": "Rustimate Guide",
+    "text": "Rustimate Guide\n\n\nVideo\n\n\n\n\n\n\n\n\nComing soon\n\n\n\nTerminal doesn’t yet support colored output and is planned for next release.",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "CLI Reference"
+    ]
+  },
+  {
+    "objectID": "cli.html#activate-license",
+    "href": "cli.html#activate-license",
+    "title": "CLI Reference",
+    "section": "Activate License",
+    "text": "Activate License\nActivates Rustimate using a purchased license key file.\nrustimate license add license.key\n\nRustimate Guide\n\n\nVideo\n\n\n\nSee License Activation for more information",
+    "crumbs": [
+      "Docs",
+      "Reference",
+      "CLI Reference"
+    ]
+  },
+  {
+    "objectID": "project-structure.html",
+    "href": "project-structure.html",
+    "title": "Project Structure",
+    "section": "",
+    "text": "I propose a well-organised Rustimate project which separates scripts, assets, and outputs. Feel free to have your own structure"
+  },
+  {
+    "objectID": "project-structure.html#layout",
+    "href": "project-structure.html#layout",
+    "title": "Project Structure",
+    "section": "Layout",
+    "text": "Layout\nproject/\n│\n├─ scripts/\n│   ├─ intro.rsl\n│   └─ binary_search.rsl\n│\n├─ assets/\n│   ├─ images/\n│   └─ icons/\n│\n├─ output/\n│   ├─ intro.mp4\n│   └─ binary_search.mp4\n│\n└─ rustimate.toml"
+  },
+  {
+    "objectID": "project-structure.html#folder-purposes",
+    "href": "project-structure.html#folder-purposes",
+    "title": "Project Structure",
+    "section": "Folder purposes",
+    "text": "Folder purposes\n\n\n\nFolder / File\nPurpose\n\n\n\n\nscripts/\nAll .rsl source files\n\n\nassets/\nImages, icons, and other static files used by scenes\n\n\noutput/\nRendered video and image exports\n\n\nrustimate.toml\nProject-level configuration (optional)"
+  },
+  {
+    "objectID": "project-structure.html#docs-project-layout",
+    "href": "project-structure.html#docs-project-layout",
+    "title": "Project Structure",
+    "section": "Docs project layout",
+    "text": "Docs project layout\nIf you are building a Quarto documentation site alongside Rustimate, the structure may extend to:\ndocs/\n│\n├─ _quarto.yml\n├─ index.qmd\n├─ installation.qmd\n├─ cli.qmd\n├─ rsl-reference.qmd\n├─ quickstart.qmd\n├─ examples.qmd\n├─ rustimate-guide.qmd\n├─ project-structure.qmd\n├─ editor-integration.qmd\n└─ troubleshooting.qmd"
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License Activation",
+    "section": "",
+    "text": "After you purchase Creator or Pro license, you will receive a license.key file via email within 12 hours.\n\n\n$&gt; rustimate license add license.key\n\n\n\n\n\nVideo\n\n\nRustimate verifies the license locally — no internet connection or login required. Once verified, the appropriate tier is activated.\n\n\n\nHers’s how tiers are setup\n\n\n\nTier\nResolution\nWatermark\nCommercial Use\nScenes\n\n\n\n\nCommunity\n720p\nYes\nNo\n5\n\n\nCreator\n1080p Full HD\nNo\nYes\nUnlimited\n\n\nPro\n4K Ultra HD\nNo\nYes\nUnlimited\n\n\n\n\n\n\n\n\n\nOne-time purchase\n\n\n\nRustimate uses a one-time license model — you own the version you purchase. All v1.x updates are included. Future upgrades (GPU, live preview, etc.) will be offered as optional discounted upgrades for existing license holders.\n\n\n\n\n\n\nRustimate will always (and forever) run locally.\nIt never require any internet access after installation.\nIt does not connect any usage data and everything stays in your machine.\n\n\n\n\nIf your license is not recognised, verify it was added correctly:\nrustimate license add license.key\nSee Troubleshooting for more.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "License Activation"
+    ]
+  },
+  {
+    "objectID": "license.html#add-your-license",
+    "href": "license.html#add-your-license",
+    "title": "License Activation",
+    "section": "",
+    "text": "$&gt; rustimate license add license.key",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "License Activation"
+    ]
+  },
+  {
+    "objectID": "license.html#rustimate-guide",
+    "href": "license.html#rustimate-guide",
+    "title": "License Activation",
+    "section": "",
+    "text": "Video\n\n\nRustimate verifies the license locally — no internet connection or login required. Once verified, the appropriate tier is activated.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "License Activation"
+    ]
+  },
+  {
+    "objectID": "license.html#license-tiers",
+    "href": "license.html#license-tiers",
+    "title": "License Activation",
+    "section": "",
+    "text": "Hers’s how tiers are setup\n\n\n\nTier\nResolution\nWatermark\nCommercial Use\nScenes\n\n\n\n\nCommunity\n720p\nYes\nNo\n5\n\n\nCreator\n1080p Full HD\nNo\nYes\nUnlimited\n\n\nPro\n4K Ultra HD\nNo\nYes\nUnlimited\n\n\n\n\n\n\n\n\n\nOne-time purchase\n\n\n\nRustimate uses a one-time license model — you own the version you purchase. All v1.x updates are included. Future upgrades (GPU, live preview, etc.) will be offered as optional discounted upgrades for existing license holders.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "License Activation"
+    ]
+  },
+  {
+    "objectID": "license.html#privacy",
+    "href": "license.html#privacy",
+    "title": "License Activation",
+    "section": "",
+    "text": "Rustimate will always (and forever) run locally.\nIt never require any internet access after installation.\nIt does not connect any usage data and everything stays in your machine.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "License Activation"
+    ]
+  },
+  {
+    "objectID": "license.html#troubleshooting-license-issues",
+    "href": "license.html#troubleshooting-license-issues",
+    "title": "License Activation",
+    "section": "",
+    "text": "If your license is not recognised, verify it was added correctly:\nrustimate license add license.key\nSee Troubleshooting for more.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "License Activation"
+    ]
+  },
+  {
+    "objectID": "installation.html",
+    "href": "installation.html",
+    "title": "Installation",
+    "section": "",
+    "text": "Rustimate supports macOS, Linux, and Windows. It is a lightweight CLI binary — no graphical environment required.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#macos",
+    "href": "installation.html#macos",
+    "title": "Installation",
+    "section": "macOS",
+    "text": "macOS\n\nHomebrewcurl\n\n\nbrew tap rustimate/tap\nbrew install rustimate\n\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/rustimate/homebrew-tap/main/uninstall.sh)\"\n\nor\n\ncurl -fsSL https://raw.githubusercontent.com/rustimate/homebrew-tap/main/uninstall.sh | bash",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#linux",
+    "href": "installation.html#linux",
+    "title": "Installation",
+    "section": "Linux",
+    "text": "Linux\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/rustimate/homebrew-tap/main/uninstall.sh)\"\n\nor\n\ncurl -fsSL https://raw.githubusercontent.com/rustimate/homebrew-tap/main/uninstall.sh | bash\nThis installs the latest Rustimate binary into your system path.",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#windows",
+    "href": "installation.html#windows",
+    "title": "Installation",
+    "section": "Windows",
+    "text": "Windows\nscoop install rustimate",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#verify-installation",
+    "href": "installation.html#verify-installation",
+    "title": "Installation",
+    "section": "Verify installation",
+    "text": "Verify installation\nAfter installing, confirm Rustimate is available:\nrustimate --version\nExpected output:\nrustimate 0.1.0",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#next-step",
+    "href": "installation.html#next-step",
+    "title": "Installation",
+    "section": "Next step",
+    "text": "Next step\nIf you are using Creator or Pro version, activate your license.\nActivate your license →\nFor Community users, follow the quick start quide to get started\nQuick Start Guide →",
+    "crumbs": [
+      "Docs",
+      "Getting Started",
+      "Installation"
+    ]
+  }
+]

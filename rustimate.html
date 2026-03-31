@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --bg: #000000;
@@ -471,6 +471,46 @@ input {
         .submit-btn:hover { transform: scale(0.97); opacity: 0.9; }
         .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
+        /* Privacy section Starts */
+
+        .privacy-manifest {
+    padding: 80px 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+.privacy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.privacy-item {
+    text-align: center;
+}
+
+.privacy-item i {
+    color: var(--accent);
+    font-size: 24px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.privacy-item h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.privacy-item p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+}
+
+
+         /* Privacy section end */
+
+
         /* --- Pricing Section (The Glass Slabs) --- */
         .pricing { 
             padding: 150px 0; 
@@ -656,6 +696,65 @@ input {
             display: flex;
             justify-content: flex-end;
         }
+
+
+        /*technical faq section starts */
+
+
+   .faq-footer {
+        margin-top: 60px;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .faq-footer-content h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+        color: var(--text-main);
+    }
+
+    .faq-footer-content h3 span {
+        color: var(--accent);
+    }
+
+    .faq-footer-content p {
+        font-size: 14px;
+        color: var(--text-dim);
+        margin: 0;
+    }
+
+    .tech-faq-link {
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .tech-faq-link span {
+        transition: transform 0.3s ease;
+    }
+
+    .tech-faq-link:hover {
+        color: var(--accent);
+    }
+
+    .tech-faq-link:hover span {
+        transform: translateX(5px);
+    }
+
+
+ /*technical faq section ends */
 
         .copyright { 
             font-size: 13px; /* Slightly smaller for Apple look */
@@ -1062,12 +1161,25 @@ input {
     justify-content: center;
 }
 
-#install-command { font-size: 13px; }
-.os-selector { gap: 8px; }
-.os-btn { padding: 10px 15px; font-size: 13px; }
-.shell-name { display: none; }
+    #install-command { font-size: 13px; }
+    .os-selector { gap: 8px; }
+    .os-btn { padding: 10px 15px; font-size: 13px; }
+    .shell-name { display: none; }
 
+    .faq-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .tech-faq-link {
+        margin-top: 10px;
+    }
 
+    .privacy-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
 
 }
 
@@ -1271,10 +1383,12 @@ input {
     </div>
 
     <div class="nav-links">
-      <!-- <a href="#reference">RSL</a> -->
-      <a href="./why.html">Why</a>
+     <!-- <a href="#features">Features</a> -->
+      <a href="#treesitter">Tree-sitter & LSP</a>
+      <a href="#privacy">Privacy</a>
       <a href="#pricing">Pricing</a>
-      <a href="#treesitter">Tree-sitter</a>
+      <a href="#download-zone">Install</a>
+      <a href="./why.html", target="_blank">Why</a>
     </div>
 
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">☰</div>
@@ -1282,11 +1396,13 @@ input {
   </div>
 
   <div class="mobile-menu" id="mobileMenu">
-      <!-- <a href="#reference">RSL</a> -->
-      <a href="./why.html">Why</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#treesitter">Tree-sitter</a>
-  </div>
+    <!-- <a href="#features">Features</a> -->
+        <a href="#treesitter">Tree-sitter & LSP</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#download-zone">Install</a>
+        <a href="./why.html", target="_blank">Why</a>
+    </div>
 </nav>
 
 
@@ -1314,7 +1430,7 @@ input {
                 <p>Render studio-quality videos for talks, research & documentation</p>
             </div>
         </section>
-        <section class="manifesto reveal">
+        <section class="manifesto reveal" id="reveal">
             <div class="ticker-wrapper">
                 <span>Rustimate turns</span>
                 
@@ -1510,15 +1626,58 @@ input {
 
 
 
+<!-- Privacy header  start -->
+
+<section class="privacy-section reveal" style="padding: 100px 0; border-top: 1px solid var(--glass-border);" id="privacy">
+    <div class="container" id="privacy">
+        <h2 style="font-size: 48px; letter-spacing: -1px; text-align: center; margin-bottom: 60px;">
+            Privacy by Design
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
+            <div style="text-align: center;">
+                <div style="color: var(--accent); font-size: 24px; margin-bottom: 20px; opacity: 0.8;">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3 style="font-size: 18px; margin-bottom: 12px; color: var(--accent);">Always Local</h3>
+                <p style="font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0;">
+                    Rustimate always runs <br>locally on your machine. 
+                </p>
+            </div>
+
+            <div style="text-align: center;">
+                <div style="color: var(--accent); font-size: 24px; margin-bottom: 20px; opacity: 0.8;">
+                    <i class="fas fa-plug-circle-xmark"></i>
+                </div>
+                <h3 style="font-size: 18px; margin-bottom: 12px; color: var(--accent);">Offline-First</h3>
+                <p style="font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0;">
+                    No internet access required post <br> installation. 
+                </p>
+            </div>
+
+            <div style="text-align: center;">
+                <div style="color: var(--accent); font-size: 24px; margin-bottom: 20px; opacity: 0.8;">
+                    <i class="fas fa-binary"></i>
+                </div>
+                <h3 style="font-size: 18px; margin-bottom: 12px; color: var(--accent);">Zero Telemetry</h3>
+                <p style="font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0;">
+                    Everything stays on your machine, exactly where it belongs.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!-- --------------------------------------------------- Testing section  ----------------------------------------------------->
 
 <section class="ecosystem-pro container reveal" id="ecosystem">
     
     <div class="section-header" style="text-align: center; margin-bottom: 100px;">
         <div class="spec-block" style="margin: 0 auto; max-width: 600px;">
-            <span class="label">The Language</span>
+            <span class="label">Language</span>
             <h3 class="ecosystem-h3" style="font-size: 42px; margin: 10px 0;">RSL <span>.rsl</span></h3>
-            <p class="ecosystem-p" style="margin: 0 auto;">Rustimate Studio Language is a language for structure, timing, and visual clarity.</p>
+            <p class="ecosystem-p" style="margin: 0 auto;">Rustimate Studio Language.</p>
             <div class="roadmap-note" style="margin-top: 20px;">Native compiler coming 2027</div>
         </div>
     </div>
@@ -1531,21 +1690,46 @@ input {
                     <span class="open-source-badge" style="color: #30d158; border-color: #30d158; background: rgba(48, 209, 88, 0.1);">Open Source</span>
                 </div>
                 <h3 class="ecosystem-h3">Tree-sitter Support</h3>
-                <p class="ecosystem-p">Tree-sitter inside. Structural parsing. Pixel-accurate highlighting. Open source by design.</p>
-                  <div class="roadmap-note" style="margin-bottom: 25px;">v1.0 Public Beta Available</div>
-                
-                <div class="editor-suite">
+                <p class="ecosystem-p">Tree-sitter inside. Syntax highlighting. Open source by design.</p>
+                  <div class="roadmap-note" style="margin-bottom: 25px;">v0.1 Public Beta Available</div>
+                  
+                  <!-- <div class="resource-links" style="margin-top: 25px; margin-bottom: 25px;">
+                        <a href="https://github.com/rvbug/tree-sitter-rustimate" target="_blank" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 13px; font-weight: 500; border: 1px solid rgba(255, 77, 0, 0.3); padding: 8px 16px; border-radius: 100px; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 77, 0, 0.1)'; this.style.borderColor='var(--accent)'" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255, 77, 0, 0.3)'">
+                            <img src="https://cdn.simpleicons.org/github/white" style="width: 14px; opacity: 0.8;">
+                            Install Grammar
+                        </a>
+                    </div> -->
+                    
+                    <div class="resource-links" style="margin-top: 25px; margin-bottom: 25px;">
+                        <a href="https://github.com/rvbug/tree-sitter-rustimate" target="_blank" 
+                        style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 13px; font-weight: 500; border: 1px solid rgba(255, 77, 0, 0.3); padding: 8px 16px; border-radius: 100px; transition: all 0.3s ease;" 
+                        onmouseover="this.style.background='rgba(255, 77, 0, 0.1)'; this.style.borderColor='var(--accent)'" 
+                        onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255, 77, 0, 0.3)'">
+                            <img src="https://cdn.simpleicons.org/github/white" style="width: 14px; opacity: 0.8;">
+                            Install Grammar
+                        </a>
+
+                        <a href="./rslguide/editor-integration.html" target="_blank" 
+                        style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: var(--text-main); font-size: 13px; font-weight: 500; border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 16px; border-radius: 100px; transition: all 0.3s ease;" 
+                        onmouseover="this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='var(--accent)'" 
+                        onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255, 255, 255, 0.1)'">
+                            <img src="https://cdn.simpleicons.org/gitbook/white" style="width: 14px; opacity: 0.8;">
+                            Check Docs
+                        </a>
+                    </div>
+
+                <div class="editor-suite" style="flex-wrap: wrap; gap: 24px; margin-top: 20px;">
                     <div class="editor-item">
-                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/neovim/neovim-original.svg" alt="Neovim">
+                        <img src="https://cdn.simpleicons.org/neovim/white" alt="Neovim" style="width: 20px; height: 20px;">
                         <span>Neovim</span>
                     </div>
-                    <!-- <div class="editor-item">
-                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" alt="VS Code">
-                        <span>VS Code</span>
-                    </div> -->
                     <div class="editor-item">
-                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/emacs/emacs-original.svg" alt="Emacs">
+                        <img src="https://cdn.simpleicons.org/gnuemacs/white" alt="Emacs" style="width: 20px; height: 20px;">
                         <span>Emacs</span>
+                    </div>
+                    <div class="editor-item">
+                        <img src="https://cdn.simpleicons.org/helix/white" alt="Helix" style="width: 20px; height: 20px;">
+                        <span>Helix</span>
                     </div>
                 </div>
             </div>
@@ -1554,55 +1738,69 @@ input {
         <div class="code-preview-window">
             <div class="window-header">
                 <div class="dots"><span></span><span></span><span></span></div>
-                <div class="filename">highlighting.rsl</div>
+                <div class="filename">tree-sitter.rsl</div>
             </div>
             <div class="code-content">
-                <pre><code><span class="keyword">scene</span> <span class="string">"demo"</span> {
-  <span class="variable">duration</span>: <span class="number">5.0s</span>
-  <span class="function">camera</span> <span class="string">"Main"</span> {
-    <span class="variable">position</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">-10</span>]
-    <span class="variable">fov</span>: <span class="number">45</span>
+                <pre><code><span class="keyword">scene</span> <span class="string">"intro"</span> {
+  <span class="variable">mode</span>: <span class="number">editor</span>
+  <span class="variable">theme</span>: <span class="number">dracula</span>
+  <span class="variable">animation</span>: <span class="number">static</span>
+  <span class="function">code</span> <span class="string"></span> {
+    <span class="variable">file</span>: <span class="number">"main.rs"</span>
+    <span class="variable">lines</span>: <span class="number">1..5</span>
+    <span class="variable">highlight</span>: [<span class="number">2</span>, <span class="number">3</span>]
   }
-  <span class="function">layer</span> <span class="string">"BG"</span> {
-    <span class="variable">asset</span>: <span class="string">"grid.png"</span>
-    <span class="variable">animation</span>: <span class="function">fade_in</span> { <span class="variable">start</span>: <span class="number">0s</span> }
-  }
-}</code></pre>
+ } 
+    </code></pre>
             </div>
         </div>
     </div>
 
-    <div class="ecosystem-layout" id="lsp">
+    <div class="ecosystem-layout">
         <div class="ecosystem-info">
             <div class="spec-block">
-                <div class="tooling-header">
+                <div class="tooling-header" >
                     <span class="label">The Intelligence</span>
                     <span class="open-source-badge" style="color: #30d158; border-color: #30d158; background: rgba(48, 209, 88, 0.1);">Open Source</span>
                 </div>
                 <h3 class="ecosystem-h3">Rustimate LSP</h3>
-                <p class="ecosystem-p">Smart autocomplete and real-time diagnostics. Catch timing conflicts and syntax errors before you render.</p>
+                <p class="ecosystem-p">Smart autocomplete with real-time diagnostics.</p>
                 
-                <div class="roadmap-note" style="margin-bottom: 25px;">v1.0 Public Beta Available</div>
+                <div class="roadmap-note" style="margin-bottom: 25px;">Public Beta Coming Soon</div>
+                <div class="resource-links" style="margin-top: 25px; margin-bottom: 25px;">
+                   
+                    <!-- <a href="https://github.com/rvbug/rustimate-lsp" target="_blank"   style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 13px; font-weight: 500; border: 1px solid rgba(255, 77, 0, 0.3); padding: 8px 16px; border-radius: 100px; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 77, 0, 0.1)'; this.style.borderColor='var(--accent)'" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255, 77, 0, 0.3)'">
+                        <img src="https://cdn.simpleicons.org/github/white" style="width: 14px; opacity: 0.8;">
+                        Coming Soon
+                    </a> -->
+                </div>
 
-                <div class="editor-suite" style="flex-wrap: wrap; gap: 15px;">
-                    <div class="editor-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/neovim/neovim-original.svg" alt="Neovim"><span>Neovim</span></div>
-                    <div class="editor-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" alt="VS Code"><span>VS Code</span></div>
-                    <div class="editor-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/emacs/emacs-original.svg" alt="Emacs"><span>Emacs</span></div>
-                    <div class="editor-item"><span style="font-weight: 800; color: #fff; font-size: 10px; border: 1px solid #444; padding: 2px 4px; border-radius: 4px;">ZE</span><span>Zed</span></div>
-                    <div class="editor-item"><span style="font-weight: 800; color: #fff; font-size: 10px; border: 1px solid #444; padding: 2px 4px; border-radius: 4px;">HX</span><span>Helix</span></div>
-                    <div class="editor-item"><span style="font-weight: 800; color: #fff; font-size: 10px; border: 1px solid #444; padding: 2px 4px; border-radius: 4px;">LP</span><span>Lapce</span></div>
-                    <div class="editor-item"><span style="font-weight: 800; color: #fff; font-size: 10px; border: 1px solid #444; padding: 2px 4px; border-radius: 4px;">ST</span><span>Sublime</span></div>
+                <div class="editor-suite" style="flex-wrap: wrap; gap: 24px; margin-top: 20px;">
+                    <div class="editor-item">
+                        <img src="https://cdn.simpleicons.org/neovim/white" alt="Neovim" style="width: 20px; height: 20px;">
+                        <span>Neovim</span>
+                    </div>
+                    <div class="editor-item">
+                        <img src="https://cdn.simpleicons.org/gnuemacs/white" alt="Emacs" style="width: 20px; height: 20px;">
+                        <span>Emacs</span>
+                    </div>
+                    
+                    <div class="editor-item">
+                        <img src="https://cdn.simpleicons.org/helix/white" alt="Helix" style="width: 20px; height: 20px;">
+                        <span>Helix</span>
+                    </div>
+                    
                 </div>
             </div>
         </div>
 
-        <div class="code-preview-window">
+        <!-- <div class="code-preview-window">
             <div class="window-header">
                 <div class="dots"><span></span><span></span><span></span></div>
-                <div class="filename">lsp_check.rsl</div>
+                <div class="filename">lsp.rsl</div>
             </div>
             <div class="code-content" style="position: relative;">
-                <pre><code><span class="keyword">scene</span> <span class="string">"Intro"</span> {
+                <pre><code><span class="keyword">scene</span> <span class="string">"demo"</span> {
   <span class="variable">duration</span>: <span class="number">2.0s</span>
   <span class="function">text</span> <span class="string">"Title"</span> {
     <span class="variable">value</span>: <span class="string">"LSP Diagnostic"</span>
@@ -1617,9 +1815,32 @@ input {
                     <div style="color: #ccc;">End time exceeds scene duration.</div>
                 </div>
             </div>
+        </div> -->
+    
+
+        <div class="code-preview-window">
+            <div class="window-header">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <div class="filename">lsp.rsl</div>
+            </div>
+            <div class="code-content" style="position: relative;">
+                <pre><code><span class="keyword">scene</span> <span class="string">"demo"</span> {
+                        <span></span>    
+}</code></pre>
+                <div style="position: absolute; bottom: 20px; right: 20px; background: #1a1a1c; border: 1px solid var(--accent); padding: 12px; border-radius: 8px; font-size: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 5;">
+                    <div style="color: var(--accent); font-weight: bold; margin-bottom: 4px;"> Diagnostics:</div>
+                    <div style="color: #ccc;">Scene must declare a mode</div>
+                </div>
+            </div>
         </div>
+    
     </div>
 </section>
+
+<!-- --------------------------------------------------- Testing section  ----------------------------------------------------->
+
+
+
 
 <section class="pricing container" id="pricing">
         <h2 style="font-size: 48px; letter-spacing: -1px;">Precision is not optional</h2>
@@ -1635,12 +1856,16 @@ input {
             <li>5 Scenes per video</li>
             <li>Non-Commercial Use</li>
         </ul>
-        <button class="reserve-btn" onclick="selectPlan('Community Edition')">Download</button>
+        <!-- <button class="reserve-btn" onclick="selectPlan('Community Edition')">Download</button> -->
+         <button class="reserve-btn" onclick="scrollToDownload()">Get Started</button>
     </div>
 
     <div class="price-card featured reveal">
         <span class="tier">Creator (Recommended)</span>
         <div class="cost">$39<span>(one time)</span></div>
+        <!-- <div style="font-size: 11px; color: var(--text-dim); margin-top: -10px; opacity: 0.5;">
+        Excl. local taxes
+        </div> -->
         <!-- <div class="local-price">₹3,200</div> -->
         <ul class="feature-list">
             <li>1080p Full HD</li>
@@ -1649,12 +1874,16 @@ input {
             <li>Unlimited Scenes</li>
             <li>All v1.x updates</li>
         </ul>
-        <button class="reserve-btn" onclick="selectPlan('Creator License')">Get License</button>
+        <!-- <button class="reserve-btn" onclick="selectPlan('Creator License')">Get License</button> -->
+         <button class="reserve-btn" onclick="openCheckout('creator')">Get License</button>
     </div>
 
     <div class="price-card reveal">
         <span class="tier">Pro</span>
         <div class="cost">$79<span>(one time)</span></div>
+        <!-- <div style="font-size: 11px; color: var(--text-dim); margin-top: -10px; opacity: 0.5;">
+        Excl. local taxes
+        </div> -->
         <!-- <div class="local-price">₹6,500</div> -->
         <ul class="feature-list">
             <li>Includes Creator</li>
@@ -1663,13 +1892,18 @@ input {
             <li>Highest Discount on future GPU engine</li>
             <li>Priority feature voting</li>
         </ul>
-        <button class="reserve-btn" onclick="selectPlan('Pro License')">Get Pro License</button>
+        <!-- <button class="reserve-btn" onclick="selectPlan('Pro License')">Get Pro License</button> -->
+         <button class="reserve-btn" onclick="openCheckout('pro')">Get Pro License</button>
     </div>
     </div>
     <div class="pricing-footer reveal">
     <div class="license-note">
         <b>Includes all Rustimate v1.x updates. Future rendering engine upgrades (GPU, live preview, etc.) will be offered as optional discounted upgrades for license holders.
     </div>
+
+    
+
+</p>
 </div>
 </section>        
 
@@ -1724,13 +1958,23 @@ input {
                 </div>
             </div>
         </div>
+
+        <div class="faq-footer">
+            <div class="faq-footer-content">
+                <h3>Need help installing <span>Rustimate?</span></h3>
+                <p>For technical requirements, troubleshooting, and environment setup.</p>
+            </div>
+            <a href="./rslguide/troubleshooting.html" class="tech-faq-link">
+                See the Technical FAQ <span>→</span>
+            </a>
+        </div>
+
+        
     </div>
+
 </section>
 
     
-
-<!-- --------------------------------------------------- Testing section  ----------------------------------------------------->
-
      <!-- --- Treesitter section ends --  -->
 
     <section class="faq-section reveal">
@@ -1829,6 +2073,7 @@ input {
             </div>
 
         </div>
+
     </div>
 </section>
 
@@ -1837,6 +2082,11 @@ input {
         <div class="footer-left">
             <p class="copyright">© 2026 Rustimate. A <a href="https://qubitai.in/" target="_blank" class="footer-link">QubitAI</a> Creation.</p>
         </div>
+
+        <!-- <div class="footer-left">
+            <p class="copyright">© 2026 Rustimate. A <a href="https://qubitai.in/" target="_blank" class="footer-link">QubitAI</a> Creation.</p>
+            <a href="mailto:support@rustimate.com" class="footer-secondary-link" style="margin-left: 15px; font-size: 12px; color: var(--text-dim); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-dim)'">Support</a>
+        </div> -->
         
         <div class="footer-center">
             <div class="status-pill">
@@ -1860,6 +2110,13 @@ input {
                 <a href="https://www.linkedin.com/company/qubitai-in/" target="_blank" class="social-icon" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
+
+                <a href="mailto:support@qubitai.in" class="social-icon" aria-label="Support">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+
             </div>
             </div>
         </div>
@@ -2278,6 +2535,142 @@ window.copyCommand = function() {
 document.addEventListener('DOMContentLoaded', window.renderUI);
 
 
+// 1. Core Logic & Links
+
+// 1. Core Logic & Links
+const DODO_LINKS = {
+    creator: "https://checkout.dodopayments.com/buy/pdt_0NbfPiQYFXkme24Bp08rJ?quantity=1",
+    pro: "https://checkout.dodopayments.com/buy/pdt_0NbfPuARmzV0dvy219ody?quantity=1"
+};
+
+function openCheckout(plan) {
+    const successUrl = encodeURIComponent("https://qubitai.in/rustimate.html?status=success#download-zone");
+    const cancelUrl = encodeURIComponent("https://qubitai.in/rustimate.html?status=failed#pricing");
+    
+    // Most checkout providers use 'redirect_url' for success and 'cancel_url' for exits
+    const checkoutUrl = `${DODO_LINKS[plan]}&redirect_url=${successUrl}&cancel_url=${cancelUrl}`;
+    
+    window.location.href = checkoutUrl;
+}
+
+// 2. Unified Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof window.renderUI === 'function') window.renderUI();
+
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status');
+
+    if (status === 'success') {
+        showSuccessModal();
+    } else if (status === 'failed') {
+        showFailureToast();
+    }
+});
+
+// 3. The Failure Toast (Simple & Non-Intrusive)
+function showFailureToast() {
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+        background: #2c1616; border: 1px solid #ff4545; color: #ff9b9b;
+        padding: 16px 24px; border-radius: 8px; z-index: 10000;
+        font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        display: flex; align-items: center; gap: 12px;
+    `;
+
+    toast.innerHTML = `
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Payment was not completed. Please try again or contact support.</span>
+    `;
+
+    document.body.appendChild(toast);
+
+    // Auto-scroll to pricing section
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+            toast.remove();
+            window.history.replaceState({}, '', window.location.pathname + "#pricing");
+        }, 500);
+    }, 6000);
+}
+
+
+function showSuccessModal() {
+    const overlay = document.createElement('div');
+    overlay.id = 'payment-modal';
+    overlay.style.cssText = `
+        position: fixed; inset: 0; background: rgba(0,0,0,0.3);
+        display: flex; align-items: center; justify-content: center;
+        z-index: 10000; backdrop-filter: blur(5px);
+        transition: opacity 0.4s ease;
+    `;
+
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        background: rgba(20, 20, 22, 0.85); 
+        border: 1px solid var(--glass-border);
+        padding: 50px 40px; border-radius: 12px; max-width: 400px; width: 85%;
+        text-align: center; position: relative; 
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    `;
+
+
+    modal.innerHTML = `
+        <button id="close-modal-x" style="position: absolute; top: 10px; right: 15px; background: none; border: none; color: #ffffff; cursor: pointer; font-size: 28px; line-height: 1; padding: 5px; opacity: 0.8; z-index: 10001;">
+            &times;
+        </button>
+        <div style="color: var(--accent); font-size: 32px; margin-bottom: 20px;">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h2 style="color: var(--text-main); margin-bottom: 12px; font-size: 22px; font-weight: 500;">Payment Received</h2>
+        <p style="color: var(--text-dim); line-height: 1.6; font-size: 14px; margin: 0;">
+            Your license key will be delivered to your email <br>
+            <span style="color: var(--text-main); font-weight: 500;">within the next 12 hours.</span>
+        </p>
+        <div id="timer-bar" style="position: absolute; bottom: 0; left: 0; height: 3px; background: var(--accent); width: 100%; transition: width 5s linear;"></div>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    const closeModal = () => {
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            window.history.replaceState({}, '', window.location.pathname + "#download-zone");
+        }, 400);
+    };
+
+    // Animation & Auto-close logic
+    setTimeout(() => {
+        const bar = document.getElementById('timer-bar');
+        if (bar) bar.style.width = '0%';
+    }, 50);
+    
+    const autoClose = setTimeout(closeModal, 5000);
+
+    // Event Listeners
+    document.getElementById('close-modal-x').onclick = (e) => {
+        e.stopPropagation();
+        clearTimeout(autoClose);
+        closeModal();
+    };
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            clearTimeout(autoClose);
+            closeModal();
+        }
+    });
+
+    document.getElementById('download-zone')?.scrollIntoView();
+}
+
 </script>
+
 </body>
 </html>

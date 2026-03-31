@@ -1,0 +1,65 @@
+project:
+  type: website
+  output-dir: ../rslguide
+
+website:
+  title: "Rustimate"
+  description: "A programmable engine for visual technical storytelling."
+  favicon: ../assets/AudioWide-White.ico          
+  site-url: https://qubitai.in/rustimate.html      
+  # repo-actions: [issue]
+
+  navbar:
+    # logo: ../assets/Rustimate-logo.png              # replace with your logo
+    logo-alt: "Rustimate"
+    title: false
+    left:
+      - text: "Docs"
+        href: index.qmd
+    right:
+      - text: "Pricing"
+        href: https://qubitai.in/rustimate.html#pricing
+        target: _blank
+      - text: "QuBiTAI"
+        href: https://qubitai.in/
+        target: _blank
+
+  sidebar:
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Getting Started"
+        contents:
+          - index.qmd
+          - installation.qmd
+          - quickstart.qmd
+          - license.qmd
+          - editor.qmd
+      - section: "Reference"
+        contents:
+          - cli.qmd
+          - rsl-reference.qmd
+      - section: "Support"
+        contents:
+          - troubleshooting.qmd
+
+  page-footer:
+    left: "© 2026 Rustimate · A [QubitAI](https://qubitai.in/) Creation"
+    right:
+      - icon: "![](images/my-custom-icon.svg){.custom-icon height=1em}"
+        href: https://qubitai.in/thoughts.html
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    toc-title: "On this page"
+    smooth-scroll: true
+    code-copy: true
+    code-overflow: scroll
+    highlight-style: github

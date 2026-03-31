@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rustimate Guide</title>
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+background:#fff;
+color:#111;
+line-height:1.6;
+overflow-x:hidden;
+}
+
+/* ---------- NAV ---------- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8); /* Increased from .5 for better clarity */
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+    transition: all 0.4s ease; /* Smooth transition between colors */
+}
+
+.nav-inner{
+width:100%;
+max-width:1100px;
+display:flex;
+justify-content:space-between;
+padding:0 20px;
+}
+
+nav a {
+    text-decoration:none;
+    color:#111;
+    font-size:14px;
+    transition: color 0.4s ease;
+}
+
+/* Dark Mode class for the Video Section */
+
+nav.nav-dark {
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav.nav-dark a {
+    color: #fff !important;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+min-height:95vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:center;
+background: #fff;
+}
+
+.hero h1{
+font-size:clamp(44px,7vw,82px);
+letter-spacing:-0.04em;
+line-height: 1.05;
+margin-bottom:30px;
+font-weight: 800;
+}
+
+.hero p{
+font-size:24px;
+color:#666;
+max-width:700px;
+margin:auto;
+}
+
+/* ---------- STATIC VS DYNAMIC SECTION ---------- */
+.comparison-section {
+    padding: 120px 0;
+    background: #fff;
+    text-align: center;
+}
+
+.comparison-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: 0 20px;
+}
+
+.static-card {
+    background: #f5f5f7;
+    border-radius: 32px;
+    padding: 60px;
+    text-align: left;
+    opacity: 0.6;
+    transform: scale(0.98);
+    transition: all 0.8s ease;
+    filter: grayscale(1);
+}
+
+.static-card.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: grayscale(0);
+}
+
+.static-card pre {
+    margin: 30px 0;
+    border-radius: 12px;
+}
+
+/* --- Label Styling --- */
+.static-label-large {
+    font-size: clamp(32px, 4vw, 48px); /* Big and bold like the hero */
+    font-weight: 800;
+    color: #1d1d1f;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+.static-label {
+    font-weight: 600;
+    color: #86868b;
+    margin-bottom: -60px; /* Pulls the card closer to its label */
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 14px;
+}
+
+
+/* Typography for the Card Text */
+.card-text-top {
+    font-size: 21px;
+    font-weight: 600; /* Bolder for the lead-in */
+    letter-spacing: -0.01em;
+    color: #1d1d1f;
+    margin-bottom: 20px;
+}
+
+.card-text-bottom {
+    font-size: 19px;
+    font-weight: 400; /* Lighter for the explanation */
+    color: #424245;
+    margin-top: 25px;
+}
+
+/* --- Card Text Fonts --- */
+.card-lead {
+    font-family: "SF Pro Display", -apple-system, sans-serif;
+    font-size: 22px;
+    font-weight: 600; /* Semi-bold for emphasis */
+    color: #1d1d1f;
+    line-height: 1.4;
+    margin-bottom: 24px;
+}
+
+.card-subtext {
+    font-family: "SF Pro Text", -apple-system, sans-serif;
+    font-size: 18px;
+    font-weight: 400; /* Clean, lighter weight for readability */
+    color: #424245;
+    line-height: 1.6;
+    margin-top: 24px;
+}
+
+/* --- Code Block Custom Colors & Font --- */
+.static-card pre[class*="language-"] {
+    background: #111112 !important;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.static-card code[class*="language-"] {
+    font-family: "SF Mono", "Menlo", "Fira Code", monospace !important;
+    font-size: 17px !important;
+    text-shadow: none !important; /* Removes the "glow" from Okaidia */
+}
+
+/* Custom Syntax Highlighting Overrides */
+.token.keyword { color: #ff7b72 !important; } /* for, in (Red/Orange) */
+.token.operator, .token.punctuation { color: #8b949e !important; }
+
+/* Target pred, x, y, and loss with Blue */
+/* Prism uses 'variable' or 'parameter' depending on the loader */
+.token.variable, 
+.token.parameter,
+.token.string-property { 
+    color: #79c0ff !important; 
+}
+
+/* Target functions like model, loss_fn, step */
+.token.function { color: #d2a8ff !important; } /* Purple */
+
+/* Fallback for general variables if Prism doesn't tag them specifically */
+.token.plain-text { color: #79c0ff !important; }
+
+.static-caption {
+    margin-top: 40px;
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff2d55 0%, #0071e3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ---------- SHIFT ---------- */
+.shift{
+background:#000;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:80vh; 
+text-align:center;
+padding: 80px 20px;
+}
+
+.fade-text{
+font-size:clamp(44px,8vw,92px);
+font-weight: 800;
+letter-spacing:-0.04em;
+opacity: 0;
+transform: translateY(30px);
+transition: all 1.2s cubic-bezier(0.2, 0, 0.2, 1);
+background: linear-gradient(135deg, #ff2d55 0%, #0071e3 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.fade-text.active {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* ---------- STICKY ZOOM SECTION ---------- */
+.stage-trigger {
+    height: 250vh; 
+    background: #000; /* Will transition to white in JS */
+    position: relative;
+    transition: background 0.5s ease;
+}
+
+
+
+.stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: transparent; /* Inherit from trigger */
+}
+
+.stage h2 {
+    color: #fff;
+    font-size: clamp(38px, 5vw, 60px);
+    margin-bottom: 60px;
+    letter-spacing: -0.03em;
+    z-index: 2;
+}
+
+
+
+.video-wrap {
+    width: 90vw;
+    max-width: 1100px;
+    border-radius: 32px;
+    margin: 0 auto;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 0 150px rgba(53, 59, 73, 0.5);
+    transform: scale(0.6);
+    will-change: transform, opacity;
+}
+
+
+.video-wrap video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.observation-caption {
+    margin-top: 80px;
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ---------- IMPACT ---------- */
+/* .impact{ 
+    background: #fff;
+    padding: 150px 0; 
+} */
+
+.impact { 
+    background: #fff;
+    padding: 150px 0; 
+    margin-top: -60vh; /* Pulls the section up into the "Lock" zone */
+    position: relative;
+    z-index: 10; /* Ensures it slides over the faded video */
+}
+
+
+.impact h2{
+text-align:center;
+font-size:48px;
+margin-bottom:80px;
+}
+
+.impact-grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+padding: 0 20px;
+}
+
+.card{
+padding:50px;
+border-radius:28px;
+background:#f5f5f7;
+font-size:22px;
+font-weight: 600;
+opacity:0;
+transform:translateY(30px);
+transition: 1s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+
+.card.show{
+opacity:1; transform:translateY(0);
+}
+
+/* ---------- WHY ---------- */
+.why{text-align:center; max-width:850px; margin: 150px auto;}
+.why p{font-size:26px; color:#444; margin-bottom:30px; opacity:0; transform:translateY(20px); transition:.8s ease;}
+.why p.show{opacity:1; transform:translateY(0);}
+
+.tagline{
+font-size:48px;
+font-weight:800;
+background: linear-gradient(90deg, #ff2d55, #ff6a00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+opacity:0;
+transition:1s ease;
+}
+
+.tagline.show{ opacity:1; }
+
+.learn-btn{
+margin-top:60px;
+display:inline-block;
+padding:20px 45px;
+border-radius:999px;
+background: #111;
+text-decoration:none;
+color:#fff;
+font-weight: 700;
+font-size: 18px;
+transition:.3s;
+}
+
+.download-btn{
+margin-top:60px;
+display:inline-block;
+padding:20px 45px;
+border-radius:999px;
+background: #0a0a0f;
+text-decoration:none;
+color:#fff;
+font-weight: 700;
+font-size: 18px;
+transition:.3s;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .video-wrap {
+        width: 95vw;
+        border-radius: 16px;
+    }
+    .stage h2 {
+        padding: 0 20px;
+        font-size: 32px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html">← Home</a>
+<a href="projects.html">Works</a>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<h1>Explaining systems is<br>harder than building them.</h1>
+<p>Knowledge is often trapped in flat descriptions.</p>
+</div>
+</section>
+
+
+<!-- <section class="comparison-section">
+    <div class="comparison-container">
+        <span class="static-label">Traditional Documentation</span>
+        
+        <div class="static-card" id="staticCard">
+            <p class="card-text-top">During training, the model predicts outputs, computes loss, and updates weights.</p>
+            
+            <pre><code class="language-python">for x, y in dataloader:
+    pred = model(x)
+    loss = loss_fn(pred, y)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()</code></pre>
+
+            <p class="card-text-bottom">Each iteration slightly changes the network parameters. Understanding this flow requires tracking state transitions manually.</p>
+        </div>
+        
+        <div class="static-caption">
+            Static text is a mental burden.
+        </div>
+    </div>
+</section> -->
+
+
+<section class="comparison-section">
+    <div class="comparison-container">
+        <h3 class="static-label-large">Traditional Documentation</h3>
+        
+        <div class="static-card" id="staticCard">
+            <p class="card-lead">During training, the model predicts outputs, computes loss, and updates weights.</p>
+            
+            <pre><code class="language-python">for x, y in dataloader:
+    pred = model(x)
+    loss = loss_fn(pred, y)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()</code></pre>
+
+            <p class="card-subtext">Each iteration slightly changes the network parameters. Understanding this flow requires tracking state transitions manually.</p>
+        </div>
+        
+        <div class="static-caption">
+            Static text is a mental burden.
+        </div>
+    </div>
+</section>
+
+<section class="shift">
+<h1 class="fade-text" id="fadeText">What if the explanation could run?</h1>
+</section>
+
+<!-- <div class="stage-trigger" id="stageTrigger">
+    <section class="stage">
+        <h2 id="stageHeader">This is Rustimate.</h2>
+        <div class="video-wrap" id="zoomVideo">
+            <video muted playsinline preload="auto" loop id="rustimateVid">
+                <source src="assets/rustimate-dataloader.mp4" type="video/mp4">
+            </video>
+        </div>
+        <p class="observation-caption">The explanation is no longer read. It is observed.</p> 
+    </section>
+</div> -->
+
+<div class="stage-trigger" id="stageTrigger">
+    <section class="stage">
+        <h2 id="stageHeader">This is Rustimate.</h2>
+        <div class="video-wrap" id="zoomVideo">
+            <video id="rustimateVid" muted playsinline loop preload="auto">
+                <source src="assets/rustimate-dataloader.mp4" type="video/mp4">
+            </video>
+        </div>
+        <!-- <p class="observation-caption">The explanation is no longer read. It is observed.</p> -->
+    </section>
+</div>
+
+
+
+<section class="impact">
+<h2>When clarity improves, everything moves faster.</h2>
+<div class="impact-grid">
+    <div class="card">Onboarding engineers </div>
+    <div class="card">Explaining architecture</div>
+    <div class="card">Debugging complex behavior</div>
+    <div class="card">Teaching technical concepts</div>
+    <div class="card">Presenting research ideas</div>
+    <div class="card">Technical explainer videos</div>
+</div>
+</section>
+
+<section class="why">
+<p>Software changes state and unfolds over time.</p>
+<p>Text can describe it. Motion reveals it.</p>
+<div class="tagline">It animates attention.</div>
+<a href="rustimate.html" class="learn-btn">Download Rustimate</a>
+<a href="./rslguide/index.html" target="_blank" class="download-btn">Documentation</a>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+<!-- <script>
+/* -------- Intersection Observers -------- */
+const observeOptions = { threshold: 0.3 };
+
+// Static Card Reveal
+const staticCard = document.getElementById('staticCard');
+const staticObserver = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting) staticCard.classList.add('active');
+}, observeOptions);
+staticObserver.observe(staticCard);
+
+// Fade-in Text
+const fadeText = document.getElementById('fadeText');
+const fadeObserver = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting) fadeText.classList.add('active');
+}, { threshold: 0.5 });
+fadeObserver.observe(document.querySelector('.shift'));
+
+// AUTO-PLAY ON SCROLL
+
+const stageTrigger = document.getElementById('stageTrigger');
+const zoomVideo = document.getElementById('zoomVideo');
+const stageHeader = document.getElementById('stageHeader');
+const rustimateVid = document.getElementById('rustimateVid');
+async function handleSafariVideo() {
+    try {
+        // Try to autoplay
+        await rustimateVid.play();
+    } catch (err) {
+        // If autoplay is blocked (common in Safari)
+        console.log("Autoplay blocked. Showing controls for manual play.");
+        rustimateVid.controls = true;
+        
+        // Style adjustment for the play button to be visible
+        rustimateVid.style.pointerEvents = "auto"; 
+    }
+}
+
+// Check for Safari specifically or just handle the promise rejection
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+if (isSafari) {
+    // Safari needs a little extra help
+    window.addEventListener('load', handleSafariVideo);
+    // Also try playing on the first scroll
+    window.addEventListener('scroll', () => {
+        rustimateVid.play().catch(() => {});
+    }, { once: true });
+} else {
+    // Chrome/Brave path
+    rustimateVid.autoplay = true;
+    rustimateVid.play().catch(() => {});
+}
+
+
+function playVideo() {
+    // Force mute (sometimes Safari misses the HTML attribute)
+    rustimateVid.muted = true;
+    
+    const attemptPlay = rustimateVid.play();
+    
+    if (attemptPlay !== undefined) {
+        attemptPlay.catch(error => {
+            // Auto-play was prevented
+            console.log("Autoplay blocked, waiting for user interaction...");
+            
+            // Fix: Attempt to play on the very first scroll or click
+            const playOnGesture = () => {
+                rustimateVid.play();
+                window.removeEventListener('scroll', playOnGesture);
+                window.removeEventListener('click', playOnGesture);
+                window.removeEventListener('touchstart', playOnGesture);
+            };
+            
+            window.addEventListener('scroll', playOnGesture);
+            window.addEventListener('click', playOnGesture);
+            window.addEventListener('touchstart', playOnGesture);
+        });
+    }
+}
+
+// Run immediately and also when the section is visible
+playVideo();
+
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            forceSafariPlay();
+        } else {
+            rustimateVid.pause();
+        }
+    });
+}, { threshold: 0.1 });
+videoObserver.observe(document.getElementById('stageTrigger'));
+
+const navbar = document.querySelector('nav');
+const shiftSection = document.querySelector('.shift');
+const stageTriggerSection = document.getElementById('stageTrigger');
+
+
+window.addEventListener('scroll', () => {
+
+    const scrollPos = window.scrollY;
+    const shiftTop = shiftSection.offsetTop - 60;
+    const shiftBottom = shiftTop + shiftSection.offsetHeight;
+    
+    const stageTop = stageTriggerSection.offsetTop - 60;
+    
+    // NEW LOGIC: We want the dark mode to end as soon as the video FADE starts.
+    // Based on our zoom logic, fade starts at roughly 80% of the stageTrigger.
+    const fadePoint = stageTop + (stageTriggerSection.offsetHeight * 0.8);
+
+    // Dark mode is active ONLY between the start of Shift and the start of the Video Fade
+    const isInDarkSection = (scrollPos >= shiftTop && scrollPos <= shiftBottom) || 
+                            (scrollPos >= stageTop && scrollPos <= fadePoint);
+
+    if (isInDarkSection) {
+        navbar.classList.add('nav-dark');
+    } else {
+        navbar.classList.remove('nav-dark');
+    }
+
+    const rect = stageTrigger.getBoundingClientRect();
+    const triggerHeight = rect.height - window.innerHeight;
+    let scrollPercent = -rect.top / triggerHeight;
+    scrollPercent = Math.min(Math.max(scrollPercent, 0), 1);
+
+    const animationProgress = Math.min(scrollPercent * 1.4, 1);
+
+    // Responsive Scale: Smaller start on mobile, larger end on desktop
+    const isMobile = window.innerWidth < 768;
+    const startScale = isMobile ? 0.8 : 0.6;
+    const endScale = isMobile ? 1.2 : 1.6;
+    
+    const scale = startScale + (animationProgress * (endScale - startScale));
+    zoomVideo.style.transform = `scale(${scale})`;
+
+    // Header & Fade logic remains the same
+    stageHeader.style.opacity = 1 - (animationProgress * 3);
+    
+    if (scrollPercent > 0.85) {
+        const fadeOut = (scrollPercent - 0.85) / 0.15;
+        zoomVideo.style.opacity = 1 - fadeOut;
+        stageTrigger.style.background = "#fff";
+    } else {
+        zoomVideo.style.opacity = 1;
+        stageTrigger.style.background = "#000";
+    }
+});
+
+// Staggered Cards
+const cards = document.querySelectorAll('.card');
+const cardObserver = new IntersectionObserver(entries => {
+    entries.forEach((entry, index) => {
+        if(entry.isIntersecting) setTimeout(() => entry.target.classList.add('show'), index * 100);
+    });
+}, { threshold: 0.1 });
+cards.forEach(card => cardObserver.observe(card));
+
+// Why Section
+const whyP = document.querySelectorAll('.why p');
+const tline = document.querySelector('.tagline');
+const whyObserver = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){
+        whyP.forEach((p,i) => setTimeout(() => p.classList.add('show'), i * 300));
+        setTimeout(() => tline.classList.add('show'), 800);
+    }
+}, { threshold: 0.4 });
+whyObserver.observe(document.querySelector('.why'));
+
+
+
+</script> -->
+
+
+
+<script>
+/* -------- Intersection Observers -------- */
+const observeOptions = { threshold: 0.3 };
+
+// Static Card Reveal
+const staticCard = document.getElementById('staticCard');
+const staticObserver = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting) staticCard.classList.add('active');
+}, observeOptions);
+staticObserver.observe(staticCard);
+
+// Fade-in Text
+const fadeText = document.getElementById('fadeText');
+const fadeObserver = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting) fadeText.classList.add('active');
+}, { threshold: 0.5 });
+fadeObserver.observe(document.querySelector('.shift'));
+
+/* -------- Video & Zoom Logic -------- */
+const stageTrigger = document.getElementById('stageTrigger');
+const zoomVideo = document.getElementById('zoomVideo');
+const stageHeader = document.getElementById('stageHeader');
+const rustimateVid = document.getElementById('rustimateVid');
+const navbar = document.querySelector('nav');
+const shiftSection = document.querySelector('.shift');
+
+// Unified Video Play Function
+async function playVideo() {
+    rustimateVid.muted = true;
+    try {
+        await rustimateVid.play();
+    } catch (err) {
+        console.log("Autoplay blocked, enabling manual backup...");
+        // If it's Safari and blocked, show controls as backup
+        if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+            rustimateVid.controls = true;
+            rustimateVid.style.pointerEvents = "auto";
+        }
+        
+        // Try to play on first user interaction
+        const playOnGesture = () => {
+            rustimateVid.play().catch(() => {});
+            ['scroll', 'click', 'touchstart'].forEach(evt => 
+                window.removeEventListener(evt, playOnGesture)
+            );
+        };
+        ['scroll', 'click', 'touchstart'].forEach(evt => 
+            window.addEventListener(evt, playOnGesture, { once: true })
+        );
+    }
+}
+
+// Observe when video section is in view
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            playVideo();
+        } else {
+            rustimateVid.pause();
+        }
+    });
+}, { threshold: 0.1 });
+videoObserver.observe(stageTrigger);
+
+/* -------- Scroll Events (Navbar, Zoom, Fade) -------- */
+window.addEventListener('scroll', () => {
+    // 1. Navbar Color Switch
+    const scrollPos = window.scrollY;
+    const shiftTop = shiftSection.offsetTop - 60;
+    const shiftBottom = shiftTop + shiftSection.offsetHeight;
+    const stageTop = stageTrigger.offsetTop - 60;
+
+    // The logic: If the video is significantly faded (opacity < 0.5), 
+    // we MUST be in white mode.
+    const videoIsFaded = parseFloat(zoomVideo.style.opacity) < 0.5;
+
+    // We only want nav-dark if we are in the dark sections AND the video hasn't faded yet
+    const isInDarkSection = (scrollPos >= shiftTop && scrollPos <= shiftBottom) || 
+                            (scrollPos >= stageTop && !videoIsFaded);
+
+    if (isInDarkSection) {
+        navbar.classList.add('nav-dark');
+    } else {
+        navbar.classList.remove('nav-dark');
+    }
+
+    // 2. Video Zoom Logic
+    const rect = stageTrigger.getBoundingClientRect();
+    const triggerHeight = rect.height - window.innerHeight;
+    let scrollPercent = -rect.top / triggerHeight;
+    scrollPercent = Math.min(Math.max(scrollPercent, 0), 1);
+
+    const animationProgress = Math.min(scrollPercent * 1.4, 1);
+
+    // Responsive Scale
+    const isMobile = window.innerWidth < 768;
+    const startScale = isMobile ? 0.8 : 0.6;
+    const endScale = isMobile ? 1.2 : 1.6;
+    const scale = startScale + (animationProgress * (endScale - startScale));
+    
+    zoomVideo.style.transform = `scale(${scale})`;
+    stageHeader.style.opacity = 1 - (animationProgress * 3);
+    
+    // 3. Fade Stage to White
+    if (scrollPercent > 0.85) {
+        const fadeOut = (scrollPercent - 0.85) / 0.15;
+        zoomVideo.style.opacity = 1 - fadeOut;
+        stageTrigger.style.background = "#fff";
+    } else {
+        zoomVideo.style.opacity = 1;
+        stageTrigger.style.background = "#000";
+    }
+});
+
+// /* -------- Cards & Footer Animation -------- */
+// const cards = document.querySelectorAll('.card');
+// const cardObserver = new IntersectionObserver(entries => {
+//     entries.forEach((entry, index) => {
+//         if(entry.isIntersecting) setTimeout(() => entry.target.classList.add('show'), index * 100);
+//     });
+// }, { threshold: 0.1 });
+// cards.forEach(card => cardObserver.observe(card));
+
+
+// const whyP = document.querySelectorAll('.why p');
+// const tline = document.querySelector('.tagline');
+// const whyObserver = new IntersectionObserver(entries => {
+//     if(entries[0].isIntersecting){
+//         whyP.forEach((p,i) => setTimeout(() => p.classList.add('show'), i * 300));
+//         setTimeout(() => tline.classList.add('show'), 800);
+//     }
+// }, { threshold: 0.4 });
+// whyObserver.observe(document.querySelector('.why'));
+
+/* -------- Impact Cards Staggered Animation -------- */
+const impactGrid = document.querySelector('.impact-grid');
+const allCards = document.querySelectorAll('.card');
+
+const impactObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        // Trigger when the grid container enters the viewport
+        if (entry.isIntersecting) {
+            allCards.forEach((card, index) => {
+                // Stagger the 'show' class by 100ms per card
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, index * 100);
+            });
+            // Stop watching once the animation has played
+            impactObserver.unobserve(entry.target);
+        }
+    });
+}, { 
+    threshold: 0.15, 
+    rootMargin: '0px 0px -50px 0px' 
+});
+
+if (impactGrid) {
+    impactObserver.observe(impactGrid);
+}
+
+/* -------- Why Section (The very bottom) -------- */
+const whySection = document.querySelector('.why');
+const whyP = document.querySelectorAll('.why p');
+const tline = document.querySelector('.tagline');
+
+const whyObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            whyP.forEach((p,i) => setTimeout(() => p.classList.add('show'), i * 300));
+            setTimeout(() => tline.classList.add('show'), 800);
+            whyObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.4 });
+
+if (whySection) {
+    whyObserver.observe(whySection);
+}
+
+
+
+</script>
+
+
+</body>
+</html>

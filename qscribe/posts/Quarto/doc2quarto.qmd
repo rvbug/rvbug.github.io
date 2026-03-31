@@ -1,6 +1,6 @@
 ---
 title: "Doc2Quarto: Seamlessly Migrate from Docusaurus to Quarto"
-author: "Your Name"
+author: "Rakesh Venkat"
 date: "2025-11-20"
 categories: [documentation, rust, quarto, docusaurus, migration]
 image: "./img/Doc2Quarto-cli.png"

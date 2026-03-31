@@ -1,0 +1,31 @@
+---
+title: "Rustimate Guide"
+description: "Publish visual technical tutorials by combining RSL scripts, rendered animations, and explanatory text."
+---
+
+**Rustimate Guide** is a structured narrative format that tightly integrates:
+
+- RSL scripts
+- Rendered visualizations
+- Explanatory prose
+
+It allows authors to publish visual technical tutorials where animations and explanations live side by side.
+
+
+## Use cases
+
+- Technical blog posts
+- Product documentation
+- Research explanations
+- Educational content and courses
+
+
+
+::: {.callout-tip}
+## Quarto Markdown support — coming next
+Native Quarto & Markdown rendering support is on the Rustimate roadmap.
+:::
+
+
+# Examples
+

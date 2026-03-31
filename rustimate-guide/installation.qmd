@@ -1,0 +1,83 @@
+---
+title: "Installation"
+description: "Install Rustimate on macOS, Linux, or Windows."
+---
+
+Rustimate supports **macOS**, **Linux**, and **Windows**. It is a lightweight CLI binary — no graphical environment required.
+
+## macOS
+
+::: {.panel-tabset}
+
+### Homebrew
+
+```bash
+brew tap rustimate/tap
+brew install rustimate
+```
+
+### curl
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/rustimate/homebrew-tap/main/uninstall.sh)"
+
+or
+
+curl -fsSL https://raw.githubusercontent.com/rustimate/homebrew-tap/main/uninstall.sh | bash
+
+```
+
+:::
+
+## Linux
+
+```bash
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/rustimate/homebrew-tap/main/uninstall.sh)"
+
+or
+
+curl -fsSL https://raw.githubusercontent.com/rustimate/homebrew-tap/main/uninstall.sh | bash
+
+```
+
+This installs the latest Rustimate binary into your system path.
+
+## Windows
+
+```powershell
+scoop install rustimate
+```
+
+## Verify installation
+
+After installing, confirm Rustimate is available:
+
+```bash
+rustimate --version
+```
+
+Expected output:
+
+```
+rustimate 0.1.0
+```
+
+
+
+---
+
+<!-- ::: {.callout-tip} -->
+<!-- ## Already installed? -->
+<!-- If you have an older version, re-run the install command or use your package manager's upgrade command (e.g., `brew upgrade rustimate`) to get the latest release. -->
+<!-- ::: -->
+
+## Next step
+
+If you are using **Creator** or **Pro** version, activate your license.
+
+[Activate your license →](license.qmd)
+
+For **Community** users, follow the quick start quide to get started
+
+[Quick Start Guide →](quickstart.qmd)
