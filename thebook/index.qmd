@@ -1,160 +1,182 @@
 ---
-title: ""
-format: 
-  html:
-    page-layout: custom
-    toc: false
-    self-contained: true
-    include-in-header:
-      - text: |
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-          <style>
-            :root {
-                --apple-black: #1d1d1f;
-                --apple-grey: #f5f5f7;
-                --text-secondary: #86868b;
-                --apple-blue: #0066cc;
-            }
-            body { 
-                margin: 0; background-color: #ffffff; color: var(--apple-black);
-                font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-                -webkit-font-smoothing: antialiased;
-            }
-            /* Hide Quarto default elements to maintain the "App" look */
-            .quarto-title-block, #title-block-header, .navbar { display: none !important; }
-            
-            /* --- HEADER & SEARCH --- */
-            .header-section { text-align: center; margin-top: 80px; }
-            .title-row { display: flex; align-items: center; justify-content: center; gap: 15px; }
-            .title-row h1 { font-size: 52px; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
-            .search-trigger { font-size: 18px; opacity: 0.2; cursor: pointer; transition: 0.3s; }
-            .search-trigger:hover { opacity: 0.8; }
-            .search-slide-wrap {
-                width: 100%; max-width: 400px; height: 0; opacity: 0; overflow: hidden;
-                margin: 0 auto; display: flex; align-items: center; background: var(--apple-grey);
-                border-radius: 12px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            .search-slide-wrap.active { height: 45px; opacity: 1; margin-top: 20px; padding: 0 15px; }
-            .search-slide-wrap input { width: 100%; border: none; background: transparent; font-size: 16px; outline: none; padding: 10px; }
-
-            /* --- FILTERS --- */
-            .filter-container { display: flex; justify-content: center; margin: 40px auto; }
-            .filter-bar { background: var(--apple-grey); padding: 4px; border-radius: 25px; display: flex; }
-            .filter-btn {
-                border: none; background: transparent; padding: 10px 22px;
-                font-size: 14px; font-weight: 500; color: var(--text-secondary);
-                cursor: pointer; border-radius: 20px; transition: 0.3s ease;
-            }
-            .filter-btn.active { color: #fff; background: var(--apple-black); }
-
-            /* --- BENTO GRID --- */
-            .gallery-container {
-                max-width: 1200px; margin: 0 auto 100px; padding: 0 20px;
-                display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-            }
-            .bento-card {
-                background: var(--apple-grey); border-radius: 28px; padding: 35px;
-                min-height: 380px; display: flex; flex-direction: column;
-                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;
-            }
-            .bento-card:hover { transform: translateY(-8px); background: #ffffff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-            .w-2-3 { grid-column: span 2; }
-            .w-1-3 { grid-column: span 1; }
-            .hidden { display: none; }
-
-            /* --- CONTENT STYLES --- */
-            .pill-tag { background: rgba(0,0,0,0.05); padding: 5px 12px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
-            .bento-card h2 { font-size: 32px; font-weight: 700; margin: 15px 0 8px; }
-            .cycler-stage { height: 32px; overflow: hidden; margin-bottom: 15px; }
-            .word-cycler { display: flex; flex-direction: column; }
-            .word-cycler span { font-size: 18px; font-weight: 600; line-height: 32px; height: 32px; }
-            .description { font-size: 15px; color: var(--text-secondary); line-height: 1.5; flex-grow: 1; }
-            .grad-rat { background: linear-gradient(180deg, #0071e3, #5ac8fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-            .grad-dot { background: linear-gradient(180deg, #5e5ce6, #af52de); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-          </style>
+title: "Overview"
+format: html
+toc: true
 ---
 
-```{=html}
-<div class="header-section">
-    <div class="title-row">
-        <h1>The Book.</h1>
-        <i class="fas fa-search search-trigger" onclick="toggleSearch(event)"></i>
-    </div>
-    <div class="search-slide-wrap" id="searchBar" onclick="event.stopPropagation()">
-        <i class="fas fa-search" style="color:var(--text-secondary); font-size: 14px;"></i>
-        <input type="text" id="searchInput" placeholder="Search documentation..." onkeyup="updateGallery()">
-    </div>
-</div>
+::: {style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;"}
+<!-- Placeholder for image -->
 
-<div class="filter-container">
-    <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ratcrate">Ratcrate</button>
-        <button class="filter-btn" data-filter="tooling">Tooling</button>
-    </div>
-</div>
+<img src="./images/TheBook.png" alt="Coming Soon Banner" width="50%"/>
+:::
 
-<div class="gallery-container" id="grid">
-    <div class="bento-card w-2-3" onclick="window.location.href='rat-core/index.qmd'" data-cat="ratcrate" data-words='["Crates.io Crawler", "Metadata Engine", "Rust Caching"]'>
-        <div class="top-row"><div class="pill-tag">Core Engine</div><i class="fab fa-rust"></i></div>
-        <h2 class="grad-rat">ratcrate-core</h2>
-        <div class="cycler-stage"><div class="word-cycler"></div></div>
-        <p class="description">The backbone of the Ratatui ecosystem index. Handles high-performance crawling and crate enrichment.</p>
-    </div>
+# Documentation hub.
 
-    <div class="bento-card w-1-3" onclick="window.location.href='doc2quarto/index.qmd'" data-cat="tooling" data-words='["Note to Doc", "Automated Skeleton", "Markdown Power"]'>
-        <div class="top-row"><div class="pill-tag">Doc Tool</div><i class="fab fa-python"></i></div>
-        <h2 class="grad-dot">doc2quarto</h2>
-        <div class="cycler-stage"><div class="word-cycler"></div></div>
-        <p class="description">Streamlining the conversion of technical notes into structured Quarto documentation.</p>
-    </div>
-</div>
+> This site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.
 
-<script>
-    const WORD_HEIGHT = 32;
-    const PAUSE = 2000;
-    let cardTimers = new Map();
+# How to Use This Site
 
-    function toggleSearch(e) {
-        e.stopPropagation();
-        document.getElementById('searchBar').classList.toggle('active');
-    }
+-   Use the **sidebar** or the project cards below to jump into a specific project.\
+-   Within each project:
+    -   Start with the *Overview* chapter
+    -   Then read Architecture / Workflow chapters
+    -   Dive into Code Snippets, Testing, and Future Work as needed
 
-    function updateGallery() {
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        const activeCat = document.querySelector('.filter-btn.active').dataset.filter;
-        document.querySelectorAll('.bento-card').forEach(card => {
-            const matchesSearch = card.innerText.toLowerCase().includes(query);
-            const matchesCat = activeCat === 'all' || card.dataset.cat === activeCat;
-            card.classList.toggle('hidden', !(matchesSearch && matchesCat));
-        });
-    }
+This site is primarily written for **future me** — but if you’re reading it later\
+as a user or contributor, I hope it gives you clear insight into how everything fits together
 
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.onclick = () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            updateGallery();
-        };
-    });
+# Roadmap & Future Projects
 
-    function restartCycle(card) {
-        const cycler = card.querySelector('.word-cycler');
-        const words = JSON.parse(card.dataset.words);
-        cycler.innerHTML = words.map(w => `<span>${w}</span>`).join('');
-        let step = 0;
-        function stepLogic() {
-            if (step < words.length - 1) {
-                step++;
-                cycler.style.transition = 'transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)';
-                cycler.style.transform = `translateY(-${step * WORD_HEIGHT}px)`;
-                setTimeout(stepLogic, PAUSE);
-            }
-        }
-        setTimeout(stepLogic, PAUSE);
-    }
+This hub is designed to grow over time as more tools , research, libraries experiments appear.
 
-    document.querySelectorAll('.bento-card').forEach(restartCycle);
-</script>
-```
+Planned additions include:
 
+-   🧪 Experimental tools automation, research, quantum computing etc\
+-   🧰 Libraries or platform to enhance productivity\
+-   🗂 More utilities on workflows automation
+
+When a new project is created, it will get:
+
+-   Its own folder (e.g. `new-project/`)\
+-   Its own mini “book” of chapters\
+-   A card on this page linking into its docs
+
+#  {.unnumbered}
+
+# About Me
+
+I’m **Rakesh V**, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.
+
+I maintain the projects in this “book”
+
+If you’d like to know more about my background, how these tools came about, and how to support my work, see:
+
+➡️ [Read more in “Author” section](about-author.qmd)
+
+<br><br>
+
+# Projects Overview
+
+::::: columns
+::: {.column width="50%"}
+### 🐀 ratcrate-core
+
+The **engine** behind the Ratatui ecosystem index.
+
+-   Scans the crates.io sparse index\
+
+-   Finds all crates depending on `ratatui`\
+
+-   Enriches them with crates.io metadata\
+
+-   Applies smart caching\
+
+-   Produces `ratcrate.json` for other tools to consume
+
+-   To be open sourced soon
+
+➡️ [Read the ratcrate-core docs »](rat-core/index.qmd)
+:::
+
+::: {.column width="50%"}
+### 💻 ratcrate-cli
+
+A command-line interface for exploring the Ratatui ecosystem.
+
+-   Reads `ratcrate.json` produced by `ratcrate-core`\
+-   Search and filter Ratatui crates from the terminal\
+-   Show stats, links, and crate details
+
+➡️ [Read the ratcrate-cli docs »](rat-cli/index.qmd)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+### 🎛 ratcrate-tui
+
+A **Ratatui-based TUI** for browsing Ratatui crates.\
+Very meta. Very fun.
+
+-   Terminal UI built with Ratatui\
+-   Interactive search and filters\
+-   Crate detail views with stats and links\
+-   Powered by `ratcrate-core` data
+
+➡️ [Read the ratcrate-tui docs »](rat-tui/index.qmd)
+:::
+
+::: {.column width="50%"}
+### ☁︎ doc2quarto
+
+A helper tool for turning rough notes, markdown, or code comments into\
+**structured Quarto documentation**.
+
+-   Convert notes into `.qmd` skeletons\
+-   Ideal for standardizing docs across all projects
+
+➡️ [Read the doc2quarto docs »](doc2quarto/index.qmd)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+### ↯ QBanner (Coming Soon)
+
+A light-weight **rust based** library for CLI Banners
+
+-   Works on all rust cli projects and easy to use
+
+-   Supports Ratatui basic and advanced layouts\
+
+-   Works on **shell scripts** too!
+
+➡️ [Read the Qbanner Libraryi docs »](qbanner/index.qmd)
+:::
+
+::: {.column width="50%"}
+### 🎚️ QSwitch (Planned)
+
+➡️ [Coming Soon »]()
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+### 📡 Challenges (Coming Soon)
+
+Documenting common challenges during these projects
+
+➡️ [Coming Soon]()
+:::
+
+::: {.column width="50%"}
+### 📚 Books I read (Coming Soon)
+
+➡️ [Coming Soon]()
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+### 📡 neovim to emacs migration
+
+Documenting my journey from neovim to emacs
+
+➡️ [Read my journey »](neovim2emacs/index.qmd)
+:::
+
+::: {.column width="50%"}
+### 📚
+
+➡️ [Coming Soon]()
+:::
+:::::
