@@ -12,17 +12,17 @@ Large Language Models and automation frameworks have enabled new forms of produc
 
 This framework had two sub components:
 
-- [ ] **Autonmous Command Optimization Network (ACON)**
+- [ ] **Autonomous Command Optimization Network (ACON)**
 - [ ] **Cognitive Optimization Workflow Intelligence (COWI)**
 
-This manuscript focuses on version 1.0 of **Autonmous Command Optimization Network (ACON)** which captures real-time user behavior, suggests optimized actions, and adapts continuously. Initial results show that ACON reduces keystrokes and mental operations, aligning with the *Keystroke-Level Model (KLM)*. I presents an early version of the platform, with code snippets, metrics, and a roadmap towards multi-domain cognitive optimization. This version (1.0) focuses on **Multi-Armed Bandit Reinforcement Learning**
+This manuscript focuses on version 1.0 of **Autonomous Command Optimization Network (ACON)** which captures real-time user behavior, suggests optimized actions, and adapts continuously. Initial results show that ACON reduces keystrokes and mental operations, aligning with the *Keystroke-Level Model (KLM)*. I presents an early version of the platform, with code snippets, metrics, and a roadmap towards multi-domain cognitive optimization. This version (1.0) focuses on **Multi-Armed Bandit Reinforcement Learning**
 
 
 # 1. Introduction
 
 Modern AI tools prioritize automation but they overlook micro-level user interactions. In practice, productivity is often bottlenecked by repetitive keystrokes, redundant commands, or inefficient workflows. In the age of Agentic AI, there remains a need for systems that **directly optimize user cognition and interaction flows**.
 
-I propose **Autonmous Command Optimization Network (ACON)** — a *__Reinforcement Learning (RL)__* driven platform to optimize productivity through **real-time adaptation**. This version targets the CLI which is chosen for its structured yet open-ended action space. While LLMs focus on semantic reasoning, ACON specifically addresses **interaction efficiency**.
+I propose **Autonomous Command Optimization Network (ACON)** — a *__Reinforcement Learning (RL)__* driven platform to optimize productivity through **real-time adaptation**. This version targets the CLI which is chosen for its structured yet open-ended action space. While LLMs focus on semantic reasoning, ACON specifically addresses **interaction efficiency**.
 
 
 # 2. Keystroke-Level Model

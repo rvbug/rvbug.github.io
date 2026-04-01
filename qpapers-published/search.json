@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Research Papers",
     "section": "",
-    "text": "CIOP - Cognitive Interaction Optimization Platform\n\n\n\n&gt; Autonomous Command Optimization Network (ACON)\n\nv1.0 via Multi-Arm Bandit - Completed\n\n \n\n\n&gt; QPulse - A context-aware system\n\nv1.0: Implementation - In Progress\n\n      Sign up for exclusive access\n \n\n\n&gt; Cognitive Optimization Workflow Intelligence (CIOW)\n\nv1.0: Practical Implementation - Coming Soon\n\n\n\n\nQuantum Spacetime Intelligence System (QSIS)\n\nv1.0: Coming Soon"
+    "text": "&gt; Autonomous Command Optimization Network (ACON)\nv1.0 via Multi-Arm Bandit - Completed\n\n\n\n&gt; Computational Optimization & Precision Engine (COPE)\nIn Progress\n\n\n\n&gt; Cognitive Optimization Workflow Intelligence (CIOW)\nComing Soon"
   },
   {
     "objectID": "images/metrics_timeseries_H.html",
@@ -18,7 +18,7 @@
     "href": "acon.html",
     "title": "Multi-Domain Cognitive Optimization via Real-Time Reinforcement Learning",
     "section": "",
-    "text": "Large Language Models and automation frameworks have enabled new forms of productivity, but they rarely optimize the cognitive effort of individual users in real time. I introduce Cognitive Interaction Optimization Platform (CIOP), a multi-domain Reinforcement Learning (RL) framework designed to optimize human-computer interaction in real time. This is composed of domain-specific RL agents each focusing on a unique aspect of efficency like Cognitive Intelligence and Real-time Adaptation.\nThis framework had two sub components:\n\nAutonmous Command Optimization Network (ACON)\nCognitive Optimization Workflow Intelligence (COWI)\n\nThis manuscript focuses on version 1.0 of Autonmous Command Optimization Network (ACON) which captures real-time user behavior, suggests optimized actions, and adapts continuously. Initial results show that ACON reduces keystrokes and mental operations, aligning with the Keystroke-Level Model (KLM). I presents an early version of the platform, with code snippets, metrics, and a roadmap towards multi-domain cognitive optimization. This version (1.0) focuses on Multi-Armed Bandit Reinforcement Learning"
+    "text": "Large Language Models and automation frameworks have enabled new forms of productivity, but they rarely optimize the cognitive effort of individual users in real time. I introduce Cognitive Interaction Optimization Platform (CIOP), a multi-domain Reinforcement Learning (RL) framework designed to optimize human-computer interaction in real time. This is composed of domain-specific RL agents each focusing on a unique aspect of efficency like Cognitive Intelligence and Real-time Adaptation.\nThis framework had two sub components:\n\nAutonomous Command Optimization Network (ACON)\nCognitive Optimization Workflow Intelligence (COWI)\n\nThis manuscript focuses on version 1.0 of Autonmous Command Optimization Network (ACON) which captures real-time user behavior, suggests optimized actions, and adapts continuously. Initial results show that ACON reduces keystrokes and mental operations, aligning with the Keystroke-Level Model (KLM). I presents an early version of the platform, with code snippets, metrics, and a roadmap towards multi-domain cognitive optimization. This version (1.0) focuses on Multi-Armed Bandit Reinforcement Learning"
   },
   {
     "objectID": "acon.html#klm-basics",
