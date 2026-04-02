@@ -2672,6 +2672,17 @@ function showSuccessModal() {
     document.getElementById('download-zone')?.scrollIntoView();
 }
 
+
+function scrollToDownload() {
+    const downloadSection = document.getElementById('download-zone');
+    if (downloadSection) {
+        downloadSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+    }
+}
+
 </script>
 
 </body>
