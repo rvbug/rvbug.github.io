@@ -433,11 +433,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#linux-and-mac" id="toc-linux-and-mac" class="nav-link" data-scroll-target="#linux-and-mac">Linux and Mac</a></li>
   <li><a href="#in-windows" id="toc-in-windows" class="nav-link" data-scroll-target="#in-windows">In Windows</a></li>
+  </ul></li>
+  <li><a href="#ffmpeg-errors" id="toc-ffmpeg-errors" class="nav-link" data-scroll-target="#ffmpeg-errors">Ffmpeg errors</a>
+  <ul class="collapse">
   <li><a href="#scoop-error" id="toc-scoop-error" class="nav-link" data-scroll-target="#scoop-error">Scoop Error</a></li>
   <li><a href="#license-not-recognised" id="toc-license-not-recognised" class="nav-link" data-scroll-target="#license-not-recognised">License not recognised</a></li>
   <li><a href="#unexpected-output-resolution" id="toc-unexpected-output-resolution" class="nav-link" data-scroll-target="#unexpected-output-resolution">Unexpected output resolution</a></li>
   <li><a href="#rsl-script-not-parsing" id="toc-rsl-script-not-parsing" class="nav-link" data-scroll-target="#rsl-script-not-parsing">RSL script not parsing</a></li>
   <li><a href="#video-not-exporting" id="toc-video-not-exporting" class="nav-link" data-scroll-target="#video-not-exporting">Video not exporting</a></li>
+  </ul></li>
+  <li><a href="#resolution" id="toc-resolution" class="nav-link" data-scroll-target="#resolution">Resolution</a>
+  <ul class="collapse">
   <li><a href="#still-stuck" id="toc-still-stuck" class="nav-link" data-scroll-target="#still-stuck">Still stuck?</a></li>
   </ul></li>
   </ul>
@@ -497,22 +503,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="in-windows">In Windows</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">where</span> rustimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Fix:</strong> Re-run the install command for your platform. See <a href="./installation.html">Installation</a>.</p>
-<hr>
 </section>
+</section>
+<section id="ffmpeg-errors" class="level1">
+<h1>Ffmpeg errors</h1>
+<p>Rustimate automatically detects if ffmpeg is not installed on your machine and suggest command based on your OS. If you still have issues after installing <code>ffmpeg</code>, check this command to see if available econders are installed via this command.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> ffmpeg <span class="ex">-hide_banner</span> <span class="at">-encoders</span> <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-E</span> <span class="st">"libx264|libx265"</span>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Fedora OS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I have observed this issue only on Linux Fedora</p>
+</div>
+</div>
 <section id="scoop-error" class="level2">
 <h2 class="anchored" data-anchor-id="scoop-error">Scoop Error</h2>
 <p>If you get scoop echecksum error, follow the steps below</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode ps1 code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>$<span class="op">&gt;</span> scoop cache <span class="fu">rm</span> rustimate</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>$<span class="op">&gt;</span> scoop update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode ps1 code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>$<span class="op">&gt;</span> scoop cache <span class="fu">rm</span> rustimate</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>$<span class="op">&gt;</span> scoop update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can uninstall the older version via this command</p>
 <pre><code>$&gt; scoop uninstall rustimate</code></pre>
 <p>Then finally install rustimate again</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode ps1 code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>$<span class="op">&gt;</span> scoop install rustimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode ps1 code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>$<span class="op">&gt;</span> scoop install rustimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="license-not-recognised" class="level2">
 <h2 class="anchored" data-anchor-id="license-not-recognised">License not recognised</h2>
 <p>Verify the license key was added correctly:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rustimate</span> license add license.key</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rustimate</span> license add license.key</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Make sure you are pointing to the correct path of the <code>license.key</code> file received by email. Download the key to your machine, place it the same directory where you will run <code>rustimate</code> from.</p>
 </section>
 <section id="unexpected-output-resolution" class="level2">
@@ -556,9 +579,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="video-not-exporting" class="level2">
 <h2 class="anchored" data-anchor-id="video-not-exporting">Video not exporting</h2>
 <p>Make sure the <code>--output</code> flag includes a valid file extension:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rustimate</span> script.rsl <span class="at">--output</span> output.mp4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rustimate</span> script.rsl <span class="at">--output</span> output.mp4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+</section>
+<section id="resolution" class="level1">
+<h1>Resolution</h1>
+<p>Based on the tiers, these are the resolution Rustimate supports. If you are seeing it differently, send a note to support@qubitai.in</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Tier</strong></td>
+<td><strong>Desktop</strong></td>
+<td><strong>Shorts</strong></td>
+<td><strong>Square</strong></td>
+</tr>
+<tr class="even">
+<td>Community</td>
+<td>1280×720</td>
+<td>720×1280</td>
+<td>720×720</td>
+</tr>
+<tr class="odd">
+<td>Creator</td>
+<td>1920×1080</td>
+<td>1080×1920</td>
+<td>1080×1080</td>
+</tr>
+<tr class="even">
+<td>Pro</td>
+<td>3840×2160</td>
+<td>2160×3840</td>
+<td>2160×2160</td>
+</tr>
+</tbody>
+</table>
 <section id="still-stuck" class="level2">
 <h2 class="anchored" data-anchor-id="still-stuck">Still stuck?</h2>
 <ul>
