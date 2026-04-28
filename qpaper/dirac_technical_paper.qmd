@@ -46,7 +46,7 @@ Shannon Entropy ($H$)  is a concept used in Information Theory and is the founda
 
 $$H(X) = - \sum_{x \in \mathcal{X}} P(x) \log_2 P(x)$$
 
-At the time of writing this paper, I have analyzed metadata of over **10,000** commits across **2000** open source repositories post 2024. This is when we started seeing rapid integration of LLMs in Software Development Lifecycle.
+At the time of writing this paper, I have analyzed metadata of over **10,005** commits across **2000** open source repositories post 2024. This is when we started seeing rapid integration of LLMs in Software Development Lifecycle.
 
 My analysis will show that there is a systemic capacity loss **(**$R_c$) of approximately **24.16%** in a high-velocity AI environments.
 
