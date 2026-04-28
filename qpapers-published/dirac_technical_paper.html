@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rakesh Venkat">
+<meta name="dcterms.date" content="2026-04-28">
+
+<title>DIRAC: Forensic Model for Measuring Information Entropy in LLM Generated Software – Home</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8610558a007458a9b978551a034f4d85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Home</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./acon.html"> 
+<span class="menu-text">ACON</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./dirac_technical_paper.html" aria-current="page"> 
+<span class="menu-text">DIRAC Technical Paper</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dirac_white_paper.html"> 
+<span class="menu-text">DIRAC White Paper</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dirac_interface.html" target="_blank"> 
+<span class="menu-text">Try Dirac</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://qubitai.in" target="_blank"> 
+<span class="menu-text">QbitAI.in</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">1. ABSTRACT</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link" data-scroll-target="#preface">2. Preface</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">3. Introduction</a>
+  <ul class="collapse">
+  <li><a href="#philosophy" id="toc-philosophy" class="nav-link" data-scroll-target="#philosophy">3.1 Philosophy</a></li>
+  <li><a href="#the-crisis-of-probabilistic-engineering" id="toc-the-crisis-of-probabilistic-engineering" class="nav-link" data-scroll-target="#the-crisis-of-probabilistic-engineering">3.2. The Crisis of Probabilistic Engineering</a></li>
+  </ul></li>
+  <li><a href="#the-dirac-mathematical-framework" id="toc-the-dirac-mathematical-framework" class="nav-link" data-scroll-target="#the-dirac-mathematical-framework">4. The DIRAC Mathematical Framework</a>
+  <ul class="collapse">
+  <li><a href="#entropy-of-atomic-deltas" id="toc-entropy-of-atomic-deltas" class="nav-link" data-scroll-target="#entropy-of-atomic-deltas">4.1 Entropy of Atomic Deltas</a></li>
+  <li><a href="#sec-dru-spec" id="toc-sec-dru-spec" class="nav-link" data-scroll-target="#sec-dru-spec">4.2 The Dirac Risk Unit (DRU) <span class="math inline">\(\Upsilon_D\)</span></a></li>
+  <li><a href="#sec-ln-br" id="toc-sec-ln-br" class="nav-link" data-scroll-target="#sec-ln-br">4.3 The Logarithmic Blast Radius (<span class="math inline">\(\beta\)</span>)</a></li>
+  <li><a href="#sec-kappa-constant" id="toc-sec-kappa-constant" class="nav-link" data-scroll-target="#sec-kappa-constant">4.4 Scaling Constant (<span class="math inline">\(\kappa\)</span> )</a></li>
+  <li><a href="#sec-thr-constant" id="toc-sec-thr-constant" class="nav-link" data-scroll-target="#sec-thr-constant">4.5 Dirac Density Threshold DDT (<span class="math inline">\(\Theta_D\)</span>)</a></li>
+  </ul></li>
+  <li><a href="#forensic-data-methodology" id="toc-forensic-data-methodology" class="nav-link" data-scroll-target="#forensic-data-methodology">5. Forensic Data Methodology</a>
+  <ul class="collapse">
+  <li><a href="#data-extraction-privacy-ethics" id="toc-data-extraction-privacy-ethics" class="nav-link" data-scroll-target="#data-extraction-privacy-ethics">5.1 Data Extraction , Privacy &amp; Ethics</a></li>
+  <li><a href="#language-data-simulation" id="toc-language-data-simulation" class="nav-link" data-scroll-target="#language-data-simulation">5.2 Language, Data &amp; Simulation</a>
+  <ul class="collapse">
+  <li><a href="#rust" id="toc-rust" class="nav-link" data-scroll-target="#rust">5.2.1 Rust</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">5.2.2 Python</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#empirical-analysis" id="toc-empirical-analysis" class="nav-link" data-scroll-target="#empirical-analysis">6. Empirical Analysis</a>
+  <ul class="collapse">
+  <li><a href="#regression-analysis-and-predictability" id="toc-regression-analysis-and-predictability" class="nav-link" data-scroll-target="#regression-analysis-and-predictability">6.1 Regression Analysis and Predictability</a></li>
+  <li><a href="#results-table" id="toc-results-table" class="nav-link" data-scroll-target="#results-table">6.2 Results Table</a>
+  <ul class="collapse">
+  <li><a href="#observations" id="toc-observations" class="nav-link" data-scroll-target="#observations">Observations:</a></li>
+  </ul></li>
+  <li><a href="#forensic-governance-anomaly-detection" id="toc-forensic-governance-anomaly-detection" class="nav-link" data-scroll-target="#forensic-governance-anomaly-detection">6.3 Forensic Governance: Anomaly Detection</a></li>
+  <li><a href="#quantifying-organizational-impact-r_c" id="toc-quantifying-organizational-impact-r_c" class="nav-link" data-scroll-target="#quantifying-organizational-impact-r_c">6.4 Quantifying Organizational Impact (<span class="math inline">\(R_c\)</span>)</a></li>
+  </ul></li>
+  <li><a href="#section-7.-remediation-via-reinforcement-learning-rl" id="toc-section-7.-remediation-via-reinforcement-learning-rl" class="nav-link" data-scroll-target="#section-7.-remediation-via-reinforcement-learning-rl">Section 7. Remediation via Reinforcement Learning (RL)</a>
+  <ul class="collapse">
+  <li><a href="#policy-objective" id="toc-policy-objective" class="nav-link" data-scroll-target="#policy-objective">7.1 Policy Objective</a></li>
+  <li><a href="#reward-function-r" id="toc-reward-function-r" class="nav-link" data-scroll-target="#reward-function-r">7.1.1 Reward Function (<span class="math inline">\(R\)</span>)</a></li>
+  </ul></li>
+  <li><a href="#future-work-from-physical-entropy-to-semantic-fragility" id="toc-future-work-from-physical-entropy-to-semantic-fragility" class="nav-link" data-scroll-target="#future-work-from-physical-entropy-to-semantic-fragility">8. Future Work: From Physical Entropy to Semantic Fragility</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">9. Acknowledgements</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">10. References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="dirac_technical_paper.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>DIRAC: Forensic Model for Measuring Information Entropy in LLM Generated Software</strong></h1>
+<p class="subtitle lead"><strong>A Mathematical Model to quantify Structural Decay via the Dirac Risk Unit (DRU)</strong></p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><em>Rakesh Venkat</em> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 28, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="abstract" class="level1">
+<h1>1. ABSTRACT</h1>
+<p>Large Language Models (LLMs) are being rapidly integrated as part of Software Development Life Cycle (SDLC). This can causing friction in system due to probabilistic nature of code generation.</p>
+<p>Current metrics like <strong>Lines of Code (LoC)</strong> and <strong>Velocity</strong> fails to capture the invisible debts.</p>
+<p>This paper introduces a new forensic framework <strong>D</strong>eterministic <strong>I</strong>ntegrity &amp; <strong>R</strong>isk <strong>A</strong>ssessment <strong>C</strong>ore (<strong>DIRAC</strong>) version 1.0, to measure “Entropy Tax” in AI Engineering.</p>
+<p>It applies Shannon Entropy <span class="citation" data-cites="shannon1948"><a href="#ref-shannon1948" role="doc-biblioref">[1]</a></span> from <em>Information Theory</em> to create three novel metrics introduced in this framework which are as follows:</p>
+<ol type="1">
+<li><p><strong>Dirac Risk Unit (DRU)</strong> <span class="math inline">\(\Upsilon_D\)</span> (<a href="#sec-dru-spec" class="quarto-xref">Section&nbsp;4.2</a>)</p></li>
+<li><p><strong>Scaling Constant (</strong><span class="math inline">\(\kappa = 0.15\)</span>) (<a href="#sec-kappa-constant" class="quarto-xref">Section&nbsp;4.4</a>)</p></li>
+<li><p><strong>Dirac Density Threshold DDT</strong> (<strong><span class="math inline">\(\Theta_D = 10.5\)</span></strong>) (<a href="#sec-thr-constant" class="quarto-xref">Section&nbsp;4.5</a>)</p></li>
+</ol>
+<p>Using mathematical model, you will see that every unit of entropy that is added, results in a marginal cost of $8.52 per commits in Technical Debts and Reviews.</p>
+<p>Using this framework, I will derive mathematical correlation between <strong>AI Code</strong>, Increased <strong>Tech Debts &amp; Maintenance</strong> and <strong>Financial Leakage</strong>.</p>
+</section>
+<section id="preface" class="level1">
+<h1>2. Preface</h1>
+<p>Shannon Entropy (<span class="math inline">\(H\)</span>) is a concept used in Information Theory and is the foundation of this paper. It is defined as follows:</p>
+<p><span class="math display">\[H(X) = - \sum_{x \in \mathcal{X}} P(x) \log_2 P(x)\]</span></p>
+<p>At the time of writing this paper, I have analyzed metadata of over <strong>10,000</strong> commits across <strong>2000</strong> open source repositories post 2024. This is when we started seeing rapid integration of LLMs in Software Development Lifecycle.</p>
+<p>My analysis will show that there is a systemic capacity loss <strong>(</strong><span class="math inline">\(R_c\)</span>) of approximately <strong>24.16%</strong> in a high-velocity AI environments.</p>
+<p>I will also demonstrate using the multivariate regression model with <strong><span class="math inline">\(R^2 = 0.3585\)</span></strong> that <strong>35.85%</strong> of engineering variance is linked to structural entropy.</p>
+<p>Finally, via Monte Carlo Simulation we can forecast the annual expenditure laying the foundation for the next version (2.0) of this paper. It will use <strong>Reinforcement Learning (RL)</strong> based governance systems.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>3. Introduction</h1>
+<p>The engineering landscape has witnessing a big change. Due to LLMs, the amount of code generation has increased exponentially at the same time the quality of software systems are becoming increasingly fragile.</p>
+<section id="philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="philosophy">3.1 Philosophy</h2>
+<p>Name of the framework, DIRAC, is a tribute to Paul Dirac who is considered founding father of quantum mechanics. He formulated Dirac equation which connects <strong>Special Relativity</strong> &amp; <strong>Quantum Mechanics</strong> <span class="citation" data-cites="dirac1928quantum"><a href="#ref-dirac1928quantum" role="doc-biblioref">[2]</a></span>. It’s this inspiration that DIRAC is trying to connect high randomness of AI generated code <strong>(Entropy)</strong> to the hidden drain on enterprise performance and budget <strong>(Corporate Capital)</strong></p>
+</section>
+<section id="the-crisis-of-probabilistic-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="the-crisis-of-probabilistic-engineering">3.2. The Crisis of Probabilistic Engineering</h2>
+<p>There is a big shift in the software development industry to move towards Large Language Models (LLMs). Traditional engineering is deterministic but AI engineering is often probabilistic. When a human writes code, they are optimized for long-term stability and re-usability. Whereas LLMs does pattern-matching and predicts the next word based on highest probability. This is where metrics like <strong>DevOps Research and Assessment’s (DORA)</strong> <span class="citation" data-cites="forsgren2018accelerate"><a href="#ref-forsgren2018accelerate" role="doc-biblioref">[3]</a></span> are not sufficient because AI can inflate throughput with low-value code. For example, team assumes they are “high performing” due to their deployment frequency metrics but it might have massive amount of hidden entropy tax.</p>
+<p>A recent paper by Apple <span class="citation" data-cites="apple2025"><a href="#ref-apple2025" role="doc-biblioref">[4]</a></span> evaluates the Large Language Models’ reasoning capabilities showing that it relies on probabilistic pattern matching than logical reasoning. It showed that LLMs performance drops significantly (in some cases even upto <strong>65%</strong>) when numerical values are altered or irrelevant information is added. LLM is fragile to input changes and the performance declines when names or numbers are modified.</p>
+<p>They also concluded that models only replicate the reasoning steps from training data instead of solving it logically. This is similar to overfitting we saw in the traditional Machine Learning (ML) and Deep Learning Models. Additionally, a recent article from Berkeley <span class="citation" data-cites="berkeley2026"><a href="#ref-berkeley2026" role="doc-biblioref">[5]</a></span> shows that AI agent benchmarks can be rigged via structural exploit.</p>
+<p>In this paper, I will show mathematically that <em>DIRAC</em> is able to demonstrate structural decay to the code adding significant technical debt and entropy tax.</p>
+</section>
+</section>
+<section id="the-dirac-mathematical-framework" class="level1">
+<h1>4. The DIRAC Mathematical Framework</h1>
+<p>In this section we will define the relationship between code changes and architectural stability. I will move beyond simple volumetric count and establish metrics that accounts for <strong>information density</strong> of every change.</p>
+<p>The constants the <strong>Scaling Constant (</strong><span class="math inline">\(\kappa\)</span>) and <strong>Dirac Density Threshold (</strong><span class="math inline">\(\Theta_D\)</span>) where derived through an audit of <em>10,005</em> commits across <em>2,000</em> open source repositories to identifiy human cognitive limits.</p>
+<section id="entropy-of-atomic-deltas" class="level2">
+<h2 class="anchored" data-anchor-id="entropy-of-atomic-deltas">4.1 Entropy of Atomic Deltas</h2>
+<p><strong>Atomic Delta</strong> which is a is a smallest, indivisible unit of change in a system which means a single unit of a change represented by a single commit.</p>
+<p>To measure the decay in code introduced by LLM , I have applied a modified entropy model to this atomic delta Entropy.</p>
+<p>It is defined as ratio of <strong>Structural Churn</strong> to the <strong>Semantic Context</strong> provided by developer on every commit.</p>
+<p><strong>State Transition</strong> will happen when a commit moves the code base (or a system) from one state to another. So total lines of code added and deleted is consider as a churn.</p>
+<p>I use this to calculate <strong>State Transition Entropy (</strong><span class="math inline">\(H_\Delta\)</span>) as follows:</p>
+<p><span class="math display">\[H_\Delta = \left( \frac{\Lambda_{sum}}{\Phi_{norm} + 1} \right) \cdot \Pi_\beta\]</span></p>
+<p>Where:</p>
+<p><span class="math inline">\(\Lambda_{sum}\)</span>: The total lines changed also known as churn (lines added &amp; lines deleted).</p>
+<p><span class="math inline">\(\Phi_{norm}\)</span>: The Normalized Contextual Capacity. It is a factor to ensure that entropy is adjusted based on context provided.</p>
+<p><span class="math inline">\(\Pi_\beta\)</span>: Dirac Brevity Penalty applied when the contextual density falls below a defined threshold signaling a high-entropy, low-intent commit.</p>
+</section>
+<section id="sec-dru-spec" class="level2">
+<h2 class="anchored" data-anchor-id="sec-dru-spec">4.2 The Dirac Risk Unit (DRU) <span class="math inline">\(\Upsilon_D\)</span></h2>
+<p>The Dirac Risk Unit (<span class="math inline">\(\Upsilon_D\)</span>) serves one of the most important metric for evaluating the structural integrity of a state transition.</p>
+<p><span class="math inline">\(\Upsilon_D\)</span> is product of <strong>Financial Friction</strong> &amp; <strong>Information Entropy</strong> to ensure risk scales</p>
+<p><span class="math display">\[\Upsilon_D = \left( \frac{S_f}{\beta(f)} \right) \cdot \left( \frac{H_\Delta}{\Theta_D} \right)\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(S_f\)</span>: Is a Systemic Friction i.e.&nbsp;an engineering effort required to review or fix the changes.</p></li>
+<li><p><span class="math inline">\(\beta(f)\)</span>: Blast Radius, which is used to normalizes the risk based on the number of files touched in a commit. More about blast radius in the next section (see <a href="#sec-ln-br" class="quarto-xref">Section&nbsp;4.3</a>)</p></li>
+<li><p><span class="math inline">\(H_\Delta\)</span>: Is the State Transition Entropy which we talked above, representing the missing context in the commit</p></li>
+<li><p><span class="math inline">\(\Theta_D\)</span>: Dirac Density Threshold, I have derived this constant based on my study. (see <a href="#sec-thr-constant" class="quarto-xref">Section&nbsp;4.5</a>)</p></li>
+</ul>
+<p>This formula ensures that <span class="math inline">\(\Upsilon_D\)</span> remains within the stable range for well documented change but grows exponentially otherwise. This is a common pattern I have seen in a probabilistic AI generated code as part of my research.</p>
+<p>In short, the Dirac Risk Unit (<span class="math inline">\(\Upsilon_D\)</span>) is the <strong>Aggregated Risk Score</strong> of these changes.</p>
+</section>
+<section id="sec-ln-br" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ln-br">4.3 The Logarithmic Blast Radius (<span class="math inline">\(\beta\)</span>)</h2>
+<p>In Dirac Risk Unit (DRU) <span class="math inline">\({\Theta_D}\)</span> , we have defined <strong>Blast Radius (<span class="math inline">\(\beta\)</span>)</strong>.</p>
+<p>The risk associated with a state transition will become non-linear as the volume of files modified increases. To ensure that the factor does not scale non-linearly, logarithmic scaling function is used.</p>
+<p>This will also ensure that while there is a marginal state changes in multiple files on a single commit, the risk decreases as it is easier to control.</p>
+<p>Log function will remain sensitive to multi-file changes without exaggerating penalties for large refactoring.</p>
+<p><span class="math display">\[\beta(f) = \begin{cases} 1.0 &amp; \text{if } f = 1 \\ 1.0 + \ln(f) \cdot \kappa &amp; \text{if } f &gt; 1 \end{cases}\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(f\)</span>: Represents file count</p></li>
+<li><p><span class="math inline">\(\kappa\)</span>: is the Scaling Constant evaluated based on my study to be <strong>0.15</strong> <a href="#sec-kappa-constant" class="quarto-xref">Section&nbsp;4.4</a></p></li>
+</ul>
+</section>
+<section id="sec-kappa-constant" class="level2">
+<h2 class="anchored" data-anchor-id="sec-kappa-constant">4.4 Scaling Constant (<span class="math inline">\(\kappa\)</span> )</h2>
+<p>The file constant <strong><span class="math inline">\(\kappa\)</span></strong> is used while calculating in Blast Radius Multiplier (<span class="math inline">\(\beta\)</span>) <a href="#sec-ln-br" class="quarto-xref">Section&nbsp;4.3</a> and is set to a value of <strong>0.15</strong>.</p>
+<p>My data analysis for 10,005 commits reveals that <strong>90th</strong> percentile of the developer commits involves <em>11</em> files or fewer. This is the inflection point.</p>
+<p>A <strong>35% Review Tax</strong> is applied beyond this boundary where a single engineer can not longer maintain a mental map of the change, significantly increasing the probability of complex transition.</p>
+<p><br> Figure 4.4.1 shows histogram that 90% of all work happens in small clusters of files. The 10th file marks the <em>Cognitive Cliff</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/file_dispersion.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3.4.1 File Dispersion</figcaption>
+</figure>
+</div>
+<p>Figure 4.4.2 shows how the penalty grows as you touch more files. Jumping from 1 to 10 files is a huge increase in difficulty for developers and senior reviewers</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/multiplier.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3.4.2 Acceptance Rate</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-thr-constant" class="level2">
+<h2 class="anchored" data-anchor-id="sec-thr-constant">4.5 Dirac Density Threshold DDT (<span class="math inline">\(\Theta_D\)</span>)</h2>
+<p>The Dirac Density Threshold (<strong><span class="math inline">\(\Theta_D = 10.5\)</span></strong>) is a constant which is validated against my github audit of 10,005 commits.</p>
+<p>Data analysis reveals that <span class="math inline">\(H_\Delta = 10.5\)</span> represents the 82nd percentile of commit complexity. (<strong><span class="math inline">\(\Theta_D = 10.5\)</span></strong>) helps to establish baseline to isolates high-entropy transitions.</p>
+<p>Logarithmic nature of <span class="math inline">\(\beta(f)\)</span> accounts for the ‘worst-case’ remediation without exponentially over-penalizing refactoring.</p>
+<p>Figure 3.5.1 This graph shows that the vast majority of commits are very simple. By setting the threshold at <strong>10.5</strong> at <strong>81.9</strong> percentile, the DIRAC framework can ignore general noise of changes and will only trigger on high entropy changes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Dirac_Density_Threshold.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3.5.1 Dirac_Density_Threshold</figcaption>
+</figure>
+</div>
+<p>Figure 4.5.2 We can see that the majority of commits is where <strong>90%</strong> commit happens within 10 files or less placing the threshold at <strong>10.5</strong> as human cognitive limit. .</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/risk-heatmap.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3.5.2 Heatmap</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="forensic-data-methodology" class="level1">
+<h1>5. Forensic Data Methodology</h1>
+<p>This section provides details on how I approached the data extract and analysis of the dataset. To keep it simple, I have abstracted the details and only focused on the method in this paper.</p>
+<section id="data-extraction-privacy-ethics" class="level2">
+<h2 class="anchored" data-anchor-id="data-extraction-privacy-ethics">5.1 Data Extraction , Privacy &amp; Ethics</h2>
+<p>Data for this research consists of metadata only. I have extracted over 2000 public GitHub repositories post 2024.</p>
+<p>To maintain strict privacy and adhere to my ethical research philosophy:</p>
+<ol type="1">
+<li><p>No specific repository or author names will be mentioned in this paper particularly those repositories which has been built completely using AI and AI Agents, high entropy or which exhibits black swan events</p></li>
+<li><p>Analysis is performed only on the metadata of open source repositories.</p></li>
+</ol>
+</section>
+<section id="language-data-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="language-data-simulation">5.2 Language, Data &amp; Simulation</h2>
+<section id="rust" class="level3">
+<h3 class="anchored" data-anchor-id="rust">5.2.1 Rust</h3>
+<p>Rust is the language used to ensure memory safety and high concurrency data extraction. It interfaces with Git libraries to extract the atomic delta across 2000 repositories.</p>
+<ul>
+<li><p>It first extract the churn (<span class="math inline">\(\Lambda_{ins}\)</span> and <span class="math inline">\(\Lambda_{del}\)</span>) for every state transition.</p></li>
+<li><p>Analyse the depth of commit headers to establish Contextual Capacity (<span class="math inline">\(\Phi_{norm}\)</span>) <confirm the="" symbol="" is="" context="" provided="" as="" part="" of="" transition=""></confirm></p></li>
+<li><p>Calculate Systemic Friction (<span class="math inline">\(S_f\)</span>) <used instead="" of="" economic="" leakage="" index=""> based on temporal data and senior review taxes.</used></p></li>
+</ul>
+</section>
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python">5.2.2 Python</h3>
+<p>Python is known for its simplicity and excellent statistical and deep learning libraries. It is used for data analysis and Monte Carlo simulations and RL (planned for v2.0).</p>
+<p>Here’s is what it does:</p>
+<ul>
+<li><p>scikit-learn and pandas is used to execute multi-variable linear regression as a base line model to identify the correlation between entropy and friction via <span class="math inline">\(R^2\)</span> scores.</p></li>
+<li><p>Calculates Dirac Risk Unit (<span class="math inline">\(\Upsilon_D\)</span>) via normalisation against the Logarithmic Blast Radius (<span class="math inline">\(\beta\)</span>)</p></li>
+<li><p>To move beyond simple statistical averages , I have used Monte Carlo simulation with <span class="math inline">\(n=10,000\)</span> iteration to project maximum potential annual loss at 95th percentile confidence. This helps to analyse the risk distrubution</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="empirical-analysis" class="level1">
+<h1>6. Empirical Analysis</h1>
+<p>This section provides results from the analysis of over <strong>10,005</strong> state transitions in <strong>2000</strong> repositories. It shows Dirac Risk Unit (<span class="math inline">\(\Upsilon_D\)</span>) and the predictive accuracy (<span class="math inline">\(R^2\)</span>) scales. The goal is to identify the relation between entropy and systemic friction in software development lifecycle.</p>
+<section id="regression-analysis-and-predictability" class="level2">
+<h2 class="anchored" data-anchor-id="regression-analysis-and-predictability">6.1 Regression Analysis and Predictability</h2>
+<p>Linear regression was performed to determine engineering waste versus of code entropy. It helped in evaluating the State Transition Entropy (<span class="math inline">\(H_\Delta\)</span>) and File Volatility (<span class="math inline">\(f\)</span>) contribute to the total Systemic Friction.</p>
+<p><span class="math display">\[ S_f = \alpha + (\beta_1 \cdot H_{\Delta}) + (\beta_2 \cdot f)\]</span></p>
+<p>The baseline model achieved <strong><span class="math inline">\(R^2\)</span></strong> score of <strong>0.3585 (35.85%)</strong>. This means approximately 35.85% of the friction is directly predictable based on the properties of the code changes. Analysis also revealed the following:</p>
+<ul>
+<li><p>The Entropy Tax: Every unit of <span class="math inline">\(H_\Delta\)</span> introduces a cost of <strong>$8.52</strong> in remediation and review overhead.</p></li>
+<li><p>The Volume Tax: Each additional file modified adds to the atomic delta in turn adds $24.15 to the systemic friction.</p></li>
+<li><p>The Fixed Baseline: An intercept of <strong>112.50</strong> was identified as the inherent cost of initiating any state transition, regardless of size.</p></li>
+</ul>
+<p>Remember, even for a single commit there is a baseline cost as no commit is every free. This is the cost of context switching by a senior engineer to stop their current work, move to open PR, evaluating the impact of AI written code, inter-team discussion to assess impact of the change etc. This paper helps to prove that even a “micro-commits” from AI is more expensive that well designed human commits.</p>
+</section>
+<section id="results-table" class="level2">
+<h2 class="anchored" data-anchor-id="results-table">6.2 Results Table</h2>
+<p>6.2.1 - The table below summarizes the findings, showing the predictive accuracy (<span class="math inline">\(R^2\)</span>) and the resulting Dirac Risk Units (<span class="math inline">\(\Upsilon_D\)</span>).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data Segment</th>
+<th>Sample Size</th>
+<th><strong>Mean DRU</strong> <span class="math inline">\(\Upsilon_D\)</span></th>
+<th><strong>R2 Score (R2)</strong></th>
+<th><strong>Mean Entropy (HΔ)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Standard Transition</td>
+<td>7305</td>
+<td>1142.20</td>
+<td>0.1842</td>
+<td>1.18</td>
+</tr>
+<tr class="even">
+<td>Complex Transition</td>
+<td>2438</td>
+<td>6180.45</td>
+<td>0.2815</td>
+<td>44.92</td>
+</tr>
+<tr class="odd">
+<td>Anomaly Transition</td>
+<td>265</td>
+<td>812,490.12</td>
+<td>0.5432</td>
+<td>6188.40</td>
+</tr>
+<tr class="even">
+<td>Aggregate Dataset</td>
+<td>10,005</td>
+<td>2400.40</td>
+<td>0.3585</td>
+<td>176.04</td>
+</tr>
+</tbody>
+</table>
+<section id="observations" class="level3">
+<h3 class="anchored" data-anchor-id="observations">Observations:</h3>
+<p>As transitions move from standard to complex , the predictability (<span class="math inline">\(R^2\)</span>) remains stable but <span class="math inline">\(\Upsilon_D\)</span> increases, signalling a higher risk of structural decay.</p>
+<p>Anomaly Transitions section (where <span class="math inline">\(R^2\)</span> is 0.5432) are “Black Swan” events i.e.&nbsp;commits where entropy is so high that even traditional regression model fail. This requires immediate audit.</p>
+</section>
+</section>
+<section id="forensic-governance-anomaly-detection" class="level2">
+<h2 class="anchored" data-anchor-id="forensic-governance-anomaly-detection">6.3 Forensic Governance: Anomaly Detection</h2>
+<p>Forensic Governance is the technical ability to isolate high-risk state transition before they are integrated to the primary branch.</p>
+<p>By monitoring the Dirac Risk Unit (<span class="math inline">\(\Upsilon_D\)</span>) the framework identified anomalies that will deviate significantly from the baseline <span class="math inline">\(\Omega\)</span>.</p>
+<p>These anomalies are often correlated with the following:</p>
+<ol type="1">
+<li>Extensive logic changes with bare minimal contextual information</li>
+<li>High entropy patterns which introduces redundant , structural or variable changes<br>
+</li>
+<li>Higher the <span class="math inline">\(\Upsilon_D\)</span> , possibiloty that commit might contain unaudited code or even security vulnerabilities created by AI</li>
+</ol>
+</section>
+<section id="quantifying-organizational-impact-r_c" class="level2">
+<h2 class="anchored" data-anchor-id="quantifying-organizational-impact-r_c">6.4 Quantifying Organizational Impact (<span class="math inline">\(R_c\)</span>)</h2>
+<p>This is to measure the aggregate systemic friction in an organization, I have defined Capacity Loss Ratio (<span class="math inline">\(R_c\)</span>) as a function of the annual Systemic Friction (<span class="math inline">\(S_f\)</span>) relative to the total human (<span class="math inline">\(C_{annual}\)</span>) capital expenditure :</p>
+<p><span class="math display">\[R_c = \frac{\sum_{i=1}^{n} S_{f,i}}{C_{annual}}\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(n\)</span> represents the total volume of state transitions over a 12-month period.</p></li>
+<li><p>In the forensic analysis of 2000 repositories, <span class="math inline">\(R_c\)</span> was identified as <strong>24.16%</strong>.</p></li>
+</ul>
+<p>This metric will serve as an indicator of the “Invisible Tax” paid by the organization due to high code entropy.</p>
+</section>
+</section>
+<section id="section-7.-remediation-via-reinforcement-learning-rl" class="level1">
+<h1>Section 7. Remediation via Reinforcement Learning (RL)</h1>
+<p>This section I outline the remediation via active governance which is to mitigate the structure decay identified in section 5. I propose a Reinforcement Learning framework (RL) <span class="citation" data-cites="rl_foundation2024"><a href="#ref-rl_foundation2024" role="doc-biblioref">[6]</a></span> to optimize the state transition life cycle . This remediation is part of the next version (ver 2.0) of this paper. To know more about my future work, please refer to section 7 below titled “Future Work”.</p>
+<section id="policy-objective" class="level2">
+<h2 class="anchored" data-anchor-id="policy-objective">7.1 Policy Objective</h2>
+<p>This is a dynamic optimization problem so the objective will be a remediation layer to train a RL algorithm. It will help minimize the Dirac Risk Unit (<span class="math inline">\(\Upsilon_D\)</span>) while maintaining the engineering velocity.</p>
+</section>
+<section id="reward-function-r" class="level2">
+<h2 class="anchored" data-anchor-id="reward-function-r">7.1.1 Reward Function (<span class="math inline">\(R\)</span>)</h2>
+<p>A reward function will penalise high entropy and rewards contextual denseness. Simplified representation for a given state transition will be <span class="math display">\[R = \text{Velocity} - (\omega_1 \cdot \Upsilon_D + \omega_2 \cdot H_\Delta)\]</span></p>
+<p>Where:</p>
+<p><span class="math inline">\(\omega_1, \omega_2\)</span>: Weighting coefficients that align with the organization’s specific risk appetite.</p>
+<p><span class="math inline">\(\Upsilon_D\)</span>: The real-time risk unit of the proposed delta.</p>
+<p>This should autonomously flag or reject those deltas which pose threat to the system’s integrity.</p>
+</section>
+</section>
+<section id="future-work-from-physical-entropy-to-semantic-fragility" class="level1">
+<h1>8. Future Work: From Physical Entropy to Semantic Fragility</h1>
+<p>The current version (v1.0) focuses on Structural entropy. While this is effective, I have identified the never evolution of this research which is to address Semantic Fragility , Variable Volatility, beyond forensic analysis towards Predictive Failure.</p>
+<p>By analyzing the trajectory of <span class="math inline">\(\Upsilon_D\)</span>, DIRAC will be able to predict system failure based on the historical entropy trends by the AI &amp; Agents.</p>
+</section>
+<section id="acknowledgements" class="level1">
+<h1>9. Acknowledgements</h1>
+<p>I would like to thank the open-source community and the contributors of the 2,000 repositories which I analyzed as part of this paper. Special thanks to the researchers at UC Berkeley RDI and Apple’s Machine Learning Research team for their recent work on “Benchmark Fragility” and “Symbolic Reasoning,”. It help provide critical validation for the Dirac Density Threshold (<span class="math inline">\(\Theta_D\)</span>) and the <span class="math inline">\(R_c\)</span> metrics defined in this paper.</p>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">10. References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-shannon1948" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">C. E. Shannon, <span>“A mathematical theory of communication,”</span> <em>Bell System Technical Journal</em>, 1948.</div>
+</div>
+<div id="ref-dirac1928quantum" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">P. A. M. Dirac, <span>“The quantum theory of the electron,”</span> <em>Proceedings of the Royal Society of London. Series A, Containing papers of a mathematical and physical character</em>, vol. 117, no. 778, pp. 610–624, 1928.</div>
+</div>
+<div id="ref-forsgren2018accelerate" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">N. Forsgren, J. Humble, and G. Kim, <em>Accelerate: The science of lean software and DevOps: Building and scaling high performing technology organizations</em>. United States: IT Revolution, 2018.</div>
+</div>
+<div id="ref-apple2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">A. I. Team, <span>“GSM-symbolic: Understanding the limitations of mathematical reasoning in large language models,”</span> 2025, Available: <a href="https://machinelearning.apple.com/">https://machinelearning.apple.com/</a></div>
+</div>
+<div id="ref-berkeley2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">J. Wang <em>et al.</em>, <span>“How we broke top AI agent benchmarks: And what comes next.”</span> [Online]. Available: <a href="https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/">https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/</a></div>
+</div>
+<div id="ref-rl_foundation2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">A. Author <em>et al.</em>, <span>“Foundations of reinforcement learning for autonomous systems,”</span> <em>arXiv preprint arXiv:2408.07712</em>, 2024, Available: <a href="https://arxiv.org/abs/2408.07712">https://arxiv.org/abs/2408.07712</a></div>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

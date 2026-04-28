@@ -6,28 +6,29 @@ toc: false
 
 ------------------------------------------------------------------------
 
-<!-- # CIOP - Cognitive Interaction Optimization Platform -->
+<!-- # CIOP - Cognitive Interaction Optimization Platform - <b>[**Completed**]{style="color:green;"} -->
 
 <!-- CIOP consists of two sub projects -->
 
-# \> **Autonomous Command Optimization Network (ACON)**
+# **Autonomous Command Optimization Network (ACON)**
 
- [v1.0 via Multi-Arm Bandit](./acon.qmd) - <b>[**Completed**]{style="color:green;"}
-
-
-<br>
-
-# \> **Computational Optimization & Precision Engine (COPE)**
-
-  <b>[*In Progress*]{style="color:Orange;"}
-
-
+Research Paper - [v1.0 via Multi-Arm Bandit](./acon.qmd)
 
 <br>
 
+#  **DIRAC**: Deterministic Forensic Model for Measuring Information Entropy in LLM Generated Software
 
-# \> **Cognitive Optimization Workflow Intelligence (CIOW)**
+Research Paper - [v1.0 DIRAC](./dirac_technical_paper.qmd) 
 
-   <b>[*Coming Soon*]{style="color:gray;"}
+<br>
 
+# **DIRAC**: A Forensic Framework for Quantifying Engineering and Financial Leakage in the Era of LLMs
+
+White Paper - [v1.0 DIRAC](./dirac_white_paper.qmd)
+
+
+<br>
+<br>
+
+# Try DIRAC: [v1.0 DIRAC](./dirac_interface.qmd)
 

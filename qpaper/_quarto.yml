@@ -3,18 +3,28 @@ project:
   output-dir: ../qpapers-published
 
 website:
-  title: "Research Home"
+  title: "Home"
   description: "Implementation-focused research in RL and Quantum Computing"
   favicon: images/favicon-32x32.png
   navbar:
     left:
+      - text: "ACON"
+        href: ./acon.qmd
+        
+      - text: "DIRAC Technical Paper"
+        href: ./dirac_technical_paper.qmd
+        
+      - text: "DIRAC White Paper"
+        href: ./dirac_white_paper.qmd
+      
+      - text: "Try Dirac"
+        href: ./dirac_interface.qmd
+        target: _blank
+   
+    right:
       - text: "QbitAI.in"
         href: https://qubitai.in
         target: _blank
-      - text: "CIOP"
-        menu:
-          - text: "ACON v1.0"
-            href: acon.qmd
        
 format:
   html:

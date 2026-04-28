@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rakesh Venkat">
+<meta name="dcterms.date" content="2026-04-28">
+
+<title>DIRAC: A Forensic Framework for Quantifying Engineering and Financial Leakage in the Era of Large Language Models – Home</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8610558a007458a9b978551a034f4d85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Home</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./acon.html"> 
+<span class="menu-text">ACON</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dirac_technical_paper.html"> 
+<span class="menu-text">DIRAC Technical Paper</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./dirac_white_paper.html" aria-current="page"> 
+<span class="menu-text">DIRAC White Paper</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dirac_interface.html" target="_blank"> 
+<span class="menu-text">Try Dirac</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://qubitai.in" target="_blank"> 
+<span class="menu-text">QbitAI.in</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#traditional-metrics-in-the-ai-era" id="toc-traditional-metrics-in-the-ai-era" class="nav-link" data-scroll-target="#traditional-metrics-in-the-ai-era">1. Traditional Metrics in the AI Era</a>
+  <ul class="collapse">
+  <li><a href="#moving-beyond-tokens" id="toc-moving-beyond-tokens" class="nav-link" data-scroll-target="#moving-beyond-tokens">1.1 Moving Beyond Tokens</a></li>
+  <li><a href="#comparison-of-governance-frameworks" id="toc-comparison-of-governance-frameworks" class="nav-link" data-scroll-target="#comparison-of-governance-frameworks">1.2 Comparison of Governance Frameworks</a></li>
+  </ul></li>
+  <li><a href="#quantifying-the-drain" id="toc-quantifying-the-drain" class="nav-link" data-scroll-target="#quantifying-the-drain">2. Quantifying the drain</a>
+  <ul class="collapse">
+  <li><a href="#sec-ddt-spec" id="toc-sec-ddt-spec" class="nav-link" data-scroll-target="#sec-ddt-spec">2.1 Dirac Density Threshold (<span class="math inline">\(\Theta_D\)</span>)</a></li>
+  <li><a href="#sec-sys-spec" id="toc-sec-sys-spec" class="nav-link" data-scroll-target="#sec-sys-spec">2.2 Mapping Entropy to Systemic Friction (<span class="math inline">\(S_f\)</span>)</a></li>
+  <li><a href="#financial-mapping-entropy-vs-bottom-line" id="toc-financial-mapping-entropy-vs-bottom-line" class="nav-link" data-scroll-target="#financial-mapping-entropy-vs-bottom-line">2.3 Financial Mapping: Entropy vs Bottom Line</a></li>
+  <li><a href="#table-2.3-entropy-vs.-financial-impact" id="toc-table-2.3-entropy-vs.-financial-impact" class="nav-link" data-scroll-target="#table-2.3-entropy-vs.-financial-impact">Table 2.3: Entropy vs.&nbsp;Financial Impact</a></li>
+  </ul></li>
+  <li><a href="#section-3.-risk-forecasting-for-the-enterprise" id="toc-section-3.-risk-forecasting-for-the-enterprise" class="nav-link" data-scroll-target="#section-3.-risk-forecasting-for-the-enterprise">Section 3. Risk Forecasting for the Enterprise</a>
+  <ul class="collapse">
+  <li><a href="#visualizing-annual-exposure-via-monte-carlo-simulations" id="toc-visualizing-annual-exposure-via-monte-carlo-simulations" class="nav-link" data-scroll-target="#visualizing-annual-exposure-via-monte-carlo-simulations">3.1 Visualizing Annual Exposure via Monte Carlo Simulations</a></li>
+  <li><a href="#the-capacity-loss-ratio-r_c-reclaiming-engineering-hours" id="toc-the-capacity-loss-ratio-r_c-reclaiming-engineering-hours" class="nav-link" data-scroll-target="#the-capacity-loss-ratio-r_c-reclaiming-engineering-hours">3.2 The Capacity Loss Ratio (<span class="math inline">\(R_c\)</span>): Reclaiming Engineering Hours</a></li>
+  </ul></li>
+  <li><a href="#section-4.-the-dirac-governance-strategy" id="toc-section-4.-the-dirac-governance-strategy" class="nav-link" data-scroll-target="#section-4.-the-dirac-governance-strategy">Section 4. The DIRAC Governance Strategy</a>
+  <ul class="collapse">
+  <li><a href="#implementing-automated-governance-gates" id="toc-implementing-automated-governance-gates" class="nav-link" data-scroll-target="#implementing-automated-governance-gates">4.1 Implementing Automated Governance Gates</a></li>
+  <li><a href="#transitioning-from-pattern-matching-to-architected-engineering" id="toc-transitioning-from-pattern-matching-to-architected-engineering" class="nav-link" data-scroll-target="#transitioning-from-pattern-matching-to-architected-engineering">4.2 Transitioning from “Pattern-Matching” to “Architected” Engineering</a></li>
+  </ul></li>
+  <li><a href="#efficiency-in-ai-augmented-environments" id="toc-efficiency-in-ai-augmented-environments" class="nav-link" data-scroll-target="#efficiency-in-ai-augmented-environments">5. Efficiency in AI Augmented Environments</a></li>
+  <li><a href="#automated-remediation-the-transition-to-autonomous-governance" id="toc-automated-remediation-the-transition-to-autonomous-governance" class="nav-link" data-scroll-target="#automated-remediation-the-transition-to-autonomous-governance">6. Automated Remediation: The Transition to Autonomous Governance</a>
+  <ul class="collapse">
+  <li><a href="#the-policy-objective" id="toc-the-policy-objective" class="nav-link" data-scroll-target="#the-policy-objective">6.1 The Policy Objective</a></li>
+  <li><a href="#the-strategic-reward-function-r" id="toc-the-strategic-reward-function-r" class="nav-link" data-scroll-target="#the-strategic-reward-function-r">6.2 The Strategic Reward Function (<span class="math inline">\(R\)</span>)</a></li>
+  </ul></li>
+  <li><a href="#section-7.-future-version-v2.0-moving-from-structural-entropy-to-semantic-fragility" id="toc-section-7.-future-version-v2.0-moving-from-structural-entropy-to-semantic-fragility" class="nav-link" data-scroll-target="#section-7.-future-version-v2.0-moving-from-structural-entropy-to-semantic-fragility">Section 7. Future version (v2.0): Moving from Structural Entropy to Semantic Fragility</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="dirac_white_paper.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">DIRAC: A Forensic Framework for Quantifying Engineering and Financial Leakage in the Era of Large Language Models</h1>
+<p class="subtitle lead">Deterministic Integrity &amp; Risk Assessment Core (DIRAC) v1.0</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rakesh Venkat </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 28, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>While industry leaders report that 41% of new commercial code is AI-generated <span class="citation" data-cites="rocketdevs2026crisis"><a href="#ref-rocketdevs2026crisis" role="doc-biblioref">[1]</a></span>, there is a significant <strong>Quality</strong> issues that is emerging. Recent studies also shows that 44% of AI initiatives are being rolled back due to operational costs <span class="citation" data-cites="applause2026quality"><a href="#ref-applause2026quality" role="doc-biblioref">[2]</a></span>. Total development process has actually slowed by 19% as teams struggle to integrate “messy” AI logic <span class="citation" data-cites="rocketdevs2026crisis"><a href="#ref-rocketdevs2026crisis" role="doc-biblioref">[1]</a></span>.</p>
+<p>Current metrics which are used for tracking engineering productivity lacks something very critical, the <strong>Hidden cost of AI generated code</strong>. While companies are focused on the velocity and cost of utilizing token by buying licenses from AI vendors, there is a complete lack of visibility in <strong>Review Tax</strong>.</p>
+<p><strong>Review Tax</strong> is the massive amount of valuable and expensive senior engineering time spent fixing, auditing and refactoring AI generated code that might appear correct but are structurally fragile. Over time this leads to delays and significant waste of capital.</p>
+<p>Recent research from UC Berkeley <span class="citation" data-cites="berkeley2026"><a href="#ref-berkeley2026" role="doc-biblioref">[3]</a></span> showed that these benchmarks can be manipulated and do not reflect the real-world performance.</p>
+<p><strong>D</strong>eterministic <strong>I</strong>ntegrity &amp; <strong>R</strong>isk <strong>A</strong>ssessment <strong>C</strong>ore <strong>(DIRAC v1.0)</strong> is a forensic framework designed to move beyond simple dashboard and DORA metrics <span class="citation" data-cites="forsgren2018accelerate"><a href="#ref-forsgren2018accelerate" role="doc-biblioref">[4]</a></span>.</p>
+<p>I have analysed over <strong>2000</strong> open source repositories with <strong>10,005</strong> commits and quantified the <strong>Information Entropy</strong> of code changes to map it directly to financial loss.</p>
+<p>This paper shows that there is a need to <strong>Audit Entropy</strong> and protect engineering decay over time.</p>
+</section>
+<section id="traditional-metrics-in-the-ai-era" class="level1">
+<h1>1. Traditional Metrics in the AI Era</h1>
+<p>For years, framework like <strong>Deployment Frequency, Lead Time</strong> (DORA)<span class="citation" data-cites="forsgren2018accelerate"><a href="#ref-forsgren2018accelerate" role="doc-biblioref">[4]</a></span> has been the gold standard for velocity metrics but never designed as a quality metrics. But in the era of AI, it can be potentially be misleading. Here’s how</p>
+<ul>
+<li><p>Multiple deployments can happen in a day but if each of them contain high-entropy code that requires extensive reviews by a senior, then velocity is an <em>illusion</em>.</p></li>
+<li><p>DORA does not track Review Tax, it fails to show that a single AI generated commit could potentially consume significant senior team’s capacity to ensure that system remains stable after merge.</p></li>
+<li><p>Traditional metrics cannot see the <strong>entropy</strong> (disorder) inside a commit. A build will only have either a <em>pass</em> or <em>fail</em> status but</p></li>
+</ul>
+<section id="moving-beyond-tokens" class="level2">
+<h2 class="anchored" data-anchor-id="moving-beyond-tokens">1.1 Moving Beyond Tokens</h2>
+<p>Most organisation would currently manage their AI costs via <strong>Token Utilization dashboard</strong> provide by AI vendors. Additionally, organization can have internal tracking to monitor input, output token usage.</p>
+<p>Yes, these can show how much an organisation is spending on the AI but it never reveal how much the AI is costing <em>organizational engineering friction</em>.</p>
+<p>Data driven decision making requires a forensic approach where <strong>State Transition Entropy</strong> should to be measured.</p>
+<p>It is also essential to understand the true impact on the organization’s bottom line. This is where DIRAC is extremely helpful and provides visibility and governance.</p>
+</section>
+<section id="comparison-of-governance-frameworks" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-governance-frameworks">1.2 Comparison of Governance Frameworks</h2>
+<p>To understand why DIRAC is necessary, we must compare it against the metrics currently used by in software engineering.</p>
+<p>While LOC and DORA measures <strong>how much</strong> and <strong>how fast</strong>,DIRAC measures the <strong>hidden cost</strong> of the logic itself, specifically in the world where AI is mainstream.</p>
+<p>Table 1.2.1</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Metric A t tribute</strong></td>
+<td><strong>Lines of Code (LoC)</strong></td>
+<td><strong>DORA Metrics</strong></td>
+<td><strong>DIRAC</strong></td>
+</tr>
+<tr class="even">
+<td>Primary Focus</td>
+<td>V olumetric Output</td>
+<td>D eployment Velocity</td>
+<td>A r c h itectural Integrity</td>
+</tr>
+<tr class="odd">
+<td>S e nsitivity</td>
+<td>High (Size only)</td>
+<td>Low (Outcome only)</td>
+<td>Very High (Logic Entropy)</td>
+</tr>
+<tr class="even">
+<td>Financial Mapping</td>
+<td>None</td>
+<td>Indirect / Project Based</td>
+<td>Direct (Systemic Friction)</td>
+</tr>
+<tr class="odd">
+<td>AI Context</td>
+<td>N egligible</td>
+<td>Limited</td>
+<td>Optimized ( P r o bablistic Audit)</td>
+</tr>
+<tr class="even">
+<td>Risk Detection</td>
+<td>Post Commit</td>
+<td>Post D eployment</td>
+<td>Pre Merge (Atomic)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="quantifying-the-drain" class="level1">
+<h1>2. Quantifying the drain</h1>
+<p>To effectively manage engineering friction, organizations must move to deterministic units of measure.</p>
+<p>This framework introduces two primary indicators:</p>
+<ol type="1">
+<li><p><strong>Dirac Density Threshold (</strong><span class="math inline">\(\Theta_D\)</span>) (<a href="#sec-ddt-spec" class="quarto-xref">Section&nbsp;3.1</a>)</p></li>
+<li><p><strong>Systemic Friction (</strong><span class="math inline">\(S_f\)</span>) (<a href="#sec-sys-spec" class="quarto-xref">Section&nbsp;3.2</a>)</p></li>
+</ol>
+<section id="sec-ddt-spec" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ddt-spec">2.1 Dirac Density Threshold (<span class="math inline">\(\Theta_D\)</span>)</h2>
+<p><strong>D</strong>irac <strong>D</strong>ensity <strong>T</strong>hreshold (DDT) <span class="math inline">\(\Theta_D\)</span> is a governance metric design to evaluate the intent behind any code change.</p>
+<p>It measures relation between technical complexity of a <strong>state transition</strong> and <strong>contextal metadata</strong> on an atomic commit.</p>
+<p>In an AI augmented environment, code can be generated with zero cognitive overhead. If this code is merged without human audit then the <span class="math inline">\(\Theta_D\)</span> falls below the safe baseline.</p>
+<p>Therefore by enforcing a minimum DDT, organizations can:</p>
+<p><strong>A.</strong> Identify Low-Intent Transitions by automatically flag commits where <strong>Entropy</strong> to <strong>Context ratio</strong> is high and have high probability that the AI generated codes aren’t verified.</p>
+<p><strong>B.</strong> Optimizing Engineering Capacity: To ensure that when a senior engineer performs a review, they are auditing high-density, well-documented logic than evaluating <strong>noisy</strong> probabilistic generated code.</p>
+</section>
+<section id="sec-sys-spec" class="level2">
+<h2 class="anchored" data-anchor-id="sec-sys-spec">2.2 Mapping Entropy to Systemic Friction (<span class="math inline">\(S_f\)</span>)</h2>
+<p>Another core innovation of the DIRAC framework is the ability to assign <strong>financial value</strong> to <strong>Information Entropy (</strong><span class="math inline">\(H_\Delta\)</span>).</p>
+<p>This is only possible by analyzing the state transitions and subsequent engineering overhead to maintain these transitions for calculating the <strong>Systemic Friction (</strong><span class="math inline">\(S_f\)</span>).</p>
+<p>Review Tax is the measurable impact of this friction which can be calculated using the formula:</p>
+<p><span class="math display">\[S_f = (\text{Review Time Cost}) + (\text{Remediation Cost})\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><strong>Diverted Engineering Capacity</strong>: Is the cost of senior engineering time reassigned from new feature development to verifying and stabilizing high-entropy code.</p></li>
+<li><p><strong>Structural Remediation</strong> : Is the technical overhead required to address the code drift causing architectural delay before the code is transitioned to production environment.</p></li>
+</ul>
+<p>By quantifying these frictions, the DIRAC framework allows the organization to calculate the <strong>True Cost of a Commit</strong>.</p>
+<p>Using this framework, organization can now see the direct correlation between <em>high entropy AI generated code</em> and the <em>erosion of the engineering budget</em> including <em>true productivity loss</em>.</p>
+</section>
+<section id="financial-mapping-entropy-vs-bottom-line" class="level2">
+<h2 class="anchored" data-anchor-id="financial-mapping-entropy-vs-bottom-line">2.3 Financial Mapping: Entropy vs Bottom Line</h2>
+<p>The table below illustrates how <strong>DIRAC Risk Unit</strong> (DRU) serves as an indicator of Systemic Friction <span class="math inline">\(S_f\)</span> and business impact.</p>
+<p>By categorizing code transitions by their entropy levels, organization can predict the <strong>Review Tax</strong> before it is actually paid.</p>
+</section>
+<section id="table-2.3-entropy-vs.-financial-impact" class="level2">
+<h2 class="anchored" data-anchor-id="table-2.3-entropy-vs.-financial-impact">Table 2.3: Entropy vs.&nbsp;Financial Impact</h2>
+<p>This table provides baseline for organizations to translate <em>technical entrop</em>y into <em>operational risks</em>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 17%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Entropy Level</th>
+<th>DRU</th>
+<th>Risk Category</th>
+<th>Potential Review Tax</th>
+<th>Business Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.0 - 5.0</td>
+<td>&lt;0.5</td>
+<td>Low (High Intent)</td>
+<td>Minimal</td>
+<td><strong>High Feature Velocity:</strong> Clean transitions, rapid delivery.</td>
+</tr>
+<tr class="even">
+<td>5.1 - 15.0</td>
+<td>0.5 - 1.0</td>
+<td>Medium (S tandard)</td>
+<td>Moderate</td>
+<td><strong>Maintenance Mode:</strong> Standard review overhead required.</td>
+</tr>
+<tr class="odd">
+<td>15.1+</td>
+<td>&gt;1.0</td>
+<td><p>E xtremely High</p>
+<p>(<strong>Black Swan event</strong>)</p></td>
+<td>S ignificant</td>
+<td><strong>Structural Decay:</strong> High probability of rework.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="section-3.-risk-forecasting-for-the-enterprise" class="level1">
+<h1>Section 3. Risk Forecasting for the Enterprise</h1>
+<p>Traditional reporting structures often rely on linear growth models and monthly averages to assess the health of software systems.</p>
+<p>However, in an era of AI based development, these numbers can hide the accumulation of potential risks and structural integrity in software systems.</p>
+<section id="visualizing-annual-exposure-via-monte-carlo-simulations" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-annual-exposure-via-monte-carlo-simulations">3.1 Visualizing Annual Exposure via Monte Carlo Simulations</h2>
+<p>Monthly averages provide a view of performance that can mask high-entropy events.</p>
+<p>A system may appear to be stable on a dashboard. While a single high-entropy state transition can have a very high level of complexity , low contextual intent introducing code drifts.</p>
+<p>This will consume engineering resources weeks or even months later, creating a <strong>Black Swan</strong> <span class="citation" data-cites="vasudevan2024blackswan"><a href="#ref-vasudevan2024blackswan" role="doc-biblioref">[5]</a></span> event.</p>
+<p>In this framework, I have applied Monte Carlo simulations with over 10000 iterations <strong>(<span class="math inline">\(n=10,000\)</span> iterations)</strong> to model annual budget exposure.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MonteCarlo.png" class="img-fluid figure-img"></p>
+<figcaption>Monte Carlo</figcaption>
+</figure>
+</div>
+<p>Figure 3.1.1 illustrates the probability of <strong>Black Swan</strong> <span class="citation" data-cites="vasudevan2024blackswan"><a href="#ref-vasudevan2024blackswan" role="doc-biblioref">[5]</a></span> budget spikes. While most days can be stable, high-entropy events can drain weeks of engineering capacity in a single transition.</p>
+<p>By simulating the distribution of <strong>Dirac Risk Unit</strong> (also represented as <span class="math inline">\(\Upsilon_D\)</span>) across these cycles , the framework calculates 95% <strong>V</strong>alue <strong>a</strong>t <strong>R</strong>isk (<strong>VaR</strong>).</p>
+<p>This forensic approach moved beyond static reporting and help software companies to understand statistical probability of structural decay and impact on long term stability of a system.</p>
+</section>
+<section id="the-capacity-loss-ratio-r_c-reclaiming-engineering-hours" class="level2">
+<h2 class="anchored" data-anchor-id="the-capacity-loss-ratio-r_c-reclaiming-engineering-hours">3.2 The Capacity Loss Ratio (<span class="math inline">\(R_c\)</span>): Reclaiming Engineering Hours</h2>
+<p>The final strategic output of the DIRAC audit is the <strong>Capacity Loss Ratio (<span class="math inline">\(R_c\)</span>)</strong>.</p>
+<p>This metric shows the specific percentage of total engineering capacity that is absorbed by the Review Tax.</p>
+<p>It allows the organisation to visualize the <strong>Effective Workforce</strong> vs <strong>Actual Workforce</strong>.</p>
+<p>Based on the forensic baseline of 2000 pen source repositories, the analysis identifies an <span class="math inline">\(R_c\)</span> of <strong>24.16%</strong>.</p>
+<p>Let me try to put this in perspective for a global engineering profile:</p>
+<ul>
+<li><p>Baseline Salary: $150,000 USD</p></li>
+<li><p>Annualized Review Tax <span class="math inline">\((150,000 \times R_c)\)</span> = <span class="math inline">\(36,240\)</span> USD</p></li>
+<li><p>The Effective Capacity: Which means for every 50 engineers on payroll, the organization is receiving the effective output of only [50 (1 - 0.2416)] <span class="math inline">\(=\)</span> <strong>37.92</strong> which is approximately <strong>38</strong> individuals.</p></li>
+</ul>
+<p>The remaining capacity is not lost to laziness or lack of effort; it is the invisible tax representing diverted senior engineering efforts to stabilize high-entropy state transitions caused by AI code.</p>
+<p>DIRAC makes this visible so organization can implement <strong>Automated Governance Gates</strong> to lower this systemic friction <strong><span class="math inline">\(R_c\)</span></strong> and reclaim the lost budget.</p>
+</section>
+</section>
+<section id="section-4.-the-dirac-governance-strategy" class="level1">
+<h1>Section 4. The DIRAC Governance Strategy</h1>
+<p>The objective of DIRAC framework is to help organization from passive observations to Deterministic Governance by leveraging forensic indicators mentioned in the previous sections.</p>
+<p>This can help organization and leadership to implement <strong>Automate gates</strong> to protect the system’s integrity without impacting development velocity.</p>
+<section id="implementing-automated-governance-gates" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-automated-governance-gates">4.1 Implementing Automated Governance Gates</h2>
+<p>The primary mechanism for reclaiming engineering capacity can be the implementation of pre-merge Governance Gates.</p>
+<p>Unlike traditional unit testing, which focus on syntax and execution, DIRAC gates focuses on Information Entropy (<span class="math inline">\(H_\Delta\)</span>) and the Dirac Density Threshold (<span class="math inline">\(\Theta_D\)</span>).</p>
+<p>The governance protocol can operate on:</p>
+<ul>
+<li><p>High-Intent Transitions with low Dirac Risk Unit (DRU) (<span class="math inline">\(\Upsilon_D\)</span>): Changes that fall within the safe <span class="math inline">\(\Theta_D\)</span> baseline are fast-tracked. These transitions represent high-intent, well-documented logic that minimizes the <em>Review Tax</em>.</p></li>
+<li><p>Incomprehensible Transitions with High Dirac Risk Unit DRU <span class="math inline">\(\Upsilon_D\)</span>): Changes that exceed the risk threshold are automatically flagged for a mandatory <em>forensic audit</em>.</p></li>
+</ul>
+<p>By filtering these transitions at the atomic level, organization can ensures that senior engineering capacity is only diverted to changes which has a high probability of structural impact. At the same time keep the entropy low and system stable.</p>
+</section>
+<section id="transitioning-from-pattern-matching-to-architected-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="transitioning-from-pattern-matching-to-architected-engineering">4.2 Transitioning from “Pattern-Matching” to “Architected” Engineering</h2>
+<p>There is a widespread use of AI and the shift of software development is more towards <strong>pattern matching</strong> code.</p>
+<p>These code gets accepted because it could look familiar and it may not be architecturally sound. This is the one of the root cause of <strong>Capacity Loss Ratio (<span class="math inline">\(R_c\)</span>)</strong>.</p>
+<p>In DIRAC, the governance strategy enforces organization to make <em>Invisible Tax</em> visible. This framework incentivizes developers to provide the necessary contextual density for every AI assisted change.</p>
+<p>This ensures that:</p>
+<ul>
+<li><p>Human Intent remains the Primary Driver: AI is utilized as a tool, but the structural integrity is governed by deterministic human-verified thresholds.</p></li>
+<li><p>Using frameworks to identify inefficient manual refactoring of high-risk modules, allowing the organizations to isolate and resolve only the high-entropy modules that pose a systemic risk.</p></li>
+</ul>
+</section>
+</section>
+<section id="efficiency-in-ai-augmented-environments" class="level1">
+<h1>5. Efficiency in AI Augmented Environments</h1>
+<p>Integration of Large Language Models (LLM) into the software lifecycle is an irreversible shift. This however, currently lacks transparency regarding code entropy and stability of system and poses and significant risk to the long term stability in the software industry.</p>
+<p>DIRAC framework provides the necessary forensic layer to manage this transition.</p>
+<p>By quantifying the Review Tax and identifying the Capacity Loss Ratio (<span class="math inline">\(R_c\)</span>), organization can move beyond the <em>Illusion of velocity</em> and make data-driven decisions that protect their human capital.</p>
+<p>The goal is not to limit the use of AI, but govern it and govern it well. By reclaiming the <strong>24.16%</strong> of lost capacity identified in this study, organizations can ensure that their engineering teams remain focused on building the future, rather than remediating the structural decay of the past.</p>
+</section>
+<section id="automated-remediation-the-transition-to-autonomous-governance" class="level1">
+<h1>6. Automated Remediation: The Transition to Autonomous Governance</h1>
+<p>This section dives into the mitigating the structural delay identified in this research.</p>
+<p>In the next phase (version 2.0), the DIRAC framework will transition from detection to remediation by proposing Reinforcement Learning <span class="citation" data-cites="rl_foundation2024"><a href="#ref-rl_foundation2024" role="doc-biblioref">[6]</a></span> Learning (RL). It will be designed to optimize the state transitions.</p>
+<section id="the-policy-objective" class="level2">
+<h2 class="anchored" data-anchor-id="the-policy-objective">6.1 The Policy Objective</h2>
+<p>The objective of this remediation would be to design a dynamic optimization policy to minimize the Dirac Risk Unit (<span class="math inline">\(\Upsilon_D\)</span>) while maintaining engineering velocity.</p>
+<p>This layer learns organization’s specific patterns to provide adaptive governance.</p>
+</section>
+<section id="the-strategic-reward-function-r" class="level2">
+<h2 class="anchored" data-anchor-id="the-strategic-reward-function-r">6.2 The Strategic Reward Function (<span class="math inline">\(R\)</span>)</h2>
+<p>RL will utilizes a reward function to guide governance. The function penalizes high-entropy transitions and rewards contextual density ensuring the system will always remains stable.</p>
+<p><span class="math display">\[R = \text{Velocity} - (\omega_1 \cdot \Upsilon_D + \omega_2 \cdot H_\Delta)\]</span></p>
+<p><span class="math inline">\(\omega_1, \omega_2\)</span>: Weighting coefficients calibrated to the organization’s specific risk <span class="math inline">\(\Upsilon_D\)</span>: The real-time risk unit of the proposed state transition.</p>
+<p>By framing remediation as an optimization problem, DIRAC helps flagging or rejection of atomic deltas that pose a threat to system stability.</p>
+</section>
+</section>
+<section id="section-7.-future-version-v2.0-moving-from-structural-entropy-to-semantic-fragility" class="level1">
+<h1>Section 7. Future version (v2.0): Moving from Structural Entropy to Semantic Fragility</h1>
+<p>While Version 1.0 of the DIRAC framework addresses Structural Entropy, the next version of this research will focus on the deeper layer of Semantic Fragility.</p>
+<p>The next version involves tracking how logic shifts over time based on historical entropy over time due to AI assisted code.</p>
+<p>This will help in analysing long term trajectory of <span class="math inline">\(\Upsilon_D\)</span>, DIRAC can move towards predictive failure modelling.</p>
+<p>The goal is to provide leadership, the ability of predict the system failure based on historical entropy trends before atomic commits are made to the systems.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-rocketdevs2026crisis" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">RocketDevs, <span>“The AI technical debt crisis: Why the fastest codebases in 2026 are becoming the most fragile,”</span> 2026. Available: <a href="https://rocketdevs.com/blog/AI-Technical-Debt-Crisis">https://rocketdevs.com/blog/AI-Technical-Debt-Crisis</a></div>
+</div>
+<div id="ref-applause2026quality" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Applause, <span>“The state of digital quality in testing AI 2026,”</span> 2026. Available: <a href="https://www.applause.com/state-of-digital-quality-2026/ai-report/">https://www.applause.com/state-of-digital-quality-2026/ai-report/</a></div>
+</div>
+<div id="ref-berkeley2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">J. Wang <em>et al.</em>, <span>“How we broke top AI agent benchmarks: And what comes next.”</span> [Online]. Available: <a href="https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/">https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/</a></div>
+</div>
+<div id="ref-forsgren2018accelerate" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">N. Forsgren, J. Humble, and G. Kim, <em>Accelerate: The science of lean software and DevOps: Building and scaling high performing technology organizations</em>. United States: IT Revolution, 2018.</div>
+</div>
+<div id="ref-vasudevan2024blackswan" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">S. Vasudevan <em>et al.</em>, <span>“A black swan hypothesis: The role of human irrationality in AI safety,”</span> <em>arXiv preprint arXiv:2407.18422</em>, 2024, Available: <a href="https://arxiv.org/pdf/2407.18422">https://arxiv.org/pdf/2407.18422</a></div>
+</div>
+<div id="ref-rl_foundation2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">A. Author <em>et al.</em>, <span>“Foundations of reinforcement learning for autonomous systems,”</span> <em>arXiv preprint arXiv:2408.07712</em>, 2024, Available: <a href="https://arxiv.org/abs/2408.07712">https://arxiv.org/abs/2408.07712</a></div>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

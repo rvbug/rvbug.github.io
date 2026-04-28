@@ -1,0 +1,96 @@
+---
+title: "DIRAC: Forensic Engineering Lab"
+subtitle: "Quantifying the Entropy Tax in AI-augmented codebases"
+format: 
+  html:
+    page-layout: full
+    code-tools: false
+    self-contained: true
+    theme: [cosmo]
+---
+
+```{ojs}
+//| echo: false
+// 1. INPUT SECTION (The Simulator)
+import { fa } from "@observablehq/inputs"
+
+html`<h3>1. Commit Forensics</h3>`
+
+viewof added = Inputs.range([0, 5000], {value: 350, step: 10, label: "Lines Added"})
+viewof deleted = Inputs.range([0, 5000], {value: 50, step: 10, label: "Lines Deleted"})
+viewof msg_len = Inputs.range([1, 250], {value: 40, step: 1, label: "Message Length (Chars)"})
+viewof files = Inputs.range([1, 50], {value: 5, step: 1, label: "Files Impacted"})
+
+// 2. THE DIRAC ENGINE (Logic Ported from engine.rs)
+entropy = (added + deleted) / (msg_len + 1) * Math.log10(added + deleted + 1)
+blast_multiplier = files > 1 ? 1.0 + Math.log(files) * 0.15 : 1.0
+
+// Financial Constants
+base_rate = 100 // Hourly rate
+leakage = (entropy * base_rate) * blast_multiplier
+
+// 3. VISUALIZATION: THE COGNITIVE CLIFF
+html`<h3>2. The Cognitive Cliff</h3>`
+
+md`This graph shows how the **Blast Multiplier** punishes large, multi-file "slop" dumps compared to focused changes.`
+
+Plot.plot({
+  height: 300,
+  grid: true,
+  marks: [
+    Plot.areaY(d3.range(1, 51), {
+      x: d => d, 
+      y: d => (entropy * base_rate) * (d > 1 ? 1.0 + Math.log(d) * 0.15 : 1.0),
+      fill: "red",
+      fillOpacity: 0.1
+    }),
+    Plot.line(d3.range(1, 51), {
+      x: d => d, 
+      y: d => (entropy * base_rate) * (d > 1 ? 1.0 + Math.log(d) * 0.15 : 1.0),
+      stroke: "red",
+      strokeWidth: 2
+    }),
+    Plot.dot([{x: files, y: leakage}], {x: "x", y: "y", fill: "black", r: 6})
+  ],
+  x: {label: "Files Impacted →"},
+  y: {label: "Financial Leakage ($) →"}
+})
+
+// 4. SYSTEMIC IMPACT SECTION
+html`<hr><h3>3. Workforce Impact</h3>`
+
+viewof team_size = Inputs.range([1, 500], {value: 100, step: 1, label: "Engineering Headcount"})
+viewof avg_salary = Inputs.number({value: 150000, label: "Avg. Annual Salary ($)"})
+
+annual_commits = 104 // Assuming 2 major commits per week
+total_annual_leakage = leakage * annual_commits
+rc_ratio = Math.min(total_annual_leakage / avg_salary, 1.0) // Cap at 100%
+
+reclaimed_engineers = (team_size * rc_ratio).toFixed(1)
+
+html`
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+  <div style="padding: 30px; background: #f8f9fa; border-radius: 15px; border-left: 5px solid red;">
+    <div style="text-transform: uppercase; font-size: 0.8em; color: #666;">Capacity Loss Ratio ($R_c$)</div>
+    <div style="font-size: 3em; font-weight: bold; color: red;">${(rc_ratio * 100).toFixed(2)}%</div>
+  </div>
+  <div style="padding: 30px; background: #f8f9fa; border-radius: 15px; border-left: 5px solid black;">
+    <div style="text-transform: uppercase; font-size: 0.8em; color: #666;">"Ghost" Engineers</div>
+    <div style="font-size: 3em; font-weight: bold;">${reclaimed_engineers}</div>
+  </div>
+</div>
+`
+
+Plot.plot({
+  height: 250,
+  x: {axis: null},
+  y: {label: "Engineers"},
+  marks: [
+    Plot.barY([
+      {label: "Productive", value: team_size * (1 - rc_ratio)},
+      {label: "Lost to Entropy", value: team_size * rc_ratio}
+    ], {x: "label", y: "value", fill: d => d.label === "Lost to Entropy" ? "red" : "#ddd"})
+  ]
+})
+
+```

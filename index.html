@@ -364,6 +364,40 @@ nav {
   animation: orbPulse 10s ease-in-out 2s infinite;
 }
 
+/* COPE */
+.ph-cope {
+  background: #09070f; /* Matches your dark theme with a purple tint */
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.ph-cope::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  right: 10%;
+  width: 75vw;
+  height: 75vw;
+  max-width: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(138, 43, 226, 0.12) 0%,
+    rgba(0, 113, 227, 0.05) 50%,
+    transparent 70%);
+  pointer-events: none;
+  animation: orbPulse 11s ease-in-out infinite;
+}
+
+.ph-cope .product-name {
+  background: linear-gradient(160deg, #fff 20%, #a35bff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
 /* ── RATCRATE — warm dark ── */
 .ph-ratcrate {
   background: #0f0a05;
@@ -956,6 +990,36 @@ footer {
   </div>
 </section>
 
+<section class="product-hero ph-cope" id="cope">
+  <div class="product-content">
+    <div class="product-label reveal reveal-d1">ML Research &nbsp;·&nbsp; In Progress</div>
+    <h2 class="product-name reveal reveal-d2">COPE</h2>
+    <p class="product-tagline reveal reveal-d3">
+      Cognitive Origin & Entropy Profiling.
+    </p>
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./cope.html" class="btn-white">Know More</a>
+      <a href="#" class="btn-outline-white" style="opacity: 0.6; cursor: not-allowed;">Read the Paper (Soon)</a>
+    </div>
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">Entropy</span>
+        <span class="spec-label">Profiling</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Trusted</span>
+        <span class="spec-label">Origin</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Verify</span>
+        <span class="spec-label">Latency</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ══════════════════════════════════════════
      PROJECT 3 — RATCRATE
@@ -1112,9 +1176,9 @@ footer {
         </div>
 
         <div class="stat-block reveal">
-          <p class="stat-role">Research</p>
-          <div class="stat-num sn-amber">1</div>
-          <p class="stat-desc">Paper published.</p>
+          <p class="stat-role">Research & White Paper</p>
+          <div class="stat-num sn-amber">3</div>
+          <p class="stat-desc">Published.</p>
         </div>
 
       </div>

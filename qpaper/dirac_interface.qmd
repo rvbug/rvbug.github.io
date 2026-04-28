@@ -1,0 +1,97 @@
+---
+title: "DIRAC: Forensic Capacity Audit"
+subtitle: "Quantifying Systemic Information Entropy & Capital Waste"
+toc: false
+format: 
+  html:
+    page-layout: article
+    self-contained: true
+---
+
+## 1. Audit Parameters
+Adjust the organizational variables below to calculate the impact of architectural entropy.
+
+```{ojs}
+//| echo: false
+
+// --- 1. INPUTS (Deterministic Sliders) ---
+viewof team_size = Inputs.range([10, 500], {value: 50, step: 1, label: "Engineering Headcount"})
+viewof avg_salary = Inputs.number({value: 150000, label: "Avg. Compensation ($)"})
+
+// Average Commit Profile (Based on your 10,005 commit analysis)
+viewof avg_entropy = Inputs.range([0, 50], {value: 12.5, step: 0.1, label: "Avg. Entropy per Commit"})
+viewof avg_files = Inputs.range([1, 20], {value: 4, step: 1, label: "Avg. Files per Commit"})
+
+// --- 2. THE DIRAC REGRESSION ENGINE ---
+// Exact coefficients from Section 6.1 of your paper
+intercept = 112.50
+coeff_entropy = 8.52
+coeff_files = 22.78
+
+// Calculate leakage for a single average commit
+leakage_per_commit = intercept + (avg_entropy * coeff_entropy) + (avg_files * coeff_files)
+
+// Systemic Calculation (Assuming standard 104 commits per engineer per year)
+commits_per_year = 104
+annual_leakage_per_engineer = leakage_per_commit * commits_per_year
+total_annual_waste = annual_leakage_per_engineer * team_size
+
+// Derive Rc and Effective Headcount from the calculated waste
+rc_ratio = Math.min(annual_leakage_per_engineer / avg_salary, 1.0)
+effective_headcount = team_size * (1 - rc_ratio)
+ghost_engineers = team_size * rc_ratio
+
+// --- 3. EXECUTIVE SUMMARY BLOCK ---
+html`
+<div style="margin: 40px 0; font-family: sans-serif;">
+  <div style="background: #fafafa; border: 1px solid #e5e5e5; border-radius: 12px; padding: 40px;">
+    <h2 style="margin-top:0; margin-bottom: 10px; font-weight: 600; color: #1a1a1a;">Executive Audit Summary</h2>
+    <p style="color: #666; margin-bottom: 30px; font-size: 0.9em;">Model Confidence (R²): 0.3585</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+      <div>
+        <h4 style="text-transform: uppercase; font-size: 0.75em; color: #888; letter-spacing: 1px; margin-bottom: 20px;">Annual Capital Waste</h4>
+        <div style="font-size: 3.5em; font-weight: 700; color: #000;">$${d3.format(",.0f")(total_annual_waste)}</div>
+        <p style="color: #444; line-height: 1.6; margin-top: 20px; font-size: 0.95em;">
+          Based on a marginal entropy cost of <strong>$8.52</strong> and a fixed transition baseline of <strong>$112.50</strong> per commit.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="text-transform: uppercase; font-size: 0.75em; color: #888; letter-spacing: 1px; margin-bottom: 20px;">Workforce Utilization</h4>
+        <div style="font-size: 3.5em; font-weight: 700; color: #000;">${effective_headcount.toFixed(1)} / ${team_size}</div>
+        <p style="color: #444; line-height: 1.6; margin-top: 20px; font-size: 0.95em;">
+          The <strong>Rc Ratio</strong> is <strong>${(rc_ratio * 100).toFixed(2)}%</strong>. Systemic friction is currently neutralizing <strong>${ghost_engineers.toFixed(1)}</strong> full-time engineers.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`
+
+// --- 4. VISUALIZATION ---
+html`
+<div style="text-align: center; margin: 60px 0; font-family: sans-serif;">
+  <h3 style="font-weight: 600; color: #1a1a1a;">Resource Distribution Map</h3>
+  <div style="margin-top: 30px;">
+    ${Plot.plot({
+      height: 300,
+      x: {domain: [0, 10], axis: null},
+      y: {domain: [0, Math.ceil(team_size/10)], axis: null},
+      marks: [
+        Plot.dot(d3.range(team_size), {
+          x: d => d % 10,
+          y: d => Math.floor(d / 10),
+          symbol: "circle",
+          size: 600,
+          fill: d => d < effective_headcount ? "#222" : "#d1d1d1",
+          stroke: "#fff",
+          strokeWidth: 1
+        })
+      ],
+      style: { margin: "0 auto" }
+    })}
+  </div>
+</div>
+`
+```
