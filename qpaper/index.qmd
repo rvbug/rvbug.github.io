@@ -30,5 +30,6 @@ White Paper - [v1.0 DIRAC](./dirac_white_paper.qmd)
 <br>
 <br>
 
-# Try DIRAC: [v1.0 DIRAC](./dirac_interface.qmd)
+# Try DIRAC: [v1.0 DIRAC]
+Coming Soon
 

@@ -1,5 +1,5 @@
 ---
-title: "DIRAC: Forensic Capacity Audit"
+title: "DIRAC: Forensic Capacity Audit & Leakage"
 subtitle: "Quantifying Systemic Information Entropy & Capital Waste"
 toc: false
 format: 
@@ -49,7 +49,7 @@ viewof avg_files = Inputs.range([1, 20], {value: 4, step: 1, label: "Avg. Files 
   return html`
     <div style="margin: 40px 0; font-family: sans-serif;">
       <div style="background: #fafafa; border: 1px solid #e5e5e5; border-radius: 12px; padding: 40px;">
-        <h2 style="margin-top:0; margin-bottom: 10px; font-weight: 600; color: #1a1a1a;">Forensic Audit Summary</h2>
+        <h2 style="margin-top:0; margin-bottom: 10px; font-weight: 600; color: #1a1a1a;">Audit Summary</h2>
         <p style="color: #666; margin-bottom: 30px; font-size: 0.85em; font-style: italic;">Model Confidence (R²): 0.3585</p>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">

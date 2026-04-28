@@ -184,7 +184,7 @@ Data for this research consists of metadata only. I have extracted over 2000 pub
 
 To maintain strict privacy and adhere to my ethical research philosophy:
 
-1.  No specific repository or author names will be mentioned in this paper particularly those repositories which has been built completely using AI and AI Agents, high entropy or which exhibits black swan events
+1.  No specific repository or author names will be mentioned in this paper particularly those repositories which has been built completely using AI and AI Agents, high entropy or which exhibits **Black Swan**[@vasudevan2024blackswan] events
 
 2.  Analysis is performed only on the metadata of open source repositories.
 
@@ -249,7 +249,7 @@ Remember, even for a single commit there is a baseline cost as no commit is ever
 
 As transitions move from standard to complex , the predictability ($R^2$) remains stable but $\Upsilon_D$ increases, signalling a higher risk of structural decay.
 
-Anomaly Transitions section (where $R^2$ is 0.5432) are “Black Swan” events i.e. commits where entropy is so high that even traditional regression model fail. This requires immediate audit.
+Anomaly Transitions section (where $R^2$ is 0.5432) are **Black Swan** [@vasudevan2024blackswan] events i.e. commits where entropy is so high that even traditional regression model fail. This requires immediate audit.
 
 ## 6.3 Forensic Governance: Anomaly Detection
 

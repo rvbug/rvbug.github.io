@@ -17,10 +17,6 @@ website:
       - text: "DIRAC White Paper"
         href: ./dirac_white_paper.qmd
       
-      - text: "Try Dirac"
-        href: ./dirac_interface.qmd
-        target: _blank
-   
     right:
       - text: "QbitAI.in"
         href: https://qubitai.in

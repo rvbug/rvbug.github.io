@@ -24,7 +24,7 @@ editor:
 
 # Summary
 
-While industry leaders report that 41% of new commercial code is AI-generated [@rocketdevs2026crisis], there is a significant **Quality** issues that is emerging.  Recent studies also shows that 44% of AI initiatives are being rolled back due to operational costs [@applause2026quality]. 
+While industry leaders report that 41% of new commercial code is AI-generated [@rocketdevs2026crisis], there is a significant quality issues that is emerging.  Recent studies also shows that 44% of AI initiatives are being rolled back due to operational costs [@applause2026quality]. 
 Total development process has actually slowed by 19% as teams struggle to integrate "messy" AI logic [@rocketdevs2026crisis].
 
 Current metrics which are used for tracking engineering productivity
