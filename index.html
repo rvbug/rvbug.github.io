@@ -859,6 +859,39 @@ footer {
   footer { padding: 60px 20px 40px; }
   .product-hero { padding: 100px 24px 60px; }
 }
+
+
+/*DIRAC*/
+/* ── DIRAC — deep emerald/tech theme ── */
+.ph-dirac {
+  background: #050a0a; /* Dark teal/cyan base */
+  color: #fff;
+}
+
+.ph-dirac::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(0, 227, 174, 0.12) 0%,
+    rgba(0, 113, 227, 0.05) 50%,
+    transparent 70%);
+  pointer-events: none;
+  animation: orbPulse 12s ease-in-out 1s infinite;
+}
+
+.ph-dirac .product-name {
+  background: linear-gradient(160deg, #fff 30%, #00e3ae 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 </style>
 </head>
 <body>
@@ -904,6 +937,47 @@ footer {
     <span>Scroll</span>
     <div class="scroll-hint-line"></div>
   </div> -->
+</section>
+
+<!-- ══════════════════════════════════════════
+     PROJECT 1 — DIRAC
+══════════════════════════════════════════ -->
+
+<section class="product-hero ph-dirac" id="dirac">
+  <div class="product-content">
+
+    <div class="product-label reveal reveal-d1">Framework</div>
+
+    <h2 class="product-name reveal reveal-d2">DIRAC</h2>
+
+    <p class="product-tagline reveal reveal-d3">
+      Entropy vs Financial Leakage
+    </p>
+
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./qpapers-published/dirac_technical_paper.html"  target="_blank"   class="btn-white">Technical Paper</a>
+      <a href="./qpapers-published/dirac_white_paper.html" target="_blank"  class="btn-outline-white">White Paper</a>
+      <a href="./qpapers-published/dirac_interface.html"  target="_blank"  class="btn-white" style="background: var(--blue); color: #fff; border: none;">Launch DIRAC</a>
+    </div>
+
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">LEPTON</span>
+        <span class="spec-label">Core Module</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Strategy</span>
+        <span class="spec-label">Data-Driven</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">DRU</span>
+        <span class="spec-label">Risk Score</span>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 
