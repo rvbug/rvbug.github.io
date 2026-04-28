@@ -1,96 +1,104 @@
 ---
-title: "DIRAC: Forensic Engineering Lab"
-subtitle: "Quantifying the Entropy Tax in AI-augmented codebases"
+title: "DIRAC: Forensic Capacity Audit"
+subtitle: "Quantifying Systemic Information Entropy & Capital Waste"
+toc: false
 format: 
   html:
-    page-layout: full
-    code-tools: false
+    page-layout: article
     self-contained: true
-    theme: [cosmo]
 ---
+
+## 1. Audit Parameters
+Adjust the organizational and architectural variables below. This model uses the DIRAC regression coefficients ($112.50 intercept, $8.52 entropy tax) scaled to your organization's specific compensation baseline.
 
 ```{ojs}
 //| echo: false
-// 1. INPUT SECTION (The Simulator)
-import { fa } from "@observablehq/inputs"
 
-html`<h3>1. Commit Forensics</h3>`
+// --- 1. INPUTS (Top-Level Viewof) ---
+viewof team_size = Inputs.range([10, 500], {value: 50, step: 1, label: "Engineering Headcount"})
+viewof avg_salary = Inputs.number({value: 150000, label: "Avg. Total Compensation ($)"})
+viewof avg_entropy = Inputs.range([0, 50], {value: 12.5, step: 0.1, label: "Avg. Entropy per Commit"})
+viewof avg_files = Inputs.range([1, 20], {value: 4, step: 1, label: "Avg. Files per Commit"})
 
-viewof added = Inputs.range([0, 5000], {value: 350, step: 10, label: "Lines Added"})
-viewof deleted = Inputs.range([0, 5000], {value: 50, step: 10, label: "Lines Deleted"})
-viewof msg_len = Inputs.range([1, 250], {value: 40, step: 1, label: "Message Length (Chars)"})
-viewof files = Inputs.range([1, 50], {value: 5, step: 1, label: "Files Impacted"})
+// --- 2. THE REACTIVE DASHBOARD ENGINE ---
+// This block recalculates everything whenever ANY input above changes.
+{
+  // DIRAC Regression Coefficients
+  const intercept_base = 112.50;
+  const entropy_base = 8.52;
+  const files_base = 22.78;
+  const baseline_salary = 150000;
 
-// 2. THE DIRAC ENGINE (Logic Ported from engine.rs)
-entropy = (added + deleted) / (msg_len + 1) * Math.log10(added + deleted + 1)
-blast_multiplier = files > 1 ? 1.0 + Math.log(files) * 0.15 : 1.0
+  // Calculate Salary Scaler: As salary increases, the cost of wasted time increases.
+  const scaler = avg_salary / baseline_salary;
 
-// Financial Constants
-base_rate = 100 // Hourly rate
-leakage = (entropy * base_rate) * blast_multiplier
+  // Cost per Commit
+  const leakage_per_commit = (intercept_base + (avg_entropy * entropy_base) + (avg_files * files_base)) * scaler;
 
-// 3. VISUALIZATION: THE COGNITIVE CLIFF
-html`<h3>2. The Cognitive Cliff</h3>`
+  // Annualized Metrics
+  const commits_per_year = 104;
+  const annual_waste_per_person = leakage_per_commit * commits_per_year;
+  
+  // FINAL RESULTS
+  const total_waste = annual_waste_per_person * team_size;
+  const rc_ratio = Math.min(annual_waste_per_person / avg_salary, 1.0);
+  const effective_hc = team_size * (1 - rc_ratio);
+  const ghost_hc = team_size * rc_ratio;
 
-md`This graph shows how the **Blast Multiplier** punishes large, multi-file "slop" dumps compared to focused changes.`
+  // Return the UI and the Plot
+  return html`
+    <div style="margin: 40px 0; font-family: sans-serif;">
+      <div style="background: #fafafa; border: 1px solid #e5e5e5; border-radius: 12px; padding: 40px;">
+        <h2 style="margin-top:0; margin-bottom: 10px; font-weight: 600; color: #1a1a1a;">Forensic Audit Summary</h2>
+        <p style="color: #666; margin-bottom: 30px; font-size: 0.85em; font-style: italic;">Model Confidence (R²): 0.3585</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+          <div>
+            <h4 style="text-transform: uppercase; font-size: 0.75em; color: #888; letter-spacing: 1px; margin-bottom: 20px;">Annual Capital Waste</h4>
+            <div style="font-size: 3.5em; font-weight: 700; color: #000;">$${d3.format(",.0f")(total_waste)}</div>
+            <p style="color: #444; line-height: 1.6; margin-top: 20px; font-size: 0.95em;">
+              Calculated capital leakage based on the cost of senior engineering hours absorbed by architectural entropy.
+            </p>
+          </div>
 
-Plot.plot({
-  height: 300,
-  grid: true,
-  marks: [
-    Plot.areaY(d3.range(1, 51), {
-      x: d => d, 
-      y: d => (entropy * base_rate) * (d > 1 ? 1.0 + Math.log(d) * 0.15 : 1.0),
-      fill: "red",
-      fillOpacity: 0.1
-    }),
-    Plot.line(d3.range(1, 51), {
-      x: d => d, 
-      y: d => (entropy * base_rate) * (d > 1 ? 1.0 + Math.log(d) * 0.15 : 1.0),
-      stroke: "red",
-      strokeWidth: 2
-    }),
-    Plot.dot([{x: files, y: leakage}], {x: "x", y: "y", fill: "black", r: 6})
-  ],
-  x: {label: "Files Impacted →"},
-  y: {label: "Financial Leakage ($) →"}
-})
+          <div>
+            <h4 style="text-transform: uppercase; font-size: 0.75em; color: #888; letter-spacing: 1px; margin-bottom: 20px;">Workforce Utilization</h4>
+            <div style="font-size: 3.5em; font-weight: 700; color: #000;">${effective_hc.toFixed(1)} / ${team_size}</div>
+            <p style="color: #444; line-height: 1.6; margin-top: 20px; font-size: 0.95em;">
+              The <strong>Capacity Loss Ratio (Rc)</strong> is <strong>${(rc_ratio * 100).toFixed(2)}%</strong>. This represents <strong>${ghost_hc.toFixed(1)}</strong> engineering units lost.
+            </p>
+          </div>
+        </div>
+      </div>
 
-// 4. SYSTEMIC IMPACT SECTION
-html`<hr><h3>3. Workforce Impact</h3>`
-
-viewof team_size = Inputs.range([1, 500], {value: 100, step: 1, label: "Engineering Headcount"})
-viewof avg_salary = Inputs.number({value: 150000, label: "Avg. Annual Salary ($)"})
-
-annual_commits = 104 // Assuming 2 major commits per week
-total_annual_leakage = leakage * annual_commits
-rc_ratio = Math.min(total_annual_leakage / avg_salary, 1.0) // Cap at 100%
-
-reclaimed_engineers = (team_size * rc_ratio).toFixed(1)
-
-html`
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-  <div style="padding: 30px; background: #f8f9fa; border-radius: 15px; border-left: 5px solid red;">
-    <div style="text-transform: uppercase; font-size: 0.8em; color: #666;">Capacity Loss Ratio ($R_c$)</div>
-    <div style="font-size: 3em; font-weight: bold; color: red;">${(rc_ratio * 100).toFixed(2)}%</div>
-  </div>
-  <div style="padding: 30px; background: #f8f9fa; border-radius: 15px; border-left: 5px solid black;">
-    <div style="text-transform: uppercase; font-size: 0.8em; color: #666;">"Ghost" Engineers</div>
-    <div style="font-size: 3em; font-weight: bold;">${reclaimed_engineers}</div>
-  </div>
-</div>
-`
-
-Plot.plot({
-  height: 250,
-  x: {axis: null},
-  y: {label: "Engineers"},
-  marks: [
-    Plot.barY([
-      {label: "Productive", value: team_size * (1 - rc_ratio)},
-      {label: "Lost to Entropy", value: team_size * rc_ratio}
-    ], {x: "label", y: "value", fill: d => d.label === "Lost to Entropy" ? "red" : "#ddd"})
-  ]
-})
+      <div style="text-align: center; margin-top: 60px;">
+        <h3 style="font-weight: 600; color: #1a1a1a; margin-bottom: 30px;">Resource Distribution Map</h3>
+        <div style="margin: 0 auto; display: inline-block; border: 1px solid #eee; padding: 20px; border-radius: 8px; background: #fff;">
+          ${Plot.plot({
+            height: 300,
+            width: 600,
+            x: {domain: [0, 10], axis: null},
+            y: {domain: [0, Math.ceil(team_size/10)], axis: null},
+            marks: [
+              Plot.dot(d3.range(team_size), {
+                x: d => d % 10,
+                y: d => Math.floor(d / 10),
+                symbol: "circle",
+                size: 600,
+                fill: d => d < effective_hc ? "#222" : "#d1d1d1",
+                stroke: "#fff",
+                strokeWidth: 1.5
+              })
+            ]
+          })}
+        </div>
+        <div style="margin-top: 25px; font-size: 0.85em; color: #666;">
+          <span style="display:inline-block; width:10px; height:10px; background:#222; border-radius:50%; margin-right:5px;"></span> Productive Capacity &nbsp;&nbsp;&nbsp;
+          <span style="display:inline-block; width:10px; height:10px; background:#d1d1d1; border-radius:50%; margin-right:5px;"></span> Entropy Loss (Ghost Squad)
+        </div>
+      </div>
+    </div>
+  `;
+}
 
 ```
