@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FERMI - AI Cost Simulator</title>
+     <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+    <style>
+        :root {
+            --bg-main: #0a0e14;
+            --bg-card: #101520;
+            --border: #242f47;
+            --text-main: #e2e8f0;
+            --text-muted: #64748b;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Center Hero Section */
+        .hero-section {
+            width: 100%;
+            max-width: 1300px;
+            text-align: center;
+            padding: 60px 24px;
+            box-sizing: border-box;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-title {
+            font-family: var(--font-mono);
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: var(--text-main);
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0;
+        }
+
+        .dashboard {
+            width: 100%;
+            max-width: 1300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 24px;
+            box-sizing: border-box;
+        }
+
+        /* Control Center Panel */
+        .control-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .input-group input, .input-group select {
+            background: #161b26;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-main);
+            padding: 8px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--accent-blue);
+            outline: none;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            padding-bottom: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        /* Metrics Display */
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .metric-card .label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .metric-card .value {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 4px 0;
+            color: var(--accent-red);
+        }
+
+        /* Workspace Grid */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 20px;
+        }
+
+        .canvas {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            min-height: 550px;
+            overflow: hidden;
+        }
+
+        svg.mesh-edges {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .edge-path {
+            fill: none;
+            stroke: #161e2e;
+            stroke-width: 2;
+            transition: stroke 0.2s, stroke-width 0.2s;
+        }
+
+        .edge-path.active {
+            stroke: var(--accent-blue);
+            stroke-width: 3;
+            stroke-dasharray: 6;
+            animation: dash 0.8s linear infinite;
+        }
+
+        @keyframes dash { to { stroke-dashoffset: -20; } }
+
+        .nodes-layer {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            height: 100%;
+        }
+
+        .node-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .component-box {
+            background: #161b26;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 14px;
+            text-align: center;
+            transition: all 0.2s;
+            opacity: 1;
+        }
+
+        .component-box.active {
+            border-color: var(--accent-blue);
+            background: #1b2538;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .component-box .title { font-weight: 600; font-size: 0.85rem; }
+        .component-box .meta { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; font-family: var(--font-mono); }
+
+        .floating-cost-tag {
+            position: absolute;
+            background: rgba(239, 68, 68, 0.95);
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 3;
+            transform: translate(-50%, -50%);
+            display: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Coming Soon State Styling */
+        .coming-soon-wrapper {
+            grid-column: span 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 450px;
+            font-family: var(--font-mono);
+        }
+
+        .coming-soon-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.9; }
+        }
+
+        /* Audit Stream Console */
+        .console {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            max-height: 670px;
+        }
+
+        .console-header {
+            background: #161b26;
+            border-bottom: 1px solid var(--border);
+            padding: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .console-log { padding: 14px; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-family: var(--font-mono); font-size: 0.75rem; }
+        .log-entry { display: flex; justify-content: space-between; border-bottom: 1px solid #161b26; padding-bottom: 4px; }
+        .log-desc { color: var(--text-muted); }
+        .log-cost { color: var(--accent-red); font-weight: 600; }
+
+        .action-btn { background: var(--accent-blue); color: #fff; border: none; padding: 10px 18px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+        .action-btn:disabled { background: var(--border); cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+<div class="hero-section">
+    <h1 class="hero-title">FERMI</h1>
+    <p class="hero-subtitle">Enterprise AI Architecture & Cost Topologies</p>
+</div>
+
+<div class="dashboard">
+    <div class="control-panel">
+        <div class="input-group">
+            <label>Core Architecture Type</label>
+            <select id="input-architecture" onchange="handleArchitectureChange()">
+                <option value="agentic" selected>Pure Agentic AI Stack</option>
+                <option value="traditional">Traditional DL / ML Path</option>
+                <option value="hybrid">Hybrid Paradigm (Coming Soon)</option>
+            </select>
+        </div>
+        <div class="input-group" id="users-count-group">
+            <label>Active Users Estimate</label>
+            <input type="number" id="input-users" value="3000" onchange="recalculateTopology()">
+        </div>
+        <div class="input-group" id="frequency-group">
+            <label>Usage Intensity Benchmark</label>
+            <select id="input-frequency" onchange="recalculateTopology()">
+                <option value="35">High Frequency (35 tasks/day)</option>
+                <option value="8" selected>Medium Frequency (8 tasks/day)</option>
+                <option value="1.5">Low Frequency (1.5 tasks/day)</option>
+            </select>
+        </div>
+        <div class="input-group" id="engine-selection-group">
+            <label>Model Engine Selection</label>
+            <select id="input-model-tier" onchange="handleModelTierChange()">
+                <option value="0.35">Nano (GPT-5 Nano / DeepSeek V4 Flash) - $0.35/M</option>
+                <option value="15.00">Frontier (GPT-5.5 / Claude Opus 4.8) - $15.00/M</option>
+                <option value="6.50">Standard (GPT-5 / Claude Sonnet 4.6) - $6.50/M</option>
+                <option value="2.50" selected>Speed (GPT-5 Mini / Gemini 3.5 Flash) - $2.50/M</option>
+                <option value="custom">Others (Custom Input Rate)</option>
+            </select>
+        </div>
+        <div class="input-group" id="custom-rate-group" style="display: none;">
+            <label>Custom Cost Per Million ($)</label>
+            <input type="number" id="input-custom-rate" value="6.09" step="0.01" min="0" onchange="recalculateTopology()">
+        </div>
+        <div class="input-group" id="agents-count-group">
+            <label>Orchestrated Agents Count</label>
+            <input type="number" id="input-agents" value="2" min="1" max="5" onchange="recalculateTopology()">
+        </div>
+        <div class="input-group" id="subagents-count-group">
+            <label>Sub-Agents Per Core Agent</label>
+            <input type="number" id="input-subagents" value="2" min="0" max="4" onchange="recalculateTopology()">
+        </div>
+        <div class="input-group" id="api-include-group" style="justify-content: center;">
+            <label class="checkbox-row">
+                <input type="checkbox" id="chk-api" checked onchange="recalculateTopology()">
+                Include External APIs
+            </label>
+        </div>
+        <div class="input-group" id="speed-group">
+            <label>Pace Regulation (Delay)</label>
+            <input type="range" id="input-speed" min="400" max="2500" value="1000" step="100">
+        </div>
+    </div>
+
+    <div class="metrics-bar" id="metrics-display-container">
+        <div class="metric-card">
+            <div class="label">Total Computed Monthly Volume</div>
+            <div id="metric-volume" class="value" style="color:var(--accent-blue)">0</div>
+        </div>
+        <div class="metric-card">
+            <div class="label" id="trace-fee-label">Single Interaction Trace Fee</div>
+            <div id="cost-loop" class="value">$0.00000</div>
+        </div>
+        <div class="metric-card">
+            <div class="label">Loaded Monthly Scale Cost</div>
+            <div id="cost-monthly" class="value">$0.00</div>
+        </div>
+    </div>
+
+    <div class="workspace" id="workspace-display-container">
+        <div class="canvas" id="canvas">
+            <svg class="mesh-edges" id="edge-svg-layer"></svg>
+            <div id="cost-tag" class="floating-cost-tag">+$0.00</div>
+            <div class="nodes-layer" id="nodes-mesh-layer"></div>
+        </div>
+
+        <div class="console" id="console-display-container">
+            <div class="console-header">
+                <span id="console-stream-label">AUDIT_LOG // RETRIEVAL_STREAM</span>
+                <button id="run-btn" class="action-btn" onclick="executeSimulatedTrace()">Execute Loop Trace</button>
+            </div>
+            <div id="console-log" class="console-log"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentVolume = 0;
+    let runningState = false;
+    let stepSequence = [];
+
+    function handleArchitectureChange() {
+        const arch = document.getElementById("input-architecture").value;
+        const speedSelector = document.getElementById("input-model-tier");
+        
+        const metricsContainer = document.getElementById("metrics-display-container");
+        const workspaceContainer = document.getElementById("workspace-display-container");
+        const traceFeeLabel = document.getElementById("trace-fee-label");
+        const consoleLabel = document.getElementById("console-stream-label");
+
+        // Clean UI layout modifications for Hybrid Paradigm state
+        if (arch === "hybrid" || arch === "traditional") {
+            metricsContainer.style.display = "none";
+            workspaceContainer.style.gridTemplateColumns = "1fr";
+            document.getElementById("console-display-container").style.display = "none";
+            document.getElementById("canvas").style.minHeight = "450px";
+            
+            // Wipe standard controls
+            setControlVisibility("none");
+            
+            // Clean Wipe Node View with beautiful placeholder text
+            const mesh = document.getElementById("nodes-mesh-layer");
+            document.getElementById("edge-svg-layer").innerHTML = "";
+            mesh.innerHTML = `
+                <div class="coming-soon-wrapper">
+                    <div class="coming-soon-text">Coming Soon...</div>
+                </div>
+            `;
+            return;
+        }
+
+        // Restore base containers if coming out of hybrid state
+        metricsContainer.style.display = "grid";
+        workspaceContainer.style.gridTemplateColumns = "1.6fr 1fr";
+        document.getElementById("console-display-container").style.display = "flex";
+        document.getElementById("canvas").style.minHeight = "550px";
+        setControlVisibility("flex");
+        
+        // // Split management configuration matrices
+        // if (arch === "traditional") {
+        //     traceFeeLabel.innerText = "Trace Step Allocation";
+        //     consoleLabel.innerText = "DETERMINISTIC_ROUTING // EVAL_STREAM";
+        //     document.getElementById("engine-selection-group").style.display = "none";
+        //     document.getElementById("custom-rate-group").style.display = "none";
+        //     document.getElementById("agents-count-group").style.display = "none";
+        //     document.getElementById("subagents-count-group").style.display = "none";
+        //     document.getElementById("api-include-group").style.display = "none";
+        // } else {
+        //     traceFeeLabel.innerText = "Single Interaction Trace Fee";
+        //     consoleLabel.innerText = "AUDIT_LOG // RETRIEVAL_STREAM";
+        //     document.getElementById("engine-selection-group").style.display = "flex";
+        //     document.getElementById("agents-count-group").style.display = "flex";
+        //     document.getElementById("subagents-count-group").style.display = "flex";
+        //     document.getElementById("api-include-group").style.display = "flex";
+        //     if (speedSelector.value === "custom") {
+        //         document.getElementById("custom-rate-group").style.display = "flex";
+        //     }
+        // }
+        recalculateTopology();
+    }
+
+    function setControlVisibility(status) {
+        document.getElementById("users-count-group").style.display = status;
+        document.getElementById("frequency-group").style.display = status;
+        document.getElementById("speed-group").style.display = status;
+    }
+
+    function handleModelTierChange() {
+        const selector = document.getElementById("input-model-tier");
+        const customGroup = document.getElementById("custom-rate-group");
+        
+        if (selector.value === "custom") {
+            customGroup.style.display = "flex";
+        } else {
+            customGroup.style.display = "none";
+        }
+        recalculateTopology();
+    }
+
+    function recalculateTopology() {
+        if (runningState) return;
+
+        const arch = document.getElementById("input-architecture").value;
+        if (arch === "hybrid") return;
+
+        const users = parseInt(document.getElementById("input-users").value) || 0;
+        const tasksPerDay = parseFloat(document.getElementById("input-frequency").value);
+
+        currentVolume = Math.round(users * tasksPerDay * 30);
+        document.getElementById("metric-volume").innerText = currentVolume.toLocaleString();
+
+        if (arch === "traditional") {
+            document.getElementById("cost-loop").innerText = "Infrastructure Bound";
+            document.getElementById("cost-monthly").innerText = "$0.00 (Amortized Baseline)";
+            buildTraditionalDOMNodes();
+            buildTraditionalStepSequence();
+        } else {
+            const agentCount = parseInt(document.getElementById("input-agents").value) || 1;
+            const subAgentCount = parseInt(document.getElementById("input-subagents").value) || 0;
+            const includeAPI = document.getElementById("chk-api").checked;
+            const modelTierSelector = document.getElementById("input-model-tier");
+            
+            let activePricePerMillion = 0;
+            if (modelTierSelector.value === "custom") {
+                activePricePerMillion = parseFloat(document.getElementById("input-custom-rate").value) || 0;
+            } else {
+                activePricePerMillion = parseFloat(modelTierSelector.value);
+            }
+
+            const basePromptTokens = 2000;
+            const tokensPerStep = 1500;
+            const totalTaskTokens = basePromptTokens + (agentCount * (subAgentCount || 1) * tokensPerStep);
+            const calculatedLLMCost = (totalTaskTokens / 1000000) * activePricePerMillion;
+
+            buildDOMNodes(agentCount, subAgentCount, includeAPI);
+            buildStepSequenceSchema(agentCount, subAgentCount, includeAPI, calculatedLLMCost);
+        }
+
+        setTimeout(drawConnectorEdges, 50);
+    }
+
+    function buildTraditionalDOMNodes() {
+        const mesh = document.getElementById("nodes-mesh-layer");
+        mesh.innerHTML = "";
+
+        const col1 = document.createElement("div");
+        col1.className = "node-column";
+        col1.innerHTML = `
+            <div class="component-box" id="node-user"><div class="title">User Interface</div><div class="meta" id="hit-user">Hits: 0</div></div>
+            <div class="component-box" id="node-embed"><div class="title">Local Embedding API</div><div class="meta" id="hit-embed">Hits: 0</div></div>
+        `;
+        mesh.appendChild(col1);
+
+        const col2 = document.createElement("div");
+        col2.className = "node-column";
+        col2.innerHTML = `
+            <div class="component-box" id="node-router"><div class="title">Intent Switch-Case</div><div class="meta" id="hit-router">Hits: 0</div></div>
+            <div class="component-box" id="node-hnsw"><div class="title">Local HNSW Index</div><div class="meta" id="hit-hnsw">Hits: 0</div></div>
+        `;
+        mesh.appendChild(col2);
+
+        const col3 = document.createElement("div");
+        col3.className = "node-column";
+        col3.innerHTML = `
+            <div class="component-box" id="node-classifier"><div class="title">XGBoost Classifier API</div><div class="meta" id="hit-classifier">Hits: 0</div></div>
+            <div class="component-box" id="node-regressor"><div class="title">LightGBM Ranker API</div><div class="meta" id="hit-regressor">Hits: 0</div></div>
+        `;
+        mesh.appendChild(col3);
+    }
+
+    function buildTraditionalStepSequence() {
+        stepSequence = [
+            { from: "user",       to: "router",     desc: "Request routed deterministically to context verification gateway", cost: 0 },
+            { from: "router",     to: "embed",      desc: "Sequence tokenization generated via local container runtime", cost: 0 },
+            { from: "embed",      to: "hnsw",       desc: "Sub-millisecond vector address proximity matching computed", cost: 0 },
+            { from: "hnsw",       to: "classifier", desc: "Feature parameters executed across active self-contained classifier matrices", cost: 0 },
+            { from: "classifier", to: "regressor",  desc: "Confidence arrays passed straight down to dedicated ranker nodes", cost: 0 }
+        ];
+    }
+
+    function buildDOMNodes(agents, subs, hasAPI) {
+        const mesh = document.getElementById("nodes-mesh-layer");
+        mesh.innerHTML = "";
+
+        const col1 = document.createElement("div");
+        col1.className = "node-column";
+        col1.innerHTML = `
+            <div class="component-box" id="node-user"><div class="title">User Interface</div><div class="meta" id="hit-user">Hits: 0</div></div>
+            <div class="component-box" id="node-embed"><div class="title">Embedding Engine</div><div class="meta" id="hit-embed">Hits: 0</div></div>
+            <div class="component-box" id="node-vdb"><div class="title">Vector Database</div><div class="meta" id="hit-vdb">Hits: 0</div></div>
+        `;
+        mesh.appendChild(col1);
+
+        const col2 = document.createElement("div");
+        col2.className = "node-column";
+        col2.innerHTML = `
+            <div class="component-box" id="node-orch"><div class="title">Agent Orchestrator</div><div class="meta" id="hit-orch">Hits: 0</div></div>
+            <div class="component-box" id="node-llm"><div class="title">Static LLM Core</div><div class="meta" id="hit-llm">Hits: 0</div></div>
+        `;
+        mesh.appendChild(col2);
+
+        const col3 = document.createElement("div");
+        col3.className = "node-column";
+        
+        for (let a = 1; a <= agents; a++) {
+            const agentDiv = document.createElement("div");
+            agentDiv.className = "component-box";
+            agentDiv.id = `node-agent-${a}`;
+            agentDiv.innerHTML = `<div class="title">Core Agent [${a}]</div><div class="meta" id="hit-agent-${a}">Hits: 0</div>`;
+            col3.appendChild(agentDiv);
+        }
+
+        if (subs > 0) {
+            const subDiv = document.createElement("div");
+            subDiv.className = "component-box";
+            subDiv.id = "node-subagent";
+            subDiv.innerHTML = `<div class="title">${subs}x Sub-Agent Sub-Pool</div><div class="meta" id="hit-subagent">Hits: 0</div>`;
+            col3.appendChild(subDiv);
+        }
+
+        if (hasAPI) {
+            const apiDiv = document.createElement("div");
+            apiDiv.className = "component-box";
+            apiDiv.id = "node-api";
+            apiDiv.innerHTML = `<div class="title">External API Ecosystem</div><div class="meta" id="hit-api">Hits: 0</div>`;
+            col3.appendChild(apiDiv);
+        }
+        mesh.appendChild(col3);
+    }
+
+    function buildStepSequenceSchema(agents, subs, hasAPI, llmCost) {
+        stepSequence = [
+            { from: "user",  to: "orch",  desc: "Session context initiated down into loop coordinator runtime", cost: 0.0030 },
+            { from: "orch",  to: "embed", desc: "User conversational state chunked into text vectors", cost: 0.0001 },
+            { from: "embed", to: "vdb",   desc: "Semantic matching memory vectors checked", cost: 0.0002 },
+            { from: "vdb",   to: "llm",   desc: "Dynamic context windows executed against LLM context layer", cost: llmCost }
+        ];
+
+        for (let a = 1; a <= agents; a++) {
+            stepSequence.push({ from: "llm", to: `agent-${a}`, desc: `Execution path dispatched onto Core Agent Worker [${a}]`, cost: 0.0015 });
+        }
+
+        if (subs > 0) {
+            stepSequence.push({ from: "node-agent-1", to: "subagent", customSource: "agent-1", desc: "Core Agent triggers sub-agent recursion loops path", cost: 0.0021 * subs });
+            stepSequence.push({ from: "subagent", to: "llm", desc: "Sub-Agents context updates yielded back into orchestration layer", cost: 0.0010 });
+        }
+
+        if (hasAPI) {
+            stepSequence.push({ from: "llm", to: "api", desc: "External vendor API data access tool confirmed", cost: 0.1500 });
+        }
+
+        stepSequence.push({ from: "llm", to: "vdb", desc: "Runtime tracing context logs stored inside permanent indices storage", cost: 0.0002 });
+    }
+
+    function drawConnectorEdges() {
+        const arch = document.getElementById("input-architecture").value;
+        if (arch === "hybrid") return;
+
+        const svg = document.getElementById("edge-svg-layer");
+        const canvasRect = document.getElementById("canvas").getBoundingClientRect();
+        svg.innerHTML = "";
+
+        stepSequence.forEach((step, idx) => {
+            const fromId = step.customSource ? `node-${step.customSource}` : `node-${step.from}`;
+            const toId = `node-${step.to}`;
+            
+            const fromEl = document.getElementById(fromId);
+            const toEl = document.getElementById(toId);
+            
+            if (!fromEl || !toEl) return;
+
+            const fromRect = fromEl.getBoundingClientRect();
+            const toRect = toEl.getBoundingClientRect();
+
+            const x1 = (fromRect.left + fromRect.width / 2) - canvasRect.left;
+            const y1 = (fromRect.top + fromRect.height / 2) - canvasRect.top;
+            const x2 = (toRect.left + toRect.width / 2) - canvasRect.left;
+            const y2 = (toRect.top + toRect.height / 2) - canvasRect.top;
+
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.id = `edge-path-${idx}`;
+            path.setAttribute("class", "edge-path");
+            path.setAttribute("d", `M ${x1} ${y1} Q ${(x1+x2)/2} ${(y1+y2)/2 - 15} ${x2} ${y2}`);
+            svg.appendChild(path);
+        });
+    }
+
+    async function executeSimulatedTrace() {
+        if (runningState || currentVolume === 0) return;
+        runningState = true;
+        document.getElementById("run-btn").disabled = true;
+        document.getElementById("console-log").innerHTML = "";
+        
+        document.querySelectorAll(".component-box").forEach(b => b.className = "component-box");
+        document.querySelectorAll(".edge-path").forEach(p => p.className = "edge-path");
+        
+        const hitCounters = {};
+        let currentTotal = 0;
+        const arch = document.getElementById("input-architecture").value;
+        const getDelay = () => parseInt(document.getElementById("input-speed").value);
+
+        for (let i = 0; i < stepSequence.length; i++) {
+            const step = stepSequence[i];
+            const sourceId = step.customSource ? step.customSource : step.from;
+            
+            const sourceBox = document.getElementById(`node-${sourceId}`);
+            if (sourceBox) sourceBox.classList.add("active");
+
+            hitCounters[sourceId] = (hitCounters[sourceId] || 0) + 1;
+            const hitMeta = document.getElementById(`hit-${sourceId}`);
+            if (hitMeta) hitMeta.innerText = `Hits: ${hitCounters[sourceId]}`;
+
+            const edge = document.getElementById(`edge-path-${i}`);
+            if (edge) edge.setAttribute("class", "edge-path active");
+
+            currentTotal += step.cost;
+            if (arch !== "traditional") {
+                updateOutputs(currentTotal);
+                renderPathCostTag(edge, step.cost);
+            }
+            
+            appendAuditLine(`[${sourceId.toUpperCase()} ➔ ${step.to.toUpperCase()}] ${step.desc}`, step.cost, false);
+
+            await sleep(getDelay());
+
+            if (sourceBox) sourceBox.classList.remove("active");
+            if (edge) edge.setAttribute("class", "edge-path");
+        }
+
+        if (arch !== "traditional") {
+            const securityRemediationBuffer = 0.00284;
+            const complianceSafetyTax = currentTotal * 0.25; 
+            currentTotal += (securityRemediationBuffer + complianceSafetyTax);
+
+            appendAuditLine("Amortized Security Buffer (NIST Factor Adjusted)", securityRemediationBuffer, true);
+            appendAuditLine("Loaded Compliance & Risk Architecture Tax (25%)", complianceSafetyTax, true);
+            updateOutputs(currentTotal);
+        } else {
+            appendAuditLine("Fixed-Compute Pipeline Loop Execution Finalized Gracefully", 0, true);
+        }
+
+        document.getElementById("cost-tag").style.display = "none";
+        document.getElementById("run-btn").disabled = false;
+        runningState = false;
+    }
+
+    function renderPathCostTag(pathEl, cost) {
+        if (!pathEl || cost === 0) return;
+        const tag = document.getElementById("cost-tag");
+        const midPoint = pathEl.getPointAtLength(pathEl.getTotalLength() / 2);
+        tag.innerText = `+$${cost.toFixed(5)}`;
+        tag.style.left = `${midPoint.x}px`;
+        tag.style.top = `${midPoint.y - 12}px`;
+        tag.style.display = "block";
+    }
+
+    function updateOutputs(cost) {
+        document.getElementById("cost-loop").innerText = `$${cost.toFixed(5)}`;
+        let monthlyBurn = cost * currentVolume;
+        document.getElementById("cost-monthly").innerText = `$${monthlyBurn.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+
+    function appendAuditLine(desc, cost, isSpecial) {
+        const log = document.getElementById("console-log");
+        const style = isSpecial ? `background: #19161d; border-left: 2px solid var(--accent-red); padding-left: 4px; color: var(--text-main);` : '';
+        log.innerHTML += `
+            <div class="log-entry" style="${style}">
+                <div class="log-desc">${desc}</div>
+                <div class="log-cost">+$${cost.toFixed(5)}</div>
+            </div>`;
+        log.scrollTop = log.scrollHeight;
+    }
+
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+    window.addEventListener('resize', drawConnectorEdges);
+    
+    recalculateTopology();
+</script>
+
+</body>
+</html>

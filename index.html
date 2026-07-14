@@ -861,6 +861,40 @@ footer {
 }
 
 
+/*FERMI*/
+/* ── DIRAC — deep emerald/tech theme ── */
+.ph-fermi {
+  background: #050a0a; /* Dark teal/cyan base */
+  color: #fff;
+}
+
+.ph-fermi::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(212, 221, 119, 0.12) 0%,
+    rgba(189, 231, 66, 0.05) 50%,
+    transparent 70%);
+  pointer-events: none;
+  animation: orbPulse 12s ease-in-out 1s infinite;
+}
+
+.ph-fermi .product-name {
+  background: linear-gradient(160deg, #fff 30%, #e4e956 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
+
 /*DIRAC*/
 /* ── DIRAC — deep emerald/tech theme ── */
 .ph-dirac {
@@ -939,6 +973,50 @@ footer {
     <div class="scroll-hint-line"></div>
   </div> -->
 </section>
+
+
+
+<!-- ══════════════════════════════════════════
+     PROJECT 0 — FERMI
+══════════════════════════════════════════ -->
+
+<section class="product-hero ph-fermi" id="fermi">
+  <div class="product-content">
+
+    <div class="product-label reveal reveal-d1">ML</div>
+
+    <h2 class="product-name reveal reveal-d2">FERMI</h2>
+
+    <p class="product-tagline reveal reveal-d3">
+      
+    </p>
+
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./fermi.html"  target="_blank"   class="btn-white">Run</a>
+      <!-- <a href="./qpapers-published/dirac_white_paper.html" target="_blank"  class="btn-outline-white">White Paper</a> -->
+      <!-- <a href="./qpapers-published/dirac_interface.html"  target="_blank"  class="btn-white" style="background: var(--blue); color: #fff; border: none;">Launch DIRAC</a> -->
+    </div>
+
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">Engineering</span>
+        <span class="spec-label">Estimate</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">AI</span>
+        <span class="spec-label">Cost</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Hybrid</span>
+        <span class="spec-label">Architecture</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- ══════════════════════════════════════════
      PROJECT 1 — DIRAC
@@ -1254,7 +1332,7 @@ footer {
         <div class="stat-block reveal">
           <p class="stat-role">Research & White Paper</p>
           <div class="stat-num sn-amber">3</div>
-          <p class="stat-desc">Published.</p>
+          <!-- <p class="stat-desc">Published.</p> -->
         </div>
 
       </div>
