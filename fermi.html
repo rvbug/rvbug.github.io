@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FERMI - Dynamic AI Architecture & Cost Topology Simulator</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
     <style>
         :root {
             --bg-main: #0a0e14;
@@ -325,7 +326,7 @@
         </div>
         <div class="input-group">
             <label>Orchestrated Core Agents</label>
-            <input type="number" id="input-agents" value="1" min="0" max="4" onchange="recalculateTopology()">
+            <input type="number" id="input-agents" value="0" min="0" max="4" onchange="recalculateTopology()">
         </div>
         <div class="input-group">
             <label>Sub-Agents Per Core Agent</label>
@@ -333,7 +334,7 @@
         </div>
         <div class="input-group">
             <label>External REST API Calls</label>
-            <input type="number" id="input-tool-calls" value="1" min="0" max="10" step="1" onchange="recalculateTopology()">
+            <input type="number" id="input-tool-calls" value="0" min="0" max="10" step="1" onchange="recalculateTopology()">
         </div>
         <div class="input-group">
             <label>Enable Retrieval (RAG)</label>
@@ -403,7 +404,12 @@
 
     const FIXED_CONTROL_PLANE = 2100.00;
     const TAX_MULTIPLIER = 0.25; 
-    const SECURITY_BUFFER_PER_REQ = 0.00421;
+    
+    // Security buffer breakdown components
+    const GUARD_SCAN_FEE = 0.00100; // 2K tokens @ $0.50/M
+    const EVAL_CHECK_FEE = 0.00300; // 1.5K tokens @ $2.00/M
+    const TELEMETRY_TRACE_FEE = 0.00025; // $2.50 / 1000 traces
+    const SECURITY_BUFFER_PER_REQ = GUARD_SCAN_FEE + EVAL_CHECK_FEE + TELEMETRY_TRACE_FEE; // $0.00425
 
     function toggleInputControls(disabled) {
         const inputIds = [
@@ -491,7 +497,7 @@
     function buildStepSequenceSchema(coreAgents, subAgents, toolCalls, useRAG, useMCP, llmCost) {
         stepSequence = [];
         
-        stepSequence.push({ from: "user", to: "guard", desc: "Guardrail & Quality Check validation scan", cost: 0.00010 });
+        stepSequence.push({ from: "user", to: "guard", desc: "Guardrail validation scan", cost: GUARD_SCAN_FEE });
 
         if (useRAG) {
             stepSequence.push({ from: "guard", to: "embed", desc: "User prompt chunked into text embeddings", cost: 0.00010 });
@@ -529,7 +535,7 @@
             });
         }
 
-        stepSequence.push({ from: "llm", to: "telemetry", desc: "Telemetry event logging & trace audit dispatch", cost: 0.00025 });
+        stepSequence.push({ from: "llm", to: "telemetry", desc: "Telemetry event logging & trace audit dispatch ($2.50 / 1000)", cost: TELEMETRY_TRACE_FEE });
     }
 
     function drawConnectorEdges() {
@@ -559,14 +565,24 @@
         });
     }
 
+    function getMCPTierCost(coreAgents, subAgents, useMCP) {
+        if (!useMCP || (coreAgents === 0 && subAgents === 0)) return 0;
+        const totalAgents = coreAgents + (coreAgents * subAgents);
+        if (totalAgents >= 6) return 25000;
+        if (totalAgents >= 4) return 15000;
+        return 5000;
+    }
+
     function updateOutputsLive(currentStepCost) {
         accumulatedTraceCost += currentStepCost;
         
         document.getElementById("cost-loop").innerText = `$${accumulatedTraceCost.toFixed(5)}`;
 
+        const coreAgents = parseInt(document.getElementById("input-agents").value) || 0;
+        const subAgents = parseInt(document.getElementById("input-subagents").value) || 0;
         const useMCP = document.getElementById("input-mcp").value === 'yes';
-        const mcpFixed = useMCP ? 1500 : 0; // Managed MCP Host monthly fixed fee
-
+        
+        const mcpFixed = getMCPTierCost(coreAgents, subAgents, useMCP);
         const totalFixed = (FIXED_CONTROL_PLANE + mcpFixed) * (1 + TAX_MULTIPLIER);
         let monthlyVariable = accumulatedTraceCost * currentVolume;
         let scaleCostTotal = totalFixed + monthlyVariable;
@@ -635,15 +651,18 @@
         const getDelay = () => parseInt(document.getElementById("input-speed").value);
 
         if (currentStepIndex === 0) {
+            const coreAgents = parseInt(document.getElementById("input-agents").value) || 0;
+            const subAgents = parseInt(document.getElementById("input-subagents").value) || 0;
             const useMCP = document.getElementById("input-mcp").value === 'yes';
-            const mcpFixed = useMCP ? 1500 : 0;
+            
+            const mcpFixed = getMCPTierCost(coreAgents, subAgents, useMCP);
             const baseSubtotal = FIXED_CONTROL_PLANE + mcpFixed;
             const taxAmount = baseSubtotal * TAX_MULTIPLIER;
             const totalFloor = baseSubtotal + taxAmount;
 
             appendAuditLineText("[SYSTEM ➔ AI BASELINE] AI Platform Control Plane (Orchestrator + Observability)", `+$${FIXED_CONTROL_PLANE.toLocaleString('en-US', {minimumFractionDigits: 2})}/mo`);
-            if (useMCP) {
-                appendAuditLineText("[SYSTEM ➔ MCP HOST] Managed MCP Host Fixed Infra", `+$${mcpFixed.toLocaleString('en-US', {minimumFractionDigits: 2})}/mo`);
+            if (mcpFixed > 0) {
+                appendAuditLineText("[SYSTEM ➔ MCP HOST] Managed MCP Host Fixed Infra Tier", `+$${mcpFixed.toLocaleString('en-US', {minimumFractionDigits: 2})}/mo`);
             }
             appendAuditLineText("[SYSTEM ➔ AI TAX] Compliance & Risk Architecture Tax (1.25x Multiplier Applied)", `+$${taxAmount.toLocaleString('en-US', {minimumFractionDigits: 2})}/mo`);
             appendAuditLineText("[BASELINE] Monthly Fixed AI Infrastructure Floor Established", `$${totalFloor.toLocaleString('en-US', {minimumFractionDigits: 2})}/mo`, true);
@@ -681,10 +700,17 @@
         }
 
         if (currentStepIndex >= stepSequence.length && isRunning) {
-            updateOutputsLive(SECURITY_BUFFER_PER_REQ);
+            // Quality Check / Eval Loop Step
+            appendAuditLineText("[USER ➔ EVAL] Quality Check & Eval Loop (1.5K tokens @ $2.00/M)", `+$${EVAL_CHECK_FEE.toFixed(5)}`, false);
+            updateOutputsLive(EVAL_CHECK_FEE);
+            await sleep(getDelay());
 
-            appendAuditLine("[USER ➔ LLM] Amortized Security Buffer (AI Guardrails + Evals + Telemetry)", SECURITY_BUFFER_PER_REQ, true);
+            // Amortized Security Buffer Summary Line
+            appendAuditLineText("[USER ➔ LLM] Amortized Security Buffer (Guardrails + Evals + Telemetry)", `+$${SECURITY_BUFFER_PER_REQ.toFixed(5)}`, true);
             
+            // Single Interaction Total Micro Cost Line
+            appendAuditLineText("[TOTAL ➔ MICRO COST] Single Interaction Total Micro Cost", `+$${accumulatedTraceCost.toFixed(5)}`, true);
+
             document.getElementById("cost-tag").style.display = "none";
             setButtonStates(false, false, false);
             document.getElementById("btn-play").innerText = "Play";
