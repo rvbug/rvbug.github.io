@@ -333,7 +333,7 @@
             <input type="number" id="input-subagents" value="0" min="0" max="3" onchange="recalculateTopology()">
         </div>
         <div class="input-group">
-            <label>External REST API Calls</label>
+            <label>Avg. Tool Calls/Task(@10% execution)</label>
             <input type="number" id="input-tool-calls" value="0" min="0" max="10" step="1" onchange="recalculateTopology()">
         </div>
         <div class="input-group">
@@ -501,7 +501,23 @@
 
         if (useRAG) {
             stepSequence.push({ from: "guard", to: "embed", desc: "User prompt chunked into text embeddings", cost: 0.00010 });
-            stepSequence.push({ from: "embed", to: "vdb", desc: "Vector similarity lookup executed", cost: 0.00005 });
+           // stepSequence.push({ from: "embed", to: "vdb", desc: "Vector similarity lookup executed", cost: 0.00005 });
+        
+           // From my Excel - we will use Dynamic Vector DB Formula: 
+           // Writes = 1 + (coreAgents * subAgents * 1) @ $0.0000004 per write
+           // Reads  = 2 + (coreAgents * subAgents * 2) @ $0.0000001 per read
+
+            const vdbWrites = 1 + (coreAgents * subAgents * 1);
+            const vdbReads = 2 + (coreAgents * subAgents * 2);
+            const vdbCost = (vdbWrites * 0.0000004) + (vdbReads * 0.0000001);
+
+            stepSequence.push({ 
+                from: "embed", 
+                to: "vdb", 
+                desc: `Vector DB IOPS (${vdbWrites}x Write, ${vdbReads}x Read)`, 
+                cost: vdbCost 
+            });
+        
         }
 
         let llmSource = useRAG ? "vdb" : "guard";
@@ -525,13 +541,23 @@
             stepSequence.push({ from: "agent-1", to: "subagent", desc: `Sub-agent delegation sub-routine (${subAgents}x pool)`, cost: 0.00015 * subAgents });
         }
 
+        // if (toolCalls > 0) {
+        //     let toolSrcNode = coreAgents > 0 ? "agent-1" : (useMCP ? "mcp" : "llm");
+        //     stepSequence.push({ 
+        //         from: toolSrcNode, 
+        //         to: "ext-api", 
+        //         desc: `Executed ${toolCalls}x REST API Call(s)`, 
+        //         cost: toolCalls * 0.00050 
+        //     });
+
         if (toolCalls > 0) {
             let toolSrcNode = coreAgents > 0 ? "agent-1" : (useMCP ? "mcp" : "llm");
+            const activeToolCost = toolCalls * 0.00050 * 0.10; // 10% probability multiplier
             stepSequence.push({ 
                 from: toolSrcNode, 
                 to: "ext-api", 
-                desc: `Executed ${toolCalls}x REST API Call(s)`, 
-                cost: toolCalls * 0.00050 
+                desc: `Executed ${toolCalls}x Tool(s) (10% execution rate)`, 
+                cost: activeToolCost 
             });
         }
 
@@ -568,8 +594,8 @@
     function getMCPTierCost(coreAgents, subAgents, useMCP) {
         if (!useMCP || (coreAgents === 0 && subAgents === 0)) return 0;
         const totalAgents = coreAgents + (coreAgents * subAgents);
-        if (totalAgents >= 6) return 25000;
-        if (totalAgents >= 4) return 15000;
+        if (totalAgents > 10) return 25000;
+        if (totalAgents >= 5) return 15000;
         return 5000;
     }
 
@@ -719,18 +745,42 @@
         }
     }
 
+    // function renderPathCostTag(pathEl, cost) {
+    //     if (!pathEl || cost === 0) return;
+    //     const tag = document.getElementById("cost-tag");
+    //     const midPoint = pathEl.getPointAtLength(pathEl.getTotalLength() / 2);
+    //     tag.innerText = `+$${cost.toFixed(5)}`;
+    //     tag.style.left = `${midPoint.x}px`;
+    //     tag.style.top = `${midPoint.y - 12}px`;
+    //     tag.style.display = "block";
+    // }
+
+    // Helper function for smart formatting
+    function formatMicroCost(val) {
+        if (val === 0) return "$0.00000";
+        if (val < 0.0001) return `$${val.toFixed(7)}`; // Shows up to 7 decimals for micro-costs
+        return `$${val.toFixed(5)}`;
+    }
+
+
+    // Update renderPathCostTag for 7 digit precision
     function renderPathCostTag(pathEl, cost) {
         if (!pathEl || cost === 0) return;
         const tag = document.getElementById("cost-tag");
         const midPoint = pathEl.getPointAtLength(pathEl.getTotalLength() / 2);
-        tag.innerText = `+$${cost.toFixed(5)}`;
+        tag.innerText = `+${formatMicroCost(cost)}`;
         tag.style.left = `${midPoint.x}px`;
         tag.style.top = `${midPoint.y - 12}px`;
         tag.style.display = "block";
-    }
+}
 
+    // function appendAuditLine(desc, cost, isSpecial) {
+    //     appendAuditLineText(desc, `+$${cost.toFixed(5)}`, isSpecial);
+    // }
+
+    // for 7 digit precision
     function appendAuditLine(desc, cost, isSpecial) {
-        appendAuditLineText(desc, `+$${cost.toFixed(5)}`, isSpecial);
+            appendAuditLineText(desc, `+${formatMicroCost(cost)}`, isSpecial);
     }
 
     function appendAuditLineText(desc, costStr, isSpecial) {
