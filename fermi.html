@@ -19,6 +19,10 @@
             --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
@@ -28,20 +32,21 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         .hero-section {
             width: 100%;
             max-width: 1300px;
             text-align: center;
-            padding: 40px 24px 16px 24px;
-            box-sizing: border-box;
+            padding: 30px 16px 16px 16px;
             border-bottom: 1px solid var(--border);
         }
 
         .hero-title {
             font-family: var(--font-mono);
-            font-size: 3.2rem;
+            font-size: clamp(2rem, 5vw, 3.2rem);
             font-weight: 800;
             letter-spacing: 0.15em;
             color: var(--text-main);
@@ -50,7 +55,7 @@
         }
 
         .hero-subtitle {
-            font-size: 0.85rem;
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
             color: var(--text-muted);
             font-family: var(--font-mono);
             text-transform: uppercase;
@@ -64,18 +69,17 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            padding: 24px;
-            box-sizing: border-box;
+            padding: 16px;
         }
 
         .control-panel {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 20px;
+            padding: 16px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
         }
 
         .input-group {
@@ -85,7 +89,7 @@
         }
 
         .input-group label {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-family: var(--font-mono);
             color: var(--text-muted);
             text-transform: uppercase;
@@ -97,9 +101,10 @@
             border: 1px solid var(--border);
             border-radius: 4px;
             color: var(--text-main);
-            padding: 8px 12px;
+            padding: 8px 10px;
             font-family: var(--font-mono);
-            font-size: 0.82rem;
+            font-size: 0.8rem;
+            width: 100%;
         }
 
         .input-group input:disabled, .input-group select:disabled {
@@ -114,47 +119,58 @@
 
         .metrics-bar {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
         }
 
         .metric-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 16px;
+            padding: 14px;
         }
 
         .metric-card .label {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             color: var(--text-muted);
             text-transform: uppercase;
         }
 
         .metric-card .value {
             font-family: var(--font-mono);
-            font-size: 2rem;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
             font-weight: 700;
             margin: 4px 0 0 0;
             color: var(--accent-red);
+            word-break: break-all;
         }
 
+        /* --- RESPONSIVE WORKSPACE CONTAINER --- */
         .workspace {
             display: grid;
-            grid-template-columns: 1.6fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 20px;
+            width: 100%;
             position: relative;
+        }
+
+        /* Responsive Breakpoint for Mobile & Tablets (iPad Mini, iPad Air, Surface Pro, iPhones) */
+        @media (max-width: 1024px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
         }
 
         .canvas {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 30px;
+            padding: 20px 12px;
             position: relative;
-            min-height: 550px;
-            overflow: hidden;
+            min-height: 480px;
+            width: 100%;
+            overflow-x: auto;
         }
 
         svg.mesh-edges {
@@ -188,7 +204,8 @@
             z-index: 2;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 12px;
+            min-width: 450px;
             height: 100%;
         }
 
@@ -196,14 +213,14 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            gap: 16px;
+            gap: 12px;
         }
 
         .component-box {
             background: #161b26;
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 12px;
+            padding: 10px 8px;
             text-align: center;
             transition: all 0.2s;
             opacity: 1;
@@ -215,8 +232,8 @@
             box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
         }
 
-        .component-box .title { font-weight: 600; font-size: 0.82rem; }
-        .component-box .meta { font-size: 0.68rem; color: var(--text-muted); margin-top: 4px; font-family: var(--font-mono); }
+        .component-box .title { font-weight: 600; font-size: 0.78rem; }
+        .component-box .meta { font-size: 0.65rem; color: var(--text-muted); margin-top: 4px; font-family: var(--font-mono); }
 
         .floating-cost-tag {
             position: absolute;
@@ -232,6 +249,7 @@
             transform: translate(-50%, -50%);
             display: none;
             box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            white-space: nowrap;
         }
 
         .console {
@@ -240,34 +258,37 @@
             border-radius: 8px;
             display: flex;
             flex-direction: column;
-            max-height: 600px;
+            height: 500px;
+            width: 100%;
         }
 
         .console-header {
             background: #161b26;
             border-bottom: 1px solid var(--border);
-            padding: 12px;
+            padding: 10px 12px;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .controls-toolbar {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .action-btn {
             background: var(--accent-blue);
             color: #fff;
             border: none;
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 4px;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
@@ -279,19 +300,26 @@
         .action-btn.stop { background: var(--accent-red); }
 
         .console-log { 
-            padding: 14px; 
+            padding: 12px; 
             flex-grow: 1; 
             overflow-y: auto; 
             display: flex; 
             flex-direction: column; 
-            gap: 10px; 
+            gap: 8px; 
             font-family: var(--font-mono); 
-            font-size: 0.75rem; 
+            font-size: 0.72rem; 
         }
 
-        .log-entry { display: flex; justify-content: space-between; border-bottom: 1px solid #161b26; padding-bottom: 4px; }
-        .log-desc { color: var(--text-muted); }
-        .log-cost { color: var(--accent-red); font-weight: 600; }
+        .log-entry { 
+            display: flex; 
+            justify-content: space-between; 
+            border-bottom: 1px solid #161b26; 
+            padding-bottom: 4px; 
+            gap: 8px;
+        }
+
+        .log-desc { color: var(--text-muted); word-break: break-word; }
+        .log-cost { color: var(--accent-red); font-weight: 600; white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -333,7 +361,7 @@
             <input type="number" id="input-subagents" value="0" min="0" max="3" onchange="recalculateTopology()">
         </div>
         <div class="input-group">
-            <label>Avg. Tool Calls/Task(@10% execution)</label>
+            <label>Avg. Tool Calls/Task (@10% execution)</label>
             <input type="number" id="input-tool-calls" value="0" min="0" max="10" step="1" onchange="recalculateTopology()">
         </div>
         <div class="input-group">
@@ -358,7 +386,7 @@
 
     <div class="metrics-bar">
         <div class="metric-card">
-            <div class="label">Total Computed Monthly Volume (B28)</div>
+            <div class="label">Total Computed Monthly Volume</div>
             <div id="metric-volume" class="value" style="color:var(--accent-blue)">0</div>
         </div>
         <div class="metric-card">
@@ -405,11 +433,21 @@
     const FIXED_CONTROL_PLANE = 2100.00;
     const TAX_MULTIPLIER = 0.25; 
     
-    // Security buffer breakdown components
-    const GUARD_SCAN_FEE = 0.00100; // 2K tokens @ $0.50/M
-    const EVAL_CHECK_FEE = 0.00300; // 1.5K tokens @ $2.00/M
-    const TELEMETRY_TRACE_FEE = 0.00025; // $2.50 / 1000 traces
-    const SECURITY_BUFFER_PER_REQ = GUARD_SCAN_FEE + EVAL_CHECK_FEE + TELEMETRY_TRACE_FEE; // $0.00425
+    const GUARD_SCAN_FEE = 0.00100;
+    const EVAL_CHECK_FEE = 0.00300;
+    const TELEMETRY_TRACE_FEE = 0.00025;
+    const SECURITY_BUFFER_PER_REQ = GUARD_SCAN_FEE + EVAL_CHECK_FEE + TELEMETRY_TRACE_FEE;
+
+    const TRACKING_WORKSPACE = "fermi_simulator";
+    function trackMetric(metricKey) {
+        try {
+            fetch(`https://api.counterapi.dev/v1/${TRACKING_WORKSPACE}/${metricKey}/up`, { mode: 'cors' }).catch(() => {});
+        } catch (e) {}
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        trackMetric("page_views");
+    });
 
     function toggleInputControls(disabled) {
         const inputIds = [
@@ -428,7 +466,7 @@
 
         const users = parseInt(document.getElementById("input-users").value) || 0;
         const tasksPerDay = parseFloat(document.getElementById("input-frequency").value);
-        currentVolume = Math.round(users * tasksPerDay * 30); // B28
+        currentVolume = Math.round(users * tasksPerDay * 30);
         document.getElementById("metric-volume").innerText = currentVolume.toLocaleString();
 
         document.getElementById("cost-loop").innerText = "$0.00000";
@@ -441,7 +479,6 @@
         const useMCP = document.getElementById("input-mcp").value === 'yes';
         const llmRate = parseFloat(document.getElementById("input-model-tier").value);
 
-        // Base tokens: 3500 if RAG enabled, 2000 if Direct
         const baseTokens = useRAG ? 3500 : 2000;
         const totalTokens = baseTokens + (coreAgents * 500) + (coreAgents * subAgents * 500);
         const llmCost = (totalTokens / 1000000) * llmRate;
@@ -459,7 +496,7 @@
         const col1 = document.createElement("div");
         col1.className = "node-column";
         col1.innerHTML = `<div class="component-box" id="node-user"><div class="title">User Interface</div><div class="meta" id="hit-user">Hits: 0</div></div>`;
-        col1.innerHTML += `<div class="component-box" id="node-guard"><div class="title">Guardrail & Quality Check</div><div class="meta" id="hit-guard">Hits: 0</div></div>`;
+        col1.innerHTML += `<div class="component-box" id="node-guard"><div class="title">Guardrail Scan</div><div class="meta" id="hit-guard">Hits: 0</div></div>`;
         if (useRAG) {
             col1.innerHTML += `
                 <div class="component-box" id="node-embed"><div class="title">Embedding Engine</div><div class="meta" id="hit-embed">Hits: 0</div></div>
@@ -471,13 +508,13 @@
         const col2 = document.createElement("div");
         col2.className = "node-column";
         if (coreAgents > 0) {
-            col2.innerHTML += `<div class="component-box" id="node-orch"><div class="title">Agent Orchestrator / Glue</div><div class="meta" id="hit-orch">Hits: 0</div></div>`;
+            col2.innerHTML += `<div class="component-box" id="node-orch"><div class="title">Agent Orchestrator</div><div class="meta" id="hit-orch">Hits: 0</div></div>`;
         }
         if (useMCP) {
             col2.innerHTML += `<div class="component-box" id="node-mcp"><div class="title">Managed MCP Host</div><div class="meta" id="hit-mcp">Hits: 0</div></div>`;
         }
         col2.innerHTML += `<div class="component-box" id="node-llm"><div class="title">LLM Core</div><div class="meta" id="hit-llm">Hits: 0</div></div>`;
-        col2.innerHTML += `<div class="component-box" id="node-telemetry"><div class="title">Telemetry Logging</div><div class="meta" id="hit-telemetry">Hits: 0</div></div>`;
+        col2.innerHTML += `<div class="component-box" id="node-telemetry"><div class="title">Telemetry Trace</div><div class="meta" id="hit-telemetry">Hits: 0</div></div>`;
         mesh.appendChild(col2);
 
         const col3 = document.createElement("div");
@@ -501,11 +538,6 @@
 
         if (useRAG) {
             stepSequence.push({ from: "guard", to: "embed", desc: "User prompt chunked into text embeddings", cost: 0.00010 });
-           // stepSequence.push({ from: "embed", to: "vdb", desc: "Vector similarity lookup executed", cost: 0.00005 });
-        
-           // From my Excel - we will use Dynamic Vector DB Formula: 
-           // Writes = 1 + (coreAgents * subAgents * 1) @ $0.0000004 per write
-           // Reads  = 2 + (coreAgents * subAgents * 2) @ $0.0000001 per read
 
             const vdbWrites = 1 + (coreAgents * subAgents * 1);
             const vdbReads = 2 + (coreAgents * subAgents * 2);
@@ -517,7 +549,6 @@
                 desc: `Vector DB IOPS (${vdbWrites}x Write, ${vdbReads}x Read)`, 
                 cost: vdbCost 
             });
-        
         }
 
         let llmSource = useRAG ? "vdb" : "guard";
@@ -541,18 +572,9 @@
             stepSequence.push({ from: "agent-1", to: "subagent", desc: `Sub-agent delegation sub-routine (${subAgents}x pool)`, cost: 0.00015 * subAgents });
         }
 
-        // if (toolCalls > 0) {
-        //     let toolSrcNode = coreAgents > 0 ? "agent-1" : (useMCP ? "mcp" : "llm");
-        //     stepSequence.push({ 
-        //         from: toolSrcNode, 
-        //         to: "ext-api", 
-        //         desc: `Executed ${toolCalls}x REST API Call(s)`, 
-        //         cost: toolCalls * 0.00050 
-        //     });
-
         if (toolCalls > 0) {
             let toolSrcNode = coreAgents > 0 ? "agent-1" : (useMCP ? "mcp" : "llm");
-            const activeToolCost = toolCalls * 0.00050 * 0.10; // 10% probability multiplier
+            const activeToolCost = toolCalls * 0.00050 * 0.10;
             stepSequence.push({ 
                 from: toolSrcNode, 
                 to: "ext-api", 
@@ -578,10 +600,10 @@
             const fromRect = fromEl.getBoundingClientRect();
             const toRect = toEl.getBoundingClientRect();
 
-            const x1 = (fromRect.left + fromRect.width / 2) - canvasRect.left;
-            const y1 = (fromRect.top + fromRect.height / 2) - canvasRect.top;
-            const x2 = (toRect.left + toRect.width / 2) - canvasRect.left;
-            const y2 = (toRect.top + toRect.height / 2) - canvasRect.top;
+            const x1 = (fromRect.left + fromRect.width / 2) - canvasRect.left + document.getElementById("canvas").scrollLeft;
+            const y1 = (fromRect.top + fromRect.height / 2) - canvasRect.top + document.getElementById("canvas").scrollTop;
+            const x2 = (toRect.left + toRect.width / 2) - canvasRect.left + document.getElementById("canvas").scrollLeft;
+            const y2 = (toRect.top + toRect.height / 2) - canvasRect.top + document.getElementById("canvas").scrollTop;
 
             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
             path.id = `edge-path-${idx}`;
@@ -629,6 +651,23 @@
             runLoop();
             return;
         }
+
+        trackMetric("simulations_run");
+
+        const modelTier = document.getElementById("input-model-tier").value;
+        if (modelTier === "0.35") trackMetric("model_nano");
+        else if (modelTier === "2.50") trackMetric("model_speed");
+        else if (modelTier === "6.50") trackMetric("model_standard");
+        else if (modelTier === "15.00") trackMetric("model_frontier");
+
+        const useRAG = document.getElementById("input-rag").value;
+        trackMetric(useRAG === 'yes' ? "rag_enabled" : "rag_disabled");
+
+        const useMCP = document.getElementById("input-mcp").value;
+        trackMetric(useMCP === 'yes' ? "mcp_enabled" : "mcp_disabled");
+
+        const coreAgents = document.getElementById("input-agents").value;
+        trackMetric(`agents_${coreAgents}`);
 
         stopExecution();
         isRunning = true;
@@ -726,15 +765,12 @@
         }
 
         if (currentStepIndex >= stepSequence.length && isRunning) {
-            // Quality Check / Eval Loop Step
             appendAuditLineText("[USER ➔ EVAL] Quality Check & Eval Loop (1.5K tokens @ $2.00/M)", `+$${EVAL_CHECK_FEE.toFixed(5)}`, false);
             updateOutputsLive(EVAL_CHECK_FEE);
             await sleep(getDelay());
 
-            // Amortized Security Buffer Summary Line
             appendAuditLineText("[USER ➔ LLM] Amortized Security Buffer (Guardrails + Evals + Telemetry)", `+$${SECURITY_BUFFER_PER_REQ.toFixed(5)}`, true);
             
-            // Single Interaction Total Micro Cost Line
             appendAuditLineText("[TOTAL ➔ MICRO COST] Single Interaction Total Micro Cost", `+$${accumulatedTraceCost.toFixed(5)}`, true);
 
             document.getElementById("cost-tag").style.display = "none";
@@ -745,25 +781,12 @@
         }
     }
 
-    // function renderPathCostTag(pathEl, cost) {
-    //     if (!pathEl || cost === 0) return;
-    //     const tag = document.getElementById("cost-tag");
-    //     const midPoint = pathEl.getPointAtLength(pathEl.getTotalLength() / 2);
-    //     tag.innerText = `+$${cost.toFixed(5)}`;
-    //     tag.style.left = `${midPoint.x}px`;
-    //     tag.style.top = `${midPoint.y - 12}px`;
-    //     tag.style.display = "block";
-    // }
-
-    // Helper function for smart formatting
     function formatMicroCost(val) {
         if (val === 0) return "$0.00000";
-        if (val < 0.0001) return `$${val.toFixed(7)}`; // Shows up to 7 decimals for micro-costs
+        if (val < 0.0001) return `$${val.toFixed(7)}`;
         return `$${val.toFixed(5)}`;
     }
 
-
-    // Update renderPathCostTag for 7 digit precision
     function renderPathCostTag(pathEl, cost) {
         if (!pathEl || cost === 0) return;
         const tag = document.getElementById("cost-tag");
@@ -772,15 +795,10 @@
         tag.style.left = `${midPoint.x}px`;
         tag.style.top = `${midPoint.y - 12}px`;
         tag.style.display = "block";
-}
+    }
 
-    // function appendAuditLine(desc, cost, isSpecial) {
-    //     appendAuditLineText(desc, `+$${cost.toFixed(5)}`, isSpecial);
-    // }
-
-    // for 7 digit precision
     function appendAuditLine(desc, cost, isSpecial) {
-            appendAuditLineText(desc, `+${formatMicroCost(cost)}`, isSpecial);
+        appendAuditLineText(desc, `+${formatMicroCost(cost)}`, isSpecial);
     }
 
     function appendAuditLineText(desc, costStr, isSpecial) {
@@ -801,7 +819,11 @@
     }
 
     function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    // Automatic layout & SVG edge observer for dynamic screen resizes
     window.addEventListener('resize', drawConnectorEdges);
+    const canvasObserver = new ResizeObserver(() => drawConnectorEdges());
+    canvasObserver.observe(document.getElementById("canvas"));
 
     recalculateTopology();
 </script>
