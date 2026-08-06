@@ -82,6 +82,65 @@
             gap: 12px;
         }
 
+        canvas {
+    position: relative;
+}
+
+/* Architecture Overlay Styling */
+.arch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 14, 23, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.arch-overlay.hidden {
+    display: none;
+}
+
+.phase-badge {
+    background-color: rgba(29, 78, 216, 0.2);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.arch-overlay h2 {
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    letter-spacing: 0.5px;
+}
+
+.arch-overlay p {
+    color: #94a3b8;
+    font-size: 14px;
+    max-width: 420px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+
         .input-group {
             display: flex;
             flex-direction: column;
@@ -331,6 +390,16 @@
 
 <div class="dashboard">
     <div class="control-panel">
+
+        <div class="input-group">
+            <label for="input-arch-type">CORE ARCHITECTURE TYPE</label>
+            <select id="input-arch-type" onchange="handleArchitectureChange()">
+                <option value="agentic" selected>Agentic AI</option>
+                <option value="traditional">Traditional AI</option>
+                <option value="hybrid">Hybrid Architecture</option>
+            </select>
+        </div>
+
         <div class="input-group">
             <label>Active Users Estimate</label>
             <input type="number" id="input-users" value="3000" min="1" onchange="recalculateTopology()">
@@ -404,6 +473,14 @@
             <svg class="mesh-edges" id="edge-svg-layer"></svg>
             <div id="cost-tag" class="floating-cost-tag">+$0.00</div>
             <div class="nodes-layer" id="nodes-mesh-layer"></div>
+
+            <div id="arch-roadmap-overlay" class="arch-overlay hidden">
+            <div class="phase-badge">PHASE 2 ROADMAP</div>
+            <h2 id="arch-overlay-title">Traditional AI Architecture</h2>
+            <p>Topology simulation coming soon.</p>
+        </div>
+
+
         </div>
 
         <div class="console">
@@ -454,6 +531,78 @@
     window.addEventListener('DOMContentLoaded', () => {
         trackMetric("fermi-page-views");
     });
+
+
+//     function handleArchitectureChange() {
+//     const archType = document.getElementById("input-arch-type").value;
+//     const overlay = document.getElementById("arch-roadmap-overlay");
+//     const overlayTitle = document.getElementById("arch-overlay-title");
+
+//     // Clear simulation or reset play controls if non-agentic selected
+//     if (archType === "agentic") {
+//         overlay.classList.add("hidden");
+//     } else {
+//         overlay.classList.remove("hidden");
+        
+//         if (archType === "traditional") {
+//             overlayTitle.innerText = "Traditional AI Architecture";
+//             logConsole("[INFO] Traditional AI Architecture selected. Dynamic topology offline.");
+//             // setButtonStates(false, false, false);
+//             // toggleInputControls(disabled)
+//         } else if (archType === "hybrid") {
+//             overlayTitle.innerText = "Hybrid Architecture";
+//             logConsole("[INFO] Hybrid Architecture selected. Dynamic topology offline.");
+//         }
+//     }
+// }
+
+
+function handleArchitectureChange() {
+    const archType = document.getElementById("input-arch-type").value;
+    const overlay = document.getElementById("arch-roadmap-overlay");
+    const overlayTitle = document.getElementById("arch-overlay-title");
+
+    // Select all inputs except the architecture selector itself
+    const inputs = document.querySelectorAll('.dashboard input, .dashboard select:not(#input-arch-type)');
+    const playBtn = document.getElementById("btn-play");
+    const pauseBtn = document.getElementById("btn-pause");
+    const stopBtn = document.getElementById("btn-stop");
+
+    if (archType === "agentic") {
+        overlay.classList.add("hidden");
+        
+        // Enable all input controls
+        inputs.forEach(input => input.disabled = false);
+        playBtn.disabled = false;
+    } else {
+        overlay.classList.remove("hidden");
+        
+        // Stop any running simulation if active
+        if (typeof stopExecution === "function") {
+            stopExecution();
+        }
+
+        // Disable all inputs and controls
+        inputs.forEach(input => input.disabled = true);
+        playBtn.disabled = true;
+        pauseBtn.disabled = true;
+        stopBtn.disabled = true;
+        
+        if (archType === "traditional") {
+            overlayTitle.innerText = "Traditional AI Architecture";
+            logConsole("[INFO] Traditional AI Architecture selected. Dynamic topology offline.");
+        } else if (archType === "hybrid") {
+            overlayTitle.innerText = "Hybrid Architecture";
+            logConsole("[INFO] Hybrid Architecture selected. Dynamic topology offline.");
+        }
+    }
+}
+    // Initial check on DOM Load
+    window.addEventListener('DOMContentLoaded', () => {
+        handleArchitectureChange();
+    });
+
+
 
 
     function toggleInputControls(disabled) {
