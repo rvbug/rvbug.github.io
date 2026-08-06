@@ -438,16 +438,23 @@
     const TELEMETRY_TRACE_FEE = 0.00025;
     const SECURITY_BUFFER_PER_REQ = GUARD_SCAN_FEE + EVAL_CHECK_FEE + TELEMETRY_TRACE_FEE;
 
-    const TRACKING_WORKSPACE = "fermi_simulator";
-    function trackMetric(metricKey) {
+   
+    // --- ZERO-PII ANALYTICS TRACKER (CounterAPI v2) ---
+    // const TRACKING_WORKSPACE = "fermi_simulator";
+    const TRACKING_WORKSPACE = "fermi";
+
+    function trackMetric(counterSlug) {
         try {
-            fetch(`https://api.counterapi.dev/v1/${TRACKING_WORKSPACE}/${metricKey}/up`, { mode: 'cors' }).catch(() => {});
+            // Hits: https://api.counterapi.dev/v2/fermi_simulator/{counterSlug}/up
+            fetch(`https://api.counterapi.dev/v2/${TRACKING_WORKSPACE}/${counterSlug}/up`, { mode: 'cors' }).catch(() => {});
         } catch (e) {}
     }
 
+    // 1. Page Load Event (Ensure API Slug in dashboard is 'page-views')
     window.addEventListener('DOMContentLoaded', () => {
-        trackMetric("page_views");
+        trackMetric("fermi-page-views");
     });
+
 
     function toggleInputControls(disabled) {
         const inputIds = [
@@ -652,22 +659,32 @@
             return;
         }
 
-        trackMetric("simulations_run");
 
+        // 2. Main Simulation Trigger (Inside startExecution())
+        trackMetric("simulations-run");
+
+        // 3. Model Engine Metrics
         const modelTier = document.getElementById("input-model-tier").value;
-        if (modelTier === "0.35") trackMetric("model_nano");
-        else if (modelTier === "2.50") trackMetric("model_speed");
-        else if (modelTier === "6.50") trackMetric("model_standard");
-        else if (modelTier === "15.00") trackMetric("model_frontier");
+        if (modelTier === "0.35") trackMetric("model-nano");
+        else if (modelTier === "2.50") trackMetric("model-speed");
+        else if (modelTier === "6.50") trackMetric("model-standard");
+        else if (modelTier === "15.00") trackMetric("model-frontier");
 
+        // 4. Feature Toggles
         const useRAG = document.getElementById("input-rag").value;
-        trackMetric(useRAG === 'yes' ? "rag_enabled" : "rag_disabled");
+        trackMetric(useRAG === 'yes' ? "rag-enabled" : "rag-disabled");
 
         const useMCP = document.getElementById("input-mcp").value;
-        trackMetric(useMCP === 'yes' ? "mcp_enabled" : "mcp_disabled");
+        trackMetric(useMCP === 'yes' ? "mcp-enabled" : "mcp-disabled");
 
+        // 5. Active Agents
         const coreAgents = document.getElementById("input-agents").value;
-        trackMetric(`agents_${coreAgents}`);
+        trackMetric(`agents-${coreAgents}`);
+
+
+
+
+
 
         stopExecution();
         isRunning = true;
