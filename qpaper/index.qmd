@@ -10,26 +10,16 @@ toc: false
 
 <!-- CIOP consists of two sub projects -->
 
-# **Autonomous Command Optimization Network (ACON)**
+<!-- # **Autonomous Command Optimization Network (ACON)** -->
 
-Research Paper - [v1.0 via Multi-Arm Bandit](./acon.qmd)
+<!-- Research Paper - [v1.0 via Multi-Arm Bandit](./acon.qmd) -->
 
-<br>
-
-#  **DIRAC**: Deterministic Forensic Model for Measuring Information Entropy in LLM Generated Software
-
-Research Paper - [v1.0 DIRAC](./dirac_technical_paper.qmd) 
-
-<br>
-
-# **DIRAC**: A Forensic Framework for Quantifying Engineering and Financial Leakage in the Era of LLMs
-
-White Paper - [v1.0 DIRAC](./dirac_white_paper.qmd)
+<!--  #  **DIRAC**: Deterministic Forensic Model for Measuring Information Entropy in LLM Generated Software-->
+<!-- Research Paper - [v1.0 DIRAC](./dirac_technical_paper.qmd) -->
+<!-- # **DIRAC**: A Forensic Framework for Quantifying Engineering and Financial Leakage in the Era of LLMs -->
+<!-- White Paper - [v1.0 DIRAC](./dirac_white_paper.qmd) -->
 
 
-<br>
-<br>
+# ORBIT  - An Adaptive agent systems
 
-# Try DIRAC: [v1.0 DIRAC]
-Coming Soon
-
+(coming soon)
