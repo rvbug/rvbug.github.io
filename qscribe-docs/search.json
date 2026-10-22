@@ -357,158 +357,46 @@
     "text": "Conclusion\nThis article covered the basic syntax of PTX. The next article will focus on how Deepseek could have possibly optimized their PTX code on their H800 NVIDIA GPUs."
   },
   {
-    "objectID": "posts/notion/notion.html",
-    "href": "posts/notion/notion.html",
-    "title": "Notion",
+    "objectID": "posts/QuantumGravity/Dotfiles.html",
+    "href": "posts/QuantumGravity/Dotfiles.html",
+    "title": "Dotfiles",
     "section": "",
-    "text": "As a full-time software engineer balancing family life, personal projects, and professional responsibilities, I’ve spent years searching for the ultimate productivity solution. In 2017, I discovered Notion – a game-changing platform that revolutionized how I manage my life, track projects, and transform ideas into actionable plans."
+    "text": "In the first part of my Productivity series, we talked about configuring Neovim as your IDE. You can check out that blog and my configuration here.\n\n\nIn this part, let us talk about the magic of .dotfiles, how to automate your development workflow, manage repetitive tasks by installing softwares, setting up editor shortcuts, and even configuring the development environment across multiple machines for a unified experience."
   },
   {
-    "objectID": "posts/notion/notion.html#the-professionals-productivity-challenge",
-    "href": "posts/notion/notion.html#the-professionals-productivity-challenge",
-    "title": "Notion",
-    "section": "",
-    "text": "As a full-time software engineer balancing family life, personal projects, and professional responsibilities, I’ve spent years searching for the ultimate productivity solution. In 2017, I discovered Notion – a game-changing platform that revolutionized how I manage my life, track projects, and transform ideas into actionable plans."
+    "objectID": "posts/QuantumGravity/Dotfiles.html#the-list",
+    "href": "posts/QuantumGravity/Dotfiles.html#the-list",
+    "title": "Dotfiles",
+    "section": "The List",
+    "text": "The List\nSince these are highly personal configurations, the requirement was to make these scripts flexible and easy to use and maintain . The newer version now uses text files from the previous YAML based configuration.\nBelow are the three text files used in the script:\nsoftware_list.txt - List of all softwares to be installed on your machine.\npip_list.txt - If you are into Data Science or ML then you can add or remove the libraries. e.g. If you use PyTorch , just swap it with Tensorflow.\nconfig_list.txt - List of all dotfiles to be maintained.\nNote: YAML is a widely used data serialization language for writing configuration files."
   },
   {
-    "objectID": "posts/notion/notion.html#notion-a-powerful-productivity-ecosystem",
-    "href": "posts/notion/notion.html#notion-a-powerful-productivity-ecosystem",
-    "title": "Notion",
-    "section": "Notion: A Powerful Productivity Ecosystem",
-    "text": "Notion: A Powerful Productivity Ecosystem\nNotion is far more than a simple productivity app. It’s a versatile workspace that adapts to your unique workflow, combining note-taking, project management, databases, and collaboration tools into a single, customizable platform."
+    "objectID": "posts/QuantumGravity/Dotfiles.html#mac",
+    "href": "posts/QuantumGravity/Dotfiles.html#mac",
+    "title": "Dotfiles",
+    "section": "Mac",
+    "text": "Mac\nIf mac is detected then it will look if Homebrew (package manager) and git is installed already.\n\nHomebrew & Git\n# check if homebrew is already installed\nif command -v brew &&gt;/dev/null; then\n  echo \"Homebrew already installed\"\nelse\n# if not install \n  echo \"##### Installing homebrew...\"\n#...\nfi\n\n#...\n\n# checking for git on your machine.\nif command -v git &&gt;/dev/null; then\n  echo \"git already installed...\"\n#...\n\n\nInstalling softwares\nThe next step is to check if software_list.txt file is available to start the installation process. For certain softwares like Lua, specific version is required. For OCaml, users have an option to skip the installation.\nNote: Ocaml is a general purpose “functional” programming language. You can read more about it here.\n # check if lua is already is installed\nif brew list lua &&gt;/dev/null; then\n#...\n# if not then install via brew\nbrew install lua@5.4\n\n#...\n\n# check with user for OCaml installation\nread -p \"do you want to install ocaml? (y/n): \" choice\n#...\n\n\nData Science and ML\nThen comes installing Data Science tools. The only requirement is to have pyyaml installed on your machine.\n# check for pyyaml installation\n# install if not available.\nif brew list pyyaml &&gt;/dev/null; then\nI have a repo where you get a cookie-cutter template for ML projects. It downloads the repo and sets up your machine to get you started immediately.\n# checks if cookie-cutter is already installed\n# in your home directory\nif [ -d \"$HOME/ml-cookie-cutter\" ]; then\n\n# if not then download the repo \n# install and activate virtual env \necho \"####### activating the venv...\"\nsource venv/bin/activate \n\n# ensure pip is installed and then start \n# installing the ML libraries\npip3 install $cfg\n\n# Once done the cleanup starts...\n# delete the downloaded repo and \n# deactivate the virtual env\n#...\n\n\nFinal configuration\nNow on to the final steps of the installation process - Back up the existing configuration files and check for Neovim.\n# Take the backup of the existing config files\ncp $HOME/$line $HOME/$line.bak.$(date +%Y-%m-%d-%H:%M:%S)\n\n# If Neovim is already installed, need to \n# backup the existing configuration\ncp -r $HOME/.config/nvim/ $HOME/.config/nvim.bak.$dt\nThe script will check for xcode command-line tools\n# check for commandline tools\nxcode-select --version &gt; /dev/null\n\n# if not then install them\nxcode-select --install"
   },
   {
-    "objectID": "posts/notion/notion.html#deep-dive-notions-powerful-features",
-    "href": "posts/notion/notion.html#deep-dive-notions-powerful-features",
-    "title": "Notion",
-    "section": "Deep Dive: Notion’s Powerful Features",
-    "text": "Deep Dive: Notion’s Powerful Features\n\n1. Databases: The Backbone of Intelligent Organization\nNotion’s databases are game-changers for personal productivity:\n\nRelational Databases\n\nLink information across different pages\nCreate complex, interconnected knowledge systems\nTrack relationships between projects, goals, and tasks\n\n\n\nMultiple View Types\n\nTable view for detailed tracking\nKanban boards for visual progress\nCalendar view for time-based organization\nGallery view for visual projects\n\n\n\n\n2. Dynamic Pages and Nested Information\n\nHierarchical page structure\nUnlimited nesting of pages\nSeamless information organization\nContext-rich documentation\n\n\n\n3. Powerful Formulas and Rollups\n\nSpreadsheet-like calculations\nAggregate data across databases\nCreate dynamic, self-updating dashboards\nAutomate tracking and reporting\n\n\n\n4. Linked Databases: Breaking Information Silos\n\nReference same database in multiple views\nMaintain data consistency\nCreate project-specific perspectives\nReduce redundant data entry\n\n\n\n5. Rich Embedding Capabilities\n\nEmbed images, videos, and external content\nIntegrate with multiple platforms\nCreate comprehensive, multimedia workspaces\nCentralize information from various sources"
+    "objectID": "posts/QuantumGravity/Dotfiles.html#linux",
+    "href": "posts/QuantumGravity/Dotfiles.html#linux",
+    "title": "Dotfiles",
+    "section": "Linux",
+    "text": "Linux\nFor Linux, most of the process remains the same with a few subtle differences.\n\nOS and Package Manager\nThe script first checks the version of Linux and sets the package manager.\n# if Ubuntu or Debian, then set the package as ap-get\npkg_mgr=apt-get\n# If Fedora, then go for dnf \npkg_mgr=dnf \n# if dnf is not available go for yum\n\n\nAdditional checks\nNever (ever) run any script as a root user, the script warns if you do so and also check for sudo access. Few software installations are skipped if it is not supported by that operating system.\n# caution the user if it is root user\nuser=$(whoami)\nif [ \"$user\" == \"root\" ]; then\n\n# Option to run this with sudo access\nread -p \"do you want to run this script as sudo (y/n)?\" choice\n\n# check if you want to upgrade your system\n# before starting the installation\n$su_user $pkg_mgr update -y"
   },
   {
-    "objectID": "posts/notion/notion.html#my-notion-ecosystem-practical-implementation",
-    "href": "posts/notion/notion.html#my-notion-ecosystem-practical-implementation",
-    "title": "Notion",
-    "section": "My Notion Ecosystem: Practical Implementation",
-    "text": "My Notion Ecosystem: Practical Implementation\n\nSpecialized Trackers\n\nTravel Tracker\n\nTrip logging\nExpense management\nFuture planning\nMemory collection\n\nHabit Tracker\n\nDaily/weekly habit monitoring\nProgress visualization\nAccountability mechanisms\n\nMeal Planner\n\nRecipe management\nGrocery lists\nNutrition tracking\n\nProject Management\n\nMilestone tracking\nResource allocation\nProgress monitoring"
+    "objectID": "posts/QuantumGravity/Dotfiles.html#docker-support",
+    "href": "posts/QuantumGravity/Dotfiles.html#docker-support",
+    "title": "Dotfiles",
+    "section": "Docker Support",
+    "text": "Docker Support\nIf you want to try out this script on docker containers then here are some helpful commands. You can download the images and run the container as shown below.\n# To pull the images\ndocker pull fedora # debian # or ubuntu\n\n# run the container\n$&gt; docker run --name fedora -d -i -t fedora /bin/bash\n\n# check the processes\n$&gt; docker ps\n\n# to drop inside the container\n# replace the container-id with the number \n# shown with the above command\n$&gt; docker exec -it \"container-id\" /bin/bash\nNote If you are using the docker machine, you will be dropped into the container as “root”."
   },
   {
-    "objectID": "posts/notion/notion.html#integration-strategy",
-    "href": "posts/notion/notion.html#integration-strategy",
-    "title": "Notion",
-    "section": "Integration Strategy",
-    "text": "Integration Strategy\nNotion works best as part of a broader productivity ecosystem:\n\nApple Notes for quick captures\nApple Reminders for time-sensitive tasks\nApple Calendar for scheduling"
-  },
-  {
-    "objectID": "posts/notion/notion.html#weekly-review-process",
-    "href": "posts/notion/notion.html#weekly-review-process",
-    "title": "Notion",
-    "section": "Weekly Review Process",
-    "text": "Weekly Review Process\n\nReview captured ideas\nUpdate project trackers\nAdjust goals\nReflect on achievements"
-  },
-  {
-    "objectID": "posts/notion/notion.html#key-advantages",
-    "href": "posts/notion/notion.html#key-advantages",
-    "title": "Notion",
-    "section": "Key Advantages",
-    "text": "Key Advantages\n\nFlexibility: Fully customizable workflows\nIntegration: Connects life and work domains\nVisualization: Intuitive data representation\nAccessibility: Cross-device availability\nCollaboration: Easy sharing and teamwork"
-  },
-  {
-    "objectID": "posts/notion/notion.html#technical-insights-for-engineers",
-    "href": "posts/notion/notion.html#technical-insights-for-engineers",
-    "title": "Notion",
-    "section": "Technical Insights for Engineers",
-    "text": "Technical Insights for Engineers\nThink of Notion like code: - Templates = Modular code - Databases = Structured data models - Views = Different data rendering methods"
-  },
-  {
-    "objectID": "posts/notion/notion.html#getting-started-your-notion-journey",
-    "href": "posts/notion/notion.html#getting-started-your-notion-journey",
-    "title": "Notion",
-    "section": "Getting Started: Your Notion Journey",
-    "text": "Getting Started: Your Notion Journey\n\nDownload Notion\nStart with basic templates\nExperiment gradually\nDevelop your unique system\n\nThe perfect productivity system evolves with you.\nDisclaimer: Personal experience. Results may vary."
-  },
-  {
-    "objectID": "posts/QuantumGravity/QuantumML.html",
-    "href": "posts/QuantumGravity/QuantumML.html",
-    "title": "Quantum Machine Learning",
-    "section": "",
-    "text": "My love for Quantum Physics rekindled in 2017 while studying the foundation of mathematics used in Machine Learning and Deep Learning.\n\n\nAnother interesting branch gaining momentum is Quantum Machine Learning (QML) - an intersection between Quantum Physics and ML. QML can speed up training and evaluation of ML models and, in turn, help develop new quantum algorithms. This blog is an introduction to QML.\n\n\n\nalt text\n\n\nSource code provided in this article is available in my Github repo."
-  },
-  {
-    "objectID": "posts/QuantumGravity/QuantumML.html#qubits",
-    "href": "posts/QuantumGravity/QuantumML.html#qubits",
-    "title": "Quantum Machine Learning",
-    "section": "Qubits",
-    "text": "Qubits\nIn classical computers a bit can be either in a 0 or 1 state.\nBut Qubits can not only be in 0 or 1 but can also be in both states simultaneously - this is known as superposition."
-  },
-  {
-    "objectID": "posts/QuantumGravity/QuantumML.html#bloch-sphere",
-    "href": "posts/QuantumGravity/QuantumML.html#bloch-sphere",
-    "title": "Quantum Machine Learning",
-    "section": "Bloch Sphere",
-    "text": "Bloch Sphere\nThe state of the qubits is represented using Bloch Sphere and it helps to understand the behaviour of quantum circuits and algorithms.\nImage Credit - Wiki\n![Bloch sphere - Wikipedia]"
-  },
-  {
-    "objectID": "posts/QuantumGravity/QuantumML.html#gates",
-    "href": "posts/QuantumGravity/QuantumML.html#gates",
-    "title": "Quantum Machine Learning",
-    "section": "Gates",
-    "text": "Gates\nGates helps us to manipulate the state of the qubits. Some gates can be controlled and adjusted like a tuning nob. The state of the qubits can be changed by rotating parametrised gates around the X, Y, and Z axes. The rotation is explained using these formulas."
-  },
-  {
-    "objectID": "posts/QuantumGravity/QuantumML.html#ket",
-    "href": "posts/QuantumGravity/QuantumML.html#ket",
-    "title": "Quantum Machine Learning",
-    "section": "Ket",
-    "text": "Ket\nKet vector represents the state of a quantum particle and is denoted as:\nProgrammatically , it can be represented as an array as show below:\nimport numpy as np\n\nk0 = np.array([1,0]) # ket 0\nk1 = np.array([0,1]) # ket 1\n\nk0, k1\n\n# output\n#(array([1, 0]), array([0, 1]))"
-  },
-  {
-    "objectID": "posts/QuantumGravity/QuantumML.html#quantum-neural-network",
-    "href": "posts/QuantumGravity/QuantumML.html#quantum-neural-network",
-    "title": "Quantum Machine Learning",
-    "section": "Quantum Neural Network",
-    "text": "Quantum Neural Network\nEquivalent to creating a Neural Network for Deep Learning on classical computers, QML uses trainable quantum circuits which should be differentiable.\n![Quantum Circuit] \n\nA function f(x) is said to be differentiable if a derivate exists for that function."
-  },
-  {
-    "objectID": "posts/QuantumGravity/CookieCutterv2.html#yaml",
-    "href": "posts/QuantumGravity/CookieCutterv2.html#yaml",
-    "title": "Cookie Cutter V2.0",
-    "section": "YAML",
-    "text": "YAML\nYAML is a text based data serialization language for managing your configuration files. YAML stands for Yet Another Markup Language or YAML ain't markup language. You can read more about it here.\nHere’s the YAML format used in my project.\n  # support for data version control\n  - .dvc:\n\n  # if you plan to use docker container\n  - docker:\n    - Dockerfile\n\n  # basic ML development files\n  - src:\n    - __init__.py\n    - data_pipeline.py\n    - data_processing.py\n\n  ####"
-  },
-  {
-    "objectID": "posts/QuantumGravity/CookieCutterv2.html#argparse",
-    "href": "posts/QuantumGravity/CookieCutterv2.html#argparse",
-    "title": "Cookie Cutter V2.0",
-    "section": "Argparse",
-    "text": "Argparse\nEverything starts with the main function. It uses argparse to parse command line arguments provided to the script. It then loads the yaml config file.\n# parse the arguments provided on the command line\nargs = parse_args()\n\n# Load yaml config\nconfig = load_config()\nThe parser will look for specific flags and take action. More about that in the Help section below.\nparser.add_argument(\"--n\", \"--name\", #...)\nparser.add_argument(\"--p\", \"--path\",  #...) \nparser.add_argument(\"--c\", \"--config\",  #...)\nparser.add_argument(\"--v\", \"--venv\",  #...)"
-  },
-  {
-    "objectID": "posts/QuantumGravity/CookieCutterv2.html#file-and-directories",
-    "href": "posts/QuantumGravity/CookieCutterv2.html#file-and-directories",
-    "title": "Cookie Cutter V2.0",
-    "section": "File and Directories",
-    "text": "File and Directories\nBased on how YAML is structured, the script will create files, directories and sub-directories via a function create_directories\ndef create_directories(project_path, config):\n\nif isinstance(config, str):\n        item_path = os.path.join(project_path, config)\n        with open(item_path, \"w\"):\n            pass  # empty file\n\n#..."
-  },
-  {
-    "objectID": "posts/QuantumGravity/CookieCutterv2.html#virtual-env",
-    "href": "posts/QuantumGravity/CookieCutterv2.html#virtual-env",
-    "title": "Cookie Cutter V2.0",
-    "section": "Virtual env",
-    "text": "Virtual env\nIf you provide flag to create a virtual environment, the script will create one for you. There is a function called create_virtual_env to do exactly that.\ndef create_virtual_env(project_path, activate=True):\n#...\nif not os.path.exists(venv_path):\n        venv.create(venv_path, with_pip=True)\n#..."
-  },
-  {
-    "objectID": "posts/QuantumGravity/CookieCutterv2.html#help",
-    "href": "posts/QuantumGravity/CookieCutterv2.html#help",
-    "title": "Cookie Cutter V2.0",
-    "section": "Help",
-    "text": "Help\nWhen you use -h flag, it will show you how to use the script.\nIf you want to give a specific name to your project use --n or N flag. If not, it will create a default directory called ml-cookie-cutter.\nSpecify the path where the project needs to be created using --p or P flag.\nFinally, if you want the script to create a virtual environment for you, go ahead and use the --v or --venv flag. By default, the name of the environment is venv.\n\n$&gt; python3 main.py --h\n\n# usage: ML Cookie Cutter [-h] [--n N] [--p P] [--c C] [--v]\n\n# Creates ML project cookie cutter structure\n\n#optional arguments:\n#  -h, --help       show this help message and exit\n#  --n N, --name N  Name of the directory to be created, default = ml-cookie-cutter\n#  --p P, --path P    provide the path where, default is $HOME dir\n#  --v, --venv        create a virtual env. [ignore if you are already on a virtual env]\n\n# Enjoy and happy coding"
-  },
-  {
-    "objectID": "posts/QuantumGravity/CookieCutterv2.html#final-step",
-    "href": "posts/QuantumGravity/CookieCutterv2.html#final-step",
-    "title": "Cookie Cutter V2.0",
-    "section": "Final step",
-    "text": "Final step\nOnce you have the virtual environment set up, you can activate it as shown below. You should see that it in your command prompt; go ahead and start installing all your Data science and ML libraries.\nFor deactivating simply type deactivate\n# go to the project folder\n$&gt; cd ml-cookie-cutter\n# activate the environment \n$&gt; source venv/bin/activate \n\n# venv is activated \n(venv) $&gt; pip install numpy pandas pytorch seaborn notebook\n\n# To deactive use the following command\n(venv) $&gt; deactivate\n$&gt;\nOn windows if you use PowerShell activate using Activate.ps1"
+    "objectID": "posts/QuantumGravity/Dotfiles.html#config-files",
+    "href": "posts/QuantumGravity/Dotfiles.html#config-files",
+    "title": "Dotfiles",
+    "section": "Config files",
+    "text": "Config files\nI used the following files for my machine configuration:\n\n.zshrc - This helps to configure your shell and is known to provide great customization.\n.tmux.conf - If you are like me managing multiple projects, why not consider a terminal multiplexer like tmux. It helps create sessions with multiple windows and panes which can be attached and detached easily.\n.wezterm.lua - I migrated from iterm to a rust based terminal called wezterm, which uses lua based configuration.\nstartship.toml - It is used for customizing your shell prompt."
   },
   {
     "objectID": "posts/QuantumGravity/neovimide.html",
@@ -588,46 +476,88 @@
     "text": "DAP (Debug Adapter Protocol)\nShowing DAP support for Python\n\n\n\nDAP"
   },
   {
-    "objectID": "posts/QuantumGravity/Dotfiles.html",
-    "href": "posts/QuantumGravity/Dotfiles.html",
-    "title": "Dotfiles",
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#yaml",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#yaml",
+    "title": "Cookie Cutter V2.0",
+    "section": "YAML",
+    "text": "YAML\nYAML is a text based data serialization language for managing your configuration files. YAML stands for Yet Another Markup Language or YAML ain't markup language. You can read more about it here.\nHere’s the YAML format used in my project.\n  # support for data version control\n  - .dvc:\n\n  # if you plan to use docker container\n  - docker:\n    - Dockerfile\n\n  # basic ML development files\n  - src:\n    - __init__.py\n    - data_pipeline.py\n    - data_processing.py\n\n  ####"
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#argparse",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#argparse",
+    "title": "Cookie Cutter V2.0",
+    "section": "Argparse",
+    "text": "Argparse\nEverything starts with the main function. It uses argparse to parse command line arguments provided to the script. It then loads the yaml config file.\n# parse the arguments provided on the command line\nargs = parse_args()\n\n# Load yaml config\nconfig = load_config()\nThe parser will look for specific flags and take action. More about that in the Help section below.\nparser.add_argument(\"--n\", \"--name\", #...)\nparser.add_argument(\"--p\", \"--path\",  #...) \nparser.add_argument(\"--c\", \"--config\",  #...)\nparser.add_argument(\"--v\", \"--venv\",  #...)"
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#file-and-directories",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#file-and-directories",
+    "title": "Cookie Cutter V2.0",
+    "section": "File and Directories",
+    "text": "File and Directories\nBased on how YAML is structured, the script will create files, directories and sub-directories via a function create_directories\ndef create_directories(project_path, config):\n\nif isinstance(config, str):\n        item_path = os.path.join(project_path, config)\n        with open(item_path, \"w\"):\n            pass  # empty file\n\n#..."
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#virtual-env",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#virtual-env",
+    "title": "Cookie Cutter V2.0",
+    "section": "Virtual env",
+    "text": "Virtual env\nIf you provide flag to create a virtual environment, the script will create one for you. There is a function called create_virtual_env to do exactly that.\ndef create_virtual_env(project_path, activate=True):\n#...\nif not os.path.exists(venv_path):\n        venv.create(venv_path, with_pip=True)\n#..."
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#help",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#help",
+    "title": "Cookie Cutter V2.0",
+    "section": "Help",
+    "text": "Help\nWhen you use -h flag, it will show you how to use the script.\nIf you want to give a specific name to your project use --n or N flag. If not, it will create a default directory called ml-cookie-cutter.\nSpecify the path where the project needs to be created using --p or P flag.\nFinally, if you want the script to create a virtual environment for you, go ahead and use the --v or --venv flag. By default, the name of the environment is venv.\n\n$&gt; python3 main.py --h\n\n# usage: ML Cookie Cutter [-h] [--n N] [--p P] [--c C] [--v]\n\n# Creates ML project cookie cutter structure\n\n#optional arguments:\n#  -h, --help       show this help message and exit\n#  --n N, --name N  Name of the directory to be created, default = ml-cookie-cutter\n#  --p P, --path P    provide the path where, default is $HOME dir\n#  --v, --venv        create a virtual env. [ignore if you are already on a virtual env]\n\n# Enjoy and happy coding"
+  },
+  {
+    "objectID": "posts/QuantumGravity/CookieCutterv2.html#final-step",
+    "href": "posts/QuantumGravity/CookieCutterv2.html#final-step",
+    "title": "Cookie Cutter V2.0",
+    "section": "Final step",
+    "text": "Final step\nOnce you have the virtual environment set up, you can activate it as shown below. You should see that it in your command prompt; go ahead and start installing all your Data science and ML libraries.\nFor deactivating simply type deactivate\n# go to the project folder\n$&gt; cd ml-cookie-cutter\n# activate the environment \n$&gt; source venv/bin/activate \n\n# venv is activated \n(venv) $&gt; pip install numpy pandas pytorch seaborn notebook\n\n# To deactive use the following command\n(venv) $&gt; deactivate\n$&gt;\nOn windows if you use PowerShell activate using Activate.ps1"
+  },
+  {
+    "objectID": "posts/QuantumGravity/QuantumML.html",
+    "href": "posts/QuantumGravity/QuantumML.html",
+    "title": "Quantum Machine Learning",
     "section": "",
-    "text": "In the first part of my Productivity series, we talked about configuring Neovim as your IDE. You can check out that blog and my configuration here.\n\n\nIn this part, let us talk about the magic of .dotfiles, how to automate your development workflow, manage repetitive tasks by installing softwares, setting up editor shortcuts, and even configuring the development environment across multiple machines for a unified experience."
+    "text": "My love for Quantum Physics rekindled in 2017 while studying the foundation of mathematics used in Machine Learning and Deep Learning.\n\n\nAnother interesting branch gaining momentum is Quantum Machine Learning (QML) - an intersection between Quantum Physics and ML. QML can speed up training and evaluation of ML models and, in turn, help develop new quantum algorithms. This blog is an introduction to QML.\n\n\n\nalt text\n\n\nSource code provided in this article is available in my Github repo."
   },
   {
-    "objectID": "posts/QuantumGravity/Dotfiles.html#the-list",
-    "href": "posts/QuantumGravity/Dotfiles.html#the-list",
-    "title": "Dotfiles",
-    "section": "The List",
-    "text": "The List\nSince these are highly personal configurations, the requirement was to make these scripts flexible and easy to use and maintain . The newer version now uses text files from the previous YAML based configuration.\nBelow are the three text files used in the script:\nsoftware_list.txt - List of all softwares to be installed on your machine.\npip_list.txt - If you are into Data Science or ML then you can add or remove the libraries. e.g. If you use PyTorch , just swap it with Tensorflow.\nconfig_list.txt - List of all dotfiles to be maintained.\nNote: YAML is a widely used data serialization language for writing configuration files."
+    "objectID": "posts/QuantumGravity/QuantumML.html#qubits",
+    "href": "posts/QuantumGravity/QuantumML.html#qubits",
+    "title": "Quantum Machine Learning",
+    "section": "Qubits",
+    "text": "Qubits\nIn classical computers a bit can be either in a 0 or 1 state.\nBut Qubits can not only be in 0 or 1 but can also be in both states simultaneously - this is known as superposition."
   },
   {
-    "objectID": "posts/QuantumGravity/Dotfiles.html#mac",
-    "href": "posts/QuantumGravity/Dotfiles.html#mac",
-    "title": "Dotfiles",
-    "section": "Mac",
-    "text": "Mac\nIf mac is detected then it will look if Homebrew (package manager) and git is installed already.\n\nHomebrew & Git\n# check if homebrew is already installed\nif command -v brew &&gt;/dev/null; then\n  echo \"Homebrew already installed\"\nelse\n# if not install \n  echo \"##### Installing homebrew...\"\n#...\nfi\n\n#...\n\n# checking for git on your machine.\nif command -v git &&gt;/dev/null; then\n  echo \"git already installed...\"\n#...\n\n\nInstalling softwares\nThe next step is to check if software_list.txt file is available to start the installation process. For certain softwares like Lua, specific version is required. For OCaml, users have an option to skip the installation.\nNote: Ocaml is a general purpose “functional” programming language. You can read more about it here.\n # check if lua is already is installed\nif brew list lua &&gt;/dev/null; then\n#...\n# if not then install via brew\nbrew install lua@5.4\n\n#...\n\n# check with user for OCaml installation\nread -p \"do you want to install ocaml? (y/n): \" choice\n#...\n\n\nData Science and ML\nThen comes installing Data Science tools. The only requirement is to have pyyaml installed on your machine.\n# check for pyyaml installation\n# install if not available.\nif brew list pyyaml &&gt;/dev/null; then\nI have a repo where you get a cookie-cutter template for ML projects. It downloads the repo and sets up your machine to get you started immediately.\n# checks if cookie-cutter is already installed\n# in your home directory\nif [ -d \"$HOME/ml-cookie-cutter\" ]; then\n\n# if not then download the repo \n# install and activate virtual env \necho \"####### activating the venv...\"\nsource venv/bin/activate \n\n# ensure pip is installed and then start \n# installing the ML libraries\npip3 install $cfg\n\n# Once done the cleanup starts...\n# delete the downloaded repo and \n# deactivate the virtual env\n#...\n\n\nFinal configuration\nNow on to the final steps of the installation process - Back up the existing configuration files and check for Neovim.\n# Take the backup of the existing config files\ncp $HOME/$line $HOME/$line.bak.$(date +%Y-%m-%d-%H:%M:%S)\n\n# If Neovim is already installed, need to \n# backup the existing configuration\ncp -r $HOME/.config/nvim/ $HOME/.config/nvim.bak.$dt\nThe script will check for xcode command-line tools\n# check for commandline tools\nxcode-select --version &gt; /dev/null\n\n# if not then install them\nxcode-select --install"
+    "objectID": "posts/QuantumGravity/QuantumML.html#bloch-sphere",
+    "href": "posts/QuantumGravity/QuantumML.html#bloch-sphere",
+    "title": "Quantum Machine Learning",
+    "section": "Bloch Sphere",
+    "text": "Bloch Sphere\nThe state of the qubits is represented using Bloch Sphere and it helps to understand the behaviour of quantum circuits and algorithms.\nImage Credit - Wiki\n![Bloch sphere - Wikipedia]"
   },
   {
-    "objectID": "posts/QuantumGravity/Dotfiles.html#linux",
-    "href": "posts/QuantumGravity/Dotfiles.html#linux",
-    "title": "Dotfiles",
-    "section": "Linux",
-    "text": "Linux\nFor Linux, most of the process remains the same with a few subtle differences.\n\nOS and Package Manager\nThe script first checks the version of Linux and sets the package manager.\n# if Ubuntu or Debian, then set the package as ap-get\npkg_mgr=apt-get\n# If Fedora, then go for dnf \npkg_mgr=dnf \n# if dnf is not available go for yum\n\n\nAdditional checks\nNever (ever) run any script as a root user, the script warns if you do so and also check for sudo access. Few software installations are skipped if it is not supported by that operating system.\n# caution the user if it is root user\nuser=$(whoami)\nif [ \"$user\" == \"root\" ]; then\n\n# Option to run this with sudo access\nread -p \"do you want to run this script as sudo (y/n)?\" choice\n\n# check if you want to upgrade your system\n# before starting the installation\n$su_user $pkg_mgr update -y"
+    "objectID": "posts/QuantumGravity/QuantumML.html#gates",
+    "href": "posts/QuantumGravity/QuantumML.html#gates",
+    "title": "Quantum Machine Learning",
+    "section": "Gates",
+    "text": "Gates\nGates helps us to manipulate the state of the qubits. Some gates can be controlled and adjusted like a tuning nob. The state of the qubits can be changed by rotating parametrised gates around the X, Y, and Z axes. The rotation is explained using these formulas."
   },
   {
-    "objectID": "posts/QuantumGravity/Dotfiles.html#docker-support",
-    "href": "posts/QuantumGravity/Dotfiles.html#docker-support",
-    "title": "Dotfiles",
-    "section": "Docker Support",
-    "text": "Docker Support\nIf you want to try out this script on docker containers then here are some helpful commands. You can download the images and run the container as shown below.\n# To pull the images\ndocker pull fedora # debian # or ubuntu\n\n# run the container\n$&gt; docker run --name fedora -d -i -t fedora /bin/bash\n\n# check the processes\n$&gt; docker ps\n\n# to drop inside the container\n# replace the container-id with the number \n# shown with the above command\n$&gt; docker exec -it \"container-id\" /bin/bash\nNote If you are using the docker machine, you will be dropped into the container as “root”."
+    "objectID": "posts/QuantumGravity/QuantumML.html#ket",
+    "href": "posts/QuantumGravity/QuantumML.html#ket",
+    "title": "Quantum Machine Learning",
+    "section": "Ket",
+    "text": "Ket\nKet vector represents the state of a quantum particle and is denoted as:\nProgrammatically , it can be represented as an array as show below:\nimport numpy as np\n\nk0 = np.array([1,0]) # ket 0\nk1 = np.array([0,1]) # ket 1\n\nk0, k1\n\n# output\n#(array([1, 0]), array([0, 1]))"
   },
   {
-    "objectID": "posts/QuantumGravity/Dotfiles.html#config-files",
-    "href": "posts/QuantumGravity/Dotfiles.html#config-files",
-    "title": "Dotfiles",
-    "section": "Config files",
-    "text": "Config files\nI used the following files for my machine configuration:\n\n.zshrc - This helps to configure your shell and is known to provide great customization.\n.tmux.conf - If you are like me managing multiple projects, why not consider a terminal multiplexer like tmux. It helps create sessions with multiple windows and panes which can be attached and detached easily.\n.wezterm.lua - I migrated from iterm to a rust based terminal called wezterm, which uses lua based configuration.\nstartship.toml - It is used for customizing your shell prompt."
+    "objectID": "posts/QuantumGravity/QuantumML.html#quantum-neural-network",
+    "href": "posts/QuantumGravity/QuantumML.html#quantum-neural-network",
+    "title": "Quantum Machine Learning",
+    "section": "Quantum Neural Network",
+    "text": "Quantum Neural Network\nEquivalent to creating a Neural Network for Deep Learning on classical computers, QML uses trainable quantum circuits which should be differentiable.\n![Quantum Circuit] \n\nA function f(x) is said to be differentiable if a derivate exists for that function."
   },
   {
     "objectID": "posts/Docusaurus/docusauras.html#installation",
@@ -893,6 +823,6 @@
     "href": "index.html",
     "title": "Blogs",
     "section": "",
-    "text": "Blogs\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nCookie-ML - via Rustimate Guide\n\n\n\n\n\n\n\n\nFeb 19, 2026\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDoc2Quarto: Seamlessly Migrate from Docusaurus to Quarto\n\n\n\ndocumentation\n\nrust\n\nquarto\n\ndocusaurus\n\nmigration\n\n\n\nA powerful CLI tool built in Rust to automate the conversion of Docusaurus markdown files to Quarto format\n\n\n\n\n\nNov 20, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDocusaurus to Quarto:A Powerful Scientific Blogging\n\n\n\nQuarto\n\nStatic Site\n\n\n\nDiscover why I migrated from Docusaurus to Quarto for my blog, and how you can harness Quarto’s power for scientific content, beautiful websites, and seamless publishing.\n\n\n\n\n\nNov 8, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to PTX\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to GPU\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to LLMs\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDeepSeekPTX\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nTransformers\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nTokenizer\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nNeovim IDE\n\n\n\nIDE\n\nNeovim\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDotfiles\n\n\n\nDotfiles\n\nSetup\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nNotion\n\n\n\nnotion\n\nproducitivity\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nData Science and ML\n\n\n\nDatascience\n\nML\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nEmotional Cause Pair Analysis\n\n\n\nDatascience\n\nML\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nCookie Cutter V2.0\n\n\n\nIDE\n\nNeovim\n\n\n\n\n\n\n\n\n\nApr 21, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nQuantum Machine Learning\n\n\n\nQuantum\n\nML\n\n\n\n\n\n\n\n\n\nApr 21, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to Docusaurus\n\n\n\nDocusaurus\n\nStatic Site\n\n\n\n\n\n\n\n\n\nMar 5, 2020\n\n\nRakesh Venkat\n\n\n\n\n\nNo matching items"
+    "text": "Blogs\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nCookie-ML - via Rustimate Guide\n\n\n\n\n\n\n\n\nFeb 19, 2026\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDoc2Quarto: Seamlessly Migrate from Docusaurus to Quarto\n\n\n\ndocumentation\n\nrust\n\nquarto\n\ndocusaurus\n\nmigration\n\n\n\nA powerful CLI tool built in Rust to automate the conversion of Docusaurus markdown files to Quarto format\n\n\n\n\n\nNov 20, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDocusaurus to Quarto:A Powerful Scientific Blogging\n\n\n\nQuarto\n\nStatic Site\n\n\n\nDiscover why I migrated from Docusaurus to Quarto for my blog, and how you can harness Quarto’s power for scientific content, beautiful websites, and seamless publishing.\n\n\n\n\n\nNov 8, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to PTX\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to GPU\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to LLMs\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDeepSeekPTX\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nTransformers\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nTokenizer\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nNeovim IDE\n\n\n\nIDE\n\nNeovim\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nDotfiles\n\n\n\nDotfiles\n\nSetup\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nData Science and ML\n\n\n\nDatascience\n\nML\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nEmotional Cause Pair Analysis\n\n\n\nDatascience\n\nML\n\n\n\n\n\n\n\n\n\nAug 26, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nCookie Cutter V2.0\n\n\n\nIDE\n\nNeovim\n\n\n\n\n\n\n\n\n\nApr 21, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nQuantum Machine Learning\n\n\n\nQuantum\n\nML\n\n\n\n\n\n\n\n\n\nApr 21, 2021\n\n\nRakesh Venkat\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to Docusaurus\n\n\n\nDocusaurus\n\nStatic Site\n\n\n\n\n\n\n\n\n\nMar 5, 2020\n\n\nRakesh Venkat\n\n\n\n\n\nNo matching items"
   }
 ]
