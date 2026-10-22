@@ -23,8 +23,8 @@ editor:
 
 # Summary
 
-While industry leaders report that 41% of new commercial code is AI-generated [@rocketdevs2026crisis], there is a significant quality issues that is emerging.  Recent studies also shows that 44% of AI initiatives are being rolled back due to operational costs [@applause2026quality]. 
-Total development process has actually slowed by 19% as teams struggle to integrate "messy" AI logic [@rocketdevs2026crisis].
+While industry leaders report that 41% of new commercial code is AI-generated , there is a significant quality issues that is emerging.  Recent studies also shows that 44% of AI initiatives are being rolled back due to operational costs.
+Total development process has actually slowed by 19% as teams struggle to integrate "messy" AI logic.
 
 Current metrics which are used for tracking engineering productivity
 lacks something very critical, the **Hidden cost of AI generated code**.
@@ -37,12 +37,12 @@ engineering time spent fixing, auditing and refactoring AI generated
 code that might appear correct but are structurally fragile. Over time this leads to delays and significant waste of
 capital. 
 
-Recent research from UC Berkeley [@berkeley2026] showed that these benchmarks can be manipulated and do not reflect the real-world
+Recent research from UC Berkeley showed that these benchmarks can be manipulated and do not reflect the real-world
 performance.
 
 **D**eterministic **I**ntegrity & **R**isk **A**ssessment **C**ore
 **(DIRAC v1.0)** is a forensic framework designed to move beyond simple
-dashboard and DORA metrics [@forsgren2018accelerate].
+dashboard and DORA metrics.
 
 I have analysed over **2000** open source repositories with **10,005**
 commits and quantified the **Information Entropy** of code changes to
@@ -54,7 +54,7 @@ engineering decay over time.
 # 1. Traditional Metrics in the AI Era
 
 For years, framework like **Deployment Frequency, Lead Time**
-(DORA)[@forsgren2018accelerate] has been the gold standard for velocity
+(DORA)has been the gold standard for velocity
 metrics but never designed as a quality metrics. But in the era of AI,
 it can be potentially be misleading. Here’s how
 
@@ -74,4 +74,4 @@ DIRAC is now archived. Active research and development have ceased, and no furth
 
 This paper is retained for historical and reference purposes.
 
-For questions about the published work, you can reach me at qubitaiin@gmail.com.
+For questions about the published work, you can reach me at qubitai.in@gmail.com.
