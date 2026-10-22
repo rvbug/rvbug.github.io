@@ -7,18 +7,8 @@ website:
   description: "Implementation-focused research in RL and Quantum Computing"
   favicon: images/favicon-32x32.png
   navbar:
-    left:
-      - text: "ACON"
-        href: ./acon.qmd
-        
-      - text: "DIRAC Technical Paper"
-        href: ./dirac_technical_paper.qmd
-        
-      - text: "DIRAC White Paper"
-        href: ./dirac_white_paper.qmd
-      
     right:
-      - text: "QbitAI.in"
+      - text: "QubitAi.in"
         href: https://qubitai.in
         target: _blank
        
