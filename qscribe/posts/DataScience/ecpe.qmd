@@ -120,7 +120,7 @@ In the next article, we will take a look at the implementation using Pytorch.
 
 # Conclusion
 
-If you find this article useful or have any inputs, do reach out to me at [Linkedln](https://linkedin.com/in/idinc) and follow me on [Twitter](https://twitter.com/rvbugged). Thank you, keep learning!
+If you find this article useful or have any inputs, do reach out to me at [Linkedln](https://linkedin.com/in/rvbugged) and follow me on [Twitter](https://twitter.com/rvbugged). Thank you, keep learning!
 
 # References
 
