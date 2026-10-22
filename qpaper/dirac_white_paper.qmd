@@ -51,22 +51,6 @@ map it directly to financial loss.
 This paper shows that there is a need to **Audit Entropy** and protect
 engineering decay over time.
 
-# 1. Traditional Metrics in the AI Era
-
-For years, framework like **Deployment Frequency, Lead Time**
-(DORA)has been the gold standard for velocity
-metrics but never designed as a quality metrics. But in the era of AI,
-it can be potentially be misleading. Here’s how
-
--   Multiple deployments can happen in a day but if each of them contain
-    high-entropy code that requires extensive reviews by a senior, then
-    velocity is an *illusion*.
-
--   DORA does not track Review Tax, it fails to show that a single AI
-    generated commit could potentially consume significant senior team's capacity to ensure that system remains stable after merge.
-
--   Traditional metrics cannot see the **entropy** (disorder) inside a
-    commit. A build will only have either a *pass* or *fail* status but
 
 # Archival Notice
 
