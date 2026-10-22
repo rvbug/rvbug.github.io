@@ -18,6 +18,8 @@ This manuscript focuses on version 1.0 of **Autonomous Command Optimization Netw
 
 # Archival Notice
 
-ACON is now archived. Active research and development have ceased, and no further updates are planned.
-This paper is retained for historical and reference purposes.
-For questions about the published work, you can reach me at qubitai.in@gmail.com.
+ACON is now archived. Active research and development have ceased, and no further updates are planned.  
+
+This paper is retained for historical and reference purposes.  
+
+For questions about the published work, you can reach me at qubitai.in@gmail.com.  

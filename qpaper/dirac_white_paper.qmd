@@ -70,8 +70,8 @@ it can be potentially be misleading. Here’s how
 
 # Archival Notice
 
-DIRAC is now archived. Active research and development have ceased, and no further updates are planned.
+DIRAC is now archived. Active research and development have ceased, and no further updates are planned.  
 
-This paper is retained for historical and reference purposes.
+This paper is retained for historical and reference purposes.  
 
-For questions about the published work, you can reach me at qubitai.in@gmail.com.
+For questions about the published work, you can reach me at qubitai.in@gmail.com.  

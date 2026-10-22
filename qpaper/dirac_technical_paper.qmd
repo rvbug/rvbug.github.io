@@ -41,6 +41,10 @@ Using this framework, I will derive mathematical correlation between **AI Code**
 
 # Archival Notice
 
-DIRAC is now archived. Active research and development have ceased, and no further updates are planned.
-This paper is retained for historical and reference purposes.
-For questions about the published work, you can reach me at qubitai.in@gmail.com.
+DIRAC is now archived. Active research and development have ceased, and no further updates are planned.  
+
+This paper is retained for historical and reference purposes.  
+
+For questions about the published work, you can reach me at qubitai.in@gmail.com.  
+
+
