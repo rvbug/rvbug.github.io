@@ -5,9 +5,6 @@ toc: true
 ---
 
 ::: {style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;"}
-<!-- Placeholder for image -->
-
-<img src="./images/TheBook.png" alt="Coming Soon Banner" width="50%"/>
 :::
 
 # Documentation hub.
@@ -57,57 +54,6 @@ If you’d like to know more about my background, how these tools came about, an
 
 # Projects Overview
 
-::::: columns
-::: {.column width="50%"}
-### 🐀 ratcrate-core
-
-The **engine** behind the Ratatui ecosystem index.
-
--   Scans the crates.io sparse index\
-
--   Finds all crates depending on `ratatui`\
-
--   Enriches them with crates.io metadata\
-
--   Applies smart caching\
-
--   Produces `ratcrate.json` for other tools to consume
-
--   To be open sourced soon
-
-➡️ [Read the ratcrate-core docs »](rat-core/index.qmd)
-:::
-
-::: {.column width="50%"}
-### 💻 ratcrate-cli
-
-A command-line interface for exploring the Ratatui ecosystem.
-
--   Reads `ratcrate.json` produced by `ratcrate-core`\
--   Search and filter Ratatui crates from the terminal\
--   Show stats, links, and crate details
-
-➡️ [Read the ratcrate-cli docs »](rat-cli/index.qmd)
-:::
-:::::
-
-------------------------------------------------------------------------
-
-::::: columns
-::: {.column width="50%"}
-### 🎛 ratcrate-tui
-
-A **Ratatui-based TUI** for browsing Ratatui crates.\
-Very meta. Very fun.
-
--   Terminal UI built with Ratatui\
--   Interactive search and filters\
--   Crate detail views with stats and links\
--   Powered by `ratcrate-core` data
-
-➡️ [Read the ratcrate-tui docs »](rat-tui/index.qmd)
-:::
-
 ::: {.column width="50%"}
 ### ☁︎ doc2quarto
 
@@ -121,47 +67,7 @@ A helper tool for turning rough notes, markdown, or code comments into\
 :::
 :::::
 
-------------------------------------------------------------------------
 
-::::: columns
-::: {.column width="50%"}
-### ↯ QBanner (Coming Soon)
-
-A light-weight **rust based** library for CLI Banners
-
--   Works on all rust cli projects and easy to use
-
--   Supports Ratatui basic and advanced layouts\
-
--   Works on **shell scripts** too!
-
-➡️ [Read the Qbanner Libraryi docs »](qbanner/index.qmd)
-:::
-
-::: {.column width="50%"}
-### 🎚️ QSwitch (Planned)
-
-➡️ [Coming Soon »]()
-:::
-:::::
-
-------------------------------------------------------------------------
-
-::::: columns
-::: {.column width="50%"}
-### 📡 Challenges (Coming Soon)
-
-Documenting common challenges during these projects
-
-➡️ [Coming Soon]()
-:::
-
-::: {.column width="50%"}
-### 📚 Books I read (Coming Soon)
-
-➡️ [Coming Soon]()
-:::
-:::::
 
 ------------------------------------------------------------------------
 

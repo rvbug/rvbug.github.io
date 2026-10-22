@@ -3,8 +3,6 @@ title: " "
 format: html
 ---
 
-![](./images/Banner.png){align="center" fig-align="center" width="50%"}
-
 # About the Author
 
 Hi, I’m **Rakesh Venkat** — a developer, researcher, and lifelong tinkerer who likes building tools that:
@@ -16,27 +14,16 @@ Hi, I’m **Rakesh Venkat** — a developer, researcher, and lifelong tinkerer w
 Most of the projects in this book revolves around:
 
 -   🦀 **Rust** and terminal tools\
--   🧪 **Ratatui** TUIs (very meta)\
 -   📚 **Documentation** and knowledge organization\
 -   🧩 Research & experiments that later become libraries or tools
 
-I think of this book as a logbook of the systems I’m building and how they fit together.
-
-------------------------------------------------------------------------
-
-## What I’m Trying to Do With These Projects
-
-The broader goals behind these tools:
-
--   Build **high-leverage tools** that save time for other developers.\
--   Collect and organize knowledge (like the Ratatui ecosystem) so people don’t have to rediscover the same things repeatedly.
--   Treat documentation as a first-class artifact, not an afterthought.
+I think of this book as a log book of the systems I’m building and how they fit together.
 
 ------------------------------------------------------------------------
 
 ## A Note to Future Me (and Future Readers)
 
-This book is partly a gift to **future me**: so I can come back in six months, read a chapter, and instantly remember why I made certain decisions.
+This book is partly a gift to **future me**: so I can come back laters, read a chapter, and instantly remember why I made certain decisions.
 
 If you’re reading it as someone else:
 
@@ -58,9 +45,3 @@ You can find me here:
 -   🐦 X (Twitter): <https://x.com/rvbugged>\
 
 -   💼 LinkedIn: <https://www.linkedin.com/in/rvbugged/>\
-
--   🐙 Mastadon: [https://mastodon.social/\@rvbugged](https://mastodon.social/@rvbugged){.uri}\
-
-## Sponsor
-
-[![Ko-Fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rvbugged)

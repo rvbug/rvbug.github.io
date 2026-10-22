@@ -16,50 +16,14 @@ book:
   chapters:
     - index.qmd
     - about-author.qmd
-   # Part 1: rat-core
-    - part: "rat-core"
-      chapters:
-        - rat-core/index.qmd
-        - rat-core/01-origin.qmd
-        - rat-core/02-overview.qmd
-        - rat-core/03-architecture.qmd
-        - rat-core/04-sparse-index.qmd
-        - rat-core/05-caching.qmd
-        - rat-core/06-http-client.qmd
-        - rat-core/07-state-management.qmd
-        - rat-core/08-json-output.qmd
-        - rat-core/09-workflow-diagram.qmd
-        - rat-core/10-code-snippets.qmd
-        - rat-core/11-future-work.qmd
-        - rat-core/12-contributing.qmd
-        - rat-core/13-usage-examples.qmd
-        - rat-core/14-testing-and-quality.qmd
-        - rat-core/15-performance-and-scaling.qmd
-        - rat-core/16-troubleshooting-faq.qmd
-        - rat-core/17-data-schema-reference.qmd
-        - rat-core/18-ecosystem-and-integrations.qmd
-    # Part 2: rat-cli
-    - part: "rat-cli"
-      chapters:
-        - rat-cli/index.qmd
-        - rat-cli/usage.qmd
-        - rat-cli/datamodel.qmd
-    # Part 3: rat-tui
-    - part: "rat-tui"
-      chapters:
-        - rat-tui/index.qmd
-        - rat-tui/usage.qmd
-        - rat-tui/development.qmd
-    # Part 4: Doc2Quarto
+   
+    # Part 1: Doc2Quarto
     - part: "doc2quarto"
       chapters:
         - doc2quarto/index.qmd
         - doc2quarto/usage.qmd
         - doc2quarto/logic.qmd
-    # Part 5: QBanner
-    - part: "qbanner"
-      chapters:
-        - qbanner/index.qmd
+    
     # Part 6: Neovim2Emacs
     - part: "neovim2emacs"
       chapters:
