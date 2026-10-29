@@ -1,2 +1,3 @@
 /.quarto/
 ./posts/story/*
+**/*.quarto_ipynb

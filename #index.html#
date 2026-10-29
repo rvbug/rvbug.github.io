@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering & Cognitive Systems</title>
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/AudioWide-White.ico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"> -->
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+ 
+<style>
+/* ══════════════════════════════════════════
+   DESIGN PHILOSOPHY
+   Apple product showcase: each project gets
+   a full-viewport cinematic "stage". No scroll
+   JS. No lerp. No rAF loops. Just beautiful
+   static sections the browser renders natively.
+   CSS-only entrance animations on load.
+   IntersectionObserver adds .revealed for
+   fade-in — one-shot, no ongoing math.
+══════════════════════════════════════════ */
+
+:root {
+  --rust:   #c0392b;
+  --amber:  #e67e22;
+  --ice:    #a8d8ea;
+  --ink:    #0a0a0f;
+  --mist:   #f4f4f6;
+  --silver: #8c8c99;
+  --blue:   #0071e3;
+  /* 
+  --serif:  'DM Serif Display', Georgia, serif;
+   --sans:   'DM Sans', -apple-system, sans-serif; 
+   */
+ 
+--serif: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+--sans:  'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: #fff;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 52px;
+  background: rgba(8, 8, 12, 0.86);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: #fff; }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 52px 0 0 0;
+  background: rgba(8,8,12,0.97);
+  z-index: 8999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 300;
+  text-decoration: none;
+  font-family: var(--serif);
+}
+
+/* ══════════════════════════════════════════
+   HERO — "Engineering Humanized."
+   Full viewport. White. Cinematic typography.
+   CSS keyframe entrance only. Zero JS.
+══════════════════════════════════════════ */
+
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px 80px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial gradient pulse — pure CSS, no JS */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 60%,
+    rgba(0, 113, 227, 0.05) 0%,
+    transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: riseIn 0.8s cubic-bezier(0.2,0.8,0.2,1) 0.1s forwards;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(56px, 11vw, 132px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: riseIn 0.9s cubic-bezier(0.2,0.8,0.2,1) 0.25s forwards;
+}
+
+.hero-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, #ff3b30 0%, #0071e3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 300;
+  color: var(--silver);
+  max-width: 560px;
+  line-height: 1.55;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: riseIn 0.9s cubic-bezier(0.2,0.8,0.2,1) 0.4s forwards;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: riseIn 0.9s cubic-bezier(0.2,0.8,0.2,1) 0.55s forwards;
+}
+
+.btn-primary {
+  padding: 14px 30px;
+  border-radius: 980px;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover { background: #1a1a2e; transform: translateY(-1px); }
+
+.btn-ghost {
+  padding: 14px 30px;
+  border-radius: 980px;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); }
+
+/* scroll nudge — pure CSS animation */
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: riseIn 1s ease 1.1s forwards;
+}
+
+.scroll-hint span {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.scroll-hint-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--silver), transparent);
+  animation: scrollDrop 2s ease-in-out 1.5s infinite;
+}
+
+@keyframes scrollDrop {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0.3; }
+}
+
+/* ══════════════════════════════════════════
+   PRODUCT HERO SECTIONS
+   Apple formula: full viewport per product.
+   Dark/light alternating backgrounds.
+   Giant name. Tagline. Two CTAs.
+   NO scroll JS. Entrance via .revealed class
+   added by IntersectionObserver (one-shot).
+══════════════════════════════════════════ */
+
+/* ── reveal system (one-shot, no ongoing math) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.2,0.8,0.2,1),
+              transform 0.75s cubic-bezier(0.2,0.8,0.2,1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.22s; }
+.reveal-d3 { transition-delay: 0.36s; }
+.reveal-d4 { transition-delay: 0.5s; }
+
+/* ── RUSTIMATE — dark charcoal ── */
+.product-hero {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ph-rustimate {
+  background: #0c0c12;
+  color: #fff;
+}
+
+/* Animated gradient orb — CSS only */
+.ph-rustimate::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  max-height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(192, 57, 43, 0.18) 0%,
+    rgba(255, 45, 85, 0.08) 40%,
+    transparent 70%);
+    /* background:linear-gradient(180deg,#f59e0b,#f97316); */
+  pointer-events: none;
+  animation: orbPulse 8s ease-in-out infinite;
+}
+
+@keyframes orbPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  50%       { transform: translateX(-50%) scale(1.12); opacity: 1; }
+}
+
+/* ── ACON — near-black with blue tint ── */
+.ph-acon {
+  background: #07090f;
+  color: #fff;
+}
+
+.ph-acon::before {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 60vw;
+  max-width: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(0, 113, 227, 0.15) 0%,
+    rgba(0, 198, 255, 0.06) 50%,
+    transparent 70%);
+  pointer-events: none;
+  animation: orbPulse 10s ease-in-out 2s infinite;
+}
+
+/* COPE */
+.ph-cope {
+  background: #09070f; /* Matches your dark theme with a purple tint */
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.ph-cope::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  right: 10%;
+  width: 75vw;
+  height: 75vw;
+  max-width: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(138, 43, 226, 0.12) 0%,
+    rgba(0, 113, 227, 0.05) 50%,
+    transparent 70%);
+  pointer-events: none;
+  animation: orbPulse 11s ease-in-out infinite;
+}
+
+.ph-cope .product-name {
+  background: linear-gradient(160deg, #fff 20%, #a35bff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
+/* ── RATCRATE — warm dark ── */
+.ph-ratcrate {
+  background: #0f0a05;
+  color: #fff;
+}
+
+.ph-ratcrate::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  transform: translateY(-50%);
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(245, 158, 11, 0.14) 0%,
+    rgba(249, 115, 22, 0.07) 50%,
+    transparent 70%);
+  pointer-events: none;
+  animation: orbPulse 9s ease-in-out 1s infinite;
+}
+
+.product-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.product-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+.product-name {
+  font-family: var(--serif);
+  font-size: clamp(64px, 14vw, 160px);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  margin-bottom: 30px;
+}
+
+/* Per-project name gradients */
+.ph-rustimate .product-name {
+  /* background: linear-gradient(160deg, #fff 20%, #ff6b5b 80%); */
+  background:linear-gradient(180deg,#f2f2ec,#e41010);
+
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ph-acon .product-name {
+  background: linear-gradient(160deg, #1b3fd0 20%, #0ce7e3 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ph-ratcrate .product-name {
+  background: linear-gradient(160deg, #fff 20%, #f59e0b 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.product-tagline {
+  font-size: clamp(18px, 2.8vw, 28px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  max-width: 620px;
+  margin: 0 auto 48px;
+  line-height: 1.45;
+}
+
+.product-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-white {
+  padding: 14px 30px;
+  border-radius: 980px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn-white:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.btn-outline-white {
+  padding: 13px 30px;
+  border-radius: 980px;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.btn-outline-white:hover {
+  border-color: rgba(255,255,255,0.7);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Spec pills under CTAs */
+.product-specs {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.spec-value {
+  font-family: var(--serif);
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.spec-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.spec-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.1);
+  align-self: center;
+}
+
+/* ══════════════════════════════════════════
+   BENTO GRID SECTION — white, between projects
+   and experiments
+══════════════════════════════════════════ */
+
+.section-white {
+  background: #fff;
+  padding: 120px 40px;
+  border-top: 1px solid #e8e8ec;
+}
+
+.section-mist {
+  background: var(--mist);
+  padding: 120px 40px;
+}
+
+.section-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 14px;
+}
+
+.section-headline {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 62px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--silver);
+  max-width: 580px;
+  line-height: 1.6;
+  margin-bottom: 64px;
+}
+
+/* bento */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.bento-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid #e8e8ec;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.08);
+}
+
+.bc-wide   { grid-column: span 8; }
+.bc-narrow { grid-column: span 4; }
+.bc-third  { grid-column: span 4; }
+
+.bento-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 16px;
+}
+
+.bento-card h3 {
+  font-family: var(--serif);
+  font-size: 26px;
+  /* color: linear-gradient(135deg, #ff6b5b, #5ba4ff); */
+  color: #0071e3;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.bento-card p {
+  font-size: 15px;
+  font-weight: 300;
+  color: #606070;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 24px;
+}
+
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.pill {
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--mist);
+  border: 1px solid #e0e0e8;
+  padding: 4px 12px;
+  border-radius: 999px;
+  color: #444;
+}
+
+/* ── view all ── */
+.view-all-wrap { margin-top: 52px; }
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 980px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-dark:hover { background: #1a1a2e; transform: translateY(-1px); }
+
+/* ══════════════════════════════════════════
+   ABOUT — sticky left, scroll right
+   Fully static. No JS opacity math.
+   IntersectionObserver one-shot reveals only.
+══════════════════════════════════════════ */
+
+.about-wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.about-left {
+  flex: 1;
+  position: sticky;
+  top: 24vh;
+  /* top: 50%;
+  transform: translateY(-50%); */
+  height: fit-content;
+}
+
+.about-left-title {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(52px, 8vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.about-left-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--silver);
+  margin-top: 20px;
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.about-right {
+  flex: 1.4;
+  padding-bottom: 100px;
+}
+
+.stat-block {
+  font-weight: 900;
+  padding: 64px 0;
+  border-bottom: 1px solid #e8e8ec;
+}
+
+.stat-block:first-child { padding-top: 0; }
+.stat-block:last-child  { border-bottom: none; }
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: clamp(72px, 12vw, 130px);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  margin-bottom: 16px;
+}
+
+.sn-red   { color: #c0392b; }
+.sn-blue  { color: #0071e3; }
+.sn-amber { color: #e67e22; }
+
+.stat-role {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 14px;
+}
+
+.stat-desc {
+  font-size: 20px;
+  font-weight: 300;
+  color: #333;
+  line-height: 1.5;
+  max-width: 420px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.5);
+  padding: 80px 40px 48px;
+  text-align: center;
+}
+
+.footer-inner { max-width: 1140px; margin: 0 auto; }
+
+.footer-hl {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 48px;
+  line-height: 1.1;
+}
+
+.footer-hl em {
+  font-style: normal;
+  background: linear-gradient(135deg, #ff6b5b, #5ba4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 56px;
+}
+
+.footer-socials a {
+  color: rgba(255,255,255,0.5);
+  font-size: 22px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footer-socials a:hover { color: #fff; transform: translateY(-2px); }
+
+.footer-copy {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.gen-seal {
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  display: inline-flex;
+  transition: color 0.3s, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gen-seal:hover { color: #fff; transform: scale(1.4) rotate(-5deg); }
+
+/* ── SHARED KEYFRAMES ── */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+
+  .bento { grid-template-columns: 1fr; }
+  .bc-wide, .bc-narrow, .bc-third { grid-column: span 1; }
+
+  .about-wrap { flex-direction: column; gap: 0; }
+  .about-left { position: static; }
+  .about-left-sub { max-width: 100%; }
+  .stat-block { padding: 48px 0; }
+}
+
+@media (max-width: 600px) {
+  .product-specs { gap: 14px; }
+  .spec-divider { display: none; }
+  .section-white, .section-mist { padding: 80px 20px; }
+  footer { padding: 60px 20px 40px; }
+  .product-hero { padding: 100px 24px 60px; }
+}
+
+
+/*FERMI*/
+/* ── DIRAC — deep emerald/tech theme ── */
+.ph-fermi {
+  background: #050a0a; /* Dark teal/cyan base */
+  color: #181717;
+}
+
+.ph-fermi::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(231, 47, 6, 0.12) 10%,
+    rgba(87, 80, 226, 0.05) 50%,
+    transparent 70%);
+  pointer-events: none;
+  /* animation: orbPulse 2s ease-in-out 1s infinite; */
+}
+
+.ph-fermi .product-name {
+  background: linear-gradient(160deg, #071bf0 30%,  #e42879 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
+
+/*DIRAC*/
+/* ── DIRAC — deep emerald/tech theme ── */
+.ph-dirac {
+  background: #050a0a; /* Dark teal/cyan base */
+  color: #fff;
+}
+
+.ph-dirac::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(0, 227, 174, 0.12) 0%,
+    rgba(0, 113, 227, 0.05) 50%,
+    transparent 70%);
+  pointer-events: none;
+  animation: orbPulse 12s ease-in-out 1s infinite;
+}
+
+.ph-dirac .product-name {
+  background: linear-gradient(160deg, #fff 30%, #00e3ae 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="./index.html">QuBiTAi</a>
+    <div class="nav-links">
+      <a href="./projects.html">Works</a>
+      <a href="./write.html">Write</a>
+      <a href="./qpapers-published/">Research</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="./projects.html" onclick="closeMobile()">Works</a>
+  <a href="./write.html" onclick="closeMobile()">Write</a>
+  <a href="./qpapers-published/" onclick="closeMobile()">Research</a>
+</div>
+
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <!-- <p class="hero-eyebrow">Rakesh Venkat &nbsp;·&nbsp; Engineering Systems</p> -->
+  <!-- <p class="hero-eyebrow"> Engineering & Cognitive Science</p> -->
+
+  <h1 class="hero-title">
+    Engineering<br><em>Humanized.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Reducing friction in complex software systems
+  </p>
+
+  <div class="hero-ctas">
+    <!-- <a href="#systems" class="btn-primary">Explore Systems</a>
+    <a href="#about" class="btn-ghost">About &amp; Work</a> -->
+  </div>
+
+  <!-- <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div> -->
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PROJECT 1 — ORBIT
+     Apple Watch Ultra formula:
+     dark stage · massive name · tagline · CTAs · specs
+══════════════════════════════════════════ -->
+<section class="product-hero ph-rustimate" id="systems">
+  <div class="product-content">
+
+    <div class="product-label reveal reveal-d1">AI</div>
+
+    <h2 class="product-name reveal reveal-d2">ORBIT</h2>
+
+    <p class="product-tagline reveal reveal-d3">
+      Autonomous Adaptive Agent 
+    </p>
+
+    <div class="product-ctas reveal reveal-d4">
+      <!-- <a href="./rustimate-about.html" class="btn-white">See How It Works</a> -->
+      <a href="#" class="btn-outline-white">Coming Soon</a>
+    </div>
+
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">Rust</span>
+        <span class="spec-label">Core</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Control</span>
+        <span class="spec-label">Systems</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Goals</span>
+        <span class="spec-label">Constraints</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ══════════════════════════════════════════
+     PROJECT 0 — FERMI
+══════════════════════════════════════════ -->
+
+<section class="product-hero ph-fermi" id="fermi">
+  <div class="product-content">
+
+    <div class="product-label reveal reveal-d1">AI</div>
+
+    <h2 class="product-name reveal reveal-d2">FERMI</h2>
+
+    <p class="product-tagline reveal reveal-d3">
+      
+    </p>
+
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./fermi.html"  target="_blank"   class="btn-white">Run</a>
+      <!-- <a href="./qpapers-published/dirac_white_paper.html" target="_blank"  class="btn-outline-white">White Paper</a> -->
+      <!-- <a href="./qpapers-published/dirac_interface.html"  target="_blank"  class="btn-white" style="background: var(--blue); color: #fff; border: none;">Launch DIRAC</a> -->
+    </div>
+
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">Engineering</span>
+        <span class="spec-label">Estimate</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">AI</span>
+        <span class="spec-label">Cost</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Micro</span>
+        <span class="spec-label">Costs</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PROJECT 1 — DIRAC
+══════════════════════════════════════════ -->
+<!-- 
+<section class="product-hero ph-dirac" id="dirac">
+  <div class="product-content">
+
+    <div class="product-label reveal reveal-d1">Framework</div>
+
+    <h2 class="product-name reveal reveal-d2">DIRAC</h2>
+
+    <p class="product-tagline reveal reveal-d3">
+      Entropy vs Financial Leakage
+    </p>
+
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./qpapers-published/dirac_technical_paper.html"  target="_blank"   class="btn-white">Technical Paper</a>
+      <a href="./qpapers-published/dirac_white_paper.html" target="_blank"  class="btn-outline-white">White Paper</a>
+    </div>
+
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">LEPTON</span>
+        <span class="spec-label">Core Module</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Strategy</span>
+        <span class="spec-label">Data-Driven</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">DRU</span>
+        <span class="spec-label">Risk Score</span>
+      </div>
+    </div>
+
+  </div>
+</section> -->
+
+
+<!-- ══════════════════════════════════════════
+     PROJECT 1 — RUSTIMATE
+     Apple Watch Ultra formula:
+     dark stage · massive name · tagline · CTAs · specs
+══════════════════════════════════════════ -->
+<!-- <section class="product-hero ph-rustimate" id="systems">
+  <div class="product-content">
+
+    <div class="product-label reveal reveal-d1">Animation Engine</div>
+
+    <h2 class="product-name reveal reveal-d2">Rustimate</h2>
+
+    <p class="product-tagline reveal reveal-d3">
+      Animate Attention.
+    </p>
+
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./rustimate-about.html" class="btn-white">See How It Works</a>
+      <a href="./rustimate.html" class="btn-outline-white">Download</a>
+    </div>
+
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">Rust</span>
+        <span class="spec-label">Core Language</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Animation</span>
+        <span class="spec-label">Attention</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Storytelling</span>
+        <span class="spec-label">Rendering</span>
+      </div>
+    </div>
+
+  </div>
+</section> -->
+
+<section 
+
+<!-- ══════════════════════════════════════════
+     PROJECT 2 — ACON
+     AirPods Pro formula:
+     dark · blue accent · research credibility
+══════════════════════════════════════════ -->
+<!-- <section class="product-hero ph-acon" id="acon">
+  <div class="product-content"> -->
+
+    <!-- <div class="product-label reveal reveal-d1">Research Paper &nbsp;·&nbsp; Published</div> -->
+    <!-- <div class="product-label reveal reveal-d1">ML Research</div>
+
+    <h2 class="product-name reveal reveal-d2">ACON</h2>
+
+    <p class="product-tagline reveal reveal-d3">
+      Quantify cognitive friction.
+    </p>
+
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./acon.html" class="btn-white">Know More</a>
+      <a href="https://qubitai.in/qpapers-published/acon.html" class="btn-outline-white">Read the Paper</a>
+    </div>
+
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">Data</span>
+        <span class="spec-label">Model</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Reward</span>
+        <span class="spec-label">Optimized</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">RL</span>
+        <span class="spec-label">Powered</span>
+      </div>
+    </div>
+
+  </div>
+</section> -->
+
+<!-- <section class="product-hero ph-cope" id="cope">
+  <div class="product-content">
+    <div class="product-label reveal reveal-d1">ML Research &nbsp;·&nbsp; In Progress</div>
+    <h2 class="product-name reveal reveal-d2">COPE</h2>
+    <p class="product-tagline reveal reveal-d3">
+      Cognitive Origin & Entropy Profiling.
+    </p>
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./cope.html" class="btn-white">Know More</a>
+      <a href="#" class="btn-outline-white" style="opacity: 0.6; cursor: not-allowed;">Read the Paper (Soon)</a>
+    </div>
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">Entropy</span>
+        <span class="spec-label">Profiling</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Trusted</span>
+        <span class="spec-label">Origin</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Verify</span>
+        <span class="spec-label">Latency</span>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ══════════════════════════════════════════
+     PROJECT 3 — RATCRATE
+     Mac Pro formula:
+     warm dark · amber accent · ecosystem framing
+══════════════════════════════════════════ -->
+<!-- <section class="product-hero ph-ratcrate" id="ratcrate">
+  <div class="product-content">
+  <div class="product-label reveal reveal-d1">Ecosystem</div>
+    <h2 class="product-name reveal reveal-d2">ratcrate</h2>
+
+    <p class="product-tagline reveal reveal-d3">
+      Ratatui ecosystem.
+    </p>
+
+    <div class="product-ctas reveal reveal-d4">
+      <a href="./ratcrate.html" class="btn-white">Know More</a>
+    </div>
+
+    <div class="product-specs reveal reveal-d4">
+      <div class="spec-item">
+        <span class="spec-value">TUI</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">CLI</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item">
+        <span class="spec-value">Web</span>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ══ SIGNATURE SYSTEMS — bento grid ══ -->
+<section class="section-white" id="experiments">
+  <div class="section-inner">
+
+    <!-- <p class="section-eyebrow reveal">Signature Systems</p> -->
+    <h2 class="section-headline reveal reveal-d1">The Works</h2>
+    <!-- <p class="section-sub reveal reveal-d2">
+      Tools & Research built at the intersection of Human cognition & Machine.
+    </p> -->
+
+    <div class="bento">
+
+      <!-- <div class="bento-card bc-wide reveal reveal-d1">
+        <div class="bento-tag">Research</div>
+        <h3>COPE </h3>
+        <p>Track Financial Leakage and AI Debt</p>
+        <div class="pill-row">
+          <span class="pill">Rust</span>
+          <span class="pill">Analysis</span>
+          <span class="pill">AI Debt</span>
+        </div>
+      </div> -->
+
+      <div class="bento-card bc-narrow reveal reveal-d2">
+        <div class="bento-tag">Workflow</div>
+        <h3>Neovim</h3>
+        <p>Unified environment across machines.</p>
+        <div class="pill-row">
+          <!-- <span class="pill">IDE</span> -->
+          <!-- <span class="pill"></span> -->
+        </div>
+      </div> 
+
+      <div class="bento-card bc-narrow reveal reveal-d2">
+        <div class="bento-tag">Workflow</div>
+        <h3>.dotfiles</h3>
+        <p>Unified environment across machines.</p>
+        <div class="pill-row">
+          <!-- <span class="pill">Automation</span> -->
+          <!-- <span class="pill">GNU Stow</span> -->
+        </div>
+      </div>
+
+      <div class="bento-card bc-third reveal reveal-d1">
+        <div class="bento-tag">Automation</div>
+        <h3>Cookie-ML</h3>
+        <p>Opinionated scaffolding for ML projects</p>
+        <div class="pill-row">
+          <!-- <span class="pill">Python</span> -->
+          <!-- <span class="pill">ML</span> -->
+        </div>
+      </div>
+
+      <!-- <div class="bento-card bc-third reveal reveal-d2">
+        <div class="bento-tag">Research</div>
+        <h3>qPapers</h3>
+        <p>Published research on cognitive friction, predictive engineering models, and AI system design.</p>
+        <div class="pill-row">
+          <span class="pill">Published</span>
+          <span class="pill">Open Access</span>
+        </div>
+      </div> -->
+
+      <!-- <div class="bento-card bc-third reveal reveal-d3">
+        <div class="bento-tag">Ecosystem</div>
+        <h3>QuBiTAi</h3>
+        <p>The umbrella for all systems, papers, and tools — engineering at the scale of human thought.</p>
+        <div class="pill-row">
+          <span class="pill">Portfolio</span>
+          <span class="pill">Systems</span>
+        </div>
+      </div> -->
+
+    </div>
+
+    <div class="view-all-wrap reveal">
+      <a href="./projects.html" class="btn-dark">
+        Know More
+        <i class="fas fa-arrow-right" style="font-size:12px;"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ ABOUT / STATS ══ -->
+<section class="section-mist" id="about">
+  <div class="section-inner">
+    <div class="about-wrap">
+
+      <div class="about-left reveal">
+        <h2 class="about-left-title">About</h2>
+        <p class="about-left-sub">
+          Building systems.
+        </p>
+      </div>
+
+      <div class="about-right">
+
+        <div class="stat-block reveal">
+          <p class="stat-role">Experience</p>
+          <div class="stat-num sn-red">21+</div>
+          <p class="stat-desc">Architecting systems where human cognition meets machine execution.</p>
+        </div>
+
+        <div class="stat-block reveal">
+          <p class="stat-role">Open Source</p>
+          <div class="stat-num sn-blue">5</div>
+          <p class="stat-desc">Projects</p>
+        </div>
+
+        <div class="stat-block reveal">
+          <p class="stat-role">Research</p>
+          <div class="stat-num sn-amber">1</div>
+          <!-- <p class="stat-desc">Published.</p> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <h2 class="footer-hl">
+      Engineering at the<br>
+      scale of <em>human thought.</em>
+    </h2>
+
+    <div class="footer-socials">
+      <a href="https://github.com/rvbug"            aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/rvbugged"        aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:rakesh.venkat@gmail.com"        aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <p class="footer-copy">
+      &copy; 2026 QuBiTAi &nbsp;&bull;&nbsp; Cognitive Science &nbsp;&bull;&nbsp;
+      <a href="./thoughts.html"  target="_blank"   class="gen-seal" aria-label="Deep Thoughts">
+        <svg width="13" height="13" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8Q50 15 50 22" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M15 32Q50 25 85 32" stroke="currentColor" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M48 32 C42 45,30 55,35 60 C40 65,55 50,65 45 C75 40,30 90,25 88 C20 86,60 85,75 82"
+                stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M62 65Q70 75 75 92" stroke="currentColor" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════
+   ALL JS is minimal and one-shot.
+   No window.scrollY reads in a loop.
+   No rAF. No lerp. No synthetic scroll.
+   
+   1. Nav hamburger toggle.
+   2. IntersectionObserver: adds .revealed to
+      .reveal elements once when they enter the
+      viewport. Immediately unobserves. Done.
+      Never fires again. Zero ongoing cost.
+══════════════════════════════════════════ */
+
+// 1. Nav
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+function closeMobile() { mobileMenu.classList.remove('open'); }
+
+// 2. One-shot reveal
+const io = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      observer.unobserve(entry.target); // fire once, never again
+    }
+  });
+}, {
+  threshold: 0.12  // trigger when 12% of element is visible
+});
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
