@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: ../qscribe
+
+website:
+  title: "QuBiTAi"
+  site-url: https://qubitai.in/
+  description: "A Quarto-based documentation site for QuBiTAi" 
+  favicon: images/AudioWide-White.ico
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/rvbug
+        target: _blank
+
+# format:
+#   html:
+#     theme:
+#       - cosmo
+#       - brand
+#     css: styles.css
+
+theme:
+  light: cosmo
+  dark: darkly
+
+editor: visual
+

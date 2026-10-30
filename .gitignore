@@ -36,3 +36,5 @@ acon.html
 ratcrate.html
 rustimate-about.html
 ./thebook/rat-core/*
+/.quarto/
+**/*.quarto_ipynb

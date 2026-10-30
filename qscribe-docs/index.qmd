@@ -1,0 +1,26 @@
+---
+title: "Writing"
+listing:
+  id: recent-writing
+  contents: posts
+  sort: "date desc"
+  type: default
+  max-items: 5
+  sort-ui: false
+  filter-ui: true
+  page-size: 5
+---
+
+Research, experiments and notes on technology.
+
+## Explore by subject
+
+Research
+
+Workflow
+
+Technical Guide
+
+Automation
+
+## Recent writing
