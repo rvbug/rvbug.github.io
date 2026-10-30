@@ -17,16 +17,15 @@ Migrating large documentation sites can be tedious, often requiring manual adjus
 
 Docusaurus and Quarto both use Markdown, but they differ in crucial ways:
 
-## Frontmatter: 
+## Frontmatter:
 
 Docusaurus uses specific YAML fields like sidebar_position for navigation, which must be mapped to Quarto's order field.
 
-## Admonitions: 
+## Admonitions:
 
-Docusaurus uses the :::type Title syntax, while Quarto uses standardized Markdown Callouts 
-`(:::: {<type>} or :::: {.callout-<type>})`.
+Docusaurus uses the :::type Title syntax, while Quarto uses standardized Markdown Callouts `(:::: {<type>} or :::: {.callout-<type>})`.
 
-## File Structure: 
+## File Structure:
 
 Quarto books often use the .qmd extension and rely on a strict file hierarchy for book rendering.
 
@@ -36,19 +35,18 @@ This utility addresses these differences by providing a quick and reliable conve
 
 Doc2Quarto offers a robust set of features to ensure a smooth transition:
 
-- [ ] Recursive File Conversion: Scans a source directory and processes all .md files found recursively.
+-   [ ] Recursive File Conversion: Scans a source directory and processes all .md files found recursively.
 
-- [ ] Frontmatter Conversion: Automatically maps Docusaurus-specific frontmatter (e.g., sidebar_position) to its Quarto equivalent (order).
+-   [ ] Frontmatter Conversion: Automatically maps Docusaurus-specific frontmatter (e.g., sidebar_position) to its Quarto equivalent (order).
 
-- [ ] Admonition/Callout Transformation: Converts common Docusaurus admonition syntaxes 
-`(:::note, :::tip, etc.)` into Quarto's standard callout blocks. 
+-   [ ] Admonition/Callout Transformation: Converts common Docusaurus admonition syntaxes `(:::note, :::tip, etc.)` into Quarto's standard callout blocks.
 
-- [ ] Directory Preservation: Maintains the relative directory structure from the source to the destination, ensuring internal links remain valid.
+-   [ ] Directory Preservation: Maintains the relative directory structure from the source to the destination, ensuring internal links remain valid.
 
-- [ ] Image Folder Copying: Automatically identifies and copies co-located img folders used by Docusaurus into the corresponding Quarto destination directory.
+-   [ ] Image Folder Copying: Automatically identifies and copies co-located img folders used by Docusaurus into the corresponding Quarto destination directory.
 
-- [ ] Progress Tracking: Provides visual feedback via a progress bar (using the indicatif crate) for large documentation sets.
+-   [ ] Progress Tracking: Provides visual feedback via a progress bar (using the indicatif crate) for large documentation sets.
 
 <br>
 
-> ###  The following chapters detail how to use Doc2Quarto and provide an in-depth look at its Rust implementation.
+> ### The following chapters detail how to use Doc2Quarto and provide an in-depth look at its Rust implementation.

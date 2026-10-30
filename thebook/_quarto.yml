@@ -4,7 +4,7 @@ project:
 
 book:
   title: "Book"
-  author: "Rakesh Venkat"
+  author: "Rakesh V"
   date: "11/30/2025"
   favicon: images/AudioWide-White.ico
   sidebar: 
@@ -15,33 +15,34 @@ book:
 
   chapters:
     - index.qmd
-    - about-author.qmd
-   
-    # Part 1: Doc2Quarto
-    - part: "doc2quarto"
+
+    - part: doc2quarto/index.qmd
       chapters:
-        - doc2quarto/index.qmd
         - doc2quarto/usage.qmd
         - doc2quarto/logic.qmd
     
-    # Part 6: Neovim2Emacs
+    
+    # Part 6: 
     - part: "neovim2emacs"
       chapters:
         - neovim2emacs/index.qmd
+        - neovim2emacs/index.qmd
+        
+    # Part 6: 
+    - part: "Checking 3rd One"
+      chapters:
+        - neovim2emacs/index.qmd
+        - neovim2emacs/index.qmd
+        
+        
 
-
-bibliography: references.bib
-toc: false
-toc-depth: 4
 format:
-  
   html:
+    toc: false
     theme:
       - cosmo
       - brand
+    css: styles.css
     number-sections: false
-  pdf:
-    documentclass: scrreprt
-
 editor: visual
 

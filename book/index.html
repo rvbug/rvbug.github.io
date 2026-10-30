@@ -2,19 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Rakesh Venkat">
+<meta name="author" content="Rakesh V">
 <meta name="dcterms.date" content="2025-11-30">
 
 <title>Book</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -32,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./about-author.html" rel="next">
+<link href="./doc2quarto/index.html" rel="next">
 <link href="./images/AudioWide-White.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -40,10 +46,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a25c6ca0899ecb75239135bf1b5c1690.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-deb916046d57902448ef8317134ba92a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -73,9 +79,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -133,25 +140,15 @@ ul.task-list li input[type="checkbox"] {
   <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Overview</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./about-author.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">about-author.html</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">doc2quarto</span></a>
+            <a href="./doc2quarto/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doc2Quarto</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./doc2quarto/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Doc2Quarto</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./doc2quarto/usage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using the CLI</span></a>
@@ -178,6 +175,32 @@ ul.task-list li input[type="checkbox"] {
   <a href="./neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Checking 3rd One</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -185,23 +208,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#documentation-hub." id="toc-documentation-hub." class="nav-link active" data-scroll-target="#documentation-hub.">Documentation hub.</a></li>
-  <li><a href="#how-to-use-this-site" id="toc-how-to-use-this-site" class="nav-link" data-scroll-target="#how-to-use-this-site">How to Use This Site</a></li>
-  <li><a href="#roadmap-future-projects" id="toc-roadmap-future-projects" class="nav-link" data-scroll-target="#roadmap-future-projects">Roadmap &amp; Future Projects</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
-  <li><a href="#about-me" id="toc-about-me" class="nav-link" data-scroll-target="#about-me">About Me</a></li>
-  <li><a href="#projects-overview" id="toc-projects-overview" class="nav-link" data-scroll-target="#projects-overview">Projects Overview</a>
-  <ul>
-  <li><a href="#doc2quarto" id="toc-doc2quarto" class="nav-link" data-scroll-target="#doc2quarto">☁︎ doc2quarto</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -217,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Rakesh Venkat </p>
+             <p>Rakesh V </p>
           </div>
   </div>
     
@@ -236,94 +243,21 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;">
-
-</div>
-<section id="documentation-hub." class="level1">
-<h1>Documentation hub.</h1>
-<blockquote class="blockquote">
-<p>This site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.</p>
-</blockquote>
-</section>
-<section id="how-to-use-this-site" class="level1">
-<h1>How to Use This Site</h1>
+<section id="the-book" class="level1">
+<h1>The Book</h1>
+<p>“The Book” is a collection of documentation, design decisions and research notes for the systems I’m building and exploring.</p>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">Projects</h2>
 <ul>
-<li>Use the <strong>sidebar</strong> or the project cards below to jump into a specific project.<br>
-</li>
-<li>Within each project:
-<ul>
-<li>Start with the <em>Overview</em> chapter</li>
-<li>Then read Architecture / Workflow chapters</li>
-<li>Dive into Code Snippets, Testing, and Future Work as needed</li>
-</ul></li>
+<li><p><strong>Doc2Quarto</strong> — A CLI tool to migrate Docusaurus .md format to Quarto .qmd format</p></li>
+<li><p><strong>FERMI</strong> — Exploring the economics of AI architectures and computational costs.</p></li>
+<li><p><strong>Emacs</strong> — Documenting my configuration, packages, workflow and migration from Neovim.</p></li>
+<li><p><strong>ORBIT</strong> — An adaptive agent system which achieves their objectives under resource constraints</p></li>
 </ul>
-<p>This site is primarily written for <strong>future me</strong> — but if you’re reading it later<br>
-as a user or contributor, I hope it gives you clear insight into how everything fits together</p>
-</section>
-<section id="roadmap-future-projects" class="level1">
-<h1>Roadmap &amp; Future Projects</h1>
-<p>This hub is designed to grow over time as more tools , research, libraries experiments appear.</p>
-<p>Planned additions include:</p>
-<ul>
-<li>🧪 Experimental tools automation, research, quantum computing etc<br>
-</li>
-<li>🧰 Libraries or platform to enhance productivity<br>
-</li>
-<li>🗂 More utilities on workflows automation</li>
-</ul>
-<p>When a new project is created, it will get:</p>
-<ul>
-<li>Its own folder (e.g.&nbsp;<code>new-project/</code>)<br>
-</li>
-<li>Its own mini “book” of chapters<br>
-</li>
-<li>A card on this page linking into its docs</li>
-</ul>
-</section>
-<section id="section" class="level1 unnumbered">
-<h1 class="unnumbered"></h1>
-</section>
-<section id="about-me" class="level1">
-<h1>About Me</h1>
-<p>I’m <strong>Rakesh V</strong>, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.</p>
-<p>I maintain the projects in this “book”</p>
-<p>If you’d like to know more about my background, how these tools came about, and how to support my work, see:</p>
-<p>➡️ <a href="./about-author.html">Read more in “Author” section</a></p>
-<p><br><br></p>
-</section>
-<section id="projects-overview" class="level1">
-<h1>Projects Overview</h1>
-<div class="column" style="width:50%;">
-<section id="doc2quarto" class="level3">
-<h3 class="anchored" data-anchor-id="doc2quarto">☁︎ doc2quarto</h3>
-<p>A helper tool for turning rough notes, markdown, or code comments into<br>
-<strong>structured Quarto documentation</strong>.</p>
-<ul>
-<li>Convert notes into <code>.qmd</code> skeletons<br>
-</li>
-<li>Ideal for standardizing docs across all projects</li>
-</ul>
-<p>➡️ <a href="./doc2quarto/index.html">Read the doc2quarto docs »</a></p>
-</section>
-</div>
-<p>:::::</p>
-<hr>
-<div class="columns">
-<div class="column" style="width:50%;">
-<section id="neovim-to-emacs-migration" class="level3">
-<h3 class="anchored" data-anchor-id="neovim-to-emacs-migration">📡 neovim to emacs migration</h3>
-<p>Documenting my journey from neovim to emacs</p>
-<p>➡️ <a href="./neovim2emacs/index.html">Read my journey »</a></p>
-</section>
-</div><div class="column" style="width:50%;">
-<section id="section-1" class="level3">
-<h3 class="anchored" data-anchor-id="section-1">📚</h3>
-<p>➡️ <a href="">Coming Soon</a></p>
-</section>
-</div>
-</div>
+<p>If something here is useful to you, take what you need.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -378,13 +312,14 @@ as a user or contributor, I hope it gives you clear insight into how everything 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -730,8 +665,8 @@ as a user or contributor, I hope it gives you clear insight into how everything 
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./about-author.html" class="pagination-link" aria-label="about-author.html">
-        <span class="nav-page-text"><span class="chapter-title">about-author.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./doc2quarto/index.html" class="pagination-link" aria-label="Doc2Quarto">
+        <span class="nav-page-text">Doc2Quarto</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

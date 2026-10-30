@@ -22,7 +22,7 @@ $> doc2quarto -s <SOURCE_DIR> -d <DESTINATION_DIR>
 ```
 
 | Option | Long Name | Description | Example |
-|-----------------|-----------------|-----------------|-----------------------|
+|-----------------|-----------------|-----------------|---------------------|
 | `-s` | `--source` | The directory containing your Docusaurus `.md` files (the source docs root). | `./my-docusaurus-docs/` |
 | `-d` | `--dest` | The directory where the converted `.qmd` files will be written. This directory will be created if it does not exist. | `./quarto-book/chapters/` |
 | `-h` | `--help` | Print help | `doc2-quarto —help` |

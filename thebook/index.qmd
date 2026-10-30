@@ -1,88 +1,21 @@
 ---
 title: "Overview"
 format: html
-toc: true
+toc: false
 ---
 
-::: {style="text-align:center; margin-top: 0rem; margin-bottom: 0rem;"}
-:::
+# The Book
 
-# Documentation hub.
+"The Book" is a collection of documentation, design decisions and research notes for the systems I'm building and exploring.
 
-> This site collects Technical Docs, Architecture Notes, and Design Decisions for all my projects.
+## Projects
 
-# How to Use This Site
+-   **Doc2Quarto** — A CLI tool to migrate Docusaurus .md format to Quarto .qmd format
 
--   Use the **sidebar** or the project cards below to jump into a specific project.\
--   Within each project:
-    -   Start with the *Overview* chapter
-    -   Then read Architecture / Workflow chapters
-    -   Dive into Code Snippets, Testing, and Future Work as needed
+-   **FERMI** — Exploring the economics of AI architectures and computational costs.
 
-This site is primarily written for **future me** — but if you’re reading it later\
-as a user or contributor, I hope it gives you clear insight into how everything fits together
+-   **Emacs** — Documenting my configuration, packages, workflow and migration from Neovim.
 
-# Roadmap & Future Projects
+-   **ORBIT** — An adaptive agent system which achieves their objectives under resource constraints
 
-This hub is designed to grow over time as more tools , research, libraries experiments appear.
-
-
-
--   🧪 Experimental tools automation, research, quantum computing etc\
--   🧰 Libraries or platform to enhance productivity\
--   🗂 More utilities on workflows automation
-
-When a new project is created, it will get:
-
--   Its own folder (e.g. `new-project/`)\
--   Its own mini “book” of chapters\
--   A card on this page linking into its docs
-
-#  {.unnumbered}
-
-# About Me
-
-I’m **Rakesh V**, a developer and tinkerer who enjoys building tools that make it easier to think, automate, and explore ideas.
-
-I maintain the projects in this “book”
-
-If you’d like to know more about my background, how these tools came about, and how to support my work, see:
-
-➡️ [Read more in “Author” section](about-author.qmd)
-
-<br><br>
-
-# Projects Overview
-
-::: {.column width="50%"}
-### ☁︎ doc2quarto
-
-A helper tool for turning rough notes, markdown, or code comments into\
-**structured Quarto documentation**.
-
--   Convert notes into `.qmd` skeletons\
--   Ideal for standardizing docs across all projects
-
-➡️ [Read the doc2quarto docs »](doc2quarto/index.qmd)
-:::
-:::::
-
-
-
-------------------------------------------------------------------------
-
-::::: columns
-::: {.column width="50%"}
-### 📡 neovim to emacs migration
-
-Documenting my journey from neovim to emacs
-
-➡️ [Read my journey »](neovim2emacs/index.qmd)
-:::
-
-::: {.column width="50%"}
-### 📚
-
-➡️ [Coming Soon]()
-:::
-:::::
+If something here is useful to you, take what you need.

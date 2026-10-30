@@ -2,58 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rakesh V">
+<meta name="dcterms.date" content="2023-11-23">
 
-<title>08-json-output – Book</title>
+<title>Neovim to Emacs – Book</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -65,8 +38,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../rat-core/09-workflow-diagram.html" rel="next">
-<link href="../rat-core/07-state-management.html" rel="prev">
+<link href="../doc2quarto/logic.html" rel="prev">
 <link href="../images/AudioWide-White.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -74,10 +46,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a25c6ca0899ecb75239135bf1b5c1690.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-deb916046d57902448ef8317134ba92a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -118,7 +90,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-core/index.html">rat-core</a></li><li class="breadcrumb-item"><a href="../rat-core/08-json-output.html"><span class="chapter-title">08-json-output</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../neovim2emacs/index.html">neovim2emacs</a></li><li class="breadcrumb-item"><a href="../neovim2emacs/index.html"><span class="chapter-title">Neovim to Emacs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -175,170 +147,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">rat-core</span></a>
+ <span class="menu-text">doc2quarto</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ratcrate-core Documentation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/01-origin.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">01-Origin</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/02-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">02-overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/03-architecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">03-architecture</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/04-sparse-index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">04-sparse-index</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/05-caching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">05-caching</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/06-http-client.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">06-http-client</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/07-state-management.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">07-state-management</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/08-json-output.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">08-json-output</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/09-workflow-diagram.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">09-workflow-diagram</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/10-code-snippets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10-code-snippets</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/11-future-work.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11-future-work</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/12-contributing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12-contributing</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/13-usage-examples.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13-usage-examples</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/14-testing-and-quality.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14-testing-and-quality</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/15-performance-and-scaling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15-Performance-and-Scaling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/16-troubleshooting-faq.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16-Troubleshooting-FAQ</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/17-data-schema-reference.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17-data-schema-Reference</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-core/18-ecosystem-and-integrations.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18-Ecosystem-and-Integration</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">rat-cli</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-cli/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-cli/usage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Usage Demonstration</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-cli/datamodel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Model</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">rat-tui</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-tui/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ratcrate-tui: Ratatui Ecosystem Explorer</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-tui/usage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Usage Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../rat-tui/development.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Development &amp; Contribution</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">doc2quarto</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../doc2quarto/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Doc2Quarto</span></a>
@@ -358,32 +172,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">qbanner</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../qbanner/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Qbanner: Terminal Banners for CLI Applications</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">neovim2emacs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
+  <a href="../neovim2emacs/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Neovim to Emacs</span></a>
   </div>
 </li>
       </ul>
@@ -395,18 +193,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rat-core/index.html">rat-core</a></li><li class="breadcrumb-item"><a href="../rat-core/08-json-output.html"><span class="chapter-title">08-json-output</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../neovim2emacs/index.html">neovim2emacs</a></li><li class="breadcrumb-item"><a href="../neovim2emacs/index.html"><span class="chapter-title">Neovim to Emacs</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">08-json-output</span></h1>
+<h1 class="title"><span class="chapter-title">Neovim to Emacs</span></h1>
+<p class="subtitle lead">My journey</p>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-right">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rakesh V </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 23, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -416,22 +227,280 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="chapter-8-final-json-output" class="level1">
-<h1>Chapter 8 — Final JSON Output</h1>
-<p><code>ratcrate.json</code> is the central dataset for all future projects:</p>
-<ul>
-<li>ratcrate-cli</li>
-<li>ratcrate-tui</li>
-<li>ratcrate-web</li>
-</ul>
-<section id="structure" class="level2">
-<h2 class="anchored" data-anchor-id="structure">Structure</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span><span class="er">...</span><span class="fu">},</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"statistics"</span><span class="fu">:</span> <span class="fu">{</span><span class="er">...</span><span class="fu">},</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"crates"</span><span class="fu">:</span> <span class="ot">[</span><span class="er">...</span><span class="ot">]</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Placeholder: sample JSON screenshot</p>
+<section id="the-great-migration---neovim-to-emacs" class="level1">
+<h1>The great migration - Neovim to Emacs</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>In Progress
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please note this configuration is in progress.</p>
+</div>
+</div>
+<section id="complete-package-comparison-table" class="level2">
+<h2 class="anchored" data-anchor-id="complete-package-comparison-table">Complete Package Comparison Table</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Category/Plugin</strong></th>
+<th><strong>Best (Recommended)</strong></th>
+<th><strong>Alternative 2</strong></th>
+<th><strong>Alternative 3</strong></th>
+<th><strong>Notes</strong></th>
+<th><strong>Exploration</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Package Manager</strong></td>
+<td><strong>Elpaca</strong></td>
+<td>straight.el</td>
+<td>package.el (built-in)</td>
+<td>Elpaca: async, parallel installs, interactive UI. straight.el: reproducible builds. package.el: simple but limited.</td>
+<td>Setup completed. Will be moving to literal configuration</td>
+</tr>
+<tr class="even">
+<td><strong>LazyGit</strong></td>
+<td><strong>Magit</strong></td>
+<td>Diff-hl + VC</td>
+<td>Forge (for GitHub/GitLab)</td>
+<td>Magit is the gold standard - many switch to Emacs just for it. Forge adds PR/issue management.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>LSP</strong></td>
+<td><strong>Eglot</strong> (built-in Emacs 29+)</td>
+<td>lsp-mode</td>
+<td>lsp-bridge</td>
+<td>Eglot is minimal, fast, built-in. Works out-of-box for shell, Rust, Python. Just enable with <code>eglot-ensure</code>.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Debugger</strong></td>
+<td><strong>Dape</strong></td>
+<td>dap-mode</td>
+<td>Built-in GUD</td>
+<td>Dape is newer, lighter, simpler than dap-mode. Both support DAP protocol. Built-in GUD for basic debugging.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Quarto</strong></td>
+<td><strong>quarto-mode</strong> (with polymode)</td>
+<td>markdown-mode + org-mode</td>
+<td>poly-markdown</td>
+<td>Official quarto-mode package. Requires polymode, markdown-mode. Supports preview via <code>quarto-preview</code>.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Toggle Term (tmux-like)</strong></td>
+<td><strong>vterm</strong></td>
+<td>eat (Emulate A Terminal)</td>
+<td>eshell + multi-term</td>
+<td>Vterm is fastest, most complete terminal. Eat is pure elisp (no compilation). Eshell is built-in.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Autopairs</strong></td>
+<td><strong>electric-pair-mode</strong> (built-in)</td>
+<td>smartparens</td>
+<td>elec-pair + paren</td>
+<td>electric-pair-mode is built-in Emacs, works out-of-box. Smartparens for more features.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Code Runner (Python/Jupyter)</strong></td>
+<td><strong>python-mode</strong> + <strong>ob-python</strong> (org-babel)</td>
+<td>python-pytest + quickrun</td>
+<td>jupyter-mode (emacs-jupyter)</td>
+<td>Use org-babel for literate programming. quickrun for quick execution. jupyter-mode for notebooks. Rust: cargo-mode or quickrun.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Music Player</strong></td>
+<td><strong>EMMS</strong> (Emacs Multimedia System)</td>
+<td>Bongo</td>
+<td>Listen.el</td>
+<td>EMMS is mature, feature-rich (mpv/vlc backend). Bongo is simpler. Listen.el is newest/simplest.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Project Management</strong></td>
+<td><strong>project.el</strong> (built-in)</td>
+<td>Projectile</td>
+<td>find-file-in-project</td>
+<td>project.el is built-in (Emacs 28+), fast. Projectile more features. Works with Vertico/Consult.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Telescope</strong></td>
+<td><strong>Vertico + Consult + Marginalia + Orderless</strong></td>
+<td>Ivy + Counsel + Swiper</td>
+<td>Helm</td>
+<td>Vertico stack is modern, fast, modular. Native completion. Ivy/Helm are older but still popular.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Zen Mode</strong></td>
+<td><strong>writeroom-mode</strong></td>
+<td>olivetti</td>
+<td>darkroom</td>
+<td>Writeroom-mode most popular. Olivetti focuses on centered text. All distraction-free.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Comments</strong></td>
+<td><strong>comment-dwim</strong> (built-in)</td>
+<td>evil-nerd-commenter</td>
+<td>comment-line</td>
+<td>comment-dwim is built-in (<code>M-;</code>). evil-nerd-commenter for more features.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Folders/Tree + Icons</strong></td>
+<td><strong>dired</strong> + <strong>all-the-icons-dired</strong> / <strong>nerd-icons-dired</strong></td>
+<td>treemacs + all-the-icons</td>
+<td>neotree + all-the-icons</td>
+<td>Dired is built-in, powerful. Add icons with all-the-icons-dired. Treemacs for IDE-like tree.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Markdown Support</strong></td>
+<td><strong>markdown-mode</strong></td>
+<td>gfm-mode (GitHub Flavored)</td>
+<td>poly-markdown</td>
+<td>markdown-mode is standard. gfm-mode for GitHub. poly-markdown for code blocks.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>LaTeX Support</strong></td>
+<td><strong>AUCTeX</strong></td>
+<td>Built-in latex-mode</td>
+<td>CDLaTeX (math)</td>
+<td>AUCTeX is the standard. Supports preview, compilation. CDLaTeX for fast math input.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Codeium AI</strong></td>
+<td><strong>codeium.el</strong></td>
+<td>tabnine</td>
+<td>copilot.el</td>
+<td>Codeium.el is free, fast, supports 70+ languages. Works with company-mode or corfu.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>iron.nvim (REPL)</strong></td>
+<td><strong>ob-python/ob-</strong>* (org-babel)</td>
+<td>python-mode REPL</td>
+<td>comint-mode</td>
+<td>Org-babel for literate programming. python-mode has built-in REPL. comint for general REPL.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Org-mode</strong></td>
+<td><strong>org-mode</strong> (built-in)</td>
+<td>org-agenda</td>
+<td>org-roam (Zettelkasten)</td>
+<td>Org-mode is THE reason many use Emacs. Built-in, powerful. org-roam for note-taking.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="power-user-essentials-missing-from-neovim-list" class="level2">
+<h2 class="anchored" data-anchor-id="power-user-essentials-missing-from-neovim-list">Power User Essentials (Missing from Neovim List)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Category</strong></th>
+<th><strong>Package</strong></th>
+<th><strong>Why Critical</strong></th>
+<th><strong>Priority</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Keybinding Discovery</strong></td>
+<td>which-key</td>
+<td>See available commands as you type</td>
+<td>HIGH</td>
+</tr>
+<tr class="even">
+<td><strong>In-buffer Completion</strong></td>
+<td>corfu + cape</td>
+<td>Faster than company, native completion</td>
+<td>HIGH</td>
+</tr>
+<tr class="odd">
+<td><strong>Navigation</strong></td>
+<td>avy</td>
+<td>Jump anywhere instantly</td>
+<td>HIGH</td>
+</tr>
+<tr class="even">
+<td><strong>Context Actions</strong></td>
+<td>embark</td>
+<td>Power-user workflow enhancer</td>
+<td>HIGH</td>
+</tr>
+<tr class="odd">
+<td><strong>Spell Check</strong></td>
+<td>jinx</td>
+<td>Modern, fast, language-aware</td>
+<td>MEDIUM</td>
+</tr>
+<tr class="even">
+<td><strong>Note-taking</strong></td>
+<td>denote or org-roam</td>
+<td>Zettelkasten for org-mode</td>
+<td>HIGH</td>
+</tr>
+<tr class="odd">
+<td><strong>Keybinding Config</strong></td>
+<td>general.el</td>
+<td>Clean, organized keybindings</td>
+<td>MEDIUM</td>
+</tr>
+<tr class="even">
+<td><strong>Help System</strong></td>
+<td>helpful</td>
+<td>Better documentation viewer</td>
+<td>MEDIUM</td>
+</tr>
+<tr class="odd">
+<td><strong>History</strong></td>
+<td>savehist + recentf</td>
+<td>Remember everything (built-in)</td>
+<td>HIGH</td>
+</tr>
+<tr class="even">
+<td><strong>Search</strong></td>
+<td>rg.el or deadgrep</td>
+<td>Fast project search with ripgrep</td>
+<td>HIGH</td>
+</tr>
+</tbody>
+</table>
+<hr>
 
 
 </section>
@@ -489,13 +558,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -837,16 +907,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script>
-<nav class="page-navigation">
+<nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="../rat-core/07-state-management.html" class="pagination-link" aria-label="07-state-management">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">07-state-management</span></span>
+      <a href="../doc2quarto/logic.html" class="pagination-link" aria-label="Core Logic">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Core Logic</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../rat-core/09-workflow-diagram.html" class="pagination-link" aria-label="09-workflow-diagram">
-        <span class="nav-page-text"><span class="chapter-title">09-workflow-diagram</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
