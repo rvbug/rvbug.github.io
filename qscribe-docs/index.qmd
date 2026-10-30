@@ -1,26 +1,32 @@
+
 ---
 title: "Writing"
 listing:
-  id: recent-writing
   contents: posts
   sort: "date desc"
   type: default
-  max-items: 5
+  max-items: 3
+  fields:
+    - date
+    - title
+    - description
+  categories: false
   sort-ui: false
   filter-ui: true
-  page-size: 5
+page-layout: article
+title-block-banner: false
 ---
 
 Research, experiments and notes on technology.
 
-## Explore by subject
+## Explore
 
-Research
+### [Research](research.qmd)
 
-Workflow
+### [Workflow](workflow.qmd)
 
-Technical Guide
+### [Technical Guide](technical-guide.qmd)
 
-Automation
+### [Automation](automation.qmd)
 
 ## Recent writing

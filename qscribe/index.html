@@ -83,21 +83,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-recent-writing .list');
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 5,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-recent-writing'] = new List('listing-recent-writing', options);
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -364,12 +363,20 @@ window.Quarto = {
 
 
 <p>Research, experiments and notes on technology.</p>
-<section id="explore-by-subject" class="level2">
-<h2 class="anchored" data-anchor-id="explore-by-subject">Explore by subject</h2>
-<p>Research</p>
-<p>Workflow</p>
-<p>Technical Guide</p>
-<p>Automation</p>
+<section id="explore" class="level2">
+<h2 class="anchored" data-anchor-id="explore">Explore</h2>
+<section id="research" class="level3">
+<h3 class="anchored" data-anchor-id="research"><a href="research.qmd">Research</a></h3>
+</section>
+<section id="workflow" class="level3">
+<h3 class="anchored" data-anchor-id="workflow"><a href="workflow.qmd">Workflow</a></h3>
+</section>
+<section id="technical-guide" class="level3">
+<h3 class="anchored" data-anchor-id="technical-guide"><a href="technical-guide.qmd">Technical Guide</a></h3>
+</section>
+<section id="automation" class="level3">
+<h3 class="anchored" data-anchor-id="automation"><a href="automation.qmd">Automation</a></h3>
+</section>
 </section>
 <section id="recent-writing" class="level2">
 <h2 class="anchored" data-anchor-id="recent-writing">Recent writing</h2>
@@ -378,7 +385,7 @@ window.Quarto = {
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-recent-writing">
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="listing-actions-group">
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
@@ -387,11 +394,6 @@ window.Quarto = {
 </div>
 <div class="list quarto-listing-default">
 <div class="quarto-post image-right" data-index="0" data-categories="ZG9jdW1lbnRhdGlvbiUyQ3J1c3QlMkNxdWFydG8lMkNkb2N1c2F1cnVzJTJDbWlncmF0aW9u" data-listing-date-sort="1763577000000" data-listing-file-modified-sort="1771406939756" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1072">
-<div class="thumbnail"><a href="./posts/Quarto/doc2quarto.html" class="no-external">
-
-<img loading="lazy" src="./posts/Quarto/img/Doc2Quarto-cli.png" class="thumbnail-image">
-
-</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/Quarto/doc2quarto.html" class="no-external">Doc2Quarto: Seamlessly Migrate from Docusaurus to Quarto</a>
@@ -405,18 +407,10 @@ window.Quarto = {
 <div class="listing-date">
 Nov 20, 2025
 </div>
-<div class="listing-author">
-Rakesh Venkat
-</div>
 </a>
 </div>
 </div>
 <div class="quarto-post image-right" data-index="1" data-categories="UXVhcnRvJTJDU3RhdGljJTIwU2l0ZQ==" data-listing-date-sort="1762540200000" data-listing-file-modified-sort="1762618237043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2169">
-<div class="thumbnail"><a href="./posts/Quarto/quarto.html" class="no-external">
-
-<img loading="lazy" src="./posts/Quarto/img/quarto.jpg" class="thumbnail-image">
-
-</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/Quarto/quarto.html" class="no-external">Docusaurus to Quarto:A Powerful Scientific Blogging</a>
@@ -430,83 +424,22 @@ Rakesh Venkat
 <div class="listing-date">
 Nov 8, 2025
 </div>
-<div class="listing-author">
-Rakesh Venkat
-</div>
 </a>
 </div>
 </div>
 <div class="quarto-post image-right" data-index="2" data-categories="TExN" data-listing-date-sort="1740767400000" data-listing-file-modified-sort="1762237128511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3027">
-<div class="thumbnail"><a href="./posts/LLMs/PTXIntro.html" class="no-external">
-
-<img loading="lazy" src="./posts/LLMs/img/ptx.png" class="thumbnail-image">
-
-</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/LLMs/PTXIntro.html" class="no-external">Introduction to PTX</a>
 </h3>
 <div class="delink listing-description"><a href="./posts/LLMs/PTXIntro.html" class="no-external">
-Parallel Thread Execution (PTX) is a virtual machine instruction set architecture and can be thought of as the assembly language for NVDIA GPUs. You would need to know few…
+
 </a></div>
 </div>
 <div class="metadata">
 <a href="./posts/LLMs/PTXIntro.html" class="no-external">
 <div class="listing-date">
 Mar 1, 2025
-</div>
-<div class="listing-author">
-Rakesh Venkat
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="TExN" data-listing-date-sort="1740767400000" data-listing-file-modified-sort="1762235147893" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="505">
-<div class="thumbnail"><a href="./posts/LLMs/gpu.html" class="no-external">
-
-<img loading="lazy" src="./posts/LLMs/img/CUDAWorkflow.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/LLMs/gpu.html" class="no-external">Introduction to GPU</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/LLMs/gpu.html" class="no-external">
-In my last blog, I quickly introduced to DeepSeek and some of the components the used. In this blog, we will get down to basics of GPU and specifically NVIDIA GPU…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/LLMs/gpu.html" class="no-external">
-<div class="listing-date">
-Mar 1, 2025
-</div>
-<div class="listing-author">
-Rakesh Venkat
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="TExN" data-listing-date-sort="1740767400000" data-listing-file-modified-sort="1762235120912" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="546">
-<div class="thumbnail"><a href="./posts/LLMs/Introduction.html" class="no-external">
-
-<img loading="lazy" src="./posts/LLMs/img/LLMarch.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/LLMs/Introduction.html" class="no-external">Introduction to LLMs</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/LLMs/Introduction.html" class="no-external">
-OpenAI has been at the forefront of developing sophisticated LLMs, often perceived as black boxes. Until DeepSeek’s open-source release, that is. Now, we have a unique…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/LLMs/Introduction.html" class="no-external">
-<div class="listing-date">
-Mar 1, 2025
-</div>
-<div class="listing-author">
-Rakesh Venkat
 </div>
 </a>
 </div>
