@@ -1,0 +1,37 @@
+---
+title: "Workflow & Automation"
+description: "Tools, workflows and development environments."
+page-layout: article
+title-block-banner: false
+
+listing:
+  id: workflow-articles
+  contents:
+    - neovim.qmd
+    - dotfiles.qmd
+    - cookiecutterv2.qmd
+
+  sort: false
+  type: default
+  fields:
+    - title
+    - description
+  categories: false
+  sort-ui: false
+  filter-ui: false
+---
+
+::::::: llm-layout
+:::: llm-intro
+A collection exploring development environments, personal productivity, configuration and automation.
+
+::: llm-collection-meta
+WORKFLOW · 2026 · QuBiTAi.in
+:::
+::::
+
+:::: llm-article-list
+::: {#workflow-articles}
+:::
+::::
+:::::::

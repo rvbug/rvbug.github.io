@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-11-20">
 <meta name="description" content="A powerful CLI tool built in Rust to automate the conversion of Docusaurus markdown files to Quarto format">
 
-<title>Doc2Quarto: Seamlessly Migrate from Docusaurus to Quarto – QuBiTAi</title>
+<title>Doc2Quarto: Seamlessly Migrate from Docusaurus to Quarto – Scribe</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,16 +79,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -118,171 +113,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -290,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">QuBiTAi</span>
+    <span class="navbar-title">Scribe</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -298,6 +132,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../workflow.html"> 
+<span class="menu-text">Workflow &amp; Automation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../technical-guide.html"> 
+<span class="menu-text">Technical Guide</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/rvbug" target="_blank"> <i class="bi bi-github" role="img">
@@ -307,7 +155,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -404,14 +251,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-
 <section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<h2 data-anchor-id="introduction">Introduction</h2>
 <p>Documentation is the backbone of any successful software project. As our needs evolve, so do our documentation tools. If you’ve been using Docusaurus and are considering a move to Quarto for its superior academic publishing capabilities, multi-format output, and Jupyter integration, you’re in the right place.</p>
 <p><strong>Doc2Quarto</strong> is a powerful command-line tool built in Rust that automates the tedious process of converting Docusaurus markdown files to Quarto format. It preserves your carefully crafted directory structure while transforming syntax elements to ensure a seamless migration.</p>
 </section>
 <section id="why-migrate-to-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="why-migrate-to-quarto">Why Migrate to Quarto?</h2>
+<h2 data-anchor-id="why-migrate-to-quarto">Why Migrate to Quarto?</h2>
 <p>Before diving into the tool itself, let’s understand why you might want to make this transition:</p>
 <dl>
 <dt><strong>Academic Publishing Excellence</strong></dt>
@@ -433,10 +279,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 </section>
 <section id="key-features" class="level2">
-<h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
+<h2 data-anchor-id="key-features">Key Features</h2>
 <p>Doc2Quarto handles the heavy lifting of migration with these powerful features:</p>
 <section id="frontmatter-transformation" class="level3">
-<h3 class="anchored" data-anchor-id="frontmatter-transformation">Frontmatter Transformation</h3>
+<h3 data-anchor-id="frontmatter-transformation">Frontmatter Transformation</h3>
 <p>The tool intelligently converts Docusaurus-specific frontmatter fields to their Quarto equivalents:</p>
 <p><strong>Before (Docusaurus):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
@@ -450,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="admonition-conversion" class="level3">
-<h3 class="anchored" data-anchor-id="admonition-conversion">Admonition Conversion</h3>
+<h3 data-anchor-id="admonition-conversion">Admonition Conversion</h3>
 <p>One of the most significant syntax differences between the two platforms is how they handle callout boxes. Doc2Quarto automatically transforms these:</p>
 <p><strong>Before (Docusaurus):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>:::note Important Information</span>
@@ -506,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </section>
 <section id="structure-preservation" class="level3">
-<h3 class="anchored" data-anchor-id="structure-preservation">Structure Preservation</h3>
+<h3 data-anchor-id="structure-preservation">Structure Preservation</h3>
 <p>Your carefully organized documentation structure remains intact. Doc2Quarto:</p>
 <ul>
 <li>Maintains directory hierarchy</li>
@@ -516,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="progress-tracking" class="level3">
-<h3 class="anchored" data-anchor-id="progress-tracking">Progress Tracking</h3>
+<h3 data-anchor-id="progress-tracking">Progress Tracking</h3>
 <p>For large documentation projects, the tool provides visual feedback with:</p>
 <ul>
 <li>Progress bars showing conversion status</li>
@@ -526,20 +372,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<h2 data-anchor-id="installation">Installation</h2>
 <p>Doc2Quarto offers multiple installation methods to suit your workflow:</p>
 <section id="option-1-cargo-rust-users" class="level3">
-<h3 class="anchored" data-anchor-id="option-1-cargo-rust-users">Option 1: Cargo (Rust Users)</h3>
+<h3 data-anchor-id="option-1-cargo-rust-users">Option 1: Cargo (Rust Users)</h3>
 <p>If you have Rust installed:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> install doc2quarto</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="option-2-homebrew-macos" class="level3">
-<h3 class="anchored" data-anchor-id="option-2-homebrew-macos">Option 2: Homebrew (macOS)</h3>
+<h3 data-anchor-id="option-2-homebrew-macos">Option 2: Homebrew (macOS)</h3>
 <p>For macOS users with Homebrew:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install rvbug/tap/doc2quarto</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="option-3-debian-package-linux" class="level3">
-<h3 class="anchored" data-anchor-id="option-3-debian-package-linux">Option 3: Debian Package (Linux)</h3>
+<h3 data-anchor-id="option-3-debian-package-linux">Option 3: Debian Package (Linux)</h3>
 <p>Download and install the <code>.deb</code> package:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download latest release</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/rvbug/doc2quarto/releases/download/v0.1.1/doc2quarto_0.1.1-1_amd64.deb</span>
@@ -548,32 +394,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> doc2quarto_0.1.1-1_amd64.deb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="option-4-build-from-source" class="level3">
-<h3 class="anchored" data-anchor-id="option-4-build-from-source">Option 4: Build from Source</h3>
+<h3 data-anchor-id="option-4-build-from-source">Option 4: Build from Source</h3>
 <p>For the latest development version:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/rvbug/doc2quarto.git</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> doc2quarto</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> install <span class="at">--path</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="verify-installation" class="level3">
-<h3 class="anchored" data-anchor-id="verify-installation">Verify Installation</h3>
+<h3 data-anchor-id="verify-installation">Verify Installation</h3>
 <p>After installation, verify it works:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">doc2quarto</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<h2 data-anchor-id="usage">Usage</h2>
 <p>Using Doc2Quarto is straightforward. The basic command structure is:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">doc2quarto</span> <span class="at">--source</span> ./docs <span class="at">--dest</span> ./quarto-docs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Or using short flags:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">doc2quarto</span> <span class="at">-s</span> ./docs <span class="at">-d</span> ./quarto-docs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="command-line-arguments" class="level3">
-<h3 class="anchored" data-anchor-id="command-line-arguments">Command-Line Arguments</h3>
+<h3 data-anchor-id="command-line-arguments">Command-Line Arguments</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 31%">
-<col style="width: 24%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -601,10 +447,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="real-world-example" class="level2">
-<h2 class="anchored" data-anchor-id="real-world-example">Real-World Example</h2>
+<h2 data-anchor-id="real-world-example">Real-World Example</h2>
 <p>Let’s walk through a complete migration example:</p>
 <section id="before-conversion" class="level3">
-<h3 class="anchored" data-anchor-id="before-conversion">Before Conversion</h3>
+<h3 data-anchor-id="before-conversion">Before Conversion</h3>
 <p>Your Docusaurus project structure:</p>
 <pre><code>docs/
 ├── intro.md
@@ -616,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     └── reference.md</code></pre>
 </section>
 <section id="running-the-conversion" class="level3">
-<h3 class="anchored" data-anchor-id="running-the-conversion">Running the Conversion</h3>
+<h3 data-anchor-id="running-the-conversion">Running the Conversion</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">doc2quarto</span> <span class="at">--source</span> ./docs <span class="at">--dest</span> ./quarto-docs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Output:</p>
 <pre><code>Doc2Quarto - Docusaurus to Quarto Converter
@@ -630,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Conversion completed!</code></pre>
 </section>
 <section id="after-conversion" class="level3">
-<h3 class="anchored" data-anchor-id="after-conversion">After Conversion</h3>
+<h3 data-anchor-id="after-conversion">After Conversion</h3>
 <p>Your new Quarto structure:</p>
 <pre><code>quarto-docs/
 ├── intro.qmd
@@ -644,7 +490,7 @@ Conversion completed!</code></pre>
 </section>
 </section>
 <section id="technical-architecture" class="level2">
-<h2 class="anchored" data-anchor-id="technical-architecture">Technical Architecture</h2>
+<h2 data-anchor-id="technical-architecture">Technical Architecture</h2>
 <p>Doc2Quarto is built with modern Rust practices, leveraging these excellent libraries:</p>
 <ul>
 <li><strong>Clap</strong>: Ergonomic command-line argument parsing</li>
@@ -667,7 +513,7 @@ Conversion completed!</code></pre>
 </ol>
 </section>
 <section id="current-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="current-limitations">Current Limitations</h2>
+<h2 data-anchor-id="current-limitations">Current Limitations</h2>
 <p>While Doc2Quarto handles the most common conversion scenarios, be aware of these limitations:</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -689,7 +535,7 @@ Conversion completed!</code></pre>
 </div>
 </section>
 <section id="post-migration-checklist" class="level2">
-<h2 class="anchored" data-anchor-id="post-migration-checklist">Post-Migration Checklist</h2>
+<h2 data-anchor-id="post-migration-checklist">Post-Migration Checklist</h2>
 <p>After running Doc2Quarto, follow these steps:</p>
 <ol type="1">
 <li><strong>Review Generated Files</strong>: Spot-check a few <code>.qmd</code> files to ensure conversion quality</li>
@@ -700,7 +546,7 @@ Conversion completed!</code></pre>
 </ol>
 </section>
 <section id="future-roadmap" class="level2">
-<h2 class="anchored" data-anchor-id="future-roadmap">Future Roadmap</h2>
+<h2 data-anchor-id="future-roadmap">Future Roadmap</h2>
 <p>The project has exciting features planned:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Support for additional frontmatter fields</label></li>
@@ -712,12 +558,12 @@ Conversion completed!</code></pre>
 </ul>
 </section>
 <section id="contributing" class="level2">
-<h2 class="anchored" data-anchor-id="contributing">Contributing</h2>
+<h2 data-anchor-id="contributing">Contributing</h2>
 <p>Doc2Quarto is open source and welcomes contributions! Whether you’re fixing bugs, adding features, or improving documentation, your help is appreciated.</p>
 <p><strong>Repository</strong>: <a href="https://github.com/rvbug/doc2quarto">github.com/rvbug/doc2quarto</a></p>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>Migrating documentation platforms doesn’t have to be painful. Doc2Quarto streamlines the transition from Docusaurus to Quarto, preserving your content structure while adapting syntax automatically.</p>
 <p>With its robust feature set, multiple installation options, and active development, Doc2Quarto is the ideal tool for teams ready to unlock Quarto’s powerful publishing capabilities.</p>
 <p>Ready to migrate? Install Doc2Quarto today and start enjoying the benefits of Quarto’s advanced documentation features!</p>
@@ -730,26 +576,6 @@ Conversion completed!</code></pre>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
-    }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -1383,7 +1209,7 @@ Conversion completed!</code></pre>
 <span id="cb16-189"><a href="#cb16-189" aria-hidden="true" tabindex="-1"></a><span class="fu">### Command-Line Arguments</span></span>
 <span id="cb16-190"><a href="#cb16-190" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-191"><a href="#cb16-191" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Flag <span class="pp">|</span> Short <span class="pp">|</span> Description <span class="pp">|</span> Required <span class="pp">|</span></span>
-<span id="cb16-192"><a href="#cb16-192" aria-hidden="true" tabindex="-1"></a><span class="pp">|----------------|----------------|-----------------------|------------------|</span></span>
+<span id="cb16-192"><a href="#cb16-192" aria-hidden="true" tabindex="-1"></a><span class="pp">|----|----|----|----|</span></span>
 <span id="cb16-193"><a href="#cb16-193" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`--source`</span> <span class="pp">|</span> <span class="in">`-s`</span> <span class="pp">|</span> Source directory containing Docusaurus markdown files <span class="pp">|</span> Yes <span class="pp">|</span></span>
 <span id="cb16-194"><a href="#cb16-194" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`--dest`</span> <span class="pp">|</span> <span class="in">`-d`</span> <span class="pp">|</span> Destination directory for Quarto files <span class="pp">|</span> Yes <span class="pp">|</span></span>
 <span id="cb16-195"><a href="#cb16-195" aria-hidden="true" tabindex="-1"></a></span>

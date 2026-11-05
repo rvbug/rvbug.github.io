@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-11-08">
 <meta name="description" content="Discover why I migrated from Docusaurus to Quarto for my blog, and how you can harness Quarto’s power for scientific content, beautiful websites, and seamless publishing.">
 
-<title>Docusaurus to Quarto:A Powerful Scientific Blogging – QuBiTAi</title>
+<title>Docusaurus to Quarto:A Powerful Scientific Blogging – Scribe</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,16 +79,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -120,171 +115,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -292,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">QuBiTAi</span>
+    <span class="navbar-title">Scribe</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -300,6 +134,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../workflow.html"> 
+<span class="menu-text">Workflow</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../technical-guide.html"> 
+<span class="menu-text">Technical Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../automation.qmd"> 
+<span class="menu-text">Automation</span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/rvbug" target="_blank"> <i class="bi bi-github" role="img">
@@ -309,7 +161,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -363,16 +214,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-
 <section id="why-i-made-the-switch" class="level2">
-<h2 class="anchored" data-anchor-id="why-i-made-the-switch">Why I Made the Switch</h2>
+<h2 data-anchor-id="why-i-made-the-switch">Why I Made the Switch</h2>
 <p>After months of wrestling with Docusaurus integration for blogging on <a href="https://qubitai.in">qubitai.in</a>, I found myself spending more time managing configurations than actually writing content. Don’t get me wrong—Docusaurus is a fantastic tool for documentation-heavy projects. But for a scientific blog with code outputs, mathematical equations, and research-oriented content? It felt like using a sledgehammer to crack a nut.</p>
 <!-- truncate -->
 <p>Enter <strong>Quarto</strong>.</p>
 <p>When I started working on my research paper on <a href="https://qfey.in/qpapers-published/">qfey.in</a>, I decided to give Quarto a shot. Within hours, I was trying out beautiful, reproducible content with embedded code execution, stunning visualizations, and zero configuration headaches. The difference was night and day.</p>
 </section>
 <section id="what-is-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-quarto">What is Quarto?</h2>
+<h2 data-anchor-id="what-is-quarto">What is Quarto?</h2>
 <p>Quarto is an open-source scientific and technical publishing system built on Pandoc. Think of it as the spiritual successor to R Markdown, but supercharged and language-agnostic. Whether you’re working with Python, R, Julia, or Observable JS, Quarto has you covered.</p>
 <p>At its core, Quarto transforms plain text (Markdown) into:</p>
 <ul>
@@ -385,9 +235,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The magic? You write once in Markdown, and Quarto handles the rest—including executing your code and embedding the results directly in your output.</p>
 </section>
 <section id="why-quarto-over-docusaurus-and-others" class="level2">
-<h2 class="anchored" data-anchor-id="why-quarto-over-docusaurus-and-others">Why Quarto Over Docusaurus (and Others)?</h2>
+<h2 data-anchor-id="why-quarto-over-docusaurus-and-others">Why Quarto Over Docusaurus (and Others)?</h2>
 <section id="the-docusaurus-dilemma" class="level3">
-<h3 class="anchored" data-anchor-id="the-docusaurus-dilemma">The Docusaurus Dilemma</h3>
+<h3 data-anchor-id="the-docusaurus-dilemma">The Docusaurus Dilemma</h3>
 <p>Docusaurus excels at what it’s designed for: React-based documentation sites with versioning, localization, and interactive components. But here’s where it fell short for my needs:</p>
 <ol type="1">
 <li><strong>Configuration Complexity</strong>: Multiple config files, plugin management, and React component setup felt overwhelming for simple blog posts.</li>
@@ -397,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="the-quarto-advantage" class="level3">
-<h3 class="anchored" data-anchor-id="the-quarto-advantage">The Quarto Advantage</h3>
+<h3 data-anchor-id="the-quarto-advantage">The Quarto Advantage</h3>
 <p><strong>Simplicity</strong>: Write Markdown, add YAML headers, done. No build system to configure.</p>
 <p><strong>Computational Narratives</strong>: Execute Python, R, or Julia code and embed outputs—plots, tables, data—automatically.</p>
 <p><strong>Scientific Publishing</strong>: First-class support for citations, cross-references, equations, and academic formatting.</p>
@@ -405,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Performance</strong>: Lightning-fast rendering with incremental builds. No node_modules bloat.</p>
 </section>
 <section id="what-about-mkdocs-jekyll-or-hugo" class="level3">
-<h3 class="anchored" data-anchor-id="what-about-mkdocs-jekyll-or-hugo">What About MkDocs, Jekyll, or Hugo?</h3>
+<h3 data-anchor-id="what-about-mkdocs-jekyll-or-hugo">What About MkDocs, Jekyll, or Hugo?</h3>
 <p>Let’s quickly compare:</p>
 <ul>
 <li><p><strong>MkDocs</strong> is excellent for documentation with Material theme, but lacks computational capabilities.</p></li>
@@ -416,9 +266,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="getting-started-with-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started-with-quarto">Getting Started with Quarto</h2>
+<h2 data-anchor-id="getting-started-with-quarto">Getting Started with Quarto</h2>
 <section id="installation" class="level3">
-<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<h3 data-anchor-id="installation">Installation</h3>
 <p>First step is to install Quarto CLI from <a href="https://quarto.org/docs/get-started/">quarto.org</a>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># macOS</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install quarto </span>
@@ -432,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Second, choose the tool. I use <a href="https://posit.co/download/rstudio-desktop/"><code>RStudio</code></a> but ,my preferred way is to use Quarto on Neovim via a plugin called <a href="https://github.com/quarto-dev/quarto-nvim"><code>quarto-nvim</code></a></p>
 </section>
 <section id="rstudio" class="level3">
-<h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
+<h3 data-anchor-id="rstudio">RStudio</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/rstudio.png" class="img-fluid figure-img"></p>
@@ -441,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="my-installation---neovim" class="level3">
-<h3 class="anchored" data-anchor-id="my-installation---neovim">My installation - Neovim</h3>
+<h3 data-anchor-id="my-installation---neovim">My installation - Neovim</h3>
 <p>On Neovim, I use a plugin called “Zen mode” for focus mode. Read more about this plugn <a href="https://github.com/folke/zen-mode.nvim">here</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -471,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 </section>
 <section id="creating-your-first-blog" class="level3">
-<h3 class="anchored" data-anchor-id="creating-your-first-blog">Creating Your First Blog</h3>
+<h3 data-anchor-id="creating-your-first-blog">Creating Your First Blog</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new blog project</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project blog my-blog</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -488,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 └── styles.css           # Custom styling</code></pre>
 </section>
 <section id="configuration" class="level3">
-<h3 class="anchored" data-anchor-id="configuration">Configuration</h3>
+<h3 data-anchor-id="configuration">Configuration</h3>
 <p>Edit <code>_quarto.yml</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
@@ -522,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-tools</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="writing-a-blog-post" class="level3">
-<h3 class="anchored" data-anchor-id="writing-a-blog-post">Writing a Blog Post</h3>
+<h3 data-anchor-id="writing-a-blog-post">Writing a Blog Post</h3>
 <p>Create <code>posts/quarto-demo/index.qmd</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Visualizing Data with Python"</span></span>
@@ -534,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<h2 data-anchor-id="introduction">Introduction</h2>
 <p>Let’s explore data visualization with Python and matplotlib.</p>
 <div id="6e959411" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -565,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The beauty of Quarto? This code runs during rendering, and the plot appears in your blog automatically!</p>
 <section id="preview" class="level3">
-<h3 class="anchored" data-anchor-id="preview">Preview</h3>
+<h3 data-anchor-id="preview">Preview</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview locally</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -574,9 +424,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="advanced-features" class="level2">
-<h2 class="anchored" data-anchor-id="advanced-features">Advanced Features</h2>
+<h2 data-anchor-id="advanced-features">Advanced Features</h2>
 <section id="creating-a-complete-website" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-complete-website">1. Creating a Complete Website</h3>
+<h3 data-anchor-id="creating-a-complete-website">1. Creating a Complete Website</h3>
 <p>Quarto isn’t just for blogs. Here’s a complete website structure:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># _quarto.yml</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
@@ -603,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> about.qmd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="writing-books" class="level3">
-<h3 class="anchored" data-anchor-id="writing-books">2. Writing Books</h3>
+<h3 data-anchor-id="writing-books">2. Writing Books</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project book my-book</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Books get automatic chapter navigation, cross-references, and can output to PDF, ePub, or HTML:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">book</span><span class="kw">:</span></span>
@@ -617,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> references.qmd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="python-integration-real-example" class="level3">
-<h3 class="anchored" data-anchor-id="python-integration-real-example">3. Python Integration (Real Example)</h3>
+<h3 data-anchor-id="python-integration-real-example">3. Python Integration (Real Example)</h3>
 <p>Let me show you a practical example with data analysis:</p>
 <div id="cell-fig-analysis" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -662,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Normal: mean=</span><span class="sc">{</span>normal_data<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">, std=</span><span class="sc">{</span>normal_data<span class="sc">.</span>std()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
 <span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Exponential: mean=</span><span class="sc">{</span>exponential_data<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">, std=</span><span class="sc">{</span>exponential_data<span class="sc">.</span>std()<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="fig-analysis" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-analysis" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-analysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="quarto_files/figure-html/fig-analysis-output-1.png" class="img-fluid figure-img">
@@ -681,7 +531,7 @@ Exponential: mean=2.02, std=2.00</code></pre>
 <p>The plot and printed statistics will appear directly in your rendered blog. No manual screenshots needed!</p>
 </section>
 <section id="cross-references-and-citations" class="level3">
-<h3 class="anchored" data-anchor-id="cross-references-and-citations">4. Cross-References and Citations</h3>
+<h3 data-anchor-id="cross-references-and-citations">4. Cross-References and Citations</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>See @fig-analysis for the distribution comparison.</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>According to @smith2023quantum, quantum computing will revolutionize cryptography.</span>
@@ -699,7 +549,7 @@ Exponential: mean=2.02, std=2.00</code></pre>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="interactive-elements" class="level3">
-<h3 class="anchored" data-anchor-id="interactive-elements">5. Interactive Elements</h3>
+<h3 data-anchor-id="interactive-elements">5. Interactive Elements</h3>
 <p>Quarto supports Observable JS for interactivity:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-startfrom="376" data-source-offset="-24"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 375;"><span id="cb16-376"><a href="#cb16-376" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> ({</span>
@@ -765,10 +615,10 @@ Exponential: mean=2.02, std=2.00</code></pre>
 </section>
 </section>
 <section id="integrating-quarto-with-existing-websites" class="level2">
-<h2 class="anchored" data-anchor-id="integrating-quarto-with-existing-websites">Integrating Quarto with Existing Websites</h2>
+<h2 data-anchor-id="integrating-quarto-with-existing-websites">Integrating Quarto with Existing Websites</h2>
 <p>This is where Quarto really shines for real-world scenarios.</p>
 <section id="scenario-1-quarto-blog-existing-html-site" class="level3">
-<h3 class="anchored" data-anchor-id="scenario-1-quarto-blog-existing-html-site">Scenario 1: Quarto Blog + Existing HTML Site</h3>
+<h3 data-anchor-id="scenario-1-quarto-blog-existing-html-site">Scenario 1: Quarto Blog + Existing HTML Site</h3>
 <p>If you have an existing HTML/React/Vue site and want to add a Quarto blog:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># _quarto.yml</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
@@ -785,7 +635,7 @@ Exponential: mean=2.02, std=2.00</code></pre>
 <p>Your existing site can link to <code>/blog/</code> and Quarto handles everything there.</p>
 </section>
 <section id="scenario-2-embedding-quarto-output" class="level3">
-<h3 class="anchored" data-anchor-id="scenario-2-embedding-quarto-output">Scenario 2: Embedding Quarto Output</h3>
+<h3 data-anchor-id="scenario-2-embedding-quarto-output">Scenario 2: Embedding Quarto Output</h3>
 <p>Render Quarto to standalone HTML:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
@@ -799,7 +649,7 @@ Exponential: mean=2.02, std=2.00</code></pre>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="scenario-3-custom-theme-integration" class="level3">
-<h3 class="anchored" data-anchor-id="scenario-3-custom-theme-integration">Scenario 3: Custom Theme Integration</h3>
+<h3 data-anchor-id="scenario-3-custom-theme-integration">Scenario 3: Custom Theme Integration</h3>
 <p>Match Quarto styling to your existing site:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
@@ -814,14 +664,14 @@ Exponential: mean=2.02, std=2.00</code></pre>
 </section>
 </section>
 <section id="my-migration-journey-docusaurus-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="my-migration-journey-docusaurus-quarto">My Migration Journey: Docusaurus → Quarto</h2>
+<h2 data-anchor-id="my-migration-journey-docusaurus-quarto">My Migration Journey: Docusaurus → Quarto</h2>
 <section id="what-changed-for-the-better" class="level3">
-<h3 class="anchored" data-anchor-id="what-changed-for-the-better">What Changed (for the Better)</h3>
+<h3 data-anchor-id="what-changed-for-the-better">What Changed (for the Better)</h3>
 <p><strong>Before (Docusaurus)</strong>: - 10+ configuration files - node_modules: ~500MB - Build time: 45 seconds - Markdown + MDX components - Separate code blocks (no execution)</p>
 <p><strong>After (Quarto)</strong>: - 1 primary config file (<code>_quarto.yml</code>) - No dependencies folder - Build time: 3 seconds - Pure Markdown + YAML - Live code execution</p>
 </section>
 <section id="manual-migration" class="level3">
-<h3 class="anchored" data-anchor-id="manual-migration">Manual Migration</h3>
+<h3 data-anchor-id="manual-migration">Manual Migration</h3>
 <ol type="1">
 <li><p><strong>Set up Quarto project</strong>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project blog qscribe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
@@ -833,7 +683,7 @@ Exponential: mean=2.02, std=2.00</code></pre>
 </ol>
 </section>
 <section id="automated-migration---better-approach" class="level3">
-<h3 class="anchored" data-anchor-id="automated-migration---better-approach">Automated Migration - Better Approach</h3>
+<h3 data-anchor-id="automated-migration---better-approach">Automated Migration - Better Approach</h3>
 <p>I have created a <code>cli</code> script <strong>Doc2Quarto</strong> to help you with this migration. This is an open source tool. Instructions are available <a href="https://github.com/rvbug/doc2quarto">here</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -860,18 +710,18 @@ Exponential: mean=2.02, std=2.00</code></pre>
 </section>
 </section>
 <section id="doc2quarto-installation" class="level2">
-<h2 class="anchored" data-anchor-id="doc2quarto-installation">Doc2Quarto Installation</h2>
+<h2 data-anchor-id="doc2quarto-installation">Doc2Quarto Installation</h2>
 <section id="option-1-install-from-crates.io-rust-users" class="level3">
-<h3 class="anchored" data-anchor-id="option-1-install-from-crates.io-rust-users">Option 1: Install from crates.io (Rust Users)</h3>
+<h3 data-anchor-id="option-1-install-from-crates.io-rust-users">Option 1: Install from crates.io (Rust Users)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># requires rust</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> cargo <span class="fu">install</span> doc2quarto</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="option-2-using-homebrew-on-macos" class="level3">
-<h3 class="anchored" data-anchor-id="option-2-using-homebrew-on-macos">Option 2: Using homebrew on MacOS</h3>
+<h3 data-anchor-id="option-2-using-homebrew-on-macos">Option 2: Using homebrew on MacOS</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> brew <span class="fu">install</span> rvbug/tap/doc2quarto</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="option-3-debian-linux" class="level3">
-<h3 class="anchored" data-anchor-id="option-3-debian-linux">Option 3: Debian (Linux)</h3>
+<h3 data-anchor-id="option-3-debian-linux">Option 3: Debian (Linux)</h3>
 <p>Download the .deb package from <a href="https://github.com/rvbug/doc2quarto/releases/latest">releases</a>:</p>
 <pre><code># Download latest release 
 $&gt; wget https://github.com/rvbug/doc2quarto/releases/download/v0.1.1/doc2quarto_0.1.1-1_amd64.deb
@@ -882,7 +732,7 @@ $&gt; sudo dpkg -i doc2quarto_0.1.1-1_amd64.deb</code></pre>
 </section>
 </section>
 <section id="tips-for-success" class="level2">
-<h2 class="anchored" data-anchor-id="tips-for-success">Tips for Success</h2>
+<h2 data-anchor-id="tips-for-success">Tips for Success</h2>
 <ol type="1">
 <li><p><strong>Start small</strong>: Convert one blog post first. Test the workflow.</p></li>
 <li><p><strong>Use VSCode</strong>: If you are VSCOde, just install the Quarto extension for syntax highlighting, preview, and rendering shortcuts.</p></li>
@@ -905,7 +755,7 @@ $&gt; sudo dpkg -i doc2quarto_0.1.1-1_amd64.deb</code></pre>
 </ol>
 </section>
 <section id="real-world-use-cases" class="level2">
-<h2 class="anchored" data-anchor-id="real-world-use-cases">Real-World Use Cases</h2>
+<h2 data-anchor-id="real-world-use-cases">Real-World Use Cases</h2>
 <ul>
 <li><p><strong>Academic Research</strong>: Publish reproducible papers with embedded analysis</p></li>
 <li><p><strong>Data Science Portfolios</strong>: Showcase projects with live code and visualizations</p></li>
@@ -915,7 +765,7 @@ $&gt; sudo dpkg -i doc2quarto_0.1.1-1_amd64.deb</code></pre>
 </ul>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>Switching from Docusaurus to Quarto was one of the best decisions for my technical blog. The simplicity, power, and focus on scientific publishing transformed my workflow. I spend less time fighting with configurations and more time creating content.</p>
 <p>If you’re running a technical blog, working with data, or publishing research, Quarto deserves serious consideration. It’s not just a tool—it’s a complete publishing system that respects your time and amplifies your content.</p>
 <p><strong>Try it yourself</strong>:</p>
@@ -953,26 +803,6 @@ window._ojs.runtime.interpretFromScriptTags();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
-    }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

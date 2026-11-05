@@ -1,0 +1,42 @@
+---
+title: "LLMs & DeepSeek"
+description: "Explorations, architecture and performance."
+page-layout: article
+title-block-banner: false
+
+listing:
+  id: llm-articles
+  contents:
+    - introduction.qmd
+    - gpu.qmd
+    - ptxintro.qmd
+    - deepseekptx.qmd
+    - tokenizer.qmd
+    - transformers.qmd
+  sort: false
+  type: default
+  fields:
+    - title
+    - description
+  categories: false
+  sort-ui: false
+  filter-ui: false
+---
+
+::::::: llm-layout
+:::: llm-intro
+
+------------------------------------------------------------------------
+
+A collection exploring large language models, their underlying architecture, GPU execution and the engineering behind DeepSeek.
+
+::: llm-collection-meta
+RESEARCH · 2026 · QuBiTAi.in
+:::
+::::
+
+:::: llm-article-list
+::: {#llm-articles}
+:::
+::::
+:::::::

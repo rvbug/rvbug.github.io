@@ -1,0 +1,50 @@
+---
+title: "Research"
+page-layout: article
+title-block-banner: false
+---
+
+Investigations, experiments and technical research into computational systems, machine learning and emerging technologies.
+
+------------------------------------------------------------------------
+
+## Research collections
+
+:::::: explore-grid
+::: explore-card
+### [LLMs & DeepSeek](llm/index.qmd)
+
+Explorations, architecture and performance.
+
+Articles ↗
+:::
+
+::: explore-card
+### [ECPE](ecpe.qmd)
+
+Emotional Cause Pair Extraction research.
+
+Articles ↗
+:::
+
+::: explore-card
+### [Quantum ML](qml.qmd)
+
+Quantum computing and machine learning.
+
+Articles ↗
+:::
+
+::: explore-card
+### ORBIT
+
+An Adaptive Agent system
+
+(Coming Soon)
+
+Articles ↗
+:::
+::::::
+
+------------------------------------------------------------------------
+

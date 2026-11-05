@@ -1,8 +1,22 @@
-
 ---
 title: "Writing"
+
 listing:
-  contents: posts
+  contents:
+    - ecpe.qmd
+    - qml.qmd
+    - dotfiles.qmd
+    - cookiecutterv2.qmd
+    - neovim.qmd
+    - llm/introduction.qmd
+    - llm/gpu.qmd
+    - llm/ptxintro.qmd
+    - llm/deepseekptx.qmd
+    - llm/tokenizer.qmd
+    - llm/transformers.qmd
+    - docusauras.qmd
+    - quarto.qmd
+    
   sort: "date desc"
   type: default
   max-items: 3
@@ -12,21 +26,32 @@ listing:
     - description
   categories: false
   sort-ui: false
-  filter-ui: true
+  filter-ui: false
+
 page-layout: article
 title-block-banner: false
 ---
 
 Research, experiments and notes on technology.
 
-## Explore
+## Explore by subject
 
-### [Research](research.qmd)
+:::::: explore-grid
+::: explore-card
+### [Research](llm/index.qmd)
 
-### [Workflow](workflow.qmd)
+Investigations and experiments.
 
+[Explore ↗]{.explore-card-action}
+:::
+
+::: explore-card
 ### [Technical Guide](technical-guide.qmd)
 
-### [Automation](automation.qmd)
+Technical explanations and walkthroughs.
 
-## Recent writing
+[Explore ↗]{.explore-card-action}
+:::
+::::::
+
+## Recent Articles

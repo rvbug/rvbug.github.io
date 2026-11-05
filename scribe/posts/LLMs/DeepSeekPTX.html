@@ -9,7 +9,7 @@
 <meta name="author" content="Rakesh Venkat">
 <meta name="dcterms.date" content="2025-03-01">
 
-<title>DeepSeekPTX – QuBiTAi</title>
+<title>DeepSeekPTX – Scribe</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,16 +78,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ba8f7c244c1f50cbf6c6a3aa3874339a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -117,171 +112,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -289,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">QuBiTAi</span>
+    <span class="navbar-title">Scribe</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -306,7 +140,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -354,7 +187,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Let us now delve into the details of PTX, the parallel thread execution virtual instruction set, and explore how DeepSeek might have approached optimization for their H800 GPUs. PTX optimization is critical for maximizing performance in large language models.</p>
@@ -367,14 +199,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>DeepSeek, particularly with their R1 model, has implemented significant optimizations across both training and inference phases. We will delve into these broader optimizations in a separate, more detailed article. In this one, however, our focus will be exclusively on PTX. &nbsp;</p>
 <p>PTX empowers developers with the ability to perform low-level optimizations, granting fine-grained control over register allocation, thread execution, and memory access patterns.</p>
 <section id="register-allocation" class="level2">
-<h2 class="anchored" data-anchor-id="register-allocation">Register Allocation</h2>
+<h2 data-anchor-id="register-allocation">Register Allocation</h2>
 <ol type="1">
 <li><p>Allowing manually optimizing the register allocation, the latency could have been reduced.</p></li>
 <li><p>Fine-tune thread scheduling allowing them to maximize parallelism across the streaming multiprocessors.</p></li>
 </ol>
 </section>
 <section id="custom-memory-management" class="level2">
-<h2 class="anchored" data-anchor-id="custom-memory-management">Custom Memory Management</h2>
+<h2 data-anchor-id="custom-memory-management">Custom Memory Management</h2>
 <p>Implementing custome PTX instructions for accessing memory including global VRAM access by bypassing L1 and L2 cache in a very specific way allowing increasing data transfer pattern thus improving memory bandwidth.</p>
 <div class="tip">
 <ul>
@@ -385,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 <section id="cache" class="level3">
-<h3 class="anchored" data-anchor-id="cache">Cache</h3>
+<h3 data-anchor-id="cache">Cache</h3>
 <p>Since they were dealing with large and streaming datasets, they miht have bypassed <strong><code>L1</code></strong> or <strong><code>L2</code></strong> cache. This can be accessible via PTX that allow to control these behaviour</p>
 <p>Below is the sample snippet showing the access. Loads from global memory and bypass both L1 and L2 cache.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode asm code-with-copy"><code class="sourceCode fasm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>.reg <span class="op">.</span>u64 <span class="op">%</span>addr<span class="co">;</span></span>
@@ -400,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="cache-controls" class="level3">
-<h3 class="anchored" data-anchor-id="cache-controls">Cache Controls</h3>
+<h3 data-anchor-id="cache-controls">Cache Controls</h3>
 <p><code>.volalite</code> - This modifer tells compiler that memory location can be modified by other threads/devices preventing complier for any optimization to ensure value in the memory remains constant.</p>
 <p><code>.wt</code> and <code>.wb</code> - These are write through and write back modifiers controling the cache write policy.</p>
 <p><code>.wt</code> writes to both cache and global memory while <code>.wb</code> writes only to cache but writes to global memory once cache data is evicted.</p>
@@ -413,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="prefetching" class="level3">
-<h3 class="anchored" data-anchor-id="prefetching">Prefetching</h3>
+<h3 data-anchor-id="prefetching">Prefetching</h3>
 <p>For the predictible memory access, they could have use PTX’s prefetch instructions to bring load the data in cache before it is needed hiding memory latency thus improving performance</p>
 <pre class="ptx"><code>reg .u64 %addr;
 prefetch.global [%addr];</code></pre>
@@ -423,7 +255,7 @@ prefetch.global [%addr];</code></pre>
 </blockquote>
 </div>
 <section id="prefetch-distance-and-hints" class="level4">
-<h4 class="anchored" data-anchor-id="prefetch-distance-and-hints">Prefetch Distance and Hints</h4>
+<h4 data-anchor-id="prefetch-distance-and-hints">Prefetch Distance and Hints</h4>
 <p>It is possible that these parameters are tuned to optimizing prefetching performance.</p>
 <div class="info">
 <blockquote class="blockquote">
@@ -436,7 +268,7 @@ prefetch.global [%addr];</code></pre>
 </section>
 </section>
 <section id="alignment-coalescing" class="level3">
-<h3 class="anchored" data-anchor-id="alignment-coalescing">Alignment &amp; Coalescing</h3>
+<h3 data-anchor-id="alignment-coalescing">Alignment &amp; Coalescing</h3>
 <p>Since PTX allow precise control over memory aligment and access patterns, they could use this to maximize memory bandwidth. Sample code below.</p>
 <pre class="ptx"><code>.reg .u64 %base_addr;
 .reg .u32 %offset;
@@ -455,7 +287,7 @@ ld.global.v4.f32 {%data, %data+4, %data+8, %data+12}, [%addr];</code></pre>
 </blockquote>
 </div>
 <section id="vectorized-loads" class="level4">
-<h4 class="anchored" data-anchor-id="vectorized-loads">Vectorized loads</h4>
+<h4 data-anchor-id="vectorized-loads">Vectorized loads</h4>
 <p>They might have used vectorized loads which allow multiple data element to be transferred into a single memory transactions by maximizing memory bandwidth and also ensure these access are coalesced. Sample code below showing loading and storing 4 floats at once.</p>
 <pre class="ptx"><code>.reg .u64 %addr;
 .reg .v4.f32 %data;
@@ -465,7 +297,7 @@ st.global.v4.f32 [%addr], %data;</code></pre>
 </section>
 </section>
 <section id="shared-memory-optimization" class="level3">
-<h3 class="anchored" data-anchor-id="shared-memory-optimization">Shared Memory Optimization</h3>
+<h3 data-anchor-id="shared-memory-optimization">Shared Memory Optimization</h3>
 <p>Shared memory is organized in bands so to avoid conflicts they could have used multiple threads access the same banks simultaneously by arranging data carefully.</p>
 <p>It could also be possible that they might have used shared on-chip memory to reduce global access. Below code shows data being moved from global memory to shared memory and then use it.</p>
 <pre class="ptx"><code>.shared .f32 shared_data[1024];
@@ -481,29 +313,29 @@ ld.shared.f32 %local_data, [shared_data + %thread_id*4];</code></pre>
 </section>
 </section>
 <section id="inter-gpu-communcation" class="level2">
-<h2 class="anchored" data-anchor-id="inter-gpu-communcation">Inter-GPU communcation</h2>
+<h2 data-anchor-id="inter-gpu-communcation">Inter-GPU communcation</h2>
 <p>Allocate a portion of SM to improve communication by data compression and remove bottlenecks</p>
 </section>
 <section id="warp-level-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="warp-level-optimization">Warp Level Optimization</h2>
+<h2 data-anchor-id="warp-level-optimization">Warp Level Optimization</h2>
 <p>Fine-grain tunining again on warp which contains 32 threads on how they process instructions.</p>
 <p>NVIDIA GPUs execute threads in groups of 32, called warps. So PTX can allow developers to write warp-synchronous code, to make it more efficient.</p>
 <p>DeepSeek could have used warp-level primitives to perform warp-wide reductions and scans.</p>
 <section id="warp-shuffle-instructions" class="level4">
-<h4 class="anchored" data-anchor-id="warp-shuffle-instructions">Warp Shuffle Instructions:</h4>
+<h4 data-anchor-id="warp-shuffle-instructions">Warp Shuffle Instructions:</h4>
 <p>PTX also provides shuffle instructions that allow threads within a warp to exchange data. It can be used to implement efficient inter-thread communication. Optimize data layout for shared memory.</p>
 </section>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>This article has outlined potential PTX optimizations employed by DeepSeek. These optimizations highlight DeepSeek’s impressive ability to leverage fundamental hardware optimization, enabling them to develop models that effectively compete with OpenAI. The difficulty of these low level optimizations cannot be overstated.</p>
 </section>
 <section id="next" class="level2">
-<h2 class="anchored" data-anchor-id="next">Next</h2>
+<h2 data-anchor-id="next">Next</h2>
 <p>In my next article, we will get into the details of how these optimizations happen in various stages of the architecture, from MHLA to Multi-token.</p>
 </section>
 <section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<h2 data-anchor-id="references">References</h2>
 <p><a href="https://github.com/deepseek-ai/DeepSeek-R1/blob/main/DeepSeek_R1.pdf">DeepSeek R1</a><br>
 <a href="https://github.com/deepseek-ai/DeepEP">DeepSeek EP Github</a></p>
 
@@ -514,26 +346,6 @@ ld.shared.f32 %local_data, [shared_data + %thread_id*4];</code></pre>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
-    }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

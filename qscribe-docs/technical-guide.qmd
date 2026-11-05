@@ -1,0 +1,39 @@
+---
+title: "Technical Guide"
+description: "Tools, workflows and development environments."
+page-layout: article
+title-block-banner: false
+
+listing:
+  id: technical-articles
+  contents:
+    - docusauras.qmd
+    - quarto.qmd
+    - neovim.qmd
+    - dotfiles.qmd
+    - cookiecutterv2.qmd
+
+  sort: false
+  type: default
+  fields:
+    - title
+    - description
+  categories: false
+  sort-ui: false
+  filter-ui: false
+---
+
+::::::: llm-layout
+:::: llm-intro
+A collection exploring development environments, personal productivity, configuration and automation.
+
+::: llm-collection-meta
+Technical Guide · 2026 · QuBiTAi.in
+:::
+::::
+
+:::: llm-article-list
+::: {#technical-articles}
+:::
+::::
+:::::::

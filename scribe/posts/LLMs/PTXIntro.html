@@ -9,7 +9,7 @@
 <meta name="author" content="Rakesh Venkat">
 <meta name="dcterms.date" content="2025-03-01">
 
-<title>Introduction to PTX – QuBiTAi</title>
+<title>Introduction to PTX – Scribe</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,16 +78,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ba8f7c244c1f50cbf6c6a3aa3874339a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -117,171 +112,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -289,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">QuBiTAi</span>
+    <span class="navbar-title">Scribe</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -306,7 +140,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -354,7 +187,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Parallel Thread Execution (PTX) is a virtual machine instruction set architecture and can be thought of as the assembly language for NVDIA GPUs. You would need to know few syntax of PTX. This should get you started quickly.</p>
@@ -365,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>PTX Syntax</h1>
 <p>Here are few syntax of PTX for your references.</p>
 <section id="basic-structure" class="level2">
-<h2 class="anchored" data-anchor-id="basic-structure"><strong>Basic Structure</strong></h2>
+<h2 data-anchor-id="basic-structure"><strong>Basic Structure</strong></h2>
 <pre class="ptx"><code>.version 7.0                    // PTX version
 .target sm_70                   // Target architecture
 .address_size 64                // 64-bit addressing
@@ -379,14 +211,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</code></pre>
 </section>
 <section id="registers" class="level2">
-<h2 class="anchored" data-anchor-id="registers"><strong>Registers</strong></h2>
+<h2 data-anchor-id="registers"><strong>Registers</strong></h2>
 <pre class="ptx"><code>.reg .b32 %r&lt;5&gt;;    // 5 32-bit registers %r0 through %r4
 .reg .f32 %f&lt;3&gt;;    // 3 single-precision float
 .reg .b64 %rd&lt;2&gt;;   // 2 64-bit 
 .reg .pred %p&lt;2&gt;;   // 2 predicate registers (used for conditionals)</code></pre>
 </section>
 <section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions"><strong>Instructions</strong></h2>
+<h2 data-anchor-id="instructions"><strong>Instructions</strong></h2>
 <pre class="ptx"><code>mov.u32 %r1, %tid.x;       // Move thread(ID) to %r1
 add.s32 %r3, %r1, %r2;     // Add int
 mul.f32 %f3, %f1, %f2;     // Mul floats
@@ -394,7 +226,7 @@ setp.lt.s32 %p1, %r1, %r2; // Set predicate if r1 &lt; r2
 @%p1 bra label;            // Conditional branch</code></pre>
 </section>
 <section id="memory-operations" class="level2">
-<h2 class="anchored" data-anchor-id="memory-operations"><strong>Memory Operations</strong></h2>
+<h2 data-anchor-id="memory-operations"><strong>Memory Operations</strong></h2>
 <pre class="ptx"><code>ld.param.u64 %rd1, [param1];       // Load param into register
 ld.global.f32 %f1, [%rd1];         // Load from global mem
 st.global.f32 [%rd2], %f2;         // Store to global mem
@@ -402,13 +234,13 @@ ld.shared.f32 %f3, [%rd3];         // Load from shared mem
 ld.global.v4.f16 {%f1, %f2, %f3, %f4}, [%rd1];  // Vector load</code></pre>
 </section>
 <section id="special-registers" class="level2">
-<h2 class="anchored" data-anchor-id="special-registers"><strong>Special Registers</strong></h2>
+<h2 data-anchor-id="special-registers"><strong>Special Registers</strong></h2>
 <pre class="ptx"><code>%tid.x, %tid.y, %tid.z     // Thread (ID) within a block
 %ctaid.x, %ctaid.y, %ctaid.z   // Block (ID) within a grid
 %ntid.x, %ntid.y, %ntid.z  // Block dimensions (threads per block)</code></pre>
 </section>
 <section id="math-operaations" class="level2">
-<h2 class="anchored" data-anchor-id="math-operaations"><strong>Math Operaations</strong></h2>
+<h2 data-anchor-id="math-operaations"><strong>Math Operaations</strong></h2>
 <pre class="ptx"><code>add.f32 %f3, %f1, %f2;     // Add
 sub.f32 %f3, %f1, %f2;     // Sub
 mul.f32 %f3, %f1, %f2;     // Mul
@@ -416,7 +248,7 @@ div.f32 %f3, %f1, %f2;     // Div
 mad.f32 %f4, %f1, %f2, %f3;  // Multiply &amp; add: (f4 = f1*f2+f3)</code></pre>
 </section>
 <section id="tensor-core-operations" class="level2">
-<h2 class="anchored" data-anchor-id="tensor-core-operations"><strong>Tensor Core Operations</strong></h2>
+<h2 data-anchor-id="tensor-core-operations"><strong>Tensor Core Operations</strong></h2>
 <pre class="ptx"><code>// Matrix multiply-accumulate using tensor cores
 mma.sync.aligned.m16n8k8.row.col.f16.f16.f16.f16 
     {%f5, %f6, %f7, %f8},   // Destination registers
@@ -425,13 +257,13 @@ mma.sync.aligned.m16n8k8.row.col.f16.f16.f16.f16
     {%f5, %f6, %f7, %f8};   // C matrix registers (accumulator)</code></pre>
 </section>
 <section id="control-flow" class="level2">
-<h2 class="anchored" data-anchor-id="control-flow"><strong>Control Flow</strong></h2>
+<h2 data-anchor-id="control-flow"><strong>Control Flow</strong></h2>
 <pre class="ptx"><code>bra label;           // Unconditional branch
 @%p1 bra label;      // Conditional branch if predicate = true
 ret;                 // Return from kernel</code></pre>
 </section>
 <section id="code-sample" class="level2">
-<h2 class="anchored" data-anchor-id="code-sample">Code Sample</h2>
+<h2 data-anchor-id="code-sample">Code Sample</h2>
 <p>Now that we know the the basic syntax of PTX, here is one simple C program for vector addition.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -493,7 +325,7 @@ ret;                 // Return from kernel</code></pre>
 <span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="generating-output" class="level3">
-<h3 class="anchored" data-anchor-id="generating-output">Generating output</h3>
+<h3 data-anchor-id="generating-output">Generating output</h3>
 <p>Let us compile the code using <code>nvcc</code> compiler</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> nvcc <span class="ex">vector.cu</span> <span class="at">-o</span> vector</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> ./my_kernel</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -510,11 +342,11 @@ ret;                 // Return from kernel</code></pre>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="va">c</span><span class="op">[</span><span class="dv">9</span><span class="op">]</span> <span class="ex">=</span> 27</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="code-explaination" class="level3">
-<h3 class="anchored" data-anchor-id="code-explaination">Code Explaination</h3>
+<h3 data-anchor-id="code-explaination">Code Explaination</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// This is for CUDA runtime functions</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cuda_runtime.h&gt;</span><span class="pp"> </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="kernel-function" class="level4">
-<h4 class="anchored" data-anchor-id="kernel-function">Kernel Function</h4>
+<h4 data-anchor-id="kernel-function">Kernel Function</h4>
 <ul>
 <li><em><code>__global__</code></em> specifices that this is CUDA kernel that runs on GPU<br>
 </li>
@@ -536,7 +368,7 @@ ret;                 // Return from kernel</code></pre>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="main-function" class="level4">
-<h4 class="anchored" data-anchor-id="main-function">Main function</h4>
+<h4 data-anchor-id="main-function">Main function</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Vector size</span></span>
@@ -555,7 +387,7 @@ ret;                 // Return from kernel</code></pre>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="gpu-memory-allocation" class="level4">
-<h4 class="anchored" data-anchor-id="gpu-memory-allocation">GPU Memory Allocation</h4>
+<h4 data-anchor-id="gpu-memory-allocation">GPU Memory Allocation</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Allocate device memory</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> <span class="op">*</span>d_a<span class="op">,</span> <span class="op">*</span>d_b<span class="op">,</span> <span class="op">*</span>d_c<span class="op">;</span>            <span class="co">// Declare device pointers</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    cudaMalloc<span class="op">(&amp;</span>d_a<span class="op">,</span> bytes<span class="op">);</span>           <span class="co">// Allocate memory on GPU for a</span></span>
@@ -563,13 +395,13 @@ ret;                 // Return from kernel</code></pre>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    cudaMalloc<span class="op">(&amp;</span>d_c<span class="op">,</span> bytes<span class="op">);</span>           <span class="co">// Allocate memory on GPU for c</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="gpu-data-transfer" class="level4">
-<h4 class="anchored" data-anchor-id="gpu-data-transfer">GPU Data Transfer</h4>
+<h4 data-anchor-id="gpu-data-transfer">GPU Data Transfer</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Copy data from host to device</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    cudaMemcpy<span class="op">(</span>d_a<span class="op">,</span> h_a<span class="op">,</span> bytes<span class="op">,</span> cudaMemcpyHostToDevice<span class="op">);</span>  <span class="co">// Copy a to GPU</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    cudaMemcpy<span class="op">(</span>d_b<span class="op">,</span> h_b<span class="op">,</span> bytes<span class="op">,</span> cudaMemcpyHostToDevice<span class="op">);</span>  <span class="co">// Copy b to GPU</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="kernel-launch-configuration" class="level4">
-<h4 class="anchored" data-anchor-id="kernel-launch-configuration">Kernel Launch Configuration</h4>
+<h4 data-anchor-id="kernel-launch-configuration">Kernel Launch Configuration</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Set up execution configuration</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> blockSize <span class="op">=</span> <span class="dv">256</span><span class="op">;</span>                         <span class="co">// 256 threads per block</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> gridSize <span class="op">=</span> <span class="op">(</span>n <span class="op">+</span> blockSize <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">/</span> blockSize<span class="op">;</span>  <span class="co">// Calculate grid size</span></span>
@@ -580,7 +412,7 @@ ret;                 // Return from kernel</code></pre>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// gridSize = number of blocks, blockSize = threads per block</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="results-and-cleanup" class="level4">
-<h4 class="anchored" data-anchor-id="results-and-cleanup">Results and Cleanup</h4>
+<h4 data-anchor-id="results-and-cleanup">Results and Cleanup</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Copy result back to host</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>cudaMemcpy<span class="op">(</span>h_c<span class="op">,</span> d_c<span class="op">,</span> bytes<span class="op">,</span> cudaMemcpyDeviceToHost<span class="op">);</span>  <span class="co">// Copy results from GPU to CPU</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -595,11 +427,11 @@ ret;                 // Return from kernel</code></pre>
 </section>
 </section>
 <section id="ptx-code" class="level2">
-<h2 class="anchored" data-anchor-id="ptx-code">PTX Code</h2>
+<h2 data-anchor-id="ptx-code">PTX Code</h2>
 <p>To extract PTX from the above code, try this the following command.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> nvcc <span class="ex">-ptx</span> vector.cu <span class="at">-o</span> vector.ptx</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="ptx-file" class="level3">
-<h3 class="anchored" data-anchor-id="ptx-file">PTX file</h3>
+<h3 data-anchor-id="ptx-file">PTX file</h3>
 <pre class="ptx"><code>
 .visible .entry vectorAdd(
     .param .u64 vectorAdd_param_0,  // Pointer to array a
@@ -651,11 +483,11 @@ BB0_2:                                // End label
 }</code></pre>
 </section>
 <section id="ptx-code-1" class="level3">
-<h3 class="anchored" data-anchor-id="ptx-code-1">PTX Code</h3>
+<h3 data-anchor-id="ptx-code-1">PTX Code</h3>
 <p>Let us now review the PTX code</p>
 </section>
 <section id="entry-point" class="level3">
-<h3 class="anchored" data-anchor-id="entry-point">Entry Point</h3>
+<h3 data-anchor-id="entry-point">Entry Point</h3>
 <p>This section declares entry point for the kernel followed by 4 paramaters which is a pointer to the variable a, b, c and size n.</p>
 <pre class="ptx"><code>
 .visible .entry vectorAdd(           // Declares entry point for kernel
@@ -666,7 +498,7 @@ BB0_2:                                // End label
 )</code></pre>
 </section>
 <section id="register-declaration" class="level3">
-<h3 class="anchored" data-anchor-id="register-declaration">Register Declaration</h3>
+<h3 data-anchor-id="register-declaration">Register Declaration</h3>
 <p>Declating Predicate registers for conditions, float registers, 32 bit int and register for addresses</p>
 <pre class="ptx"><code>    .reg .pred  %p&lt;2&gt;;          // Predicate r
     .reg .f32   %f&lt;4&gt;;          // Float 
@@ -674,7 +506,7 @@ BB0_2:                                // End label
     .reg .b64   %rd&lt;11&gt;;        // 64-bit for addresses</code></pre>
 </section>
 <section id="parameter-loading" class="level3">
-<h3 class="anchored" data-anchor-id="parameter-loading">Parameter Loading</h3>
+<h3 data-anchor-id="parameter-loading">Parameter Loading</h3>
 <p>This section loads parameters from kernel into registers. <code>ld</code> is for load.</p>
 <pre class="ptx"><code>
     ld.param.u64    %rd1, [vectorAdd_param_0];  // Load pointer to array a
@@ -683,7 +515,7 @@ BB0_2:                                // End label
     ld.param.u32    %r2, [vectorAdd_param_3];   // Load size n</code></pre>
 </section>
 <section id="thread-id" class="level3">
-<h3 class="anchored" data-anchor-id="thread-id">Thread ID</h3>
+<h3 data-anchor-id="thread-id">Thread ID</h3>
 <p>Now calcuate unique thread Id using built-on registers.</p>
 <p>First get the current block index into <code>%r3</code>, then get number of threads per block into <code>%r4</code> and then get thread index within this block into <code>%r5</code>. <code>mad</code> is multiply and add in a single instruction and calculate ID by using <code>blockIdx * blockDim + threadIdx</code>.</p>
 <pre class="ptx"><code>    mov.u32         %r3, %ctaid.x;    
@@ -692,14 +524,14 @@ BB0_2:                                // End label
     mad.lo.s32      %r1, %r3, %r4, %r5; </code></pre>
 </section>
 <section id="bounds-checking" class="level3">
-<h3 class="anchored" data-anchor-id="bounds-checking">Bounds Checking</h3>
+<h3 data-anchor-id="bounds-checking">Bounds Checking</h3>
 <p>Here we check if thread ID is within bounds of the array and then Set predicate <code>%p1</code> if thread ID &gt;= n.&nbsp;If true then jump to return label <code>BB0_2</code></p>
 <pre class="ptx"><code>// 
 setp.ge.s32     %p1, %r1, %r2;    // 
 @%p1 bra        BB0_2;            // If true, jump to the return label (BB0_2)</code></pre>
 </section>
 <section id="memory-calculations" class="level3">
-<h3 class="anchored" data-anchor-id="memory-calculations">Memory Calculations</h3>
+<h3 data-anchor-id="memory-calculations">Memory Calculations</h3>
 <p>Calculate memory address for array elements. Covert array <code>a</code> pointer to global address using <code>cvta</code>. Multiply <code>mul</code> thread Id by 4 which is the size of the float followed by adding address for <code>a</code>.</p>
 <pre class="ptx"><code>
     cvta.to.global.u64  %rd4, %rd1;   
@@ -710,7 +542,7 @@ setp.ge.s32     %p1, %r1, %r2;    //
     add.s64         %rd8, %rd7, %rd5; // Calculate address for b[id]</code></pre>
 </section>
 <section id="load-add-and-store" class="level3">
-<h3 class="anchored" data-anchor-id="load-add-and-store">Load, Add and Store</h3>
+<h3 data-anchor-id="load-add-and-store">Load, Add and Store</h3>
 <p>Load values from arrays, perform addition, and store result</p>
 <pre class="ptx"><code>    ld.global.f32   %f1, [%rd6];      // Load a[id] into register %f1
     ld.global.f32   %f2, [%rd8];      // Load b[id] into register %f2
@@ -721,13 +553,13 @@ setp.ge.s32     %p1, %r1, %r2;    //
     st.global.f32   [%rd10], %f3;     // Store the result in c[id]</code></pre>
 </section>
 <section id="return-from-kernel" class="level3">
-<h3 class="anchored" data-anchor-id="return-from-kernel">Return from Kernel</h3>
+<h3 data-anchor-id="return-from-kernel">Return from Kernel</h3>
 <pre class="ptx"><code>BB0_2:  // Label for our return point
 ret;                             </code></pre>
 </section>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>This article covered the basic syntax of PTX. The next article will focus on how Deepseek could have possibly optimized their PTX code on their H800 NVIDIA GPUs.</p>
 
 
@@ -737,26 +569,6 @@ ret;                             </code></pre>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
-    }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

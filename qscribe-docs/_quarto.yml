@@ -8,12 +8,20 @@ website:
   description: "Research, experiments and notes on technology."
   favicon: images/AudioWide-White.ico
   navbar:
+    left:
+      - text: Research
+        href: research.qmd
+      - text: Technical Guide
+        href: technical-guide.qmd
     right:
       - icon: github
         href: https://github.com/rvbug
         target: _blank
-
-theme:
-  light: cosmo
-
+  
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    anchor-sections: false
 editor: visual
+

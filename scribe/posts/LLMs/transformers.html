@@ -9,7 +9,7 @@
 <meta name="author" content="Rakesh Venkat">
 <meta name="dcterms.date" content="2025-03-01">
 
-<title>Transformers – QuBiTAi</title>
+<title>Transformers – Scribe</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,16 +78,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ba8f7c244c1f50cbf6c6a3aa3874339a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -146,171 +141,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -318,7 +152,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">QuBiTAi</span>
+    <span class="navbar-title">Scribe</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -335,7 +169,6 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -383,13 +216,12 @@ window.Quarto = {
 
 
 
-
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>In my previous blog post, I introduced Deepseek LLM’s innovative parallel thread execution (PTX) mechanism and how they use it for GPU optimization. Today, we’ll cover another foundational topic - <strong>Multihead Attention (MHA)</strong> before diving into Deepseek’s second groundbreaking innovation known as <strong>Multihead Latent Attention (MHLA)</strong>.</p>
 <!-- truncate -->
 <section id="multihead-latent-attention-roadmap" class="level2">
-<h2 class="anchored" data-anchor-id="multihead-latent-attention-roadmap">Multihead Latent Attention Roadmap</h2>
+<h2 data-anchor-id="multihead-latent-attention-roadmap">Multihead Latent Attention Roadmap</h2>
 <p>Logical progression to understand MHLA is as shown in the image below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -400,7 +232,7 @@ window.Quarto = {
 <p>The attention mechanism was introduced to solve fundamental limitations in the <strong><code>Encoder-Decoder</code></strong> architecture. Let’s examine why this was necessary.</p>
 </section>
 <section id="encoder-decoder" class="level2">
-<h2 class="anchored" data-anchor-id="encoder-decoder">Encoder-Decoder</h2>
+<h2 data-anchor-id="encoder-decoder">Encoder-Decoder</h2>
 <p>Before attention mechanisms, sequence processing relied on RNN (<strong><code>Recurrent Neural Network</code></strong>) and LSTM (<strong><code>Long Short Term Memory</code></strong>) networks which had significant limitations:</p>
 <ul>
 <li>The encoder processes input token through LSTM/RNN cells, with the final hidden state (h3) passed to the decoder</li>
@@ -416,7 +248,7 @@ window.Quarto = {
 </div>
 </section>
 <section id="drawback-of-encoder-decoder" class="level2">
-<h2 class="anchored" data-anchor-id="drawback-of-encoder-decoder">Drawback of Encoder-Decoder</h2>
+<h2 data-anchor-id="drawback-of-encoder-decoder">Drawback of Encoder-Decoder</h2>
 <p>The traditional encoder-decoder suffered from several key limitations:</p>
 <p><strong><code>Information Bottleneck</code></strong>: The entire input sequence had to be compressed into a single fixed-length context vector, regardless of the input sequence length.<br>
 <strong><code>Long Range Dependencies</code></strong>: As sequence length increased, the model struggled to maintain relationships between positions.<br>
@@ -424,7 +256,7 @@ window.Quarto = {
 <p>These limitations were particularly problematic for machine translation tasks where sentences in different languages often have different structures and word orders.</p>
 </section>
 <section id="attention" class="level2">
-<h2 class="anchored" data-anchor-id="attention">Attention</h2>
+<h2 data-anchor-id="attention">Attention</h2>
 <p>The concept of <strong><code>Attention</code></strong> was introduced to solve the above challenges in a landmark paper <strong><code>Neural Machine Translation by Jointly Learning to Align and Translate</code></strong> by Bahdanau, Cho, and Bengio in 2014. It revolutionized the field of sequence processing by allowing neural networks to focus on specific parts of the input when generating outputs. You can find the paper <a href="https://arxiv.org/pdf/1409.0473"><strong>here</strong></a></p>
 <div class="info">
 <p>Decoder (s1) has now access to every hidden state and also the context of every hidden state in the encoder stage.</p>
@@ -449,7 +281,7 @@ window.Quarto = {
 <p>The Bahdanau attention mechanism allowed decoder to “look back” at the entire sequence of encoder hidden states when generating each output token. Rather than relying solely on a fixed context vector, the decoder could dynamically focus on relevant parts of the input sequence.</p>
 </section>
 <section id="self-attention" class="level2">
-<h2 class="anchored" data-anchor-id="self-attention">Self Attention</h2>
+<h2 data-anchor-id="self-attention">Self Attention</h2>
 <p>To understand how everything fits together, let’s revisit the transformer architecture:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -500,7 +332,7 @@ $ x_2 x_4 $</p>
 </div>
 </section>
 <section id="self-attention---dimensions" class="level2">
-<h2 class="anchored" data-anchor-id="self-attention---dimensions">Self Attention - Dimensions</h2>
+<h2 data-anchor-id="self-attention---dimensions">Self Attention - Dimensions</h2>
 <div class="tip">
 <p>Note: Understanding tensors (multi-dimensional arrays) and matrix multiplication is essential here. With practice, these operations become intuitive.</p>
 </div>
@@ -521,7 +353,7 @@ $ x_2 x_4 $</p>
 </div>
 </section>
 <section id="causal-attention" class="level2">
-<h2 class="anchored" data-anchor-id="causal-attention">Causal Attention</h2>
+<h2 data-anchor-id="causal-attention">Causal Attention</h2>
 <p>Causal attention which is also known as <code>Masked Attention</code> is a variant used in language models that ensures tokens can only attend to themselves and previous tokens in the sequence. This maintains the autoregressive property needed for text generation, where each token is predicted based only on previously observed tokens.</p>
 <div class="info">
 <p>Autoregression: The output for each word goes back as an input to predict the next word. <img src="img/AutoregressiveModel.png" class="img-fluid" alt="AutoRegression"></p>
@@ -529,7 +361,7 @@ $ x_2 x_4 $</p>
 <p>Let’s take a simpler example: in the sentence <code>THE DATA IS HUGE</code>, when predicting the word <code>IS</code>, causal attention only needs to calculate attention scores for <code>THE</code> and <code>DATA</code> (previous and current tokens). This significantly reduces computation compared to full self attention, which would unnecessarily calculate scores for future tokens like <code>HUGE</code>.</p>
 </section>
 <section id="efficiency-advantage" class="level2">
-<h2 class="anchored" data-anchor-id="efficiency-advantage">Efficiency Advantage</h2>
+<h2 data-anchor-id="efficiency-advantage">Efficiency Advantage</h2>
 <p>One significant benefit of causal attention is computational efficiency. Since each token only needs to calculate attention weights for itself and preceding tokens but not future tokens, the number of calculations decreases substantially:</p>
 <ul>
 <li>For the first token: only 1 attention weight calculation</li>
@@ -546,7 +378,7 @@ $ x_2 x_4 $</p>
 </div>
 </section>
 <section id="multihead-attention" class="level2">
-<h2 class="anchored" data-anchor-id="multihead-attention">Multihead Attention</h2>
+<h2 data-anchor-id="multihead-attention">Multihead Attention</h2>
 <p>But why would you need Multihead attention? Have a look at this sentence - <code>The programmer compiled the code, but it still had bugs in it</code>.</p>
 <p>In this sentence, we have two instances of “it”. First “it” refers to “complation of the code” and second “it” refers “bug in the code”. If we get the token ids then it will look something like this.</p>
 <p>Both instances of ‘it’ have identical token IDs, but they refer to different concepts in the sentence. This shows why we need multiple perspectives of the input sequence, as a single attention mechanism might not capture these different contextual meanings.</p>
@@ -555,7 +387,7 @@ $ x_2 x_4 $</p>
 <p>Instead of performing a single attention operation, multihead attention performs multiple attention in parallel. Each “head” learns different relationship or patterns or perspective:</p>
 </section>
 <section id="method" class="level2">
-<h2 class="anchored" data-anchor-id="method">Method</h2>
+<h2 data-anchor-id="method">Method</h2>
 <p>Take a look at this image. Here the input dimension is split into two heads which captures two perspective of a sentence.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -582,7 +414,7 @@ $ x_2 x_4 $</p>
 </div>
 </section>
 <section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
+<h2 data-anchor-id="code">Code</h2>
 <p>Let us see some code we discussed so far.</p>
 <p>Assume that the input $ x $ is the input embedding which is tokenized and positional encoding is applied</p>
 <p>Output of $ x = $ [1, 3, 6] which is read as follows: <em><code>3 rows , 6 columns and batch size is 1</code></em>.</p>
@@ -663,7 +495,7 @@ $ x_2 x_4 $</p>
 <span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>context_vec <span class="op">=</span> torch.nn.Module.out_proj </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>Now that we’ve established a solid understanding of conventional attention mechanisms, in the next post we’ll explore Deepseek’s innovative <strong><code>Multihead Latent Attention (MHLA)</code></strong>. This technique represents a significant advancement that improves both computational efficiency and model performance by operating in a more compact latent space. MHLA reduces computational complexity while maintaining or even enhancing the model’s ability to capture relationships between tokens, particularly for long sequences. Stay tuned to learn how this optimization technique can be applied to your own language models!</p>
 
 
@@ -673,26 +505,6 @@ $ x_2 x_4 $</p>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
-    }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
