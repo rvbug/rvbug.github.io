@@ -20,21 +20,7 @@ book:
       chapters:
         - doc2quarto/usage.qmd
         - doc2quarto/logic.qmd
-    
-    
-    # Part 6: 
-    - part: "neovim2emacs"
-      chapters:
-        - neovim2emacs/index.qmd
-        - neovim2emacs/index.qmd
-        
-    # Part 6: 
-    - part: "Checking 3rd One"
-      chapters:
-        - neovim2emacs/index.qmd
-        - neovim2emacs/index.qmd
-        
-        
+
 
 format:
   html:

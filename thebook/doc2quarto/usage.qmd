@@ -13,6 +13,8 @@ Doc2Quarto is built with Rust and packaged as a standalone binary. After install
 
 # Command Syntax
 
+![Help Command](img/doc2quarto_help.png){fig-align="center"}
+
 The application uses the clap crate for argument parsing, defining two required arguments: `--source` and `--dest`.
 
 The general command structure is:
@@ -22,7 +24,7 @@ $> doc2quarto -s <SOURCE_DIR> -d <DESTINATION_DIR>
 ```
 
 | Option | Long Name | Description | Example |
-|-----------------|-----------------|-----------------|---------------------|
+|------------------|------------------|------------------|-------------------|
 | `-s` | `--source` | The directory containing your Docusaurus `.md` files (the source docs root). | `./my-docusaurus-docs/` |
 | `-d` | `--dest` | The directory where the converted `.qmd` files will be written. This directory will be created if it does not exist. | `./quarto-book/chapters/` |
 | `-h` | `--help` | Print help | `doc2-quarto —help` |

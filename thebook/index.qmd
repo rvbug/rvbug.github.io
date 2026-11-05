@@ -5,7 +5,7 @@ toc: false
 ---
 
 
-"The Book" is a collection of documentation, design decisions and research notes for the systems I'm building and exploring.
+"The Book" is a collection of documentation, design decisions and research notes.
 
 ## Projects
 
@@ -16,5 +16,6 @@ toc: false
 -   **Emacs** — Documenting my configuration, packages, workflow and migration from Neovim.
 
 -   **ORBIT** — An adaptive agent system which achieves their objectives under resource constraints
+
 
 If something here is useful to you, take what you need.

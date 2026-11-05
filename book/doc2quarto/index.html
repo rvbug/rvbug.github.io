@@ -9,7 +9,7 @@
 <meta name="author" content="Rakesh V">
 <meta name="dcterms.date" content="2025-11-30">
 
-<title>Doc2Quarto – Book</title>
+<title>Doc2Quarto – The Book</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Book</a> 
+      <a href="../">The Book</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
@@ -157,49 +157,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../doc2quarto/logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Core Logic</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">neovim2emacs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Checking 3rd One</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
+  <a href="../doc2quarto/logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conversion Logic</span></a>
   </div>
 </li>
       </ul>
@@ -247,40 +205,42 @@ ul.task-list li input[type="checkbox"] {
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>Doc2Quarto is a command-line utility written in Rust designed to streamline the migration of documentation projects from the <a href="https://docusaurus.io/">Docusaurus</a> framework to the <a href="https://quarto.org/">Quarto</a> publishing system.</p>
-<p>Migrating large documentation sites can be tedious, often requiring manual adjustments to frontmatter, custom admonition syntax, and directory structures. Doc2Quarto automates these common, repetitive transformation tasks, allowing authors to focus on content updates and Quarto-specific enhancements.</p>
+<p>Migrating large documentation sites can be painfully tedious. It often requiring manual adjustments to frontmatter, custom admonition syntax, and even directory structures.</p>
+<p><strong>Doc2Quarto</strong> automates these common, repetitive transformation tasks, allowing authors to focus on content updates.</p>
 </section>
 <section id="why-doc2quarto" class="level1">
 <h1>Why Doc2Quarto?</h1>
-<p>Docusaurus and Quarto both use Markdown, but they differ in crucial ways:</p>
+<p>I used <em>Docusaurus</em> for my blogs and document the tools I was building. Initially, it was fun but then turned into a nightmare especially using JS to modify almost anything. The effort did not make any sense and eventually narrowed <code>Quarto</code> as an alternate option</p>
+<p>While <em>Docusaurus</em> and <em>Quarto</em> both uses Markdown, they differ in crucial ways:</p>
 <section id="frontmatter" class="level2">
-<h2 class="anchored" data-anchor-id="frontmatter">Frontmatter:</h2>
+<h2 class="anchored" data-anchor-id="frontmatter">1. Frontmatter</h2>
 <p>Docusaurus uses specific YAML fields like sidebar_position for navigation, which must be mapped to Quarto’s order field.</p>
 </section>
 <section id="admonitions" class="level2">
-<h2 class="anchored" data-anchor-id="admonitions">Admonitions:</h2>
-<p>Docusaurus uses the :::type Title syntax, while Quarto uses standardized Markdown Callouts <code>(:::: {&lt;type&gt;} or :::: {.callout-&lt;type&gt;})</code>.</p>
+<h2 class="anchored" data-anchor-id="admonitions">2. Admonitions:</h2>
+<p>Docusaurus uses the <code>:::type</code> Title syntax, while Quarto uses standardized Markdown Callouts <code>(:::: {&lt;type&gt;} or :::: {.callout-&lt;type&gt;})</code>.</p>
 </section>
 <section id="file-structure" class="level2">
-<h2 class="anchored" data-anchor-id="file-structure">File Structure:</h2>
+<h2 class="anchored" data-anchor-id="file-structure">3. File Structure:</h2>
 <p>Quarto books often use the .qmd extension and rely on a strict file hierarchy for book rendering.</p>
-<p>This utility addresses these differences by providing a quick and reliable conversion pipeline.</p>
 </section>
 </section>
-<section id="features" class="level1">
-<h1>Features</h1>
+<section id="quarto-features" class="level1">
+<h1>Quarto Features</h1>
 <p>Doc2Quarto offers a robust set of features to ensure a smooth transition:</p>
-<ul class="task-list">
-<li><p><label><input type="checkbox">Recursive File Conversion: Scans a source directory and processes all .md files found recursively.</label></p></li>
-<li><p><label><input type="checkbox">Frontmatter Conversion: Automatically maps Docusaurus-specific frontmatter (e.g., sidebar_position) to its Quarto equivalent (order).</label></p></li>
-<li><p><label><input type="checkbox">Admonition/Callout Transformation: Converts common Docusaurus admonition syntaxes <code>(:::note, :::tip, etc.)</code> into Quarto’s standard callout blocks.</label></p></li>
-<li><p><label><input type="checkbox">Directory Preservation: Maintains the relative directory structure from the source to the destination, ensuring internal links remain valid.</label></p></li>
-<li><p><label><input type="checkbox">Image Folder Copying: Automatically identifies and copies co-located img folders used by Docusaurus into the corresponding Quarto destination directory.</label></p></li>
-<li><p><label><input type="checkbox">Progress Tracking: Provides visual feedback via a progress bar (using the indicatif crate) for large documentation sets.</label></p></li>
+<ul>
+<li><p>Recursive File Conversion: Scans a source directory and processes all .md files.</p></li>
+<li><p>Frontmatter Conversion: Automatically maps Docusaurus-specific frontmatter (e.g., sidebar_position) to its Quarto equivalent (order).</p></li>
+<li><p>Admonition/Callout Transformation: Converts common Docusaurus admonition syntaxes <code>(:::note, :::tip, etc.)</code> into Quarto’s standard callout blocks.</p></li>
+<li><p>Directory Preservation: Maintains the relative directory structure from the source to the destination, ensuring internal links remain valid.</p></li>
+<li><p>Image Folder Copying: Automatically identifies and copies co-located img folders used by Docusaurus into the corresponding Quarto destination directory.</p></li>
+<li><p>Progress Tracking: Provides visual feedback via a progress bar (using the indicatif crate) for large documentation sets.</p></li>
 </ul>
 <p><br></p>
-<blockquote class="blockquote">
-<h3 id="the-following-chapters-detail-how-to-use-doc2quarto-and-provide-an-in-depth-look-at-its-rust-implementation." class="anchored" data-anchor-id="features">The following chapters detail how to use Doc2Quarto and provide an in-depth look at its Rust implementation.</h3>
-</blockquote>
+</section>
+<section id="whats-next" class="level1">
+<h1>What’s next</h1>
+<p>We will see how to use Doc2Quarto and look at high-level Rust implementation.</p>
 
 
 </section>

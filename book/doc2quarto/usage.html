@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Using the CLI – Book</title>
+<title>Using the CLI – The Book</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -113,6 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked fullcontent quarto-light">
@@ -139,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Book</a> 
+      <a href="../">The Book</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
@@ -189,23 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../doc2quarto/logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Core Logic</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">neovim2emacs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../neovim2emacs/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Neovim to Emacs</span></a>
+  <a href="../doc2quarto/logic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conversion Logic</span></a>
   </div>
 </li>
       </ul>
@@ -248,15 +233,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="command-syntax" class="level1">
 <h1>Command Syntax</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/doc2quarto_help.png" class="img-fluid figure-img"></p>
+<figcaption>Help Command</figcaption>
+</figure>
+</div>
 <p>The application uses the clap crate for argument parsing, defining two required arguments: <code>--source</code> and <code>--dest</code>.</p>
 <p>The general command structure is:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span> doc2quarto <span class="ex">-s</span> <span class="op">&lt;</span>SOURCE_DIR<span class="op">&gt;</span> -d <span class="op">&lt;</span>DESTINATION_DIR<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 29%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -758,8 +749,8 @@ book:
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../doc2quarto/logic.html" class="pagination-link" aria-label="Core Logic">
-        <span class="nav-page-text"><span class="chapter-title">Core Logic</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../doc2quarto/logic.html" class="pagination-link" aria-label="Conversion Logic">
+        <span class="nav-page-text"><span class="chapter-title">Conversion Logic</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
