@@ -4,7 +4,6 @@ format: html
 toc: false
 ---
 
-# The Book
 
 "The Book" is a collection of documentation, design decisions and research notes for the systems I'm building and exploring.
 

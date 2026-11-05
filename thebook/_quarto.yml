@@ -3,7 +3,7 @@ project:
   output-dir: ../book/
 
 book:
-  title: "Book"
+  title: "The Book"
   author: "Rakesh V"
   date: "11/30/2025"
   favicon: images/AudioWide-White.ico

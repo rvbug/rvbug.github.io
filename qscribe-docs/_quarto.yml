@@ -9,14 +9,20 @@ website:
   favicon: images/AudioWide-White.ico
   navbar:
     left:
+      - text: Home
+        href: https://qubitai.in/
       - text: Research
         href: research.qmd
       - text: Technical Guide
         href: technical-guide.qmd
+      - text: The Book
+        href: https://qubitai.in/book
     right:
+
       - icon: github
         href: https://github.com/rvbug
         target: _blank
+    
   
 format:
   html:
