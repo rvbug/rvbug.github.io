@@ -1,1 +1,1 @@
-Sitemap: https://qubitai.in/sitemap.xml
+Sitemap: https://qubitai.in/scribe/sitemap.xml

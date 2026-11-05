@@ -397,7 +397,7 @@ If you follow the text <strong><code>This</code></strong> - If token id is 2 , t
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/qubitai\.in\/");
+        var filterRegex = new RegExp("https:\/\/qubitai\.in\/scribe\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

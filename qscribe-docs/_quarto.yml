@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Scribe"
-  site-url: https://qubitai.in/
+  site-url: https://qubitai.in/scribe/
   description: "Research, experiments and notes on technology."
   favicon: images/AudioWide-White.ico
   navbar:

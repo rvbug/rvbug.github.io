@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://qubitai.in/docusauras.html</loc>
+    <loc>https://qubitai.in/scribe/docusauras.html</loc>
     <lastmod>2026-11-04T18:17:42.532Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/neovim.html</loc>
+    <loc>https://qubitai.in/scribe/neovim.html</loc>
     <lastmod>2026-11-04T17:59:01.378Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/workflow.html</loc>
+    <loc>https://qubitai.in/scribe/workflow.html</loc>
     <lastmod>2026-11-04T18:17:10.302Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/datascience_ml_structure.html</loc>
+    <loc>https://qubitai.in/scribe/datascience_ml_structure.html</loc>
     <lastmod>2025-11-04T03:43:26.835Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/quarto.html</loc>
+    <loc>https://qubitai.in/scribe/quarto.html</loc>
     <lastmod>2026-11-04T18:18:46.130Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/cookiecutterv2.html</loc>
+    <loc>https://qubitai.in/scribe/cookiecutterv2.html</loc>
     <lastmod>2026-11-04T17:58:57.906Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/llm/transformers.html</loc>
+    <loc>https://qubitai.in/scribe/llm/transformers.html</loc>
     <lastmod>2026-11-04T17:19:37.074Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/llm/introduction.html</loc>
+    <loc>https://qubitai.in/scribe/llm/introduction.html</loc>
     <lastmod>2026-11-04T17:27:37.866Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/llm/gpu.html</loc>
+    <loc>https://qubitai.in/scribe/llm/gpu.html</loc>
     <lastmod>2026-11-04T17:16:20.561Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/research.html</loc>
+    <loc>https://qubitai.in/scribe/research.html</loc>
     <lastmod>2026-11-05T02:49:38.953Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/technical-guide.html</loc>
+    <loc>https://qubitai.in/scribe/technical-guide.html</loc>
     <lastmod>2026-11-05T02:30:03.363Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/llm/ptxintro.html</loc>
+    <loc>https://qubitai.in/scribe/llm/ptxintro.html</loc>
     <lastmod>2026-11-04T17:14:45.787Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/llm/index.html</loc>
+    <loc>https://qubitai.in/scribe/llm/index.html</loc>
     <lastmod>2026-11-04T17:50:52.203Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/llm/deepseekptx.html</loc>
+    <loc>https://qubitai.in/scribe/llm/deepseekptx.html</loc>
     <lastmod>2026-11-04T17:19:01.467Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/llm/tokenizer.html</loc>
+    <loc>https://qubitai.in/scribe/llm/tokenizer.html</loc>
     <lastmod>2026-11-04T16:16:23.246Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/index.html</loc>
+    <loc>https://qubitai.in/scribe/index.html</loc>
     <lastmod>2026-11-05T02:46:13.306Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/about.html</loc>
+    <loc>https://qubitai.in/scribe/about.html</loc>
     <lastmod>2026-10-28T02:40:05.830Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/qml.html</loc>
+    <loc>https://qubitai.in/scribe/qml.html</loc>
     <lastmod>2026-11-04T17:35:47.041Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/dotfiles.html</loc>
+    <loc>https://qubitai.in/scribe/dotfiles.html</loc>
     <lastmod>2026-11-04T17:59:06.767Z</lastmod>
   </url>
   <url>
-    <loc>https://qubitai.in/ecpe.html</loc>
+    <loc>https://qubitai.in/scribe/ecpe.html</loc>
     <lastmod>2026-11-04T17:33:14.651Z</lastmod>
   </url>
 </urlset>
