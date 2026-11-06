@@ -1,0 +1,64 @@
+---
+title: "Introduction"
+format: html
+---
+
+# Overview
+
+FERMI is Framework for Estimating Resource, Model & Infrastructure costs, named after Italian physicist Enrico Fermi
+
+It is a a micro-transaction cost simulation engine for AI topologies.\
+Usually, when we speak about AI and Agents , we only talk about the token costs of the LLMs. Gartner suggests that 40% of the agentic AI projects will be cancelled by 2027 due to escalating infra overhead, spiralling costs to name a few.
+
+So FERMI will help you see overall monthly costs of your Agentic AI architecture and also micro transaction costs. The first version (v1.0) focuses on Agentic AI architecture only.
+
+At the POC stage, the costs seems to be lower, you might use cost effective base LLM models, the token costs, user and the token usage might not just be ????
+
+# Simulation Inputs
+
+It has a very simple UI. You add and select the required details. Let us review them in detail.
+
+![](./img/fermi_input.png){fig-align="left"}
+
+## Architecture
+
+You can select different type of architecture. By Default it is **Agentic AI** for version 1.0. Later version would include **Traditional AI** and **Hybrid Architecture**
+
+## Active User
+
+Provide an estimate of number of active users
+
+## Usage Intensity
+
+What would be the average number of requests send to the LLMs?, You have
+
+1.  High with 35 tasks/day
+2.  Medium with 8 tasks (default value)
+3.  Low with just 1.5 tasks/day
+
+## Model Engine
+
+Which LLM would you like to choose. For example Nano which is a very small model is charged approx \$0.35 per million token.
+
+::: callout-warning
+Note: This could change depending on when you are reading this.
+:::
+
+
+![](./img/fermi_models.png){fig-align="left"}
+
+## Avg. Tool (API)
+
+Lot of these tools 
+
+## Core Agents
+
+## Sub Agents
+
+## MCP
+
+## RAG
+
+## Simulation Outputs
+
+## Supported Architectures

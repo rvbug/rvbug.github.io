@@ -21,10 +21,27 @@ book:
         - doc2quarto/usage.qmd
         - doc2quarto/logic.qmd
 
+    - part: FERMI
+      chapters:
+        - fermi/index.qmd
+
+
+    - part: Neovim
+      chapters:
+        - neovim/index.qmd
+        - neovim/config.qmd
+        - neovim/plugins.qmd
+    
+    - part: Emacs
+      chapters:
+        - emacs/index.qmd
+        - emacs/elisp.qmd
+        - emacs/configuration.qmd
 
 format:
   html:
     toc: false
+    
     theme:
       - cosmo
       - brand

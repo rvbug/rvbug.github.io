@@ -1,0 +1,42 @@
+---
+title: ""
+subtitle: "A personal IDE"
+---
+
+# Introduction
+
+This book documents my Emacs environment, and the concepts I have learned along the way while building it.
+
+The configuration is maintained in Org mode as it serves two purposes:
+
+- Working configuration for my Emacs setup.
+- A learning document to cover elisp and emacs concepts plus useful commands.
+
+
+# Org File
+
+The material is being moved gradually from the original Org file into this book.
+
+- **elisp notes** — Emacs and Emacs Lisp concepts needed just enough to understand the configuration.
+
+- **Configuration** — Nuts and bolts of package management, appearance, completion, language tooling, programming modes and other settings.
+
+::: {.callout-important}
+The original `config.org` remains the working source. This book is its published reference.
+:::
+
+
+## Prerequisites
+
+The following external tools and language servers are listed in my Org configuration as prerequisites for this setup:
+
+| Tool | Purpose / installation note in the Org file |
+|---|---|
+| ripgrep | Fast text search utility; installed with `brew` |
+| LLVM toolchain | Rust debugging; `brew install llvm` |
+| Rust Analyzer | `rustup component add rust-analyzer` |
+| rust-script | Execute Rust scripts in Org; `cargo install rust-script` |
+| Pyright | Python language server; `pip install pyright` |
+| Bash language server | `npm install -g bash-language-server` |
+
+

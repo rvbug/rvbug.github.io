@@ -1,0 +1,47 @@
+---
+title: ""
+---
+
+# Core
+
+This section details the primary editor configuration files: setup, keybindings, and Vim settings.
+
+## Editor Setup (`init.lua`)
+
+The initialization file sets up bootstrapping for the plugin manager, imports option/keymap modules, and sets default themes:
+
+* **Plugin Manager**: Automatically bootstraps and configures `lazy.nvim` as the primary plugin manager.
+* **Configuration Modules**: Loads general settings from `config.options` and global shortcuts from `keymaps`.
+* **Colorscheme**: Applies the `darkvoid` color theme globally on startup.
+* **Custom Filetypes**: Adds filetype detection for custom file extensions (e.g., `.rsl` mapped to `rustimate`).
+
+## Global Options (`options.lua`)
+
+Basic editor preferences and behavior tweaks:
+
+* **Leader Key**: Configured to `Space`.
+* **Visuals**: Enables true-color (`termguicolors`) with dark background mode and relative line numbers.
+* **Indentation**: Configures 2-space indentation tabs using spaces (`expandtab`).
+* **Splits & Windows**: Forces horizontal splits to open below and vertical splits to open to the right.
+* **Clipboard & Edit**: Integrates system clipboard via `unnamedplus` and enables block selection in `virtualedit`.
+
+## Custom Keymaps (`keymaps.lua`)
+
+Shortcuts mapped for daily workflow efficiency:
+
+| Keybinding | Action / Command | Description |
+| :--- | :--- | :--- |
+| `<leader>sv` | `<C-w>v` | Split window vertically |
+| `<leader>sh` | `<C-w>s` | Split window horizontally |
+| `<leader>sx` | `:close<CR>` | Close current split |
+| `<leader>to` | `:tabnew<CR>` | Open new tab |
+| `<leader>tx` | `:tabclose<CR>` | Close current tab |
+| `<leader>tn` / `<leader>tp` | `:tabn<CR>` / `:tabp<CR>` | Next / Previous tab |
+| `<leader>ff` | Telescope `find_files` | Find files in project |
+| `<leader>fg` | Telescope `live_grep` | Live grep project text |
+| `<leader>fb` | Telescope `buffers` | List open buffers |
+| `<leader>qa` | `:QuartoActivate<CR>` | Activate Quarto mode |
+| `<leader>qp` | `:QuartoPreview<CR>` | Preview Quarto document |
+| `<leader>qc` | `:QuartoClosePreview<CR>` | Close Quarto preview |
+| `<leader>e` | `vim.diagnostic.open_float` | Show inline diagnostic errors |
+| `[d` / `]d` | Diagnostic nav | Jump to previous/next error |

@@ -1,0 +1,87 @@
+---
+title: ""
+format: html
+---
+
+
+# Introduction
+
+Neovim is fork of VI/VIM. It is brilliant, blazingly fast, highly configurable modal editor released in 2014.
+This repo helps you get started with using Neovim, giving you practical tips and providing necessary instructions to customise your IDE the way you want it.
+
+:::{.callout-note}
+Vim/Neovim are called modal editors because their behavior changes depending on the working mode (Normal mode, Command mode, Visual mode, Visual Block mode etc)
+:::
+
+
+# History
+
+Here's the history of editors for the last 50 years. If you look at VI/VIM, it was release more than 4 decades ago and still used widely.
+VIM uses "VimL" or VimScript as scripting language where as Neovim uses a light weight, simple language called Lua.
+
+# Advantages
+There are many IDEs like VSCode, Pycharm which just works out of the box then why Neovim? Some of the advantages are:-
+
+- Faster Navigation by eliminating the need of a mouse
+- Significantly improves your editing speed
+- Macros to automate repetitive tasks
+- Configure to your specific needs and preferences and stremline your workflow
+- You can have custom keybindings mapped to your frequently used commands
+- Enhance your productivity by providing features like split windows, quick search & replace and distraction-free mode too
+
+
+# Folder Structure
+This is how the folder structure looks like. All the folders should be under `$HOME/.config/nvim` 
+
+```md
+~/.config/nvim/
+├── init.lua              # Entry point: requires options, keymaps, and lazy
+├── lazy-lock.json        # Auto-generated (DO NOT EDIT)
+├── after/
+│   └── ftplugin/
+│       └── rust.lua      # Buffer-local settings for Rust
+└── lua/
+    ├── config/
+    │   └── options.lua   # Core Neovim settings
+    ├── keymaps.lua       # Global keymaps and .rsl detection
+    └── plugins/
+        ├── autopairs.lua # windwp/nvim-autopairs
+        ├── gitsigns.lua  # lewis6991/gitsigns.nvim
+        ├── lsp.lua       # Mason & non-Rust LSP configs
+        ├── lualine.lua   # Project-aware Status Line (RUSTIMATE/COPE)
+        ├── markdown.lua  # iamcco/markdown-preview.nvim
+        ├── neogit.lua    # NeogitOrg/neogit (The Magit experience)
+        ├── oil.lua       # stevearc/oil.nvim (Floating text-based explorer)
+        ├── rustsetup.lua # mrcjkb/rustaceanvim (Deep Rust integration)
+        ├── telescope.lua # nvim-telescope/telescope.nvim
+        ├── theme.lua     # aliqyan-21/darkvoid.nvim
+        └── ui.lua        # Undotree & toggleterm.nvim
+
+```
+
+#### `init.lua` 
+This is where nvim looks at everytime it starts so the lazy plugin manager is configured here.  <br>
+
+#### `lazy-lock.json`
+This lock file helps you to configure neovim and the version quickly.
+
+####  `lua/plugins/`
+
+The best way to keep everything modularize is to split plugings into their own separate files and add it under this plugins directory. 
+Lazy will automatically detect any changes on this folder and loads it.  
+
+Any/All plugin file should always return a table. Additional configuration/settings for that plugins should be inside a callback function. 
+See the sample setup for `lua/plugins/themes.lua`. Same approach is used for most of the plugins unless specified differently in their documentation. 
+
+`config = function() ` is a call back function. Look at the themes.lua file where the plugin is called and then colorscheme is setup.
+
+```lua
+return {
+   "tiagovla/tokyodark.nvim",
+   :
+   :
+   config = function()
+      vim.cmd("colorscheme tokyodark")
+   end
+}
+```

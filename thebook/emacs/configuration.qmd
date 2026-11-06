@@ -1,0 +1,398 @@
+---
+title: "Configuration"
+subtitle: "Packages"
+---
+
+This chapter documents the configuration used to build my Emacs environment. It contains package management, the editor interface, completion,  navigation and much more.
+
+This emacs is setup for following programming language
+
+* Rust
+* Python
+* Shell Scripting
+
+## Package management
+
+* Emacs uses `package.el` to manage packages. 
+* Package archives such as GNU ELPA and MELPA provide packages. I use MELPA as an additional package archive and `use-package` to organize package configuration.
+
+* `use-package` groups related setup instructions for a package. 
+* In this configuration, `:ensure t` is enabled by default so that packages are installed when needed.
+
+```commonlisp
+;; We will be using package.el and load it to memory
+(require 'package)
+
+;; Add MELPA
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+
+;; Initialize package system
+(package-initialize)
+
+;; Bootstrap use-package if not installed
+;; use-package is built-in in newer Emacs versions
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; Load use-package
+(require 'use-package)
+
+;; Always ensure packages are installed
+;; This makes :ensure t the default for all use-package declarations
+(setq use-package-always-ensure t)
+```
+
+## Basics
+
+The basic setup removes the menu and tool bars, enables mouse-wheel support and the tab bar, suppresses the startup messages, and configures line numbers , relative line numbers and recently opened files.
+
+I use three text faces for fonts:
+
+- `default` for general text appearance
+- `fixed-pitch` for coding I use Iosevka
+- `variable-pitch` for prose
+
+For default and fixed-pitch faces I use *Iosevka* and IBM Plex Sans prose (docs) 
+
+
+```commonlisp
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+;; (scroll-bar-mode -1)
+(mouse-wheel-mode 1)
+(setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message t)
+(tab-bar-mode 1)
+
+;; Suppress harmless byte-compilation warning popups
+(setq warning-minimum-level :error)
+
+;; Do not take backup of any file
+(setq make-backup-files nil)
+
+;; Display line numbers and relative line numbers
+(global-display-line-numbers-mode 1)
+(setq display-line-numbers-type 'relative)
+
+;; Remember recently opened files
+;; Keybinding C-c C-r to open recent files
+(recentf-mode 1)
+(setq recentf-max-saved-items 100)
+
+;; Default Monospace (Code & System)
+(set-face-attribute 'default nil
+                    :font "Iosevka"
+                    :height 170)
+
+(set-face-attribute 'fixed-pitch nil
+                    :font "Iosevka"
+                    :height 170)
+
+;; Variable-Pitch (Prose & Org Text)
+(set-face-attribute 'variable-pitch nil
+                    :font "IBM Plex Sans"
+                    :height 170)
+
+;; Enable font-lock colors for Org mode
+;; Enable global syntax highlighting where supported
+(global-font-lock-mode 1)
+
+;; Apply Variable-Pitch ONLY to Org default text
+;; Keeps heading colors intact.
+(custom-theme-set-faces
+ 'user
+ '(org-default ((t (:inherit variable-pitch)))))
+
+;; Theme setup
+(use-package ef-themes
+  :ensure t)
+
+;; Primary Dark Theme
+(load-theme 'ef-maris-dark t)
+
+;; Secondary Light Theme
+;; (load-theme 'ef-maris-light)
+
+;; Theme switcher quick-reference (uncomment to switch)
+;; (load-theme 'modus-vivendi t) ; High-contrast dark
+;; (load-theme 'modus-operandi t) ; High-contrast light
+```
+
+
+
+## Completion
+
+The completion setup uses several packages together:
+
+- **Vertico** displays completion candidates vertically in the minibuffer.
+- **Marginalia** adds helpful descriptions alongside candidates.
+- **Orderless** allows matching terms in any order.
+- **Consult** provides search and navigation commands for lines, buffers, recent files, and projects.
+
+### Vertico
+
+Vertico displays completion candidates vertically in the minibuffer. It is enabled globally.
+
+```commonlisp
+(use-package vertico
+  :init
+  (vertico-mode 1))
+```
+
+### Marginalia
+
+Marginalia adds helpful information next to completion candidates and works with Vertico.
+
+```commonlisp
+(use-package marginalia
+  :init
+  (marginalia-mode 1))
+```
+
+### Orderless
+
+Orderless provides matching in any order. The `completion-styles` setting uses both `orderless` and `basic`. The configuration also clears the default category settings and specifies matching styles for files.
+
+```commonlisp
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+```
+
+### Consult
+
+Consult provides search and navigation commands for files, buffers, lines, and project content. The project-wide search commands require `ripgrep` to be installed.
+
+```commonlisp
+(use-package consult
+  :bind (;; Search commands
+         ("C-s" . consult-line)              ; Search in current buffer
+         ("C-x b" . consult-buffer)          ; Switch buffer with preview
+         ;; File navigation
+         ("C-x C-r" . consult-recent-file)   ; Recent files
+         ;; Project-wide search (requires ripgrep installed)
+         ("C-c s g" . consult-ripgrep)       ; Grep in project
+         ("C-c s f" . consult-find))         ; Find file in project
+  :config
+  ;; Preview files/buffers as you navigate (optional)
+  (setq consult-preview-key 'any))
+```
+
+## In-buffer completion
+
+Corfu provides an in-buffer completion popup. It is an alternative to Company mode and displays completion suggestions at the cursor. In this setup, Corfu works with Eglot, Cape, and Emacs completion facilities.
+
+### Corfu
+
+The configuration enables Corfu globally, turns on automatic completion, sets the delay and minimum prefix length, enables cycling, and configures popup information. The keybindings below apply to `corfu-map`.
+
+```commonlisp
+(use-package corfu
+  :init
+  (global-corfu-mode 1)
+  ;; :hook (rust-ts-mode . cargo-minor-mode)
+  :custom
+  (corfu-auto t)
+  (corfu-auto-delay 0.2)
+  (corfu-auto-prefix 2)
+  (corfu-cycle t)
+  (corfu-popupinfo-delay 0.5)
+  :bind (:map corfu-map
+              ("TAB" . corfu-next)
+              ([tab] . corfu-next)
+              ("S-TAB" . corfu-previous)
+              ([backtab] . corfu-previous)
+              ("M-d" . corfu-popupinfo-toggle))
+  :config
+  ;; Enable documentation popup next to completion candidates
+  (corfu-popupinfo-mode 1))
+```
+
+### Cape
+
+Cape provides additional completion-at-point backends that can be used by the completion system. This configuration adds file, dabbrev, and Emacs Lisp block completion functions to `completion-at-point-functions`.
+
+```commonlisp
+(use-package cape
+  :init
+  ;; Add completion backends at startup
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  ;; Add Elisp completion even in this Org file
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block))
+```
+
+## Language support
+
+The language-support setup uses Eglot as the LSP client, Eldoc for documentation display, and Tree-sitter-based Rust mode. It also configures language servers for JavaScript, HTML, and CSS, and enables Eglot for shell scripts.
+
+### Eglot and Eldoc
+
+Eglot is built into Emacs in the version used by this configuration, so `:ensure nil` is specified. 
+`eglot-workspace-configuration` passes settings to language servers. 
+The example below sets the Rust Analyzer check command to `check`.
+
+```commonlisp
+;; Eldoc: Minibuffer documentation display
+(use-package eldoc
+  :ensure nil
+  :custom
+  (eldoc-echo-area-use-multiline-p nil))
+
+;; Eglot: Lightweight LSP client
+(use-package eglot
+  :ensure nil  ; Built-in from Emacs 29+
+  :custom
+  (eglot-autoshutdown t)
+  (eglot-extend-to-xref t)
+  :config
+  ;; Format on save when Eglot is managing the current buffer
+  (add-hook 'before-save-hook
+            (lambda ()
+              (when (eglot-managed-p)
+                (eglot-format-buffer))))
+
+  ;; Configure language-server workspace settings
+  (setq-default eglot-workspace-configuration
+                '((:rust-analyzer . ((check . ((command . "check"))))))))
+
+(add-to-list 'eglot-server-programs
+             '(js-mode "typescript-language-server" "--stdio"))
+```
+
+### Rust with TS
+
+The Rust setup uses `rust-ts-mode`, Eglot, and Cargo. 
+It adds a Tree-sitter (TS) grammar search path and specifies the Rust grammar source. 
+Enables Eglot and `cargo-minor-mode` when `rust-ts-mode` starts.
+
+The keybindings provide navigation between Flymake diagnostics and Cargo build, run, test, and check commands.
+
+```commonlisp
+;; Check for additional Tree-sitter grammar in the path below
+(add-to-list 'treesit-extra-load-path
+             (expand-file-name "tree-sitter" user-emacs-directory))
+
+;; Configure Tree-sitter grammar source (ABI v14 compatible)
+(setq treesit-language-source-alist
+      '((rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.21.2")))
+
+;; Enable Tree-sitter Rust mode
+(use-package rust-ts-mode
+  :ensure nil
+  :mode "\\.rs\\'"
+  :init
+  ;; Maximum syntax highlighting level for Tree-sitter
+  (setq treesit-font-lock-level 4)
+  :hook ((rust-ts-mode . eglot-ensure)
+         (rust-ts-mode . cargo-minor-mode))
+  :bind (:map rust-ts-mode-map
+         ("M-n" . flymake-goto-next-error)
+         ("M-p" . flymake-goto-prev-error)
+         ("C-c c b" . cargo-process-build)
+         ("C-c c r" . cargo-process-run)
+         ("C-c c t" . cargo-process-test)
+         ("C-c c k" . cargo-process-check))
+  :custom
+  (rust-ts-mode-indent-offset 4))
+
+;; Cargo execution runner
+(use-package cargo
+  :ensure t)
+```
+
+### HTML, CSS, and JS
+
+The following configuration adds language-server commands for HTML and CSS after Eglot has loaded. The JavaScript server mapping is configured above in the Eglot section.
+
+```commonlisp
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(mhtml-mode "vscode-html-language-server" "--stdio"))
+  (add-to-list 'eglot-server-programs
+               '(css-mode "vscode-css-language-server" "--stdio")))
+```
+
+Run local server with the following command:
+
+```sh
+python3 -m http.server 8000
+```
+
+### Shell scripting
+
+The shell setup associates `.sh`, `.bash`, and `.zsh` files with `sh-mode` and starts Eglot when `sh-mode` is enabled.
+
+```commonlisp
+(use-package sh-script
+  :ensure nil
+  :mode (("\\.sh\\'" . sh-mode)
+         ("\\.bash\\'" . sh-mode)
+         ("\\.zsh\\'" . sh-mode))
+  :hook (sh-mode . eglot-ensure))
+```
+
+## Markdown
+
+Markdown support is provided by `markdown-mode`.
+
+```commonlisp
+(use-package markdown-mode
+  :ensure t)
+```
+
+## Magit
+
+Magit is a powerful Git interface used in this Emacs setup. 
+The main entry point is bound to `C-x g`. Diffs are displayed in the same window .
+
+```commonlisp
+(use-package magit
+  :bind ("C-x g" . magit-status)
+  :custom
+  ;; Show diff in same window
+  (magit-display-buffer-function
+   #'magit-display-buffer-same-window-except-diff-v1))
+```
+
+### Quck Reference
+
+| Key | Action |
+|---|---|
+| `?` | Show help |
+| `s` | Stage files |
+| `c c` | Create a commit |
+| `C-c C-C` | Confirm the commit |
+| `P p` | Push to remote |
+| `F p` | Pull from remote |
+| `b b` | Switch branch |
+| `b c` | Create branch |
+| `q` | Quit |
+
+## Sessions
+
+Emacs has a built-in desktop feature for restoring a previous session. 
+This is stored in a `sessions/` directory inside `user-emacs-directory`. 
+It enables `desktop-save-mode`, and sets automatic saving so that no prompt is required.
+
+```commonlisp
+;; Use a sessions directory inside the Emacs configuration folder
+(setq desktop-dirname
+      (expand-file-name "sessions/" user-emacs-directory))
+
+(setq desktop-path (list desktop-dirname))
+
+(desktop-save-mode 1)
+;; Ensure it is always true so no prompt is required
+(setq desktop-save t)
+```
+
+# Next Steps
+
+I will continue to update this documentation as I keep adding more packages depending on the requirements.
+Currently exploring `ox-quarto` package for seemless integration between *.org* files and *.qmd*.
+

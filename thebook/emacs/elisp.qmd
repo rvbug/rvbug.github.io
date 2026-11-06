@@ -1,0 +1,217 @@
+---
+title: "elisp"
+---
+
+# Key Info
+
+- Emacs runs in a loop: it listens for keys, executes commands, and updates the display. 
+- Commands are functions written in elisp and can be marked as interactive which can be invoked by the user via `M-x`.
+- A function performs an action. A hook runs functions in response to an event.
+- A **major mode** defines the primary behaviour for a buffer. 
+- A **minor mode** adds optional behaviour.
+- A **frame** is an Emacs top-level window. A frame can contain multiple Emacs windows, and each window displays a buffer.
+
+To debug Emacs startup:
+
+```sh
+$> emacs --debug-init
+```
+
+# Package
+
+A package or Lisp file can define variables and functions, then make its feature available to other code with `provide`.
+
+For example, a file named `tool.el` will end with:
+
+```commonlisp
+(provide 'tool)
+```
+
+Other code can load that feature with:
+
+```commonlisp
+(require 'tool)
+```
+
+`provide` makes a feature available; `require` loads the feature if it has not already been provided.
+
+# Symbols and quoting
+
+A symbol is a named object in Emacs Lisp. A symbol can be used as a variable name, a function name, or for other purposes.
+Quoting tells Emacs Lisp to treat an expression as data rather than evaluate it.
+
+A quoted list is data:
+
+```commonlisp
+'(item1 item2)
+```
+
+```commonlisp
+'package
+;; this is same as 
+(quote package)
+```
+# Function
+
+A function call has the general syntax:
+
+```commonlisp
+(some-function arguments)
+```
+
+A function reference can be passed to another function without calling it immediately:
+
+```commonlisp
+#'cape-file
+```
+
+
+# Variables
+
+- `setq` assigns a value to a variable.
+
+- `defcustom` defines a user-customisable variable. Such variables can be exposed through Emacs's Custom interface and configured with `:custom` in `use-package`.
+
+- The notes distinguish direct assignment with `setq` from setting customisable variables inside a `use-package` declaration with `:custom`.
+
+- The `type` property of `defcustom` describes the kind of value the option accepts. Examples from the notes include:
+
+| Type | Example |
+|---|---|
+| String | `"welcome home"` |
+| Integer | `17` |
+| Boolean | `t` or `nil` |
+| Number | `3.14` |
+| Symbol | `'orderless` |
+| List | `'(orderless basic)` |
+| Choice | A set of available options |
+
+The `group` property organises related settings in the Emacs Custom interface. Use `M-x customize` to browse it.
+
+# Conditions
+
+`unless` evaluates its body when its condition is `nil`.
+
+```commonlisp
+(unless contents
+  (some-function))
+```
+
+# Lists & cons cells
+
+A list is an ordered collection of items. Lists can contain values of different types, including other lists.
+
+```commonlisp
+'("apple" "banana")
+```
+
+A cons cell contains two parts:
+
+- `car` — the first part.
+- `cdr` — the second part.
+
+- Cons cells can be linked together to form lists. A cons cell can also represent a pair that is not a list, such as:
+
+```commonlisp
+("C-s" . consult-line)
+```
+
+An association list (alist) is a list of entries associating keys with values:
+
+```commonlisp
+'((name . "rakesh")
+  (editor . "emacs")
+  (language . "rust"))
+```
+
+Not every list is a dictionary.
+
+# Other data structures
+
+Here are some of the emacs data structurs
+
+| Structure | Description |
+|---|---|
+| String | Text, file paths, messages, and configuration values |
+| Symbol | A named item; it can represent a variable, function, `nil`, `t`, and so on |
+| Number | Integer or floating-point number |
+| Boolean | `t` and `nil` |
+| List | Ordered collection; can contain different types and nested lists |
+| Cons cell | A pair containing `car` and `cdr`; linked cons cells build lists |
+| Alist | A list of key/value entries |
+| Vector | An indexed collection written with square brackets |
+| Hash table | Key/value storage for efficient lookup |
+
+A hash table can be created with:
+
+```elisp
+(make-hash-table :test 'equal)
+```
+
+# `use-package`
+
+`use-package` is a macro that groups related package configuration into a declaration.
+
+| Keyword | Purpose |
+|---|---|
+| `:init` | Instructions to run before the package loads |
+| `:custom` | Set customisable variables |
+| `:bind` | Associate keys with commands |
+| `:config` | Configure the package after it loads |
+| `:ensure` | Install the package when it is not already installed |
+
+`:bind` groups keybindings with the package configuration.
+
+# Hooks
+
+A hook is a variable that holds a list of functions. 
+When the corresponding event occurs, Emacs runs the functions from that list.
+
+# Keybindings
+
+Keybindings associate keyboard input with commands. It is similar to `keymaps` in neovim  
+A keybinding can be created directly:
+
+```elisp
+(global-set-key (kbd "C-s") #'consult-line)
+```
+
+
+# LSP
+
+The Language Server Protocol (LSP) provides communication between an editor and a language-specific helper program.
+
+In this emacs  configuration we will be using the following
+
+- **Eglot** acts as the LSP client to manage communication with the language server.
+- **Corfu** shows completion suggestions popup.
+- **Eldoc** displays documentation.
+- **Eglot** provide diagnostics and navigation features (e.g. jumping to definitions).
+
+# Tree-sitter
+
+Tree-sitter parses source code according to its programming language and builds a syntax tree representing its structure.
+
+# File and directory 
+
+You can create your ow package in the directory of your choice, mine will be under 
+- `~/Documents/projects/emacs/packages/`
+
+All helper functions will be under 
+- `~/.emacs.d/lisp/`
+
+A helper file such as `traveler-tools.el` can define functions and provide a feature for the rest of the configuration to load.
+
+# Keybinding 
+
+- `C-c C-e h h` — export the current Org document to HTML.
+- `C-c C-e l p` — export to PDF through LaTeX.
+- `C-x 3` — split the current Emacs window vertically.
+
+## Dired notes:
+
+- `+` — create a directory.
+- `d` followed by `x` — mark a file or directory for deletion and confirm.
+- `^` — move to the parent directory.
+
+

@@ -1,0 +1,33 @@
+---
+title: ""
+---
+
+# Plugins
+
+This page serves as a reference for all Neovim plugins used in this configuration.
+
+## Core & UI Enhancements
+
+* **nvim-autopairs**: Automatically closes brackets, quotes, and parentheses as soon as they are typed.
+* **lualine.nvim**: Provides a lightweight statusline showing Git status, current directory, file details, and mode status.
+* **oil.nvim**: A floating file manager that allows editing directory trees directly as a standard Neovim text buffer.
+* **undotree**: Displays a visual tree of buffer changes, making undo/redo history easy to navigate.
+* **toggleterm.nvim**: Provides floating, easily accessible terminal windows over editor splits.
+* **darkvoid.nvim**: Dark colorscheme applied across Neovim UI elements.
+
+## Language Support & LSP
+
+* **mason.nvim & mason-lspconfig.nvim**: Manages external binary installations for LSPs, formatters, and linters (`lua_ls`, `pyright`, `bashls`, `html`, `cssls`).
+* **nvim-lspconfig**: Configures native Neovim Language Server Protocol integrations and global keybindings for definitions, code actions, and rename floating windows.
+* **rustaceanvim**: Handles full Rust LSP setup with `rust-analyzer`, macro expansion, debugging capabilities via `codelldb`, and running inline tests.
+* **nvim-treesitter**: Provides code parsing for syntax highlighting, code structure evaluation, and custom language grammar integration (such as `rustimate`).
+* **quarto.nvim & otter.nvim**: Integrates Quarto rendering, interactive previews, and code chunk execution inside Markdown and `.qmd` files.
+
+## Git Integration
+
+* **neogit**: Interactive, floating Magit-style Git control dashboard.
+* **gitsigns.nvim**: Adds status signs in the gutter column for modified, added, or deleted lines.
+
+## Navigation
+
+* **telescope.nvim**: Highly customizable fuzzy finder for opening files, searching text across the project via live grep, listing buffers, and viewing help tags.
