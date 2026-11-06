@@ -1,0 +1,242 @@
+---
+title: "Costs"
+format: html
+---
+
+
+## Total Computed Monthly Volume
+
+This is an average number of tasks every day, over a 30-day month calculated using
+
+$$
+  V = U \times  T \times M
+$$
+Where: 
+
+* $V$ is Total Volume   
+* $U$ is Acive Users which has a default value of $3000$   
+* $T$ is average tasks per user per day  with default as 8 
+* $M$ days in a month $30$   
+
+
+
+## Estimated Token / Interaction
+
+We calculate the estimated token per interaction via the following formula
+
+$$
+  N = B \times ( 500 \times A) + (500 \times A \times S)
+$$
+Where:
+
+  $N=$ Estimated Token count  
+  $B=$ Base Token (2000)    
+  $A=$ Number of Agents   
+  $S=$ Number of Sub Agents  
+  
+So for per interaction, this will be the cost
+
+$$
+  C_{llm} = \frac{N}{1,000,000} \times R
+$$
+
+
+$$ 
+  C_{llm} = \frac{5000}{1,000,000} \times 0.35
+$$
+
+This comes to $\$0.0017$**
+
+Now for **Monthly LLM Costs** comes to 
+
+$$
+720,000 \times \$0.00175   = \$1,260
+$$
+
+
+
+# Guard Scan
+
+This is the gaurd scan which comes at a  price $0.00100$ 
+```js
+const GUARD_SCAN_FEE = 0.00100;
+```
+
+$$
+C_{\text{guard}} = \$0.001
+$$
+
+
+# RAG 
+
+RAG is an embedding and vector database. It helps in embedding generation and vector read and write costs
+If you enable RAG, the base cost moves from $2000$ to $3500$ 
+
+(TBD - To remove this JS ) ad give the cost formula directly.
+
+```js
+if (useRAG) {
+    const embeddingCost = 0.00010;
+
+    const vdbWrites = 1 + (coreAgents * subAgents);
+    const vdbReads = 2 + (coreAgents * subAgents * 2);
+
+    const vdbCost =
+        (vdbWrites * 0.0000004) +
+        (vdbReads * 0.0000001);
+}
+
+```
+
+## Embedding 
+
+Embedding is a fixed per interaction estimated costs when RAG is enabled
+$$
+C{embedding} = $0.00010
+$$
+
+
+# Vector DB
+
+There is a cost associated with every vector read and write transaction. 
+
+So the costs of a transaction on vector is as follows
+
+$$
+C_{vdb} = (W \times 0.0000004) + (R \times 0.0000001)
+$$
+
+So if ou have two core and two sub agents per code then 
+
+$$
+ W = 1 + (2 \times 2 ) = 5
+$$
+
+$$
+ R = 2 + (2 \times 2 \times 2 ) = 10
+$$
+
+
+So the Vector Database costs is $0.000003
+
+$$
+C_{vdb} = (5 \times 0.0000004) + (10 \times 0.0000001)
+$$
+
+Total RAG Costs comes to 
+
+$$
+C_{RAG} = 0.00010 + 0.000003 = \boxed{\$0.000103}
+$$
+
+
+
+
+Checkout the formula for Vector Read and Write as well
+
+## DB Write
+$$
+W = 1 + (A \times S)
+$$
+
+
+## DB Read
+$$
+R = 2 + (A \times S \times 2)
+$$
+
+# Agent orchestration
+
+There is an orchestration compute costs when even a single core agent is configured.
+
+$$
+  C_{orchestration} = \begin{cases} 
+      \$0.00020 & \text
+        {if core agents} > 0\\
+      \$0 & \text{otherwise}
+  \end{cases}
+$$
+
+
+# MCP
+
+This has 2 distinct costs 
+
+1. Fixed  MCP Infra Tier Cost
+
+if the number of total agents is less than 4, the cost is $5k
+More between 5 to 10 agents cost is $15K
+More than 10 agents a costs is approx $25K
+
+
+Where number of Agents is calculated using
+
+$$
+  A_{total} = A + (A \times S)
+$$
+
+
+2. Per interaction MCP Validation 
+
+This is charged once per interaction regarless of the agent
+$$
+C_{\text{MCP validation}} =
+\begin{cases}
+\$0.00015 & \text{if MCP is enabled}\\
+\$0 & \text{otherwise}
+\end{cases}
+$$
+
+
+
+# Agent & Sub Agent Execution
+
+Every core agent & Sub Agent execution addes costs $0.00015$
+
+$$
+C_{core} = A \times $0.00015
+$$
+
+$$
+C_{sub} = S \times \$0.00015
+$$
+
+
+# Tool Execution
+
+There will be API usage costs and it assumes 10% execution costs against the base tool costs
+$$
+C_{tools} = T \times \$0.00005 \times 10%
+$$
+
+
+# Telemetry & Evaluation 
+
+There is a telemetry fee of $0.00025 for trace cost 
+Evaluation check of $0.00300
+
+$$
+  C_{telemtry} = $0.00025
+$$
+
+The evaluation csteps has 1550 token proced at $2 per million tokens
+
+$$
+C_{eval} =
+\frac{1500}{1,000,000} \times 2
+= \$0.003
+$$
+
+
+# Conclusion
+
+What you seen above is an estimate of total monthly and per transaction costs. Adding more active users, the cost will rise significantly.
+
+If you have any questions on the calculations or need help with the optimal architecture, do reach out to me.
+
+
+
+
+
+
+

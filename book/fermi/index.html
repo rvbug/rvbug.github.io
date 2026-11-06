@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../neovim/index.html" rel="next">
+<link href="../fermi/costs.html" rel="next">
 <link href="../doc2quarto/logic.html" rel="prev">
 <link href="../images/AudioWide-White.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -50,11 +50,11 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-deb916046d57902448ef8317134ba92a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -81,10 +81,38 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">The Book</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://qubitai.in"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rvbug"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -93,45 +121,13 @@ ul.task-list li input[type="checkbox"] {
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../fermi/index.html">FERMI</a></li><li class="breadcrumb-item"><a href="../fermi/index.html"><span class="chapter-title">Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">The Book</a> 
-        <div class="sidebar-tools-main">
-    <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-twitter pe-1"></i>
-            Twitter
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-              <i class="bi bi-linkedin pe-1"></i>
-            LinkedIn
-            </a>
-          </li>
-      </ul>
-    </div>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -172,6 +168,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../fermi/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fermi/costs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Costs</span></a>
   </div>
 </li>
       </ul>
@@ -261,8 +262,25 @@ ul.task-list li input[type="checkbox"] {
 <p>FERMI is Framework for Estimating Resource, Model &amp; Infrastructure costs, named after Italian physicist Enrico Fermi</p>
 <p>It is a a micro-transaction cost simulation engine for AI topologies.<br>
 Usually, when we speak about AI and Agents , we only talk about the token costs of the LLMs. Gartner suggests that 40% of the agentic AI projects will be cancelled by 2027 due to escalating infra overhead, spiralling costs to name a few.</p>
+<p>FERMI makes the hidden economics of an AI architecture visible. It models how architectural components contribute to the cost of a single user interaction and how those costs accumulate at monthly scale. It is not intended to prescribe technology choices or constrain AI adoption, but to provide engineering teams and decision-makers with a transparent view of the financial implications of their architectural decisions.</p>
 <p>So FERMI will help you see overall monthly costs of your Agentic AI architecture and also micro transaction costs. The first version (v1.0) focuses on Agentic AI architecture only.</p>
+<p>I have seen even for a simple regression problem, companies wants to invest in LLM and ride the hype but there is a need to understand when to use LLM, when is it easier to just build and manage traditional ML or DL models and when hybrid is required</p>
 <p>At the POC stage, the costs seems to be lower, you might use cost effective base LLM models, the token costs, user and the token usage might not just be ????</p>
+<p>For users, they see just one interaction. Submit a request, receive a response. The engineering team decides what happens behind the scenes, do they need orchestration, agents, sub-agents, LLM calls, tools, MCP, RAG etc.</p>
+<p>Each of those architectural decisions can add cost to that apparently simple interaction. At scale, the cumulative cost becomes significant, even if the cost of an individual interaction looks negligible.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>FERMI is acost transparency and architecture awareness tool for engineering and CXOs.</p>
+</div>
+</div>
 </section>
 <section id="simulation-inputs" class="level1">
 <h1>Simulation Inputs</h1>
@@ -313,28 +331,24 @@ Warning
 </section>
 <section id="avg.-tool-api" class="level2">
 <h2 class="anchored" data-anchor-id="avg.-tool-api">Avg. Tool (API)</h2>
-<p>Lot of these tools</p>
+<p>The Agents might call external API which has costs associated with it.</p>
 </section>
-<section id="core-agents" class="level2">
-<h2 class="anchored" data-anchor-id="core-agents">Core Agents</h2>
+<section id="core-agents-sub-agents" class="level2">
+<h2 class="anchored" data-anchor-id="core-agents-sub-agents">Core Agents &amp; Sub Agents</h2>
+<p>Mention how many agents and sub agents would you typically need</p>
 </section>
-<section id="sub-agents" class="level2">
-<h2 class="anchored" data-anchor-id="sub-agents">Sub Agents</h2>
+<section id="mcp-rag" class="level2">
+<h2 class="anchored" data-anchor-id="mcp-rag">MCP &amp; RAG</h2>
+<p>Do you need managed MCP and RAG servers</p>
 </section>
-<section id="mcp" class="level2">
-<h2 class="anchored" data-anchor-id="mcp">MCP</h2>
 </section>
-<section id="rag" class="level2">
-<h2 class="anchored" data-anchor-id="rag">RAG</h2>
-</section>
-<section id="simulation-outputs" class="level2">
-<h2 class="anchored" data-anchor-id="simulation-outputs">Simulation Outputs</h2>
-</section>
-<section id="supported-architectures" class="level2">
-<h2 class="anchored" data-anchor-id="supported-architectures">Supported Architectures</h2>
+<section id="outputs-audit-logs" class="level1">
+<h1>Outputs &amp; Audit logs</h1>
+<p>Top of the section contains total compute volume, single transaction costs and monthly scale cost. This section of the page shows the per transaction costs and also the audit trail.</p>
+<p><img src="./img/fermi_transaction.png" class="img-fluid"></p>
+<p>Next, let us look at how these calculations are done</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -745,8 +759,8 @@ Warning
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../neovim/index.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../fermi/costs.html" class="pagination-link" aria-label="Costs">
+        <span class="nav-page-text"><span class="chapter-title">Costs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

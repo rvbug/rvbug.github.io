@@ -119,7 +119,7 @@
     "href": "fermi/index.html",
     "title": "Introduction",
     "section": "",
-    "text": "Overview\nFERMI is Framework for Estimating Resource, Model & Infrastructure costs, named after Italian physicist Enrico Fermi\nIt is a a micro-transaction cost simulation engine for AI topologies.\nUsually, when we speak about AI and Agents , we only talk about the token costs of the LLMs. Gartner suggests that 40% of the agentic AI projects will be cancelled by 2027 due to escalating infra overhead, spiralling costs to name a few.\nSo FERMI will help you see overall monthly costs of your Agentic AI architecture and also micro transaction costs. The first version (v1.0) focuses on Agentic AI architecture only.\nAt the POC stage, the costs seems to be lower, you might use cost effective base LLM models, the token costs, user and the token usage might not just be ????",
+    "text": "Overview\nFERMI is Framework for Estimating Resource, Model & Infrastructure costs, named after Italian physicist Enrico Fermi\nIt is a a micro-transaction cost simulation engine for AI topologies.\nUsually, when we speak about AI and Agents , we only talk about the token costs of the LLMs. Gartner suggests that 40% of the agentic AI projects will be cancelled by 2027 due to escalating infra overhead, spiralling costs to name a few.\nFERMI makes the hidden economics of an AI architecture visible. It models how architectural components contribute to the cost of a single user interaction and how those costs accumulate at monthly scale. It is not intended to prescribe technology choices or constrain AI adoption, but to provide engineering teams and decision-makers with a transparent view of the financial implications of their architectural decisions.\nSo FERMI will help you see overall monthly costs of your Agentic AI architecture and also micro transaction costs. The first version (v1.0) focuses on Agentic AI architecture only.\nI have seen even for a simple regression problem, companies wants to invest in LLM and ride the hype but there is a need to understand when to use LLM, when is it easier to just build and manage traditional ML or DL models and when hybrid is required\nAt the POC stage, the costs seems to be lower, you might use cost effective base LLM models, the token costs, user and the token usage might not just be ????\nFor users, they see just one interaction. Submit a request, receive a response. The engineering team decides what happens behind the scenes, do they need orchestration, agents, sub-agents, LLM calls, tools, MCP, RAG etc.\nEach of those architectural decisions can add cost to that apparently simple interaction. At scale, the cumulative cost becomes significant, even if the cost of an individual interaction looks negligible.",
     "crumbs": [
       "FERMI",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introduction</span>"
@@ -174,76 +174,98 @@
     "href": "fermi/index.html#avg.-tool-api",
     "title": "Introduction",
     "section": "Avg. Tool (API)",
-    "text": "Avg. Tool (API)\nLot of these tools",
+    "text": "Avg. Tool (API)\nThe Agents might call external API which has costs associated with it.",
     "crumbs": [
       "FERMI",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
-    "objectID": "fermi/index.html#core-agents",
-    "href": "fermi/index.html#core-agents",
+    "objectID": "fermi/index.html#core-agents-sub-agents",
+    "href": "fermi/index.html#core-agents-sub-agents",
     "title": "Introduction",
-    "section": "Core Agents",
-    "text": "Core Agents",
+    "section": "Core Agents & Sub Agents",
+    "text": "Core Agents & Sub Agents\nMention how many agents and sub agents would you typically need",
     "crumbs": [
       "FERMI",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
-    "objectID": "fermi/index.html#sub-agents",
-    "href": "fermi/index.html#sub-agents",
+    "objectID": "fermi/index.html#mcp-rag",
+    "href": "fermi/index.html#mcp-rag",
     "title": "Introduction",
-    "section": "Sub Agents",
-    "text": "Sub Agents",
+    "section": "MCP & RAG",
+    "text": "MCP & RAG\nDo you need managed MCP and RAG servers",
     "crumbs": [
       "FERMI",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
-    "objectID": "fermi/index.html#mcp",
-    "href": "fermi/index.html#mcp",
-    "title": "Introduction",
-    "section": "MCP",
-    "text": "MCP",
+    "objectID": "fermi/costs.html",
+    "href": "fermi/costs.html",
+    "title": "Costs",
+    "section": "",
+    "text": "Total Computed Monthly Volume\nThis is an average number of tasks every day, over a 30-day month calculated using\n\\[\n  V = U \\times  T \\times M\n\\] Where:",
     "crumbs": [
       "FERMI",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Costs</span>"
     ]
   },
   {
-    "objectID": "fermi/index.html#rag",
-    "href": "fermi/index.html#rag",
-    "title": "Introduction",
-    "section": "RAG",
-    "text": "RAG",
+    "objectID": "fermi/costs.html#total-computed-monthly-volume",
+    "href": "fermi/costs.html#total-computed-monthly-volume",
+    "title": "Costs",
+    "section": "",
+    "text": "\\(V\\) is Total Volume\n\n\\(U\\) is Acive Users which has a default value of \\(3000\\)\n\n\\(T\\) is average tasks per user per day with default as 8\n\\(M\\) days in a month \\(30\\)",
     "crumbs": [
       "FERMI",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Costs</span>"
     ]
   },
   {
-    "objectID": "fermi/index.html#simulation-outputs",
-    "href": "fermi/index.html#simulation-outputs",
-    "title": "Introduction",
-    "section": "Simulation Outputs",
-    "text": "Simulation Outputs",
+    "objectID": "fermi/costs.html#estimated-token-interaction",
+    "href": "fermi/costs.html#estimated-token-interaction",
+    "title": "Costs",
+    "section": "Estimated Token / Interaction",
+    "text": "Estimated Token / Interaction\nWe calculate the estimated token per interaction via the following formula\n\\[\n  N = B \\times ( 500 \\times A) + (500 \\times A \\times S)\n\\] Where:\n\\(N=\\) Estimated Token count\n\\(B=\\) Base Token (2000)\n\\(A=\\) Number of Agents\n\\(S=\\) Number of Sub Agents\nSo for per interaction, this will be the cost\n\\[\n  C_{llm} = \\frac{N}{1,000,000} \\times R\n\\]\n\\[\n  C_{llm} = \\frac{5000}{1,000,000} \\times 0.35\n\\]\nThis comes to \\(\\$0.0017\\)**\nNow for Monthly LLM Costs comes to\n\\[\n720,000 \\times \\$0.00175   = \\$1,260\n\\]",
     "crumbs": [
       "FERMI",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Costs</span>"
     ]
   },
   {
-    "objectID": "fermi/index.html#supported-architectures",
-    "href": "fermi/index.html#supported-architectures",
-    "title": "Introduction",
-    "section": "Supported Architectures",
-    "text": "Supported Architectures",
+    "objectID": "fermi/costs.html#embedding",
+    "href": "fermi/costs.html#embedding",
+    "title": "Costs",
+    "section": "Embedding",
+    "text": "Embedding\nEmbedding is a fixed per interaction estimated costs when RAG is enabled \\[\nC{embedding} = $0.00010\n\\]",
     "crumbs": [
       "FERMI",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Costs</span>"
+    ]
+  },
+  {
+    "objectID": "fermi/costs.html#db-write",
+    "href": "fermi/costs.html#db-write",
+    "title": "Costs",
+    "section": "DB Write",
+    "text": "DB Write\n\\[\nW = 1 + (A \\times S)\n\\]",
+    "crumbs": [
+      "FERMI",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Costs</span>"
+    ]
+  },
+  {
+    "objectID": "fermi/costs.html#db-read",
+    "href": "fermi/costs.html#db-read",
+    "title": "Costs",
+    "section": "DB Read",
+    "text": "DB Read\n\\[\nR = 2 + (A \\times S \\times 2)\n\\]",
+    "crumbs": [
+      "FERMI",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Costs</span>"
     ]
   },
   {
@@ -254,7 +276,7 @@
     "text": "Neovim is fork of VI/VIM. It is brilliant, blazingly fast, highly configurable modal editor released in 2014. This repo helps you get started with using Neovim, giving you practical tips and providing necessary instructions to customise your IDE the way you want it.\n\n\n\n\n\n\nNote\n\n\n\nVim/Neovim are called modal editors because their behavior changes depending on the working mode (Normal mode, Command mode, Visual mode, Visual Block mode etc)\n\n\n\nHistory\nHere’s the history of editors for the last 50 years. If you look at VI/VIM, it was release more than 4 decades ago and still used widely. VIM uses “VimL” or VimScript as scripting language where as Neovim uses a light weight, simple language called Lua.\n\n\nAdvantages\nThere are many IDEs like VSCode, Pycharm which just works out of the box then why Neovim? Some of the advantages are:-\n\nFaster Navigation by eliminating the need of a mouse\nSignificantly improves your editing speed\nMacros to automate repetitive tasks\nConfigure to your specific needs and preferences and stremline your workflow\nYou can have custom keybindings mapped to your frequently used commands\nEnhance your productivity by providing features like split windows, quick search & replace and distraction-free mode too\n\n\n\nFolder Structure\nThis is how the folder structure looks like. All the folders should be under $HOME/.config/nvim\n~/.config/nvim/\n├── init.lua              # Entry point: requires options, keymaps, and lazy\n├── lazy-lock.json        # Auto-generated (DO NOT EDIT)\n├── after/\n│   └── ftplugin/\n│       └── rust.lua      # Buffer-local settings for Rust\n└── lua/\n    ├── config/\n    │   └── options.lua   # Core Neovim settings\n    ├── keymaps.lua       # Global keymaps and .rsl detection\n    └── plugins/\n        ├── autopairs.lua # windwp/nvim-autopairs\n        ├── gitsigns.lua  # lewis6991/gitsigns.nvim\n        ├── lsp.lua       # Mason & non-Rust LSP configs\n        ├── lualine.lua   # Project-aware Status Line (RUSTIMATE/COPE)\n        ├── markdown.lua  # iamcco/markdown-preview.nvim\n        ├── neogit.lua    # NeogitOrg/neogit (The Magit experience)\n        ├── oil.lua       # stevearc/oil.nvim (Floating text-based explorer)\n        ├── rustsetup.lua # mrcjkb/rustaceanvim (Deep Rust integration)\n        ├── telescope.lua # nvim-telescope/telescope.nvim\n        ├── theme.lua     # aliqyan-21/darkvoid.nvim\n        └── ui.lua        # Undotree & toggleterm.nvim\n\ninit.lua\nThis is where nvim looks at everytime it starts so the lazy plugin manager is configured here. \n\n\nlazy-lock.json\nThis lock file helps you to configure neovim and the version quickly.\n\n\nlua/plugins/\nThe best way to keep everything modularize is to split plugings into their own separate files and add it under this plugins directory. Lazy will automatically detect any changes on this folder and loads it.\nAny/All plugin file should always return a table. Additional configuration/settings for that plugins should be inside a callback function. See the sample setup for lua/plugins/themes.lua. Same approach is used for most of the plugins unless specified differently in their documentation.\nconfig = function() is a call back function. Look at the themes.lua file where the plugin is called and then colorscheme is setup.\nreturn {\n   \"tiagovla/tokyodark.nvim\",\n   :\n   :\n   config = function()\n      vim.cmd(\"colorscheme tokyodark\")\n   end\n}",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
@@ -265,7 +287,7 @@
     "text": "Editor Setup (init.lua)\nThis section details the primary editor configuration files: setup, keybindings, and Vim settings.\nThe initialization file sets up bootstrapping for the plugin manager, imports option/keymap modules, and sets default themes:",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Core</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Core</span>"
     ]
   },
   {
@@ -276,7 +298,7 @@
     "text": "Plugin Manager: Automatically bootstraps and configures lazy.nvim as the primary plugin manager.\nConfiguration Modules: Loads general settings from config.options and global shortcuts from keymaps.\nColorscheme: Applies the darkvoid color theme globally on startup.\nCustom Filetypes: Adds filetype detection for custom file extensions (e.g., .rsl mapped to rustimate).",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Core</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Core</span>"
     ]
   },
   {
@@ -287,7 +309,7 @@
     "text": "Global Options (options.lua)\nBasic editor preferences and behavior tweaks:\n\nLeader Key: Configured to Space.\nVisuals: Enables true-color (termguicolors) with dark background mode and relative line numbers.\nIndentation: Configures 2-space indentation tabs using spaces (expandtab).\nSplits & Windows: Forces horizontal splits to open below and vertical splits to open to the right.\nClipboard & Edit: Integrates system clipboard via unnamedplus and enables block selection in virtualedit.",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Core</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Core</span>"
     ]
   },
   {
@@ -298,7 +320,7 @@
     "text": "Custom Keymaps (keymaps.lua)\nShortcuts mapped for daily workflow efficiency:\n\n\n\n\n\n\n\n\nKeybinding\nAction / Command\nDescription\n\n\n\n\n&lt;leader&gt;sv\n&lt;C-w&gt;v\nSplit window vertically\n\n\n&lt;leader&gt;sh\n&lt;C-w&gt;s\nSplit window horizontally\n\n\n&lt;leader&gt;sx\n:close&lt;CR&gt;\nClose current split\n\n\n&lt;leader&gt;to\n:tabnew&lt;CR&gt;\nOpen new tab\n\n\n&lt;leader&gt;tx\n:tabclose&lt;CR&gt;\nClose current tab\n\n\n&lt;leader&gt;tn / &lt;leader&gt;tp\n:tabn&lt;CR&gt; / :tabp&lt;CR&gt;\nNext / Previous tab\n\n\n&lt;leader&gt;ff\nTelescope find_files\nFind files in project\n\n\n&lt;leader&gt;fg\nTelescope live_grep\nLive grep project text\n\n\n&lt;leader&gt;fb\nTelescope buffers\nList open buffers\n\n\n&lt;leader&gt;qa\n:QuartoActivate&lt;CR&gt;\nActivate Quarto mode\n\n\n&lt;leader&gt;qp\n:QuartoPreview&lt;CR&gt;\nPreview Quarto document\n\n\n&lt;leader&gt;qc\n:QuartoClosePreview&lt;CR&gt;\nClose Quarto preview\n\n\n&lt;leader&gt;e\nvim.diagnostic.open_float\nShow inline diagnostic errors\n\n\n[d / ]d\nDiagnostic nav\nJump to previous/next error",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Core</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Core</span>"
     ]
   },
   {
@@ -309,7 +331,7 @@
     "text": "Core & UI Enhancements\nThis page serves as a reference for all Neovim plugins used in this configuration.",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Plugins</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Plugins</span>"
     ]
   },
   {
@@ -320,7 +342,7 @@
     "text": "nvim-autopairs: Automatically closes brackets, quotes, and parentheses as soon as they are typed.\nlualine.nvim: Provides a lightweight statusline showing Git status, current directory, file details, and mode status.\noil.nvim: A floating file manager that allows editing directory trees directly as a standard Neovim text buffer.\nundotree: Displays a visual tree of buffer changes, making undo/redo history easy to navigate.\ntoggleterm.nvim: Provides floating, easily accessible terminal windows over editor splits.\ndarkvoid.nvim: Dark colorscheme applied across Neovim UI elements.",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Plugins</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Plugins</span>"
     ]
   },
   {
@@ -331,7 +353,7 @@
     "text": "Language Support & LSP\n\nmason.nvim & mason-lspconfig.nvim: Manages external binary installations for LSPs, formatters, and linters (lua_ls, pyright, bashls, html, cssls).\nnvim-lspconfig: Configures native Neovim Language Server Protocol integrations and global keybindings for definitions, code actions, and rename floating windows.\nrustaceanvim: Handles full Rust LSP setup with rust-analyzer, macro expansion, debugging capabilities via codelldb, and running inline tests.\nnvim-treesitter: Provides code parsing for syntax highlighting, code structure evaluation, and custom language grammar integration (such as rustimate).\nquarto.nvim & otter.nvim: Integrates Quarto rendering, interactive previews, and code chunk execution inside Markdown and .qmd files.",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Plugins</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Plugins</span>"
     ]
   },
   {
@@ -342,7 +364,7 @@
     "text": "Git Integration\n\nneogit: Interactive, floating Magit-style Git control dashboard.\ngitsigns.nvim: Adds status signs in the gutter column for modified, added, or deleted lines.",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Plugins</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Plugins</span>"
     ]
   },
   {
@@ -353,7 +375,7 @@
     "text": "Navigation\n\ntelescope.nvim: Highly customizable fuzzy finder for opening files, searching text across the project via live grep, listing buffers, and viewing help tags.",
     "crumbs": [
       "Neovim",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Plugins</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Plugins</span>"
     ]
   },
   {
@@ -364,7 +386,7 @@
     "text": "Org File\nThis book documents my Emacs environment, and the concepts I have learned along the way while building it.\nThe configuration is maintained in Org mode as it serves two purposes:\nThe material is being moved gradually from the original Org file into this book.",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
@@ -375,7 +397,7 @@
     "text": "Prerequisites\nThe following external tools and language servers are listed in my Org configuration as prerequisites for this setup:\n\n\n\n\n\n\n\nTool\nPurpose / installation note in the Org file\n\n\n\n\nripgrep\nFast text search utility; installed with brew\n\n\nLLVM toolchain\nRust debugging; brew install llvm\n\n\nRust Analyzer\nrustup component add rust-analyzer\n\n\nrust-script\nExecute Rust scripts in Org; cargo install rust-script\n\n\nPyright\nPython language server; pip install pyright\n\n\nBash language server\nnpm install -g bash-language-server",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
@@ -386,7 +408,7 @@
     "text": "Key Info\nTo debug Emacs startup:",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>elisp</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>elisp</span>"
     ]
   },
   {
@@ -397,7 +419,7 @@
     "text": "Dired notes:\n\n+ — create a directory.\nd followed by x — mark a file or directory for deletion and confirm.\n^ — move to the parent directory.",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>elisp</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>elisp</span>"
     ]
   },
   {
@@ -408,7 +430,7 @@
     "text": "Package management\nThis chapter documents the configuration used to build my Emacs environment. It contains package management, the editor interface, completion, navigation and much more.\nThis emacs is setup for following programming language",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   },
   {
@@ -419,7 +441,7 @@
     "text": "Emacs uses package.el to manage packages.\nPackage archives such as GNU ELPA and MELPA provide packages. I use MELPA as an additional package archive and use-package to organize package configuration.\nuse-package groups related setup instructions for a package.\nIn this configuration, :ensure t is enabled by default so that packages are installed when needed.\n\n;; We will be using package.el and load it to memory\n(require 'package)\n\n;; Add MELPA\n(add-to-list 'package-archives\n             '(\"melpa\" . \"https://melpa.org/packages/\") t)\n\n;; Initialize package system\n(package-initialize)\n\n;; Bootstrap use-package if not installed\n;; use-package is built-in in newer Emacs versions\n(unless (package-installed-p 'use-package)\n  (package-refresh-contents)\n  (package-install 'use-package))\n\n;; Load use-package\n(require 'use-package)\n\n;; Always ensure packages are installed\n;; This makes :ensure t the default for all use-package declarations\n(setq use-package-always-ensure t)",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   },
   {
@@ -430,7 +452,7 @@
     "text": "Basics\nThe basic setup removes the menu and tool bars, enables mouse-wheel support and the tab bar, suppresses the startup messages, and configures line numbers , relative line numbers and recently opened files.\nI use three text faces for fonts:\n\ndefault for general text appearance\nfixed-pitch for coding I use Iosevka\nvariable-pitch for prose\n\nFor default and fixed-pitch faces I use Iosevka and IBM Plex Sans prose (docs)\n(menu-bar-mode -1)\n(tool-bar-mode -1)\n;; (scroll-bar-mode -1)\n(mouse-wheel-mode 1)\n(setq inhibit-startup-message t)\n(setq inhibit-startup-echo-area-message t)\n(tab-bar-mode 1)\n\n;; Suppress harmless byte-compilation warning popups\n(setq warning-minimum-level :error)\n\n;; Do not take backup of any file\n(setq make-backup-files nil)\n\n;; Display line numbers and relative line numbers\n(global-display-line-numbers-mode 1)\n(setq display-line-numbers-type 'relative)\n\n;; Remember recently opened files\n;; Keybinding C-c C-r to open recent files\n(recentf-mode 1)\n(setq recentf-max-saved-items 100)\n\n;; Default Monospace (Code & System)\n(set-face-attribute 'default nil\n                    :font \"Iosevka\"\n                    :height 170)\n\n(set-face-attribute 'fixed-pitch nil\n                    :font \"Iosevka\"\n                    :height 170)\n\n;; Variable-Pitch (Prose & Org Text)\n(set-face-attribute 'variable-pitch nil\n                    :font \"IBM Plex Sans\"\n                    :height 170)\n\n;; Enable font-lock colors for Org mode\n;; Enable global syntax highlighting where supported\n(global-font-lock-mode 1)\n\n;; Apply Variable-Pitch ONLY to Org default text\n;; Keeps heading colors intact.\n(custom-theme-set-faces\n 'user\n '(org-default ((t (:inherit variable-pitch)))))\n\n;; Theme setup\n(use-package ef-themes\n  :ensure t)\n\n;; Primary Dark Theme\n(load-theme 'ef-maris-dark t)\n\n;; Secondary Light Theme\n;; (load-theme 'ef-maris-light)\n\n;; Theme switcher quick-reference (uncomment to switch)\n;; (load-theme 'modus-vivendi t) ; High-contrast dark\n;; (load-theme 'modus-operandi t) ; High-contrast light",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   },
   {
@@ -441,7 +463,7 @@
     "text": "Completion\nThe completion setup uses several packages together:\n\nVertico displays completion candidates vertically in the minibuffer.\nMarginalia adds helpful descriptions alongside candidates.\nOrderless allows matching terms in any order.\nConsult provides search and navigation commands for lines, buffers, recent files, and projects.\n\n\nVertico\nVertico displays completion candidates vertically in the minibuffer. It is enabled globally.\n(use-package vertico\n  :init\n  (vertico-mode 1))\n\n\nMarginalia\nMarginalia adds helpful information next to completion candidates and works with Vertico.\n(use-package marginalia\n  :init\n  (marginalia-mode 1))\n\n\nOrderless\nOrderless provides matching in any order. The completion-styles setting uses both orderless and basic. The configuration also clears the default category settings and specifies matching styles for files.\n(use-package orderless\n  :custom\n  (completion-styles '(orderless basic))\n  (completion-category-defaults nil)\n  (completion-category-overrides '((file (styles basic partial-completion)))))\n\n\nConsult\nConsult provides search and navigation commands for files, buffers, lines, and project content. The project-wide search commands require ripgrep to be installed.\n(use-package consult\n  :bind (;; Search commands\n         (\"C-s\" . consult-line)              ; Search in current buffer\n         (\"C-x b\" . consult-buffer)          ; Switch buffer with preview\n         ;; File navigation\n         (\"C-x C-r\" . consult-recent-file)   ; Recent files\n         ;; Project-wide search (requires ripgrep installed)\n         (\"C-c s g\" . consult-ripgrep)       ; Grep in project\n         (\"C-c s f\" . consult-find))         ; Find file in project\n  :config\n  ;; Preview files/buffers as you navigate (optional)\n  (setq consult-preview-key 'any))",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   },
   {
@@ -452,7 +474,7 @@
     "text": "In-buffer completion\nCorfu provides an in-buffer completion popup. It is an alternative to Company mode and displays completion suggestions at the cursor. In this setup, Corfu works with Eglot, Cape, and Emacs completion facilities.\n\nCorfu\nThe configuration enables Corfu globally, turns on automatic completion, sets the delay and minimum prefix length, enables cycling, and configures popup information. The keybindings below apply to corfu-map.\n(use-package corfu\n  :init\n  (global-corfu-mode 1)\n  ;; :hook (rust-ts-mode . cargo-minor-mode)\n  :custom\n  (corfu-auto t)\n  (corfu-auto-delay 0.2)\n  (corfu-auto-prefix 2)\n  (corfu-cycle t)\n  (corfu-popupinfo-delay 0.5)\n  :bind (:map corfu-map\n              (\"TAB\" . corfu-next)\n              ([tab] . corfu-next)\n              (\"S-TAB\" . corfu-previous)\n              ([backtab] . corfu-previous)\n              (\"M-d\" . corfu-popupinfo-toggle))\n  :config\n  ;; Enable documentation popup next to completion candidates\n  (corfu-popupinfo-mode 1))\n\n\nCape\nCape provides additional completion-at-point backends that can be used by the completion system. This configuration adds file, dabbrev, and Emacs Lisp block completion functions to completion-at-point-functions.\n(use-package cape\n  :init\n  ;; Add completion backends at startup\n  (add-to-list 'completion-at-point-functions #'cape-file)\n  (add-to-list 'completion-at-point-functions #'cape-dabbrev)\n  ;; Add Elisp completion even in this Org file\n  (add-to-list 'completion-at-point-functions #'cape-elisp-block))",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   },
   {
@@ -463,7 +485,7 @@
     "text": "Language support\nThe language-support setup uses Eglot as the LSP client, Eldoc for documentation display, and Tree-sitter-based Rust mode. It also configures language servers for JavaScript, HTML, and CSS, and enables Eglot for shell scripts.\n\nEglot and Eldoc\nEglot is built into Emacs in the version used by this configuration, so :ensure nil is specified. eglot-workspace-configuration passes settings to language servers. The example below sets the Rust Analyzer check command to check.\n;; Eldoc: Minibuffer documentation display\n(use-package eldoc\n  :ensure nil\n  :custom\n  (eldoc-echo-area-use-multiline-p nil))\n\n;; Eglot: Lightweight LSP client\n(use-package eglot\n  :ensure nil  ; Built-in from Emacs 29+\n  :custom\n  (eglot-autoshutdown t)\n  (eglot-extend-to-xref t)\n  :config\n  ;; Format on save when Eglot is managing the current buffer\n  (add-hook 'before-save-hook\n            (lambda ()\n              (when (eglot-managed-p)\n                (eglot-format-buffer))))\n\n  ;; Configure language-server workspace settings\n  (setq-default eglot-workspace-configuration\n                '((:rust-analyzer . ((check . ((command . \"check\"))))))))\n\n(add-to-list 'eglot-server-programs\n             '(js-mode \"typescript-language-server\" \"--stdio\"))\n\n\nRust with TS\nThe Rust setup uses rust-ts-mode, Eglot, and Cargo. It adds a Tree-sitter (TS) grammar search path and specifies the Rust grammar source. Enables Eglot and cargo-minor-mode when rust-ts-mode starts.\nThe keybindings provide navigation between Flymake diagnostics and Cargo build, run, test, and check commands.\n;; Check for additional Tree-sitter grammar in the path below\n(add-to-list 'treesit-extra-load-path\n             (expand-file-name \"tree-sitter\" user-emacs-directory))\n\n;; Configure Tree-sitter grammar source (ABI v14 compatible)\n(setq treesit-language-source-alist\n      '((rust \"https://github.com/tree-sitter/tree-sitter-rust\" \"v0.21.2\")))\n\n;; Enable Tree-sitter Rust mode\n(use-package rust-ts-mode\n  :ensure nil\n  :mode \"\\\\.rs\\\\'\"\n  :init\n  ;; Maximum syntax highlighting level for Tree-sitter\n  (setq treesit-font-lock-level 4)\n  :hook ((rust-ts-mode . eglot-ensure)\n         (rust-ts-mode . cargo-minor-mode))\n  :bind (:map rust-ts-mode-map\n         (\"M-n\" . flymake-goto-next-error)\n         (\"M-p\" . flymake-goto-prev-error)\n         (\"C-c c b\" . cargo-process-build)\n         (\"C-c c r\" . cargo-process-run)\n         (\"C-c c t\" . cargo-process-test)\n         (\"C-c c k\" . cargo-process-check))\n  :custom\n  (rust-ts-mode-indent-offset 4))\n\n;; Cargo execution runner\n(use-package cargo\n  :ensure t)\n\n\nHTML, CSS, and JS\nThe following configuration adds language-server commands for HTML and CSS after Eglot has loaded. The JavaScript server mapping is configured above in the Eglot section.\n(with-eval-after-load 'eglot\n  (add-to-list 'eglot-server-programs\n               '(mhtml-mode \"vscode-html-language-server\" \"--stdio\"))\n  (add-to-list 'eglot-server-programs\n               '(css-mode \"vscode-css-language-server\" \"--stdio\")))\nRun local server with the following command:\npython3 -m http.server 8000\n\n\nShell scripting\nThe shell setup associates .sh, .bash, and .zsh files with sh-mode and starts Eglot when sh-mode is enabled.\n(use-package sh-script\n  :ensure nil\n  :mode ((\"\\\\.sh\\\\'\" . sh-mode)\n         (\"\\\\.bash\\\\'\" . sh-mode)\n         (\"\\\\.zsh\\\\'\" . sh-mode))\n  :hook (sh-mode . eglot-ensure))",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   },
   {
@@ -474,7 +496,7 @@
     "text": "Markdown\nMarkdown support is provided by markdown-mode.\n(use-package markdown-mode\n  :ensure t)",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   },
   {
@@ -485,7 +507,7 @@
     "text": "Magit\nMagit is a powerful Git interface used in this Emacs setup. The main entry point is bound to C-x g. Diffs are displayed in the same window .\n(use-package magit\n  :bind (\"C-x g\" . magit-status)\n  :custom\n  ;; Show diff in same window\n  (magit-display-buffer-function\n   #'magit-display-buffer-same-window-except-diff-v1))\n\nQuck Reference\n\n\n\nKey\nAction\n\n\n\n\n?\nShow help\n\n\ns\nStage files\n\n\nc c\nCreate a commit\n\n\nC-c C-C\nConfirm the commit\n\n\nP p\nPush to remote\n\n\nF p\nPull from remote\n\n\nb b\nSwitch branch\n\n\nb c\nCreate branch\n\n\nq\nQuit",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   },
   {
@@ -496,7 +518,7 @@
     "text": "Sessions\nEmacs has a built-in desktop feature for restoring a previous session. This is stored in a sessions/ directory inside user-emacs-directory. It enables desktop-save-mode, and sets automatic saving so that no prompt is required.\n;; Use a sessions directory inside the Emacs configuration folder\n(setq desktop-dirname\n      (expand-file-name \"sessions/\" user-emacs-directory))\n\n(setq desktop-path (list desktop-dirname))\n\n(desktop-save-mode 1)\n;; Ensure it is always true so no prompt is required\n(setq desktop-save t)",
     "crumbs": [
       "Emacs",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Configuration</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Configuration</span>"
     ]
   }
 ]

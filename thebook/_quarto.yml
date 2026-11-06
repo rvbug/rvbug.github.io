@@ -11,7 +11,13 @@ book:
     style: "docked"  # or "floating"
     location: left
     background: light
-  sharing: [twitter, linkedin]
+  navbar:
+    right:
+      - text: "Home"
+        href: https://qubitai.in
+      - icon: github
+        href: https://github.com/rvbug
+
 
   chapters:
     - index.qmd
@@ -24,6 +30,7 @@ book:
     - part: FERMI
       chapters:
         - fermi/index.qmd
+        - fermi/costs.qmd
 
 
     - part: Neovim
